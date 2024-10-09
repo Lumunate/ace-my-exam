@@ -1,11 +1,16 @@
+import { AppContentWrapper } from "@/components/common/Global.style";
 import Hero from "@/components/Home/Hero/Hero";
-import { Box } from "@mui/material";
+import Stats from "../../../public/Stats/Stats";
 
 export default function Home() {
   return (
-    <Box>
+    <>
       <Hero />
-    </Box>
+
+      <AppContentWrapper>
+        <Stats />
+      </AppContentWrapper>
+    </>
   );
 }
 
