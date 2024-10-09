@@ -28,7 +28,7 @@ function Navbar() {
   };
 
   return (
-    <NavbarContainer position="static">
+    <NavbarContainer position="fixed">
       <Box>
         <NavbarContentWrapper>
           <Image src={"/Logo.png"} width={52} height={49} alt="Logo" />

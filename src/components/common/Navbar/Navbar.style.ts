@@ -6,9 +6,9 @@ export const NavbarContainer = styled(AppBar)({
   maxWidth: "1600px !important",
   borderRadius: "20px",
   padding: "20px !important",
-  margin: "0 auto !important",
+  right: "50%",
+  transform: "translateX(50%)",
   marginTop: "25px !important",
-  border: "1px solid grey",
   blur: "26px",
   boxShadow: "0 4px 37.5px 0 rgba(0,0,0,0.17)",
 });
@@ -20,6 +20,7 @@ export const NavbarContentWrapper = styled(Toolbar)({
 });
 
 export const NavbarLinksContainer = styled(Box)({
+  margin: "0 3rem",
   display: "flex",
   width: "100%",
   maxWidth: "710px",

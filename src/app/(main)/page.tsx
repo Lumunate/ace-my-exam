@@ -1,9 +1,11 @@
+import Hero from "@/components/Home/Hero/Hero";
+import { Box } from "@mui/material";
 
 export default function Home() {
   return (
-    <div>
-      Hello world
-    </div>
+    <Box>
+      <Hero />
+    </Box>
   );
 }
 
