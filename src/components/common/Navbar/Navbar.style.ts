@@ -9,6 +9,8 @@ export const NavbarContainer = styled(AppBar)({
   margin: "0 auto !important",
   marginTop: "25px !important",
   border: "1px solid grey",
+  blur: "26px",
+  boxShadow: "0 4px 37.5px 0 rgba(0,0,0,0.17)",
 });
 
 export const NavbarContentWrapper = styled(Toolbar)({
