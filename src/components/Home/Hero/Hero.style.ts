@@ -25,9 +25,9 @@ export const HeroCTAButton = styled(ButtonBase)({
   fontWeight: 700,
   fontFamily: "var(--font-poppins)",
   fontSize: "1.6rem",
-  color: "white",
+  color: "black",
   lineHeight: "2.4rem",
-  backgroundColor: "rgba(0, 184, 201, 1)",
+  backgroundColor: "rgba(158, 189, 170, 1)",
   textAlign: "center",
   border: "none",
   borderRadius: "8px",
@@ -35,6 +35,8 @@ export const HeroCTAButton = styled(ButtonBase)({
   "&:hover": {
     backgroundColor: "gray",
   },
+
+  marginTop: "2rem",
 });
 
 export const HeroWrapper = styled(Box)({
@@ -55,7 +57,7 @@ export const HeroImageOverlay = styled(Box)({
   left: 0,
   width: "100%",
   height: "100%",
-  backgroundColor: "rgba(0, 182, 201, 0.45)",
+  backgroundColor: "rgba(0, 0, 0, 0.66)",
 });
 
 export const HeroContentContainer = styled(Box)({
