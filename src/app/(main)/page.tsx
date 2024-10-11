@@ -1,8 +1,8 @@
 import Image from 'next/image';
 
 import { AppContentWrapper } from '@/components/common/Global.style';
-import Hero from '@/components/home/hero/Hero';
-import Stats from '@/components/home/stats/Stats';
+import Hero from '@/features/home/hero/Hero';
+import Stats from '@/features/home/stats/Stats';
 
 export default function Home() {
   return (

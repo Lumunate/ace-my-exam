@@ -24,7 +24,7 @@ const Stats = () => {
         <StatsCardsContainer>
           {stats.map((stat, index) => (
             <>
-              <Box>
+              <Box key={index}>
                 <StatHeading>{stat.name}</StatHeading>
                 <StatValue>{stat.value}</StatValue>
               </Box>

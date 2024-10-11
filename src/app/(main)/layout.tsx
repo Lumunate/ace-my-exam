@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Navbar from '@/components/common/navbar/Navbar';
+import Navbar from '@/features/navbar/Navbar';
 
 export const metadata: Metadata = {
   title: 'Ace My Exams',

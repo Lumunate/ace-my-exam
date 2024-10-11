@@ -3,7 +3,7 @@ import Box from '@mui/material/Box';
 import Image from 'next/image';
 import * as React from 'react';
 
-import { Button } from '../Button.style';
+import { Button } from '@/components/buttons/Button.style';
 import { NavbarButtonsContainer, NavbarContainer, NavbarContentWrapper, NavbarLink, NavbarLinksContainer } from './Navbar.style';
 
 const pages = ['Home', 'About', 'Resorces', 'Pricing', 'Contact'];
