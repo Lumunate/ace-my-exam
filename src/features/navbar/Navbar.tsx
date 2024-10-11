@@ -18,7 +18,7 @@ function Navbar() {
 
           <NavbarLinksContainer>
             {pages.map((page) => (
-              <NavbarLink key={page} href={'/'}>
+              <NavbarLink key={page}  href={page === 'Contact' ? '/contact' : '/'}>
                 {page}
               </NavbarLink>
             ))}
