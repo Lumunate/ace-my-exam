@@ -1,4 +1,5 @@
-import { ButtonBase, ButtonBaseProps, styled } from '@mui/material';
+import { ButtonBase, styled } from '@mui/material';
+import type { ButtonBaseProps } from '@mui/material';
 
 interface ButtonProps extends ButtonBaseProps {
   special?: boolean;
