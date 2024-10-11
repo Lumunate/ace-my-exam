@@ -7,32 +7,19 @@ import { Button } from '../Button.style';
 import { NavbarButtonsContainer, NavbarContainer, NavbarContentWrapper, NavbarLink, NavbarLinksContainer } from './Navbar.style';
 
 const pages = ['Home', 'About', 'Resorces', 'Pricing', 'Contact'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
 
   return (
     <NavbarContainer position="fixed">
       <Box>
         <NavbarContentWrapper>
-          <Image src={'/Logo.png'} width={52} height={49} alt="Logo" />
+          <Image src={'/logo.png'} width={52} height={49} alt="Logo" />
 
           <NavbarLinksContainer>
             {pages.map((page) => (

@@ -1,4 +1,4 @@
-import { Box, styled, Typography } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { StatCardDivider, StatHeading, StatsCardsContainer, StatsContainer, StatsContentWrapper, StatValue } from './Stats.style';
 

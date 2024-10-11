@@ -2,8 +2,6 @@
 import { Box, ButtonBase, styled, Typography } from '@mui/material';
 import Image from 'next/image';
 
-import { Button } from '@/components/common/Button.style';
-
 export const HeroHeading = styled(Typography)({
   fontWeight: 700,
   fontSize: '4.6rem',

@@ -1,5 +1,3 @@
-import { Box, styled, Typography } from '@mui/material';
-import Image from 'next/image';
 import React from 'react';
 
 import {
@@ -17,7 +15,7 @@ const Hero = () => {
   return (
     <HeroWrapper>
       <HeroImageContainer>
-        <HeroImage src={'/Home/hero-bg.png'} width={1197} height={-1} alt="Hero background" />
+        <HeroImage src={'/home/hero-bg.png'} width={1197} height={-1} alt="Hero background" />
         <HeroImageOverlay />
       </HeroImageContainer>
 

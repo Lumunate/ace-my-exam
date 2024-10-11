@@ -6,7 +6,7 @@ interface ButtonProps extends ButtonBaseProps {
 
 export const Button = styled(ButtonBase, {
   shouldForwardProp: (prop) => prop !== 'special',
-})<ButtonProps>(({ special = false, theme }) => ({
+})<ButtonProps>(({ special = false }) => ({
   padding: '5px 0',
   width: '96px',
   fontWeight: 400,
