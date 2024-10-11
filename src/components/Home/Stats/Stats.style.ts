@@ -27,7 +27,7 @@ export const StatHeading = styled(Typography)({
 });
 
 export const StatValue = styled(Typography)({
-  color: "rgba(158, 189, 170, 1)",
+  color: "rgba(0, 184, 201, 1)",
   fontSize: "4.8rem",
   fontWeight: 700,
   lineHeight: "6.9rem",
