@@ -1,36 +1,59 @@
 'use client';
+
 import Box from '@mui/material/Box';
 import Image from 'next/image';
-import * as React from 'react';
+import {useState} from 'react';
 
+import LoginModal from '@/app/(auth)/login/loginModal';
+import SignUpModel from '@/app/(auth)/sign-up/signUpModel';
 import { Button } from '@/components/buttons/Button.style';
 
-import { NavbarButtonsContainer, NavbarContainer, NavbarContentWrapper, NavbarLink, NavbarLinksContainer } from './Navbar.style';
+import {
+  NavbarButtonsContainer,
+  NavbarContainer,
+  NavbarContentWrapper,
+  NavbarLink,
+  NavbarLinksContainer,
+} from './Navbar.style';
 
 const pages = ['Home', 'About', 'Resorces', 'Pricing', 'Contact'];
 
 function Navbar() {
+  const [openLogin, setOpenLogin] = useState(false);
+  const [openSignUp, setOpenSignUp] = useState(false);
+
+  const handleOpenLogin = () => setOpenLogin(true);
+  const handleCloseLogin = () => setOpenLogin(false);
+  const handleOpenSignUp = () => setOpenSignUp(true);
+  const handleCloseSignUp = () => setOpenSignUp(false);
+
   return (
-    <NavbarContainer position="fixed">
-      <Box>
-        <NavbarContentWrapper>
-          <Image src={'/logo.png'} width={52} height={49} alt="Logo" />
+    <>
+      <NavbarContainer position='fixed'>
+        <Box>
+          <NavbarContentWrapper>
+            <Image src={'/logo.png'} width={52} height={49} alt='Logo' />
 
-          <NavbarLinksContainer>
-            {pages.map((page) => (
-              <NavbarLink key={page} href={'/'}>
-                {page}
-              </NavbarLink>
-            ))}
-          </NavbarLinksContainer>
+            <NavbarLinksContainer>
+              {pages.map((page) => (
+                <NavbarLink key={page} href={'/'}>
+                  {page}
+                </NavbarLink>
+              ))}
+            </NavbarLinksContainer>
 
-          <NavbarButtonsContainer>
-            <Button>Login</Button>
-            <Button special>Register</Button>
-          </NavbarButtonsContainer>
-        </NavbarContentWrapper>
-      </Box>
-    </NavbarContainer>
+            <NavbarButtonsContainer>
+              <Button onClick={handleOpenLogin}>Login</Button>
+              <Button special onClick={handleOpenSignUp}>
+                Register
+              </Button>
+            </NavbarButtonsContainer>
+          </NavbarContentWrapper>
+        </Box>
+      </NavbarContainer>
+      <LoginModal open={openLogin} handleClose={handleCloseLogin} />
+      <SignUpModel open={openSignUp} handleClose={handleCloseSignUp} />
+    </>
   );
 }
 export default Navbar;
