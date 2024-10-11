@@ -1,21 +1,21 @@
-import { Box, styled, Typography } from "@mui/material";
-import { StatCardDivider, StatHeading, StatsCardsContainer, StatsContainer, StatsContentWrapper, StatValue } from "./Stats.style";
+import { Box, styled, Typography } from '@mui/material';
+
+import { StatCardDivider, StatHeading, StatsCardsContainer, StatsContainer, StatsContentWrapper, StatValue } from './Stats.style';
 
 const stats = [
   {
-    name: "Students",
-    value: "2500+",
+    name: 'Students',
+    value: '2500+',
   },
   {
-    name: "Courses",
-    value: "100+",
+    name: 'Courses',
+    value: '100+',
   },
   {
-    name: "Tutors",
-    value: "50+",
+    name: 'Tutors',
+    value: '50+',
   },
 ];
-
 
 const Stats = () => {
   return (

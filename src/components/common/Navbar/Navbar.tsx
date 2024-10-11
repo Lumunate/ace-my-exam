@@ -1,12 +1,13 @@
-"use client";
-import * as React from "react";
-import Box from "@mui/material/Box";
-import Image from "next/image";
-import { Button } from "../Button.style";
-import { NavbarButtonsContainer, NavbarContainer, NavbarContentWrapper, NavbarLink, NavbarLinksContainer } from "./Navbar.style";
+'use client';
+import Box from '@mui/material/Box';
+import Image from 'next/image';
+import * as React from 'react';
 
-const pages = ["Home", "About", "Resorces", "Pricing", "Contact"];
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
+import { Button } from '../Button.style';
+import { NavbarButtonsContainer, NavbarContainer, NavbarContentWrapper, NavbarLink, NavbarLinksContainer } from './Navbar.style';
+
+const pages = ['Home', 'About', 'Resorces', 'Pricing', 'Contact'];
+const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(null);
@@ -31,11 +32,11 @@ function Navbar() {
     <NavbarContainer position="fixed">
       <Box>
         <NavbarContentWrapper>
-          <Image src={"/Logo.png"} width={52} height={49} alt="Logo" />
+          <Image src={'/Logo.png'} width={52} height={49} alt="Logo" />
 
           <NavbarLinksContainer>
             {pages.map((page) => (
-              <NavbarLink key={page} href={"/"} onClick={handleCloseNavMenu}>
+              <NavbarLink key={page} href={'/'} onClick={handleCloseNavMenu}>
                 {page}
               </NavbarLink>
             ))}

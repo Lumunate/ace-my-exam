@@ -1,6 +1,7 @@
-import { Box, styled, Typography } from "@mui/material";
-import Image from "next/image";
-import React from "react";
+import { Box, styled, Typography } from '@mui/material';
+import Image from 'next/image';
+import React from 'react';
+
 import {
   HeroContent,
   HeroContentContainer,
@@ -10,13 +11,13 @@ import {
   HeroImageContainer,
   HeroImageOverlay,
   HeroWrapper,
-} from "./Hero.style";
+} from './Hero.style';
 
 const Hero = () => {
   return (
     <HeroWrapper>
       <HeroImageContainer>
-        <HeroImage src={"/Home/hero-bg.png"} width={1197} height={-1} alt="Hero background" />
+        <HeroImage src={'/Home/hero-bg.png'} width={1197} height={-1} alt="Hero background" />
         <HeroImageOverlay />
       </HeroImageContainer>
 
