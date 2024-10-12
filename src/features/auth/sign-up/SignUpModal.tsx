@@ -5,8 +5,8 @@ import { Snackbar, CircularProgress } from '@mui/material';
 import { useState } from 'react';
 import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from 'react-hook-form';
 
-import { StyledTextField } from '@/components/form/form.style';
-import { signUpSchema } from '@/features/(auth)/sign-up/signUpSchema';
+import { StyledTextField } from '@/components/form/Form.style';
+import { signUpSchema } from '@/features/auth/sign-up/SignUpSchema';
 
 import {
   AuthButton,
@@ -16,7 +16,7 @@ import {
   AuthParaTypography,
   AuthBackdrop,
   AuthStyledLinkTwo,
-} from '../../../components/auth/authModal.style';
+} from '../AuthModals.style';
 
 interface SignUpFormInputs {
   name: string;
@@ -25,7 +25,6 @@ interface SignUpFormInputs {
   confirmPassword: string;
 }
 
-// Helper function to get error message safely
 const getErrorMessage = (
   error: FieldError | Merge<FieldError, FieldErrorsImpl<SignUpFormInputs>> | undefined
 ): string | undefined => {
@@ -55,7 +54,6 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
   const onSubmit: SubmitHandler<SignUpFormInputs> = async (data) => {
     setLoading(true);
     try {
-      // Simulate async call
       await new Promise((resolve) => setTimeout(resolve, 2000));
       setSnackbarMessage('Sign-up successful');
       reset();

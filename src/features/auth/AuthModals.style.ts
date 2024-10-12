@@ -10,23 +10,19 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 
-// Style for the Backdrop
 export const AuthBackdrop = styled(Backdrop)({
   backgroundColor: 'rgba(255, 255, 255, 0.1)',
   backdropFilter: 'blur(7.8px)',
 });
 
-// Base Modal Container Styles
 export const AuthBaseModalContainer = styled(Modal)({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
 });
 
-// Auth Modal Container extending the base modal container
 export const AuthModalContainer = styled(AuthBaseModalContainer)({});
 
-// Base Box content styles
 export const BaseModalContent = styled(Box)({
   backgroundColor: '#fff',
   padding: '20px',
@@ -36,7 +32,6 @@ export const BaseModalContent = styled(Box)({
   zIndex: 1,
 });
 
-// Auth Modal Content extending the base box content styles
 export const AuthModalContent = styled(BaseModalContent)({
   padding: '69px 49px',
   width: '347px',
@@ -62,27 +57,23 @@ export const AuthButton = styled(ButtonBase)({
   marginTop: '2rem',
 });
 
-// Base Typography Styles
 export const AuthBaseTypography = styled(Typography)({
   fontFamily: 'var(--font-poppins)',
   color: '#000000',
   textAlign: 'center',
 });
 
-// AuthHeadingTypography extending AuthBaseTypography
 export const AuthHeadingTypography = styled(AuthBaseTypography)({
   fontWeight: 600,
   fontSize: '16px',
   textTransform: 'uppercase',
 });
 
-// AuthParaTypography extending AuthBaseTypography with different font size and weight
 export const AuthParaTypography = styled(AuthBaseTypography)({
   fontWeight: 400,
   fontSize: '8px',
 });
 
-// Base Link styles
 export const AuthStyledLinkOne = styled(Link)({
   color: '#000000',
   textDecoration: 'none',
@@ -95,7 +86,6 @@ export const AuthStyledLinkOne = styled(Link)({
   },
 });
 
-// AuthStyledLinkTwo extending AuthStyledLinkOne with modified styles
 export const AuthStyledLinkTwo = styled(AuthStyledLinkOne)({
   color: '#00B8C9',
   textAlign: 'center',

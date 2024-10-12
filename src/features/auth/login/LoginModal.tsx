@@ -5,8 +5,8 @@ import { Snackbar, CircularProgress } from '@mui/material';
 import { useState } from 'react';
 import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from 'react-hook-form';
 
-import { StyledTextField } from '@/components/form/form.style';
-import { loginSchema } from '@/features/(auth)/login/loginSchema';
+import { StyledTextField } from '@/components/form/Form.style';
+import { loginSchema } from '@/features/auth/login/LoginSchema';
 
 import {
   AuthButton,
@@ -17,14 +17,13 @@ import {
   AuthBackdrop,
   AuthStyledLinkOne,
   AuthStyledLinkTwo,
-} from '../../../components/auth/authModal.style';
+} from '../AuthModals.style';
 
 interface LoginFormInputs {
   email: string;
   password: string;
 }
 
-// Helper function to get error message safely
 const getErrorMessage = (
   error: FieldError | Merge<FieldError, FieldErrorsImpl<LoginFormInputs>> | undefined
 ): string | undefined => {
@@ -49,7 +48,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     setLoading(true);
     try {
-      // Simulate async call
       await new Promise((resolve) => setTimeout(resolve, 2000));
       setSnackbarMessage('Login successful');
       reset();

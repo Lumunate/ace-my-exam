@@ -5,8 +5,8 @@ import Image from 'next/image';
 import { useState } from 'react';
 
 import { Button } from '@/components/buttons/Button.style';
-import LoginModal from '@/features/(auth)/login/loginModal';
-import SignUpModal from '@/features/(auth)/sign-up/signUpModal';
+import LoginModal from '@/features/auth/login/LoginModal';
+import SignUpModal from '@/features/auth/sign-up/SignUpModal';
 
 import {
   NavbarButtonsContainer,
@@ -22,17 +22,15 @@ function Navbar() {
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
 
-  // Open and close handlers for Login Modal
   const handleOpenLogin = () => {
     setOpenLogin(true);
-    setOpenSignUp(false); // Close SignUpModal when opening LoginModal
+    setOpenSignUp(false); 
   };
   const handleCloseLogin = () => setOpenLogin(false);
 
-  // Open and close handlers for Sign Up Modal
   const handleOpenSignUp = () => {
     setOpenSignUp(true);
-    setOpenLogin(false); // Close LoginModal when opening SignUpModal
+    setOpenLogin(false); 
   };
   const handleCloseSignUp = () => setOpenSignUp(false);
 
@@ -52,19 +50,14 @@ function Navbar() {
             </NavbarLinksContainer>
 
             <NavbarButtonsContainer>
-              {/* Open Login Modal when Login button is clicked */}
               <Button onClick={handleOpenLogin}>Login</Button>
-              {/* Open Sign Up Modal when Register button is clicked */}
               <Button special onClick={handleOpenSignUp}>Register</Button>
             </NavbarButtonsContainer>
           </NavbarContentWrapper>
         </Box>
       </NavbarContainer>
 
-      {/* Login Modal */}
       <LoginModal open={openLogin} handleClose={handleCloseLogin} onSwitchToSignUp={handleOpenSignUp} />
-
-      {/* Sign Up Modal */}
       <SignUpModal open={openSignUp} handleClose={handleCloseSignUp} onSwitchToLogin={handleOpenLogin} />
     </>
   );
