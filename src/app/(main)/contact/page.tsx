@@ -15,7 +15,7 @@ import {
   ContactLinksHead,
   ContactStyledLinkOne,
   ContactIconHead,
-} from '@/app/(main)/contact/Contact.style';
+} from './Contact.style';
 import { contactSchema } from '@/app/(main)/contact/ContactSchema';
 import { AppContentWrapper } from '@/components/common/Global.style';
 import { StyledTextField } from '@/components/form/Form.style';
