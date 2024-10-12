@@ -164,7 +164,6 @@ export default function Contact() {
           </Grid>
         </AppContentWrapper>
       </ContactContainer>
-
       {snackbarMessage && (
         <Snackbar
           open={!!snackbarMessage}
