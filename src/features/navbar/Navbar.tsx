@@ -2,11 +2,11 @@
 
 import Box from '@mui/material/Box';
 import Image from 'next/image';
-import {useState} from 'react';
+import { useState } from 'react';
 
-import LoginModal from '@/app/(auth)/login/loginModal';
-import SignUpModel from '@/app/(auth)/sign-up/signUpModel';
 import { Button } from '@/components/buttons/Button.style';
+import LoginModal from '@/features/(auth)/login/loginModal';
+import SignUpModal from '@/features/(auth)/sign-up/signUpModal';
 
 import {
   NavbarButtonsContainer,
@@ -16,15 +16,24 @@ import {
   NavbarLinksContainer,
 } from './Navbar.style';
 
-const pages = ['Home', 'About', 'Resorces', 'Pricing', 'Contact'];
+const pages = ['Home', 'About', 'Resources', 'Pricing', 'Contact'];
 
 function Navbar() {
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
 
-  const handleOpenLogin = () => setOpenLogin(true);
+  // Open and close handlers for Login Modal
+  const handleOpenLogin = () => {
+    setOpenLogin(true);
+    setOpenSignUp(false); // Close SignUpModal when opening LoginModal
+  };
   const handleCloseLogin = () => setOpenLogin(false);
-  const handleOpenSignUp = () => setOpenSignUp(true);
+
+  // Open and close handlers for Sign Up Modal
+  const handleOpenSignUp = () => {
+    setOpenSignUp(true);
+    setOpenLogin(false); // Close LoginModal when opening SignUpModal
+  };
   const handleCloseSignUp = () => setOpenSignUp(false);
 
   return (
@@ -43,17 +52,22 @@ function Navbar() {
             </NavbarLinksContainer>
 
             <NavbarButtonsContainer>
+              {/* Open Login Modal when Login button is clicked */}
               <Button onClick={handleOpenLogin}>Login</Button>
-              <Button special onClick={handleOpenSignUp}>
-                Register
-              </Button>
+              {/* Open Sign Up Modal when Register button is clicked */}
+              <Button special onClick={handleOpenSignUp}>Register</Button>
             </NavbarButtonsContainer>
           </NavbarContentWrapper>
         </Box>
       </NavbarContainer>
-      <LoginModal open={openLogin} handleClose={handleCloseLogin} />
-      <SignUpModel open={openSignUp} handleClose={handleCloseSignUp} />
+
+      {/* Login Modal */}
+      <LoginModal open={openLogin} handleClose={handleCloseLogin} onSwitchToSignUp={handleOpenSignUp} />
+
+      {/* Sign Up Modal */}
+      <SignUpModal open={openSignUp} handleClose={handleCloseSignUp} onSwitchToLogin={handleOpenLogin} />
     </>
   );
 }
+
 export default Navbar;
