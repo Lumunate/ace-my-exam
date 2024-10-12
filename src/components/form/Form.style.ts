@@ -1,28 +1,34 @@
 'use client';
 import { styled, TextField } from '@mui/material';
 
-export const StyledTextField = styled(TextField)({
+export const StyledTextField = styled(TextField)<{
+  inputFontSize?: string;
+  labelFontSize?: string;
+}>(({ inputFontSize = '14px', labelFontSize = '10px' }) => ({
   input: {
     fontWeight: 600,
-    fontSize: '14px',
+    fontSize: inputFontSize, 
   },
-  inputLabel: {
+  '& .MuiInputLabel-root': {
     color: '#818181',
     fontWeight: 600,
-    fontSize: '10px',
+    fontSize: labelFontSize, 
     textTransform: 'capitalize',
+  },
+  '& .MuiFormHelperText-root.Mui-error ': {
+    fontSize: '10px', 
   },
   '& .MuiInputLabel-root.Mui-focused': {
     color: '#818181',
     transform: 'scale(0.9)',
   },
   '& .MuiInput-underline:before': {
-    borderBottom: '2px solid #818181',
+    borderBottom: '1px solid #818181',
   },
   '& .MuiInput-underline:after': {
-    borderBottom: '2px solid black',
+    borderBottom: '1px solid black',
   },
   '& .MuiInput-underline:hover:not(.Mui-disabled):before': {
-    borderBottom: '2px solid black',
+    borderBottom: '1px solid black',
   },
-});
+}));
