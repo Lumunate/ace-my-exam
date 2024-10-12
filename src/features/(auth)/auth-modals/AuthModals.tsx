@@ -10,13 +10,13 @@ const AuthModals: React.FC = () => {
   // Open the login modal and close signup if open
   const handleOpenLogin = () => {
     setIsLoginOpen(true);
-    setIsSignUpOpen(false); // Ensure SignUp is closed
+    setIsSignUpOpen(false); 
   };
 
   // Open the signup modal and close login if open
   const handleOpenSignUp = () => {
     setIsSignUpOpen(true);
-    setIsLoginOpen(false); // Ensure Login is closed
+    setIsLoginOpen(false); 
   };
 
   // Close both modals
