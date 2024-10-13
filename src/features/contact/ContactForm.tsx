@@ -10,6 +10,7 @@ import { ContactButton, ContactFormContainer } from '@/features/contact/ContactF
 import { contactSchema, IContact } from '@/types/contact';
 
 import { useSubmitContactForm } from './ContactForm.hooks';
+import { useSnackbar } from '@/contexts/SnackbarContext';
 
 const defaultValues: IContact = {
   name: '',
@@ -20,7 +21,7 @@ const defaultValues: IContact = {
 };
 
 export default function ContactForm() {
-  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+  const { showSnackbar } = useSnackbar(); // Access the context functions
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<IContact>({
     resolver: zodResolver(contactSchema),
@@ -31,11 +32,11 @@ export default function ContactForm() {
   const onSubmit: SubmitHandler<IContact> = async (data) => {
     submitForm(data, {
       onSuccess: () => {
-        setSnackbarMessage('Form submitted successfully!');
+        showSnackbar('Form submitted successfully!');
         reset();
       },
       onError: (error) => {
-        setSnackbarMessage('Failed to submit Contact Form. Please try again later!');
+        showSnackbar('Failed to submit Contact Form. Please try again later!');
       }
     });
   };
@@ -116,14 +117,6 @@ export default function ContactForm() {
           </ContactButton>
         </form>
       </ContactFormContainer>
-      {snackbarMessage && (
-        <Snackbar
-          open={!!snackbarMessage}
-          onClose={() => setSnackbarMessage(null)}
-          message={snackbarMessage}
-          autoHideDuration={3000}
-        />
-      )}
     </>
   );
 }

@@ -1,6 +1,7 @@
-'use client';
-import './globals.css';
-import { QueryClient, QueryClientProvider } from 'react-query';
+"use client";
+import { SnackbarProvider } from "@/contexts/SnackbarContext";
+import "./globals.css";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 const queryClient = new QueryClient();
 
@@ -13,7 +14,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <QueryClientProvider client={queryClient}>
-          {children}
+          <SnackbarProvider>{children}</SnackbarProvider>
         </QueryClientProvider>
       </body>
     </html>
