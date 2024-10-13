@@ -185,35 +185,3 @@ a {
   font-style: italic;
   font-display: swap;
 }
-.testimonials-swiper .swiper {
-  width: 100%;
-  padding: 50px 80px !important;
-}
-
-.testimonials-swiper .swiper-slide:not(.swiper-slide-active):not(.swiper-slide-prev):not(
-    .swiper-slide-next
-  ) {
-  visibility: hidden !important;
-  opacity: 0 !important;
-  transition: all 0.3s ease !important;
-}
-
-.testimonials-swiper .swiper-slide {
-  transition: all 0.3s ease !important;
-}
-
-.testimonials-swiper .swiper-slide-active,
-.testimonials-swiper .swiper-slide-prev,
-.testimonials-swiper .swiper-slide-next {
-  visibility: visible !important;
-  opacity: 1 !important;
-}
-
-.testimonials-swiper .swiper-slide-prev,
-.testimonials-swiper .swiper-slide-next {
-  opacity: 0.8 !important;
-}
-
-.testimonials-swiper .swiper-pagination-bullet {
-  background: #707070 !important;
-}
