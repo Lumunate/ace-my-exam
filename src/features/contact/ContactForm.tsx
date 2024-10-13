@@ -20,7 +20,6 @@ const defaultValues: IContact = {
 };
 
 export default function ContactForm() {
-  const [loading, setLoading] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<IContact>({
@@ -28,18 +27,15 @@ export default function ContactForm() {
     defaultValues
   });
 
-  const mutation = useSubmitContactForm();
+  const { mutate: submitForm, isLoading, isError } = useSubmitContactForm();
   const onSubmit: SubmitHandler<IContact> = async (data) => {
-    setLoading(true);
-    mutation.mutate(data, {
+    submitForm(data, {
       onSuccess: () => {
         setSnackbarMessage('Form submitted successfully!');
         reset();
-        setLoading(false);
       },
-      onError: () => {
+      onError: (error) => {
         setSnackbarMessage('Failed to submit Contact Form. Please try again later!');
-        setLoading(false);
       }
     });
   };
@@ -58,8 +54,8 @@ export default function ContactForm() {
                 error={!!errors.name}
                 helperText={errors.name?.message}
                 {...register('name')}
-                inputFontSize="20px"
-                labelFontSize="14px"
+                inputfontsize="20px"
+                labelfontsize="14px"
               />
             </Grid>
             <Grid item md={12}>
@@ -71,8 +67,8 @@ export default function ContactForm() {
                 error={!!errors.lastName}
                 helperText={errors.lastName?.message}
                 {...register('lastName')}
-                inputFontSize="20px"
-                labelFontSize="14px"
+                inputfontsize="20px"
+                labelfontsize="14px"
               />
             </Grid>
             <Grid item md={12}>
@@ -84,8 +80,8 @@ export default function ContactForm() {
                 error={!!errors.email}
                 helperText={errors.email?.message}
                 {...register('email')}
-                inputFontSize="20px"
-                labelFontSize="14px"
+                inputfontsize="20px"
+                labelfontsize="14px"
               />
             </Grid>
             <Grid item md={12}>
@@ -97,8 +93,8 @@ export default function ContactForm() {
                 error={!!errors.phone}
                 helperText={errors.phone?.message}
                 {...register('phone')}
-                inputFontSize="20px"
-                labelFontSize="14px"
+                inputfontsize="20px"
+                labelfontsize="14px"
               />
             </Grid>
             <Grid item md={12}>
@@ -110,13 +106,13 @@ export default function ContactForm() {
                 error={!!errors.message}
                 helperText={errors.message?.message}
                 {...register('message')}
-                inputFontSize="20px"
-                labelFontSize="14px"
+                inputfontsize="20px"
+                labelfontsize="14px"
               />
             </Grid>
           </Grid>
           <ContactButton type="submit">
-            {loading ? <CircularProgress size={24} /> : 'Send Message'}
+            {isLoading ? <CircularProgress size={24} /> : 'Send Message'}
           </ContactButton>
         </form>
       </ContactFormContainer>
