@@ -1,7 +1,8 @@
-"use client";
-import { SnackbarProvider } from "@/contexts/SnackbarContext";
-import "./globals.css";
-import { QueryClient, QueryClientProvider } from "react-query";
+'use client';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+import { SnackbarProvider } from '@/contexts/SnackbarContext';
+import './globals.css';
 
 const queryClient = new QueryClient();
 

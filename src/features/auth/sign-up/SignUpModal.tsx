@@ -1,12 +1,13 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { CircularProgress } from "@mui/material";
-import { useState } from "react";
-import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { CircularProgress } from '@mui/material';
+import { useState } from 'react';
+import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from 'react-hook-form';
 
-import { StyledTextField } from "@/components/form/Form.style";
-import { signUpSchema } from "@/features/auth/sign-up/SignUpSchema";
+import { StyledTextField } from '@/components/form/Form.style';
+import { useSnackbar } from '@/contexts/SnackbarContext';
+import { signUpSchema } from '@/features/auth/sign-up/SignUpSchema';
 
 import {
   AuthButton,
@@ -16,8 +17,7 @@ import {
   AuthParaTypography,
   AuthBackdrop,
   AuthStyledLinkTwo,
-} from "../AuthModals.style";
-import { useSnackbar } from "@/contexts/SnackbarContext";
+} from '../AuthModals.style';
 
 interface SignUpFormInputs {
   name: string;
@@ -50,10 +50,10 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
   } = useForm<SignUpFormInputs>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
-      name: "",
-      email: "",
-      password: "",
-      confirmPassword: "",
+      name: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
     },
   });
 
@@ -61,14 +61,14 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
     setLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      showSnackbar("Sign-up successful");
+      showSnackbar('Sign-up successful');
       reset();
       // eslint-disable-next-line no-console
-      console.log("Form data:", data);
+      console.log('Form data:', data);
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      showSnackbar("Sign-up failed");
+      showSnackbar('Sign-up failed');
     } finally {
       setLoading(false);
     }
@@ -87,7 +87,7 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
               margin="normal"
               error={!!errors.name}
               helperText={getErrorMessage(errors.name)}
-              {...register("name")}
+              {...register('name')}
             />
             <StyledTextField
               label="Email*"
@@ -96,7 +96,7 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
               margin="normal"
               error={!!errors.email}
               helperText={getErrorMessage(errors.email)}
-              {...register("email")}
+              {...register('email')}
             />
             <StyledTextField
               label="Password*"
@@ -106,7 +106,7 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
               margin="normal"
               error={!!errors.password}
               helperText={getErrorMessage(errors.password)}
-              {...register("password")}
+              {...register('password')}
             />
             <StyledTextField
               label="Confirm Password*"
@@ -116,14 +116,14 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
               margin="normal"
               error={!!errors.confirmPassword}
               helperText={getErrorMessage(errors.confirmPassword)}
-              {...register("confirmPassword")}
+              {...register('confirmPassword')}
             />
-            <AuthButton type="submit" sx={{ mb: "12px" }}>
-              {loading ? <CircularProgress size={20} /> : "SIGNUP"}
+            <AuthButton type="submit" sx={{ mb: '12px' }}>
+              {loading ? <CircularProgress size={20} /> : 'SIGNUP'}
             </AuthButton>
           </form>
           <AuthParaTypography variant="h6">
-            Already have an account?{" "}
+            Already have an account?{' '}
             <AuthStyledLinkTwo href="#" onClick={onSwitchToLogin}>
               Login
             </AuthStyledLinkTwo>

@@ -5,11 +5,11 @@ import { CircularProgress, Grid } from '@mui/material';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { StyledTextField } from '@/components/form/Form.style';
+import { useSnackbar } from '@/contexts/SnackbarContext';
 import { ContactButton, ContactFormContainer } from '@/features/contact/ContactForm.style';
 import { contactSchema, IContact } from '@/types/contact';
 
 import { useSubmitContactForm } from './ContactForm.hooks';
-import { useSnackbar } from '@/contexts/SnackbarContext';
 
 const defaultValues: IContact = {
   name: '',
@@ -27,14 +27,14 @@ export default function ContactForm() {
     defaultValues
   });
 
-  const { mutate: submitForm, isLoading, isError } = useSubmitContactForm();
+  const { mutate: submitForm, isLoading } = useSubmitContactForm();
   const onSubmit: SubmitHandler<IContact> = async (data) => {
     submitForm(data, {
       onSuccess: () => {
         showSnackbar('Form submitted successfully!');
         reset();
       },
-      onError: (error) => {
+      onError: () => {
         showSnackbar('Failed to submit Contact Form. Please try again later!');
       }
     });
