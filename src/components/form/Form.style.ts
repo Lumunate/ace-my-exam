@@ -8,12 +8,14 @@ export const StyledTextField = styled(TextField)<{
   input: {
     fontWeight: 600,
     fontSize: inputFontSize, 
+    fontFamily: 'var(--font-poppins)',
   },
   '& .MuiInputLabel-root': {
     color: '#818181',
     fontWeight: 600,
     fontSize: labelFontSize, 
     textTransform: 'capitalize',
+    fontFamily: 'var(--font-poppins)',
   },
   '& .MuiFormHelperText-root.Mui-error ': {
     fontSize: '10px', 
