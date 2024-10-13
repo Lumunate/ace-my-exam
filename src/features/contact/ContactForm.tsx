@@ -1,8 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CircularProgress, Grid, Snackbar } from '@mui/material';
-import { useState } from 'react';
+import { CircularProgress, Grid } from '@mui/material';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { StyledTextField } from '@/components/form/Form.style';
