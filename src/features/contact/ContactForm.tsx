@@ -5,48 +5,43 @@ import { CircularProgress, Grid, Snackbar } from '@mui/material';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { contactSchema } from '@/app/(main)/contact/ContactSchema';
 import { StyledTextField } from '@/components/form/Form.style';
 import { ContactButton, ContactFormContainer } from '@/features/contact/ContactForm.style';
+import { contactSchema, IContact } from '@/types/contact';
 
-interface ContactFormInputs {
-  name: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  message: string;
-}
+import { useSubmitContactForm } from './ContactForm.hooks';
+
+const defaultValues: IContact = {
+  name: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  message: '',
+};
 
 export default function ContactForm() {
   const [loading, setLoading] = useState(false);
   const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormInputs>({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<IContact>({
     resolver: zodResolver(contactSchema),
-    defaultValues: {
-      name: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      message: '',
-    },
+    defaultValues
   });
 
-  const onSubmit: SubmitHandler<ContactFormInputs> = async (data) => {
+  const mutation = useSubmitContactForm();
+  const onSubmit: SubmitHandler<IContact> = async (data) => {
     setLoading(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSnackbarMessage('Message sent successfully!');
-      reset();
-      // eslint-disable-next-line no-console
-      console.log('Form data:', data);
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      setSnackbarMessage('Failed to send the message');
-    } finally {
-      setLoading(false);
-    }
+    mutation.mutate(data, {
+      onSuccess: () => {
+        setSnackbarMessage('Form submitted successfully!');
+        reset();
+        setLoading(false);
+      },
+      onError: () => {
+        setSnackbarMessage('Failed to submit Contact Form. Please try again later!');
+        setLoading(false);
+      }
+    });
   };
 
   return (
