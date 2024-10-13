@@ -6,9 +6,9 @@ import { Snackbar, Grid, Box, CircularProgress } from '@mui/material';
 import { useState } from 'react';
 import { useForm, SubmitHandler } from 'react-hook-form';
 
-import { contactSchema } from '@/app/(main)/contact/ContactSchema';
 import { AppContentWrapper } from '@/components/common/Global.style';
 import { StyledTextField } from '@/components/form/Form.style';
+import { contactSchema } from '@/types/contact';
 
 import {
   ContactContainer,
