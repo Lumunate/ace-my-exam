@@ -7,7 +7,7 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { contactSchema } from '@/app/(main)/contact/ContactSchema';
 import { StyledTextField } from '@/components/form/Form.style';
-import { ContactButton, ContactFormContainer } from '@/features/contact/ContactFrom.style';
+import { ContactButton, ContactFormContainer } from '@/features/contact/ContactForm.style';
 
 interface ContactFormInputs {
   name: string;
