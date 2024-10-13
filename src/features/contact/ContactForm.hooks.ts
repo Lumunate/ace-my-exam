@@ -19,13 +19,7 @@ export const useSubmitContactForm = () => {
 
       return response.json();
     },
-    onSuccess: () => {
-      // eslint-disable-next-line no-console
-      console.log('Message sent successfully!');
-    },
-    onError: () => {
-      // eslint-disable-next-line no-console
-      console.log('Failed to send the message');
-    },
+    onSuccess: () => {},
+    onError: () => {},
   });
 };

@@ -46,14 +46,13 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
     defaultValues: { email: '', password: '' },
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     setLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
       showSnackbar('Login successful');
       reset();
-      // eslint-disable-next-line no-console
-      console.log('Form data:', data);
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {

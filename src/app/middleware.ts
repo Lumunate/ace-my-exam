@@ -9,9 +9,7 @@ export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.startsWith('/api')) {
     try {
       await dbConnect();
-    } catch (error) {
-      console.error('Database connection error:', error);
-
+    } catch {
       return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
     }
   }

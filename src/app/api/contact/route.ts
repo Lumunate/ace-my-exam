@@ -17,11 +17,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ errors: error.errors }, { status: 400 });
     }
     if (error instanceof Error) {
-      console.error('Error creating contact:', error);
-
       return NextResponse.json({ message: error.message || 'Internal Server Error' }, { status: 500 });
     }
-    console.error('Unknown error:', error);
 
     return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
