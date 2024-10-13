@@ -24,13 +24,13 @@ function Navbar() {
 
   const handleOpenLogin = () => {
     setOpenLogin(true);
-    setOpenSignUp(false); 
+    setOpenSignUp(false);
   };
   const handleCloseLogin = () => setOpenLogin(false);
 
   const handleOpenSignUp = () => {
     setOpenSignUp(true);
-    setOpenLogin(false); 
+    setOpenLogin(false);
   };
   const handleCloseSignUp = () => setOpenSignUp(false);
 
@@ -43,7 +43,7 @@ function Navbar() {
 
             <NavbarLinksContainer>
               {pages.map((page) => (
-                <NavbarLink key={page} href={'/'}>
+                <NavbarLink key={page} href={page === 'Contact' ? '/contact' : '/'}>
                   {page}
                 </NavbarLink>
               ))}
