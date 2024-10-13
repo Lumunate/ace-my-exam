@@ -13,3 +13,5 @@ export const contactSchema = z.object({
     .regex(/^\d+$/, 'Phone number must contain only digits'),
   message: z.string().nonempty('Message is required'),
 });
+
+export type IContact = z.infer<typeof contactSchema>;
