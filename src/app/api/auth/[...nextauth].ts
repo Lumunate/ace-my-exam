@@ -1,19 +1,20 @@
-import NextAuth from "next-auth";
-import CredentialsProvider from "next-auth/providers/credentials";
-import { TypeORMAdapter } from "@auth/typeorm-adapter";
-import User from "@/entities/user";
-import { compare } from "bcrypt";
-import AppDataSource from "@/utils/typeorm";
+import { TypeORMAdapter } from '@auth/typeorm-adapter';
+import { compare } from 'bcrypt';
+import NextAuth from 'next-auth';
+import CredentialsProvider from 'next-auth/providers/credentials';
+
+import User from '@/entities/user';
+import AppDataSource from '@/utils/typeorm';
 
 export default NextAuth({
   providers: [
     CredentialsProvider({
-      name: "Credentials",
+      name: 'Credentials',
       credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" },
+        email: { label: 'Email', type: 'text' },
+        password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials, req) {
+      async authorize(credentials, _req) {
         // Add 'req' parameter here
         if (!credentials?.email || !credentials?.password) {
           return null;
@@ -37,13 +38,13 @@ export default NextAuth({
   ],
   adapter: TypeORMAdapter(AppDataSource.options),
   session: {
-    strategy: "jwt",
+    strategy: 'jwt',
   },
   // Add custom pages for sign in, sign out, etc.
   pages: {
-    signIn: "/auth/signin",
-    signOut: "/auth/signout",
-    error: "/auth/error",
-    verifyRequest: "/auth/verify-request",
+    signIn: '/auth/signin',
+    signOut: '/auth/signout',
+    error: '/auth/error',
+    verifyRequest: '/auth/verify-request',
   },
 });

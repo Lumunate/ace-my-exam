@@ -1,17 +1,18 @@
-import { verifyUser } from "@/services/auth";
-import AuthError from "@/types/auth-error";
-import { NextRequest, NextResponse } from "next/server";
-import { ZodError, ZodIssueCode } from "zod";
+import { NextRequest, NextResponse } from 'next/server';
+import { ZodError, ZodIssueCode } from 'zod';
+
+import { verifyUser } from '@/services/auth';
+import AuthError from '@/types/auth-error';
 
 export async function GET(request: NextRequest) {
-  const token = request.nextUrl.searchParams.get("token");
+  const token = request.nextUrl.searchParams.get('token');
 
   try {
-    if (!token || token === "null")
+    if (!token || token === 'null')
       throw new ZodError([
         {
-          path: ["token"],
-          message: "Token is either missing or invalid.",
+          path: ['token'],
+          message: 'Token is either missing or invalid.',
           code: ZodIssueCode.custom,
         },
       ]);
@@ -27,9 +28,9 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ errors: error.errors }, { status: 400 });
     }
     if (error instanceof Error) {
-      return NextResponse.json({ message: error.message || "Internal Server Error" }, { status: 500 });
+      return NextResponse.json({ message: error.message || 'Internal Server Error' }, { status: 500 });
     }
 
-    return NextResponse.json({ message: "Internal Server Error" }, { status: 500 });
+    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
   }
 }

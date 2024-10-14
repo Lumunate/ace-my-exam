@@ -34,5 +34,3 @@ export async function initializeDataSource() {
     await AppDataSource.initialize();
   }
 }
-
-

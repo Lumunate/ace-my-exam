@@ -1,10 +1,11 @@
-import { UserRepository } from "@/repositories/user";
-import { RegisterInput } from "@/types/auth";
-import AuthError, { AuthErrorType } from "@/types/auth-error";
-import { hash } from "bcrypt";
+import { hash } from 'bcrypt';
+
+import { UserRepository } from '@/repositories/user';
+import { RegisterInput } from '@/types/auth';
+import AuthError, { AuthErrorType } from '@/types/auth-error';
 
 export async function registerUser(userData: RegisterInput) {
-  if (!!(await UserRepository.getUserbyEmail(userData.email))) {
+  if (await UserRepository.getUserbyEmail(userData.email)) {
     throw new AuthError(AuthErrorType.EMAIL_ALREADY_EXISTS, 400);
   }
 
@@ -41,7 +42,7 @@ export async function verifyUser(token: string) {
   }
 
   user.emailVerified = true;
-  user.verificationToken = "null";
+  user.verificationToken = 'null';
 
   await UserRepository.save(user);
 
