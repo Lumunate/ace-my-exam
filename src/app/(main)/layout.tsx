@@ -1,3 +1,4 @@
+import Footer from '@/features/footer/Footer';
 import Navbar from '@/features/navbar/Navbar';
 
 export const metadata = {
@@ -14,6 +15,7 @@ export default function MainLayout({
     <>
       <Navbar />
       {children}
+      <Footer />
     </>
   );
 }
