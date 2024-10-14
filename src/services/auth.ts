@@ -15,6 +15,8 @@ export async function registerUser(userData: RegisterInput) {
     password: await getHashedPassword(userData.password),
     verificationToken: generateVerificationToken(),
     emailVerified: false,
+    resetPasswordToken: null,
+    resetPasswordExpires: null,
   });
 
   await sendVerificationEmail(user.email, user.verificationToken);
@@ -38,7 +40,7 @@ export async function verifyUser(token: string) {
   const user = await UserRepository.findOne({ where: { verificationToken: token } });
 
   if (!user) {
-    throw new AuthError(AuthErrorType.USER_NOT_FOUND, 400);
+    throw new AuthError(AuthErrorType.USER_NOT_FOUND, 404);
   }
 
   user.emailVerified = true;
@@ -47,4 +49,26 @@ export async function verifyUser(token: string) {
   await UserRepository.save(user);
 
   return user;
+}
+
+export async function resetPassword(email: string) {
+  const user = await UserRepository.getUserbyEmail(email);
+
+  if (!user) {
+    throw new AuthError(AuthErrorType.USER_NOT_FOUND, 404);
+  }
+
+  const resetToken = generateVerificationToken();
+
+  user.resetPasswordToken = resetToken;
+  user.resetPasswordExpires = new Date(Date.now() + 3600000);
+
+  await sendPasswordResetEmail(email, resetToken);
+  await UserRepository.save(user);
+
+  return;
+}
+
+async function sendPasswordResetEmail(_email: string, _resetToken: string) {
+  // TODO: send password reset emails
 }

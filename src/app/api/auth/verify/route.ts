@@ -3,11 +3,14 @@ import { ZodError, ZodIssueCode } from 'zod';
 
 import { verifyUser } from '@/services/auth';
 import AuthError from '@/types/auth-error';
+import { initializeDataSource } from '@/utils/typeorm';
 
 export async function GET(request: NextRequest) {
-  const token = request.nextUrl.searchParams.get('token');
-
+  await initializeDataSource();
+  
   try {
+    const token = request.nextUrl.searchParams.get('token');
+
     if (!token || token === 'null')
       throw new ZodError([
         {
