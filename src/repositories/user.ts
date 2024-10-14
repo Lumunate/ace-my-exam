@@ -1,8 +1,8 @@
-import User from "@/entities/user";
-import AppDataSource from "@/utils/typeorm";
+import User from '@/entities/user';
+import AppDataSource from '@/utils/typeorm';
 
 export const UserRepository = AppDataSource.getRepository(User).extend({
-  async registerUser(userData: Omit<User, "id" | "createdAt">) {
+  async registerUser(userData: Omit<User, 'id' | 'createdAt'>) {
     const user = this.create(userData);
 
     await this.save(user);
