@@ -19,4 +19,10 @@ export default class User {
 
   @Column({ nullable: true })
     verificationToken!: string;
+
+  @Column({ default: null })
+    resetPasswordToken?: string | null;
+
+  @Column({ default: null })
+    resetPasswordExpires?: Date | null;
 }
