@@ -32,3 +32,18 @@ async function getHashedPassword(password: string) {
 function generateVerificationToken() {
   return Math.random().toString(36).substring(2, 15);
 }
+
+export async function verifyUser(token: string) {
+  const user = await UserRepository.findOne({ where: { verificationToken: token } });
+
+  if (!user) {
+    throw new AuthError(AuthErrorType.USER_NOT_FOUND, 400);
+  }
+
+  user.emailVerified = true;
+  user.verificationToken = "null";
+
+  await UserRepository.save(user);
+
+  return user;
+}

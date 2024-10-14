@@ -8,7 +8,7 @@ import { registerUser } from "@/services/auth";
 import { ZodError } from "zod";
 import AuthError from "@/types/auth-error";
 
-export default async function POST(request: NextRequest) {
+export async function POST(request: NextRequest) {
   await initializeDataSource();
   try {
     const body = await request.json();
