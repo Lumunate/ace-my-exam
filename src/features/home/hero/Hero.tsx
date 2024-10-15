@@ -18,10 +18,21 @@ import {
   HeroMediaHead,
   HeroRightContentCont,
   HeroWrapper,
-  SocialIconsWrapper
+  SocialIconsWrapper,
 } from './Hero.style';
 
-const Hero = () => {
+interface HeroCardProps {
+  width: number;
+  children: React.ReactNode; 
+}
+
+const HeroCardComponent: React.FC<HeroCardProps> = ({ width, children }) => (
+  <HeroCard width={width}>
+    {children}
+  </HeroCard>
+);
+
+const Hero: React.FC = () => {
   return (
     <HeroWrapper>
       <HeroImageContainer>
@@ -34,13 +45,13 @@ const Hero = () => {
             <SectionHeading text="Success Starts Here" align="start" showLeftLine={false} color="#fff" />
             <HeroHeading>Unlock Your Full Potential with AceMyExam</HeroHeading>
             <HeroContent>
-              Based in Cambridge, UK, Acemyexam provides best-in-class personalised learning to students in order to achieve academic excellence, confidence and academic growth.
+              Based in Cambridge, UK, Acemyexam provides best-in-class personalised learning to students in order to achieve academic excellence, confidence, and academic growth.
             </HeroContent>
             <HeroContent>Excel Academically Today!</HeroContent>
             <HeroCTAButton>Get Started</HeroCTAButton>
           </HeroLeftContentCont>
           <HeroRightContentCont>
-            <HeroCard width={282}>
+            <HeroCardComponent width={282}>
               <Image
                 src={'/icons/brain.svg'}
                 width={26}
@@ -48,8 +59,8 @@ const Hero = () => {
                 alt='icon'
               />
               <HeroCardHeading>Serving students from UK and worldwide</HeroCardHeading>
-            </HeroCard>
-            <HeroCard width={364}>
+            </HeroCardComponent>
+            <HeroCardComponent width={364}>
               <Image
                 src={'/icons/brain.svg'}
                 width={26}
@@ -57,7 +68,7 @@ const Hero = () => {
                 alt='icon'
               />
               <HeroCardHeading>Offering bespoke tuition in Science and Maths.</HeroCardHeading>
-            </HeroCard>
+            </HeroCardComponent>
             <HeroMediaHead>
               <SectionHeading text="Follow Us" align="start" showLeftLine={false} color="#fff" /> 
               <SocialIconsWrapper>
