@@ -8,11 +8,11 @@ const CommonHeadingLine = styled(Box)<{ hasLeftLine: boolean }>(({ hasLeftLine }
 }));
 
 export const CommonHeadingLeftLine = styled(CommonHeadingLine)({
-  background: 'linear-gradient(90deg, #DA9694 0%, #F8413C 100%)',
+  background: 'linear-gradient(to left, #DA9694 0%, #FFF 100%)',
 });
 
 export const CommonHeadingRightLine = styled(CommonHeadingLine)({
-  background: 'linear-gradient(90deg, #DA9694 0%, #F8413C 100%)',
+  background: 'linear-gradient(to right, #DA9694 0%, #FFF 100%)',
 });
 
 export const CommonHeadingContainer = styled(Box)<{ align: string }>(({ align }) => ({
@@ -22,11 +22,12 @@ export const CommonHeadingContainer = styled(Box)<{ align: string }>(({ align })
   gap: '30px',
 }));
 
-export const CommonHeadingTypography = styled(Typography)<{ textColor: string }>(({ textColor }) => ({
+export const CommonHeadingTypography = styled(Typography)<{ textColor: string; textSize: string }>(({ textColor, textSize }) => ({
   fontSize: '16px',
   fontWeight: 400,
   color: textColor || '#000000', 
   fontFamily: 'var(--font-lato)',
   textTransform: 'capitalize',
-  fontStyle: 'normal'
+  fontStyle: 'normal',
+  width: textSize
 }));
