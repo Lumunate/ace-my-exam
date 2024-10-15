@@ -1,19 +1,20 @@
-'use client';
-
 import { CommonHeadingContainer, CommonHeadingLeftLine, CommonHeadingRightLine, CommonHeadingTypography } from './SectionHeading.style';
 
 interface SectionHeadingProps {
   text: string;
+  align?: 'center' | 'start';  
+  showLeftLine?: boolean;      
+  color?: string;            
 }
 
-const SectionHeading: React.FC<SectionHeadingProps> = ({ text }) => {
+const SectionHeading: React.FC<SectionHeadingProps> = ({ text, align = 'center', showLeftLine = true, color = '#000' }) => {
   return (
-    <CommonHeadingContainer>
-      <CommonHeadingLeftLine />
-      <CommonHeadingTypography variant="h6" sx={{ fontWeight: '600', color: '#000000' }}>
+    <CommonHeadingContainer align={align}>
+      {showLeftLine && <CommonHeadingLeftLine hasLeftLine={showLeftLine} />}
+      <CommonHeadingTypography variant="h6" textColor={color}>
         {text}
       </CommonHeadingTypography>
-      <CommonHeadingRightLine />
+      <CommonHeadingRightLine hasLeftLine={true} />
     </CommonHeadingContainer>
   );
 };
