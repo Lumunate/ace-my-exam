@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 export const NavbarContainer = styled(AppBar)({
   backgroundColor: 'white',
-  maxWidth: '1600px !important',
+  maxWidth: '1605px !important',
   borderRadius: '20px',
   padding: '20px !important',
   right: '50%',
@@ -14,28 +14,34 @@ export const NavbarContainer = styled(AppBar)({
 });
 
 export const NavbarContentWrapper = styled(Toolbar)({
-  justifyContent: 'space-between',
   height: 'max-content',
   minHeight: '16px !important',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
 });
 
 export const NavbarLinksContainer = styled(Box)({
-  margin: '0 3rem',
   display: 'flex',
-  width: '100%',
-  maxWidth: '710px',
-  justifyContent: 'space-between',
+  alignItems: 'center',
 });
 
 export const NavbarButtonsContainer = styled(Box)({
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-  gap: '1rem',
+  gap: '11px',
+  width: '203px',
+});
+export const NavbarLogoHead = styled(Box)({
+  width: '203px',
 });
 
 export const NavbarLink = styled(Link)({
-  color: 'black',
-  fontWeight: '500',
-  fontSize: '1rem',
+  color: '#000',
+  fontWeight: 700,
+  fontSize: '15px',
+  margin: '0 36px',
+  textTransform: 'capitalize',
+  fontFamily: 'var(--font-lato)',
 });

@@ -1,41 +1,52 @@
 'use client';
-import { Box, styled, Typography } from '@mui/material';
+
+import { Box, styled, Typography, Card } from '@mui/material';
 
 export const StatsContentWrapper = styled(Box)({
-  margin: '10rem 0',
-});
-
-export const StatsContainer = styled(Box)({
-  backgroundColor: 'white',
+  width: '100%',
   position: 'relative',
-  padding: '5.9rem 12.7rem',
-  borderRadius: '2rem',
-  boxShadow: '0px 4px 32px 0px rgba(0, 0, 0, 0.2)',
+  transform: 'translateY(-290px)',
+  padding: '39px 0',
+  '&::before': {
+    content: '""',
+    position: 'absolute',
+    bottom: '0',         
+    left: '0',       
+    width: '100%',   
+    height: '50%',   
+    backgroundColor: '#ebfdfe', 
+    borderRadius: '100px 100px 0 0',
+    zIndex: '-1',      
+  },
 });
 
-export const StatsCardsContainer = styled(Box)({
-  display: 'flex',
-  padding: '0 6.5rem',
-  justifyContent: 'space-between',
+export const StatsCardHeah = styled(Box)({
+  maxWidth: '1040px', 
+  margin: '0 auto'
+});
+export const StatsCard = styled(Card)({
+  borderRadius: '20px',
+  background: '#FFF',
+  boxShadow:' 0px 4px 39.5px 0px rgba(0, 0, 0, 0.10)',
+  padding: '56px 37px',
+  textAlign: 'center',
+  cursor: 'pointer'
 });
 
-export const StatHeading = styled(Typography)({
+export const StatCardHeading = styled(Typography)({
   fontWeight: 700,
-  lineHeight: '2.4rem',
-  fontSize: '1.6rem',
-  color: 'rgba(17, 24, 38, 1)',
+  fontSize: '16px',
+  color: '#111826',
+  fontFamily: 'var(--font-lato)',
+  fontStyle: 'normal',
 });
 
-export const StatValue = styled(Typography)({
-  color: 'rgba(0, 184, 201, 1)',
-  fontSize: '4.8rem',
-  fontWeight: 700,
-  lineHeight: '6.9rem',
-  textShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.16)',
-});
-
-export const StatCardDivider = styled(Typography)({
-  height: '100px',
-  width: '1px',
-  backgroundColor: 'rgba(200, 200, 200, 1)',
+export const StatCardValue = styled(Typography)({
+  fontWeight: 500,
+  fontSize: '49px',
+  color: '#0ABCAA',
+  fontFamily: 'var(--font-jost)',
+  fontStyle: 'normal',
+  textShadow: '0px 4px 4px rgba(0, 0, 0, 0.16)',
+  margin: '4px 0'
 });

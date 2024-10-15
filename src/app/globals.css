@@ -9,7 +9,7 @@ body {
 }
 
 body {
-  font-family: "Poppins";
+  font-family: var(--font-lato), sans-serif;
   background: rgba(235, 253, 254, 1);
 }
 
@@ -17,6 +17,7 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+  font-family: var(--font-lato), sans-serif;
 }
 
 a {
@@ -31,7 +32,7 @@ a {
 }
 
 /* Poppins Font Imports */
-
+/* 
 @font-face {
   font-family: "Poppins";
   src: url("../../public/fonts/Poppins/Poppins-Thin.ttf") format("truetype");
@@ -184,4 +185,4 @@ a {
   font-weight: 900;
   font-style: italic;
   font-display: swap;
-}
+} */

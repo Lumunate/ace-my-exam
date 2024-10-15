@@ -14,6 +14,7 @@ import {
   NavbarContentWrapper,
   NavbarLink,
   NavbarLinksContainer,
+  NavbarLogoHead
 } from './Navbar.style';
 
 const pages = ['Home', 'About', 'Resources', 'Pricing', 'Contact'];
@@ -39,7 +40,9 @@ function Navbar() {
       <NavbarContainer position='fixed'>
         <Box>
           <NavbarContentWrapper>
-            <Image src={'/logo.png'} width={52} height={49} alt='Logo' />
+            <NavbarLogoHead>
+              <Image src={'/logo.png'} width={52} height={49} alt='Logo' />
+            </NavbarLogoHead>
 
             <NavbarLinksContainer>
               {pages.map((page) => (
@@ -51,7 +54,7 @@ function Navbar() {
 
             <NavbarButtonsContainer>
               <Button onClick={handleOpenLogin}>Login</Button>
-              <Button special onClick={handleOpenSignUp}>Register</Button>
+              <Button special onClick={handleOpenSignUp}>Sign Up</Button>
             </NavbarButtonsContainer>
           </NavbarContentWrapper>
         </Box>
