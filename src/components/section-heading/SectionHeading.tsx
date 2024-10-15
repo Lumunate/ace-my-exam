@@ -5,13 +5,15 @@ interface SectionHeadingProps {
   align?: 'center' | 'start';  
   showLeftLine?: boolean;      
   color?: string;            
+  textWidth?: string;   
+          
 }
 
-const SectionHeading: React.FC<SectionHeadingProps> = ({ text, align = 'center', showLeftLine = true, color = '#000' }) => {
+const SectionHeading: React.FC<SectionHeadingProps> = ({ text, align = 'center', showLeftLine = true, color = '#000', textWidth }) => {
   return (
     <CommonHeadingContainer align={align}>
       {showLeftLine && <CommonHeadingLeftLine hasLeftLine={showLeftLine} />}
-      <CommonHeadingTypography variant="h6" textColor={color}>
+      <CommonHeadingTypography variant="h6" textColor={color}  textSize={textWidth || 'fit-content'}>
         {text}
       </CommonHeadingTypography>
       <CommonHeadingRightLine hasLeftLine={true} />
