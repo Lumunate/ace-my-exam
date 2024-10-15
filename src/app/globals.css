@@ -32,7 +32,7 @@ a {
 }
 
 /* Poppins Font Imports */
-/* 
+
 @font-face {
   font-family: "Poppins";
   src: url("../../public/fonts/Poppins/Poppins-Thin.ttf") format("truetype");
@@ -185,4 +185,4 @@ a {
   font-weight: 900;
   font-style: italic;
   font-display: swap;
-} */
+}
