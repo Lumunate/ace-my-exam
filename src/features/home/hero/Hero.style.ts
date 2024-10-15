@@ -4,27 +4,28 @@ import { Box, ButtonBase, styled, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
-export const HeroHeading = styled(Typography)({
-  fontWeight: 600,
+const CommonHeroTypography = styled(Typography)({
+  fontWeight: 400,
   fontStyle: 'normal',
+  textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+});
+
+export const HeroHeading = styled(CommonHeroTypography)({
+  fontWeight: 600,
   fontSize: '49px',
   marginTop: '43px',
   marginBottom: '10px',
   lineHeight: '53px',
-  textShadow: ' 0px 4px 4px rgba(0, 0, 0, 0.25)',
   fontFamily: 'var(--font-jost)',
   maxWidth: '600px',
   textTransform: 'capitalize',
 });
 
-export const HeroContent = styled(Typography)({
-  fontWeight: 400,
+export const HeroContent = styled(CommonHeroTypography)({
   fontSize: '18px',
-  fontStyle: 'normal',
   marginBottom: '10px',
   fontFamily: 'var(--font-lato)',
-  textShadow: ' 0px 4px 4px rgba(0, 0, 0, 0.25)',
-  maxWidth: '779px'
+  maxWidth: '779px',
 });
 
 export const HeroCTAButton = styled(ButtonBase)({
@@ -53,6 +54,7 @@ export const HeroImage = styled(Image)({
   height: '100%',
   objectFit: 'cover',
 });
+
 export const HeroImageOverlay = styled(Box)({
   position: 'absolute',
   top: 0,
@@ -61,21 +63,24 @@ export const HeroImageOverlay = styled(Box)({
   height: '100%',
   background: 'linear-gradient(106deg, rgba(0, 0, 0, 0.29) 0.91%, rgba(0, 184, 201, 0.45) 99.09%)',
 });
+
 export const HeroContentContainer = styled(Box)({
   padding: '265px 0 349px',
   display: 'flex',
-  alignItems: 'end'
+  alignItems: 'end',
 });
+
 export const HeroLeftContentCont = styled(Box)({
-  paddingBottom: '73px'
+  paddingBottom: '73px',
 });
+
 export const HeroRightContentCont = styled(Box)({
   position: 'relative',
   flex: 1,
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'end',
-  paddingRight: '110px'
+  paddingRight: '110px',
 });
 
 export const HeroCard = styled(Box)<{ width?: number }>(({ width }) => ({
@@ -87,12 +92,10 @@ export const HeroCard = styled(Box)<{ width?: number }>(({ width }) => ({
   display: 'flex',
   alignItems: 'center',
   marginBottom: '10px',
-  maxWidth: width ? `${width}px` : '100%', 
+  maxWidth: width ? `${width}px` : '100%',
 }));
 
-export const HeroCardHeading = styled(Typography)({
-  fontWeight: 400,
-  fontStyle: 'normal',
+export const HeroCardHeading = styled(CommonHeroTypography)({
   fontSize: '18px',
   fontFamily: 'var(--font-lato)',
   textTransform: 'capitalize',
@@ -116,6 +119,7 @@ export const SocialIconsWrapper = styled(Box)({
   alignItems: 'center',
   gap: '21px',
 });
+
 export const HeroLink = styled(Link)({
   transform: 'rotate(-90deg)',
 });
@@ -127,8 +131,4 @@ export const HeroImageContainer = styled(Box)({
   right: 0,
   bottom: 0,
   zIndex: -1,
-  // boxShadow: '0px 4px 20.8px 0px rgba(0, 0, 0, 0.55)',
-  // maskImage: `url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H1917.5L1854.62 845.749C1850.04 907.354 1798.72 955 1736.95 955H0V0Z' fill='black'/%3E%3C/svg%3E")`,
-  // maskPosition: 'center',
-  // maskRepeat: 'no-repeat',
 });

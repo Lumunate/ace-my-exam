@@ -1,6 +1,11 @@
 import { AppBar, Box, styled, Toolbar } from '@mui/material';
 import Link from 'next/link';
 
+const CommonNavbarBox = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+});
+
 export const NavbarContainer = styled(AppBar)({
   backgroundColor: 'white',
   maxWidth: '1605px !important',
@@ -21,27 +26,26 @@ export const NavbarContentWrapper = styled(Toolbar)({
   justifyContent: 'space-between',
 });
 
-export const NavbarLinksContainer = styled(Box)({
-  display: 'flex',
-  alignItems: 'center',
-});
+export const NavbarLinksContainer = styled(CommonNavbarBox)({});
 
-export const NavbarButtonsContainer = styled(Box)({
-  display: 'flex',
+export const NavbarButtonsContainer = styled(CommonNavbarBox)({
   justifyContent: 'space-between',
-  alignItems: 'center',
   gap: '11px',
   width: '203px',
 });
+
 export const NavbarLogoHead = styled(Box)({
   width: '203px',
 });
 
-export const NavbarLink = styled(Link)({
+const CommonNavbarLink = styled(Link)({
   color: '#000',
   fontWeight: 700,
   fontSize: '15px',
-  margin: '0 36px',
   textTransform: 'capitalize',
   fontFamily: 'var(--font-lato)',
+});
+
+export const NavbarLink = styled(CommonNavbarLink)({
+  margin: '0 36px',
 });
