@@ -1,4 +1,5 @@
-import { Box, Grid } from '@mui/material';
+import { Box } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 
 import { AppContentWrapper } from '@/components/common/Global.style';
@@ -18,7 +19,7 @@ export default function ContactPage() {
     <ContactContainer>
       <AppContentWrapper>
         <Grid container columns={24} columnSpacing={2} sx={{ px: '40px' }}>
-          <Grid item md={12} sx={{ mt: '80px' }}>
+          <Grid size={{ xs: 24, md: 12 }} sx={{ mt: '80px' }}>
             <Box sx={{ mb: '100px', position: 'relative' }}>
               <ContactHeadingTypography variant="h1">CONTACT US</ContactHeadingTypography>
               <ContactParaTypography variant="body1">
@@ -36,8 +37,8 @@ export default function ContactPage() {
               <ContactStyledLinkOne href={'#'}>Cambridge, UK</ContactStyledLinkOne>
             </ContactLinksHead>
           </Grid>
-          <Grid item md={12}>
-            <ContactForm />
+          <Grid size={{ xs: 24, md: 12 }}>
+            <ContactForm /> 
           </Grid>
         </Grid>
       </AppContentWrapper>

@@ -45,8 +45,8 @@ function Navbar() {
             </NavbarLogoHead>
 
             <NavbarLinksContainer>
-              {pages.map((page) => (
-                <NavbarLink key={page} href={page === 'Contact' ? '/contact' : '/'}>
+              {pages.map((page, index) => (
+                <NavbarLink key={index} href={page === 'Contact' ? '/contact' : '/'}>
                   {page}
                 </NavbarLink>
               ))}
