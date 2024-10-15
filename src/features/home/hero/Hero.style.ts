@@ -33,7 +33,7 @@ export const HeroCTAButton = styled(ButtonBase)({
   fontWeight: 400,
   fontSize: '16px',
   color: '#FFF',
-  backgroundColor: '#0ABCAA',
+  backgroundColor: '#DA9694',
   border: 'none',
   borderRadius: '100px',
   fontStyle: 'normal',
@@ -61,7 +61,7 @@ export const HeroImageOverlay = styled(Box)({
   left: 0,
   width: '100%',
   height: '100%',
-  background: 'linear-gradient(106deg, rgba(0, 0, 0, 0.29) 0.91%, rgba(0, 184, 201, 0.45) 99.09%)',
+  background: 'linear-gradient(106deg, rgba(0, 0, 0, 0.29) 0.91%, rgba(218, 150, 148, 0.45) 99.09%)',
 });
 
 export const HeroContentContainer = styled(Box)({

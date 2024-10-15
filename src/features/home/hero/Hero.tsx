@@ -4,21 +4,21 @@ import { AppContentWrapper } from '@/components/common/Global.style';
 import SectionHeading from '@/components/section-heading/SectionHeading';
 
 import {
+  HeroCard,
+  HeroCardHeading,
   HeroContent,
   HeroContentContainer,
-  HeroImageOverlay,
   HeroCTAButton,
   HeroHeading,
   HeroImage,
   HeroImageContainer,
-  HeroWrapper,
+  HeroImageOverlay,
   HeroLeftContentCont,
-  HeroRightContentCont,
-  HeroCard,
-  HeroCardHeading,
+  HeroLink,
   HeroMediaHead,
-  SocialIconsWrapper,
-  HeroLink
+  HeroRightContentCont,
+  HeroWrapper,
+  SocialIconsWrapper
 } from './Hero.style';
 
 const Hero = () => {
