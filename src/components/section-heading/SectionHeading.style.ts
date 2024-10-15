@@ -8,11 +8,11 @@ const CommonHeadingLine = styled(Box)<{ hasLeftLine: boolean }>(({ hasLeftLine }
 }));
 
 export const CommonHeadingLeftLine = styled(CommonHeadingLine)({
-  background: 'linear-gradient(to right, rgba(255, 255, 255, 0), #0ABCAA)',
+  background: 'linear-gradient(90deg, #DA9694 0%, #F8413C 100%)',
 });
 
 export const CommonHeadingRightLine = styled(CommonHeadingLine)({
-  background: 'linear-gradient(to left, rgba(255, 255, 255, 0), #0ABCAA)',
+  background: 'linear-gradient(90deg, #DA9694 0%, #F8413C 100%)',
 });
 
 export const CommonHeadingContainer = styled(Box)<{ align: string }>(({ align }) => ({

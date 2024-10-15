@@ -13,7 +13,7 @@ export const Button = styled(ButtonBase, {
   fontFamily: 'var(--font-lato)',
   fontSize: '12px',
   color: special ? 'white' : 'black',
-  backgroundColor: special ? '#0ABCAA' : 'white',
+  backgroundColor: special ? '#DA9694' : 'white',
   textAlign: 'center',
   border: special ? 'none' : '1px solid #B3B3B3',
   borderRadius: '8px',

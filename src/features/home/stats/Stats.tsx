@@ -1,7 +1,7 @@
 import { Grid } from '@mui/material';
 
 import { AppContentWrapper } from '@/components/common/Global.style';
-import {StatCardHeading, StatsContentWrapper, StatCardValue, StatsCard, StatsCardHeah } from '@/features/home/stats/Stats.style';
+import { StatCardHeading, StatCardValue, StatsCard, StatsCardHeah, StatsContentWrapper } from '@/features/home/stats/Stats.style';
 
 const stats = [
   {

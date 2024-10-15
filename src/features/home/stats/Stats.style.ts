@@ -48,7 +48,7 @@ export const StatCardHeading = styled(CommonStatTypography)({
 export const StatCardValue = styled(CommonStatTypography)({
   fontWeight: 500,
   fontSize: '49px',
-  color: '#0ABCAA',
+  color: '#DA9694',
   fontFamily: 'var(--font-jost)', 
   textShadow: '0px 4px 4px rgba(0, 0, 0, 0.16)',
   margin: '4px 0',
