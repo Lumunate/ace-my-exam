@@ -15,7 +15,6 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(contact, { status: 201 });
   } catch (error: unknown) {
-    // console.error(error);
     if (error instanceof ZodError) {
       return NextResponse.json({ errors: error.errors }, { status: 400 });
     }
