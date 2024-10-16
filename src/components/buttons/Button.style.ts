@@ -22,6 +22,6 @@ export const Button = styled(ButtonBase, {
   textTransform: 'capitalize',
   whiteSpace: 'nowrap',
   '&:hover': {
-    backgroundColor: 'gray',
+    backgroundColor: special ? '#c0605e': '',
   },
 }));
