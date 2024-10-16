@@ -7,9 +7,8 @@ import { SubmitHandler, useForm } from 'react-hook-form';
 import { StyledTextField } from '@/components/form/Form.style';
 import { useSnackbar } from '@/contexts/SnackbarContext';
 import { ContactButton, ContactFormContainer } from '@/features/contact/ContactForm.style';
+import { useSubmitContactForm } from '@/hooks/useContactForm';
 import { contactSchema, IContact } from '@/types/contact';
-
-import { useSubmitContactForm } from './ContactForm.hooks';
 
 const defaultValues: IContact = {
   name: '',
