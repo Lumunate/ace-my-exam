@@ -26,7 +26,7 @@ export const CommonHeadingTypography = styled(Typography)<{ textColor: string; t
   fontSize: '16px',
   fontWeight: 400,
   color: textColor || '#000000', 
-  fontFamily: 'var(--font-lato)',
+  fontFamily: 'Lato, sans-serif',
   textTransform: 'capitalize',
   fontStyle: 'normal',
   width: textSize

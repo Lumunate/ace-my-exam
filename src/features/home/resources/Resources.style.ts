@@ -1,26 +1,26 @@
 'use client';
 
-import { styled, Typography, Box, Button,  } from '@mui/material';
+import { styled, Typography, Box, Button } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 
-export const PracticingWrapper = styled(Box)({
+export const ResourcesWrapper = styled(Box)({
   width: '100%',
   padding: '150px 0',
   textAlign: 'center',
   overflow: 'hidden',
 });
 
-export const PracticingHeading = styled(Typography)({
+export const ResourcesHeading = styled(Typography)({
   fontWeight: 600,
   fontSize: '49px',
   color: '#000000',
-  fontFamily: 'var(--font-jost)',
+  fontFamily: 'Jost, sans-serif',
   fontStyle: 'normal',
   marginBottom: '75px',
 });
 
-export const PracticingImageContainer = styled(Box)({
+export const ResourcesImageContainer = styled(Box)({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -28,13 +28,14 @@ export const PracticingImageContainer = styled(Box)({
   bottom: 0,
   zIndex: -1,
 });
-export const PracticingImage = styled(Image)({
+
+export const ResourcesImage = styled(Image)({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
 });
 
-export const PracticingImageOverlay = styled(Box)({
+export const ResourcesImageOverlay = styled(Box)({
   position: 'absolute',
   top: 0,
   left: 0,
@@ -46,7 +47,7 @@ export const PracticingImageOverlay = styled(Box)({
 export const ResourceGrid = styled(Grid)({
   maxWidth: '907px',
   margin: '0 auto',
-  position: 'relative'
+  position: 'relative',
 });
 
 export const ResourceCard = styled(Box)({
@@ -60,15 +61,17 @@ export const ResourceCard = styled(Box)({
   justifyContent: 'end',
   alignItems: 'start',
   textAlign: 'start',
-  boxShadow:'0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
-
+  boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
 });
 
-export const PracticingCardHeading = styled(Typography)({
-  fontSize: '30px',
+export const BaseTypography = styled(Typography)({
+  fontFamily: 'Lato, sans-serif',
   fontWeight: 400,
+});
+
+export const ResourcesCardHeading = styled(BaseTypography)({
+  fontSize: '30px',
   marginBottom: '20px',
-  fontFamily: 'var(--font-lato)',
   lineHeight: '36px',
   maxWidth: '315px',
 });
@@ -80,8 +83,7 @@ export const ResourceButton = styled(Button)({
   borderRadius: '50px',
   fontSize: '16px',
   textTransform: 'capitalize',
-  fontWeight: 400,
-  fontFamily: 'var(--font-lato)',
+  fontFamily: 'Lato, sans-serif',
   boxShadow: '0px 4px 17px 0px rgba(0, 0, 0, 0.25)',
   '&:hover': {
     backgroundColor: '#c0605e',

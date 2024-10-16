@@ -8,10 +8,11 @@ export const ProcessWrapper = styled(Box)({
   textAlign: 'center',
   overflow: 'hidden',
 });
+
 export const ProcessHeading = styled(Typography)({
   fontWeight: 600,
   fontSize: '49px',
   color: '#000000',
-  fontFamily: 'var(--font-jost)',
+  fontFamily: 'Jost, sans-serif',
   fontStyle: 'normal'
 });

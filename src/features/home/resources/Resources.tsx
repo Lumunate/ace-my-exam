@@ -1,65 +1,65 @@
 import SectionHeading from '@/components/section-heading/SectionHeading';
-import { PracticingWrapper, PracticingHeading, ResourceGrid, ResourceCard, ResourceButton, PracticingCardHeading, PracticingImageContainer, PracticingImage, PracticingImageOverlay } from '@/features/home/practicing/Practicing.style';
+import { ResourcesWrapper, ResourcesHeading, ResourceGrid, ResourceCard, ResourceButton, ResourcesCardHeading, ResourcesImageContainer, ResourcesImage, ResourcesImageOverlay } from '@/features/home/resources/Resources.style';
 
 const cardsData = [
   {
     title: 'Alevel Maths Resources',
-    image: '/home/Practicing1.webp', 
+    image: '/home/Resources1.webp', 
     buttonText: 'Start Now'
   },
   {
     title: 'GCSE/IGCSE Maths Resources',
-    image: '/home/Practicing2.webp', 
+    image: '/home/Resources2.webp', 
     buttonText: 'Start Now'
   },
   {
     title: 'GCSE/IGCSE Science Resources',
-    image: '/home/Practicing3.webp', 
+    image: '/home/Resources3.webp', 
     buttonText: 'Start Now'
   },
   {
     title: 'Entrance & scholarship Exams Resources',
-    image: '/home/Practicing3.webp', 
+    image: '/home/Resources3.webp', 
     buttonText: 'Start Now'
   }
 ];
 
-const Practicing: React.FC = () => {
+const Resources: React.FC = () => {
   return (
-    <PracticingWrapper>
+    <ResourcesWrapper>
       <SectionHeading
-        text='Start Practicing'
+        text='Start Resources'
         align='center'
         showLeftLine={true}
         color='#DA9694'
         textWidth='160px'
       />
-      <PracticingHeading variant='h2'>
+      <ResourcesHeading variant='h2'>
         The Key to Your Academic Success
-      </PracticingHeading>
+      </ResourcesHeading>
 
       <ResourceGrid container columns={24} spacing={'17px'}>
         {cardsData.map((card, index) => (
           <ResourceGrid key={index} size={{ xs: 24, md: 12 }}>
             <ResourceCard key={index}>
-              <PracticingImageContainer>
-                <PracticingImage
+              <ResourcesImageContainer>
+                <ResourcesImage
                   src={card.image}
                   width={0}
                   height={0}
                   sizes='100vw'
-                  alt='Practicing background'
+                  alt='Resources background'
                 />
-                <PracticingImageOverlay />
-              </PracticingImageContainer>
-              <PracticingCardHeading>{card.title}</PracticingCardHeading>
+                <ResourcesImageOverlay />
+              </ResourcesImageContainer>
+              <ResourcesCardHeading>{card.title}</ResourcesCardHeading>
               <ResourceButton>{card.buttonText}</ResourceButton>
             </ResourceCard>
           </ResourceGrid>
         ))}
       </ResourceGrid>
-    </PracticingWrapper>
+    </ResourcesWrapper>
   );
 };
 
-export default Practicing;
+export default Resources;

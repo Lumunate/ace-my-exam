@@ -10,7 +10,7 @@ export const Button = styled(ButtonBase, {
 })<ButtonProps>(({ special = false }) => ({
   padding: '11px 30px',
   fontWeight: 700,
-  fontFamily: 'var(--font-lato)',
+  fontFamily: 'Lato, sans-serif',
   fontSize: '12px',
   color: special ? 'white' : 'black',
   backgroundColor: special ? '#DA9694' : 'white',

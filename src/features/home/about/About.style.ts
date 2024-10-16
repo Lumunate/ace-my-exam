@@ -45,14 +45,14 @@ export const AboutHeading = styled(CommonHeroTypography)({
   fontWeight: 600,
   fontSize: '49px',
   margin: '23px 0',
-  fontFamily: 'var(--font-jost)',
+  fontFamily: 'Jost, sans-serif',
   maxWidth: '600px',
   color: '#000',
 });
 
 export const AboutPara = styled(CommonHeroTypography)({
   fontSize: '16px',
-  fontFamily: 'var(--font-lato)',
+  fontFamily: 'Lato, sans-serif',
   color: '#000',
   fontWeight: 400,
   marginBottom: '20px'
@@ -60,7 +60,7 @@ export const AboutPara = styled(CommonHeroTypography)({
 
 export const AboutCardHeading = styled(CommonHeroTypography)<{ textColor: string }>(({ textColor }) =>({
   fontSize: '12px',
-  fontFamily: 'var(--font-lato)',
+  fontFamily: 'Lato, sans-serif',
   color: textColor || '#000',
   fontWeight: 700,
   flex: 1,
@@ -81,7 +81,7 @@ export const AboutCardContainer = styled(Box)<{ bgColor: string}>(({ bgColor }) 
 export const AboutLink = styled(Link)({
   fontSize: '18px',
   marginBottom: '10px',
-  fontFamily: 'var(--font-lato)',
+  fontFamily: 'Lato, sans-serif',
   color: '#DA9694',
   display: 'flex', 
   alignItems: 'center',
