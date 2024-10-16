@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, Box, } from '@mui/material';
+import { Box, } from '@mui/material';
 import Image from 'next/image';
 import { FC, useEffect, useRef } from 'react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
@@ -17,6 +17,9 @@ import {
   TestimonialsSwiperWrapper,
   TestimonialsParaTwo,
   TestimonialsNavigationWrapper,
+  TestimonialsInfoHead,
+  TestimonialAvatar,
+  TestimonialsStarsHead
 } from '@/components/swiper/testimonials-swiper/TestimonialsSwiper.style';
 
 import 'swiper/css';
@@ -92,18 +95,12 @@ const TestimonialsSwiper: FC = () => {
         {testimonialsData?.map((testimonial: Testimonial, index: number) => (
           <SwiperSlide key={index}>
             <TestimonialsCard>
-              <Box
-                sx={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}
+              <TestimonialsInfoHead
               >
                 <TestimonialsAvatarNameWrapper>
-                  <Avatar
+                  <TestimonialAvatar
                     alt={testimonial.name}
                     src={testimonial.name}
-                    sx={{ width: 61, height: 61, mr: '15px' }}
                   />
                   <Box>
                     <TestimonialsCardHeading variant="h6">
@@ -125,10 +122,10 @@ const TestimonialsSwiper: FC = () => {
                     alt="quotation-icon"
                   />
                 </Box>
-              </Box>
-              <Box sx={{ display: 'flex', mt: '10px' }}>
+              </TestimonialsInfoHead>
+              <TestimonialsStarsHead>
                 {renderStars(testimonial.stars)}
-              </Box>
+              </TestimonialsStarsHead>
               <TestimonialsCardPara variant="body1" sx={{ mb: '16px' }}>
                 {testimonial.feedback}
               </TestimonialsCardPara>

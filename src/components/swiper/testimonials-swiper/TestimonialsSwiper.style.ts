@@ -1,6 +1,11 @@
 'use client';
 
-import { styled, Typography, Box } from '@mui/material';
+import { styled, Typography, Box, Avatar } from '@mui/material';
+
+const BaseBoxFlex = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+});
 
 export const TestimonialsSwiperWrapper = styled(Box)({
   width: '100%',
@@ -9,35 +14,29 @@ export const TestimonialsSwiperWrapper = styled(Box)({
   '& .swiper': {
     width: '100%',
     padding: '50px 0 !important',
-    position: 'relative'
+    position: 'relative',
   },
-
   '& .swiper-slide:not(.swiper-slide-active):not(.swiper-slide-prev):not(.swiper-slide-next)': {
     visibility: 'hidden !important',
     opacity: '0 !important',
     transition: 'all 0.3s ease !important',
   },
-
   '& .swiper-slide': {
     transition: 'all 0.3s ease !important',
   },
-
   '& .swiper-slide-active, & .swiper-slide-prev, & .swiper-slide-next': {
     visibility: 'visible !important',
     opacity: '1 !important',
   },
-
   '& .swiper-slide-prev, & .swiper-slide-next': {
     opacity: '0.8 !important',
   },
-
   '& .swiper-pagination-bullet': {
     background: '#DA9694 !important',
   },
   '& .swiper-button-next:after, .swiper-button-prev:after': {
-    display: 'none !important'
+    display: 'none !important',
   },
-  
 });
 
 export const TestimonialsHeading = styled(Typography)({
@@ -59,40 +58,51 @@ export const TestimonialsCard = styled(Box)({
   flexDirection: 'column',
 });
 
-export const TestimonialsAvatarNameWrapper = styled(Box)({
-  display: 'flex',
-  alignItems: 'center',
+export const TestimonialsAvatarNameWrapper = styled(BaseBoxFlex)({
 });
 
-export const TestimonialsCardHeading = styled(Typography)({
-  color: '#474747',
+export const TestimonialsInfoHead = styled(BaseBoxFlex)({
+  justifyContent: 'space-between',
+});
+
+export const TestimonialsStarsHead = styled(BaseBoxFlex)({
+  marginTop: '10px',
+});
+
+export const TestimonialAvatar = styled(Avatar)({
+  width: 61,
+  height: 61,
+  marginRight: '15px',
+});
+
+const BaseTextStyle = styled(Typography)({
   fontFamily: 'Lato, sans-serif',
   textTransform: 'capitalize',
+});
+
+export const TestimonialsCardHeading = styled(BaseTextStyle)({
+  color: '#474747',
   fontSize: '14px',
   fontWeight: 700,
 });
-export const TestimonialsOccupationPara = styled(Typography)({
+
+export const TestimonialsOccupationPara = styled(BaseTextStyle)({
   color: '#000',
   fontSize: '9px',
   fontWeight: 400,
-  fontFamily: 'Lato, sans-serif',
-  textTransform: 'capitalize',
 });
 
-export const TestimonialsCardPara = styled(Typography)({
+export const TestimonialsCardPara = styled(BaseTextStyle)({
   fontWeight: 400,
   fontSize: '13px',
   color: '#787878',
   marginTop: '29px',
-  fontFamily: 'Lato, sans-serif',
 });
 
-export const TestimonialsParaTwo = styled(Typography)({
+export const TestimonialsParaTwo = styled(BaseTextStyle)({
   fontWeight: 400,
   fontSize: '9px',
   color: '#818181',
-  fontFamily: 'Lato, sans-serif',
-  textTransform: 'capitalize',
 });
 
 export const TestimonialsNavigationWrapper = styled(Box)({
