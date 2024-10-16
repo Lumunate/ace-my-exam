@@ -19,7 +19,7 @@ const defaultValues: IContact = {
 };
 
 export default function ContactForm() {
-  const { showSnackbar } = useSnackbar(); // Access the context functions
+  const { showSnackbar } = useSnackbar();
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<IContact>({
     resolver: zodResolver(contactSchema),
