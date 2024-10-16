@@ -11,8 +11,9 @@ import {
 import Link from 'next/link';
 
 export const AuthBackdrop = styled(Backdrop)({
-  backgroundColor: 'rgba(255, 255, 255, 0.1)',
-  backdropFilter: 'blur(7.8px)',
+  border: '1px solid rgba(255, 255, 255, 0.10)',
+  backgroundColor: 'rgba(255, 255, 255, 0.10)',
+  backdropFilter: 'blur(10px)',
 });
 
 export const AuthBaseModalContainer = styled(Modal)({
@@ -24,23 +25,23 @@ export const AuthBaseModalContainer = styled(Modal)({
 export const AuthModalContainer = styled(AuthBaseModalContainer)({});
 
 export const BaseModalContent = styled(Box)({
-  backgroundColor: '#fff',
-  padding: '20px',
+  backgroundColor: '#FCFDFF',
+  padding: '0',
   borderRadius: '20px',
   width: '100%',
-  boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
+  boxShadow: '0px 4px 37px 0px rgba(0, 0, 0, 0.30)',
   zIndex: 1,
 });
 
 export const AuthModalContent = styled(BaseModalContent)({
-  padding: '69px 49px',
+  padding: '80px 56px',
   width: '347px',
 });
 
 export const AuthButton = styled(ButtonBase)({
   padding: '10.5px',
   fontWeight: 400,
-  fontFamily: 'var(--font-poppins)',
+  fontFamily: 'Lato, sans-serif',
   fontSize: '14px',
   color: 'white',
   lineHeight: '2.4rem',
@@ -49,8 +50,8 @@ export const AuthButton = styled(ButtonBase)({
   borderRadius: '4px',
   transition: 'all 0.3s ease-in-out',
   width: '100%',
-  boxShadow: '0 4px 11px rgba(0, 0, 0, 0.1)',
-  backgroundColor: 'rgba(0, 184, 201, 1)',
+  boxShadow: '0px 4px 11.4px 0px rgba(0, 0, 0, 0.25)',
+  backgroundColor: '#DA9694',
   '&:hover': {
     backgroundColor: 'gray',
   },
@@ -58,7 +59,7 @@ export const AuthButton = styled(ButtonBase)({
 });
 
 export const AuthBaseTypography = styled(Typography)({
-  fontFamily: 'var(--font-poppins)',
+  fontFamily: 'Lato, sans-serif',
   color: '#000000',
   textAlign: 'center',
 });
@@ -67,6 +68,7 @@ export const AuthHeadingTypography = styled(AuthBaseTypography)({
   fontWeight: 600,
   fontSize: '16px',
   textTransform: 'uppercase',
+  fontFamily: 'Jost, sans-serif',
 });
 
 export const AuthParaTypography = styled(AuthBaseTypography)({
@@ -77,7 +79,7 @@ export const AuthParaTypography = styled(AuthBaseTypography)({
 export const AuthStyledLinkOne = styled(Link)({
   color: '#000000',
   textDecoration: 'none',
-  fontFamily: 'var(--font-poppins)',
+  fontFamily: 'Lato, sans-serif',
   fontSize: '8px',
   textAlign: 'end',
   display: 'block',
@@ -87,7 +89,7 @@ export const AuthStyledLinkOne = styled(Link)({
 });
 
 export const AuthStyledLinkTwo = styled(AuthStyledLinkOne)({
-  color: '#00B8C9',
+  color: '#DA9694',
   textAlign: 'center',
   display: 'inline-block',
 });
