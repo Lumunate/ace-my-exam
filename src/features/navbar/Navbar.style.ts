@@ -1,9 +1,29 @@
-import { AppBar, Box, styled, Toolbar } from '@mui/material';
+import { AppBar, Box, styled, Toolbar, Menu } from '@mui/material';
 import Link from 'next/link';
 
 const CommonNavbarBox = styled(Box)({
   display: 'flex',
   alignItems: 'center',
+});
+
+export const CommonMenu = styled(Menu)({
+  '& .MuiPaper-root':{
+    transform: 'translate(-30px, 25px)',
+    borderRadius: '0 0 15px 15px',
+    boxShadow: '4px 20px 27.5px 0 rgba(0,0,0,0.17)',
+    background: '#FCFDFF',
+    padding: '10px',
+    paddingTop: '20px',
+  },
+  '& .MuiMenuItem-root': {
+    color: '#000',
+    fontWeight: 400,
+    fontSize: '10px',
+    textTransform: 'capitalize',
+    fontFamily: 'Lato, sans-serif',
+    borderRadius: '4px',
+    padding: '8px'
+  }
 });
 
 export const NavbarContainer = styled(AppBar)({
@@ -34,8 +54,10 @@ export const NavbarButtonsContainer = styled(CommonNavbarBox)({
   width: '203px',
 });
 
-export const NavbarLogoHead = styled(Box)({
+export const NavbarLogoHead = styled(Link)({
   width: '203px',
+  display: 'flex',
+  alignItems: 'center',
 });
 
 const CommonNavbarLink = styled(Link)({
@@ -48,4 +70,7 @@ const CommonNavbarLink = styled(Link)({
 
 export const NavbarLink = styled(CommonNavbarLink)({
   margin: '0 36px',
+});
+
+export const DropdownMenuWrapper = styled(Box)({
 });

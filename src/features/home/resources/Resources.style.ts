@@ -41,7 +41,7 @@ export const ResourcesImageOverlay = styled(Box)({
   left: 0,
   width: '100%',
   height: '100%',
-  background: 'linear-gradient(180deg, rgba(218, 150, 148, 0.25) 0%, rgba(0, 0, 0, 0.7) 100%)',
+  background: 'linear-gradient(180deg, rgba(218, 150, 148, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%)',
 });
 
 export const ResourceGrid = styled(Grid)({

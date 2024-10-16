@@ -33,6 +33,7 @@ const Resources: React.FC = () => {
         showLeftLine={true}
         color='#DA9694'
         textWidth='160px'
+        gradientType="second"
       />
       <ResourcesHeading variant='h2'>
         The Key to Your Academic Success
