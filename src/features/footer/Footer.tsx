@@ -1,21 +1,74 @@
-import {ListItem } from '@mui/material';
+'use client';
+
+import { ListItem, Box, Typography, List, styled } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
+import { FC } from 'react';
 
-import {
-  FooterContainer,
-  FooterLink,
-  FooterLinksContainer,
-  FooterWrapper,
-  FooterMain, 
-  FooterMediaIcons, 
-  FooterMediaItem,
-  FooterHeading,
-  FooterLogoHead
-} from '@/features/footer/Footer.style';
+const FooterMain = styled(Box)({
+  backgroundColor: '#DA9694',
+});
 
-const pages = ['Home', 'Testimonials','About', 'Contact Us'];
+const FooterContainer = styled(Box)({
+  maxWidth: '1740px',
+  width: '100%',
+  margin: '0 auto',
+  borderRadius: '20px 20px 0 0',
+  padding: '22px 20px',
+});
 
-function Footer() {
+const FooterWrapper = styled(Box)({
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+});
+
+const FooterLinksContainer = styled(List)({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const FooterLogoHead = styled(Link)({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const FooterMediaIcons = styled(List)({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const FooterMediaItem = styled(ListItem)({
+  padding: '0',
+  paddingLeft: '18px',
+  cursor: 'pointer',
+});
+
+const FooterLink = styled(Link)({
+  color: '#fff',
+  fontWeight: 500,
+  fontSize: '15px',
+  textTransform: 'capitalize',
+  fontStyle: 'normal',
+  fontFamily: 'var(--font-poppins)',
+  margin: '0 36px',
+  whiteSpace: 'nowrap',
+});
+
+const FooterHeading = styled(Typography)({
+  color: '#fff',
+  fontWeight: 500,
+  fontSize: '15px',
+  textTransform: 'capitalize',
+  fontStyle: 'normal',
+  fontFamily: 'var(--font-poppins)',
+  marginLeft: '6.5px',
+  whiteSpace: 'nowrap',
+});
+
+const Footer: FC = () => {
+  const pages = ['Home', 'Testimonials', 'About', 'Contact Us'];
+
   return (
     <>
       <FooterMain>
@@ -28,10 +81,8 @@ function Footer() {
 
             <FooterLinksContainer>
               {pages.map((page, index) => (
-                <ListItem key={index} sx={{p:0}}>
-                  <FooterLink
-                    href={page === 'Contact' ? '/contact' : '/'}
-                  >
+                <ListItem key={index} sx={{ p: 0 }}>
+                  <FooterLink href={page === 'Contact' ? '/contact' : '/'}>
                     {page}
                   </FooterLink>
                 </ListItem>
@@ -54,6 +105,6 @@ function Footer() {
       </FooterMain>
     </>
   );
-}
+};
 
 export default Footer;
