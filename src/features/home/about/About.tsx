@@ -29,26 +29,26 @@ const About: React.FC = () => {
       <Grid container columnSpacing={'22px'} columns={24} alignItems={'center'}>
         <Grid size={{ xs: 24, md: 11 }} sx={{position: 'relative'}}>
           <AboutImgHead>
-            <AboutImage src={'/home/about.png'} width={0} height={0} sizes="100vw" alt="about" />
+            <AboutImage src={'/home/about.png'} width={0} height={0} sizes='100vw' alt='about' />
           </AboutImgHead>
           <AboutOverlayHead>
             <AboutCard
-              title="One-to-one lessons"
-              bgColor="#DA9694"
-              textColor="#fff"
+              title='One-to-one lessons'
+              bgColor='#DA9694'
+              textColor='#fff'
             />
             <AboutCardTwoHead>
               <AboutCard
-                title="Small group classes"
-                bgColor="#FFF"
-                textColor="#000"
+                title='Small group classes'
+                bgColor='#FFF'
+                textColor='#000'
               />
             </AboutCardTwoHead>
           </AboutOverlayHead>
         </Grid>
         <Grid size={{ xs: 24, md: 13 }}>
           <AboutContentHead>
-            <SectionHeading text="About Us" align="start" showLeftLine={false} color="#DA9694" />
+            <SectionHeading text='About Us' align='start' showLeftLine={false} color='#DA9694' />
             <AboutHeading>A Legacy of Excellence</AboutHeading>
             <AboutPara>
               ACEMYEXAM is a leading tuition service based in Cambridge, UK, specializing in personalized, one-to-one and small group learning. Our mission is to empower students to achieve academic excellence, confidence, and growth through bespoke learning solutions.
@@ -60,23 +60,23 @@ const About: React.FC = () => {
             <Grid container columnSpacing={'24px'} columns={24} sx={{mt: '30px'}}>
               <Grid size={{ xs: 24, md: 8 }}>
                 <AboutCard
-                  title="GCSE to Alevel Exam Preparation"
-                  bgColor="#FFF"
-                  textColor="#000"
+                  title='GCSE to Alevel Exam Preparation'
+                  bgColor='#FFF'
+                  textColor='#000'
                 />
               </Grid>
               <Grid size={{ xs: 24, md: 8 }}>
                 <AboutCard
-                  title="Scholarship Exams (13+)"
-                  bgColor="#FFF"
-                  textColor="#000"
+                  title='Scholarship Exams (13+)'
+                  bgColor='#FFF'
+                  textColor='#000'
                 />
               </Grid>
               <Grid size={{ xs: 24, md: 8 }}>
                 <AboutCard
-                  title="Entrance Exams"
-                  bgColor="#FFF"
-                  textColor="#000"
+                  title='Entrance Exams'
+                  bgColor='#FFF'
+                  textColor='#000'
                 />
               </Grid>
             </Grid>
