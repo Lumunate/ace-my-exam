@@ -16,7 +16,7 @@ export const HeroHeading = styled(CommonHeroTypography)({
   marginTop: '43px',
   marginBottom: '10px',
   lineHeight: '53px',
-  fontFamily: 'var(--font-jost)',
+  fontFamily: 'Jost, sans-serif',
   maxWidth: '600px',
   textTransform: 'capitalize',
 });
@@ -24,7 +24,7 @@ export const HeroHeading = styled(CommonHeroTypography)({
 export const HeroContent = styled(CommonHeroTypography)({
   fontSize: '18px',
   marginBottom: '10px',
-  fontFamily: 'var(--font-lato)',
+  fontFamily: 'Lato, sans-serif',
   maxWidth: '779px',
 });
 
@@ -37,7 +37,7 @@ export const HeroCTAButton = styled(ButtonBase)({
   border: 'none',
   borderRadius: '100px',
   fontStyle: 'normal',
-  fontFamily: 'var(--font-lato)',
+  fontFamily: 'Lato, sans-serif',
   transition: 'all 0.3s ease-in-out',
   '&:hover': {
     backgroundColor: 'gray',
@@ -97,7 +97,7 @@ export const HeroCard = styled(Box)<{ width?: number }>(({ width }) => ({
 
 export const HeroCardHeading = styled(CommonHeroTypography)({
   fontSize: '18px',
-  fontFamily: 'var(--font-lato)',
+  fontFamily: 'Lato, sans-serif',
   textTransform: 'capitalize',
   marginLeft: '21px',
   flex: 1,

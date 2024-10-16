@@ -43,7 +43,7 @@ const CommonNavbarLink = styled(Link)({
   fontWeight: 700,
   fontSize: '15px',
   textTransform: 'capitalize',
-  fontFamily: 'var(--font-lato)',
+  fontFamily: 'Lato, sans-serif',
 });
 
 export const NavbarLink = styled(CommonNavbarLink)({
