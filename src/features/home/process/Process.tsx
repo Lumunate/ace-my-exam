@@ -5,7 +5,7 @@ import { ProcessHeading, ProcessWrapper } from '@/features/home/process/Process.
 const Process: React.FC = () => {
   return (
     <ProcessWrapper>
-      <SectionHeading text="Process" align="center" showLeftLine={true} color="#DA9694" textWidth="160px" />
+      <SectionHeading text="Process" align="center" showLeftLine={true} color="#DA9694" textWidth="160px" gradientType="second" />
       <ProcessHeading variant="h2" sx={{ mt: '23px' }}>
         How we Operate
       </ProcessHeading>

@@ -42,7 +42,7 @@ const Hero: React.FC = () => {
       <AppContentWrapper>
         <HeroContentContainer>
           <HeroLeftContentCont>
-            <SectionHeading text="Success Starts Here" align="start" showLeftLine={false} color="#fff" />
+            <SectionHeading text="Success Starts Here" align="start" showLeftLine={false} color="#fff"  gradientType="first" />
             <HeroHeading>Unlock Your Full Potential with AceMyExam</HeroHeading>
             <HeroContent>
               Based in Cambridge, UK, Acemyexam provides best-in-class personalised learning to students in order to achieve academic excellence, confidence, and academic growth.
@@ -70,7 +70,7 @@ const Hero: React.FC = () => {
               <HeroCardHeading>Offering bespoke tuition in Science and Maths.</HeroCardHeading>
             </HeroCardComponent>
             <HeroMediaHead>
-              <SectionHeading text="Follow Us" align="start" showLeftLine={false} color="#fff" /> 
+              <SectionHeading text="Follow Us" align="start" showLeftLine={false} color="#fff"  gradientType="first" /> 
               <SocialIconsWrapper>
                 <HeroLink href={'#'}>
                   <Image

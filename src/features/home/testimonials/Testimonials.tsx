@@ -9,7 +9,8 @@ const Testimonials = () => {
         align='center'
         showLeftLine={true}
         color='#DA9694'
-        textWidth='160px' />
+        textWidth='160px'
+        gradientType="second"  />
       <TestimonialsHeading variant="h2" sx={{ mt: '20px' }}>Here&apos;s What Our Students Say</TestimonialsHeading>
       <TestimonialsSwiper />
     </TestimonialsWrapper>
