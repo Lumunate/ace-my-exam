@@ -48,7 +48,7 @@ const About: React.FC = () => {
         </Grid>
         <Grid size={{ xs: 24, md: 13 }}>
           <AboutContentHead>
-            <SectionHeading text='About Us' align='start' showLeftLine={false} color='#DA9694' />
+            <SectionHeading text='About Us' align='start' showLeftLine={false} color='#DA9694'  gradientType = 'second'  />
             <AboutHeading>A Legacy of Excellence</AboutHeading>
             <AboutPara>
               ACEMYEXAM is a leading tuition service based in Cambridge, UK, specializing in personalized, one-to-one and small group learning. Our mission is to empower students to achieve academic excellence, confidence, and growth through bespoke learning solutions.
