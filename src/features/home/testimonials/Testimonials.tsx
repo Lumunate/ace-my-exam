@@ -1,6 +1,6 @@
 import SectionHeading from '@/components/section-heading/SectionHeading';
 import TestimonialsSwiper from '@/components/swiper/testimonials-swiper/TestimonialsSwiper';
-import { TestimonialsHeading, TestimonialsWrapper } from '@/features/home/testimonials/Testimonials.style';
+import { TestimonialsHeading, TestimonialsLink, TestimonialsPara, TestimonialsWrapper } from '@/features/home/testimonials/Testimonials.style';
 
 const Testimonials = () => {
   return (
@@ -12,6 +12,7 @@ const Testimonials = () => {
         textWidth='160px'
         gradientType="second"  />
       <TestimonialsHeading variant="h2" sx={{ mt: '20px' }}>Here&apos;s What Our Students Say</TestimonialsHeading>
+      <TestimonialsPara variant='body1' sx={{ mt: '23px' }} > Want to write a Feedback?  <TestimonialsLink href={'#'}> Click Here</TestimonialsLink></TestimonialsPara>
       <TestimonialsSwiper />
     </TestimonialsWrapper>
   );

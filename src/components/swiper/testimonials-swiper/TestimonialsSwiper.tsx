@@ -19,7 +19,8 @@ import {
   TestimonialsNavigationWrapper,
   TestimonialsInfoHead,
   TestimonialAvatar,
-  TestimonialsStarsHead
+  TestimonialsStarsHead,
+  TestimonialsDateHead
 } from '@/components/swiper/testimonials-swiper/TestimonialsSwiper.style';
 
 import 'swiper/css';
@@ -95,43 +96,54 @@ const TestimonialsSwiper: FC = () => {
         {testimonialsData?.map((testimonial: Testimonial, index: number) => (
           <SwiperSlide key={index}>
             <TestimonialsCard>
-              <TestimonialsInfoHead
-              >
-                <TestimonialsAvatarNameWrapper>
-                  <TestimonialAvatar
-                    alt={testimonial.name}
-                    src={testimonial.name}
-                  />
+              <Box>
+                <TestimonialsInfoHead
+                >
+                  <TestimonialsAvatarNameWrapper>
+                    <TestimonialAvatar
+                      alt={testimonial.name}
+                      src={testimonial.name}
+                    />
+                    <Box>
+                      <TestimonialsCardHeading variant="h6">
+                        {testimonial.name}
+                      </TestimonialsCardHeading>
+                      <TestimonialsOccupationPara variant="subtitle2">
+                        {testimonial.subject}
+                      </TestimonialsOccupationPara>
+                      <TestimonialsParaTwo variant="subtitle2">
+                        {testimonial.date}
+                      </TestimonialsParaTwo>
+                    </Box>
+                  </TestimonialsAvatarNameWrapper>
                   <Box>
-                    <TestimonialsCardHeading variant="h6">
-                      {testimonial.name}
-                    </TestimonialsCardHeading>
-                    <TestimonialsOccupationPara variant="subtitle2">
-                      {testimonial.subject}
-                    </TestimonialsOccupationPara>
-                    <TestimonialsParaTwo variant="subtitle2">
-                      {testimonial.date}
-                    </TestimonialsParaTwo>
+                    <Image
+                      src="/icons/quotation.svg"
+                      width={79}
+                      height={60}
+                      alt="quotation-icon"
+                    />
                   </Box>
-                </TestimonialsAvatarNameWrapper>
-                <Box>
-                  <Image
-                    src="/icons/quotation.svg"
-                    width={79}
-                    height={60}
-                    alt="quotation-icon"
-                  />
-                </Box>
-              </TestimonialsInfoHead>
-              <TestimonialsStarsHead>
-                {renderStars(testimonial.stars)}
-              </TestimonialsStarsHead>
-              <TestimonialsCardPara variant="body1" sx={{ mb: '16px' }}>
-                {testimonial.feedback}
-              </TestimonialsCardPara>
-              <TestimonialsParaTwo variant="subtitle2">
+                </TestimonialsInfoHead>
+                <TestimonialsStarsHead>
+                  {renderStars(testimonial.stars)}
+                </TestimonialsStarsHead>
+                <TestimonialsCardPara variant="body1" sx={{ mb: '16px' }}>
+                  {testimonial.feedback}
+                </TestimonialsCardPara>
+              </Box>
+              <TestimonialsDateHead>
+                <TestimonialsParaTwo variant="subtitle2">
                 Feedback given: {testimonial.feedbackDate}
-              </TestimonialsParaTwo>
+                </TestimonialsParaTwo>
+                <Image
+                  src="/home/trustpilot.svg"
+                  width={140}
+                  height={34}
+                  alt="trustpilot-icon"
+                />
+              </TestimonialsDateHead>
+            
             </TestimonialsCard>
           </SwiperSlide>
         ))}

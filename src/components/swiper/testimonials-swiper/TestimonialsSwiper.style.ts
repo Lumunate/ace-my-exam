@@ -9,12 +9,15 @@ const BaseBoxFlex = styled(Box)({
 
 export const TestimonialsSwiperWrapper = styled(Box)({
   width: '100%',
+  height: '100% !important',
   overflow: 'hidden',
   position: 'relative',
   '& .swiper': {
     width: '100%',
     padding: '50px 0 !important',
     position: 'relative',
+    maxHeight: '100% !important',
+    height: 'auto !important', 
   },
   '& .swiper-slide:not(.swiper-slide-active):not(.swiper-slide-prev):not(.swiper-slide-next)': {
     visibility: 'hidden !important',
@@ -23,6 +26,9 @@ export const TestimonialsSwiperWrapper = styled(Box)({
   },
   '& .swiper-slide': {
     transition: 'all 0.3s ease !important',
+    minHeight: '426px !important',
+    maxHeight: '100% !important',
+    height: 'auto !important', 
   },
   '& .swiper-slide-active, & .swiper-slide-prev, & .swiper-slide-next': {
     visibility: 'visible !important',
@@ -52,10 +58,13 @@ export const TestimonialsCard = styled(Box)({
   borderRadius: '20px',
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
   width: '100%',
+  height: '100%',
   textAlign: 'left',
   minHeight: '426px',
+  maxHeight: '100%',
   display: 'flex',
   flexDirection: 'column',
+  justifyContent:'space-between'
 });
 
 export const TestimonialsAvatarNameWrapper = styled(BaseBoxFlex)({
@@ -126,4 +135,10 @@ export const TestimonialsNavigationButton = styled(Box)({
   alignItems: 'center',
   cursor: 'pointer',
   boxShadow: '0px 4px 11px rgba(0, 0, 0, 0.1)',
+});
+export const TestimonialsDateHead = styled(Box)({
+  display:'flex',
+  justifyContent:'space-between',
+  alignItems:'center',
+
 });
