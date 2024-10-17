@@ -10,17 +10,24 @@ import LoginModal from '@/features/auth/login/LoginModal';
 import SignUpModal from '@/features/auth/sign-up/SignUpModal';
 
 import {
+  CommonMenu,
+  DropdownMenuWrapper,
+  NavbarButtonsContainer,
   NavbarContainer,
   NavbarContentWrapper,
-  NavbarLogoHead,
-  NavbarLinksContainer,
   NavbarLink,
-  NavbarButtonsContainer,
-  DropdownMenuWrapper,
-  CommonMenu
+  NavbarLinksContainer,
+  NavbarLogoHead
 } from './Navbar.style';
 
-const pages = ['Home', 'About', 'Resources', 'Pricing', 'Contact'];
+const pages = [
+  { name: 'Home', link: '/' },
+  { name: 'About', link: '/' },
+  { name: 'Resources', link: '/' }, 
+  { name: 'Pricing', link: '/pricing' },
+  { name: 'Contact', link: '/contact' }
+];
+
 const resources = ['Alevel Maths', 'GCSE/IGCSE Maths', 'GCSE/IGCSE Science', 'Entrance & Scholarship Exams'];
 
 const Navbar: React.FC = () => {
@@ -59,16 +66,16 @@ const Navbar: React.FC = () => {
 
           <NavbarLinksContainer>
             {pages.map((page, index) => (
-              page === 'Resources' ? (
+              page.name === 'Resources' ? (
                 <DropdownMenuWrapper key={index}>
                   <NavbarLink id="fade-button"
                     aria-controls={open ? 'fade-menu' : undefined}
                     aria-haspopup="true"
                     aria-expanded={open ? 'true' : undefined}
                     onClick={handleClick} href={''}>
-                    {page}
+                    {page.name}
                   </NavbarLink>
-                
+
                   <CommonMenu
                     id="fade-menu"
                     MenuListProps={{
@@ -78,7 +85,7 @@ const Navbar: React.FC = () => {
                     open={open}
                     onClose={handleClose}
                     TransitionComponent={Fade}
-                    disableScrollLock={true} 
+                    disableScrollLock={true}
                   >
                     {resources.map((resource, idx) => (
                       <MenuItem key={idx} onClick={handleClose}>
@@ -88,8 +95,8 @@ const Navbar: React.FC = () => {
                   </CommonMenu>
                 </DropdownMenuWrapper>
               ) : (
-                <NavbarLink key={index} href={page === 'Contact' ? '/contact' : '/'}>
-                  {page}
+                <NavbarLink key={index} href={page.link}>
+                  {page.name}
                 </NavbarLink>
               )
             ))}
