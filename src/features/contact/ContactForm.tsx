@@ -34,7 +34,7 @@ export default function ContactForm() {
         showSnackbar('Form submitted successfully!');
         reset();
       },
-      onError: (error) => {
+      onError: () => {
         showSnackbar('Failed to submit Contact Form. Please try again later!');
       }
     });
