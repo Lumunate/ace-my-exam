@@ -11,7 +11,7 @@ export const InstituteWrapper = styled(Box)({
 
 export const InstituteGrid = styled(Box)(({ theme }) => ({
   display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', 
+  gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', 
   gap: '29px',
   alignItems: 'center',
   justifyContent: 'center',

@@ -1,5 +1,6 @@
+import { Button } from '@/components/buttons/Button.style';
 import SectionHeading from '@/components/section-heading/SectionHeading';
-import { ResourcesWrapper, ResourcesHeading, ResourceGrid, ResourceCard, ResourceButton, ResourcesCardHeading, ResourcesImageContainer, ResourcesImage, ResourcesImageOverlay } from '@/features/home/resources/Resources.style';
+import { ResourcesWrapper, ResourcesHeading, ResourceGrid, ResourceCard, ResourcesCardHeading, ResourcesImageContainer, ResourcesImage, ResourcesImageOverlay } from '@/features/home/resources/Resources.style';
 
 const cardsData = [
   {
@@ -54,7 +55,7 @@ const Resources: React.FC = () => {
                 <ResourcesImageOverlay />
               </ResourcesImageContainer>
               <ResourcesCardHeading>{card.title}</ResourcesCardHeading>
-              <ResourceButton>{card.buttonText}</ResourceButton>
+              <Button special borderRadius="50px">{card.buttonText}</Button>
             </ResourceCard>
           </ResourceGrid>
         ))}

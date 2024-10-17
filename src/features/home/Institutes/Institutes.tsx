@@ -1,12 +1,15 @@
 import { InstituteWrapper, InstituteImage, InstituteGrid } from './Institutes.style';
 
 const instituteImages = [
-  'home/institute1.png',
-  'home/institute2.png',
-  'home/institute3.png',
-  'home/institute4.png',
-  'home/institute5.png',
-  'home/institute6.png',
+  'home/pearson.svg',
+  'home/warwick.svg',
+  'home/UOC.svg',
+  'home/aqa.svg',
+  'home/UWM.svg',
+  'home/UCL.svg',
+  'home/imperial.svg',
+  'home/SPC.svg',
+
 ];
 
 const Institutes: React.FC = () => {

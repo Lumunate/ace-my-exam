@@ -25,7 +25,7 @@ export const StatsContentWrapper = styled(Box)({
   },
 });
 
-export const StatsCardHeah = styled(Box)({
+export const StatsCardHead = styled(Box)({
   maxWidth: '1040px',
   margin: '0 auto',
 });

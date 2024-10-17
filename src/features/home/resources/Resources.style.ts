@@ -1,6 +1,6 @@
 'use client';
 
-import { styled, Typography, Box, Button } from '@mui/material';
+import { styled, Typography, Box } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 
@@ -74,18 +74,4 @@ export const ResourcesCardHeading = styled(BaseTypography)({
   marginBottom: '20px',
   lineHeight: '36px',
   maxWidth: '315px',
-});
-
-export const ResourceButton = styled(Button)({
-  backgroundColor: '#DA9694',
-  color: '#fff',
-  padding: '20px 59px',
-  borderRadius: '50px',
-  fontSize: '16px',
-  textTransform: 'capitalize',
-  fontFamily: 'Lato, sans-serif',
-  boxShadow: '0px 4px 17px 0px rgba(0, 0, 0, 0.25)',
-  '&:hover': {
-    backgroundColor: '#c0605e',
-  },
 });
