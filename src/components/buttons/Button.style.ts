@@ -5,16 +5,21 @@ import type { ButtonBaseProps } from '@mui/material';
 
 interface ButtonProps extends ButtonBaseProps {
   special?: boolean;
-  borderRadius?: string; 
+  borderRadius?: string;
+  fontSize?: string; 
+  width?: string;
+  height?: string;
 }
 
 export const Button = styled(ButtonBase, {
-  shouldForwardProp: (prop) => prop !== 'special' && prop !== 'borderRadius',
-})<ButtonProps>(({ special = false, borderRadius = '8px' }) => ({
+  shouldForwardProp: (prop) => prop !== 'special' && prop !== 'borderRadius' && prop !== 'fontSize' && prop !== 'width' && prop !== 'height',
+})<ButtonProps>(({ special = false, borderRadius = '8px', fontSize = '12px', width = '96px', height = '37px' }) => ({
   padding: '11px 30px',
   fontWeight: 700,
+  width: width,
+  height: height,
   fontFamily: 'Lato, sans-serif',
-  fontSize: '12px',
+  fontSize: fontSize,
   color: special ? 'white' : 'black',
   backgroundColor: special ? '#DA9694' : 'white',
   textAlign: 'center',
