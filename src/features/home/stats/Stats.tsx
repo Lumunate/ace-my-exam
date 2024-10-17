@@ -1,39 +1,50 @@
-import { Box } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 
-import { StatCardDivider, StatHeading, StatsCardsContainer, StatsContainer, StatsContentWrapper, StatValue } from './Stats.style';
+import { AppContentWrapper } from '@/components/common/Global.style';
+import { StatCardHeading, StatCardValue, StatsCard, StatsCardHead, StatsContentWrapper } from '@/features/home/stats/Stats.style';
 
-const stats = [
+interface StatItem {
+  name: string;
+  value: string;
+  subTitle: string;
+}
+
+const stats: StatItem[] = [
   {
-    name: 'Students',
-    value: '2500+',
+    name: 'Backed by',
+    value: '15+',
+    subTitle: 'Years of Experience'
   },
   {
-    name: 'Courses',
-    value: '100+',
+    name: 'Expertise in',
+    value: '49+',
+    subTitle: 'Entrance and Scholarships Exams'
   },
   {
-    name: 'Tutors',
-    value: '50+',
+    name: 'With Over',
+    value: '3000+',
+    subTitle: 'Students Tutored'
   },
 ];
 
-const Stats = () => {
+const Stats: React.FC = () => {
   return (
     <StatsContentWrapper>
-      <StatsContainer>
-        <StatsCardsContainer>
-          {stats.map((stat, index) => (
-            <>
-              <Box key={index}>
-                <StatHeading>{stat.name}</StatHeading>
-                <StatValue>{stat.value}</StatValue>
-              </Box>
-
-              {index !== stats.length - 1 && <StatCardDivider />}
-            </>
-          ))}
-        </StatsCardsContainer>
-      </StatsContainer>
+      <AppContentWrapper>
+        <StatsCardHead>
+          <Grid container columnSpacing={'22px'} columns={24}>
+            {stats.map((stat, index) => (
+              <Grid size={{ xs: 12, md: 8 }} key={index}>
+                <StatsCard>
+                  <StatCardHeading variant="h4">{stat.name}</StatCardHeading>
+                  <StatCardValue variant="h2">{stat.value}</StatCardValue>
+                  <StatCardHeading variant="h4">{stat.subTitle}</StatCardHeading>
+                </StatsCard>
+              </Grid>
+            ))}
+          </Grid>
+        </StatsCardHead>
+      </AppContentWrapper>
     </StatsContentWrapper>
   );
 };

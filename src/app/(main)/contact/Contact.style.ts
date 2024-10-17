@@ -18,19 +18,19 @@ export const ContactIconHead = styled(Box)({
 
 export const ContactLinksHead = styled(Box)({
   padding: '33px 0 33px 39px',
-  borderLeft: '2px solid #00B8C9'
+  borderLeft: '2px solid #DA9694'
 });
 
 export const ContactHeadingTypography = styled(Typography)({
   fontWeight: 700,
-  fontFamily: 'var(--font-poppins)',
+  fontFamily: 'Jost, sans-serif',
   color: '#1F1F1F',
-  fontSize: '46px',
+  fontSize: '49px',
   textTransform: 'uppercase',
 });
 export const ContactParaTypography = styled(Typography)({
   fontWeight: 500,
-  fontFamily: 'var(--font-poppins)',
+  fontFamily: 'Lato, sans-serif',
   color: '#000000',
   fontSize: '16px',
   maxWidth: '586px'
@@ -38,7 +38,7 @@ export const ContactParaTypography = styled(Typography)({
 export const ContactStyledLinkOne = styled(Link)({
   color: '#000000',
   textDecoration: 'none',
-  fontFamily: 'var(--font-poppins)',
+  fontFamily: 'Lato, sans-serif',
   fontSize: '16px',
   display: 'block',
   '&:hover': {

@@ -1,9 +1,34 @@
-import { AppBar, Box, styled, Toolbar } from '@mui/material';
+import { AppBar, Box, styled, Toolbar, Menu } from '@mui/material';
 import Link from 'next/link';
+
+const CommonNavbarBox = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+});
+
+export const CommonMenu = styled(Menu)({
+  '& .MuiPaper-root':{
+    transform: 'translate(-30px, 25px)',
+    borderRadius: '0 0 15px 15px',
+    boxShadow: '4px 20px 27.5px 0 rgba(0,0,0,0.17)',
+    background: '#FCFDFF',
+    padding: '10px',
+    paddingTop: '20px',
+  },
+  '& .MuiMenuItem-root': {
+    color: '#000',
+    fontWeight: 400,
+    fontSize: '10px',
+    textTransform: 'capitalize',
+    fontFamily: 'Lato, sans-serif',
+    borderRadius: '4px',
+    padding: '8px'
+  }
+});
 
 export const NavbarContainer = styled(AppBar)({
   backgroundColor: 'white',
-  maxWidth: '1600px !important',
+  maxWidth: '1605px !important',
   borderRadius: '20px',
   padding: '20px !important',
   right: '50%',
@@ -14,28 +39,38 @@ export const NavbarContainer = styled(AppBar)({
 });
 
 export const NavbarContentWrapper = styled(Toolbar)({
-  justifyContent: 'space-between',
   height: 'max-content',
   minHeight: '16px !important',
-});
-
-export const NavbarLinksContainer = styled(Box)({
-  margin: '0 3rem',
   display: 'flex',
-  width: '100%',
-  maxWidth: '710px',
-  justifyContent: 'space-between',
-});
-
-export const NavbarButtonsContainer = styled(Box)({
-  display: 'flex',
-  justifyContent: 'space-between',
   alignItems: 'center',
-  gap: '1rem',
+  justifyContent: 'space-between',
 });
 
-export const NavbarLink = styled(Link)({
-  color: 'black',
-  fontWeight: '500',
-  fontSize: '1rem',
+export const NavbarLinksContainer = styled(CommonNavbarBox)({});
+
+export const NavbarButtonsContainer = styled(CommonNavbarBox)({
+  justifyContent: 'space-between',
+  gap: '11px',
+  width: '203px',
+});
+
+export const NavbarLogoHead = styled(Link)({
+  width: '203px',
+  display: 'flex',
+  alignItems: 'center',
+});
+
+const CommonNavbarLink = styled(Link)({
+  color: '#000',
+  fontWeight: 700,
+  fontSize: '15px',
+  textTransform: 'capitalize',
+  fontFamily: 'Lato, sans-serif',
+});
+
+export const NavbarLink = styled(CommonNavbarLink)({
+  margin: '0 36px',
+});
+
+export const DropdownMenuWrapper = styled(Box)({
 });

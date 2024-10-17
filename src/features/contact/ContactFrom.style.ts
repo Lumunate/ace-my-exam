@@ -13,11 +13,10 @@ export const ContactFormContainer = styled(Box)({
 export const ContactButton = styled(ButtonBase)({
   padding: '8px',
   fontWeight: 400,
-  fontFamily: 'var(--font-poppins)',
+  fontFamily: 'Lato, sans-serif',
   fontSize: '14px',
   color: 'white',
-  lineHeight: '2.4rem',
-  backgroundColor: 'rgba(0, 184, 201, 1)',
+  backgroundColor: '#DA9694',
   textAlign: 'center',
   border: 'none',
   borderRadius: '4px',
@@ -26,6 +25,6 @@ export const ContactButton = styled(ButtonBase)({
   width: '170px',
   marginTop: '60px',
   '&:hover': {
-    backgroundColor: 'gray',
+    backgroundColor: '#c0605e',
   },
 });

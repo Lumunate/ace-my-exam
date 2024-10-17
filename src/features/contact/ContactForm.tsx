@@ -1,7 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CircularProgress, Grid, Snackbar } from '@mui/material';
+import { CircularProgress, Snackbar } from '@mui/material';
+import Grid from '@mui/material/Grid2';
 import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
@@ -54,7 +55,7 @@ export default function ContactForm() {
       <ContactFormContainer>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Grid container columns={24} columnSpacing={4} rowSpacing={2}>
-            <Grid item md={12}>
+            <Grid size={{ xs: 24, md: 12 }}>
               <StyledTextField
                 label="Name"
                 variant="standard"
@@ -67,7 +68,7 @@ export default function ContactForm() {
                 labelFontSize="14px"
               />
             </Grid>
-            <Grid item md={12}>
+            <Grid size={{ xs: 24, md: 12 }}>
               <StyledTextField
                 label="Last Name"
                 variant="standard"
@@ -80,7 +81,7 @@ export default function ContactForm() {
                 labelFontSize="14px"
               />
             </Grid>
-            <Grid item md={12}>
+            <Grid size={{ xs: 24, md: 12 }}>
               <StyledTextField
                 label="Email"
                 variant="standard"
@@ -93,7 +94,7 @@ export default function ContactForm() {
                 labelFontSize="14px"
               />
             </Grid>
-            <Grid item md={12}>
+            <Grid size={{ xs: 24, md: 12 }}>
               <StyledTextField
                 label="Phone"
                 variant="standard"
@@ -106,7 +107,7 @@ export default function ContactForm() {
                 labelFontSize="14px"
               />
             </Grid>
-            <Grid item md={12}>
+            <Grid size={{ xs: 24, md: 12 }}>
               <StyledTextField
                 label="Message"
                 variant="standard"

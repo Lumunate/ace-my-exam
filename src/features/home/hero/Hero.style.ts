@@ -1,52 +1,57 @@
 'use client';
+
 import { Box, ButtonBase, styled, Typography } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
 
-export const HeroHeading = styled(Typography)({
-  fontWeight: 700,
-  fontSize: '4.6rem',
-  lineHeight: '6.9rem',
-  marginBottom: '2rem',
-  textShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
-  textAlign: 'center',
+const CommonHeroTypography = styled(Typography)({
+  fontWeight: 400,
+  fontStyle: 'normal',
+  textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
 });
 
-export const HeroContent = styled(Typography)({
+export const HeroHeading = styled(CommonHeroTypography)({
   fontWeight: 600,
-  fontSize: '1.8rem',
-  lineHeight: '2.7rem',
-  marginBottom: '1.2rem',
-  textAlign: 'center',
+  fontSize: '49px',
+  marginTop: '43px',
+  marginBottom: '10px',
+  lineHeight: '53px',
+  fontFamily: 'Jost, sans-serif',
+  maxWidth: '600px',
+  textTransform: 'capitalize',
+});
+
+export const HeroContent = styled(CommonHeroTypography)({
+  fontSize: '18px',
+  marginBottom: '10px',
+  fontFamily: 'Lato, sans-serif',
+  maxWidth: '779px',
 });
 
 export const HeroCTAButton = styled(ButtonBase)({
-  padding: '1.8rem 6.5rem',
-  fontWeight: 700,
-  fontFamily: 'var(--font-poppins)',
-  fontSize: '1.6rem',
-  color: 'white',
-  lineHeight: '2.4rem',
-  backgroundColor: 'rgba(0, 184, 201, 1)',
-  textAlign: 'center',
+  padding: '20px 65px',
+  fontWeight: 400,
+  fontSize: '16px',
+  color: '#FFF',
+  backgroundColor: '#DA9694',
   border: 'none',
-  borderRadius: '8px',
+  borderRadius: '100px',
+  fontStyle: 'normal',
+  fontFamily: 'Lato, sans-serif',
   transition: 'all 0.3s ease-in-out',
   '&:hover': {
     backgroundColor: 'gray',
   },
-
-  marginTop: '2rem',
 });
 
 export const HeroWrapper = styled(Box)({
   width: '100%',
-  height: '100vh',
   position: 'relative',
 });
 
 export const HeroImage = styled(Image)({
   width: '100%',
-  height: '100vh',
+  height: '100%',
   objectFit: 'cover',
 });
 
@@ -56,17 +61,67 @@ export const HeroImageOverlay = styled(Box)({
   left: 0,
   width: '100%',
   height: '100%',
-  backgroundColor: 'rgba(0, 0, 0, 0.66)',
+  background: 'linear-gradient(106deg, rgba(0, 0, 0, 0.29) 0.91%, rgba(218, 150, 148, 0.45) 99.09%)',
 });
 
 export const HeroContentContainer = styled(Box)({
-  maxWidth: '770px',
+  padding: '265px 0 349px',
   display: 'flex',
-  margin: '0 auto',
-  justifyContent: 'center',
-  alignItems: 'center',
+  alignItems: 'end',
+});
+
+export const HeroLeftContentCont = styled(Box)({
+  paddingBottom: '73px',
+});
+
+export const HeroRightContentCont = styled(Box)({
+  position: 'relative',
+  flex: 1,
+  display: 'flex',
   flexDirection: 'column',
-  height: '100%',
+  alignItems: 'end',
+  paddingRight: '110px',
+});
+
+export const HeroCard = styled(Box)<{ width?: number }>(({ width }) => ({
+  backgroundColor: 'rgba(255, 255, 255, 0.05)',
+  backdropFilter: 'blur(6.9px)',
+  padding: '20px 14px',
+  borderRadius: '20px',
+  border: '1px solid rgba(255, 255, 255, 0.10)',
+  display: 'flex',
+  alignItems: 'center',
+  marginBottom: '10px',
+  maxWidth: width ? `${width}px` : '100%',
+}));
+
+export const HeroCardHeading = styled(CommonHeroTypography)({
+  fontSize: '18px',
+  fontFamily: 'Lato, sans-serif',
+  textTransform: 'capitalize',
+  marginLeft: '21px',
+  flex: 1,
+});
+
+export const HeroMediaHead = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '40px',
+  position: 'absolute',
+  right: '0px',
+  bottom: '70px',
+  transform: 'rotate(90deg) translateY(-160px)',
+  zIndex: 10,
+});
+
+export const SocialIconsWrapper = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  gap: '21px',
+});
+
+export const HeroLink = styled(Link)({
+  transform: 'rotate(-90deg)',
 });
 
 export const HeroImageContainer = styled(Box)({
@@ -76,9 +131,4 @@ export const HeroImageContainer = styled(Box)({
   right: 0,
   bottom: 0,
   zIndex: -1,
-
-  boxShadow: '0px 4px 20.8px 0px rgba(0, 0, 0, 0.55)',
-  maskImage: `url("data:image/svg+xml,%3Csvg fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 0H1917.5L1854.62 845.749C1850.04 907.354 1798.72 955 1736.95 955H0V0Z' fill='black'/%3E%3C/svg%3E")`,
-  maskPosition: 'center',
-  maskRepeat: 'no-repeat',
 });
