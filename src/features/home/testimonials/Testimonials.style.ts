@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 export const TestimonialsWrapper = styled(Box)({
   width: '100%',
-  padding: '150px 0 136px',
+  padding: '150px 0 120px',
   textAlign: 'center',
   overflow: 'hidden',
 });

@@ -37,7 +37,7 @@ interface Testimonial {
   stars: number;
 }
 
-const TestimonialsSwiper: FC = () => {
+const AboutTestimonialsSwiper: FC = () => {
   const swiperRef = useRef<SwiperType | null>(null);
 
   useEffect(() => {
@@ -60,8 +60,8 @@ const TestimonialsSwiper: FC = () => {
   };
 
   return (
-    <TestimonialsSwiperWrapper withPadding={false}>
-      <TestimonialsNavigationWrapper positionLeft="40%" width="20%">
+    <TestimonialsSwiperWrapper  withPadding={true}>
+      <TestimonialsNavigationWrapper  positionLeft="27.5%" width="45%">
         <Box className="swiper-button-prev">
           <Image src="/icons/prev.svg" alt="Prev" width={14} height={11} />
         </Box>
@@ -71,18 +71,9 @@ const TestimonialsSwiper: FC = () => {
       </TestimonialsNavigationWrapper >
 
       <Swiper
-        effect="coverflow"
         grabCursor={true}
-        slidesPerView={3}
+        slidesPerView={1}
         spaceBetween={0}
-        centeredSlides={true}
-        coverflowEffect={{
-          rotate: 0,
-          stretch: 50,
-          depth: 100,
-          modifier: 2,
-          slideShadows: false,
-        }}
         loop={true}
         pagination={{ clickable: true }}
         navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}
@@ -152,4 +143,4 @@ const TestimonialsSwiper: FC = () => {
   );
 };
 
-export default TestimonialsSwiper;
+export default AboutTestimonialsSwiper;

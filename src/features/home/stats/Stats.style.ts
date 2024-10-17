@@ -19,7 +19,7 @@ export const StatsContentWrapper = styled(Box)({
     left: '0',
     width: '100%',
     height: '50%',
-    backgroundColor: '#ebfdfe',
+    backgroundColor: '#fffbfb',
     borderRadius: '100px 100px 0 0',
     zIndex: '-1',
   },

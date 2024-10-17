@@ -46,22 +46,22 @@ const FooterMediaItem = styled(ListItem)({
 
 const FooterLink = styled(Link)({
   color: '#fff',
-  fontWeight: 500,
+  fontWeight: 400,
   fontSize: '15px',
   textTransform: 'capitalize',
   fontStyle: 'normal',
-  fontFamily: 'var(--font-poppins)',
+  fontFamily: 'Lato, sans-serif',
   margin: '0 36px',
   whiteSpace: 'nowrap',
 });
 
 const FooterHeading = styled(Typography)({
   color: '#fff',
-  fontWeight: 500,
+  fontWeight: 400,
   fontSize: '15px',
   textTransform: 'capitalize',
   fontStyle: 'normal',
-  fontFamily: 'var(--font-poppins)',
+  fontFamily: 'Lato, sans-serif',
   marginLeft: '6.5px',
   whiteSpace: 'nowrap',
 });
