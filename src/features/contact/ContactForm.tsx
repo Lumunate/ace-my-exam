@@ -1,9 +1,8 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CircularProgress, Snackbar } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
 import { StyledTextField } from '@/components/form/Form.style';
@@ -35,7 +34,7 @@ export default function ContactForm() {
         showSnackbar('Form submitted successfully!');
         reset();
       },
-      onError: () => {
+      onError: (error) => {
         showSnackbar('Failed to submit Contact Form. Please try again later!');
       }
     });
