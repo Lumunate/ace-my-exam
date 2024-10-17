@@ -7,7 +7,7 @@ const BaseBoxFlex = styled(Box)({
   alignItems: 'center',
 });
 
-export const TestimonialsSwiperWrapper = styled(Box)({
+export const TestimonialsSwiperWrapper = styled(Box)<{ withPadding?: boolean }>(({ withPadding }) => ({
   width: '100%',
   height: '100% !important',
   overflow: 'hidden',
@@ -17,7 +17,7 @@ export const TestimonialsSwiperWrapper = styled(Box)({
     padding: '50px 0 !important',
     position: 'relative',
     maxHeight: '100% !important',
-    height: 'auto !important', 
+    height: 'auto !important',
   },
   '& .swiper-slide:not(.swiper-slide-active):not(.swiper-slide-prev):not(.swiper-slide-next)': {
     visibility: 'hidden !important',
@@ -28,7 +28,8 @@ export const TestimonialsSwiperWrapper = styled(Box)({
     transition: 'all 0.3s ease !important',
     minHeight: '426px !important',
     maxHeight: '100% !important',
-    height: 'auto !important', 
+    height: 'auto !important',
+    padding: withPadding ? '0 30px' : '0',
   },
   '& .swiper-slide-active, & .swiper-slide-prev, & .swiper-slide-next': {
     visibility: 'visible !important',
@@ -43,17 +44,10 @@ export const TestimonialsSwiperWrapper = styled(Box)({
   '& .swiper-button-next:after, .swiper-button-prev:after': {
     display: 'none !important',
   },
-});
-
-export const TestimonialsHeading = styled(Typography)({
-  fontWeight: 700,
-  fontSize: '46px',
-  color: '#000000',
-  marginBottom: '40px',
-});
+}));
 
 export const TestimonialsCard = styled(Box)({
-  backgroundColor: '#fff',
+  backgroundColor: '#FCFDFF',
   padding: '58px 30px',
   borderRadius: '20px',
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
@@ -64,25 +58,19 @@ export const TestimonialsCard = styled(Box)({
   maxHeight: '100%',
   display: 'flex',
   flexDirection: 'column',
-  justifyContent:'space-between'
-});
-
-export const TestimonialsAvatarNameWrapper = styled(BaseBoxFlex)({
-});
-
-export const TestimonialsInfoHead = styled(BaseBoxFlex)({
   justifyContent: 'space-between',
 });
 
-export const TestimonialsStarsHead = styled(BaseBoxFlex)({
-  marginTop: '10px',
-});
-
-export const TestimonialAvatar = styled(Avatar)({
-  width: 61,
-  height: 61,
-  marginRight: '15px',
-});
+export const TestimonialsNavigationWrapper = styled(Box)<{ positionLeft: string; width: string }>(({ positionLeft, width }) => ({
+  position: 'absolute',
+  left: positionLeft,
+  right: '0',
+  bottom: '15px',
+  display: 'flex',
+  justifyContent: 'space-between',
+  width: width,
+  zIndex: 2,
+}));
 
 const BaseTextStyle = styled(Typography)({
   fontFamily: 'Lato, sans-serif',
@@ -114,31 +102,24 @@ export const TestimonialsParaTwo = styled(BaseTextStyle)({
   color: '#818181',
 });
 
-export const TestimonialsNavigationWrapper = styled(Box)({
-  position: 'absolute',
-  left: '40%',
-  right: '0',
-  bottom: '15px',
+export const TestimonialAvatar = styled(Avatar)({
+  width: 61,
+  height: 61,
+  marginRight: '15px',
+});
+
+export const TestimonialsDateHead = styled(Box)({
   display: 'flex',
   justifyContent: 'space-between',
-  width: '20%',
-  zIndex: 2,
-});
-
-export const TestimonialsNavigationButton = styled(Box)({
-  width: '40px',
-  height: '40px',
-  backgroundColor: '#FFF',
-  borderRadius: '50%',
-  display: 'flex',
-  justifyContent: 'center',
   alignItems: 'center',
-  cursor: 'pointer',
-  boxShadow: '0px 4px 11px rgba(0, 0, 0, 0.1)',
 });
-export const TestimonialsDateHead = styled(Box)({
-  display:'flex',
-  justifyContent:'space-between',
-  alignItems:'center',
 
+export const TestimonialsAvatarNameWrapper = styled(BaseBoxFlex)({});
+
+export const TestimonialsInfoHead = styled(BaseBoxFlex)({
+  justifyContent: 'space-between',
+});
+
+export const TestimonialsStarsHead = styled(BaseBoxFlex)({
+  marginTop: '10px',
 });
