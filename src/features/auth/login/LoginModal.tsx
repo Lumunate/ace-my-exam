@@ -1,11 +1,12 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Snackbar, CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { useState } from 'react';
 import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from 'react-hook-form';
 
 import { StyledTextField } from '@/components/form/Form.style';
+import { useSnackbar } from '@/contexts/SnackbarContext';
 import { loginSchema } from '@/features/auth/login/LoginSchema';
 
 import {
@@ -38,25 +39,24 @@ interface LoginModalProps {
 
 const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSignUp }) => {
   const [loading, setLoading] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+  const { showSnackbar } = useSnackbar();
 
   const { register, reset, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: '', password: '' },
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     setLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSnackbarMessage('Login successful');
+      showSnackbar('Login successful');
       reset();
-      // eslint-disable-next-line no-console
-      console.log('Form data:', data);
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      setSnackbarMessage('Login failed');
+      showSnackbar('Login failed');
     } finally {
       setLoading(false);
     }
@@ -100,15 +100,6 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
           </AuthParaTypography>
         </AuthModalContent>
       </AuthModalContainer>
-
-      {snackbarMessage && (
-        <Snackbar
-          open={!!snackbarMessage}
-          onClose={() => setSnackbarMessage(null)}
-          message={snackbarMessage}
-          autoHideDuration={3000}
-        />
-      )}
     </>
   );
 };

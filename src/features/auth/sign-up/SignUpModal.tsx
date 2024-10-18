@@ -1,11 +1,12 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Snackbar, CircularProgress } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import { useState } from 'react';
 import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from 'react-hook-form';
 
 import { StyledTextField } from '@/components/form/Form.style';
+import { useSnackbar } from '@/contexts/SnackbarContext';
 import { signUpSchema } from '@/features/auth/sign-up/SignUpSchema';
 
 import {
@@ -39,9 +40,14 @@ interface SignUpModalProps {
 
 const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchToLogin }) => {
   const [loading, setLoading] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+  const { showSnackbar } = useSnackbar();
 
-  const { register, reset, handleSubmit, formState: { errors } } = useForm<SignUpFormInputs>({
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<SignUpFormInputs>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       name: '',
@@ -55,14 +61,14 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
     setLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSnackbarMessage('Sign-up successful');
+      showSnackbar('Sign-up successful');
       reset();
       // eslint-disable-next-line no-console
       console.log('Form data:', data);
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      setSnackbarMessage('Sign-up failed');
+      showSnackbar('Sign-up failed');
     } finally {
       setLoading(false);
     }
@@ -124,15 +130,6 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
           </AuthParaTypography>
         </AuthModalContent>
       </AuthModalContainer>
-
-      {snackbarMessage && (
-        <Snackbar
-          open={!!snackbarMessage}
-          onClose={() => setSnackbarMessage(null)}
-          message={snackbarMessage}
-          autoHideDuration={3000}
-        />
-      )}
     </>
   );
 };

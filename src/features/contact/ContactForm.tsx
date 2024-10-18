@@ -1,53 +1,43 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CircularProgress, Snackbar } from '@mui/material';
+import { CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Grid2';
-import { useState } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { contactSchema } from '@/app/(main)/contact/ContactSchema';
 import { StyledTextField } from '@/components/form/Form.style';
-import { ContactButton, ContactFormContainer } from '@/features/contact/ContactFrom.style';
+import { useSnackbar } from '@/contexts/SnackbarContext';
+import { ContactButton, ContactFormContainer } from '@/features/contact/ContactForm.style';
+import { useSubmitContactForm } from '@/hooks/useContactForm';
+import { contactSchema, IContact } from '@/types/contact';
 
-interface ContactFormInputs {
-  name: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  message: string;
-}
+const defaultValues: IContact = {
+  name: '',
+  lastName: '',
+  email: '',
+  phone: '',
+  message: '',
+};
 
 export default function ContactForm() {
-  const [loading, setLoading] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+  const { showSnackbar } = useSnackbar();
 
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactFormInputs>({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<IContact>({
     resolver: zodResolver(contactSchema),
-    defaultValues: {
-      name: '',
-      lastName: '',
-      email: '',
-      phone: '',
-      message: '',
-    },
+    defaultValues
   });
 
-  const onSubmit: SubmitHandler<ContactFormInputs> = async (data) => {
-    setLoading(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSnackbarMessage('Message sent successfully!');
-      reset();
-      // eslint-disable-next-line no-console
-      console.log('Form data:', data);
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      setSnackbarMessage('Failed to send the message');
-    } finally {
-      setLoading(false);
-    }
+  const { mutate: submitForm, isLoading } = useSubmitContactForm();
+  const onSubmit: SubmitHandler<IContact> = async (data) => {
+    submitForm(data, {
+      onSuccess: () => {
+        showSnackbar('Form submitted successfully!');
+        reset();
+      },
+      onError: () => {
+        showSnackbar('Failed to submit Contact Form. Please try again later!');
+      }
+    });
   };
 
   return (
@@ -64,8 +54,8 @@ export default function ContactForm() {
                 error={!!errors.name}
                 helperText={errors.name?.message}
                 {...register('name')}
-                inputFontSize="20px"
-                labelFontSize="14px"
+                inputfontsize="20px"
+                labelfontsize="14px"
               />
             </Grid>
             <Grid size={{ xs: 24, md: 12 }}>
@@ -77,8 +67,8 @@ export default function ContactForm() {
                 error={!!errors.lastName}
                 helperText={errors.lastName?.message}
                 {...register('lastName')}
-                inputFontSize="20px"
-                labelFontSize="14px"
+                inputfontsize="20px"
+                labelfontsize="14px"
               />
             </Grid>
             <Grid size={{ xs: 24, md: 12 }}>
@@ -90,8 +80,8 @@ export default function ContactForm() {
                 error={!!errors.email}
                 helperText={errors.email?.message}
                 {...register('email')}
-                inputFontSize="20px"
-                labelFontSize="14px"
+                inputfontsize="20px"
+                labelfontsize="14px"
               />
             </Grid>
             <Grid size={{ xs: 24, md: 12 }}>
@@ -103,8 +93,8 @@ export default function ContactForm() {
                 error={!!errors.phone}
                 helperText={errors.phone?.message}
                 {...register('phone')}
-                inputFontSize="20px"
-                labelFontSize="14px"
+                inputfontsize="20px"
+                labelfontsize="14px"
               />
             </Grid>
             <Grid size={{ xs: 24, md: 12 }}>
@@ -116,24 +106,16 @@ export default function ContactForm() {
                 error={!!errors.message}
                 helperText={errors.message?.message}
                 {...register('message')}
-                inputFontSize="20px"
-                labelFontSize="14px"
+                inputfontsize="20px"
+                labelfontsize="14px"
               />
             </Grid>
           </Grid>
           <ContactButton type="submit">
-            {loading ? <CircularProgress size={24} /> : 'Send Message'}
+            {isLoading ? <CircularProgress size={24} /> : 'Send Message'}
           </ContactButton>
         </form>
       </ContactFormContainer>
-      {snackbarMessage && (
-        <Snackbar
-          open={!!snackbarMessage}
-          onClose={() => setSnackbarMessage(null)}
-          message={snackbarMessage}
-          autoHideDuration={3000}
-        />
-      )}
     </>
   );
 }

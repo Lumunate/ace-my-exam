@@ -2,23 +2,23 @@
 import { styled, TextField } from '@mui/material';
 
 export const StyledTextField = styled(TextField)<{
-  inputFontSize?: string;
-  labelFontSize?: string;
-}>(({ inputFontSize = '14px', labelFontSize = '10px' }) => ({
+  inputfontsize?: string;
+  labelfontsize?: string;
+}>(({ inputfontsize = '14px', labelfontsize = '10px' }) => ({
   input: {
     fontWeight: 600,
-    fontSize: inputFontSize, 
+    fontSize: inputfontsize,
     fontFamily: 'Jost, sans-serif',
   },
   '& .MuiInputLabel-root': {
     color: '#818181',
     fontWeight: 600,
-    fontSize: labelFontSize, 
+    fontSize: labelfontsize,
     textTransform: 'capitalize',
     fontFamily: 'Lato, sans-serif',
   },
   '& .MuiFormHelperText-root.Mui-error ': {
-    fontSize: '10px', 
+    fontSize: '10px',
   },
   '& .MuiInputLabel-root.Mui-focused': {
     color: '#818181',
