@@ -17,6 +17,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json(user, { status: 201 });
   } catch (error: unknown) {
+    console.log(error);
     if (error instanceof AuthError) {
       return NextResponse.json({ errors: error.message, name: error.name }, { status: error.statusCode });
     }
