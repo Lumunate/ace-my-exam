@@ -33,7 +33,7 @@ export const NavbarContainer = styled(AppBar)(({ theme }) => ({
   width: '100%',
   padding: '20px !important',
   boxShadow: 'unset',
-  [theme.breakpoints.up('md')]: {
+  [theme.breakpoints.up('lg')]: {
     backgroundColor: 'white',
     borderRadius: '20px',
     padding: '20px !important',
@@ -42,7 +42,7 @@ export const NavbarContainer = styled(AppBar)(({ theme }) => ({
     marginTop: '25px !important',
     blur: '26px',
     boxShadow: '0 4px 37.5px 0 rgba(0,0,0,0.17)',
-    width: '96%',
+    width: '97.5%',
     maxWidth: '1605px !important',
   },
 }));

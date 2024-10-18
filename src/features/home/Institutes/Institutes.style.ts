@@ -1,38 +1,40 @@
 'use client';
 
-import { Box, styled } from '@mui/material';
+import { Box, styled, keyframes } from '@mui/material';
+
+const infiniteScroll = keyframes`
+  0% {
+    transform: translateX(0); /* Start with all images in view */
+  }
+  100% {
+    transform: translateX(-50%); /* Move to left and wrap halfway */
+  }
+`;
 
 export const InstituteWrapper = styled(Box)({
   width: '100%',
+  overflow: 'hidden', 
+  padding: '20px 0',
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  position: 'relative',
 });
 
-export const InstituteGrid = styled(Box)(({ theme }) => ({
-  display: 'grid',
-  gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', 
-  gap: '29px',
+export const InstituteTrack = styled(Box)({
+  display: 'flex',
   alignItems: 'center',
-  justifyContent: 'center',
-  maxWidth: '1200px',
-  width: '100%',
-  [theme.breakpoints.down('lg')]: {
-    gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))',  
+  justifyContent: 'start',
+  whiteSpace: 'nowrap',
+  animation: `${infiniteScroll} 40s linear infinite`, 
+  '&:hover': {
+    animationPlayState: 'paused', 
   },
-  [theme.breakpoints.down('md')]: {
-    gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))', 
-  },
-  [theme.breakpoints.down('sm')]: {
-    gridTemplateColumns: 'repeat(auto-fit, minmax(80px, 1fr))',  
-    gap: '10px',  
-  },
-}));
+});
 
 export const InstituteImage = styled('img')({
-  width: '100%',
+  width: '150px',
   height: 'auto',
   objectFit: 'contain',
-  aspectRatio: '4 / 3', 
-  borderRadius: '8px',
+  padding: '0 20px',
 });

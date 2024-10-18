@@ -20,7 +20,9 @@ import {
   TestimonialsInfoHead,
   TestimonialAvatar,
   TestimonialsStarsHead,
-  TestimonialsDateHead
+  TestimonialsDateHead,
+  QuotationImageHead,
+  TrustpilotImage
 } from '@/components/swiper/testimonials-swiper/TestimonialsSwiper.style';
 
 import 'swiper/css';
@@ -61,7 +63,7 @@ const AboutTestimonialsSwiper: FC = () => {
 
   return (
     <TestimonialsSwiperWrapper  withPadding={true}>
-      <TestimonialsNavigationWrapper  positionLeft="27.5%" width="45%">
+      <TestimonialsNavigationWrapper  positionLeft="50%" width="300px">
         <Box className="swiper-button-prev">
           <Image src="/icons/prev.svg" alt="Prev" width={14} height={11} />
         </Box>
@@ -107,14 +109,13 @@ const AboutTestimonialsSwiper: FC = () => {
                       </TestimonialsParaTwo>
                     </Box>
                   </TestimonialsAvatarNameWrapper>
-                  <Box>
+                  <QuotationImageHead>
                     <Image
                       src="/icons/quotation.svg"
-                      width={79}
-                      height={60}
                       alt="quotation-icon"
+                      layout='fill' 
                     />
-                  </Box>
+                  </QuotationImageHead>
                 </TestimonialsInfoHead>
                 <TestimonialsStarsHead>
                   {renderStars(testimonial.stars)}
@@ -127,12 +128,13 @@ const AboutTestimonialsSwiper: FC = () => {
                 <TestimonialsParaTwo variant="subtitle2">
                 Feedback given: {testimonial.feedbackDate}
                 </TestimonialsParaTwo>
-                <Image
-                  src="/home/trustpilot.svg"
-                  width={140}
-                  height={34}
-                  alt="trustpilot-icon"
-                />
+                <TrustpilotImage>
+                  <Image
+                    src="/home/trustpilot.svg"
+                    alt="trustpilot-icon"
+                    layout='fill' 
+                  />
+                </TrustpilotImage>
               </TestimonialsDateHead>
             
             </TestimonialsCard>

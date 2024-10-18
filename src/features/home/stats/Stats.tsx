@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 
 import { AppContentWrapper } from '@/components/common/Global.style';
@@ -29,23 +30,25 @@ const stats: StatItem[] = [
 
 const Stats: React.FC = () => {
   return (
-    <StatsContentWrapper>
-      <AppContentWrapper>
-        <StatsCardHead>
-          <Grid container columnSpacing={'22px'} columns={24}>
-            {stats.map((stat, index) => (
-              <Grid size={{ xs: 12, md: 8 }} key={index}>
-                <StatsCard>
-                  <StatCardHeading variant="h4">{stat.name}</StatCardHeading>
-                  <StatCardValue variant="h2">{stat.value}</StatCardValue>
-                  <StatCardHeading variant="h4">{stat.subTitle}</StatCardHeading>
-                </StatsCard>
-              </Grid>
-            ))}
-          </Grid>
-        </StatsCardHead>
-      </AppContentWrapper>
-    </StatsContentWrapper>
+    <Box sx={{ position: 'relative' }}>
+      <StatsContentWrapper>
+        <AppContentWrapper>
+          <StatsCardHead>
+            <Grid container columnSpacing={{ xs: '4px', md: '10px', lg: '22px' }} columns={24}>
+              {stats.map((stat, index) => (
+                <Grid size={{ xs: 8 }} key={index}>
+                  <StatsCard>
+                    <StatCardHeading variant="h4">{stat.name}</StatCardHeading>
+                    <StatCardValue variant="h2">{stat.value}</StatCardValue>
+                    <StatCardHeading variant="h4">{stat.subTitle}</StatCardHeading>
+                  </StatsCard>
+                </Grid>
+              ))}
+            </Grid>
+          </StatsCardHead>
+        </AppContentWrapper>
+      </StatsContentWrapper>
+    </Box>
   );
 };
 

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 
+import { Button } from '@/components/buttons/Button.style';
 import { AppContentWrapper } from '@/components/common/Global.style';
 import SectionHeading from '@/components/section-heading/SectionHeading';
 
@@ -8,7 +9,6 @@ import {
   HeroCardHeading,
   HeroContent,
   HeroContentContainer,
-  HeroCTAButton,
   HeroHeading,
   HeroImage,
   HeroImageContainer,
@@ -48,7 +48,15 @@ const Hero: React.FC = () => {
               Based in Cambridge, UK, Acemyexam provides best-in-class personalised learning to students in order to achieve academic excellence, confidence, and academic growth.
             </HeroContent>
             <HeroContent>Excel Academically Today!</HeroContent>
-            <HeroCTAButton>Get Started</HeroCTAButton>
+            <Button
+              special
+              fontSize='16px'
+              borderRadius='50px'
+              width='212px'
+              height='60px'
+            >
+              Get Started
+            </Button>
           </HeroLeftContentCont>
           <HeroRightContentCont>
             <HeroCardComponent width={282}>

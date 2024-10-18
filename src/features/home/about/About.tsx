@@ -26,10 +26,10 @@ const AboutCard: React.FC<AboutCardProps> = ({ title, bgColor, textColor }) => (
 const About: React.FC = () => {
   return (
     <AboutWrapper>
-      <Grid container columnSpacing={'22px'} columns={24} alignItems={'center'}>
-        <Grid size={{ xs: 24, md: 11 }} sx={{position: 'relative'}}>
+      <Grid container columnSpacing={{xs: 0, lg: '22px'}} columns={24} alignItems={{xs: 'start', lg: 'center'}} justifyContent={'center'}>
+        <Grid size={{ xs: 24, sm: 16, md: 12, lg: 11 }} sx={{position: 'relative', order: {xs: 2, lg: 1}, mt: {xs: '20px', lg: '0'}}}>
           <AboutImgHead>
-            <AboutImage src={'/home/about.png'} width={0} height={0} sizes='100vw' alt='about' />
+            <AboutImage src={'/home/about.webp'} width={0} height={0} sizes='100vw' alt='about' />
           </AboutImgHead>
           <AboutOverlayHead>
             <AboutCard
@@ -46,7 +46,7 @@ const About: React.FC = () => {
             </AboutCardTwoHead>
           </AboutOverlayHead>
         </Grid>
-        <Grid size={{ xs: 24, md: 13 }}>
+        <Grid size={{ xs: 24, lg: 13 }} sx={{order: {xs: 1, lg: 2},}}>
           <AboutContentHead>
             <SectionHeading text='About Us' align='start' showLeftLine={false} color='#DA9694'  gradientType = 'second'  />
             <AboutHeading>A Legacy of Excellence</AboutHeading>
@@ -57,22 +57,22 @@ const About: React.FC = () => {
               We offer expert tuition in Maths and Science for students preparing for GCSE, IGCSE, A-Levels, and a variety of other exams, including entrance exams to independent schools and scholarship opportunities. Whether you’re aiming for top exam results or building a strong academic foundation, we provide the support and expertise to help you succeed.
             </AboutPara>
 
-            <Grid container columnSpacing={'24px'} columns={24} sx={{mt: '30px'}}>
-              <Grid size={{ xs: 24, md: 8 }}>
+            <Grid container columnSpacing={{xs: '10px', xl: '24px'}} rowSpacing={{xs: '10px', lg: '0px'}} columns={24} sx={{mt: '30px'}}>
+              <Grid size={{ xs: 24, sm: 8 }}>
                 <AboutCard
                   title='GCSE to Alevel Exam Preparation'
                   bgColor='#FFF'
                   textColor='#000'
                 />
               </Grid>
-              <Grid size={{ xs: 24, md: 8 }}>
+              <Grid size={{ xs: 24, sm: 8 }}>
                 <AboutCard
                   title='Scholarship Exams (13+)'
                   bgColor='#FFF'
                   textColor='#000'
                 />
               </Grid>
-              <Grid size={{ xs: 24, md: 8 }}>
+              <Grid size={{ xs: 24, sm: 8 }}>
                 <AboutCard
                   title='Entrance Exams'
                   bgColor='#FFF'
