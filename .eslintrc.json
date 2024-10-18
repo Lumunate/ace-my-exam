@@ -15,7 +15,7 @@
   },
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2020,
+    "ecmaVersion": 2018,
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
@@ -23,7 +23,7 @@
   },
   "plugins": ["react", "import", "@next/next", "@typescript-eslint"],
   "rules": {
-    "no-console": ["error"],
+    "no-console": ["warn"],
     "react/prop-types": "off",
     "react/react-in-jsx-scope": "off",
     "react/jsx-filename-extension": [
@@ -66,10 +66,7 @@
     ],
     "@typescript-eslint/no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
     "newline-after-var": ["error", "always"],
-    "padding-line-between-statements": [
-      "error",
-      { "blankLine": "always", "prev": "*", "next": "return" }
-    ]
+    "padding-line-between-statements": ["error", { "blankLine": "always", "prev": "*", "next": "return" }]
   },
   "settings": {
     "import/resolver": {
@@ -80,5 +77,13 @@
     "react": {
       "version": "detect"
     }
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.d.ts"],
+      "rules": {
+        "no-var": "off"
+      }
+    }
+  ]
 }

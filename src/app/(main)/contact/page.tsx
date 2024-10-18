@@ -3,7 +3,7 @@ import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 
 import { AppContentWrapper } from '@/components/common/Global.style';
-import ContactForm from '@/features/contact/ContactForm'; 
+import ContactForm from '@/features/contact/ContactForm';
 
 import {
   ContactContainer,
@@ -21,8 +21,8 @@ export default function ContactPage() {
         <Grid container columns={24} columnSpacing={2} sx={{ px: '40px' }}>
           <Grid size={{ xs: 24, md: 12 }} sx={{ mt: '80px' }}>
             <Box sx={{ mb: '100px', position: 'relative' }}>
-              <ContactHeadingTypography variant='h1'>CONTACT US</ContactHeadingTypography>
-              <ContactParaTypography variant='body1'>
+              <ContactHeadingTypography variant="h1">CONTACT US</ContactHeadingTypography>
+              <ContactParaTypography variant="body1">
                 We&apos;d love to hear from you. Contact us directly or use the form below. We&apos;ll be in touch.
               </ContactParaTypography>
               <ContactIconHead>
