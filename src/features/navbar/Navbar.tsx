@@ -79,7 +79,7 @@ const Navbar: React.FC = () => {
   };
 
   const theme = useTheme();
-  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
+  const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
   return (
     <>
@@ -105,7 +105,7 @@ const Navbar: React.FC = () => {
             )}
           </NavbarLogoHead>
 
-          <NavbarLinksContainer sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <NavbarLinksContainer sx={{ display: { xs: 'none', lg: 'flex' } }}>
             {pages.map((page, index) =>
               page.name === 'Resources' ? (
                 <DropdownMenuWrapper key={index}>
@@ -147,7 +147,7 @@ const Navbar: React.FC = () => {
             )}
           </NavbarLinksContainer>
 
-          <NavbarButtonsContainer sx={{ display: { xs: 'none', md: 'flex' } }}>
+          <NavbarButtonsContainer sx={{ display: { xs: 'none', lg: 'flex' } }}>
             <StyledButton onClick={handleOpenLogin}>Login</StyledButton>
             <StyledButton special onClick={handleOpenSignUp}>
               Sign Up
@@ -159,7 +159,7 @@ const Navbar: React.FC = () => {
             color="inherit"
             aria-label="menu"
             onClick={toggleDrawer(true)}
-            sx={{ display: { xs: 'block', md: 'none' } }}
+            sx={{ display: { xs: 'block', lg: 'none' } }}
           >
             <Image
               src="/icons/menu.svg"
@@ -178,7 +178,7 @@ const Navbar: React.FC = () => {
             anchor="right"
             open={drawerOpen}
             onClose={toggleDrawer(false)}
-            sx={{display: { xs: 'block', md: 'none' }}}
+            sx={{display: { xs: 'block', lg: 'none' }}}
           >
             <Box
               sx={{ maxWidth: 297, width: '90%', padding: '61px 58px' }}
@@ -202,7 +202,7 @@ const Navbar: React.FC = () => {
                   <IconHeadBlack src="/icons/degree.svg" alt="degree" width={19} height={12} />
                 </Box>
               </Box>
-              <NavbarButtonsContainer sx={{ display: { xs: 'flex', md: 'none'}, mt: '20px' }}>
+              <NavbarButtonsContainer sx={{ display: { xs: 'flex', lg: 'none'}, mt: '20px' }}>
                 <StyledButton onClick={handleOpenLogin}>Login</StyledButton>
                 <StyledButton special onClick={handleOpenSignUp}>
                   Sign Up

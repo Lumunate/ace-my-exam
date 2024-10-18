@@ -20,7 +20,9 @@ import {
   TestimonialsInfoHead,
   TestimonialAvatar,
   TestimonialsStarsHead,
-  TestimonialsDateHead
+  TestimonialsDateHead,
+  TrustpilotImage,
+  QuotationImageHead
 } from '@/components/swiper/testimonials-swiper/TestimonialsSwiper.style';
 
 import 'swiper/css';
@@ -61,7 +63,7 @@ const TestimonialsSwiper: FC = () => {
 
   return (
     <TestimonialsSwiperWrapper withPadding={false}>
-      <TestimonialsNavigationWrapper positionLeft="40%" width="20%">
+      <TestimonialsNavigationWrapper positionLeft="50%" width="300px">
         <Box className="swiper-button-prev">
           <Image src="/icons/prev.svg" alt="Prev" width={14} height={11} />
         </Box>
@@ -73,9 +75,8 @@ const TestimonialsSwiper: FC = () => {
       <Swiper
         effect="coverflow"
         grabCursor={true}
-        slidesPerView={3}
-        spaceBetween={0}
         centeredSlides={true}
+        slidesPerView={'auto'}
         coverflowEffect={{
           rotate: 0,
           stretch: 50,
@@ -116,14 +117,13 @@ const TestimonialsSwiper: FC = () => {
                       </TestimonialsParaTwo>
                     </Box>
                   </TestimonialsAvatarNameWrapper>
-                  <Box>
+                  <QuotationImageHead>
                     <Image
                       src="/icons/quotation.svg"
-                      width={79}
-                      height={60}
                       alt="quotation-icon"
+                      layout='fill' 
                     />
-                  </Box>
+                  </QuotationImageHead>
                 </TestimonialsInfoHead>
                 <TestimonialsStarsHead>
                   {renderStars(testimonial.stars)}
@@ -136,12 +136,13 @@ const TestimonialsSwiper: FC = () => {
                 <TestimonialsParaTwo variant="subtitle2">
                 Feedback given: {testimonial.feedbackDate}
                 </TestimonialsParaTwo>
-                <Image
-                  src="/home/trustpilot.svg"
-                  width={140}
-                  height={34}
-                  alt="trustpilot-icon"
-                />
+                <TrustpilotImage>
+                  <Image
+                    src="/home/trustpilot.svg"
+                    alt="trustpilot-icon"
+                    layout='fill' 
+                  />
+                </TrustpilotImage>
               </TestimonialsDateHead>
             
             </TestimonialsCard>
