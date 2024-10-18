@@ -4,7 +4,7 @@ import { Box, ButtonBase, styled } from '@mui/material';
 
 export const ContactFormContainer = styled(Box)({
   backgroundColor: '#FCFDFF',
-  padding: '92px 68px 68px 51px',
+  padding: '70px 58px 36px',
   borderRadius: '20px',
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
   zIndex: 1,
