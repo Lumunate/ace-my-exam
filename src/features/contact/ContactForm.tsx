@@ -54,8 +54,8 @@ export default function ContactForm() {
                 error={!!errors.name}
                 helperText={errors.name?.message}
                 {...register('name')}
-                inputfontsize="20px"
-                labelfontsize="14px"
+                inputFontSize="20px"
+                labelFontSize="14px"
               />
             </Grid>
             <Grid size={{ xs: 24, md: 12 }}>
@@ -67,8 +67,8 @@ export default function ContactForm() {
                 error={!!errors.lastName}
                 helperText={errors.lastName?.message}
                 {...register('lastName')}
-                inputfontsize="20px"
-                labelfontsize="14px"
+                inputFontSize="20px"
+                labelFontSize="14px"
               />
             </Grid>
             <Grid size={{ xs: 24, md: 12 }}>
@@ -80,8 +80,8 @@ export default function ContactForm() {
                 error={!!errors.email}
                 helperText={errors.email?.message}
                 {...register('email')}
-                inputfontsize="20px"
-                labelfontsize="14px"
+                inputFontSize="20px"
+                labelFontSize="14px"
               />
             </Grid>
             <Grid size={{ xs: 24, md: 12 }}>
@@ -93,8 +93,8 @@ export default function ContactForm() {
                 error={!!errors.phone}
                 helperText={errors.phone?.message}
                 {...register('phone')}
-                inputfontsize="20px"
-                labelfontsize="14px"
+                inputFontSize="20px"
+                labelFontSize="14px"
               />
             </Grid>
             <Grid size={{ xs: 24, md: 12 }}>
@@ -106,8 +106,8 @@ export default function ContactForm() {
                 error={!!errors.message}
                 helperText={errors.message?.message}
                 {...register('message')}
-                inputfontsize="20px"
-                labelfontsize="14px"
+                inputFontSize="20px"
+                labelFontSize="14px"
               />
             </Grid>
           </Grid>
