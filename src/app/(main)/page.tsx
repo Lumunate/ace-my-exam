@@ -23,7 +23,6 @@ export default function Home() {
       <AppContentWrapper>
         <Testimonials />
       </AppContentWrapper>
-    
     </>
   );
 }

@@ -111,6 +111,7 @@ export default function FeedbackForm() {
                       onChange={field.onChange}
                       variant='standard'
                       inputFontSize='20px'
+                      fullWidth
                       IconComponent={() => (
                         <Image
                           src='/icons/down.svg'
@@ -204,6 +205,7 @@ export default function FeedbackForm() {
                       onChange={field.onChange}
                       variant='standard'
                       inputFontSize='20px'
+                      fullWidth
                       IconComponent={() => (
                         <Image
                           src='/icons/down.svg'
