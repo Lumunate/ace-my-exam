@@ -1,7 +1,7 @@
 'use client';
 
-import Fade from '@mui/material/Fade';
-import MenuItem from '@mui/material/MenuItem';
+import { Box, IconButton, MenuItem, useMediaQuery, useTheme } from '@mui/material';
+import { usePathname } from 'next/navigation'
 import Image from 'next/image';
 import React, { useState } from 'react';
 
@@ -12,29 +12,41 @@ import SignUpModal from '@/features/auth/sign-up/SignUpModal';
 import {
   CommonMenu,
   DropdownMenuWrapper,
+  IconHeadBlack,
   NavbarButtonsContainer,
   NavbarContainer,
   NavbarContentWrapper,
   NavbarLink,
+  NavbarLinkWrapper,
   NavbarLinksContainer,
-  NavbarLogoHead
+  NavbarLogoHead,
+  NavTypography,
+  SmallScreenList,
+  NavbarDrawer
 } from './Navbar.style';
 
 const pages = [
   { name: 'Home', link: '/' },
   { name: 'About', link: '/about' },
-  { name: 'Resources', link: '/' }, 
+  { name: 'Resources', link: '/' },
   { name: 'Pricing', link: '/pricing' },
-  { name: 'Contact', link: '/contact' }
+  { name: 'Contact', link: '/contact' },
 ];
 
 const resources = ['Alevel Maths', 'GCSE/IGCSE Maths', 'GCSE/IGCSE Science', 'Entrance & Scholarship Exams'];
 
 const Navbar: React.FC = () => {
+  const pathname = usePathname()
+
+  const isHomeOrAbout = pathname === '/' || pathname === '/about';
+  const isContactOrPricing = pathname === '/contact' || pathname === '/pricing' || pathname === '/feedback';
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const open = Boolean(anchorEl);
+  const [drawerOpen, setDrawerOpen] = useState(false); 
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
+
+  const open = Boolean(anchorEl);
 
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -48,33 +60,67 @@ const Navbar: React.FC = () => {
     setOpenLogin(true);
     setOpenSignUp(false);
   };
+
   const handleCloseLogin = () => setOpenLogin(false);
 
   const handleOpenSignUp = () => {
     setOpenSignUp(true);
     setOpenLogin(false);
   };
+
   const handleCloseSignUp = () => setOpenSignUp(false);
+
+  // Toggle Drawer
+  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
+      return;
+    }
+    setDrawerOpen(open);
+  };
+
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   return (
     <>
       <NavbarContainer position="fixed">
         <NavbarContentWrapper>
           <NavbarLogoHead href="/">
-            <Image src={'/logo.png'} width={52} height={49} alt="Logo" />
+            {isHomeOrAbout && (
+              <Image
+                src={isMobile ? '/white-logo.png' : '/logo.png'}
+                width={52}
+                height={49}
+                alt="Logo"
+              />
+            )}
+
+            {isContactOrPricing && (
+              <Image
+                src={'/logo.png'}
+                width={52}
+                height={49}
+                alt="Logo"
+              />
+            )}
           </NavbarLogoHead>
 
-          <NavbarLinksContainer>
-            {pages.map((page, index) => (
+          <NavbarLinksContainer sx={{ display: { xs: 'none', md: 'flex' } }}>
+            {pages.map((page, index) =>
               page.name === 'Resources' ? (
                 <DropdownMenuWrapper key={index}>
-                  <NavbarLink id="fade-button"
-                    aria-controls={open ? 'fade-menu' : undefined}
-                    aria-haspopup="true"
-                    aria-expanded={open ? 'true' : undefined}
-                    onClick={handleClick} href={''}>
-                    {page.name}
-                  </NavbarLink>
+                  <NavbarLinkWrapper>
+                    <NavbarLink
+                      id="fade-button"
+                      aria-controls={open ? 'fade-menu' : undefined}
+                      aria-haspopup="true"
+                      aria-expanded={open ? 'true' : undefined}
+                      onClick={handleClick}
+                      href=""
+                    >
+                      {page.name}
+                    </NavbarLink>
+                  </NavbarLinkWrapper>
 
                   <CommonMenu
                     id="fade-menu"
@@ -84,7 +130,6 @@ const Navbar: React.FC = () => {
                     anchorEl={anchorEl}
                     open={open}
                     onClose={handleClose}
-                    TransitionComponent={Fade}
                     disableScrollLock={true}
                   >
                     {resources.map((resource, idx) => (
@@ -95,19 +140,75 @@ const Navbar: React.FC = () => {
                   </CommonMenu>
                 </DropdownMenuWrapper>
               ) : (
-                <NavbarLink key={index} href={page.link}>
-                  {page.name}
-                </NavbarLink>
+                <NavbarLinkWrapper key={index} smallSR={false}>
+                  <NavbarLink href={page.link}>{page.name}</NavbarLink>
+                </NavbarLinkWrapper>
               )
-            ))}
+            )}
           </NavbarLinksContainer>
 
-          <NavbarButtonsContainer>
+          <NavbarButtonsContainer sx={{ display: { xs: 'none', md: 'flex' } }}>
             <StyledButton onClick={handleOpenLogin}>Login</StyledButton>
             <StyledButton special onClick={handleOpenSignUp}>
               Sign Up
             </StyledButton>
           </NavbarButtonsContainer>
+
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="menu"
+            onClick={toggleDrawer(true)}
+            sx={{ display: { xs: 'block', md: 'none' } }}
+          >
+            <Image
+              src="/icons/menu.svg"
+              alt="menu icon"
+              width={24}
+              height={24}
+              style={{
+                filter: isContactOrPricing
+                  ? 'brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(7500%) hue-rotate(228deg) brightness(106%) contrast(106%)'
+                  : 'none'
+              }}
+            />
+          </IconButton>
+
+          <NavbarDrawer
+            anchor="right"
+            open={drawerOpen}
+            onClose={toggleDrawer(false)}
+          >
+            <Box
+              sx={{ maxWidth: 297, width: '90%', padding: '61px 58px' }}
+              role="presentation"
+              onClick={toggleDrawer(false)}
+              onKeyDown={toggleDrawer(false)}
+            >
+
+              <SmallScreenList>
+                {pages?.map((page, index) => (
+                  <NavbarLinkWrapper key={index} smallSR>
+                    <NavbarLink href={page.link}>{page.name}</NavbarLink>
+                  </NavbarLinkWrapper>
+                ))}
+              </SmallScreenList>
+              <Box sx={{ mt: 2 }}>
+                <NavTypography>Follow Us</NavTypography>
+                <Box sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
+                  <IconHeadBlack src="/icons/youtube.svg" alt="YouTube" width={17} height={12} />
+                  <IconHeadBlack src="/icons/instagram.svg" alt="Instagram" width={14} height={14} />
+                  <IconHeadBlack src="/icons/degree.svg" alt="degree" width={19} height={12} />
+                </Box>
+              </Box>
+              <NavbarButtonsContainer sx={{ display: { xs: 'flex', md: 'none'}, mt: "20px" }}>
+                <StyledButton onClick={handleOpenLogin}>Login</StyledButton>
+                <StyledButton special onClick={handleOpenSignUp}>
+                  Sign Up
+                </StyledButton>
+              </NavbarButtonsContainer>
+            </Box>
+          </NavbarDrawer>
         </NavbarContentWrapper>
       </NavbarContainer>
 

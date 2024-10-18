@@ -4,7 +4,11 @@ import { styled, TextField } from '@mui/material';
 export const StyledTextField = styled(TextField)<{
   inputFontSize?: string;
   labelFontSize?: string;
-}>(({ inputFontSize = '14px', labelFontSize = '10px' }) => ({
+}>(({ theme, inputFontSize = '14px', labelFontSize = '10px' }) => ({
+
+  [theme.breakpoints.down('sm')]: {
+    marginTop: '6px',
+  },
   input: {
     fontWeight: 600,
     fontSize: inputFontSize, 

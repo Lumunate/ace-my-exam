@@ -1,6 +1,7 @@
 'use client';
 
 import { ListItem, Box, Typography, List, styled } from '@mui/material';
+import { transform } from 'next/dist/build/swc';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
@@ -17,34 +18,59 @@ const FooterContainer = styled(Box)({
   padding: '22px 20px',
 });
 
-const FooterWrapper = styled(Box)({
+const FooterWrapper = styled(Box)(({ theme }) =>({
   display: 'flex',
   justifyContent: 'space-between',
-  alignItems: 'center',
-});
+  [theme.breakpoints.up('sm')]: {
+    alignItems: 'center',
+  },
+  [theme.breakpoints.down('sm')]: {
+    alignItems: 'start',
+    flexWrap: 'wrap',
+  },
+}));
 
-const FooterLinksContainer = styled(List)({
+const FooterLinksContainer = styled(List)(({ theme }) =>({
   display: 'flex',
   alignItems: 'center',
-});
+  [theme.breakpoints.down('sm')]: {
+    width: '50%',
+    flexDirection: 'column',
+    alignItems: 'end',
+  },
+}));
 
-const FooterLogoHead = styled(Link)({
+const FooterLogoHead = styled(Link)(({ theme }) =>({
   display: 'flex',
   alignItems: 'center',
-});
+  [theme.breakpoints.down('sm')]: {
+    width: '50%'
+  },
+}));
 
-const FooterMediaIcons = styled(List)({
+const FooterMediaIcons = styled(List)(({ theme }) =>({
   display: 'flex',
   alignItems: 'center',
-});
+  [theme.breakpoints.down('sm')]: {
+    width: '150px',
+    justifyContent: 'center',
+    transform: 'translateY(-46px)'
+  },
+}));
 
-const FooterMediaItem = styled(ListItem)({
+const FooterMediaItem = styled(ListItem)(({ theme }) => ({
   padding: '0',
   paddingLeft: '18px',
   cursor: 'pointer',
-});
+  [theme.breakpoints.down('md')]: {
+    paddingLeft: '10px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    paddingLeft: '6px',
+  },
+}));
 
-const FooterLink = styled(Link)({
+const FooterLink = styled(Link)(({ theme }) => ({
   color: '#fff',
   fontWeight: 400,
   fontSize: '15px',
@@ -53,7 +79,17 @@ const FooterLink = styled(Link)({
   fontFamily: 'Lato, sans-serif',
   margin: '0 36px',
   whiteSpace: 'nowrap',
-});
+  [theme.breakpoints.down('md')]: {
+    margin: '0 10px',
+    fontSize: '13px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    margin: '10px 0',
+    textAlign: 'end',
+    width: '100%',
+    fontSize: '15px',
+  },
+}));
 
 const FooterHeading = styled(Typography)({
   color: '#fff',
