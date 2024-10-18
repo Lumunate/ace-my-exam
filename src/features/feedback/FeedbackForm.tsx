@@ -97,7 +97,7 @@ export default function FeedbackForm() {
               <CustomFormControl
                 fullWidth
                 variant='standard'
-                labelFontSize='14px'
+                labelfontsize='14px'
                 error={!!errors.course}
               >
                 <InputLabel id='course'>Course/Subject</InputLabel>
@@ -110,7 +110,7 @@ export default function FeedbackForm() {
                       value={field.value}
                       onChange={field.onChange}
                       variant='standard'
-                      inputFontSize='20px'
+                      inputfontsize='20px'
                       fullWidth
                       IconComponent={() => (
                         <Image
@@ -190,7 +190,7 @@ export default function FeedbackForm() {
               <CustomFormControl
                 fullWidth
                 variant='standard'
-                labelFontSize='14px'
+                labelfontsize='14px'
                 error={!!errors.experience}
               >
                 <InputLabel id='experience'>Rate Your Experience</InputLabel>
@@ -204,7 +204,7 @@ export default function FeedbackForm() {
                       value={field.value}
                       onChange={field.onChange}
                       variant='standard'
-                      inputFontSize='20px'
+                      inputfontsize='20px'
                       fullWidth
                       IconComponent={() => (
                         <Image
