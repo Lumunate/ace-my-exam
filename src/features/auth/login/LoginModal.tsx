@@ -51,12 +51,16 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     setLoading(true);
     try {
-      await signIn('credentials', {
+      const login = await signIn('credentials', {
         redirect: false,
         email: data.email,
         password: data.password,
         callbackUrl: '/',
       });
+
+      if (!login?.ok) {
+        throw new Error('Login failed');
+      }
 
       showSnackbar('Login successful');
       reset();
