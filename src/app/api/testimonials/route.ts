@@ -1,9 +1,23 @@
+import { NextURL } from 'next/dist/server/web/next-url';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { getTestimonials } from '@/services/testimonials';
 import { initializeDataSource } from '@/utils/typeorm';
 
-export async function GET(_request: NextRequest) {
+function getQueryParams(url: NextURL): { [key: string]: string } {
+  const searchParams = url.searchParams;
+
+  const queryParams: { [key: string]: string } = {};
+
+  searchParams.forEach((value, key) => {
+    queryParams[key] = value;
+  });
+
+  return queryParams;
+}
+
+export async function GET(request: NextRequest) {
+  getQueryParams(request.nextUrl);
   await initializeDataSource();
   try {
     const testimonials = await getTestimonials();
