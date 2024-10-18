@@ -12,7 +12,7 @@ const Testimonials = () => {
         textWidth='160px'
         gradientType="second"  />
       <TestimonialsHeading variant="h2" sx={{ mt: '20px' }}>Here&apos;s What Our Students Say</TestimonialsHeading>
-      <TestimonialsPara variant='body1' sx={{ mt: '23px' }} > Want to write a Feedback?  <TestimonialsLink href={'#'}> Click Here</TestimonialsLink></TestimonialsPara>
+      <TestimonialsPara variant='body1' sx={{ mt: '23px' }} > Want to write a Feedback?  <TestimonialsLink href={'/feedback'}> Click Here</TestimonialsLink></TestimonialsPara>
       <TestimonialsSwiper />
     </TestimonialsWrapper>
   );
