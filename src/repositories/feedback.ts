@@ -9,4 +9,10 @@ export const FeedbackRepository = AppDataSource.getRepository(Feedback).extend({
 
     return feedback;
   },
+
+  async findAllFeedbacks(): Promise<Feedback[]> {
+    const feedbacks = await this.find();
+
+    return feedbacks;
+  },
 });

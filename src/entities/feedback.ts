@@ -14,8 +14,8 @@ export default class Feedback {
   @Column()
     course!: string;
 
-  @Column({ type: 'date', nullable: true })
-    sessionDate?: Date | null;
+  @Column({ type: 'date' })
+    sessionDate!: Date | null;
 
   @Column()
     link!: string;
