@@ -20,6 +20,7 @@ export const AuthBaseModalContainer = styled(Modal)({
   display: 'flex',
   justifyContent: 'center',
   alignItems: 'center',
+  padding: '20px'
 });
 
 export const AuthModalContainer = styled(AuthBaseModalContainer)({});
@@ -33,12 +34,16 @@ export const BaseModalContent = styled(Box)({
   zIndex: 1,
 });
 
-export const AuthModalContent = styled(BaseModalContent)({
+export const AuthModalContent = styled(BaseModalContent)(({ theme }) => ({
   padding: '80px 56px',
-  width: '347px',
-});
+  maxWidth: '347px',
+  [theme.breakpoints.down('sm')]: {
+    padding: '29px 26px',
+    maxWidth: '254px',
+  },
+}));
 
-export const AuthButton = styled(ButtonBase)({
+export const AuthButton = styled(ButtonBase)(({ theme }) =>({
   padding: '10.5px',
   fontWeight: 400,
   fontFamily: 'Lato, sans-serif',
@@ -56,7 +61,11 @@ export const AuthButton = styled(ButtonBase)({
     backgroundColor: 'gray',
   },
   marginTop: '2rem',
-});
+
+  [theme.breakpoints.down('sm')]: {
+    marginTop: '1rem',
+  },
+}));
 
 export const AuthBaseTypography = styled(Typography)({
   fontFamily: 'Lato, sans-serif',

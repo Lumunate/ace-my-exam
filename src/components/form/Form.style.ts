@@ -1,19 +1,24 @@
 'use client';
+
 import { styled, TextField } from '@mui/material';
 
 export const StyledTextField = styled(TextField)<{
-  inputfontsize?: string;
-  labelfontsize?: string;
-}>(({ inputfontsize = '14px', labelfontsize = '10px' }) => ({
+  inputFontSize?: string;
+  labelFontSize?: string;
+}>(({ theme, inputFontSize = '14px', labelFontSize = '10px' }) => ({
+
+  [theme.breakpoints.down('sm')]: {
+    marginTop: '6px',
+  },
   input: {
     fontWeight: 600,
-    fontSize: inputfontsize,
+    fontSize: inputFontSize,
     fontFamily: 'Jost, sans-serif',
   },
   '& .MuiInputLabel-root': {
     color: '#818181',
     fontWeight: 600,
-    fontSize: labelfontsize,
+    fontSize: labelFontSize,
     textTransform: 'capitalize',
     fontFamily: 'Lato, sans-serif',
   },
