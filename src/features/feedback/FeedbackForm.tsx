@@ -10,25 +10,17 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { feedbackSchema } from '@/app/(main)/feedback/FeedbackSchema';
 import { Button } from '@/components/buttons/Button.style';
 import { CustomFormControl, StyledSelectField, StyledTextField } from '@/components/form/Form.style';
 
 import { FeedbackFormContainer } from './FeedbackFrom.style';
+import { feedbackSchema, IFeedback } from '@/types/feedback';
+import { useSnackbar } from '@/contexts/SnackbarContext';
 
-interface FeedbackFormInputs {
-  name: string;
-  lastName: string;
-  course: string;
-  sessionDate: Date | null;
-  link: string;
-  experience: string;
-  feedback: string;
-}
 
 export default function FeedbackForm() {
   const [loading, setLoading] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState<string | null>(null);
+  const { showSnackbar } = useSnackbar()
 
   const {
     control,
@@ -36,31 +28,31 @@ export default function FeedbackForm() {
     handleSubmit,
     reset,
     formState: { errors },
-  } = useForm<FeedbackFormInputs>({
+  } = useForm<IFeedback>({
     resolver: zodResolver(feedbackSchema),
     defaultValues: {
       name: '',
       lastName: '',
       course: '',
-      sessionDate: null,
+      sessionDate: new Date(),
       link: '',
       experience: '',
       feedback: '',
     },
   });
 
-  const onSubmit: SubmitHandler<FeedbackFormInputs> = async (data) => {
+  const onSubmit: SubmitHandler<IFeedback> = async (data) => {
     setLoading(true);
     try {
       await new Promise((resolve) => setTimeout(resolve, 2000));
-      setSnackbarMessage('Message sent successfully!');
+      showSnackbar('Message sent successfully!');
       reset();
       // eslint-disable-next-line no-console
       console.log('Form data:', data);
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
-      setSnackbarMessage('Failed to send the message');
+      showSnackbar('Failed to send the message');
     } finally {
       setLoading(false);
     }
@@ -87,8 +79,8 @@ export default function FeedbackForm() {
                 error={!!errors.name}
                 helperText={errors.name?.message}
                 {...register('name')}
-                inputFontSize='20px'
-                labelFontSize='14px'
+                inputfontsize='20px'
+                labelfontsize='14px'
               />
             </Grid>
             <Grid size={{ xs: 24, md: 12 }}>
@@ -100,8 +92,8 @@ export default function FeedbackForm() {
                 error={!!errors.lastName}
                 helperText={errors.lastName?.message}
                 {...register('lastName')}
-                inputFontSize='20px'
-                labelFontSize='14px'
+                inputfontsize='20px'
+                labelfontsize='14px'
               />
             </Grid>
 
@@ -123,7 +115,6 @@ export default function FeedbackForm() {
                       onChange={field.onChange}
                       variant='standard'
                       inputFontSize='20px'
-                      fullWidth
                       IconComponent={() => (
                         <Image
                           src='/icons/down.svg'
@@ -193,8 +184,8 @@ export default function FeedbackForm() {
                 error={!!errors.link}
                 helperText={errors.link?.message}
                 {...register('link')}
-                inputFontSize='20px'
-                labelFontSize='14px'
+                inputfontsize='20px'
+                labelfontsize='14px'
               />
             </Grid>
 
@@ -217,7 +208,6 @@ export default function FeedbackForm() {
                       onChange={field.onChange}
                       variant='standard'
                       inputFontSize='20px'
-                      fullWidth
                       IconComponent={() => (
                         <Image
                           src='/icons/down.svg'
@@ -257,8 +247,8 @@ export default function FeedbackForm() {
                 error={!!errors.feedback}
                 helperText={errors.feedback?.message}
                 {...register('feedback')}
-                inputFontSize='20px'
-                labelFontSize='14px'
+                inputfontsize='20px'
+                labelfontsize='14px'
               />
             </Grid>
           </Grid>
@@ -275,15 +265,6 @@ export default function FeedbackForm() {
           </Button>
         </form>
       </FeedbackFormContainer>
-
-      {snackbarMessage && (
-        <Snackbar
-          open={!!snackbarMessage}
-          onClose={() => setSnackbarMessage(null)}
-          message={snackbarMessage}
-          autoHideDuration={3000}
-        />
-      )}
     </>
   );
 }
