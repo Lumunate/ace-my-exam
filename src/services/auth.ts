@@ -1,6 +1,6 @@
 import { hash } from 'bcrypt';
 
-import { UserRepository } from '@/repositories/user';
+import { TokensRepository, UserRepository } from '@/repositories/user';
 import { RegisterInput } from '@/types/auth';
 import AuthError, { AuthErrorType } from '@/types/auth-error';
 
@@ -12,14 +12,18 @@ export async function registerUser(userData: RegisterInput) {
   const user = await UserRepository.registerUser({
     name: userData.name,
     email: userData.email,
+    image: '',
+    role: 'USER',
+    sessions: [],
+    accounts: [],
+    token: [],
     password: await getHashedPassword(userData.password),
-    verificationToken: generateVerificationToken(),
     emailVerified: false,
-    resetPasswordToken: null,
-    resetPasswordExpires: null,
   });
 
-  await sendVerificationEmail(user.email, user.verificationToken);
+  const token = await TokensRepository.createEmailVerificationToken(user.id);
+
+  await sendVerificationEmail(user.email!, token.token);
 
   return user;
 }
@@ -32,21 +36,23 @@ async function getHashedPassword(password: string) {
   return await hash(password, 10);
 }
 
-function generateVerificationToken() {
-  return Math.random().toString(36).substring(2, 15);
-}
-
 export async function verifyUser(token: string) {
-  const user = await UserRepository.findOne({ where: { verificationToken: token } });
+  const verificationToken = await TokensRepository.findOne({ where: { token, identifier: 'EMAIL_VERIFICATION_TOKEN' } });
+
+  if (!token) {
+    throw new AuthError(AuthErrorType.TOKEN_INVALID, 401);
+  }
+
+  const user = await UserRepository.findOne({ where: { id: verificationToken?.userId } });
 
   if (!user) {
     throw new AuthError(AuthErrorType.USER_NOT_FOUND, 404);
   }
 
   user.emailVerified = true;
-  user.verificationToken = 'null';
-
   await UserRepository.save(user);
+
+  TokensRepository.delete({ userId: user.id, identifier: 'EMAIL_VERIFICATION_TOKEN' });
 
   return user;
 }
@@ -58,12 +64,9 @@ export async function resetPassword(email: string) {
     throw new AuthError(AuthErrorType.USER_NOT_FOUND, 404);
   }
 
-  const resetToken = generateVerificationToken();
+  const resetToken = await TokensRepository.createPasswordResetToken(user.id);
 
-  user.resetPasswordToken = resetToken;
-  user.resetPasswordExpires = new Date(Date.now() + 3600000);
-
-  await sendPasswordResetEmail(email, resetToken);
+  await sendPasswordResetEmail(email, resetToken.token);
   await UserRepository.save(user);
 
   return;

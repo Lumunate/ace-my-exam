@@ -6,7 +6,7 @@ import { resetPasswordSchema } from '@/types/auth';
 import AuthError from '@/types/auth-error';
 import { initializeDataSource } from '@/utils/typeorm';
 
-export default async function POST(request: NextRequest) {
+export async function POST(request: NextRequest) {
   await initializeDataSource();
 
   try {

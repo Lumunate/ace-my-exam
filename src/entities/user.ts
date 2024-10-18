@@ -13,7 +13,7 @@ const transformer: Record<'date' | 'bigint', ValueTransformer> = {
 };
 
 @Entity({ name: 'users' })
-export default class User {
+export class User {
   @PrimaryGeneratedColumn('uuid')
     id!: string;
 
@@ -23,8 +23,8 @@ export default class User {
   @Column({ type: 'varchar', nullable: true, unique: true })
     email!: string | null;
 
-  @Column({ type: 'varchar', nullable: true, transformer: transformer.date })
-    emailVerified!: string | null;
+  @Column({ type: 'boolean', nullable: true, transformer: transformer.date })
+    emailVerified!: boolean | null;
 
   @Column({ type: 'varchar', nullable: true })
     image!: string | null;
@@ -37,6 +37,9 @@ export default class User {
 
   @OneToMany(() => AccountEntity, (account) => account.userId)
     accounts!: AccountEntity[];
+
+  @OneToMany(() => VerificationTokenEntity, (token) => token.userId)
+    token!: VerificationTokenEntity[];
 
   @Column()
     password!: string;
@@ -118,6 +121,9 @@ export class SessionEntity {
 export class VerificationTokenEntity {
   @PrimaryGeneratedColumn('uuid')
     id!: string;
+
+  @Column({ type: 'uuid' })
+    userId!: string;
 
   @Column()
     token!: string;
