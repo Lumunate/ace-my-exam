@@ -7,6 +7,8 @@ import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from 'reac
 import { StyledTextField } from '@/components/form/Form.style';
 import { useSnackbar } from '@/contexts/SnackbarContext';
 import { signUpSchema } from '@/features/auth/sign-up/SignUpSchema';
+import { useRegister } from '@/hooks/useRegister';
+import { RegisterInput } from '@/types/auth';
 
 import {
   AuthButton,
@@ -17,9 +19,6 @@ import {
   AuthBackdrop,
   AuthStyledLinkTwo,
 } from '../AuthModals.style';
-import { useRegister } from '@/hooks/useRegister';
-import { RegisterInput } from '@/types/auth';
-
 
 const getErrorMessage = (
   error: FieldError | Merge<FieldError, FieldErrorsImpl<RegisterInput>> | undefined
@@ -32,7 +31,7 @@ const defaultValues: RegisterInput = {
   email: '',
   password: '',
   confirmPassword: '',
-}
+};
 
 interface SignUpModalProps {
   open: boolean;
@@ -52,7 +51,6 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
     resolver: zodResolver(signUpSchema),
     defaultValues
   });
-
 
   const { mutate: submitForm, isLoading } = useRegister();
   const onSubmit: SubmitHandler<RegisterInput> = async (data) => {
@@ -103,7 +101,7 @@ const SignUpModal: React.FC<SignUpModalProps> = ({ open, handleClose, onSwitchTo
               error={!!errors.password}
               helperText={getErrorMessage(errors.password)}
               {...register('password')}
-              />
+            />
             <StyledTextField
               label="Confirm Password*"
               type="password"
