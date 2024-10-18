@@ -23,7 +23,7 @@ export const StyledTextField = styled(TextField)<{
   },
   '& .MuiInputBase-input.MuiInput-input': {
     fontWeight: 600,
-    fontSize: inputFontSize, 
+    fontSize: inputfontsize,
     fontFamily: 'Jost, sans-serif',
   },
   '& .MuiFormHelperText-root.Mui-error ': {

@@ -4,7 +4,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, CircularProgress, FormHelperText, InputLabel, MenuItem } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
-import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
@@ -13,12 +12,22 @@ import 'react-datepicker/dist/react-datepicker.css';
 import { Button } from '@/components/buttons/Button.style';
 import { CustomFormControl, StyledSelectField, StyledTextField } from '@/components/form/Form.style';
 import { useSnackbar } from '@/contexts/SnackbarContext';
+import { useSubmitFeedbackForm } from '@/hooks/useFeedbackForm';
 import { feedbackSchema, IFeedback } from '@/types/feedback';
 
 import { FeedbackFormContainer } from './FeedbackFrom.style';
 
+const defaultValues: IFeedback = {
+  name: '',
+  lastName: '',
+  course: '',
+  sessionDate: new Date(),
+  link: '',
+  experience: '',
+  feedback: '',
+};
+
 export default function FeedbackForm() {
-  const [loading, setLoading] = useState(false);
   const { showSnackbar } = useSnackbar();
 
   const {
@@ -29,32 +38,20 @@ export default function FeedbackForm() {
     formState: { errors },
   } = useForm<IFeedback>({
     resolver: zodResolver(feedbackSchema),
-    defaultValues: {
-      name: '',
-      lastName: '',
-      course: '',
-      sessionDate: new Date(),
-      link: '',
-      experience: '',
-      feedback: '',
-    },
+    defaultValues
   });
 
+  const { mutate: submitForm, isLoading } = useSubmitFeedbackForm();
   const onSubmit: SubmitHandler<IFeedback> = async (data) => {
-    setLoading(true);
-    try {
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      showSnackbar('Message sent successfully!');
-      reset();
-      // eslint-disable-next-line no-console
-      console.log('Form data:', data);
-
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      showSnackbar('Failed to send the message');
-    } finally {
-      setLoading(false);
-    }
+    submitForm(data, {
+      onSuccess: () => {
+        showSnackbar('Form submitted successfully!');
+        reset();
+      },
+      onError: () => {
+        showSnackbar('Failed to submit Contact Form. Please try again later!');
+      }
+    });
   };
 
   return (
@@ -260,7 +257,7 @@ export default function FeedbackForm() {
             width='170px'
             height='41px'
           >
-            {loading ? <CircularProgress size={24} /> : 'Submit Feedback'}
+            {isLoading ? <CircularProgress size={24} /> : 'Submit Feedback'}
           </Button>
         </form>
       </FeedbackFormContainer>
