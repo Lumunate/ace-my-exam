@@ -1,6 +1,6 @@
 'use client';
 
-import { ListItem, Box, Typography, List, styled } from '@mui/material';
+import { Box, List, ListItem, styled, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';

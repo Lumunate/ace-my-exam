@@ -1,4 +1,4 @@
-import { AppBar, Box, styled, Toolbar, Menu } from '@mui/material';
+import { AppBar, Box, Menu, styled, Toolbar } from '@mui/material';
 import Link from 'next/link';
 
 const CommonNavbarBox = styled(Box)({
