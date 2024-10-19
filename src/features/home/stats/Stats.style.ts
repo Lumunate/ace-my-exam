@@ -22,6 +22,9 @@ export const StatsContentWrapper = styled(Box)(({ theme }) => ({
     backgroundColor: '#fffbfb',
     borderRadius: '100px 100px 0 0',
     zIndex: '-1',
+    [theme.breakpoints.down('md')]: {
+      borderRadius: '30px 30px 0 0',
+    },
   },
   [theme.breakpoints.down('lg')]: {
     transform: 'translateY(-280px)',
