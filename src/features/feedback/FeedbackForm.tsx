@@ -73,8 +73,8 @@ export default function FeedbackForm() {
           <Grid
             container
             columns={24}
-            columnSpacing={'40px'}
-            rowSpacing={'40px'}
+            columnSpacing={{xs: '20px', lg: '40px'}}
+            rowSpacing={{xs: '20px', lg: '40px'}}
             alignItems={'end'}
             sx={{mb: '40px'}}
           >

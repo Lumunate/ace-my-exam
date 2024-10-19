@@ -2,12 +2,18 @@
 
 import { Box, styled } from '@mui/material';
 
-export const FeedbackFormContainer = styled(Box)({
+export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
   backgroundColor: '#FCFDFF',
   padding: '70px 58px 36px',
   borderRadius: '20px',
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
   zIndex: 1,
+  [theme.breakpoints.down('xl')]: {
+    padding: '50px 40px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    padding: '40px 30px',
+  },
 
   '& .react-datepicker-wrapper': {
     width: '100% !important',
@@ -40,4 +46,4 @@ export const FeedbackFormContainer = styled(Box)({
   '& .feedback-datepicker:focus': {
     borderBottom: '1px solid #000 !important',
   },
-});
+}));
