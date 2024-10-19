@@ -18,15 +18,15 @@ export default function ContactPage() {
   return (
     <ContactContainer>
       <AppContentWrapper>
-        <Grid container columns={24} columnSpacing={2} sx={{ px: '40px' }}>
-          <Grid size={{ xs: 24, md: 12 }} sx={{ mt: '80px' }}>
-            <Box sx={{ mb: '100px', position: 'relative' }}>
-              <ContactHeadingTypography variant="h1">CONTACT US</ContactHeadingTypography>
-              <ContactParaTypography variant="body1">
+        <Grid container columns={24} columnSpacing={2} sx={{ px:{xs: '0', lg: '40px'} }}>
+          <Grid size={{ xs: 24, md: 12 }} sx={{ mt:{xs: '0',lg: '80px'} }}>
+            <Box sx={{ mb: {xs: '30px', lg: '100px'}, position: 'relative' }}>
+              <ContactHeadingTypography variant='h1'>CONTACT US</ContactHeadingTypography>
+              <ContactParaTypography variant='body1'>
                 We&apos;d love to hear from you. Contact us directly or use the form below. We&apos;ll be in touch.
               </ContactParaTypography>
               <ContactIconHead>
-                <Image src={'/home/play.svg'} width={26} height={21} alt="icon" />
+                <Image src={'/home/play.svg'} width={26} height={21} alt='icon' />
               </ContactIconHead>
             </Box>
             <ContactLinksHead>

@@ -26,13 +26,19 @@ export const CommonMenu = styled(Menu)({
     padding: '8px',
   },
 });
-
 export const NavbarContainer = styled(AppBar)(({ theme }) => ({
   maxWidth: '1605px !important',
   backgroundColor: 'transparent',
   width: '100%',
   padding: '20px !important',
   boxShadow: 'unset',
+  '&.sticky': {
+    // backgroundColor: '#00000070',
+    backgroundColor: 'rgba(255, 255, 255, 0.05)',
+    backdropFilter: 'blur(6.9px)',
+    border: '1px solid rgba(255, 255, 255, 0.10)',
+    boxShadow: 'none',
+  },
   [theme.breakpoints.up('lg')]: {
     backgroundColor: 'white',
     borderRadius: '20px',

@@ -3,7 +3,7 @@
 import { Box, IconButton, MenuItem, useMediaQuery, useTheme } from '@mui/material';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { Button as StyledButton } from '@/components/buttons/Button.style';
 import LoginModal from '@/features/auth/login/LoginModal';
@@ -45,6 +45,7 @@ const Navbar: React.FC = () => {
   const [drawerOpen, setDrawerOpen] = useState(false); 
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
+  const [isSticky, setIsSticky] = useState(false); 
 
   const open = Boolean(anchorEl);
 
@@ -81,12 +82,31 @@ const Navbar: React.FC = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('lg'));
 
+  // Scroll event listener
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+
+      if (scrollTop > 80) {
+        setIsSticky(true);
+      } else {
+        setIsSticky(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
   return (
     <>
-      <NavbarContainer position="fixed">
+      <NavbarContainer position="fixed" className={isSticky ? 'sticky' : ''}>
         <NavbarContentWrapper>
           <NavbarLogoHead href="/">
-            {isHomeOrAbout && (
+            {isHomeOrAbout && isSticky == false && (
               <Image
                 src={isMobile ? '/white-logo.png' : '/logo.png'}
                 width={52}
@@ -95,7 +115,16 @@ const Navbar: React.FC = () => {
               />
             )}
 
-            {isContactOrPricing && (
+            {isContactOrPricing && isSticky == false && (
+              <Image
+                src={'/logo.png'}
+                width={52}
+                height={49}
+                alt="Logo"
+              />
+            )}
+
+            {isSticky == true && (
               <Image
                 src={'/logo.png'}
                 width={52}
@@ -167,7 +196,7 @@ const Navbar: React.FC = () => {
               width={24}
               height={24}
               style={{
-                filter: isContactOrPricing
+                filter: isContactOrPricing || isSticky == true 
                   ? 'brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(7500%) hue-rotate(228deg) brightness(106%) contrast(106%)'
                   : 'none'
               }}
