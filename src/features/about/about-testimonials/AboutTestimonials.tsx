@@ -23,7 +23,7 @@ const AboutTestimonials: React.FC = () => {
           <AboutTestimonialsHeading variant="h2">What Our Students Say</AboutTestimonialsHeading>
           <AboutTestimonialsPara variant="h4">We believe in the individuality of each student, offering tailored lessons to unlock their full potential</AboutTestimonialsPara>
         </Grid>
-        <Grid size={{ xs: 24, lg: 12 }} sx={{ px: '16px' }}>
+        <Grid size={{ xs: 24, lg: 12 }} sx={{ px: '0' }}>
           <AboutTestimonialsSwiper />
         </Grid>
       </Grid>

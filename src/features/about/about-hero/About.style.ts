@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, ButtonBase, styled, Typography } from '@mui/material';
+import { Box, styled, Typography } from '@mui/material';
 import Image from 'next/image';
 
 const CommonHeroTypography = styled(Typography)({
@@ -8,7 +8,7 @@ const CommonHeroTypography = styled(Typography)({
   fontStyle: 'normal',
 });
 
-export const AboutHeroHeading = styled(CommonHeroTypography)({
+export const AboutHeroHeading = styled(CommonHeroTypography)(({ theme }) => ({
   fontWeight: 600,
   fontSize: '49px',
   marginTop: '43px',
@@ -17,32 +17,46 @@ export const AboutHeroHeading = styled(CommonHeroTypography)({
   fontFamily: 'Jost, sans-serif',
   maxWidth: '600px',
   textTransform: 'capitalize',
-});
+  color: '#fff',
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '40px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '30px',
+    lineHeight: 'normal',
+    marginTop: '30px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '24px',
+    maxWidth: '450px',
+    lineHeight: 'normal',
+    marginTop: '20px',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '16px',
+    marginTop: '10px',
+  },
+}));
 
-export const AboutHeroContent = styled(CommonHeroTypography)({
+export const AboutHeroContent = styled(CommonHeroTypography)(({ theme }) => ({
   fontSize: '18px',
   marginBottom: '10px',
   fontFamily: 'Lato, sans-serif',
   maxWidth: '779px',
-});
-
-export const AboutHeroCTAButton = styled(ButtonBase)({
-  padding: '20px 65px',
-  fontWeight: 400,
-  fontSize: '16px',
-  color: '#FFF',
-  backgroundColor: '#DA9694',
-  border: 'none',
-  borderRadius: '100px',
-  fontStyle: 'normal',
-  fontFamily: 'Lato, sans-serif',
-  transition: 'all 0.3s ease-in-out',
-  '&:hover': {
-    backgroundColor: 'gray',
+  color: '#fff',
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '16px',
   },
-});
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '14px',
+    lineHeight: 'normal',
+  },
+  [theme.breakpoints.down(576)]: {
+    fontSize: '12px',
+  }
+}));
 
-export const AboutHeroWrapper = styled(Box)({
+export const AboutHeroWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
   position: 'relative',
   '&::before': {
@@ -55,8 +69,11 @@ export const AboutHeroWrapper = styled(Box)({
     backgroundColor: '#fffbfb',
     borderRadius: '100px 100px 0 0',
     zIndex: '0',
+    [theme.breakpoints.down('lg')]: {
+      borderRadius: '50px 50px 0 0',
+    },
   },
-});
+}));
 
 export const AboutHeroImage = styled(Image)({
   width: '100%',
@@ -83,6 +100,16 @@ export const AboutHeroImageOverlay = styled(Box)({
   background: 'linear-gradient(106deg, rgba(0, 0, 0, 0.29) 0.91%, rgba(218, 150, 148, 0.45) 99.09%)',
 });
 
-export const AboutHeroContentContainer = styled(Box)({
+export const AboutHeroContentContainer = styled(Box)(({ theme }) => ({
   padding: '265px 0 244px',
-});
+  [theme.breakpoints.down('lg')]: {
+    padding: '180px 0 300px',
+    flexWrap: 'wrap'
+  },
+  [theme.breakpoints.down('sm')]: {
+    padding: '160px 0 280px',
+  },
+  [theme.breakpoints.down(400)]: {
+    padding: '100px 0 240px',
+  },
+}));

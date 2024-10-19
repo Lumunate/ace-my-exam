@@ -71,7 +71,7 @@ const AboutFounder: React.FC = () => {
     <FounderWrapper>
       <FounderContentContainer>
         <Grid container justifyContent={'center'} columns={24}>
-          <Grid size={{ xs: 24, lg: 14 }} sx={{ px: '15px' }}>
+          <Grid size={{ xs: 24, lg: 14 }} sx={{ px: {xs: '0', md: '15px'} }}>
             <SectionHeading
               text="Our Founder"
               align="start"
@@ -104,13 +104,13 @@ const AboutFounder: React.FC = () => {
             </FounderList>
           </Grid>
 
-          <Grid size={{ xs: 24, lg: 10 }} sx={{ px: '15px' }}>
+          <Grid size={{ xs: 24, lg: 10 }} sx={{ px: {xs: '0', md: '15px'} }}>
             <FounderImgHead>
               <Image src="/about/founder.webp" alt="founder" layout="fill" objectFit="cover" />
             </FounderImgHead>
           </Grid>
 
-          <Grid size={24} sx={{ px: '15px' }}>
+          <Grid size={24} sx={{ px: {xs: '0', md: '15px'} }}>
             <FounderCard>
               <FounderCardInnerHead>
                 <FounderCardHeading>About Acemyexam</FounderCardHeading>

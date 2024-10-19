@@ -7,7 +7,7 @@ const BaseBoxFlex = styled(Box)({
   alignItems: 'center',
 });
 
-export const TestimonialsSwiperWrapper = styled(Box)<{ withPadding?: boolean }>(({ theme, withPadding }) => ({
+export const TestimonialsSwiperWrapper = styled(Box)<{ withPadding?: boolean, aboutSwiperOpen?: boolean }>(({ theme, withPadding, aboutSwiperOpen }) => ({
   width: '100%',
   height: '100% !important',
   overflow: 'hidden',
@@ -25,13 +25,13 @@ export const TestimonialsSwiperWrapper = styled(Box)<{ withPadding?: boolean }>(
     transition: 'all 0.3s ease !important',
   },
   '& .swiper-slide': {
-    maxWidth: '556px',
+    maxWidth: aboutSwiperOpen ? '100%': '556px',
     width: '90%',
     transition: 'all 0.3s ease !important',
     minHeight: '426px !important',
     maxHeight: '100% !important',
     height: 'auto !important',
-    padding: withPadding ? '0 30px' : '0',
+    padding: withPadding ? '0 10px' : '0',
     [theme.breakpoints.down(576)]: {
       minHeight: '256px !important',
     }
