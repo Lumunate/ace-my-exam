@@ -9,9 +9,8 @@ const CommonNavbarBox = styled(Box)({
 
 export const CommonMenu = styled(Menu)({
   '& .MuiPaper-root': {
-    transform: 'translate(-30px, 25px)',
     borderRadius: '0 0 15px 15px',
-    boxShadow: '4px 20px 27.5px 0 rgba(0,0,0,0.17)',
+    boxShadow: '0px 30px 20.5px 0 rgba(0,0,0,0.17)',
     background: '#FCFDFF',
     padding: '10px',
     paddingTop: '20px',
@@ -26,41 +25,25 @@ export const CommonMenu = styled(Menu)({
     padding: '8px',
   },
 });
-export const NavbarContainer = styled(AppBar)(({ theme }) => ({
-  maxWidth: '1605px !important',
-  backgroundColor: 'transparent',
+
+export const NavbarContainer = styled(AppBar)({
   width: '100%',
-  padding: '20px !important',
-  boxShadow: 'unset',
-  '&.sticky': {
-    // backgroundColor: '#00000070',
-    backgroundColor: 'rgba(255, 255, 255, 0.05)',
-    backdropFilter: 'blur(6.9px)',
-    border: '1px solid rgba(255, 255, 255, 0.10)',
-    boxShadow: 'none',
-  },
-  [theme.breakpoints.up('lg')]: {
-    backgroundColor: 'white',
-    borderRadius: '20px',
-    padding: '20px !important',
-    right: '50%',
-    transform: 'translateX(50%)',
-    marginTop: '25px !important',
-    blur: '26px',
-    boxShadow: '0 4px 37.5px 0 rgba(0,0,0,0.17)',
-    width: '97.5%',
-    maxWidth: '1605px !important',
-  },
-}));
+  marginTop: '25px !important',
+  backgroundColor: 'transparent',
+  boxShadow: 'none',
+});
 
 export const NavbarContentWrapper = styled(Toolbar)({
-  height: 'max-content',
-  minHeight: '16px !important',
+  backgroundColor: '#FCFDFF',
+  margin: '0 auto',
+  width: '100%',
+  borderRadius: '20px',
+  boxShadow: '0 4px 37.5px 0 rgba(0,0,0,0.17)',
+  height: '69px',
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  padding: '0 !important',
-  width: '100%'
+  padding: '10px 20px',
 });
 
 export const NavbarLinksContainer = styled(CommonNavbarBox)({});
@@ -68,7 +51,7 @@ export const NavbarLinksContainer = styled(CommonNavbarBox)({});
 export const NavbarButtonsContainer = styled(CommonNavbarBox)({
   justifyContent: 'space-between',
   gap: '11px',
-  width: '203px',
+  // width: '203px',
 });
 
 export const NavbarLogoHead = styled(Link)(({ theme }) => ({
@@ -96,9 +79,16 @@ export const NavbarLinkWrapper = styled(ListItem)<{ smallSR?: boolean }>(
     margin: smallSR ? '12px 0' : '0 36px',
     textAlign: smallSR ? 'start' : 'center',
     padding: '0',
+    [theme.breakpoints.down(1400)]: {
+      margin: smallSR ? '12px 0' : '0 24px', 
+    },
+    [theme.breakpoints.down('xl')]: {
+      margin: smallSR ? '12px 0' : '0 18px', 
+    },
     [theme.breakpoints.down('lg')]: {
       margin: smallSR ? '12px 0' : '0 10px', 
     },
+
   })
 );
 
@@ -128,4 +118,17 @@ export const DropdownMenuWrapper = styled(Box)({});
 
 export const IconHeadBlack = styled(Image)({
   filter: 'brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(7500%) hue-rotate(228deg) brightness(106%) contrast(106%)',
+});
+
+export const DropdownIcon = styled(Image)<{ open?: boolean }>(({ open }) => ({
+  marginLeft: '8px',
+  transition: 'transform 0.3s ease-in-out',
+  transform: open ? 'rotate(180deg)' : 'rotate(0deg)',
+}));
+
+export const AvatarDropdownMenuWrapper = styled(Box)({
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'pointer',
 });

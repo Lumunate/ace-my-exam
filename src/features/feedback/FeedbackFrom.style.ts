@@ -31,7 +31,7 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
     borderBottom: '1px solid #818181 !important',
     fontSize: '18px !important',
     color: '#000 !important',
-    fontWeight: 600,
+    fontWeight: 500,
     height: '36px !important',
   },
 
@@ -40,7 +40,7 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
     fontFamily: 'Jost, sans-serif !important',
     fontSize: '16px !important',
     textTransform: 'capitalize !important',
-    fontWeight: 600,
+    fontWeight: 500,
   },
 
   '& .feedback-datepicker:focus': {

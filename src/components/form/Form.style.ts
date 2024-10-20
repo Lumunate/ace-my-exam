@@ -5,7 +5,7 @@ import { FormControl, MenuItem, Select, styled, TextField } from '@mui/material'
 export const StyledTextField = styled(TextField)<{
   inputFontSize?: string;
   labelFontSize?: string;
-}>(({ theme, inputFontSize = '14px', labelFontSize = '10px' }) => ({
+}>(({ theme, inputFontSize = '14px', labelFontSize = '12px' }) => ({
 
   [theme.breakpoints.down('sm')]: {
     marginTop: '6px',

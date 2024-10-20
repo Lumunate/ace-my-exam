@@ -52,6 +52,11 @@ export const TestimonialsLink = styled(Link)(({ theme }) => ({
   fontSize: '16px',
   color: '#DA9694 ',
   fontFamily: 'Lato, sans-serif',
+  transition: 'all 0.3s ease',
+  '&:hover':{
+    color: '#d74642',
+    transition: 'all 0.3s ease',
+  },
   [theme.breakpoints.down(576)]: {
     fontSize: '14px',
   },

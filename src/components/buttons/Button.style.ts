@@ -30,10 +30,10 @@ export const Button = styled(ButtonBase, {
   textTransform: 'capitalize',
   whiteSpace: 'nowrap',
   '&:hover': {
-    backgroundColor: special ? '#c0605e' : '',
+    backgroundColor: special ? '#d74642' : '',
   },
   [theme.breakpoints.down(576)]: {
-    fontSize: '12px !important',
+    fontSize: '14px !important',
     width: '142px !important',
     height: '41px !important',
   },

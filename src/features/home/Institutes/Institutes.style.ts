@@ -4,10 +4,10 @@ import { Box, styled, keyframes } from '@mui/material';
 
 const infiniteScroll = keyframes`
   0% {
-    transform: translateX(0); /* Start with all images in view */
+    transform: translateX(0); 
   }
   100% {
-    transform: translateX(-50%); /* Move to left and wrap halfway */
+    transform: translateX(-50%); 
   }
 `;
 
@@ -32,9 +32,21 @@ export const InstituteTrack = styled(Box)({
   },
 });
 
-export const InstituteImage = styled('img')({
-  width: '150px',
-  height: 'auto',
+export const InstituteImage = styled('img')(({ theme }) => ({
+  width: 'auto',
+  height: '100px',
   objectFit: 'contain',
-  padding: '0 20px',
-});
+  padding: '0 40px',
+  [theme.breakpoints.down('lg')]: {
+    height: '80px',
+    padding: '0 30px',
+  },
+  [theme.breakpoints.down('md')]: {
+    height: '60px',
+    padding: '0 15px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    height: '40px',
+    padding: '0 10px',
+  },
+}));

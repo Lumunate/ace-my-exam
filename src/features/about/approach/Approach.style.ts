@@ -53,10 +53,13 @@ export const ApproachHeading = styled(Typography)(({ theme }) => ({
 
 export const  ApproachCardHeading = styled(Typography)(({ theme }) => ({
   fontWeight: 700,
-  fontSize: '32px',
+  fontSize: '30px',
   color: '#000',
   fontFamily: 'Lato, sans-serif',
   margin: '15px 0',
+  [theme.breakpoints.down(1400)]: {
+    fontSize: '28px',
+  },
   [theme.breakpoints.down('xl')]: {
     fontSize: '26px',
   },
@@ -91,7 +94,7 @@ export const  ApproachCard = styled(Box)({
 });
 
 export const ApproachCardDivider = styled(Divider)(({ theme }) => ({
-  background: 'linear-gradient(to top, #FFFFFF 0%, #666666 46%, #FFFFFF 100%)',
+  background: 'linear-gradient(to top, #FFFBFB 0%, #DA9694 50.5%, #FFFBFB 100%)',
   border: 'unset',
   width: '1px',
   height: '112px',
@@ -99,6 +102,6 @@ export const ApproachCardDivider = styled(Divider)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     height: '1px',
     width: '60%',
-    background: 'linear-gradient(to left, #FFFFFF 0%, #666666 46%, #FFFFFF 100%)',
+    background: 'linear-gradient(to left, #FFFBFB 0%, #DA9694 50.5%, #FFFBFB 100%)',
   },
 }));

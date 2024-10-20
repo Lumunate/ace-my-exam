@@ -13,9 +13,6 @@ export const ResourcesWrapper = styled(Box)(({ theme }) => ({
     padding: '120px 0',
   },
   [theme.breakpoints.down('sm')]: {
-    padding: '100px 0',
-  },
-  [theme.breakpoints.down('sm')]: {
     padding: '80px 0',
   },
   [theme.breakpoints.down(400)]: {
@@ -23,7 +20,7 @@ export const ResourcesWrapper = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const ResourcesHeading = styled(Typography)(({ theme }) =>({
+export const ResourcesHeading = styled(Typography)(({ theme }) => ({
   fontWeight: 600,
   fontSize: '49px',
   color: '#000000',
@@ -40,9 +37,6 @@ export const ResourcesHeading = styled(Typography)(({ theme }) =>({
   [theme.breakpoints.down('sm')]: {
     fontSize: '28px',
     marginBottom: '40px',
-  },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '30px',
   },
   [theme.breakpoints.down(400)]: {
     marginBottom: '20px',
@@ -80,7 +74,7 @@ export const ResourceGrid = styled(Grid)({
   position: 'relative',
 });
 
-export const ResourceCard = styled(Box)(({ theme }) =>({
+export const ResourceCard = styled(Box)(({ theme }) => ({
   position: 'relative',
   height: '273px',
   padding: '80px 28px 40px',
@@ -92,8 +86,16 @@ export const ResourceCard = styled(Box)(({ theme }) =>({
   alignItems: 'start',
   textAlign: 'start',
   boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
+  cursor: 'pointer',
   [theme.breakpoints.down('md')]: {
     borderRadius: '30px',
+  },
+  '&:hover': {
+    boxShadow: '0 6px 25px rgba(0, 0, 0, 0.15)',
+    '& .resources-subtitle': {
+      opacity: 1, 
+      transform: 'translateY(0)', 
+    },
   },
 }));
 
@@ -115,5 +117,17 @@ export const ResourcesCardHeading = styled(BaseTypography)(({ theme }) => ({
     fontSize: '20px',
     lineHeight: 'normal',
     maxWidth: '100%',
+  },
+}));
+
+export const ResourcesCardSubHeading = styled(BaseTypography)(({ theme }) => ({
+  fontSize: '14px',
+  marginBottom: '10px',
+  opacity: 0,
+  transform: 'translateY(20px)', 
+  transition: 'all 0.3s ease-in-out',
+  textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+  [theme.breakpoints.down(400)]: {
+    fontSize: '12px',
   },
 }));

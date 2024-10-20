@@ -84,7 +84,7 @@ export const StatCardValue = styled(CommonStatTypography)(({ theme }) => ({
   color: '#DA9694',
   fontFamily: 'Jost, sans-serif',
   textShadow: '0px 4px 4px rgba(0, 0, 0, 0.16)',
-  margin: '4px 0',
+  margin: '14px 0',
   [theme.breakpoints.down('lg')]: {
     fontSize: '40px',
   },
@@ -93,6 +93,7 @@ export const StatCardValue = styled(CommonStatTypography)(({ theme }) => ({
   },
   [theme.breakpoints.down('sm')]: {
     fontSize: '28px',
+    margin: '8px 0',
   },
   [theme.breakpoints.down('xs')]: {
     fontSize: '24px',

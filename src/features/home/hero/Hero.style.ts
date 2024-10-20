@@ -13,13 +13,15 @@ export const HeroHeading = styled(CommonHeroTypography)(({ theme }) => ({
   fontWeight: 600,
   fontSize: '49px',
   marginTop: '43px',
-  marginBottom: '10px',
   lineHeight: '53px',
   fontFamily: 'Jost, sans-serif',
   maxWidth: '600px',
   textTransform: 'capitalize',
   color: '#fff',
   textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
+  [theme.breakpoints.down(1400)]: {
+    fontSize: '44px',
+  },
   [theme.breakpoints.down('xl')]: {
     fontSize: '40px',
   },
@@ -167,10 +169,10 @@ export const HeroMediaHead = styled(Box)(({ theme }) => ({
   bottom: '70px',
   transform: 'rotate(90deg) translateY(-160px)',
   zIndex: 10,
-  [theme.breakpoints.down('xl')]: {
-    bottom: '120px',
+  [theme.breakpoints.down(1400)]: {
+    bottom: '110px',
   },
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down('xl')]: {
     bottom: '160px',
   },
   [theme.breakpoints.down('sm')]: {
@@ -184,8 +186,14 @@ export const SocialIconsWrapper = styled(Box)({
   gap: '21px',
 });
 
-export const HeroLink = styled(Link)({
+export const HeroLink = styled(Link) ({
+  display: 'inline-block',
+  transition: 'transform 0.3s ease, filter 0.3s ease', 
   transform: 'rotate(-90deg)',
+  '&:hover': {
+    filter: 'invert(54%) sepia(34%) saturate(2600%) hue-rotate(329deg) brightness(92%) contrast(101%)',
+    transform: 'scale(1.2) rotate(-90deg)',
+  },
 });
 
 export const HeroImageContainer = styled(Box)({

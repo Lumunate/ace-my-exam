@@ -103,7 +103,7 @@ const TestimonialsSwiper: FC = () => {
                   <TestimonialsAvatarNameWrapper>
                     <TestimonialAvatar
                       alt={testimonial.name}
-                      src={testimonial.name}
+                      src={''}
                     />
                     <Box>
                       <TestimonialsCardHeading variant="h6">

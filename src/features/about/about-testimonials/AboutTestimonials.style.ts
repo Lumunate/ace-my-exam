@@ -50,10 +50,12 @@ export const  AboutTestimonialsPara = styled(Typography)(({ theme }) => ({
   fontSize: '16px',
   color: '#787878',
   fontFamily: 'Jost, sans-serif',
+  marginBottom: '26px',
   [theme.breakpoints.down('md')]: {
     fontSize: '14px',
   },
   [theme.breakpoints.down('sm')]: {
     fontSize: '12px',
+    marginBottom: '20px',
   },
 }));

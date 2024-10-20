@@ -11,7 +11,7 @@ const CommonHeroTypography = styled(Typography)({
 export const AboutHeroHeading = styled(CommonHeroTypography)(({ theme }) => ({
   fontWeight: 600,
   fontSize: '49px',
-  marginTop: '43px',
+  marginTop: '25px',
   marginBottom: '10px',
   lineHeight: '53px',
   fontFamily: 'Jost, sans-serif',
@@ -24,7 +24,6 @@ export const AboutHeroHeading = styled(CommonHeroTypography)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     fontSize: '30px',
     lineHeight: 'normal',
-    marginTop: '30px',
   },
   [theme.breakpoints.down('sm')]: {
     fontSize: '24px',
@@ -40,7 +39,7 @@ export const AboutHeroHeading = styled(CommonHeroTypography)(({ theme }) => ({
 
 export const AboutHeroContent = styled(CommonHeroTypography)(({ theme }) => ({
   fontSize: '18px',
-  marginBottom: '10px',
+  marginBottom: '20px',
   fontFamily: 'Lato, sans-serif',
   maxWidth: '779px',
   color: '#fff',

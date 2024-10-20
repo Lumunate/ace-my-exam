@@ -79,8 +79,8 @@ const AboutFounder: React.FC = () => {
               color="#000000"
               gradientType="second"
             />
-            <FounderHeading>About Acemyexam</FounderHeading>
-            <FounderSubHeading>An Educator Driven by Passion</FounderSubHeading>
+            <FounderHeading>Dr. Asma Chaudhri</FounderHeading>
+            <FounderSubHeading sx={{mb:{xs: '20px', md: '30px'}}}>An Educator Driven by Passion</FounderSubHeading>
             <FounderContent>
               Meet Dr. Asma Chaudhri, our founder. She&apos;s been helping students reach their full potential for over 16 years!
               She&apos;s got a passion for helping students succeed and her background in both academia and high-stakes finance gives her a unique perspective.

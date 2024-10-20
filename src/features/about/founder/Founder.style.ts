@@ -54,7 +54,6 @@ export const FounderHeading = styled(CommonHeroTypography)(({ theme }) => ({
   fontWeight: 600,
   fontSize: '49px',
   marginTop: '16px',
-  marginBottom: '10px',
   fontFamily: 'Jost, sans-serif',
   textTransform: 'capitalize',
   [theme.breakpoints.down('xl')]: {
@@ -79,13 +78,13 @@ export const FounderHeading = styled(CommonHeroTypography)(({ theme }) => ({
 
 export const FounderSubHeading = styled(CommonHeroTypography)(({ theme }) => ({
   fontSize: '18px',
-  marginBottom: '0',
   fontFamily: 'Lato, sans-serif',
   [theme.breakpoints.down('md')]: {
     fontSize: '16px',
   },
   [theme.breakpoints.down('sm')]: {
     fontSize: '14px',
+    marginBottom: '20px',
   },
   [theme.breakpoints.down(576)]: {
     fontSize: '12px',
@@ -94,11 +93,11 @@ export const FounderSubHeading = styled(CommonHeroTypography)(({ theme }) => ({
 
 export const FounderContent = styled(CommonHeroTypography)(({ theme }) => ({
   fontSize: '16px',
-  marginTop: '10px',
-  marginBottom: '10px',
+  marginBottom: '40px',
   fontFamily: 'Lato, sans-serif',
   [theme.breakpoints.down('sm')]: {
     fontSize: '14px',
+    marginBottom: '20px',
   },
   [theme.breakpoints.down(576)]: {
     fontSize: '12px',

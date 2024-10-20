@@ -1,7 +1,8 @@
 'use client';
 
-import { styled, Typography, Box, Button, Divider } from '@mui/material';
+import { styled, Typography, Box, Divider } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export const SupportWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -174,19 +175,35 @@ export const SupportCardPara = styled(Typography)(({ theme }) => ({
   }
 }));
 
-export const SupportButton = styled(Button)(({ theme }) => ({
+export const SupportButton = styled(Link)(({ theme }) => ({
   fontSize: '28px',
   fontWeight: 900,
-  backgroundColor: 'transparent',
+  backgroundColor: '#DA9694',
   fontFamily: 'Lato, sans-serif',
   border: 'none',
   color: '#fff',
   textTransform: 'capitalize',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  transition: 'background-color 0.3s ease, color 0.3s ease', 
+  height: '100%',
+  width: '100%',
+  '& img': {
+    transition: 'transform 0.3s ease',
+  },
+  '&:hover': {
+    backgroundColor: '#d74642',
+    color: '#ffffff',
+    '& img': {
+      transform: 'translateX(10px)',
+    },
+  },
   [theme.breakpoints.down('xl')]: {
     fontSize: '20px',
   },
   [theme.breakpoints.down(576)]: {
     display: 'flex',
     alignItems: 'center',
-  }
+  },
 }));
