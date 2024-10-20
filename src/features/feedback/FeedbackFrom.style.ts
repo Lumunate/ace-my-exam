@@ -31,8 +31,10 @@ export const FeedbackFormContainer = styled(Box)(({ theme }) => ({
     borderBottom: '1px solid #818181 !important',
     fontSize: '18px !important',
     color: '#000 !important',
-    fontWeight: 500,
+    fontWeight: 600,
     height: '36px !important',
+    fontFamily: 'Jost, sans-serif !important',
+    marginTop: '15px'
   },
 
   '& .feedback-datepicker::placeholder': {

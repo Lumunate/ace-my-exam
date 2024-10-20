@@ -56,8 +56,12 @@ export const CustomFormControl = styled(FormControl)<{
     fontSize: labelFontSize, 
     textTransform: 'capitalize',
     fontFamily: 'Lato, sans-serif',
-  
   },
+
+  '& .MuiFormHelperText-root.Mui-error ': {
+    fontSize: '10px',
+  },
+
   '& .MuiInputLabel-root.Mui-focused':{
     color: '#818181',
     fontSize: labelFontSize, 
@@ -80,6 +84,9 @@ export const StyledSelectField = styled(Select)<{
   '& .MuiSelect-select': {
     height: '36px',
     minHeight: '36px',
+  },
+  '& .MuiFormHelperText-root.Mui-error ': {
+    fontSize: '10px',
   },
 
   '&.MuiInput-underline:before': {

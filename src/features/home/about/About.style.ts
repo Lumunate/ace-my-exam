@@ -112,12 +112,12 @@ export const AboutCardHeading = styled(CommonHeroTypography)<{ textColor: string
   fontFamily: 'Lato, sans-serif',
   color: textColor || '#000',
   fontWeight: 700,
-  flex: 1,
   marginLeft: '12px'
 }));
 
-export const AboutCardContainer = styled(Box)<{ bgColor: string }>(({ theme, bgColor }) => ({
+export const AboutCardContainer = styled(Box)<{ bgColor: string, alignment:string}>(({ theme, bgColor ,alignment}) => ({
   backgroundColor: bgColor,
+  justifyContent: alignment,
   padding: '17px 14px',
   borderRadius: '20px',
   boxShadow: '0px 4px 13.6px 0px rgba(0, 0, 0, 0.25)',

@@ -1,6 +1,7 @@
 'use client';
 
 import { styled, Typography, Box, Avatar } from '@mui/material';
+import Link from 'next/link';
 
 const BaseBoxFlex = styled(Box)({
   display: 'flex',
@@ -142,7 +143,7 @@ export const TestimonialsStarsHead = styled(BaseBoxFlex)({
   marginTop: '10px',
 });
 
-export const TrustpilotImage = styled(Box)(({ theme }) => ({
+export const TrustpilotImage = styled(Link)(({ theme }) => ({
   width: 140,
   height: 34,
   position: 'relative',

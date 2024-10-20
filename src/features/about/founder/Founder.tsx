@@ -38,11 +38,11 @@ const AboutFounder: React.FC = () => {
     },
     {
       degree: 'A-levels',
-      subject: 'All A grades: Chemistry, Physics, Maths, Urdu',
+      institution: 'All A grades: Chemistry, Physics, Maths, Urdu',
     },
     {
       degree: 'O-levels',
-      subject: "9 A's and 2 B's",
+      institution: "9 A's and 2 B's",
     },
   ];
 
@@ -97,7 +97,7 @@ const AboutFounder: React.FC = () => {
                     style={{ marginRight: '8px' }}
                   />
                   <FounderSubHeading>
-                    <strong>{edu.degree}</strong> {edu.subject && `in ${edu.subject}`} {edu.institution && `– ${edu.institution}`}
+                    <strong>{edu.degree}</strong> {edu.subject && `in ${edu.subject}`} {edu.institution && <strong>{`– ${edu.institution}`}</strong>}
                   </FounderSubHeading>
                 </FounderListItem>
               ))}

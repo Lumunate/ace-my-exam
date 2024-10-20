@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, } from '@mui/material';
+import { Box } from '@mui/material';
 import Image from 'next/image';
 import { FC, useEffect, useRef } from 'react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
@@ -28,7 +28,7 @@ import {
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation'; 
+import 'swiper/css/navigation';
 
 interface Testimonial {
   name: string;
@@ -52,28 +52,29 @@ const TestimonialsSwiper: FC = () => {
     return Array.from({ length: starCount }, (_, index) => (
       <Image
         key={index}
-        src="/icons/Star.svg"
+        src='/icons/Star.svg'
         width={16}
         height={15}
-        alt="Star-icon"
+        alt='Star-icon'
         style={{ marginRight: '5px' }}
+        loading='lazy'
       />
     ));
   };
 
   return (
     <TestimonialsSwiperWrapper withPadding={false}>
-      <TestimonialsNavigationWrapper positionLeft="50%" width="300px">
-        <Box className="swiper-button-prev">
-          <Image src="/icons/prev.svg" alt="Prev" width={14} height={11} />
+      <TestimonialsNavigationWrapper positionLeft='50%' width='300px'>
+        <Box className='swiper-button-prev'>
+          <Image src='/icons/prev.svg' alt='Prev' width={14} height={11} loading='lazy' />
         </Box>
-        <Box className="swiper-button-next">
-          <Image src="/icons/next.svg" alt="Next" width={14} height={11} />
+        <Box className='swiper-button-next'>
+          <Image src='/icons/next.svg' alt='Next' width={14} height={11} loading='lazy' />
         </Box>
-      </TestimonialsNavigationWrapper >
+      </TestimonialsNavigationWrapper>
 
       <Swiper
-        effect="coverflow"
+        effect='coverflow'
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={'auto'}
@@ -87,8 +88,6 @@ const TestimonialsSwiper: FC = () => {
         loop={true}
         pagination={{ clickable: true }}
         navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}
-        observer={true}
-        observeParents={true}
         onSwiper={(swiper) => {
           swiperRef.current = swiper;
         }}
@@ -98,53 +97,53 @@ const TestimonialsSwiper: FC = () => {
           <SwiperSlide key={index}>
             <TestimonialsCard>
               <Box>
-                <TestimonialsInfoHead
-                >
+                <TestimonialsInfoHead>
                   <TestimonialsAvatarNameWrapper>
                     <TestimonialAvatar
                       alt={testimonial.name}
                       src={''}
                     />
                     <Box>
-                      <TestimonialsCardHeading variant="h6">
+                      <TestimonialsCardHeading variant='h6'>
                         {testimonial.name}
                       </TestimonialsCardHeading>
-                      <TestimonialsOccupationPara variant="subtitle2">
+                      <TestimonialsOccupationPara variant='subtitle2'>
                         {testimonial.subject}
                       </TestimonialsOccupationPara>
-                      <TestimonialsParaTwo variant="subtitle2">
+                      <TestimonialsParaTwo variant='subtitle2'>
                         {testimonial.date}
                       </TestimonialsParaTwo>
                     </Box>
                   </TestimonialsAvatarNameWrapper>
                   <QuotationImageHead>
                     <Image
-                      src="/icons/quotation.svg"
-                      alt="quotation-icon"
+                      src='/icons/quotation.svg'
+                      alt='quotation-icon'
                       layout='fill' 
+                      loading='lazy'
                     />
                   </QuotationImageHead>
                 </TestimonialsInfoHead>
                 <TestimonialsStarsHead>
                   {renderStars(testimonial.stars)}
                 </TestimonialsStarsHead>
-                <TestimonialsCardPara variant="body1" sx={{ mb: '16px' }}>
+                <TestimonialsCardPara variant='body1' sx={{ mb: '16px' }}>
                   {testimonial.feedback}
                 </TestimonialsCardPara>
               </Box>
               <TestimonialsDateHead>
-                <TestimonialsParaTwo variant="subtitle2">
+                <TestimonialsParaTwo variant='subtitle2'>
                 Feedback given: {testimonial.feedbackDate}
                 </TestimonialsParaTwo>
-                <TrustpilotImage>
+                <TrustpilotImage href={'https://www.trustpilot.com/'} target='_blank'>
                   <Image
-                    src="/home/trustpilot.svg"
-                    alt="trustpilot-icon"
+                    src='/home/trustpilot.svg'
+                    alt='trustpilot-icon'
                     layout='fill' 
+                    loading='lazy'
                   />
                 </TrustpilotImage>
               </TestimonialsDateHead>
-            
             </TestimonialsCard>
           </SwiperSlide>
         ))}

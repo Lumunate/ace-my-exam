@@ -75,7 +75,7 @@ export default function FeedbackForm() {
             columns={24}
             columnSpacing={{xs: '20px', lg: '40px'}}
             rowSpacing={{xs: '20px', lg: '40px'}}
-            alignItems={'end'}
+            alignItems={'start'}
             sx={{mb: '40px'}}
           >
             <Grid size={{ xs: 24, md: 12 }}>
@@ -160,7 +160,7 @@ export default function FeedbackForm() {
                   style={{
                     position: 'absolute',
                     right: '10px',
-                    top: '12px',
+                    top: '28px',
                     zIndex: 2,
                   }}
                 />
@@ -177,7 +177,7 @@ export default function FeedbackForm() {
                   )}
                 />
                 {errors.sessionDate && (
-                  <FormHelperText error>
+                  <FormHelperText error sx={{fontSize:'10px'}}>
                     {errors.sessionDate?.message}
                   </FormHelperText>
                 )}

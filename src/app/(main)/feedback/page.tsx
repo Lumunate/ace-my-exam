@@ -25,7 +25,7 @@ export default function FeedbackPage() {
             Help us improve by sharing your experience!
             </FeedbackParaTypography>
             <FeedbackIconHead>
-              <Image src={'/home/play.svg'} width={26} height={21} alt='icon' />
+              <Image src={'/home/play.svg'} width={26} height={21} alt='icon' loading="lazy" />
             </FeedbackIconHead>
           </Grid>
           <Grid size={{ xs: 24}}>
