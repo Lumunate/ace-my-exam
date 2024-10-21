@@ -3,16 +3,16 @@
 import { FormControl, MenuItem, Select, styled, TextField } from '@mui/material';
 
 export const StyledTextField = styled(TextField)<{
-  inputFontSize?: string;
-  labelFontSize?: string;
-}>(({ theme, inputFontSize = '14px', labelFontSize = '12px' }) => ({
+  inputfontsize?: string;
+  labelfontsize?: string;
+}>(({ theme, inputfontsize = '14px', labelfontsize = '12px' }) => ({
 
   [theme.breakpoints.down('sm')]: {
     marginTop: '6px',
   },
   input: {
     fontWeight: 600,
-    fontSize: inputFontSize,
+    fontSize: inputfontsize,
     fontFamily: 'Jost, sans-serif',
     height: '36px',
     minHeight: '36px',
@@ -21,13 +21,13 @@ export const StyledTextField = styled(TextField)<{
   '& .MuiInputLabel-root': {
     color: '#818181',
     fontWeight: 600,
-    fontSize: labelFontSize,
+    fontSize: labelfontsize,
     textTransform: 'capitalize',
     fontFamily: 'Lato, sans-serif',
   },
   '& .MuiInputBase-input.MuiInput-input': {
     fontWeight: 600,
-    fontSize: inputFontSize, 
+    fontSize: inputfontsize, 
     fontFamily: 'Jost, sans-serif',
   },
   '& .MuiFormHelperText-root.Mui-error ': {
@@ -48,12 +48,12 @@ export const StyledTextField = styled(TextField)<{
 }));
 
 export const CustomFormControl = styled(FormControl)<{
-  labelFontSize?: string;
-}>(({ labelFontSize = '10px' }) => ({
+  labelfontsize?: string;
+}>(({ labelfontsize = '10px' }) => ({
   '& .MuiInputLabel-root':{
     color: '#818181',
     fontWeight: 600,
-    fontSize: labelFontSize, 
+    fontSize: labelfontsize, 
     textTransform: 'capitalize',
     fontFamily: 'Lato, sans-serif',
   },
@@ -64,17 +64,17 @@ export const CustomFormControl = styled(FormControl)<{
 
   '& .MuiInputLabel-root.Mui-focused':{
     color: '#818181',
-    fontSize: labelFontSize, 
+    fontSize: labelfontsize, 
   }
 }));
 
 export const StyledSelectField = styled(Select)<{
-  inputFontSize?: string;
-  labelFontSize?: string;
-}>(({ inputFontSize = '14px'}) => ({
+  inputfontsize?: string;
+  labelfontsize?: string;
+}>(({ inputfontsize = '14px'}) => ({
   textAlign: 'start',
   fontWeight: 600,
-  fontSize: inputFontSize,
+  fontSize: inputfontsize,
   fontFamily: 'Jost, sans-serif',
   overflow: 'hidden',
   height: '36px',

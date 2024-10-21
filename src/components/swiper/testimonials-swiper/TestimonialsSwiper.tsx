@@ -5,9 +5,8 @@ import Image from 'next/image';
 import { FC, useEffect, useRef } from 'react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper/types'; 
+import { Swiper as SwiperType } from 'swiper/types';
 
-import testimonialsData from '@/components/swiper/testimonials-swiper/testimonialsData.json';
 import {
   TestimonialsAvatarNameWrapper,
   TestimonialsCard,
@@ -24,7 +23,6 @@ import {
   TrustpilotImage,
   QuotationImageHead
 } from '@/components/swiper/testimonials-swiper/TestimonialsSwiper.style';
-
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
@@ -41,6 +39,7 @@ interface Testimonial {
 
 const TestimonialsSwiper: FC = () => {
   const swiperRef = useRef<SwiperType | null>(null);
+  const { data, isLoading } = useTestimonials();
 
   useEffect(() => {
     if (swiperRef.current) {
