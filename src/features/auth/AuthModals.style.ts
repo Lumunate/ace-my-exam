@@ -47,7 +47,7 @@ export const AuthButton = styled(ButtonBase)(({ theme }) =>({
   padding: '10.5px',
   fontWeight: 400,
   fontFamily: 'Lato, sans-serif',
-  fontSize: '14px',
+  fontSize: '16px',
   color: 'white',
   lineHeight: '2.4rem',
   textAlign: 'center',
@@ -58,7 +58,7 @@ export const AuthButton = styled(ButtonBase)(({ theme }) =>({
   boxShadow: '0px 4px 11.4px 0px rgba(0, 0, 0, 0.25)',
   backgroundColor: '#DA9694',
   '&:hover': {
-    backgroundColor: 'gray',
+    backgroundColor: '#d74642',
   },
   marginTop: '2rem',
 
@@ -82,14 +82,14 @@ export const AuthHeadingTypography = styled(AuthBaseTypography)({
 
 export const AuthParaTypography = styled(AuthBaseTypography)({
   fontWeight: 400,
-  fontSize: '8px',
+  fontSize: '10px',
 });
 
 export const AuthStyledLinkOne = styled(Link)({
   color: '#000000',
   textDecoration: 'none',
   fontFamily: 'Lato, sans-serif',
-  fontSize: '8px',
+  fontSize: '10px',
   textAlign: 'end',
   display: 'block',
   '&:hover': {

@@ -61,11 +61,15 @@ const FooterMediaItem = styled(ListItem)(({ theme }) => ({
   padding: '0',
   paddingLeft: '18px',
   cursor: 'pointer',
+  transition: 'transform 0.3s ease, filter 0.3s ease',
   [theme.breakpoints.down('md')]: {
     paddingLeft: '10px',
   },
   [theme.breakpoints.down('sm')]: {
     paddingLeft: '6px',
+  },
+  '&:hover': {
+    filter: 'brightness(0) saturate(100%) invert(0%) sepia(5%) saturate(7500%) hue-rotate(228deg) brightness(106%) contrast(106%)', 
   },
 }));
 
@@ -102,7 +106,7 @@ const FooterHeading = styled(Typography)({
 });
 
 const Footer: FC = () => {
-  const pages = ['Home', 'Testimonials', 'About', 'Contact Us'];
+  const pages = ['Home', 'Resources', 'About', 'Contact Us'];
 
   return (
     <>

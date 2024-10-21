@@ -16,7 +16,9 @@ export default function Home() {
       <AppContentWrapper>
         <About />
         <Process />
-        <Institutes />
+      </AppContentWrapper>
+      <Institutes />
+      <AppContentWrapper>     
         <Resources />
       </AppContentWrapper>
       <Support />

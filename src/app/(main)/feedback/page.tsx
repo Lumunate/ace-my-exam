@@ -16,7 +16,7 @@ export default function FeedbackPage() {
   return (
     <FeedbackContainer>
       <AppContentWrapper>
-        <Grid container columns={24} sx={{ px: '40px', maxWidth: '900px', mx: 'auto' }}>
+        <Grid container columns={24} sx={{ px:{xs: '0', md: '40px'}, maxWidth: '900px', mx: 'auto' }}>
           <Grid size={{ xs: 24}} sx={{ mt: '80px', position: 'relative' }}>
             <FeedbackHeadingTypography variant='h1'>
             Your Feedback Matters!
@@ -25,7 +25,7 @@ export default function FeedbackPage() {
             Help us improve by sharing your experience!
             </FeedbackParaTypography>
             <FeedbackIconHead>
-              <Image src={'/home/play.svg'} width={26} height={21} alt='icon' />
+              <Image src={'/home/play.svg'} width={26} height={21} alt='icon' loading="lazy" />
             </FeedbackIconHead>
           </Grid>
           <Grid size={{ xs: 24}}>

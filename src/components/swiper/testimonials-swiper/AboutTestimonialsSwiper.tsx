@@ -20,7 +20,9 @@ import {
   TestimonialsInfoHead,
   TestimonialAvatar,
   TestimonialsStarsHead,
-  TestimonialsDateHead
+  TestimonialsDateHead,
+  QuotationImageHead,
+  TrustpilotImage
 } from '@/components/swiper/testimonials-swiper/TestimonialsSwiper.style';
 
 import 'swiper/css';
@@ -50,23 +52,24 @@ const AboutTestimonialsSwiper: FC = () => {
     return Array.from({ length: starCount }, (_, index) => (
       <Image
         key={index}
-        src="/icons/Star.svg"
+        src='/icons/Star.svg'
         width={16}
         height={15}
-        alt="Star-icon"
+        alt='Star-icon'
         style={{ marginRight: '5px' }}
+        loading='lazy'
       />
     ));
   };
 
   return (
-    <TestimonialsSwiperWrapper  withPadding={true}>
-      <TestimonialsNavigationWrapper  positionLeft="27.5%" width="45%">
-        <Box className="swiper-button-prev">
-          <Image src="/icons/prev.svg" alt="Prev" width={14} height={11} />
+    <TestimonialsSwiperWrapper  withPadding={true} aboutSwiperOpen={true}>
+      <TestimonialsNavigationWrapper  positionLeft='50%' width='300px'>
+        <Box className='swiper-button-prev'>
+          <Image src='/icons/prev.svg' alt='Prev' width={14} height={11} />
         </Box>
-        <Box className="swiper-button-next">
-          <Image src="/icons/next.svg" alt="Next" width={14} height={11} />
+        <Box className='swiper-button-next'>
+          <Image src='/icons/next.svg' alt='Next' width={14} height={11} />
         </Box>
       </TestimonialsNavigationWrapper >
 
@@ -93,46 +96,48 @@ const AboutTestimonialsSwiper: FC = () => {
                   <TestimonialsAvatarNameWrapper>
                     <TestimonialAvatar
                       alt={testimonial.name}
-                      src={testimonial.name}
+                      src={''}
                     />
                     <Box>
-                      <TestimonialsCardHeading variant="h6">
+                      <TestimonialsCardHeading variant='h6'>
                         {testimonial.name}
                       </TestimonialsCardHeading>
-                      <TestimonialsOccupationPara variant="subtitle2">
+                      <TestimonialsOccupationPara variant='subtitle2'>
                         {testimonial.subject}
                       </TestimonialsOccupationPara>
-                      <TestimonialsParaTwo variant="subtitle2">
+                      <TestimonialsParaTwo variant='subtitle2'>
                         {testimonial.date}
                       </TestimonialsParaTwo>
                     </Box>
                   </TestimonialsAvatarNameWrapper>
-                  <Box>
+                  <QuotationImageHead>
                     <Image
-                      src="/icons/quotation.svg"
-                      width={79}
-                      height={60}
-                      alt="quotation-icon"
+                      src='/icons/quotation.svg'
+                      alt='quotation-icon'
+                      layout='fill'
+                      loading='lazy' 
                     />
-                  </Box>
+                  </QuotationImageHead>
                 </TestimonialsInfoHead>
                 <TestimonialsStarsHead>
                   {renderStars(testimonial.stars)}
                 </TestimonialsStarsHead>
-                <TestimonialsCardPara variant="body1" sx={{ mb: '16px' }}>
+                <TestimonialsCardPara variant='body1' sx={{ mb: '16px' }}>
                   {testimonial.feedback}
                 </TestimonialsCardPara>
               </Box>
               <TestimonialsDateHead>
-                <TestimonialsParaTwo variant="subtitle2">
+                <TestimonialsParaTwo variant='subtitle2'>
                 Feedback given: {testimonial.feedbackDate}
                 </TestimonialsParaTwo>
-                <Image
-                  src="/home/trustpilot.svg"
-                  width={140}
-                  height={34}
-                  alt="trustpilot-icon"
-                />
+                <TrustpilotImage href={'https://www.trustpilot.com/'} target='_blank'>
+                  <Image
+                    src='/home/trustpilot.svg'
+                    alt='trustpilot-icon'
+                    layout='fill' 
+                    loading='lazy'
+                  />
+                </TrustpilotImage>
               </TestimonialsDateHead>
             
             </TestimonialsCard>
