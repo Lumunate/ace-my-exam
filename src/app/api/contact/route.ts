@@ -7,6 +7,7 @@ import { initializeDataSource } from '@/utils/typeorm';
 
 export async function POST(request: NextRequest) {
   await initializeDataSource();
+  
   try {
     const body = await request.json();
     const validatedData = contactSchema.parse(body);

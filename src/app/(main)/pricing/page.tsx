@@ -89,10 +89,10 @@ const Pricing: React.FC = () => {
           textWidth='115px'
           gradientType='second'
         />
-        <PricingHeading sx={{ mt: '20px' }}>
+        <PricingHeading>
           Find the plan that’s right for you
         </PricingHeading>
-        <PricingPara sx={{ mt: '23px' }}>Individual Rates</PricingPara>
+        <PricingPara>Individual Rates</PricingPara>
 
         <Grid container justifyContent={'center'} rowSpacing={'30px'}>
           {individualRates.map((card, index) => (
@@ -100,10 +100,10 @@ const Pricing: React.FC = () => {
               item
               xs={12}
               sm={6}
-              lg={4}
+              md={4}
               xl={3}
               key={index}
-              sx={{ px: '15px' }}
+              sx={{ px: {xs: '5px', lg: '10px', xl: '15px'} }}
             >
               <PricingCard
                 imageSrc={card.imageSrc}
@@ -117,7 +117,10 @@ const Pricing: React.FC = () => {
         <PricingPara sx={{ mt: '100px' }}>Group Rates</PricingPara>
         <Grid container justifyContent={'center'} rowSpacing={'30px'}>
           {groupRates.map((card, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index} sx={{ px: '15px' }}>
+            <Grid item xs={12}
+              sm={6}
+              md={4}
+              xl={3} key={index} sx={{ px: { xs: '5px', lg: '10px', xl: '15px' } }}>
               <PricingCard
                 imageSrc={card.imageSrc}
                 title={card.title}

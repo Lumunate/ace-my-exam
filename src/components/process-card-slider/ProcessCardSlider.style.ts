@@ -8,14 +8,21 @@ interface ProcessCardProps {
   activeCard: number;
 }
 
-export const ProcessSliderWrapper = styled(Box)({
+export const ProcessSliderWrapper = styled(Box)(({ theme }) =>({
   display: 'flex',
-  justifyContent: 'center',
   alignItems: 'center',
   position: 'relative',
   overflow: 'hidden',
   padding: '80px 0',
-});
+  width: 'fit-content',
+  margin: '0 auto',
+  [theme.breakpoints.down('lg')]: {
+    padding: '60px 0',
+  },
+  [theme.breakpoints.down('md')]: {
+    padding: '40px 0',
+  },
+}));
 
 export const ProcessContent = styled(Box)({
   textAlign: 'start'
@@ -26,10 +33,10 @@ export const BaseTypography = styled(Typography)({
   textAlign: 'start',
 });
 
-export const ProcessCard = styled(Card)<ProcessCardProps>(({ index, activeCard }) => ({
+export const ProcessCard = styled(Card)<ProcessCardProps>(({ theme, index, activeCard }) => ({
   position: 'relative',
   marginLeft: index === 0 ? '0px' : '-149px',
-  transition: 'all 0.5s ease',
+  // transition: 'all 2s ease',
   width: '236px',
   height: '292px',
   cursor: 'pointer',
@@ -43,6 +50,11 @@ export const ProcessCard = styled(Card)<ProcessCardProps>(({ index, activeCard }
   backgroundColor: '#fff',
   borderRadius: '20px',
   overflow: 'hidden',
+  [theme.breakpoints.down(576)]: {
+    width: '200px',
+    padding: '15px 18px',
+    marginLeft: index === 0 ? '0px' : '-139px',
+  },
 }));
 
 export const ProcessCardNumber = styled(BaseTypography)({
@@ -55,16 +67,22 @@ export const ProcessCardNumber = styled(BaseTypography)({
   WebkitTextFillColor: 'transparent',
 });
 
-export const ProcessCardTitle = styled(BaseTypography)({
+export const ProcessCardTitle = styled(BaseTypography)(({ theme }) => ({
   color: '#DA9694',
   fontSize: '16px',
   fontWeight: 700,
   lineHeight: '22px',
   marginBottom: '3px',
-});
+  [theme.breakpoints.down(576)]: {
+    fontSize: '14px',
+  },
+}));
 
-export const ProcessCardDescription = styled(BaseTypography)({
+export const ProcessCardDescription = styled(BaseTypography)(({ theme }) => ({
   color: '#929292',
   fontSize: '14px',
   fontWeight: 400,
-});
+  [theme.breakpoints.down(576)]: {
+    fontSize: '12px',
+  },
+}));

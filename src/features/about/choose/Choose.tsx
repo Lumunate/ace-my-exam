@@ -19,17 +19,17 @@ const AboutChoose: React.FC = () => {
   return (
     <ChooseWrapper>
       <Grid container justifyContent={'center'} alignItems={'center'} columns={24}>
-        <Grid size={{ xs: 24, lg: 15 }} sx={{ px: '15px', position: 'relative', display: 'flex', justifyContent: 'end' }}>
+        <Grid size={{ xs: 24, lg: 15 }} sx={{ px: {xs: '0', lg: '15px'}, position: 'relative', display: 'flex', justifyContent: 'end' }}>
           <ChooseCard>
             <SectionHeading
-              text='Our Founder'
+              text='Why Choose Us?'
               align='start'
               showLeftLine={false}
               color='#DA9694'
               gradientType='second'
             />
-            <ChooseHeading>About Acemyexam</ChooseHeading>
-            <ChoosePara>An Educator Driven by Passion</ChoosePara>
+            <ChooseHeading>Why Acemyexam?</ChooseHeading>
+            <ChoosePara>We believe in the individuality of each student, offering tailored lessons to unlock their full potential</ChoosePara>
             <Button
               special
               fontSize='16px'
@@ -44,7 +44,7 @@ const AboutChoose: React.FC = () => {
             <Image src="/about/choose.webp" alt="Choose" layout="fill" objectFit="cover" />
           </ChooseImgHead>
         </Grid>
-        <Grid size={{ xs: 24, lg: 9 }} sx={{ px: '15px' }}>
+        <Grid size={{ xs: 24, lg: 9 }} sx={{ px: {xs: '0', lg: '15px'} }}>
           <ChooseSkillCard>
             <Image src="/icons/tutoring.svg" alt="icons" width={39} height={39} style={{ marginRight: '15px' }} />
             <ChooseSkillCardHeading>15+ years of successful tutoring</ChooseSkillCardHeading>

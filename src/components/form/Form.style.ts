@@ -5,7 +5,7 @@ import { FormControl, MenuItem, Select, styled, TextField } from '@mui/material'
 export const StyledTextField = styled(TextField)<{
   inputfontsize?: string;
   labelfontsize?: string;
-}>(({ theme, inputfontsize = '14px', labelfontsize = '10px' }) => ({
+}>(({ theme, inputfontsize = '14px', labelfontsize = '12px' }) => ({
 
   [theme.breakpoints.down('sm')]: {
     marginTop: '6px',
@@ -56,8 +56,12 @@ export const CustomFormControl = styled(FormControl)<{
     fontSize: labelfontsize, 
     textTransform: 'capitalize',
     fontFamily: 'Lato, sans-serif',
-  
   },
+
+  '& .MuiFormHelperText-root.Mui-error ': {
+    fontSize: '10px',
+  },
+
   '& .MuiInputLabel-root.Mui-focused':{
     color: '#818181',
     fontSize: labelfontsize, 
@@ -80,6 +84,9 @@ export const StyledSelectField = styled(Select)<{
   '& .MuiSelect-select': {
     height: '36px',
     minHeight: '36px',
+  },
+  '& .MuiFormHelperText-root.Mui-error ': {
+    fontSize: '10px',
   },
 
   '&.MuiInput-underline:before': {

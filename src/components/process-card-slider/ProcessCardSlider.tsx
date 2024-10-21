@@ -38,7 +38,7 @@ const ProcessCardSlider: React.FC = () => {
           active={index === activeCard}
           index={index}
           activeCard={activeCard}
-          onClick={() => handleCardClick(index)}
+          onMouseOver={() => handleCardClick(index)}
         >             
           <ProcessCardNumber variant="h4">{step.number}</ProcessCardNumber>
           <ProcessContent>

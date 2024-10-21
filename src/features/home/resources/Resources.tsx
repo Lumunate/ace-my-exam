@@ -1,24 +1,40 @@
+import { Box } from '@mui/material';
+
 import { Button } from '@/components/buttons/Button.style';
 import SectionHeading from '@/components/section-heading/SectionHeading';
-import { ResourcesWrapper, ResourcesHeading, ResourceGrid, ResourceCard, ResourcesCardHeading, ResourcesImageContainer, ResourcesImage, ResourcesImageOverlay } from '@/features/home/resources/Resources.style';
+import {
+  ResourcesWrapper,
+  ResourcesHeading,
+  ResourceGrid,
+  ResourceCard,
+  ResourcesCardHeading,
+  ResourcesImageContainer,
+  ResourcesImage,
+  ResourcesImageOverlay,
+  ResourcesCardSubHeading
+} from '@/features/home/resources/Resources.style';
 
 const cardsData = [
   {
+    subTitle: 'AQA, AQA, EDEXCEL, OCR, & CIE',
     title: 'Alevel Maths Resources',
     image: '/home/Resources1.webp', 
     buttonText: 'Start Now'
   },
   {
+    subTitle: 'AQA, EDEXCEL, OCR, & CIE',
     title: 'GCSE/IGCSE Maths Resources',
     image: '/home/Resources2.webp', 
     buttonText: 'Start Now'
   },
   {
+    subTitle: 'AQA, EDEXCEL, OCR, & CIE',
     title: 'GCSE/IGCSE Science Resources',
     image: '/home/Resources3.webp', 
     buttonText: 'Start Now'
   },
   {
+    subTitle: 'Math & Science',
     title: 'Entrance & scholarship Exams Resources',
     image: '/home/Resources3.webp', 
     buttonText: 'Start Now'
@@ -54,8 +70,19 @@ const Resources: React.FC = () => {
                 />
                 <ResourcesImageOverlay />
               </ResourcesImageContainer>
+              <ResourcesCardSubHeading className='resources-subtitle'>{card.subTitle}</ResourcesCardSubHeading>
               <ResourcesCardHeading>{card.title}</ResourcesCardHeading>
-              <Button special borderRadius="50px">{card.buttonText}</Button>
+              <Box>
+                <Button
+                  special
+                  fontSize='16px'
+                  borderRadius='50px'
+                  width='212px'
+                  height='60px'
+                >
+                  {card.buttonText}
+                </Button>
+              </Box>
             </ResourceCard>
           </ResourceGrid>
         ))}

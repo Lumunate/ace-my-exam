@@ -17,14 +17,21 @@ export const CommonHeadingRightLine = styled(CommonHeadingLine)<{ gradientType: 
     : 'linear-gradient(to right, #DA9694 0%, #FFF 100%)', 
 }));
 
-export const CommonHeadingContainer = styled(Box)<{ align: string }>(({ align }) => ({
+export const CommonHeadingContainer = styled(Box)<{ align: string }>(({ theme, align }) => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: align === 'center' ? 'center' : 'flex-start',
   gap: '30px',
+
+  [theme.breakpoints.down('sm')]: {
+    gap: '10px',
+  },
+  [theme.breakpoints.down('xs')]: {
+    fontSize: '12px',
+  }
 }));
 
-export const CommonHeadingTypography = styled(Typography)<{ textColor: string; textSize: string }>(({ textColor, textSize }) => ({
+export const CommonHeadingTypography = styled(Typography)<{ textColor: string; textSize: string }>(({ theme, textColor, textSize }) => ({
   fontSize: '16px',
   fontWeight: 400,
   color: textColor || '#000000', 
@@ -32,4 +39,11 @@ export const CommonHeadingTypography = styled(Typography)<{ textColor: string; t
   textTransform: 'capitalize',
   fontStyle: 'normal',
   width: textSize,
+  [theme.breakpoints.down('md')]: {
+    fontSize: '14px',
+    maxWidth: '140px',
+  },
+  [theme.breakpoints.down('xs')]: {
+    fontSize: '12px',
+  }
 }));
