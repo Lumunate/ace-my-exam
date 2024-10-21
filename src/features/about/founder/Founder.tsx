@@ -38,11 +38,11 @@ const AboutFounder: React.FC = () => {
     },
     {
       degree: 'A-levels',
-      subject: 'All A grades: Chemistry, Physics, Maths, Urdu',
+      institution: 'All A grades: Chemistry, Physics, Maths, Urdu',
     },
     {
       degree: 'O-levels',
-      subject: "9 A's and 2 B's",
+      institution: "9 A's and 2 B's",
     },
   ];
 
@@ -71,7 +71,7 @@ const AboutFounder: React.FC = () => {
     <FounderWrapper>
       <FounderContentContainer>
         <Grid container justifyContent={'center'} columns={24}>
-          <Grid size={{ xs: 24, lg: 14 }} sx={{ px: '15px' }}>
+          <Grid size={{ xs: 24, lg: 14 }} sx={{ px: {xs: '0', md: '15px'} }}>
             <SectionHeading
               text="Our Founder"
               align="start"
@@ -79,8 +79,8 @@ const AboutFounder: React.FC = () => {
               color="#000000"
               gradientType="second"
             />
-            <FounderHeading>About Acemyexam</FounderHeading>
-            <FounderSubHeading>An Educator Driven by Passion</FounderSubHeading>
+            <FounderHeading>Dr. Asma Chaudhri</FounderHeading>
+            <FounderSubHeading sx={{mb:{xs: '20px', md: '30px'}}}>An Educator Driven by Passion</FounderSubHeading>
             <FounderContent>
               Meet Dr. Asma Chaudhri, our founder. She&apos;s been helping students reach their full potential for over 16 years!
               She&apos;s got a passion for helping students succeed and her background in both academia and high-stakes finance gives her a unique perspective.
@@ -97,20 +97,20 @@ const AboutFounder: React.FC = () => {
                     style={{ marginRight: '8px' }}
                   />
                   <FounderSubHeading>
-                    <strong>{edu.degree}</strong> {edu.subject && `in ${edu.subject}`} {edu.institution && `– ${edu.institution}`}
+                    <strong>{edu.degree}</strong> {edu.subject && `in ${edu.subject}`} {edu.institution && <strong>{`– ${edu.institution}`}</strong>}
                   </FounderSubHeading>
                 </FounderListItem>
               ))}
             </FounderList>
           </Grid>
 
-          <Grid size={{ xs: 24, lg: 10 }} sx={{ px: '15px' }}>
+          <Grid size={{ xs: 24, lg: 10 }} sx={{ px: {xs: '0', md: '15px'} }}>
             <FounderImgHead>
               <Image src="/about/founder.webp" alt="founder" layout="fill" objectFit="cover" />
             </FounderImgHead>
           </Grid>
 
-          <Grid size={24} sx={{ px: '15px' }}>
+          <Grid size={24} sx={{ px: {xs: '0', md: '15px'} }}>
             <FounderCard>
               <FounderCardInnerHead>
                 <FounderCardHeading>About Acemyexam</FounderCardHeading>

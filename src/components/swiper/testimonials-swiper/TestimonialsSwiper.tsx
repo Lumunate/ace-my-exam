@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, CircularProgress } from '@mui/material';
+import { Box } from '@mui/material';
 import Image from 'next/image';
 import { FC, useEffect, useRef } from 'react';
 import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
@@ -19,18 +19,29 @@ import {
   TestimonialsInfoHead,
   TestimonialAvatar,
   TestimonialsStarsHead,
-  TestimonialsDateHead
+  TestimonialsDateHead,
+  TrustpilotImage,
+  QuotationImageHead
 } from '@/components/swiper/testimonials-swiper/TestimonialsSwiper.style';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-import { useTestimonials } from '@/hooks/useTestimonials';
-import { ITestimonials } from '@/types/testimonials';
+
+import testimonialsData from './testimonialsData.json';
+
+interface Testimonial {
+  name: string;
+  subject: string;
+  feedback: string;
+  date: string; 
+  feedbackDate: string;
+  stars: number;
+}
 
 const TestimonialsSwiper: FC = () => {
   const swiperRef = useRef<SwiperType | null>(null);
-  const { data, isLoading } = useTestimonials();
+  // const { data, isLoading } = useTestimonials();
 
   useEffect(() => {
     if (swiperRef.current) {
@@ -40,77 +51,104 @@ const TestimonialsSwiper: FC = () => {
 
   const renderStars = (starCount: number) => {
     return Array.from({ length: starCount }, (_, index) => (
-      <Image key={index} src="/icons/Star.svg" width={16} height={15} alt="Star-icon" style={{ marginRight: '5px' }} />
+      <Image
+        key={index}
+        src='/icons/Star.svg'
+        width={16}
+        height={15}
+        alt='Star-icon'
+        style={{ marginRight: '5px' }}
+        loading='lazy'
+      />
     ));
   };
 
   return (
     <TestimonialsSwiperWrapper withPadding={false}>
-      <TestimonialsNavigationWrapper positionLeft="40%" width="20%">
-        <Box className="swiper-button-prev">
-          <Image src="/icons/prev.svg" alt="Prev" width={14} height={11} />
+      <TestimonialsNavigationWrapper positionLeft='50%' width='300px'>
+        <Box className='swiper-button-prev'>
+          <Image src='/icons/prev.svg' alt='Prev' width={14} height={11} loading='lazy' />
         </Box>
-        <Box className="swiper-button-next">
-          <Image src="/icons/next.svg" alt="Next" width={14} height={11} />
+        <Box className='swiper-button-next'>
+          <Image src='/icons/next.svg' alt='Next' width={14} height={11} loading='lazy' />
         </Box>
       </TestimonialsNavigationWrapper>
-      {isLoading ? (
-        <CircularProgress size={24} />
-      ) : (
-        <Swiper
-          effect="coverflow"
-          grabCursor={true}
-          slidesPerView={3}
-          spaceBetween={0}
-          centeredSlides={true}
-          coverflowEffect={{
-            rotate: 0,
-            stretch: 50,
-            depth: 100,
-            modifier: 2,
-            slideShadows: false,
-          }}
-          loop={true}
-          pagination={{ clickable: true }}
-          navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}
-          observer={true}
-          observeParents={true}
-          onSwiper={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          modules={[EffectCoverflow, Pagination, Navigation]}
-        >
-          {data?.map((testimonial: ITestimonials, index: number) => (
-            <SwiperSlide key={index}>
-              <TestimonialsCard>
-                <Box>
-                  <TestimonialsInfoHead>
-                    <TestimonialsAvatarNameWrapper>
-                      <TestimonialAvatar alt={testimonial.name} src={testimonial.name} />
-                      <Box>
-                        <TestimonialsCardHeading variant="h6">{testimonial.name}</TestimonialsCardHeading>
-                        <TestimonialsOccupationPara variant="subtitle2">{testimonial.subject}</TestimonialsOccupationPara>
-                        <TestimonialsParaTwo variant="subtitle2">{testimonial.date}</TestimonialsParaTwo>
-                      </Box>
-                    </TestimonialsAvatarNameWrapper>
+
+      <Swiper
+        effect='coverflow'
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={'auto'}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 50,
+          depth: 100,
+          modifier: 2,
+          slideShadows: false,
+        }}
+        loop={true}
+        pagination={{ clickable: true }}
+        navigation={{ prevEl: '.swiper-button-prev', nextEl: '.swiper-button-next' }}
+        onSwiper={(swiper) => {
+          swiperRef.current = swiper;
+        }}
+        modules={[EffectCoverflow, Pagination, Navigation]} 
+      >
+        {testimonialsData?.map((testimonial: Testimonial, index: number) => (
+          <SwiperSlide key={index}>
+            <TestimonialsCard>
+              <Box>
+                <TestimonialsInfoHead>
+                  <TestimonialsAvatarNameWrapper>
+                    <TestimonialAvatar
+                      alt={testimonial.name}
+                      src={''}
+                    />
                     <Box>
-                      <Image src="/icons/quotation.svg" width={79} height={60} alt="quotation-icon" />
+                      <TestimonialsCardHeading variant='h6'>
+                        {testimonial.name}
+                      </TestimonialsCardHeading>
+                      <TestimonialsOccupationPara variant='subtitle2'>
+                        {testimonial.subject}
+                      </TestimonialsOccupationPara>
+                      <TestimonialsParaTwo variant='subtitle2'>
+                        {testimonial.date}
+                      </TestimonialsParaTwo>
                     </Box>
-                  </TestimonialsInfoHead>
-                  <TestimonialsStarsHead>{renderStars(testimonial.stars)}</TestimonialsStarsHead>
-                  <TestimonialsCardPara variant="body1" sx={{ mb: '16px' }}>
-                    {testimonial.feedback}
-                  </TestimonialsCardPara>
-                </Box>
-                <TestimonialsDateHead>
-                  <TestimonialsParaTwo variant="subtitle2">Feedback given: {testimonial.feedbackDate}</TestimonialsParaTwo>
-                  <Image src="/home/trustpilot.svg" width={140} height={34} alt="trustpilot-icon" />
-                </TestimonialsDateHead>
-              </TestimonialsCard>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      )}
+                  </TestimonialsAvatarNameWrapper>
+                  <QuotationImageHead>
+                    <Image
+                      src='/icons/quotation.svg'
+                      alt='quotation-icon'
+                      layout='fill' 
+                      loading='lazy'
+                    />
+                  </QuotationImageHead>
+                </TestimonialsInfoHead>
+                <TestimonialsStarsHead>
+                  {renderStars(testimonial.stars)}
+                </TestimonialsStarsHead>
+                <TestimonialsCardPara variant='body1' sx={{ mb: '16px' }}>
+                  {testimonial.feedback}
+                </TestimonialsCardPara>
+              </Box>
+              <TestimonialsDateHead>
+                <TestimonialsParaTwo variant='subtitle2'>
+                Feedback given: {testimonial.feedbackDate}
+                </TestimonialsParaTwo>
+                <TrustpilotImage href={'https://www.trustpilot.com/'} target='_blank'>
+                  <Image
+                    src='/home/trustpilot.svg'
+                    alt='trustpilot-icon'
+                    layout='fill' 
+                    loading='lazy'
+                  />
+                </TrustpilotImage>
+              </TestimonialsDateHead>
+            </TestimonialsCard>
+          </SwiperSlide>
+        ))}
+      </Swiper>
     </TestimonialsSwiperWrapper>
   );
 };

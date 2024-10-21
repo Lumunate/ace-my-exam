@@ -1,15 +1,17 @@
 import ProcessCardSlider from '@/components/process-card-slider/ProcessCardSlider';
 import SectionHeading from '@/components/section-heading/SectionHeading';
-import { ProcessHeading, ProcessWrapper } from '@/features/home/process/Process.style';
+import { ProcessHeading, ProcessWrapper, ProcessMain } from '@/features/home/process/Process.style';
 
 const Process: React.FC = () => {
   return (
     <ProcessWrapper>
       <SectionHeading text="Process" align="center" showLeftLine={true} color="#DA9694" textWidth="160px" gradientType="second" />
-      <ProcessHeading variant="h2" sx={{ mt: '23px' }}>
+      <ProcessHeading variant="h2" >
         How we Operate
       </ProcessHeading>
-      <ProcessCardSlider />
+      <ProcessMain>
+        <ProcessCardSlider />
+      </ProcessMain>
     </ProcessWrapper>
   );
 };

@@ -1,25 +1,55 @@
-import { InstituteWrapper, InstituteImage, InstituteGrid } from './Institutes.style';
+'use client';
+
+import { FC } from 'react';
+
+import {
+  InstituteWrapper,
+  InstituteTrack,
+  InstituteImage,
+} from './Institutes.style';
 
 const instituteImages = [
-  'home/pearson.svg',
-  'home/warwick.svg',
-  'home/UOC.svg',
-  'home/aqa.svg',
-  'home/UWM.svg',
-  'home/UCL.svg',
-  'home/imperial.svg',
-  'home/SPC.svg',
-
+  '/home/pearson.svg',
+  '/home/warwick.svg',
+  '/home/UOC.svg',
+  '/home/aqa.svg',
+  '/home/UWM.svg',
+  '/home/UCL.svg',
+  '/home/imperial.svg',
+  '/home/SPC.svg',
 ];
 
-const Institutes: React.FC = () => {
+const duplicateImages = (images: string[], times: number): string[] => {
+  let duplicatedImages: string[] = [];
+
+  for (let i = 0; i < times; i++) {
+    duplicatedImages = [...duplicatedImages, ...images];
+  }
+
+  return duplicatedImages;
+};
+
+const Institutes: FC = () => {
+  const allImages = duplicateImages(instituteImages, 2);
+
   return (
     <InstituteWrapper>
-      <InstituteGrid>
-        {instituteImages.map((src, index) => (
-          <InstituteImage key={index} src={src} alt={`Institute ${index + 1}`} />
+      <InstituteTrack>
+        {allImages.map((src, index) => (
+          <InstituteImage
+            key={index}
+            src={src}
+            alt={`Institute ${index + 1}`}
+          />
         ))}
-      </InstituteGrid>
+        {allImages.map((src, index) => (
+          <InstituteImage
+            key={`dup-${index}`}
+            src={src}
+            alt={`Institute duplicate ${index + 1}`}
+          />
+        ))}
+      </InstituteTrack>
     </InstituteWrapper>
   );
 };
