@@ -8,7 +8,7 @@ import {
   styled,
 } from '@mui/material';
 import Image from 'next/image';
-import { useSession } from 'next-auth/react';
+import { signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 
 import { Button as StyledButton } from '@/components/buttons/Button.style';
@@ -174,7 +174,7 @@ const Navbar: React.FC = () => {
                     </MenuItem>
                     <MenuItem>john.doe@example.com</MenuItem>
                     <MenuItem>Profile</MenuItem>
-                    <MenuItem>Logout</MenuItem>
+                    <MenuItem onClick={() => { signOut(); }}>Logout</MenuItem>
                   </CommonMenu>
                 </AvatarDropdownMenuWrapper>
               ) : (
