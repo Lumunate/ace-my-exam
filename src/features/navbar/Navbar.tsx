@@ -1,7 +1,14 @@
 'use client';
 
-import { Box, IconButton, MenuItem, Avatar } from '@mui/material';
+import {
+  Avatar,
+  Box,
+  IconButton,
+  MenuItem,
+  styled,
+} from '@mui/material';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 
 import { Button as StyledButton } from '@/components/buttons/Button.style';
@@ -16,15 +23,15 @@ import {
   NavbarButtonsContainer,
   NavbarContainer,
   NavbarContentWrapper,
-  NavbarDrawer,
   NavbarLink,
   NavbarLinksContainer,
   NavbarLinkWrapper,
   NavbarLogoHead,
   NavTypography,
   SmallScreenList,
-  AvatarDropdownMenuWrapper, 
-  DropdownIcon, 
+  NavbarDrawer,
+  AvatarDropdownMenuWrapper,
+  DropdownIcon,
 } from './Navbar.style';
 
 const pages = [
@@ -38,6 +45,11 @@ const pages = [
 const resources = ['Alevel Maths', 'GCSE/IGCSE Maths', 'GCSE/IGCSE Science', 'Entrance & Scholarship Exams'];
 
 const Navbar: React.FC = () => {
+  const session = useSession();
+
+  // const _isHomeOrAbout = pathname === '/' || pathname === '/about';
+  // const _isContactOrPricing = pathname === '/contact' || pathname === '/pricing' || pathname === '/feedback';
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [avatarAnchorEl, setAvatarAnchorEl] = useState<null | HTMLElement>(null);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -78,7 +90,10 @@ const Navbar: React.FC = () => {
   const handleCloseSignUp = () => setOpenSignUp(false);
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
+    if (
+      event.type === 'keydown' &&
+      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
+    ) {
       return;
     }
     setDrawerOpen(open);
@@ -90,12 +105,7 @@ const Navbar: React.FC = () => {
         <AppContentWrapper>
           <NavbarContentWrapper>
             <NavbarLogoHead href="/">
-              <Image
-                src={'/logo.png'}
-                width={52}
-                height={49}
-                alt="Logo"
-              />
+              <Image src={'/logo.png'} width={52} height={49} alt="Logo" />
             </NavbarLogoHead>
 
             <NavbarLinksContainer sx={{ display: { xs: 'none', lg: 'flex' } }}>
@@ -112,13 +122,7 @@ const Navbar: React.FC = () => {
                         href=""
                       >
                         {page.name}
-                        <DropdownIcon
-                          src="/icons/down-black.svg" 
-                          alt="dropdown-icon"
-                          open={open} 
-                          width={12}
-                          height={9}
-                        />
+                        <DropdownIcon src="/icons/down-black.svg" alt="dropdown-icon" open={open} width={12} height={9} />
                       </NavbarLink>
                     </NavbarLinkWrapper>
 
@@ -151,33 +155,38 @@ const Navbar: React.FC = () => {
 
             <NavbarButtonsContainer sx={{ display: { xs: 'none', lg: 'flex' } }}>
               {/* Avatar Dropdown for logged-in user, were going to use it in future */}
-              <AvatarDropdownMenuWrapper>
-                <IconButton onClick={handleAvatarClick}>
-                  <Avatar src="" alt="User Avatar" />
-                </IconButton>
-                <CommonMenu
-                  id="avatar-menu"
-                  anchorEl={avatarAnchorEl}
-                  open={avatarOpen}
-                  onClose={handleAvatarClose}
-                  disableScrollLock={true}
-                  transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                  anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                >
-                  <MenuItem>
-                    <strong>John Doe</strong>
-                  </MenuItem>
-                  <MenuItem>john.doe@example.com</MenuItem>
-                  <MenuItem>Profile</MenuItem>
-                  <MenuItem>Logout</MenuItem>
-                </CommonMenu>
-              </AvatarDropdownMenuWrapper>
+              {session.data ? (
+                <AvatarDropdownMenuWrapper>
+                  <IconButton onClick={handleAvatarClick}>
+                    <Avatar src="" alt="User Avatar" />
+                  </IconButton>
+                  <CommonMenu
+                    id="avatar-menu"
+                    anchorEl={avatarAnchorEl}
+                    open={avatarOpen}
+                    onClose={handleAvatarClose}
+                    disableScrollLock={true}
+                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                  >
+                    <MenuItem>
+                      <strong>John Doe</strong>
+                    </MenuItem>
+                    <MenuItem>john.doe@example.com</MenuItem>
+                    <MenuItem>Profile</MenuItem>
+                    <MenuItem>Logout</MenuItem>
+                  </CommonMenu>
+                </AvatarDropdownMenuWrapper>
+              ) : (
+                <>
+                  <StyledButton onClick={handleOpenLogin}>Login</StyledButton>
+                  <StyledButton special onClick={handleOpenSignUp}>
+                    Sign Up
+                  </StyledButton>
+                </>
+              )}
 
               {/* Test Login/Sign Up buttons */}
-              <StyledButton onClick={handleOpenLogin}>Login</StyledButton>
-              <StyledButton special onClick={handleOpenSignUp}>
-                Sign Up
-              </StyledButton>
             </NavbarButtonsContainer>
 
             <IconButton
@@ -187,13 +196,7 @@ const Navbar: React.FC = () => {
               onClick={toggleDrawer(true)}
               sx={{ display: { xs: 'block', lg: 'none' } }}
             >
-              <Image
-                src="/icons/menu.svg"
-                alt="menu icon"
-                width={24}
-                height={24}
-                style={{filter: 'brightness(0%)'}}
-              />
+              <Image src="/icons/menu.svg" alt="menu icon" width={24} height={24} style={{ filter: 'brightness(0%)' }} />
             </IconButton>
 
             <NavbarDrawer
@@ -224,10 +227,21 @@ const Navbar: React.FC = () => {
                   </Box>
                 </Box>
                 <NavbarButtonsContainer sx={{ display: { xs: 'flex', lg: 'none' }, mt: '20px' }}>
-                  <StyledButton onClick={handleOpenLogin}>Login</StyledButton>
-                  <StyledButton special onClick={handleOpenSignUp}>
-                    Sign Up
-                  </StyledButton>
+                  {session.data ? (
+                    <StyledButton special sx={{
+                      minWidth: '140px'
+                    }} onClick={handleOpenSignUp}>
+                      Your Account
+                    </StyledButton>
+                  ) : (
+                    <>
+                      <StyledButton onClick={handleOpenLogin}>Login</StyledButton>
+
+                      <StyledButton special onClick={handleOpenSignUp}>
+                          Sign Up
+                      </StyledButton>
+                    </>
+                  )}
                 </NavbarButtonsContainer>
               </Box>
             </NavbarDrawer>
@@ -242,3 +256,9 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
+
+export const NavbarAvatar = styled(Avatar)({
+  width: 30,
+  height: 30,
+  marginRight: '1.5rem',
+});
