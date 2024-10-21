@@ -1,8 +1,8 @@
 import { DataSource } from 'typeorm';
 
 import Contact from '@/entities/contact';
-import { AccountEntity, SessionEntity, User, VerificationTokenEntity } from '@/entities/user';
 import Feedback from '@/entities/feedback';
+import { AccountEntity, SessionEntity, User, VerificationTokenEntity } from '@/entities/user';
 
 let AppDataSource: DataSource;
 

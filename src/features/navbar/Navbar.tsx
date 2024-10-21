@@ -1,27 +1,20 @@
-"use client";
+'use client';
 
 import {
   Avatar,
   Box,
   IconButton,
-  Menu,
   MenuItem,
   styled,
-  Toolbar,
-  Tooltip,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from "@mui/material";
-import Image from "next/image";
-import { usePathname } from "next/navigation";
-import { useSession } from "next-auth/react";
-import React, { useState } from "react";
+} from '@mui/material';
+import Image from 'next/image';
+import { useSession } from 'next-auth/react';
+import React, { useState } from 'react';
 
-import { Button as StyledButton } from "@/components/buttons/Button.style";
-import { AppContentWrapper } from "@/components/common/Global.style";
-import LoginModal from "@/features/auth/login/LoginModal";
-import SignUpModal from "@/features/auth/sign-up/SignUpModal";
+import { Button as StyledButton } from '@/components/buttons/Button.style';
+import { AppContentWrapper } from '@/components/common/Global.style';
+import LoginModal from '@/features/auth/login/LoginModal';
+import SignUpModal from '@/features/auth/sign-up/SignUpModal';
 
 import {
   CommonMenu,
@@ -39,24 +32,23 @@ import {
   NavbarDrawer,
   AvatarDropdownMenuWrapper,
   DropdownIcon,
-} from "./Navbar.style";
+} from './Navbar.style';
 
 const pages = [
-  { name: "Home", link: "/" },
-  { name: "About", link: "/about" },
-  { name: "Resources", link: "/" },
-  { name: "Pricing", link: "/pricing" },
-  { name: "Contact", link: "/contact" },
+  { name: 'Home', link: '/' },
+  { name: 'About', link: '/about' },
+  { name: 'Resources', link: '/' },
+  { name: 'Pricing', link: '/pricing' },
+  { name: 'Contact', link: '/contact' },
 ];
 
-const resources = ["Alevel Maths", "GCSE/IGCSE Maths", "GCSE/IGCSE Science", "Entrance & Scholarship Exams"];
+const resources = ['Alevel Maths', 'GCSE/IGCSE Maths', 'GCSE/IGCSE Science', 'Entrance & Scholarship Exams'];
 
 const Navbar: React.FC = () => {
-  const pathname = usePathname();
   const session = useSession();
 
-  const _isHomeOrAbout = pathname === "/" || pathname === "/about";
-  const _isContactOrPricing = pathname === "/contact" || pathname === "/pricing" || pathname === "/feedback";
+  // const _isHomeOrAbout = pathname === '/' || pathname === '/about';
+  // const _isContactOrPricing = pathname === '/contact' || pathname === '/pricing' || pathname === '/feedback';
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const [avatarAnchorEl, setAvatarAnchorEl] = useState<null | HTMLElement>(null);
@@ -99,8 +91,8 @@ const Navbar: React.FC = () => {
 
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (
-      event.type === "keydown" &&
-      ((event as React.KeyboardEvent).key === "Tab" || (event as React.KeyboardEvent).key === "Shift")
+      event.type === 'keydown' &&
+      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
     ) {
       return;
     }
@@ -113,19 +105,19 @@ const Navbar: React.FC = () => {
         <AppContentWrapper>
           <NavbarContentWrapper>
             <NavbarLogoHead href="/">
-              <Image src={"/logo.png"} width={52} height={49} alt="Logo" />
+              <Image src={'/logo.png'} width={52} height={49} alt="Logo" />
             </NavbarLogoHead>
 
-            <NavbarLinksContainer sx={{ display: { xs: "none", lg: "flex" } }}>
+            <NavbarLinksContainer sx={{ display: { xs: 'none', lg: 'flex' } }}>
               {pages.map((page, index) =>
-                page.name === "Resources" ? (
+                page.name === 'Resources' ? (
                   <DropdownMenuWrapper key={index}>
                     <NavbarLinkWrapper>
                       <NavbarLink
                         id="fade-button"
-                        aria-controls={open ? "fade-menu" : undefined}
+                        aria-controls={open ? 'fade-menu' : undefined}
                         aria-haspopup="true"
-                        aria-expanded={open ? "true" : undefined}
+                        aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
                         href=""
                       >
@@ -137,14 +129,14 @@ const Navbar: React.FC = () => {
                     <CommonMenu
                       id="fade-menu"
                       MenuListProps={{
-                        "aria-labelledby": "fade-button",
+                        'aria-labelledby': 'fade-button',
                       }}
                       anchorEl={anchorEl}
                       open={open}
                       onClose={handleClose}
                       disableScrollLock={true}
-                      transformOrigin={{ horizontal: "center", vertical: "top" }}
-                      anchorOrigin={{ horizontal: "center", vertical: "bottom" }}
+                      transformOrigin={{ horizontal: 'center', vertical: 'top' }}
+                      anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
                     >
                       {resources.map((resource, idx) => (
                         <MenuItem key={idx} onClick={handleClose}>
@@ -161,7 +153,7 @@ const Navbar: React.FC = () => {
               )}
             </NavbarLinksContainer>
 
-            <NavbarButtonsContainer sx={{ display: { xs: "none", lg: "flex" } }}>
+            <NavbarButtonsContainer sx={{ display: { xs: 'none', lg: 'flex' } }}>
               {/* Avatar Dropdown for logged-in user, were going to use it in future */}
               {session.data ? (
                 <AvatarDropdownMenuWrapper>
@@ -174,8 +166,8 @@ const Navbar: React.FC = () => {
                     open={avatarOpen}
                     onClose={handleAvatarClose}
                     disableScrollLock={true}
-                    transformOrigin={{ horizontal: "right", vertical: "top" }}
-                    anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
+                    transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                    anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                   >
                     <MenuItem>
                       <strong>John Doe</strong>
@@ -202,19 +194,19 @@ const Navbar: React.FC = () => {
               color="inherit"
               aria-label="menu"
               onClick={toggleDrawer(true)}
-              sx={{ display: { xs: "block", lg: "none" } }}
+              sx={{ display: { xs: 'block', lg: 'none' } }}
             >
-              <Image src="/icons/menu.svg" alt="menu icon" width={24} height={24} style={{ filter: "brightness(0%)" }} />
+              <Image src="/icons/menu.svg" alt="menu icon" width={24} height={24} style={{ filter: 'brightness(0%)' }} />
             </IconButton>
 
             <NavbarDrawer
               anchor="right"
               open={drawerOpen}
               onClose={toggleDrawer(false)}
-              sx={{ display: { xs: "block", lg: "none" } }}
+              sx={{ display: { xs: 'block', lg: 'none' } }}
             >
               <Box
-                sx={{ maxWidth: 297, width: "90%", padding: "61px 58px" }}
+                sx={{ maxWidth: 297, width: '90%', padding: '61px 58px' }}
                 role="presentation"
                 onClick={toggleDrawer(false)}
                 onKeyDown={toggleDrawer(false)}
@@ -228,16 +220,16 @@ const Navbar: React.FC = () => {
                 </SmallScreenList>
                 <Box sx={{ mt: 2 }}>
                   <NavTypography>Follow Us</NavTypography>
-                  <Box sx={{ display: "flex", alignItems: "center", gap: "20px" }}>
+                  <Box sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
                     <IconHeadBlack src="/icons/youtube.svg" alt="YouTube" width={17} height={12} />
                     <IconHeadBlack src="/icons/instagram.svg" alt="Instagram" width={14} height={14} />
                     <IconHeadBlack src="/icons/degree.svg" alt="degree" width={19} height={12} />
                   </Box>
                 </Box>
-                <NavbarButtonsContainer sx={{ display: { xs: "flex", lg: "none" }, mt: "20px" }}>
+                <NavbarButtonsContainer sx={{ display: { xs: 'flex', lg: 'none' }, mt: '20px' }}>
                   {session.data ? (
                     <StyledButton special sx={{
-                      minWidth: "140px"
+                      minWidth: '140px'
                     }} onClick={handleOpenSignUp}>
                       Your Account
                     </StyledButton>
@@ -245,9 +237,9 @@ const Navbar: React.FC = () => {
                     <>
                       <StyledButton onClick={handleOpenLogin}>Login</StyledButton>
 
-                        <StyledButton special onClick={handleOpenSignUp}>
+                      <StyledButton special onClick={handleOpenSignUp}>
                           Sign Up
-                        </StyledButton>
+                      </StyledButton>
                     </>
                   )}
                 </NavbarButtonsContainer>
@@ -268,52 +260,5 @@ export default Navbar;
 export const NavbarAvatar = styled(Avatar)({
   width: 30,
   height: 30,
-  marginRight: "1.5rem",
+  marginRight: '1.5rem',
 });
-
-const settings = ["Profile", "Account", "Dashboard", "Logout"];
-
-const NavbarUserMenu = () => {
-  const { data: session } = useSession();
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(null);
-
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
-
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
-
-  return (
-    <Box sx={{ flexGrow: 0 }}>
-      <Tooltip title="Open settings">
-        <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-          <NavbarAvatar alt={session?.user?.name || ""} src={session?.user?.image || "/icons/avatar.svg"} />
-        </IconButton>
-      </Tooltip>
-      <Menu
-        sx={{ mt: "45px" }}
-        id="menu-appbar"
-        anchorEl={anchorElUser}
-        anchorOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        keepMounted
-        transformOrigin={{
-          vertical: "top",
-          horizontal: "right",
-        }}
-        open={Boolean(anchorElUser)}
-        onClose={handleCloseUserMenu}
-      >
-        {settings.map((setting) => (
-          <MenuItem key={setting} onClick={handleCloseUserMenu}>
-            <Typography sx={{ textAlign: "center" }}>{setting}</Typography>
-          </MenuItem>
-        ))}
-      </Menu>
-    </Box>
-  );
-};
