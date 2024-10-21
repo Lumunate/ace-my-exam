@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === 'production') {
   AppDataSource = new DataSource({
     type: 'postgres',
     url: process.env.DATABASE_URL,
-    entities: [Contact, Feedback],
+    entities: [Contact, Feedback, User, SessionEntity, VerificationTokenEntity, AccountEntity],
     synchronize: false,
     ssl: {
       rejectUnauthorized: false,
