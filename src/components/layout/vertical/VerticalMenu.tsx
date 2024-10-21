@@ -6,20 +6,20 @@ import { useTheme } from '@mui/material/styles'
 import PerfectScrollbar from 'react-perfect-scrollbar'
 
 // Type Imports
-import type { VerticalMenuContextProps } from '@menu/components/vertical-menu/Menu'
+import type { VerticalMenuContextProps } from '@/@menu/components/vertical-menu/Menu'
 
 // Component Imports
-import { Menu, SubMenu, MenuItem, MenuSection } from '@menu/vertical-menu'
+import { Menu, SubMenu, MenuItem, MenuSection } from '@/@menu/vertical-menu'
 
 // Hook Imports
-import useVerticalNav from '@menu/hooks/useVerticalNav'
+import useVerticalNav from '@/@menu/hooks/useVerticalNav'
 
 // Styled Component Imports
-import StyledVerticalNavExpandIcon from '@menu/styles/vertical/StyledVerticalNavExpandIcon'
+import StyledVerticalNavExpandIcon from '@/@menu/styles/vertical/StyledVerticalNavExpandIcon'
 
 // Style Imports
-import menuItemStyles from '@core/styles/vertical/menuItemStyles'
-import menuSectionStyles from '@core/styles/vertical/menuSectionStyles'
+import menuItemStyles from '@/@core/styles/vertical/menuItemStyles'
+import menuSectionStyles from '@/@core/styles/vertical/menuSectionStyles'
 
 type RenderExpandIconProps = {
   open?: boolean

@@ -20,7 +20,7 @@ const Link = (props: Props, ref: ForwardedRef<HTMLAnchorElement>) => {
     <NextLink
       ref={ref}
       {...rest}
-      href={href || '/'}
+      href={'/'}
       onClick={onClick ? e => onClick(e) : !href ? e => e.preventDefault() : undefined}
     />
   )

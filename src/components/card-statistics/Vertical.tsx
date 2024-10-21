@@ -4,11 +4,11 @@ import CardContent from '@mui/material/CardContent'
 import Typography from '@mui/material/Typography'
 
 // Types Imports
-import type { CardStatsVerticalProps } from '@/types/pages/widgetTypes'
 
 // Components Imports
-import CustomAvatar from '@core/components/mui/Avatar'
-import OptionMenu from '@core/components/option-menu'
+import CustomAvatar from '@/@core/components/mui/Avatar'
+import OptionMenu from '@/@core/components/option-menu'
+import { CardStatsVerticalProps } from '@/types/widgetTypes'
 
 const CardStatVertical = (props: CardStatsVerticalProps) => {
   // Props

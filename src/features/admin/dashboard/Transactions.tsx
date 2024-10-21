@@ -6,11 +6,11 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 
 // Type Imports
-import type { ThemeColor } from '@core/types'
+import type { ThemeColor } from '@/@core/types'
 
 // Components Imports
-import OptionMenu from '@core/components/option-menu'
-import CustomAvatar from '@core/components/mui/Avatar'
+import OptionMenu from '@/@core/components/option-menu'
+import CustomAvatar from '@/@core/components/mui/Avatar'
 
 type DataType = {
   icon: string

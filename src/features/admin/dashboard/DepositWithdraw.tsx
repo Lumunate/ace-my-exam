@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import Grid from '@mui/material/Grid'
 
 // Component Imports
-import Link from '@components/Link'
+import Link from '@/components/Link'
 
 type DataType = {
   logo: string

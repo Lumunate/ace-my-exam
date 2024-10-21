@@ -5,13 +5,13 @@ import classnames from 'classnames'
 import type { CSSObject } from '@emotion/styled'
 
 // Type Imports
-import type { ChildrenType } from '@core/types'
+import type { ChildrenType } from '@/@core/types'
 
 // Util Imports
-import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
+import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses'
 
 // Styled Component Imports
-import StyledFooter from '@layouts/styles/vertical/StyledFooter'
+import StyledFooter from '@/@layouts/styles/vertical/StyledFooter'
 
 type Props = ChildrenType & {
   overrideStyles?: CSSObject

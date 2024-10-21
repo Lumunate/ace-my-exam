@@ -8,10 +8,10 @@ import LinearProgress from '@mui/material/LinearProgress'
 import Typography from '@mui/material/Typography'
 
 // Type Imports
-import type { ThemeColor } from '@core/types'
+import type { ThemeColor } from '@/@core/types'
 
 // Components Imports
-import OptionMenu from '@core/components/option-menu'
+import OptionMenu from '@/@core/components/option-menu'
 
 type DataType = {
   title: string

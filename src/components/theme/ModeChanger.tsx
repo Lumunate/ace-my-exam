@@ -5,7 +5,7 @@ import { useEffect } from 'react'
 import { useColorScheme } from '@mui/material/styles'
 
 // Hook Imports
-import { useSettings } from '@core/hooks/useSettings'
+import { useSettings } from '@/@core/hooks/useSettings'
 
 const ModeChanger = () => {
   // Hooks

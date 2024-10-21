@@ -7,10 +7,10 @@ import Chip from '@mui/material/Chip'
 import classnames from 'classnames'
 
 // Components Imports
-import CustomAvatar from '@core/components/mui/Avatar'
+import CustomAvatar from '@/@core/components/mui/Avatar'
 
 // Styles Imports
-import tableStyles from '@core/styles/table.module.css'
+import tableStyles from '@/@core/styles/table.module.css'
 
 type TableBodyRowType = {
   avatarSrc?: string

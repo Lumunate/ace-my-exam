@@ -4,13 +4,13 @@
 import classnames from 'classnames'
 
 // Type Imports
-import type { ChildrenType } from '@core/types'
+import type { ChildrenType } from '@/@core/types'
 
 // Util Imports
-import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
+import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses'
 
 // Styled Component Imports
-import StyledMain from '@layouts/styles/shared/StyledMain'
+import StyledMain from '@/@layouts/styles/shared/StyledMain'
 
 const LayoutContent = ({ children }: ChildrenType) => {
   return (

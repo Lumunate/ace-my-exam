@@ -7,10 +7,10 @@ import Link from 'next/link'
 import classnames from 'classnames'
 
 // Hook Imports
-import useVerticalNav from '@menu/hooks/useVerticalNav'
+import useVerticalNav from '@/@menu/hooks/useVerticalNav'
 
 // Util Imports
-import { verticalLayoutClasses } from '@layouts/utils/layoutClasses'
+import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses'
 
 const FooterContent = () => {
   // Hooks
