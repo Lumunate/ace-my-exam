@@ -4,7 +4,7 @@ import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
 import { UserRepository } from '@/repositories/user';
-import AppDataSource, { initializeDataSource } from '@/utils/typeorm';
+import { initializeDataSource } from '@/utils/typeorm';
 
 const handler = NextAuth({
   providers: [
@@ -38,7 +38,7 @@ const handler = NextAuth({
       },
     }),
   ],
-  adapter: TypeORMAdapter(AppDataSource.options),
+  adapter: TypeORMAdapter(process.env.DATABASE_URL!),
   session: {
     strategy: 'jwt',
   },
