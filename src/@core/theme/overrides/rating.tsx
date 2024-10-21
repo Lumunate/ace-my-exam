@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const rating: Theme['components'] = {
   MuiRating: {
@@ -30,6 +30,6 @@ const rating: Theme['components'] = {
       }
     }
   }
-}
+};
 
-export default rating
+export default rating;

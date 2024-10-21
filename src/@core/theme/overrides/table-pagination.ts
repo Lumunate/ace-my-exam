@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const tablePagination: Theme['components'] = {
   MuiTablePagination: {
@@ -37,6 +37,6 @@ const tablePagination: Theme['components'] = {
       })
     }
   }
-}
+};
 
-export default tablePagination
+export default tablePagination;

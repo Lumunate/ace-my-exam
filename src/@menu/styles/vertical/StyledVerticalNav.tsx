@@ -1,12 +1,8 @@
-// Third-party Imports
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
-// Type Imports
-import type { VerticalNavState } from '../../contexts/verticalNavContext'
-import type { VerticalNavProps } from '../../components/vertical-menu/VerticalNav'
-
-// Util Imports
-import { verticalNavClasses } from '../../utils/menuClasses'
+import type { VerticalNavProps } from '../../components/vertical-menu/VerticalNav';
+import type { VerticalNavState } from '../../contexts/verticalNavContext';
+import { verticalNavClasses } from '../../utils/menuClasses';
 
 type StyledVerticalNavProps = VerticalNavProps & Pick<VerticalNavState, 'isBreakpointReached' | 'transitionDuration'>
 
@@ -48,6 +44,6 @@ const StyledVerticalNav = styled.aside<StyledVerticalNavProps>`
 
   /* User Styles */
   ${({ customStyles }) => customStyles}
-`
+`;
 
-export default StyledVerticalNav
+export default StyledVerticalNav;

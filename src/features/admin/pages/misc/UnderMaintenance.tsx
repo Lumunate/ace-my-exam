@@ -1,28 +1,28 @@
-'use client'
+'use client';
 
 // Next Imports
-import Link from 'next/link'
 
 // MUI Imports
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
+import Illustrations from '@components/Illustrations';
+import { useImageVariant } from '@core/hooks/useImageVariant';
+import type { Mode } from '@core/types';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
 
 // Type Imports
-import type { Mode } from '@core/types'
 
 // Component Imports
-import Illustrations from '@components/Illustrations'
 
 // Hook Imports
-import { useImageVariant } from '@core/hooks/useImageVariant'
+import Link from 'next/link';
 
 const UnderMaintenance = ({ mode }: { mode: Mode }) => {
   // Vars
-  const darkImg = '/images/pages/misc-mask-dark.png'
-  const lightImg = '/images/pages/misc-mask-light.png'
+  const darkImg = '/images/pages/misc-mask-dark.png';
+  const lightImg = '/images/pages/misc-mask-light.png';
 
   // Hooks
-  const miscBackground = useImageVariant(mode, lightImg, darkImg)
+  const miscBackground = useImageVariant(mode, lightImg, darkImg);
 
   return (
     <div className='flex items-center justify-center min-bs-[100dvh] relative p-6 overflow-x-hidden'>
@@ -42,7 +42,7 @@ const UnderMaintenance = ({ mode }: { mode: Mode }) => {
       </div>
       <Illustrations maskImg={{ src: miscBackground }} />
     </div>
-  )
-}
+  );
+};
 
-export default UnderMaintenance
+export default UnderMaintenance;

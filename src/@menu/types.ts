@@ -1,8 +1,8 @@
 // React Imports
-import type { AnchorHTMLAttributes, ReactElement, ReactNode } from 'react'
+import type { CSSObject } from '@emotion/styled';
+import type { AnchorHTMLAttributes, ReactElement, ReactNode } from 'react';
 
 // Third-party Imports
-import type { CSSObject } from '@emotion/styled'
 
 export type ChildrenType = {
   children: ReactNode

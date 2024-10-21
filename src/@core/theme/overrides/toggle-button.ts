@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const toggleButton: Theme['components'] = {
   MuiToggleButtonGroup: {
@@ -29,6 +29,6 @@ const toggleButton: Theme['components'] = {
       }
     }
   }
-}
+};
 
-export default toggleButton
+export default toggleButton;

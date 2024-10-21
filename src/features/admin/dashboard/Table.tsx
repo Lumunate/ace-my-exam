@@ -1,16 +1,10 @@
-// MUI Imports
-import Typography from '@mui/material/Typography'
-import Card from '@mui/material/Card'
-import Chip from '@mui/material/Chip'
+import Card from '@mui/material/Card';
+import Chip from '@mui/material/Chip';
+import Typography from '@mui/material/Typography';
+import classnames from 'classnames';
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Components Imports
-import CustomAvatar from '@/@core/components/mui/Avatar'
-
-// Styles Imports
-import tableStyles from '@/@core/styles/table.module.css'
+import CustomAvatar from '@/@core/components/mui/Avatar';
+import tableStyles from '@/@core/styles/table.module.css';
 
 type TableBodyRowType = {
   avatarSrc?: string
@@ -105,7 +99,7 @@ const rowsData: TableBodyRowType[] = [
     role: 'Subscriber',
     status: 'active'
   }
-]
+];
 
 const Table = () => {
   return (
@@ -158,7 +152,7 @@ const Table = () => {
         </table>
       </div>
     </Card>
-  )
-}
+  );
+};
 
-export default Table
+export default Table;

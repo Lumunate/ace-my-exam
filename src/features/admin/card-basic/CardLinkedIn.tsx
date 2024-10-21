@@ -1,8 +1,8 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import Avatar from '@mui/material/Avatar'
+import Avatar from '@mui/material/Avatar';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 const CardLinkedIn = () => {
   return (
@@ -36,7 +36,7 @@ const CardLinkedIn = () => {
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardLinkedIn
+export default CardLinkedIn;

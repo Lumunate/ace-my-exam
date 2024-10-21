@@ -1,26 +1,26 @@
-'use client'
+'use client';
 
 // React Imports
-import { useState } from 'react'
-import type { SyntheticEvent } from 'react'
 
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import TabContext from '@mui/lab/TabContext'
-import TabList from '@mui/lab/TabList'
-import Tab from '@mui/material/Tab'
-import TabPanel from '@mui/lab/TabPanel'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import type { SyntheticEvent } from 'react';
+import { useState } from 'react';
 
 const CardWithTabsCenter = () => {
   // ** State
-  const [value, setValue] = useState<string>('1')
+  const [value, setValue] = useState<string>('1');
 
   const handleChange = (event: SyntheticEvent, newValue: string) => {
-    setValue(newValue)
-  }
+    setValue(newValue);
+  };
 
   return (
     <Card>
@@ -64,7 +64,7 @@ const CardWithTabsCenter = () => {
         </CardContent>
       </TabContext>
     </Card>
-  )
-}
+  );
+};
 
-export default CardWithTabsCenter
+export default CardWithTabsCenter;

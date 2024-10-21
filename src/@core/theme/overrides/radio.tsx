@@ -1,8 +1,8 @@
 // React Imports
-import React from 'react'
+import type { Theme } from '@mui/material/styles';
+import React from 'react';
 
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
 
 const IconChecked = () => {
   return (
@@ -14,16 +14,16 @@ const IconChecked = () => {
         strokeWidth='5'
       />
     </svg>
-  )
-}
+  );
+};
 
 const UncheckedIcon = () => {
   return (
     <svg width='1em' height='1em' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'>
       <path d='M12 20a8 8 0 1 1 0-16 8 8 0 0 1 0 16Z' stroke='var(--mui-palette-text-secondary)' strokeWidth='2' />
     </svg>
-  )
-}
+  );
+};
 
 const radio: Theme['components'] = {
   MuiRadio: {
@@ -35,17 +35,17 @@ const radio: Theme['components'] = {
       root: ({ theme, ownerState }) => ({
         ...(ownerState.size === 'small'
           ? {
-              padding: theme.spacing(1),
-              '& svg': {
-                fontSize: '1.25rem'
-              }
+            padding: theme.spacing(1),
+            '& svg': {
+              fontSize: '1.25rem'
             }
+          }
           : {
-              padding: theme.spacing(1.5),
-              '& svg': {
-                fontSize: '1.5rem'
-              }
-            }),
+            padding: theme.spacing(1.5),
+            '& svg': {
+              fontSize: '1.5rem'
+            }
+          }),
         '&.Mui-checked:not(.Mui-disabled) svg': {
           filter: 'drop-shadow(var(--mui-customShadows-xs))'
         },
@@ -76,6 +76,6 @@ const radio: Theme['components'] = {
       })
     }
   }
-}
+};
 
-export default radio
+export default radio;

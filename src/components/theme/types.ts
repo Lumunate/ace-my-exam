@@ -8,7 +8,7 @@
  */
 
 // MUI Imports
-import {} from '@mui/material/styles'
+import {} from '@mui/material/styles';
 
 declare module '@mui/material/styles' {
   // eslint-disable-next-line lines-around-comment

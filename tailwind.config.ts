@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from 'tailwindcss';
 
 const config: Config = {
   content: ['./src/**/*.{js,ts,jsx,tsx,css}'],
@@ -10,6 +10,6 @@ const config: Config = {
   theme: {
     extend: {}
   }
-}
+};
 
-export default config
+export default config;

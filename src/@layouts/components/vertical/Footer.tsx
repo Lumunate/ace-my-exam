@@ -1,17 +1,10 @@
-'use client'
+'use client';
+import type { CSSObject } from '@emotion/styled';
+import classnames from 'classnames';
 
-// Third-party Imports
-import classnames from 'classnames'
-import type { CSSObject } from '@emotion/styled'
-
-// Type Imports
-import type { ChildrenType } from '@/@core/types'
-
-// Util Imports
-import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses'
-
-// Styled Component Imports
-import StyledFooter from '@/@layouts/styles/vertical/StyledFooter'
+import type { ChildrenType } from '@/@core/types';
+import StyledFooter from '@/@layouts/styles/vertical/StyledFooter';
+import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses';
 
 type Props = ChildrenType & {
   overrideStyles?: CSSObject
@@ -19,7 +12,7 @@ type Props = ChildrenType & {
 
 const Footer = (props: Props) => {
   // Props
-  const { children, overrideStyles } = props
+  const { children, overrideStyles } = props;
 
   return (
     <StyledFooter
@@ -34,7 +27,7 @@ const Footer = (props: Props) => {
     >
       <div className={verticalLayoutClasses.footerContentWrapper}>{children}</div>
     </StyledFooter>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

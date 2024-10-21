@@ -1,26 +1,26 @@
-'use client'
+'use client';
 
 // React Imports
-import { useState } from 'react'
 
 // MUI Imports
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
-import Checkbox from '@mui/material/Checkbox'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import InputAdornment from '@mui/material/InputAdornment'
-import IconButton from '@mui/material/IconButton'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import { useState } from 'react';
 
 const FormLayoutsAlignment = () => {
   // States
-  const [isPasswordShown, setIsPasswordShown] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
 
-  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show);
 
   return (
     <Card>
@@ -70,7 +70,7 @@ const FormLayoutsAlignment = () => {
         </form>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default FormLayoutsAlignment
+export default FormLayoutsAlignment;

@@ -1,8 +1,8 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Skin } from '@core/types';
+import type { Theme } from '@mui/material/styles';
 
 // Type Imports
-import type { Skin } from '@core/types'
 
 const dialog = (skin: Skin): Theme['components'] => ({
   MuiDialog: {
@@ -10,11 +10,11 @@ const dialog = (skin: Skin): Theme['components'] => ({
       paper: ({ theme }) => ({
         ...(skin !== 'bordered'
           ? {
-              boxShadow: 'var(--mui-customShadows-xl)'
-            }
+            boxShadow: 'var(--mui-customShadows-xl)'
+          }
           : {
-              boxShadow: 'none'
-            }),
+            boxShadow: 'none'
+          }),
         [theme.breakpoints.down('sm')]: {
           '&:not(.MuiDialog-paperFullScreen)': {
             margin: theme.spacing(6)
@@ -62,6 +62,6 @@ const dialog = (skin: Skin): Theme['components'] => ({
       })
     }
   }
-})
+});
 
-export default dialog
+export default dialog;

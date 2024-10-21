@@ -1,19 +1,19 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 // Types Imports
 
 // Components Imports
-import CustomAvatar from '@/@core/components/mui/Avatar'
-import OptionMenu from '@/@core/components/option-menu'
-import { CardStatsVerticalProps } from '@/types/widgetTypes'
+import CustomAvatar from '@/@core/components/mui/Avatar';
+import OptionMenu from '@/@core/components/option-menu';
+import { CardStatsVerticalProps } from '@/types/widgetTypes';
 
 const CardStatVertical = (props: CardStatsVerticalProps) => {
   // Props
   const { title, stats, avatarIcon, avatarColor, trendNumber, trend, subtitle, avatarSkin, avatarSize, moreOptions } =
-    props
+    props;
 
   return (
     <Card className='bs-full'>
@@ -26,9 +26,9 @@ const CardStatVertical = (props: CardStatsVerticalProps) => {
             {...(moreOptions
               ? moreOptions
               : {
-                  options: ['Refresh', 'Share', 'Update'],
-                  iconButtonProps: { className: 'text-textPrimary' }
-                })}
+                options: ['Refresh', 'Share', 'Update'],
+                iconButtonProps: { className: 'text-textPrimary' }
+              })}
           />
         </div>
         <div className='flex flex-col gap-1'>
@@ -45,7 +45,7 @@ const CardStatVertical = (props: CardStatsVerticalProps) => {
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardStatVertical
+export default CardStatVertical;

@@ -1,16 +1,9 @@
-'use client'
+'use client';
+import classnames from 'classnames';
 
-// Third-party Imports
-import classnames from 'classnames'
-
-// Type Imports
-import type { ChildrenType } from '@/@core/types'
-
-// Util Imports
-import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses'
-
-// Styled Component Imports
-import StyledMain from '@/@layouts/styles/shared/StyledMain'
+import type { ChildrenType } from '@/@core/types';
+import StyledMain from '@/@layouts/styles/shared/StyledMain';
+import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses';
 
 const LayoutContent = ({ children }: ChildrenType) => {
   return (
@@ -20,7 +13,7 @@ const LayoutContent = ({ children }: ChildrenType) => {
     >
       {children}
     </StyledMain>
-  )
-}
+  );
+};
 
-export default LayoutContent
+export default LayoutContent;

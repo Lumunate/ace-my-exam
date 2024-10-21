@@ -1,15 +1,16 @@
 // MUI Imports
-import CardStatVertical from '@/components/card-statistics/Vertical'
-import Award from '@/features/admin/dashboard/Award'
-import DepositWithdraw from '@/features/admin/dashboard/DepositWithdraw'
-import DistributedColumnChart from '@/features/admin/dashboard/DistributedColumnChart'
-import LineChart from '@/features/admin/dashboard/LineChart'
-import SalesByCountries from '@/features/admin/dashboard/SalesByCountries'
-import Table from '@/features/admin/dashboard/Table'
-import TotalEarning from '@/features/admin/dashboard/TotalEarning'
-import Transactions from '@/features/admin/dashboard/Transactions'
-import WeeklyOverview from '@/features/admin/dashboard/WeeklyOverview'
-import Grid from '@mui/material/Grid'
+import Grid from '@mui/material/Grid';
+
+import CardStatVertical from '@/components/card-statistics/Vertical';
+import Award from '@/features/admin/dashboard/Award';
+import DepositWithdraw from '@/features/admin/dashboard/DepositWithdraw';
+import DistributedColumnChart from '@/features/admin/dashboard/DistributedColumnChart';
+import LineChart from '@/features/admin/dashboard/LineChart';
+import SalesByCountries from '@/features/admin/dashboard/SalesByCountries';
+import Table from '@/features/admin/dashboard/Table';
+import TotalEarning from '@/features/admin/dashboard/TotalEarning';
+import Transactions from '@/features/admin/dashboard/Transactions';
+import WeeklyOverview from '@/features/admin/dashboard/WeeklyOverview';
 
 // Components Imports
 
@@ -70,7 +71,7 @@ const DashboardAnalytics = () => {
         <Table />
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default DashboardAnalytics
+export default DashboardAnalytics;

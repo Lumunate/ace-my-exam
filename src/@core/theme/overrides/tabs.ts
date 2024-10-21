@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const tabs: Theme['components'] = {
   MuiTabs: {
@@ -8,37 +8,37 @@ const tabs: Theme['components'] = {
         minBlockSize: 38,
         ...(ownerState.orientation === 'horizontal'
           ? {
-              borderBlockEnd: '1px solid var(--mui-palette-divider)'
-            }
+            borderBlockEnd: '1px solid var(--mui-palette-divider)'
+          }
           : {
-              borderInlineEnd: '1px solid var(--mui-palette-divider)'
-            }),
+            borderInlineEnd: '1px solid var(--mui-palette-divider)'
+          }),
         '& .MuiTab-root:hover': {
           ...(ownerState.orientation === 'horizontal'
             ? {
-                paddingBlockEnd: theme.spacing(1.5),
-                ...(ownerState.textColor === 'secondary'
-                  ? {
-                      color: 'var(--mui-palette-secondary-main)',
-                      borderBlockEnd: '2px solid var(--mui-palette-secondary-lightOpacity)'
-                    }
-                  : {
-                      color: 'var(--mui-palette-primary-main)',
-                      borderBlockEnd: '2px solid var(--mui-palette-primary-lightOpacity)'
-                    })
-              }
+              paddingBlockEnd: theme.spacing(1.5),
+              ...(ownerState.textColor === 'secondary'
+                ? {
+                  color: 'var(--mui-palette-secondary-main)',
+                  borderBlockEnd: '2px solid var(--mui-palette-secondary-lightOpacity)'
+                }
+                : {
+                  color: 'var(--mui-palette-primary-main)',
+                  borderBlockEnd: '2px solid var(--mui-palette-primary-lightOpacity)'
+                })
+            }
             : {
-                paddingInlineEnd: theme.spacing(5),
-                ...(ownerState.textColor === 'secondary'
-                  ? {
-                      color: 'var(--mui-palette-secondary-main)',
-                      borderInlineEnd: '2px solid var(--mui-palette-secondary-mainOpacity)'
-                    }
-                  : {
-                      color: 'var(--mui-palette-primary-main)',
-                      borderInlineEnd: '2px solid var(--mui-palette-primary-mainOpacity)'
-                    })
-              }),
+              paddingInlineEnd: theme.spacing(5),
+              ...(ownerState.textColor === 'secondary'
+                ? {
+                  color: 'var(--mui-palette-secondary-main)',
+                  borderInlineEnd: '2px solid var(--mui-palette-secondary-mainOpacity)'
+                }
+                : {
+                  color: 'var(--mui-palette-primary-main)',
+                  borderInlineEnd: '2px solid var(--mui-palette-primary-mainOpacity)'
+                })
+            }),
           '& .MuiTabScrollButton-root': {
             borderRadius: theme.shape.borderRadius
           }
@@ -46,11 +46,11 @@ const tabs: Theme['components'] = {
         '& ~ .MuiTabPanel-root': {
           ...(ownerState.orientation === 'horizontal'
             ? {
-                paddingBlockStart: theme.spacing(5)
-              }
+              paddingBlockStart: theme.spacing(5)
+            }
             : {
-                paddingInlineStart: theme.spacing(5)
-              })
+              paddingInlineStart: theme.spacing(5)
+            })
         }
       }),
       vertical: {
@@ -87,6 +87,6 @@ const tabs: Theme['components'] = {
       }
     }
   }
-}
+};
 
-export default tabs
+export default tabs;

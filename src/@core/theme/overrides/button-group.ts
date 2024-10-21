@@ -1,8 +1,8 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 // Config Imports
-import themeConfig from '@/utils/configs/themeConfig'
+import themeConfig from '@/utils/configs/themeConfig';
 
 const buttonGroup: Theme['components'] = {
   MuiButtonGroup: {
@@ -68,6 +68,6 @@ const buttonGroup: Theme['components'] = {
       }
     ]
   }
-}
+};
 
-export default buttonGroup
+export default buttonGroup;

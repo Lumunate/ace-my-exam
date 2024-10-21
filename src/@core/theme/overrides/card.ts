@@ -1,8 +1,8 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Skin } from '@core/types';
+import type { Theme } from '@mui/material/styles';
 
 // Type Imports
-import type { Skin } from '@core/types'
 
 const card = (skin: Skin): Theme['components'] => {
   return {
@@ -85,7 +85,7 @@ const card = (skin: Skin): Theme['components'] => {
         })
       }
     }
-  }
-}
+  };
+};
 
-export default card
+export default card;

@@ -5,25 +5,20 @@
  * The userTheme object is merged with the coreTheme object within this file.
  * Export this file and import it in the `@components/theme/index.tsx` file to use the merged theme.
  */
+import type { Theme } from '@mui/material/styles';
+import { deepmerge } from '@mui/utils';
 
-// MUI Imports
-import { deepmerge } from '@mui/utils'
-import type { Theme } from '@mui/material/styles'
-
-// Type Imports
-import type { Settings } from '@core/contexts/settingsContext'
-import type { SystemMode } from '@core/types'
-
-// Core Theme Imports
-import coreTheme from '@core/theme'
+import type { Settings } from '@/@core/contexts/settingsContext';
+import coreTheme from '@/@core/theme';
+import type { SystemMode } from '@/@core/types';
 
 const mergedTheme = (settings: Settings, mode: SystemMode, direction: Theme['direction']) => {
   // Vars
   const userTheme = {
     // Write your overrides here.
-  } as Theme
+  } as Theme;
 
-  return deepmerge(coreTheme(mode, direction), userTheme)
-}
+  return deepmerge(coreTheme(mode, direction), userTheme);
+};
 
-export default mergedTheme
+export default mergedTheme;

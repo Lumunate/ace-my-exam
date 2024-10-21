@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const paper: Theme['components'] = {
   MuiPaper: {
@@ -9,6 +9,6 @@ const paper: Theme['components'] = {
       }
     }
   }
-}
+};
 
-export default paper
+export default paper;

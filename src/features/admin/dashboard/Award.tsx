@@ -1,8 +1,8 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 const Award = () => {
   return (
@@ -29,7 +29,7 @@ const Award = () => {
         />
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default Award
+export default Award;

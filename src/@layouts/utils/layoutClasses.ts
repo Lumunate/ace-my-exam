@@ -16,9 +16,9 @@ export const verticalLayoutClasses = {
   footerContentWrapper: 'ts-vertical-layout-footer-content-wrapper',
   footerContent: 'ts-vertical-layout-footer-content',
   footerContentCompact: 'ts-vertical-layout-footer-content-compact'
-}
+};
 
 // Classes for blank layout
 export const blankLayoutClasses = {
   root: 'ts-blank-layout'
-}
+};

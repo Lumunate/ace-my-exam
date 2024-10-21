@@ -1,34 +1,19 @@
-'use client'
+'use client';
+import type { CSSObject } from '@emotion/styled';
+import classnames from 'classnames';
+import { useEffect } from 'react';
+import type { HTMLAttributes } from 'react';
 
-// React Imports
-import { useEffect } from 'react'
-import type { HTMLAttributes } from 'react'
-
-// Third-party Imports
-import classnames from 'classnames'
-import type { CSSObject } from '@emotion/styled'
-
-// Type Imports
-import type { BreakpointType } from '../../types'
-
-// Context Imports
-import type { VerticalNavState } from '../../contexts/verticalNavContext'
-
-// Hook Imports
-import useMediaQuery from '../../hooks/useMediaQuery'
-import useVerticalNav from '../../hooks/useVerticalNav'
-
-// Util Imports
-import { verticalNavClasses } from '../../utils/menuClasses'
-
-// Styled Component Imports
-import StyledBackdrop from '../../styles/StyledBackdrop'
-import StyledVerticalNav from '../../styles/vertical/StyledVerticalNav'
-import StyledVerticalNavContainer from '../../styles/vertical/StyledVerticalNavContainer'
-import StyledVerticalNavBgColorContainer from '../../styles/vertical/StyledVerticalNavBgColorContainer'
-
-// Default Config Imports
-import { defaultBreakpoints, verticalNavToggleDuration } from '../../defaultConfigs'
+import type { VerticalNavState } from '../../contexts/verticalNavContext';
+import { defaultBreakpoints, verticalNavToggleDuration } from '../../defaultConfigs';
+import useMediaQuery from '../../hooks/useMediaQuery';
+import useVerticalNav from '../../hooks/useVerticalNav';
+import StyledBackdrop from '../../styles/StyledBackdrop';
+import StyledVerticalNav from '../../styles/vertical/StyledVerticalNav';
+import StyledVerticalNavBgColorContainer from '../../styles/vertical/StyledVerticalNavBgColorContainer';
+import StyledVerticalNavContainer from '../../styles/vertical/StyledVerticalNavContainer';
+import type { BreakpointType } from '../../types';
+import { verticalNavClasses } from '../../utils/menuClasses';
 
 export type VerticalNavProps = HTMLAttributes<HTMLHtmlElement> & {
   width?: VerticalNavState['width']
@@ -53,10 +38,10 @@ const VerticalNav = (props: VerticalNavProps) => {
     customStyles,
     children,
     ...rest
-  } = props
+  } = props;
 
   // Vars
-  const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints }
+  const mergedBreakpoints = { ...defaultBreakpoints, ...breakpoints };
 
   // Hooks
   const {
@@ -65,10 +50,10 @@ const VerticalNav = (props: VerticalNavProps) => {
     isBreakpointReached: isBreakpointReachedContext,
     isToggled: isToggledContext,
     transitionDuration: transitionDurationContext
-  } = useVerticalNav()
+  } = useVerticalNav();
 
   // Find the breakpoint from which screen size responsive behavior should enable and if its reached or not
-  const breakpointReached = useMediaQuery(customBreakpoint ?? (breakpoint ? mergedBreakpoints[breakpoint] : breakpoint))
+  const breakpointReached = useMediaQuery(customBreakpoint ?? (breakpoint ? mergedBreakpoints[breakpoint] : breakpoint));
 
   // UseEffect, update verticalNav state to set initial values and update values on change
   useEffect(() => {
@@ -76,19 +61,19 @@ const VerticalNav = (props: VerticalNavProps) => {
       width,
       transitionDuration,
       isBreakpointReached: breakpointReached
-    })
+    });
 
     if (!breakpointReached) {
-      updateVerticalNavState({ isToggled: false })
+      updateVerticalNavState({ isToggled: false });
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [width, breakpointReached, updateVerticalNavState])
+  }, [width, breakpointReached, updateVerticalNavState]);
 
   // Handle Backdrop(Content Overlay) Click
   const handleBackdropClick = () => {
     // Close the verticalNav
-    updateVerticalNavState({ isToggled: false })
-  }
+    updateVerticalNavState({ isToggled: false });
+  };
 
   return (
     <StyledVerticalNav
@@ -132,7 +117,7 @@ const VerticalNav = (props: VerticalNavProps) => {
         />
       )}
     </StyledVerticalNav>
-  )
-}
+  );
+};
 
-export default VerticalNav
+export default VerticalNav;

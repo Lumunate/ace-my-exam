@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const tooltip: Theme['components'] = {
   MuiTooltip: {
@@ -27,6 +27,6 @@ const tooltip: Theme['components'] = {
       })
     }
   }
-}
+};
 
-export default tooltip
+export default tooltip;

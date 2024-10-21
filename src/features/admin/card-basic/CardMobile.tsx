@@ -1,33 +1,33 @@
-'use client'
+'use client';
 
 // React Imports
-import { useState } from 'react'
-import type { MouseEvent } from 'react'
 
 // MUI Imports
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import CardActions from '@mui/material/CardActions'
-import Button from '@mui/material/Button'
-import IconButton from '@mui/material/IconButton'
-import Menu from '@mui/material/Menu'
-import MenuItem from '@mui/material/MenuItem'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Typography from '@mui/material/Typography';
+import type { MouseEvent } from 'react';
+import { useState } from 'react';
 
 const CardMobile = () => {
   // States
-  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null)
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-  const open = Boolean(anchorEl)
+  const open = Boolean(anchorEl);
 
   const handleClick = (event: MouseEvent<HTMLButtonElement>) => {
-    setAnchorEl(event.currentTarget)
-  }
+    setAnchorEl(event.currentTarget);
+  };
 
   const handleClose = () => {
-    setAnchorEl(null)
-  }
+    setAnchorEl(null);
+  };
 
   return (
     <Card>
@@ -85,7 +85,7 @@ const CardMobile = () => {
         </Grid>
       </Grid>
     </Card>
-  )
-}
+  );
+};
 
-export default CardMobile
+export default CardMobile;

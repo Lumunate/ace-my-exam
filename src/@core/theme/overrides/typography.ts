@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const typography: Theme['components'] = {
   MuiTypography: {
@@ -63,6 +63,6 @@ const typography: Theme['components'] = {
       }
     ]
   }
-}
+};
 
-export default typography
+export default typography;

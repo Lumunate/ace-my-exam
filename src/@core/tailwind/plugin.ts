@@ -1,4 +1,4 @@
-import plugin from 'tailwindcss/plugin'
+import plugin from 'tailwindcss/plugin';
 
 module.exports = plugin(function () {}, {
   theme: {
@@ -71,4 +71,4 @@ module.exports = plugin(function () {}, {
       }
     }
   }
-})
+});

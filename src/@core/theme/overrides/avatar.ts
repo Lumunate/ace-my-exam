@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const avatar: Theme['components'] = {
   MuiAvatarGroup: {
@@ -33,6 +33,6 @@ const avatar: Theme['components'] = {
       })
     }
   }
-}
+};
 
-export default avatar
+export default avatar;

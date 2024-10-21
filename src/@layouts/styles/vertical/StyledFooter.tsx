@@ -1,10 +1,10 @@
 // Third-party Imports
-import styled from '@emotion/styled'
-import type { CSSObject } from '@emotion/styled'
+import styled from '@emotion/styled';
+import type { CSSObject } from '@emotion/styled';
 
 // Config Imports
-import themeConfig from '@/utils/configs/themeConfig'
-import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses'
+import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses';
+import themeConfig from '@/utils/configs/themeConfig';
 
 // Util Imports
 
@@ -22,6 +22,6 @@ const StyledFooter = styled.footer<StyledFooterProps>`
   }
 
   ${({ overrideStyles }) => overrideStyles}
-`
+`;
 
-export default StyledFooter
+export default StyledFooter;

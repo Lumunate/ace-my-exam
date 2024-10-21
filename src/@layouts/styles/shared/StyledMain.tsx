@@ -1,8 +1,8 @@
 // Third-party Imports
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 // Config Imports
-import themeConfig from '@/utils/configs/themeConfig'
+import themeConfig from '@/utils/configs/themeConfig';
 
 type StyledMainProps = {
   isContentCompact: boolean
@@ -16,6 +16,6 @@ const StyledMain = styled.main<StyledMainProps>`
     margin-inline: auto;
     max-inline-size: ${themeConfig.compactContentWidth}px;
   `}
-`
+`;
 
-export default StyledMain
+export default StyledMain;

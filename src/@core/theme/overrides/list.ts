@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const list: Theme['components'] = {
   MuiListItem: {
@@ -76,6 +76,6 @@ const list: Theme['components'] = {
       })
     }
   }
-}
+};
 
-export default list
+export default list;

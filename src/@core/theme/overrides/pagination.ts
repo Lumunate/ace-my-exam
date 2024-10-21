@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const pagination: Theme['components'] = {
   MuiPagination: {
@@ -150,12 +150,12 @@ const pagination: Theme['components'] = {
         },
         ...(ownerState.shape === 'rounded' &&
           ownerState.size === 'small' && {
-            borderRadius: 'var(--mui-shape-customBorderRadius-sm)'
-          }),
+          borderRadius: 'var(--mui-shape-customBorderRadius-sm)'
+        }),
         ...(ownerState.shape === 'rounded' &&
           ownerState.size === 'large' && {
-            borderRadius: 'var(--mui-shape-customBorderRadius-lg)'
-          })
+          borderRadius: 'var(--mui-shape-customBorderRadius-lg)'
+        })
       }),
       sizeSmall: {
         height: '2.125rem',
@@ -167,6 +167,6 @@ const pagination: Theme['components'] = {
       }
     }
   }
-}
+};
 
-export default pagination
+export default pagination;

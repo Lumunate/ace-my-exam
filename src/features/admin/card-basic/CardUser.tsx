@@ -1,11 +1,11 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardMedia from '@mui/material/CardMedia'
-import CardContent from '@mui/material/CardContent'
-import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
-import AvatarGroup from '@mui/material/AvatarGroup'
+import Avatar from '@mui/material/Avatar';
+import AvatarGroup from '@mui/material/AvatarGroup';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
 
 const CardUser = () => {
   return (
@@ -39,7 +39,7 @@ const CardUser = () => {
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardUser
+export default CardUser;

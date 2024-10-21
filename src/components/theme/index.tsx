@@ -1,36 +1,25 @@
-'use client'
-
-// React Imports
-import { useMemo } from 'react'
-
-// MUI Imports
-import { deepmerge } from '@mui/utils'
+'use client';
+import CssBaseline from '@mui/material/CssBaseline';
 import {
   Experimental_CssVarsProvider as CssVarsProvider,
   extendTheme,
   lighten,
   darken
-} from '@mui/material/styles'
-import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter'
-import CssBaseline from '@mui/material/CssBaseline'
-import type { } from '@mui/material/themeCssVarsAugmentation' //! Do not remove this import otherwise you will get type errors while making a production build
-import type { } from '@mui/lab/themeAugmentation' //! Do not remove this import otherwise you will get type errors while making a production build
+} from '@mui/material/styles';
+import { AppRouterCacheProvider } from '@mui/material-nextjs/v14-appRouter';
+import { deepmerge } from '@mui/utils';
+import { useMemo } from 'react';
 
-// Type Imports
-import type { ChildrenType, Direction } from '@/@core/types'
+// MUI Imports
+import type { } from '@mui/material/themeCssVarsAugmentation'; //! Do not remove this import otherwise you will get type errors while making a production build
+import type { } from '@mui/lab/themeAugmentation'; //! Do not remove this import otherwise you will get type errors while making a production build
+import { useSettings } from '@/@core/hooks/useSettings';
+import defaultCoreTheme from '@/@core/theme';
+import type { ChildrenType, Direction } from '@/@core/types';
+import primaryColorConfig from '@/utils/configs/primaryColorConfig';
+import themeConfig from '@/utils/configs/themeConfig';
 
-// Component Imports
-import ModeChanger from './ModeChanger'
-
-// Config Imports
-import themeConfig from '@/utils/configs/themeConfig'
-import primaryColorConfig from '@/utils/configs/primaryColorConfig'
-
-// Hook Imports
-import { useSettings } from '@/@core/hooks/useSettings'
-
-// Core Theme Imports
-import defaultCoreTheme from '@/@core/theme'
+import ModeChanger from './ModeChanger';
 
 type Props = ChildrenType & {
   direction: Direction
@@ -38,10 +27,10 @@ type Props = ChildrenType & {
 
 const ThemeProvider = (props: Props) => {
   // Props
-  const { children, direction } = props
+  const { children, direction } = props;
 
   // Hooks
-  const { settings } = useSettings()
+  const { settings } = useSettings();
 
   // Merge the primary color scheme override with the core theme
   const theme = useMemo(() => {
@@ -66,14 +55,14 @@ const ThemeProvider = (props: Props) => {
           }
         }
       }
-    }
+    };
 
-    const coreTheme = deepmerge(defaultCoreTheme(settings.mode || 'light', direction), newColorScheme)
+    const coreTheme = deepmerge(defaultCoreTheme(settings.mode || 'light', direction), newColorScheme);
 
-    return extendTheme(coreTheme)
+    return extendTheme(coreTheme);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [settings.mode])
+  }, [settings.mode]);
 
   return (
     <AppRouterCacheProvider options={{ prepend: true }}>
@@ -89,7 +78,7 @@ const ThemeProvider = (props: Props) => {
         </>
       </CssVarsProvider>
     </AppRouterCacheProvider>
-  )
-}
+  );
+};
 
-export default ThemeProvider
+export default ThemeProvider;

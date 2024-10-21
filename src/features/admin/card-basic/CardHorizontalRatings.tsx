@@ -1,13 +1,13 @@
-'use client'
+'use client';
 
 // MUI Imports
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import Rating from '@mui/material/Rating'
-import CardActions from '@mui/material/CardActions'
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Grid from '@mui/material/Grid';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 const CardHorizontalRatings = () => {
   return (
@@ -39,7 +39,7 @@ const CardHorizontalRatings = () => {
         </Grid>
       </Grid>
     </Card>
-  )
-}
+  );
+};
 
-export default CardHorizontalRatings
+export default CardHorizontalRatings;

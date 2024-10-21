@@ -1,25 +1,21 @@
 // MUI Imports
-import Tooltip from '@mui/material/Tooltip'
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import CardActions from '@mui/material/CardActions'
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
+import classnames from 'classnames';
 
-// Third-party Imports
-import classnames from 'classnames'
+import themeConfig from '@/utils/configs/themeConfig';
 
-// Config Imports
-import themeConfig from '@/utils/configs/themeConfig'
-
-// Style Imports
-import styles from './styles.module.css'
+import styles from './styles.module.css';
 
 const TooltipContent = () => {
   return (
     <Card>
-      <a href='https://themeselection.com/item/materio-mui-nextjs-admin-template' target='_blank' className='flex'>
+      <a href='https://themeselection.com/item/materio-mui-nextjs-admin-template' target='_blank' className='flex' rel="noreferrer">
         <img
           src='https://cdn.themeselection.com/ts-assets/materio/materio-mui-nextjs-admin-template/banner/banner.png'
           alt='Upgrade to Pro'
@@ -47,8 +43,8 @@ const TooltipContent = () => {
         </Button>
       </CardActions>
     </Card>
-  )
-}
+  );
+};
 
 const UpgradeToProButton = () => {
   return (
@@ -62,14 +58,14 @@ const UpgradeToProButton = () => {
           className={styles.button}
           role='button'
           href='https://themeselection.com/item/materio-mui-nextjs-admin-template'
-          target='_blank'
+          target='_blank' rel="noreferrer"
         >
           Upgrade to Pro
           <span className={styles.buttonInner} />
         </a>
       </Tooltip>
     </div>
-  )
-}
+  );
+};
 
-export default UpgradeToProButton
+export default UpgradeToProButton;

@@ -1,8 +1,8 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Skin } from '@core/types';
+import type { Theme } from '@mui/material/styles';
 
 // Type Imports
-import type { Skin } from '@core/types'
 
 const snackbar = (skin: Skin): Theme['components'] => ({
   MuiSnackbarContent: {
@@ -11,17 +11,17 @@ const snackbar = (skin: Skin): Theme['components'] => ({
         padding: theme.spacing(0, 4),
         ...(skin !== 'bordered'
           ? {
-              boxShadow: 'var(--mui-customShadows-xs)'
-            }
+            boxShadow: 'var(--mui-customShadows-xs)'
+          }
           : {
-              boxShadow: 'none'
-            }),
+            boxShadow: 'none'
+          }),
         '& .MuiSnackbarContent-message': {
           paddingBlock: theme.spacing(3)
         }
       })
     }
   }
-})
+});
 
-export default snackbar
+export default snackbar;

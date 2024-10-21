@@ -1,12 +1,12 @@
 // MUI Imports
-import { lighten } from '@mui/material/styles'
-import type { Theme } from '@mui/material/styles'
+import { lighten } from '@mui/material/styles';
+import type { Theme } from '@mui/material/styles';
 
 // Type Imports
-import type { MenuItemStyles } from '@/@menu/types'
+import type { MenuItemStyles } from '@/@menu/types';
 
 // Util Imports
-import { menuClasses } from '@/@menu/utils/menuClasses'
+import { menuClasses } from '@/@menu/utils/menuClasses';
 
 const menuItemStyles = (theme: Theme): MenuItemStyles => {
   return {
@@ -27,13 +27,13 @@ const menuItemStyles = (theme: Theme): MenuItemStyles => {
         background:
           theme.direction === 'ltr'
             ? `linear-gradient(270deg, var(--mui-palette-primary-main), ${lighten(
-                theme.palette.primary.main,
-                0.5
-              )} 100%)`
+              theme.palette.primary.main,
+              0.5
+            )} 100%)`
             : `linear-gradient(270deg, ${lighten(
-                theme.palette.primary.main,
-                0.5
-              )}, var(--mui-palette-primary-main) 100%)`,
+              theme.palette.primary.main,
+              0.5
+            )}, var(--mui-palette-primary-main) 100%)`,
         [`& .${menuClasses.icon}`]: {
           color: 'inherit'
         }
@@ -93,7 +93,7 @@ const menuItemStyles = (theme: Theme): MenuItemStyles => {
     subMenuContent: {
       backgroundColor: 'transparent'
     }
-  }
-}
+  };
+};
 
-export default menuItemStyles
+export default menuItemStyles;

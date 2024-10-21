@@ -17,7 +17,7 @@ export const menuClasses = {
   disabled: 'ts-disabled',
   active: 'ts-active',
   open: 'ts-open'
-}
+};
 
 // Classes for vertical navigation menu
 export const verticalNavClasses = {
@@ -28,4 +28,4 @@ export const verticalNavClasses = {
   backdrop: 'ts-vertical-nav-backdrop',
   toggled: 'ts-toggled',
   breakpointReached: 'ts-breakpoint-reached'
-}
+};

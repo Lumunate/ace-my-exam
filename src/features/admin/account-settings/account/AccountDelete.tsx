@@ -1,10 +1,10 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import FormControlLabel from '@mui/material/FormControlLabel'
-import Checkbox from '@mui/material/Checkbox'
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Checkbox from '@mui/material/Checkbox';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 const AccountDelete = () => {
   return (
@@ -17,7 +17,7 @@ const AccountDelete = () => {
         </Button>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default AccountDelete
+export default AccountDelete;

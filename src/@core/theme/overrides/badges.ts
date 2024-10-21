@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const badges: Theme['components'] = {
   MuiBadge: {
@@ -14,6 +14,6 @@ const badges: Theme['components'] = {
       })
     }
   }
-}
+};
 
-export default badges
+export default badges;

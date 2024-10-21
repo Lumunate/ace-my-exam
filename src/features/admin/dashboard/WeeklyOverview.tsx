@@ -1,32 +1,25 @@
-'use client'
+'use client';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import { useTheme } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import type { ApexOptions } from 'apexcharts';
+import dynamic from 'next/dynamic';
 
-// Next Imports
-import dynamic from 'next/dynamic'
-
-// MUI Imports
-import Card from '@mui/material/Card'
-import Button from '@mui/material/Button'
-import { useTheme } from '@mui/material/styles'
-import CardHeader from '@mui/material/CardHeader'
-import Typography from '@mui/material/Typography'
-import CardContent from '@mui/material/CardContent'
-
-// Third Party Imports
-import type { ApexOptions } from 'apexcharts'
-
-// Components Imports
-import OptionsMenu from '@/@core/components/option-menu'
+import OptionsMenu from '@/@core/components/option-menu';
 
 // Styled Component Imports
-const AppReactApexCharts = dynamic(() => import('@/lib/styles/AppReactApexCharts'))
+const AppReactApexCharts = dynamic(() => import('@/lib/styles/AppReactApexCharts'));
 
 const WeeklyOverview = () => {
   // Hooks
-  const theme = useTheme()
+  const theme = useTheme();
 
   // Vars
-  const divider = 'var(--mui-palette-divider)'
-  const disabled = 'var(--mui-palette-text-disabled)'
+  const divider = 'var(--mui-palette-divider)';
+  const disabled = 'var(--mui-palette-text-disabled)';
 
   const options: ApexOptions = {
     chart: {
@@ -85,7 +78,7 @@ const WeeklyOverview = () => {
         formatter: value => `${value > 999 ? `${(value / 1000).toFixed(0)}` : value}k`
       }
     }
-  }
+  };
 
   return (
     <Card>
@@ -110,7 +103,7 @@ const WeeklyOverview = () => {
         </Button>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default WeeklyOverview
+export default WeeklyOverview;

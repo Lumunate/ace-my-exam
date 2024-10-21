@@ -1,10 +1,10 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import Divider from '@mui/material/Divider'
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Divider from '@mui/material/Divider';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 const CardLifetimeMembership = () => {
   return (
@@ -74,7 +74,7 @@ const CardLifetimeMembership = () => {
         </Grid>
       </Grid>
     </Card>
-  )
-}
+  );
+};
 
-export default CardLifetimeMembership
+export default CardLifetimeMembership;

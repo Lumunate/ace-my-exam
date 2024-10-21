@@ -1,20 +1,20 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import Checkbox from '@mui/material/Checkbox'
-import Select from '@mui/material/Select'
-import MenuItem from '@mui/material/MenuItem'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
+import tableStyles from '@core/styles/table.module.css';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Checkbox from '@mui/material/Checkbox';
+import Grid from '@mui/material/Grid';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import Typography from '@mui/material/Typography';
 
 // Component Imports
-import Link from '@/components/Link'
-import Form from '@/components/Form'
+import Form from '@/components/Form';
+import Link from '@/components/Link';
 
 // Style Imports
-import tableStyles from '@core/styles/table.module.css'
 
 type TableDataType = {
   type: string
@@ -49,7 +49,7 @@ const tableData: TableDataType[] = [
     browser: false,
     type: 'A new device is linked'
   }
-]
+];
 
 const Notifications = () => {
   return (
@@ -115,7 +115,7 @@ const Notifications = () => {
         </CardContent>
       </Form>
     </Card>
-  )
-}
+  );
+};
 
-export default Notifications
+export default Notifications;

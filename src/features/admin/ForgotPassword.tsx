@@ -1,34 +1,25 @@
-'use client'
+'use client';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Link from 'next/link';
 
-// Next Imports
-import Link from 'next/link'
-
-// MUI Imports
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import Button from '@mui/material/Button'
-
-// Type Imports
-import type { Mode } from '@core/types'
-
-// Component Imports
-import Form from '@components/Form'
-import DirectionalIcon from '@components/DirectionalIcon'
-import Illustrations from '@components/Illustrations'
-import Logo from '@components/layout/shared/Logo'
-
-// Hook Imports
-import { useImageVariant } from '@core/hooks/useImageVariant'
+import { useImageVariant } from '@/@core/hooks/useImageVariant';
+import type { Mode } from '@/@core/types';
+import DirectionalIcon from '@/components/DirectionalIcon';
+import Form from '@/components/Form';
+import Illustrations from '@/components/Illustrations';
+import Logo from '@/components/layout/shared/Logo';
 
 const ForgotPassword = ({ mode }: { mode: Mode }) => {
   // Vars
-  const darkImg = '/images/pages/auth-v1-mask-dark.png'
-  const lightImg = '/images/pages/auth-v1-mask-light.png'
+  const darkImg = '/images/pages/auth-v1-mask-dark.png';
+  const lightImg = '/images/pages/auth-v1-mask-light.png';
 
   // Hooks
-  const authBackground = useImageVariant(mode, lightImg, darkImg)
+  const authBackground = useImageVariant(mode, lightImg, darkImg);
 
   return (
     <div className='flex flex-col justify-center items-center min-bs-[100dvh] relative p-6'>
@@ -59,7 +50,7 @@ const ForgotPassword = ({ mode }: { mode: Mode }) => {
       </Card>
       <Illustrations maskImg={{ src: authBackground }} />
     </div>
-  )
-}
+  );
+};
 
-export default ForgotPassword
+export default ForgotPassword;

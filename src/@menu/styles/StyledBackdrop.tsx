@@ -1,8 +1,8 @@
 // Third-party Imports
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 // Type Imports
-import type { VerticalNavProps } from '../vertical-menu'
+import type { VerticalNavProps } from '../vertical-menu';
 
 type StyledBackdropProps = Pick<VerticalNavProps, 'backdropColor'>
 
@@ -15,6 +15,6 @@ const StyledBackdrop = styled.div<StyledBackdropProps>`
   z-index: 1;
   background-color: ${({ backdropColor }) => backdropColor || 'rgba(0, 0, 0, 0.3)'};
   touch-action: none;
-`
+`;
 
-export default StyledBackdrop
+export default StyledBackdrop;

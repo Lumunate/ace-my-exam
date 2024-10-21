@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const slider: Theme['components'] = {
   MuiSlider: {
@@ -21,21 +21,21 @@ const slider: Theme['components'] = {
       thumb: ({ ownerState }) => ({
         ...(ownerState.size === 'small'
           ? {
-              height: 14,
-              width: 14,
-              border: '2px solid currentColor',
-              '&:hover, &.Mui-focusVisible': {
-                boxShadow: `0 0 0 7px var(--mui-palette-${ownerState.color}-lightOpacity)`
-              },
-              '&.Mui-active.Mui-focusVisible': {
-                boxShadow: `0 0 0 10px var(--mui-palette-${ownerState.color}-lightOpacity)`
-              }
+            height: 14,
+            width: 14,
+            border: '2px solid currentColor',
+            '&:hover, &.Mui-focusVisible': {
+              boxShadow: `0 0 0 7px var(--mui-palette-${ownerState.color}-lightOpacity)`
+            },
+            '&.Mui-active.Mui-focusVisible': {
+              boxShadow: `0 0 0 10px var(--mui-palette-${ownerState.color}-lightOpacity)`
             }
+          }
           : {
-              height: 22,
-              width: 22,
-              border: '4px solid currentColor'
-            }),
+            height: 22,
+            width: 22,
+            border: '4px solid currentColor'
+          }),
         backgroundColor: 'var(--mui-palette-common-white)',
         ...(!ownerState.disabled && {
           boxShadow: 'var(--mui-customShadows-sm)'
@@ -46,13 +46,13 @@ const slider: Theme['components'] = {
         '&:after': {
           ...(ownerState.size === 'small'
             ? {
-                height: 28,
-                width: 28
-              }
+              height: 28,
+              width: 28
+            }
             : {
-                height: 38,
-                width: 38
-              })
+              height: 38,
+              width: 38
+            })
         },
         '&:hover, &.Mui-focusVisible': {
           boxShadow: `0 0 0 8px var(--mui-palette-${ownerState.color}-lightOpacity)`
@@ -71,16 +71,16 @@ const slider: Theme['components'] = {
       valueLabel: ({ theme, ownerState }) => ({
         ...(ownerState.size === 'small'
           ? {
-              ...theme.typography.caption,
-              borderRadius: 'var(--mui-shape-customBorderRadius-sm)',
-              padding: theme.spacing(1, 2)
-            }
+            ...theme.typography.caption,
+            borderRadius: 'var(--mui-shape-customBorderRadius-sm)',
+            padding: theme.spacing(1, 2)
+          }
           : {
-              ...theme.typography.body2,
-              fontWeight: theme.typography.fontWeightMedium,
-              borderRadius: 'var(--mui-shape-borderRadius)',
-              padding: theme.spacing(1, 2.5)
-            }),
+            ...theme.typography.body2,
+            fontWeight: theme.typography.fontWeightMedium,
+            borderRadius: 'var(--mui-shape-borderRadius)',
+            padding: theme.spacing(1, 2.5)
+          }),
         color: 'var(--mui-palette-customColors-tooltipText)',
         backgroundColor: 'var(--mui-palette-Tooltip-bg)',
         '&:before': {
@@ -95,6 +95,6 @@ const slider: Theme['components'] = {
       })
     }
   }
-}
+};
 
-export default slider
+export default slider;

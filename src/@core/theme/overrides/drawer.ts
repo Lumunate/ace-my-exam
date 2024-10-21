@@ -1,8 +1,8 @@
 // MUI Imports
-import type { Theme } from '@mui/material'
+import type { Skin } from '@core/types';
+import type { Theme } from '@mui/material';
 
 // Type Imports
-import type { Skin } from '@core/types'
 
 const drawer = (skin: Skin): Theme['components'] => ({
   MuiDrawer: {
@@ -21,6 +21,6 @@ const drawer = (skin: Skin): Theme['components'] => ({
       }
     }
   }
-})
+});
 
-export default drawer
+export default drawer;

@@ -1,12 +1,12 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Grid from '@mui/material/Grid';
+import Typography from '@mui/material/Typography';
 
 // Component Imports
-import Link from '@/components/Link'
+import Link from '@/components/Link';
 
 type DataType = {
   logo: string
@@ -47,7 +47,7 @@ const depositData: DataType[] = [
     subtitle: 'Wallet deposit',
     logo: '/images/logos/citi-bank.png'
   }
-]
+];
 
 const withdrawData = [
   {
@@ -80,7 +80,7 @@ const withdrawData = [
     logo: '/images/logos/aws.png',
     subtitle: 'Choosing a Cloud Platform'
   }
-]
+];
 
 const DepositWithdraw = () => {
   return (
@@ -144,7 +144,7 @@ const DepositWithdraw = () => {
         </Grid>
       </Grid>
     </Card>
-  )
-}
+  );
+};
 
-export default DepositWithdraw
+export default DepositWithdraw;

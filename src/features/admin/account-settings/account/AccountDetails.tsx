@@ -1,22 +1,22 @@
-'use client'
+'use client';
 
 // React Imports
-import { useState } from 'react'
-import type { ChangeEvent } from 'react'
 
 // MUI Imports
-import Grid from '@mui/material/Grid'
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Button from '@mui/material/Button'
-import Typography from '@mui/material/Typography'
-import TextField from '@mui/material/TextField'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import Select from '@mui/material/Select'
-import MenuItem from '@mui/material/MenuItem'
-import Chip from '@mui/material/Chip'
-import type { SelectChangeEvent } from '@mui/material/Select'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Chip from '@mui/material/Chip';
+import FormControl from '@mui/material/FormControl';
+import Grid from '@mui/material/Grid';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import type { SelectChangeEvent } from '@mui/material/Select';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import type { ChangeEvent } from 'react';
+import { useState } from 'react';
 
 type Data = {
   firstName: string
@@ -47,47 +47,47 @@ const initialData: Data = {
   language: 'arabic',
   timezone: 'gmt-12',
   currency: 'usd'
-}
+};
 
-const languageData = ['English', 'Arabic', 'French', 'German', 'Portuguese']
+const languageData = ['English', 'Arabic', 'French', 'German', 'Portuguese'];
 
 const AccountDetails = () => {
   // States
-  const [formData, setFormData] = useState<Data>(initialData)
-  const [fileInput, setFileInput] = useState<string>('')
-  const [imgSrc, setImgSrc] = useState<string>('/images/avatars/1.png')
-  const [language, setLanguage] = useState<string[]>(['English'])
+  const [formData, setFormData] = useState<Data>(initialData);
+  const [fileInput, setFileInput] = useState<string>('');
+  const [imgSrc, setImgSrc] = useState<string>('/images/avatars/1.png');
+  const [language, setLanguage] = useState<string[]>(['English']);
 
   const handleDelete = (value: string) => {
-    setLanguage(current => current.filter(item => item !== value))
-  }
+    setLanguage(current => current.filter(item => item !== value));
+  };
 
   const handleChange = (event: SelectChangeEvent<string[]>) => {
-    setLanguage(event.target.value as string[])
-  }
+    setLanguage(event.target.value as string[]);
+  };
 
   const handleFormChange = (field: keyof Data, value: Data[keyof Data]) => {
-    setFormData({ ...formData, [field]: value })
-  }
+    setFormData({ ...formData, [field]: value });
+  };
 
   const handleFileInputChange = (file: ChangeEvent) => {
-    const reader = new FileReader()
-    const { files } = file.target as HTMLInputElement
+    const reader = new FileReader();
+    const { files } = file.target as HTMLInputElement;
 
     if (files && files.length !== 0) {
-      reader.onload = () => setImgSrc(reader.result as string)
-      reader.readAsDataURL(files[0])
+      reader.onload = () => setImgSrc(reader.result as string);
+      reader.readAsDataURL(files[0]);
 
       if (reader.result !== null) {
-        setFileInput(reader.result as string)
+        setFileInput(reader.result as string);
       }
     }
-  }
+  };
 
   const handleFileInputReset = () => {
-    setFileInput('')
-    setImgSrc('/images/avatars/1.png')
-  }
+    setFileInput('');
+    setImgSrc('/images/avatars/1.png');
+  };
 
   return (
     <Card>
@@ -295,7 +295,7 @@ const AccountDetails = () => {
         </form>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default AccountDetails
+export default AccountDetails;

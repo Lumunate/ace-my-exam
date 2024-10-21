@@ -1,17 +1,16 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import Avatar from '@mui/material/Avatar'
-import LinearProgress from '@mui/material/LinearProgress'
-
-import Typography from '@mui/material/Typography'
+import Avatar from '@mui/material/Avatar';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import LinearProgress from '@mui/material/LinearProgress';
+import Typography from '@mui/material/Typography';
 
 // Type Imports
-import type { ThemeColor } from '@/@core/types'
+import OptionMenu from '@/@core/components/option-menu';
+import type { ThemeColor } from '@/@core/types';
 
 // Components Imports
-import OptionMenu from '@/@core/components/option-menu'
 
 type DataType = {
   title: string
@@ -47,7 +46,7 @@ const data: DataType[] = [
     subtitle: 'HTML & Angular',
     imgSrc: '/images/cards/aviato.png'
   }
-]
+];
 
 const TotalEarning = () => {
   return (
@@ -95,7 +94,7 @@ const TotalEarning = () => {
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default TotalEarning
+export default TotalEarning;

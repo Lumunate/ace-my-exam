@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const input: Theme['components'] = {
   MuiFormControl: {
@@ -107,6 +107,6 @@ const input: Theme['components'] = {
       }
     }
   }
-}
+};
 
-export default input
+export default input;

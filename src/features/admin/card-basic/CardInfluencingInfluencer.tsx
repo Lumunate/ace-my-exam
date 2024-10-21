@@ -1,9 +1,9 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import CardActions from '@mui/material/CardActions'
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 const CardInfluencingInfluencer = () => {
   return (
@@ -26,7 +26,7 @@ const CardInfluencingInfluencer = () => {
         <Button>Read More</Button>
       </CardActions>
     </Card>
-  )
-}
+  );
+};
 
-export default CardInfluencingInfluencer
+export default CardInfluencingInfluencer;

@@ -1,12 +1,12 @@
 // React Imports
-import React from 'react'
+import type { Theme } from '@mui/material/styles';
+import React from 'react';
 
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
 
 const SelectIcon = () => {
-  return <i className='ri-arrow-down-s-line' />
-}
+  return <i className='ri-arrow-down-s-line' />;
+};
 
 const iconStyles = (theme: Theme) => ({
   userSelect: 'none',
@@ -21,7 +21,7 @@ const iconStyles = (theme: Theme) => ({
   right: '1rem',
   top: 'calc(50% - 0.5em)',
   pointerEvents: 'none'
-})
+});
 
 const select: Theme['components'] = {
   MuiSelect: {
@@ -56,6 +56,6 @@ const select: Theme['components'] = {
       })
     }
   }
-}
+};
 
-export default select
+export default select;

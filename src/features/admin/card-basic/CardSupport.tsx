@@ -1,9 +1,9 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Avatar from '@mui/material/Avatar'
-import Typography from '@mui/material/Typography'
-import Button from '@mui/material/Button'
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
 
 const CardSupport = () => {
   return (
@@ -22,7 +22,7 @@ const CardSupport = () => {
         <Button variant='contained'>Contact Now</Button>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default CardSupport
+export default CardSupport;

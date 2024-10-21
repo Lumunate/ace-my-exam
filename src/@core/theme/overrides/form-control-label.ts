@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const formControlLabel: Theme['components'] = {
   MuiFormControlLabel: {
@@ -17,6 +17,6 @@ const formControlLabel: Theme['components'] = {
       }
     }
   }
-}
+};
 
-export default formControlLabel
+export default formControlLabel;

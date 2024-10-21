@@ -1,18 +1,18 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Typography from '@mui/material/Typography';
 
 // Third-party Imports
-import classnames from 'classnames'
+import classnames from 'classnames';
 
 // Type Imports
-import type { ThemeColor } from '@/@core/types'
+import CustomAvatar from '@/@core/components/mui/Avatar';
+import OptionMenu from '@/@core/components/option-menu';
+import type { ThemeColor } from '@/@core/types';
 
 // Components Imports
-import OptionMenu from '@/@core/components/option-menu'
-import CustomAvatar from '@/@core/components/mui/Avatar'
 
 type DataType = {
   avatarLabel: string
@@ -71,7 +71,7 @@ const data: DataType[] = [
     trend: 'up',
     trendPercentage: '16.2%'
   }
-]
+];
 
 const SalesByCountries = () => {
   return (
@@ -119,7 +119,7 @@ const SalesByCountries = () => {
         ))}
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default SalesByCountries
+export default SalesByCountries;

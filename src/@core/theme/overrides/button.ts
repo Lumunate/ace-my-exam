@@ -1,26 +1,26 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 // Config Imports
-import themeConfig from '@/utils/configs/themeConfig'
+import themeConfig from '@/utils/configs/themeConfig';
 
 const iconStyles = (size?: string) => ({
   '& > *:nth-of-type(1)': {
     ...(size === 'small'
       ? {
-          fontSize: '14px'
-        }
+        fontSize: '14px'
+      }
       : {
-          ...(size === 'medium'
-            ? {
-                fontSize: '16px'
-              }
-            : {
-                fontSize: '20px'
-              })
-        })
+        ...(size === 'medium'
+          ? {
+            fontSize: '16px'
+          }
+          : {
+            fontSize: '20px'
+          })
+      })
   }
-})
+});
 
 const button: Theme['components'] = {
   MuiButtonBase: {
@@ -33,41 +33,41 @@ const button: Theme['components'] = {
       root: ({ theme, ownerState }) => ({
         ...(ownerState.variant === 'text'
           ? {
-              ...(ownerState.size === 'small' && {
-                padding: theme.spacing(2, 2.5)
-              }),
-              ...(ownerState.size === 'medium' && {
-                padding: theme.spacing(2, 3.5)
-              }),
-              ...(ownerState.size === 'large' && {
-                padding: theme.spacing(2, 4.5)
-              })
-            }
-          : {
-              ...(ownerState.variant === 'outlined'
-                ? {
-                    ...(ownerState.size === 'small' && {
-                      padding: theme.spacing(1.75, 3.25)
-                    }),
-                    ...(ownerState.size === 'medium' && {
-                      padding: theme.spacing(1.75, 4.25)
-                    }),
-                    ...(ownerState.size === 'large' && {
-                      padding: theme.spacing(1.75, 5.25)
-                    })
-                  }
-                : {
-                    ...(ownerState.size === 'small' && {
-                      padding: theme.spacing(2, 3.5)
-                    }),
-                    ...(ownerState.size === 'medium' && {
-                      padding: theme.spacing(2, 4.5)
-                    }),
-                    ...(ownerState.size === 'large' && {
-                      padding: theme.spacing(2, 5.5)
-                    })
-                  })
+            ...(ownerState.size === 'small' && {
+              padding: theme.spacing(2, 2.5)
+            }),
+            ...(ownerState.size === 'medium' && {
+              padding: theme.spacing(2, 3.5)
+            }),
+            ...(ownerState.size === 'large' && {
+              padding: theme.spacing(2, 4.5)
             })
+          }
+          : {
+            ...(ownerState.variant === 'outlined'
+              ? {
+                ...(ownerState.size === 'small' && {
+                  padding: theme.spacing(1.75, 3.25)
+                }),
+                ...(ownerState.size === 'medium' && {
+                  padding: theme.spacing(1.75, 4.25)
+                }),
+                ...(ownerState.size === 'large' && {
+                  padding: theme.spacing(1.75, 5.25)
+                })
+              }
+              : {
+                ...(ownerState.size === 'small' && {
+                  padding: theme.spacing(2, 3.5)
+                }),
+                ...(ownerState.size === 'medium' && {
+                  padding: theme.spacing(2, 4.5)
+                }),
+                ...(ownerState.size === 'large' && {
+                  padding: theme.spacing(2, 5.5)
+                })
+              })
+          })
       }),
       contained: ({ ownerState }) => ({
         boxShadow: 'var(--mui-customShadows-xs)',
@@ -93,33 +93,33 @@ const button: Theme['components'] = {
       startIcon: ({ theme, ownerState }) => ({
         ...(ownerState.size === 'small'
           ? {
-              marginInlineEnd: theme.spacing(1.5)
-            }
+            marginInlineEnd: theme.spacing(1.5)
+          }
           : {
-              ...(ownerState.size === 'medium'
-                ? {
-                    marginInlineEnd: theme.spacing(2)
-                  }
-                : {
-                    marginInlineEnd: theme.spacing(2.5)
-                  })
-            }),
+            ...(ownerState.size === 'medium'
+              ? {
+                marginInlineEnd: theme.spacing(2)
+              }
+              : {
+                marginInlineEnd: theme.spacing(2.5)
+              })
+          }),
         ...iconStyles(ownerState.size)
       }),
       endIcon: ({ theme, ownerState }) => ({
         ...(ownerState.size === 'small'
           ? {
-              marginInlineStart: theme.spacing(1.5)
-            }
+            marginInlineStart: theme.spacing(1.5)
+          }
           : {
-              ...(ownerState.size === 'medium'
-                ? {
-                    marginInlineStart: theme.spacing(2)
-                  }
-                : {
-                    marginInlineStart: theme.spacing(2.5)
-                  })
-            }),
+            ...(ownerState.size === 'medium'
+              ? {
+                marginInlineStart: theme.spacing(2)
+              }
+              : {
+                marginInlineStart: theme.spacing(2.5)
+              })
+          }),
         ...iconStyles(ownerState.size)
       })
     },
@@ -372,6 +372,6 @@ const button: Theme['components'] = {
       }
     ]
   }
-}
+};
 
-export default button
+export default button;

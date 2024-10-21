@@ -1,30 +1,30 @@
-'use client'
+'use client';
 
 // React Imports
-import { useState } from 'react'
 
 // Next Imports
-import Link from 'next/link'
 
 // MUI Imports
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
-import Typography from '@mui/material/Typography'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import IconButton from '@mui/material/IconButton'
-import InputAdornment from '@mui/material/InputAdornment'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Grid from '@mui/material/Grid';
+import IconButton from '@mui/material/IconButton';
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
+import Typography from '@mui/material/Typography';
+import Link from 'next/link';
+import { useState } from 'react';
 
 const FormLayoutsBasic = () => {
   // States
-  const [isPasswordShown, setIsPasswordShown] = useState(false)
-  const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false)
+  const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const [isConfirmPasswordShown, setIsConfirmPasswordShown] = useState(false);
 
-  const handleClickShowPassword = () => setIsPasswordShown(show => !show)
+  const handleClickShowPassword = () => setIsPasswordShown(show => !show);
 
-  const handleClickShowConfirmPassword = () => setIsConfirmPasswordShown(show => !show)
+  const handleClickShowConfirmPassword = () => setIsConfirmPasswordShown(show => !show);
 
   return (
     <Card>
@@ -111,7 +111,7 @@ const FormLayoutsBasic = () => {
         </form>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default FormLayoutsBasic
+export default FormLayoutsBasic;

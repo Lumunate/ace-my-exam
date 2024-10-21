@@ -1,23 +1,23 @@
-'use client'
+'use client';
 
 // React Imports
-import { useState } from 'react'
-import type { SyntheticEvent, ReactElement } from 'react'
 
 // MUI Imports
-import Grid from '@mui/material/Grid'
-import Tab from '@mui/material/Tab'
-import TabContext from '@mui/lab/TabContext'
-import TabList from '@mui/lab/TabList'
-import TabPanel from '@mui/lab/TabPanel'
+import TabContext from '@mui/lab/TabContext';
+import TabList from '@mui/lab/TabList';
+import TabPanel from '@mui/lab/TabPanel';
+import Grid from '@mui/material/Grid';
+import Tab from '@mui/material/Tab';
+import type { SyntheticEvent, ReactElement } from 'react';
+import { useState } from 'react';
 
 const AccountSettings = ({ tabContentList }: { tabContentList: { [key: string]: ReactElement } }) => {
   // States
-  const [activeTab, setActiveTab] = useState('account')
+  const [activeTab, setActiveTab] = useState('account');
 
   const handleChange = (event: SyntheticEvent, value: string) => {
-    setActiveTab(value)
-  }
+    setActiveTab(value);
+  };
 
   return (
     <TabContext value={activeTab}>
@@ -41,7 +41,7 @@ const AccountSettings = ({ tabContentList }: { tabContentList: { [key: string]: 
         </Grid>
       </Grid>
     </TabContext>
-  )
-}
+  );
+};
 
-export default AccountSettings
+export default AccountSettings;

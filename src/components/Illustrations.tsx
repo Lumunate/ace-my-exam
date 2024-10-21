@@ -1,17 +1,17 @@
-'use client'
+'use client';
 
 // React Imports
-import type { ReactNode } from 'react'
+import { useImageVariant } from '@core/hooks/useImageVariant';
+import type { Mode } from '@core/types';
+import { styled, useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import type { ReactNode } from 'react';
 
 // MUI Components
-import useMediaQuery from '@mui/material/useMediaQuery'
-import { styled, useTheme } from '@mui/material/styles'
 
 // Type Imports
-import type { Mode } from '@core/types'
 
 // Hook Imports
-import { useImageVariant } from '@core/hooks/useImageVariant'
 
 type ImageObj = {
   src: string
@@ -34,23 +34,24 @@ const MaskImg = styled('img')({
   position: 'absolute',
   insetBlockEnd: 0,
   zIndex: -1
-})
+});
 
 const Illustrations = (props: IllustrationsProp) => {
   // Props
-  const { image1, image2, maskImg, mode } = props
+  const { image1, image2, maskImg, mode } = props;
 
   // Vars
-  const darkImg = '/images/pages/misc-mask-dark.png'
-  const lightImg = '/images/pages/misc-mask-light.png'
+  const darkImg = '/images/pages/misc-mask-dark.png';
+  const lightImg = '/images/pages/misc-mask-light.png';
 
   // Hook
-  const theme = useTheme()
-  const hidden = useMediaQuery(theme.breakpoints.down('md'))
-  const maskBackground = useImageVariant(mode as Mode, lightImg, darkImg)
+  const theme = useTheme();
+  const hidden = useMediaQuery(theme.breakpoints.down('md'));
+  const maskBackground = useImageVariant(mode as Mode, lightImg, darkImg);
 
+  // @ts-ignore
   function isImageObj(obj: any): obj is ImageObj {
-    return obj && typeof obj === 'object' && 'src' in obj
+    return obj && typeof obj === 'object' && 'src' in obj;
   }
 
   if (!hidden) {
@@ -90,10 +91,10 @@ const Illustrations = (props: IllustrationsProp) => {
           image2
         )}
       </>
-    )
+    );
   } else {
-    return null
+    return null;
   }
-}
+};
 
-export default Illustrations
+export default Illustrations;

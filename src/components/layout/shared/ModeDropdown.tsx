@@ -1,42 +1,42 @@
-'use client'
+'use client';
 
 // React Imports
-import { useRef, useState } from 'react'
+import { useSettings } from '@core/hooks/useSettings';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import { useRef, useState } from 'react';
 
 // MUI Imports
-import Tooltip from '@mui/material/Tooltip'
-import IconButton from '@mui/material/IconButton'
 
 // Hook Imports
-import { useSettings } from '@core/hooks/useSettings'
 
 const ModeDropdown = () => {
   // States
-  const [tooltipOpen, setTooltipOpen] = useState(false)
+  const [tooltipOpen, setTooltipOpen] = useState(false);
 
   // Refs
-  const anchorRef = useRef<HTMLButtonElement>(null)
+  const anchorRef = useRef<HTMLButtonElement>(null);
 
   // Hooks
-  const { settings, updateSettings } = useSettings()
+  const { settings, updateSettings } = useSettings();
 
   const handleToggle = () => {
     if (settings.mode === 'dark') {
-      updateSettings({ mode: 'light' })
+      updateSettings({ mode: 'light' });
     }
 
     if (settings.mode === 'light') {
-      updateSettings({ mode: 'dark' })
+      updateSettings({ mode: 'dark' });
     }
-  }
+  };
 
   const getModeIcon = () => {
     if (settings.mode === 'dark') {
-      return 'ri-moon-clear-line'
+      return 'ri-moon-clear-line';
     } else {
-      return 'ri-sun-line'
+      return 'ri-sun-line';
     }
-  }
+  };
 
   return (
     <>
@@ -52,7 +52,7 @@ const ModeDropdown = () => {
         </IconButton>
       </Tooltip>
     </>
-  )
-}
+  );
+};
 
-export default ModeDropdown
+export default ModeDropdown;

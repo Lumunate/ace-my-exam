@@ -1,8 +1,8 @@
 // React Imports
-import React from 'react'
+import type { Theme } from '@mui/material/styles';
+import React from 'react';
 
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
 
 const Icon = () => {
   return (
@@ -13,8 +13,8 @@ const Icon = () => {
         strokeWidth='2'
       />
     </svg>
-  )
-}
+  );
+};
 
 const IndeterminateIcon = () => {
   return (
@@ -22,8 +22,8 @@ const IndeterminateIcon = () => {
       <path d='M3 8a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v8a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Z' fill='currentColor' />
       <path d='M8.5 11.5h7v1h-7v-1Z' fill='var(--mui-palette-common-white)' />
     </svg>
-  )
-}
+  );
+};
 
 const CheckedIcon = () => {
   return (
@@ -34,8 +34,8 @@ const CheckedIcon = () => {
         fill='var(--mui-palette-common-white)'
       />
     </svg>
-  )
-}
+  );
+};
 
 const checkbox: Theme['components'] = {
   MuiCheckbox: {
@@ -48,17 +48,17 @@ const checkbox: Theme['components'] = {
       root: ({ theme, ownerState }) => ({
         ...(ownerState.size === 'small'
           ? {
-              padding: theme.spacing(1),
-              '& svg': {
-                fontSize: '1.25rem'
-              }
+            padding: theme.spacing(1),
+            '& svg': {
+              fontSize: '1.25rem'
             }
+          }
           : {
-              padding: theme.spacing(1.5),
-              '& svg': {
-                fontSize: '1.5rem'
-              }
-            }),
+            padding: theme.spacing(1.5),
+            '& svg': {
+              fontSize: '1.5rem'
+            }
+          }),
         '&.Mui-checked:not(.Mui-disabled) svg': {
           filter: 'drop-shadow(var(--mui-customShadows-xs))'
         },
@@ -89,6 +89,6 @@ const checkbox: Theme['components'] = {
       })
     }
   }
-}
+};
 
-export default checkbox
+export default checkbox;

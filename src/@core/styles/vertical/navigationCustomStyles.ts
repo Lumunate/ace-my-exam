@@ -1,8 +1,8 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 // Util Imports
-import { menuClasses, verticalNavClasses } from '@/@menu/utils/menuClasses'
+import { menuClasses, verticalNavClasses } from '@/@menu/utils/menuClasses';
 
 const navigationCustomStyles = (theme: Theme) => {
   return {
@@ -29,7 +29,7 @@ const navigationCustomStyles = (theme: Theme) => {
     [`& .${verticalNavClasses.backdrop}`]: {
       backgroundColor: 'var(--backdrop-color)'
     }
-  }
-}
+  };
+};
 
-export default navigationCustomStyles
+export default navigationCustomStyles;

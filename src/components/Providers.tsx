@@ -1,16 +1,9 @@
-// Type Imports
-import type { ChildrenType, Direction } from '@/@core/types'
-
-// Context Imports
-import { VerticalNavProvider } from '@/@menu/contexts/verticalNavContext'
-import { SettingsProvider } from '@/@core/contexts/settingsContext'
-import ThemeProvider from '@/components/theme'
-
-// Component Imports
-import UpgradeToProButton from '@/components/upgrade-to-pro-button'
-
-// Util Imports
-import { getMode, getSettingsFromCookie } from '@/@core/utils/serverHelpers'
+import { SettingsProvider } from '@/@core/contexts/settingsContext';
+import type { ChildrenType, Direction } from '@/@core/types';
+import { getMode, getSettingsFromCookie } from '@/@core/utils/serverHelpers';
+import { VerticalNavProvider } from '@/@menu/contexts/verticalNavContext';
+import ThemeProvider from '@/components/theme';
+import UpgradeToProButton from '@/components/upgrade-to-pro-button';
 
 type Props = ChildrenType & {
   direction: Direction
@@ -18,11 +11,11 @@ type Props = ChildrenType & {
 
 const Providers = (props: Props) => {
   // Props
-  const { children, direction } = props
+  const { children, direction } = props;
 
   // Vars
-  const mode = getMode()
-  const settingsCookie = getSettingsFromCookie()
+  const mode = getMode();
+  const settingsCookie = getSettingsFromCookie();
 
   return (
     <VerticalNavProvider>
@@ -33,7 +26,7 @@ const Providers = (props: Props) => {
         </ThemeProvider>
       </SettingsProvider>
     </VerticalNavProvider>
-  )
-}
+  );
+};
 
-export default Providers
+export default Providers;

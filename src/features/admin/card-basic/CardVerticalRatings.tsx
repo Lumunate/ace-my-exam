@@ -1,10 +1,10 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import CardContent from '@mui/material/CardContent'
-import Typography from '@mui/material/Typography'
-import Rating from '@mui/material/Rating'
-import CardActions from '@mui/material/CardActions'
-import Button from '@mui/material/Button'
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 const CardVerticalRatings = () => {
   return (
@@ -31,7 +31,7 @@ const CardVerticalRatings = () => {
         <Button>Review</Button>
       </CardActions>
     </Card>
-  )
-}
+  );
+};
 
-export default CardVerticalRatings
+export default CardVerticalRatings;

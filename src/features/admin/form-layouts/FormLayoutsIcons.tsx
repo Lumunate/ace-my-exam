@@ -1,14 +1,14 @@
 // MUI Imports
-import Card from '@mui/material/Card'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
-import TextField from '@mui/material/TextField'
-import CardHeader from '@mui/material/CardHeader'
-import CardContent from '@mui/material/CardContent'
-import InputAdornment from '@mui/material/InputAdornment'
+import Form from '@components/Form';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardHeader from '@mui/material/CardHeader';
+import Grid from '@mui/material/Grid';
+import InputAdornment from '@mui/material/InputAdornment';
+import TextField from '@mui/material/TextField';
 
 // Component Imports
-import Form from '@components/Form'
 
 const FormLayoutsWithIcon = () => {
   return (
@@ -86,7 +86,7 @@ const FormLayoutsWithIcon = () => {
         </Form>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default FormLayoutsWithIcon
+export default FormLayoutsWithIcon;

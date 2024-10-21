@@ -1,5 +1,5 @@
 // MUI Imports
-import type { Theme } from '@mui/material/styles'
+import type { Theme } from '@mui/material/styles';
 
 const fab: Theme['components'] = {
   MuiFab: {
@@ -63,6 +63,6 @@ const fab: Theme['components'] = {
       }
     ]
   }
-}
+};
 
-export default fab
+export default fab;

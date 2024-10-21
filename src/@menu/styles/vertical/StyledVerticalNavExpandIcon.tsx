@@ -1,9 +1,9 @@
 // Third-party Imports
-import styled from '@emotion/styled'
+import styled from '@emotion/styled';
 
 // Type Imports
-import type { RootStylesType } from '../../types'
-import type { VerticalMenuContextProps } from '../../components/vertical-menu/Menu'
+import type { VerticalMenuContextProps } from '../../components/vertical-menu/Menu';
+import type { RootStylesType } from '../../types';
 
 type StyledVerticalNavExpandIconProps = {
   open?: boolean
@@ -14,7 +14,7 @@ export const StyledVerticalNavExpandIconWrapper = styled.span<RootStylesType>`
   display: flex;
   margin-inline-start: 5px;
   ${({ rootStyles }) => rootStyles};
-`
+`;
 
 const StyledVerticalNavExpandIcon = styled.span<StyledVerticalNavExpandIconProps>`
   display: flex;
@@ -29,6 +29,6 @@ const StyledVerticalNavExpandIcon = styled.span<StyledVerticalNavExpandIconProps
       ${({ open }) => open && 'transform: rotate(90deg);'}
     }
   }
-`
+`;
 
-export default StyledVerticalNavExpandIcon
+export default StyledVerticalNavExpandIcon;
