@@ -2,9 +2,9 @@
 import type { CSSObject } from '@emotion/styled';
 import classnames from 'classnames';
 
-import type { ChildrenType } from '@/@core/types';
-import StyledFooter from '@/@layouts/styles/vertical/StyledFooter';
-import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses';
+import type { ChildrenType } from '@/components/@core/types';
+import StyledFooter from '@/components/@layouts/styles/vertical/StyledFooter';
+import { verticalLayoutClasses } from '@/components/@layouts/utils/layoutClasses';
 
 type Props = ChildrenType & {
   overrideStyles?: CSSObject

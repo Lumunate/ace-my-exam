@@ -1,7 +1,7 @@
-import { ChildrenType } from '@/@core/types';
-import Navbar from '@/@layouts/components/vertical/Navbar';
-import LayoutWrapper from '@/@layouts/LayoutWrapper';
-import VerticalLayout from '@/@layouts/VerticalLayout';
+import { ChildrenType } from '@/components/@core/types';
+import Navbar from '@/components/@layouts/components/vertical/Navbar';
+import LayoutWrapper from '@/components/@layouts/LayoutWrapper';
+import VerticalLayout from '@/components/@layouts/VerticalLayout';
 import VerticalFooter from '@/components/layout/vertical/Footer';
 import Navigation from '@/components/layout/vertical/Navigation';
 import Providers from '@/components/Providers';

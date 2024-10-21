@@ -3,8 +3,8 @@ import Chip from '@mui/material/Chip';
 import Typography from '@mui/material/Typography';
 import classnames from 'classnames';
 
-import CustomAvatar from '@/@core/components/mui/Avatar';
-import tableStyles from '@/@core/styles/table.module.css';
+import CustomAvatar from '@/components/@core/components/mui/Avatar';
+import tableStyles from '@/components/@core/styles/table.module.css';
 
 type TableBodyRowType = {
   avatarSrc?: string

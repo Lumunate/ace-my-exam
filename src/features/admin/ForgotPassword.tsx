@@ -6,8 +6,8 @@ import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 
-import { useImageVariant } from '@/@core/hooks/useImageVariant';
-import type { Mode } from '@/@core/types';
+import { useImageVariant } from '@/components/@core/hooks/useImageVariant';
+import type { Mode } from '@/components/@core/types';
 import DirectionalIcon from '@/components/DirectionalIcon';
 import Form from '@/components/Form';
 import Illustrations from '@/components/Illustrations';

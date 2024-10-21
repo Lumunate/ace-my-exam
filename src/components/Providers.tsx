@@ -1,7 +1,7 @@
-import { SettingsProvider } from '@/@core/contexts/settingsContext';
-import type { ChildrenType, Direction } from '@/@core/types';
-import { getMode, getSettingsFromCookie } from '@/@core/utils/serverHelpers';
-import { VerticalNavProvider } from '@/@menu/contexts/verticalNavContext';
+import { SettingsProvider } from '@/components/@core/contexts/settingsContext';
+import type { ChildrenType, Direction } from '@/components/@core/types';
+import { getMode, getSettingsFromCookie } from '@/components/@core/utils/serverHelpers';
+import { VerticalNavProvider } from '@/components/@menu/contexts/verticalNavContext';
 import ThemeProvider from '@/components/theme';
 import UpgradeToProButton from '@/components/upgrade-to-pro-button';
 

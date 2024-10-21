@@ -8,9 +8,9 @@
 import type { Theme } from '@mui/material/styles';
 import { deepmerge } from '@mui/utils';
 
-import type { Settings } from '@/@core/contexts/settingsContext';
-import coreTheme from '@/@core/theme';
-import type { SystemMode } from '@/@core/types';
+import type { Settings } from "@/components/@core/contexts/settingsContext";
+import coreTheme from "@/components/@core/theme";
+import type { SystemMode } from "@/components/@core/types";
 
 const mergedTheme = (settings: Settings, mode: SystemMode, direction: Theme['direction']) => {
   // Vars

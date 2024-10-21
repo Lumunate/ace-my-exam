@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 // MUI Imports
 
 // Hook Imports
-import { useSettings } from '@/@core/hooks/useSettings';
+import { useSettings } from '@/components/@core/hooks/useSettings';
 
 const ModeChanger = () => {
   // Hooks

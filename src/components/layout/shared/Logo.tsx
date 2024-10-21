@@ -2,7 +2,7 @@
 import styled from '@emotion/styled';
 import type { CSSProperties } from 'react';
 
-import MaterioLogo from '@/@core/svg/Logo';
+import MaterioLogo from '@/components/@core/svg/Logo';
 import themeConfig from '@/utils/configs/themeConfig';
 
 type LogoTextProps = {

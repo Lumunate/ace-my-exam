@@ -6,8 +6,8 @@ import Typography from '@mui/material/Typography';
 // Types Imports
 
 // Components Imports
-import CustomAvatar from '@/@core/components/mui/Avatar';
-import OptionMenu from '@/@core/components/option-menu';
+import CustomAvatar from '@/components/@core/components/mui/Avatar';
+import OptionMenu from '@/components/@core/components/option-menu';
 import { CardStatsVerticalProps } from '@/types/widgetTypes';
 
 const CardStatVertical = (props: CardStatsVerticalProps) => {

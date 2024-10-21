@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import type { ApexOptions } from 'apexcharts';
 import dynamic from 'next/dynamic';
 
-import OptionsMenu from '@/@core/components/option-menu';
+import OptionsMenu from '@/components/@core/components/option-menu';
 
 // Styled Component Imports
 const AppReactApexCharts = dynamic(() => import('@/lib/styles/AppReactApexCharts'));

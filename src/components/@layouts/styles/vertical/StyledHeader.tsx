@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import type { CSSObject } from '@emotion/styled';
 
 // Config Imports
-import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses';
+import { verticalLayoutClasses } from '@/components/@layouts/utils/layoutClasses';
 import themeConfig from '@/utils/configs/themeConfig';
 
 // Util Imports

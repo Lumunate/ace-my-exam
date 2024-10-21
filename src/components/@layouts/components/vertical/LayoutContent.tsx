@@ -1,9 +1,9 @@
 'use client';
 import classnames from 'classnames';
 
-import type { ChildrenType } from '@/@core/types';
-import StyledMain from '@/@layouts/styles/shared/StyledMain';
-import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses';
+import type { ChildrenType } from '@/components/@core/types';
+import StyledMain from '@/components/@layouts/styles/shared/StyledMain';
+import { verticalLayoutClasses } from '@/components/@layouts/utils/layoutClasses';
 
 const LayoutContent = ({ children }: ChildrenType) => {
   return (

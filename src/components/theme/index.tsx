@@ -13,9 +13,9 @@ import { useMemo } from 'react';
 // MUI Imports
 import type { } from '@mui/material/themeCssVarsAugmentation'; //! Do not remove this import otherwise you will get type errors while making a production build
 import type { } from '@mui/lab/themeAugmentation'; //! Do not remove this import otherwise you will get type errors while making a production build
-import { useSettings } from '@/@core/hooks/useSettings';
-import defaultCoreTheme from '@/@core/theme';
-import type { ChildrenType, Direction } from '@/@core/types';
+import { useSettings } from '@/components/@core/hooks/useSettings';
+import defaultCoreTheme from '@/components/@core/theme';
+import type { ChildrenType, Direction } from '@/components/@core/types';
 import primaryColorConfig from '@/utils/configs/primaryColorConfig';
 import themeConfig from '@/utils/configs/themeConfig';
 

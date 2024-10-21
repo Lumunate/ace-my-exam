@@ -6,9 +6,9 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 
 // Type Imports
-import CustomAvatar from '@/@core/components/mui/Avatar';
-import OptionMenu from '@/@core/components/option-menu';
-import type { ThemeColor } from '@/@core/types';
+import CustomAvatar from '@/components/@core/components/mui/Avatar';
+import OptionMenu from '@/components/@core/components/option-menu';
+import type { ThemeColor } from '@/components/@core/types';
 
 // Components Imports
 

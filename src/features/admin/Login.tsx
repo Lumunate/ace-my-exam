@@ -14,8 +14,8 @@ import { useRouter } from 'next/navigation';
 import type { FormEvent } from 'react';
 import { useState } from 'react';
 
-import { useImageVariant } from '@/@core/hooks/useImageVariant';
-import type { Mode } from '@/@core/types';
+import { useImageVariant } from '@/components/@core/hooks/useImageVariant';
+import type { Mode } from '@/components/@core/types';
 import Illustrations from '@/components/Illustrations';
 import Logo from '@/components/layout/shared/Logo';
 import themeConfig from '@/utils/configs/themeConfig';

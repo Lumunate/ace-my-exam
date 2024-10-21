@@ -1,5 +1,5 @@
 import 'react-perfect-scrollbar/dist/css/styles.css';
-import type { ChildrenType } from '@/@core/types';
+import type { ChildrenType } from '@/components/@core/types';
 import './admin.css';
 
 export const metadata = {

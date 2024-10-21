@@ -2,7 +2,7 @@ import IconButton from '@mui/material/IconButton';
 import classnames from 'classnames';
 import Link from 'next/link';
 
-import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses';
+import { verticalLayoutClasses } from '@/components/@layouts/utils/layoutClasses';
 import ModeDropdown from '@/components/layout/shared/ModeDropdown';
 import NavSearch from '@/components/layout/shared/search';
 import UserDropdown from '@/components/layout/shared/UserDropdown';

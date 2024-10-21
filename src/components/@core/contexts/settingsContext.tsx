@@ -2,8 +2,8 @@
 import type { ReactNode } from 'react';
 import { createContext, useMemo, useState } from 'react';
 
-import { useObjectCookie } from '@/@core/hooks/useObjectCookie';
-import type { Mode } from '@/@core/types';
+import { useObjectCookie } from '@/components/@core/hooks/useObjectCookie';
+import type { Mode } from '@/components/@core/types';
 import themeConfig from '@/utils/configs/themeConfig';
 
 // Settings type

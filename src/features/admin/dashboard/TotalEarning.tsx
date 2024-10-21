@@ -7,8 +7,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import Typography from '@mui/material/Typography';
 
 // Type Imports
-import OptionMenu from '@/@core/components/option-menu';
-import type { ThemeColor } from '@/@core/types';
+import OptionMenu from '@/components/@core/components/option-menu';
+import type { ThemeColor } from '@/components/@core/types';
 
 // Components Imports
 

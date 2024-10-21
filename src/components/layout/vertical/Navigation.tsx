@@ -3,9 +3,9 @@ import { styled, useTheme } from '@mui/material/styles';
 import Link from 'next/link';
 import { useRef } from 'react';
 
-import navigationCustomStyles from '@/@core/styles/vertical/navigationCustomStyles';
-import useVerticalNav from '@/@menu/hooks/useVerticalNav';
-import VerticalNav, { NavHeader } from '@/@menu/vertical-menu';
+import navigationCustomStyles from '@/components/@core/styles/vertical/navigationCustomStyles';
+import useVerticalNav from '@/components/@menu/hooks/useVerticalNav';
+import VerticalNav, { NavHeader } from '@/components/@menu/vertical-menu';
 import Logo from '@/components/layout/shared/Logo';
 
 import VerticalMenu from './VerticalMenu';

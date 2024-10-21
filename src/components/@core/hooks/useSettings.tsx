@@ -2,7 +2,7 @@
 import { useContext } from 'react';
 
 // Context Imports
-import { SettingsContext } from '@/@core/contexts/settingsContext';
+import { SettingsContext } from '@/components/@core/contexts/settingsContext';
 
 export const useSettings = () => {
   // Hooks

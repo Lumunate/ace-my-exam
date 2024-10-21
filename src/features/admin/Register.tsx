@@ -12,8 +12,8 @@ import Typography from '@mui/material/Typography';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { useImageVariant } from '@/@core/hooks/useImageVariant';
-import type { Mode } from '@/@core/types';
+import { useImageVariant } from '@/components/@core/hooks/useImageVariant';
+import type { Mode } from '@/components/@core/types';
 import Illustrations from '@/components/Illustrations';
 import Logo from '@/components/layout/shared/Logo';
 

@@ -7,8 +7,8 @@ import Link from 'next/link';
 // Third-party Imports
 
 // Hook Imports
-import { verticalLayoutClasses } from '@/@layouts/utils/layoutClasses';
-import useVerticalNav from '@/@menu/hooks/useVerticalNav';
+import { verticalLayoutClasses } from '@/components/@layouts/utils/layoutClasses';
+import useVerticalNav from '@/components/@menu/hooks/useVerticalNav';
 
 // Util Imports
 

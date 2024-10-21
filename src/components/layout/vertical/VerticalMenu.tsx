@@ -2,12 +2,12 @@ import Chip from '@mui/material/Chip';
 import { useTheme } from '@mui/material/styles';
 import PerfectScrollbar from 'react-perfect-scrollbar';
 
-import menuItemStyles from '@/@core/styles/vertical/menuItemStyles';
-import menuSectionStyles from '@/@core/styles/vertical/menuSectionStyles';
-import type { VerticalMenuContextProps } from '@/@menu/components/vertical-menu/Menu';
-import useVerticalNav from '@/@menu/hooks/useVerticalNav';
-import StyledVerticalNavExpandIcon from '@/@menu/styles/vertical/StyledVerticalNavExpandIcon';
-import { Menu, SubMenu, MenuItem, MenuSection } from '@/@menu/vertical-menu';
+import menuItemStyles from '@/components/@core/styles/vertical/menuItemStyles';
+import menuSectionStyles from '@/components/@core/styles/vertical/menuSectionStyles';
+import type { VerticalMenuContextProps } from '@/components/@menu/components/vertical-menu/Menu';
+import useVerticalNav from '@/components/@menu/hooks/useVerticalNav';
+import StyledVerticalNavExpandIcon from '@/components/@menu/styles/vertical/StyledVerticalNavExpandIcon';
+import { Menu, SubMenu, MenuItem, MenuSection } from '@/components/@menu/vertical-menu';
 
 type RenderExpandIconProps = {
   open?: boolean
