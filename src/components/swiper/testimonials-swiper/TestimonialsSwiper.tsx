@@ -28,6 +28,8 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 
+import testimonialsData from './testimonialsData.json';
+
 interface Testimonial {
   name: string;
   subject: string;
@@ -39,7 +41,7 @@ interface Testimonial {
 
 const TestimonialsSwiper: FC = () => {
   const swiperRef = useRef<SwiperType | null>(null);
-  const { data, isLoading } = useTestimonials();
+  // const { data, isLoading } = useTestimonials();
 
   useEffect(() => {
     if (swiperRef.current) {
