@@ -25,6 +25,7 @@ const Award = () => {
         <Image
           src='/images/pages/trophy.png'
           alt='trophy image'
+          width={-1}
           height={102}
           className='absolute inline-end-7 bottom-6'
         />
