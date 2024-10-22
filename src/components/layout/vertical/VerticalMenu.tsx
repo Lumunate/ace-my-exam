@@ -32,6 +32,9 @@ const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectSc
     // eslint-disable-next-line lines-around-comment
     /* Custom scrollbar instead of browser scroll, remove if you want browser scroll only */
     <ScrollWrapper
+    style={{
+      color: "white"
+    }}
       {...(isBreakpointReached
         ? {
           className: 'bs-full overflow-y-auto overflow-x-hidden',

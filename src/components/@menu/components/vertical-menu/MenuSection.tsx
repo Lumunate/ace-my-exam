@@ -88,7 +88,7 @@ const MenuSection: ForwardRefRenderFunction<HTMLLIElement, MenuSectionProps> = (
           {label && (
             <StyledMenuSectionLabel
               className={menuClasses.menuSectionLabel}
-              rootStyles={getMenuSectionStyles('label')}
+              rootStyles={{ color: "#f2f2f2", ...getMenuSectionStyles('label') }}
               textTruncate={textTruncate}
             >
               {label}
