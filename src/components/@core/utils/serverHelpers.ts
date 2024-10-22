@@ -1,16 +1,16 @@
-import "server-only";
-import { cookies } from "next/headers";
+import 'server-only';
+import { cookies } from 'next/headers';
 
-import type { Settings } from "@/components/@core/contexts/settingsContext";
-import type { SystemMode } from "@/components/@core/types";
-import themeConfig from "@/utils/configs/themeConfig";
+import type { Settings } from '@/components/@core/contexts/settingsContext';
+import type { SystemMode } from '@/components/@core/types';
+import themeConfig from '@/utils/configs/themeConfig';
 
 export const getSettingsFromCookie = (): Settings => {
   const cookieStore = cookies();
 
   const cookieName = themeConfig.settingsCookieName;
 
-  return JSON.parse(cookieStore.get(cookieName)?.value || "{}");
+  return JSON.parse(cookieStore.get(cookieName)?.value || '{}');
 };
 
 export const getMode = () => {

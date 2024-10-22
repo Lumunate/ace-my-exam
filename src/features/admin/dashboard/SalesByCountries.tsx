@@ -1,18 +1,12 @@
-// MUI Imports
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import Typography from '@mui/material/Typography';
-
-// Third-party Imports
 import classnames from 'classnames';
 
-// Type Imports
 import CustomAvatar from '@/components/@core/components/mui/Avatar';
 import OptionMenu from '@/components/@core/components/option-menu';
 import type { ThemeColor } from '@/components/@core/types';
-
-// Components Imports
 
 type DataType = {
   avatarLabel: string

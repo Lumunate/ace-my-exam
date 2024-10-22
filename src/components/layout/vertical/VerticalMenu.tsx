@@ -20,6 +20,7 @@ const RenderExpandIcon = ({ open, transitionDuration }: RenderExpandIconProps) =
   </StyledVerticalNavExpandIcon>
 );
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const VerticalMenu = ({ scrollMenu }: { scrollMenu: (container: any, isPerfectScrollbar: boolean) => void }) => {
   // Hooks
   const theme = useTheme();

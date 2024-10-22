@@ -8,6 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import Grid from '@mui/material/Grid';
 import Rating from '@mui/material/Rating';
 import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 
 const CardHorizontalRatings = () => {
   return (
@@ -34,7 +35,7 @@ const CardHorizontalRatings = () => {
         </Grid>
         <Grid item xs={12} md={6} lg={5} className='flex items-center justify-center md:order-[unset] -order-1'>
           <CardContent className='flex items-center justify-center'>
-            <img src='/images/cards/5.png' height='175' className='rounded' />
+            <Image src='/images/cards/5.png' height={175} className='rounded' alt='cards image' />
           </CardContent>
         </Grid>
       </Grid>

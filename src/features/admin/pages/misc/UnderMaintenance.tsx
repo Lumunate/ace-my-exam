@@ -1,20 +1,12 @@
 'use client';
-
-// Next Imports
-
-// MUI Imports
-import Illustrations from '@components/Illustrations';
-import { useImageVariant } from '@core/hooks/useImageVariant';
-import type { Mode } from '@core/types';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-
-// Type Imports
-
-// Component Imports
-
-// Hook Imports
+import Image from 'next/image';
 import Link from 'next/link';
+
+import { useImageVariant } from '@/components/@core/hooks/useImageVariant';
+import type { Mode } from '@/components/@core/types';
+import Illustrations from '@/components/Illustrations';
 
 const UnderMaintenance = ({ mode }: { mode: Mode }) => {
   // Vars
@@ -31,7 +23,7 @@ const UnderMaintenance = ({ mode }: { mode: Mode }) => {
           <Typography variant='h4'>Under Maintenance! 🚧</Typography>
           <Typography>Sorry for the inconvenience but we&#39;re performing some maintenance at the moment</Typography>
         </div>
-        <img
+        <Image
           alt='error-illustration'
           src='/images/illustrations/characters/6.png'
           className='object-cover bs-[400px] md:bs-[450px] lg:bs-[500px]'

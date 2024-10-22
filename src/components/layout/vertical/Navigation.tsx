@@ -33,18 +33,19 @@ const Navigation = () => {
 
   // Refs
   const shadowRef = useRef(null);
-
+  
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const scrollMenu = (container: any, isPerfectScrollbar: boolean) => {
     container = isBreakpointReached || !isPerfectScrollbar ? container.target : container;
 
     if (shadowRef && container.scrollTop > 0) {
-      // @ts-expect-error
+      // @ts-expect-error dom
       if (!shadowRef.current.classList.contains('scrolled')) {
-        // @ts-expect-error
+        // @ts-expect-error dom
         shadowRef.current.classList.add('scrolled');
       }
     } else {
-      // @ts-expect-error
+      // @ts-expect-error dom
       shadowRef.current.classList.remove('scrolled');
     }
   };

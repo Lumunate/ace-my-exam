@@ -36,6 +36,7 @@ const UserDropdown = () => {
   const router = useRouter();
 
   const handleDropdownOpen = () => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     !open ? setOpen(true) : setOpen(false);
   };
 

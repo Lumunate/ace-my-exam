@@ -7,6 +7,7 @@ import CardHeader from '@mui/material/CardHeader';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import classnames from 'classnames';
+import Image from 'next/image';
 
 import themeConfig from '@/utils/configs/themeConfig';
 
@@ -16,10 +17,11 @@ const TooltipContent = () => {
   return (
     <Card>
       <a href='https://themeselection.com/item/materio-mui-nextjs-admin-template' target='_blank' className='flex' rel="noreferrer">
-        <img
+        <Image
           src='https://cdn.themeselection.com/ts-assets/materio/materio-mui-nextjs-admin-template/banner/banner.png'
           alt='Upgrade to Pro'
           className='w-full'
+          width={600}
         />
       </a>
       <CardHeader title={`${themeConfig.templateName} - MUI Next.js Admin Template`} />

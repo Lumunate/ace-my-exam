@@ -2,8 +2,8 @@
 import type { Theme } from '@mui/material/styles';
 
 // Type Imports
-import { menuClasses } from "@/components/@menu/utils/menuClasses";
-import type { MenuProps } from "@/components/@menu/vertical-menu";
+import { menuClasses } from '@/components/@menu/utils/menuClasses';
+import type { MenuProps } from '@/components/@menu/vertical-menu';
 
 // Util Imports
 

@@ -127,7 +127,7 @@ const MenuItem: ForwardRefRenderFunction<HTMLLIElement, MenuItemProps> = (props,
         {...rest}
         onClick={e => {
           handleClick();
-          rest.onClick && rest.onClick(e);
+          if (rest.onClick) rest.onClick(e);
         }}
       >
         {/* Menu Item Icon */}

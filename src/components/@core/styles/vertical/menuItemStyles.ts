@@ -1,12 +1,8 @@
-// MUI Imports
 import { lighten } from '@mui/material/styles';
 import type { Theme } from '@mui/material/styles';
 
-// Type Imports
-import type { MenuItemStyles } from "@/components/@menu/types";
-
-// Util Imports
-import { menuClasses } from "@/components/@menu/utils/menuClasses";
+import type { MenuItemStyles } from '@/components/@menu/types';
+import { menuClasses } from '@/components/@menu/utils/menuClasses';
 
 const menuItemStyles = (theme: Theme): MenuItemStyles => {
   return {

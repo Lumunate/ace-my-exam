@@ -108,10 +108,10 @@ const target = join(__dirname, 'generated-icons.css')
 
   try {
     await fs.mkdir(dir, {
-      recursive: true
+      recursive: true,
     });
-  } catch (_err) {
-    //
+  } catch {
+    // 
   }
 
   const allIcons: IconifyJSON[] = [];

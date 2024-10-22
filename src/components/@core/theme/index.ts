@@ -1,7 +1,8 @@
 // Next Imports
-import type { SystemMode } from '@/components/@core/types';
 import type { Theme } from '@mui/material/styles';
 import { Inter } from 'next/font/google';
+
+import type { SystemMode } from '@/components/@core/types';
 
 // MUI Imports
 

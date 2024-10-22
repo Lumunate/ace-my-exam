@@ -12,6 +12,7 @@ import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 import type { MouseEvent } from 'react';
 import { useState } from 'react';
 
@@ -34,7 +35,7 @@ const CardMobile = () => {
       <Grid container>
         <Grid item xs={12} md={5} className='flex items-center justify-center'>
           <CardContent className='flex items-center justify-center'>
-            <img alt='iPhone 11 Pro' src='/images/cards/4.png' height={175} />
+            <Image alt='iPhone 11 Pro' src='/images/cards/4.png' height={175} />
           </CardContent>
         </Grid>
         <Grid item xs={12} md={7} className='md:border-is border-bs md:border-bs-0'>

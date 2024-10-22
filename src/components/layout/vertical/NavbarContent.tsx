@@ -1,5 +1,6 @@
 import IconButton from '@mui/material/IconButton';
 import classnames from 'classnames';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import { verticalLayoutClasses } from '@/components/@layouts/utils/layoutClasses';
@@ -22,10 +23,10 @@ const NavbarContent = () => {
           href={`https://github.com/themeselection/${process.env.NEXT_PUBLIC_REPO_NAME}`}
           target='_blank'
         >
-          <img
-            height={24}
-            alt='GitHub Repo stars'
+          <Image
             src={`https://img.shields.io/github/stars/themeselection/${process.env.NEXT_PUBLIC_REPO_NAME}`}
+            alt='GitHub Repo stars'
+            height={24}
           />
         </Link>
         <ModeDropdown />

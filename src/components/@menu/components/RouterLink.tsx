@@ -10,6 +10,7 @@ type RouterLinkProps = LinkProps &
     className?: string;
   };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RouterLink = forwardRef((props: RouterLinkProps, ref: any) => {
   // Props
   const { href, className, ...other } = props;

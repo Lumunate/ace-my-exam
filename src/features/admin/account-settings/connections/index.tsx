@@ -5,6 +5,7 @@ import CardHeader from '@mui/material/CardHeader';
 import Grid from '@mui/material/Grid';
 import Switch from '@mui/material/Switch';
 import Typography from '@mui/material/Typography';
+import Image from 'next/image';
 import Link from 'next/link';
 
 import CustomIconButton from '@/components/@core/components/mui/IconButton';
@@ -103,7 +104,7 @@ const Connections = () => {
             {connectedAccountsArr.map((item, index) => (
               <div key={index} className='flex items-center justify-between gap-4'>
                 <div className='flex flex-grow items-center gap-4'>
-                  <img height={32} width={32} src={item.logo} alt={item.title} />
+                  <Image height={32} width={32} src={item.logo} alt={item.title} />
                   <div className='flex-grow'>
                     <Typography className='font-medium' color='text.primary'>
                       {item.title}
@@ -122,7 +123,7 @@ const Connections = () => {
             {socialAccountsArr.map((item, index) => (
               <div key={index} className='flex items-center justify-between gap-4'>
                 <div className='flex flex-grow items-center gap-4'>
-                  <img height={32} width={32} src={item.logo} alt={item.title} />
+                  <Image height={32} width={32} src={item.logo} alt={item.title} />
                   <div className='flex-grow'>
                     <Typography className='font-medium' color='text.primary'>
                       {item.title}

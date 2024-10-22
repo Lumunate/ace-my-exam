@@ -1,7 +1,7 @@
 // Type Imports
-import type { CustomAvatarProps } from "@/components/@core/components/mui/Avatar";
-import type { OptionsMenuType } from "@/components/@core/components/option-menu/types";
-import type { ThemeColor } from "@/components/@core/types";
+import type { CustomAvatarProps } from '@/components/@core/components/mui/Avatar';
+import type { OptionsMenuType } from '@/components/@core/components/option-menu/types';
+import type { ThemeColor } from '@/components/@core/types';
 
 export type CardStatsVerticalProps = {
   title: string
