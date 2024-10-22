@@ -1,9 +1,7 @@
 'use client';
 import styled from '@emotion/styled';
-import type { CSSProperties } from 'react';
-
-import MaterioLogo from '@/components/@core/svg/Logo';
 import Image from 'next/image';
+import type { CSSProperties } from 'react';
 
 type LogoTextProps = {
   color?: CSSProperties['color']
@@ -19,10 +17,10 @@ const LogoText = styled.span<LogoTextProps>`
   margin-inline-start: 10px;
 `;
 
-const Logo = ({ }: { color?: CSSProperties['color'] }) => {
+const Logo = ({ color: _color }: { color?: CSSProperties['color'] }) => {
   return (
     <div className='flex items-center min-bs-[24px]'>
-      <Image src={'/logo.png'} width={32} height={32} alt={"Logo"} style={{
+      <Image src={'/logo.png'} width={32} height={32} alt={'Logo'} style={{
         filter: 'brightness(0) invert(1)'
       }} />
       <LogoText color={'white'}>Ace my exams</LogoText>
