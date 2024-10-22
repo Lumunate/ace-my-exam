@@ -23,7 +23,7 @@ const Logo = ({ color }: { color?: CSSProperties['color'] }) => {
   return (
     <div className='flex items-center min-bs-[24px]'>
       <MaterioLogo className='text-[22px] text-primary' />
-      <LogoText color={color}>{themeConfig.templateName}</LogoText>
+      <LogoText color={color}>Ace my exams</LogoText>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import type { ChildrenType } from '@/components/@core/types';
 import './admin.css';
 
 export const metadata = {
-  title: 'Demo: Materio - NextJS Dashboard Free',
+  title: 'Admin - Ace my Exams',
   description:
     'Develop next-level web apps with Materio Dashboard Free - NextJS. Now, updated with lightning-fast routing powered by MUI and App router.'
 };

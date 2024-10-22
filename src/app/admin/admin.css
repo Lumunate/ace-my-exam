@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 :root {
+  --mui-palette-background-default: rgba(218, 150, 148, 1) !important;
   --border-radius: var(--mui-shape-borderRadius);
   --border-color: var(--mui-palette-divider);
   --primary-color: var(--mui-palette-primary-main);

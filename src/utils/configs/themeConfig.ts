@@ -11,7 +11,7 @@
  */
 
 // Type Imports
-import type { Mode } from '@core/types';
+import type { Mode } from '@/components/@core/types';
 
 export type Config = {
   templateName: string

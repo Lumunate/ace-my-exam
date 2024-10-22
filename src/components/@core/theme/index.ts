@@ -1,5 +1,5 @@
 // Next Imports
-import type { SystemMode } from '@core/types';
+import type { SystemMode } from '@/components/@core/types';
 import type { Theme } from '@mui/material/styles';
 import { Inter } from 'next/font/google';
 
@@ -38,9 +38,9 @@ const theme = (mode: SystemMode, direction: Theme['direction']): Theme => {
     customShadows: customShadows(mode),
     mainColorChannels: {
       light: '46 38 61',
-      dark: '231 227 252',
+      dark: '46 38 61',
       lightShadow: '46 38 61',
-      darkShadow: '19 17 32'
+      darkShadow: '46 38 61',
     }
   } as Theme;
 };
