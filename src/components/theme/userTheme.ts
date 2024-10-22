@@ -14,7 +14,7 @@ import type { Theme } from '@mui/material/styles';
 /* Enable following line and the `settings` parameter in the below `userTheme`
    function in order to access `settings` context value in your custom theme object
  */
-// import type { Settings } from '@core/contexts/settingsContext'
+// import type { Settings } from '@/components/@core/contexts/settingsContext'
 
 const userTheme = (/* settings: Settings */): Theme => {
   return {

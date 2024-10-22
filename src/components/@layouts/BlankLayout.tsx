@@ -1,8 +1,9 @@
 'use client';
 
 // Third-party Imports
-import type { ChildrenType } from '@core/types';
 import classnames from 'classnames';
+
+import type { ChildrenType } from '@/components/@core/types';
 
 // Type Imports
 

@@ -1,11 +1,7 @@
-// React Imports
-import type { Mode } from '@core/types';
 import { useColorScheme } from '@mui/material';
 import { useMemo } from 'react';
 
-// Third-party imports
-
-// Type imports
+import type { Mode } from '@/components/@core/types';
 
 export const useImageVariant = (mode: Mode, imgLight: string, imgDark: string): string => {
   // Hooks

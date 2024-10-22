@@ -1,6 +1,7 @@
 // MUI Imports
-import type { Skin } from '@core/types';
 import type { Theme } from '@mui/material/styles';
+
+import type { Skin } from '@/components/@core/types';
 
 // Type Imports
 

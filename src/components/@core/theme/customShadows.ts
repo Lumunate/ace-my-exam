@@ -1,6 +1,7 @@
 // MUI Imports
-import type { SystemMode } from '@core/types';
 import type { Theme } from '@mui/material/styles';
+
+import type { SystemMode } from '@/components/@core/types';
 
 // Type Imports
 

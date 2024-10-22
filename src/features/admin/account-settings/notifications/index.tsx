@@ -1,5 +1,4 @@
 // MUI Imports
-import tableStyles from '@core/styles/table.module.css';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -10,11 +9,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Typography from '@mui/material/Typography';
 
-// Component Imports
+import tableStyles from '@/components/@core/styles/table.module.css';
 import Form from '@/components/Form';
 import Link from '@/components/Link';
-
-// Style Imports
 
 type TableDataType = {
   type: string

@@ -1,10 +1,11 @@
 'use client';
 
 // React Imports
-import { useSettings } from '@core/hooks/useSettings';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
 import { useRef, useState } from 'react';
+
+import { useSettings } from '@/components/@core/hooks/useSettings';
 
 // MUI Imports
 

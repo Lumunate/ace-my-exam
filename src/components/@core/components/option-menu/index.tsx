@@ -26,7 +26,8 @@ const IconButtonWrapper = (props: Pick<OptionsMenuType, 'tooltipProps'> & { chil
 const MenuItemWrapper = ({ children, option }: { children: ReactNode; option: OptionMenuItemType }) => {
   if (option.href) {
     return (
-      <Box component={Link} href={option.href} {...option.linkProps}>
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      <Box component={Link as any} href={option.href} {...option.linkProps}>
         {children}
       </Box>
     );

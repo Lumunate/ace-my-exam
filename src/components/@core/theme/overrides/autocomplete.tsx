@@ -1,7 +1,8 @@
 // React Imports
-import type { Skin } from '@core/types';
 import type { Theme } from '@mui/material/styles';
 import React from 'react';
+
+import type { Skin } from '@/components/@core/types';
 
 // MUI Imports
 

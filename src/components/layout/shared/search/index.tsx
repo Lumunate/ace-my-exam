@@ -1,8 +1,9 @@
 'use client';
 
 // MUI Imports
-import useVerticalNav from '@menu/hooks/useVerticalNav';
 import IconButton from '@mui/material/IconButton';
+
+import useVerticalNav from '@/components/@menu/hooks/useVerticalNav';
 
 // Hook Imports
 

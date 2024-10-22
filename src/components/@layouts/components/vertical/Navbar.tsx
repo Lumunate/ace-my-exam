@@ -1,18 +1,19 @@
 'use client';
 import type { CSSObject } from '@emotion/styled';
 import classnames from 'classnames';
+import { ReactNode } from 'react';
 
-import type { ChildrenType } from '@/components/@core/types';
 import StyledHeader from '@/components/@layouts/styles/vertical/StyledHeader';
 import { verticalLayoutClasses } from '@/components/@layouts/utils/layoutClasses';
 
-type Props = ChildrenType & {
+type Props =  { 
+  children?: ReactNode
   overrideStyles?: CSSObject
 }
 
 const Navbar = (props: Props) => {
   // Props
-  const { children, overrideStyles } = props;
+  const { overrideStyles } = props;
 
   return (
     <StyledHeader
@@ -24,7 +25,7 @@ const Navbar = (props: Props) => {
         verticalLayoutClasses.headerDetached
       )}
     >
-      <div className={classnames(verticalLayoutClasses.navbar, 'flex bs-full')}>{children}</div>
+      <div className={classnames(verticalLayoutClasses.navbar, 'flex bs-full')}></div>
     </StyledHeader>
   );
 };

@@ -1,15 +1,10 @@
 'use client';
-
-// React Imports
-import type { ThemeColor } from '@core/types';
 import MuiAvatar from '@mui/material/Avatar';
 import type { AvatarProps } from '@mui/material/Avatar';
 import { lighten, styled } from '@mui/material/styles';
 import { forwardRef } from 'react';
 
-// MUI Imports
-
-// Type Imports
+import type { ThemeColor } from '@/components/@core/types';
 
 export type CustomAvatarProps = AvatarProps & {
   color?: ThemeColor;
