@@ -6,6 +6,7 @@ import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 
 import FadeIn from '@/components/animations/FadeIn';
+import { useDynamicBorderRadius } from '@/components/animations/useDynamicBorderRadius'; // Import the hook
 import { AppContentWrapper } from '@/components/common/Global.style';
 import {
   StatCardHeading,
@@ -47,6 +48,9 @@ const Stats: React.FC = () => {
   const statRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const statsWrapperRef = useRef<HTMLDivElement | null>(null);
 
+  // Apply dynamic border radius animation
+  useDynamicBorderRadius(statsWrapperRef, 100, 5);
+
   useEffect(() => {
     statRefs.current.forEach((stat, index) => {
       const finalValue = parseInt(stats[index].value);
@@ -73,25 +77,6 @@ const Stats: React.FC = () => {
         );
       }
     });
-  }, []);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const statsWrapper = statsWrapperRef.current;
-
-      if (statsWrapper) {
-        const calculatedRadius = Math.min(100, scrollPosition / 5); 
-
-        statsWrapper.style.setProperty('--dynamic-border-radius', `${calculatedRadius}px ${calculatedRadius}px 0 0`);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
   }, []);
 
   return (

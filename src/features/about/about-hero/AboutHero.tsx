@@ -1,4 +1,9 @@
+'use client';
+
+import { useRef } from 'react';
+
 import FadeIn from '@/components/animations/FadeIn';
+import { useDynamicBorderRadius } from '@/components/animations/useDynamicBorderRadius';
 import { AppContentWrapper } from '@/components/common/Global.style';
 import SectionHeading from '@/components/section-heading/SectionHeading';
 
@@ -13,8 +18,12 @@ import {
 } from './About.style';
 
 const AboutHero: React.FC = () => {
+  const aboutHeroWrapperRef = useRef<HTMLDivElement | null>(null);
+
+  useDynamicBorderRadius(aboutHeroWrapperRef, 100, 5);
+  
   return (
-    <AboutHeroWrapper>
+    <AboutHeroWrapper ref={aboutHeroWrapperRef}>
       <AboutHeroImageContainer>
         <AboutHeroImage
           src={'/home/hero-bg.png'}
