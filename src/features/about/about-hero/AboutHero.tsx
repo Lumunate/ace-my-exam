@@ -49,6 +49,20 @@ const AboutHero: React.FC = () => {
             </AboutHeroContent>
             <AboutHeroContent>Lprem Ipsum</AboutHeroContent>
           </FadeIn>
+          <FadeIn direction="left" distance={200} duration={1.5}>
+            <SectionHeading
+              text='About Us'
+              align='start'
+              showLeftLine={false}
+              color='#fff'
+              gradientType='first'
+            />
+            <AboutHeroHeading>About Acemyexam</AboutHeroHeading>
+            <AboutHeroContent>
+              Shaping Futures Through Personalized Education
+            </AboutHeroContent>
+            <AboutHeroContent>Lprem Ipsum</AboutHeroContent>
+          </FadeIn>
         </AboutHeroContentContainer>
       </AppContentWrapper>
     </AboutHeroWrapper>
