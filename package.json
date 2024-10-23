@@ -17,6 +17,7 @@
     "@hookform/resolvers": "^3.9.0",
     "@mui/material": "^6.1.2",
     "@next/font": "^14.2.15",
+    "@toolpad/core": "^0.8.1",
     "@types/bcrypt": "^5.0.2",
     "bcrypt": "^5.1.1",
     "next": "14.2.14",
