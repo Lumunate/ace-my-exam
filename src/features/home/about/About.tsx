@@ -32,7 +32,7 @@ const AboutCard: React.FC<AboutCardProps> = ({
   alignment,
 }) => (
   <AboutCardContainer bgColor={bgColor} alignment={alignment}>
-    <Image src={'/icons/brain-black.svg'} width={19} height={23} alt='icon' />
+    <Image src={'/icons/brain-black.svg'} width={26} height={32} alt='icon' />
     <AboutCardHeading textColor={textColor}>{title}</AboutCardHeading>
   </AboutCardContainer>
 );
@@ -48,7 +48,7 @@ const About: React.FC = () => {
         justifyContent={'center'}
       >
         <Grid
-          size={{ xs: 24, sm: 16, md: 12, lg: 11 }}
+          size={{ xs: 24, sm: 17, md: 12, lg: 11 }}
           sx={{
             position: 'relative',
             order: { xs: 2, lg: 1 },
@@ -114,12 +114,12 @@ const About: React.FC = () => {
             <FadeIn direction="up" distance={50} duration={1.5} delay={0.5}>
               <Grid
                 container
-                columnSpacing={{ xs: '10px', xl: '24px' }}
-                rowSpacing={{ xs: '10px', lg: '0px' }}
+                columnSpacing={{ xs: '10px', xl: '15px' }}
+                rowSpacing={{ xs: '10px', xl: '0px' }}
                 columns={24}
                 sx={{ mt: '30px' }}
               >
-                <Grid size={{ xs: 24, sm: 8 }}>
+                <Grid size={{ xs: 24, sm: 12, md: 8, lg:12, xl: 8 }}>
                   <AboutCard
                     title='GCSE to Alevel Exam Preparation'
                     bgColor='#FFF'
@@ -127,7 +127,7 @@ const About: React.FC = () => {
                     alignment='start'
                   />
                 </Grid>
-                <Grid size={{ xs: 24, sm: 8 }}>
+                <Grid size={{ xs: 24, sm: 12, md: 8, lg:12, xl: 8 }}>
                   <AboutCard
                     title='Scholarship Exams (13+)'
                     bgColor='#FFF'
@@ -135,7 +135,7 @@ const About: React.FC = () => {
                     alignment='start'
                   />
                 </Grid>
-                <Grid size={{ xs: 24, sm: 8 }}>
+                <Grid size={{ xs: 24, sm: 12, md: 8, lg:12, xl: 8 }}>
                   <AboutCard
                     title='Entrance Exams'
                     bgColor='#FFF'

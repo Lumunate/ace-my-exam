@@ -11,6 +11,7 @@ interface SectionHeadingProps {
   showLeftLine?: boolean;      
   color?: string;            
   textWidth?: string;   
+  fontSize?: string;
   gradientType?: 'first' | 'second'; 
 }
 
@@ -20,7 +21,7 @@ const SectionHeading: React.FC<SectionHeadingProps> = ({
   showLeftLine = true, 
   color = '#000', 
   textWidth, 
-  gradientType = 'first' 
+  gradientType = 'first' ,
 }) => {
   const rightLineRef = useRef<HTMLDivElement | null>(null); 
   const leftLineRef = useRef<HTMLDivElement | null>(null); 

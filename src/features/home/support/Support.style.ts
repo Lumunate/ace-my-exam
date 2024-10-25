@@ -8,13 +8,13 @@ export const SupportWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
   padding: '110px 0 150px',
   position: 'relative',
-  [theme.breakpoints.down('md')]: {
+  [theme.breakpoints.down('lg')]: {
     padding: '100px 0',
   },
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     padding: '80px 0',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     padding: '60px 0',
   },
 }));
@@ -49,7 +49,7 @@ export const SupportImageOverlay = styled(Box)({
 
 export const SupportHeading = styled(Typography)(({ theme }) => ({
   fontWeight: 600,
-  fontSize: '49px',
+  fontSize: '50px',
   color: '#fff',
   fontFamily: 'Jost, sans-serif',
   fontStyle: 'normal',
@@ -70,7 +70,7 @@ export const SupportHeading = styled(Typography)(({ theme }) => ({
 
 export const SupportPara = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
-  fontSize: '16px',
+  fontSize: '18px',
   color: '#fff',
   fontFamily: 'Lato, sans-serif',
   fontStyle: 'normal',
@@ -84,18 +84,20 @@ export const SupportPara = styled(Typography)(({ theme }) => ({
     lineHeight: 'normal',
     marginBottom: '30px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     fontSize: '12px',
   }
 }));
 
 export const SupportCardDivider = styled(Divider)(({ theme }) => ({
-  background: 'linear-gradient(to left, #FFFFFF 0%, #666666 46%, #FFFFFF 100%)',
+  background: 'linear-gradient(to top, #FFFFFF 0%, #666666 46%, #FFFFFF 100%)',
   border: 'unset',
   width: '1px',
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     height: '1px',
-    width: '100%',
+    width: '80%',
+    margin: '0 auto',
+    background: 'linear-gradient(to left, #FFFFFF 0%, #666666 46%, #FFFFFF 100%)',
   },
 }));
 
@@ -113,7 +115,7 @@ export const SupportCardInnerHead = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     flexWrap: 'wrap'
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     width: '100%',
     flex: 'unset',
     padding: '20px',
@@ -150,7 +152,10 @@ export const SupportCard = styled(Box)(({ theme }) =>  ({
   maxWidth: '1148px',
   opacity: 1,
   [theme.breakpoints.down('xl')]: {
-    maxWidth: '95%',
+    maxWidth: '92%',
+  },
+  [theme.breakpoints.down('lg')]: {
+    maxWidth: '91%',
   },
   [theme.breakpoints.down('md')]: {
     flexWrap: 'wrap',
@@ -162,17 +167,22 @@ export const SupportCard = styled(Box)(({ theme }) =>  ({
 
 export const SupportCardPara = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
-  fontSize: '14px',
+  fontSize: '18px',
   color: '#787878',
   fontFamily: 'Lato, sans-serif',
   fontStyle: 'normal',
-  lineHeight: '22px',
   maxWidth: '315px',
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '12px',
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '16px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('lg')]: {
+    fontSize: '14px',
+  },
+  [theme.breakpoints.down('sm')]: {
     maxWidth: '100%',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '12px',
   }
 }));
 
@@ -203,7 +213,7 @@ export const SupportButton = styled(Link)(({ theme }) => ({
   [theme.breakpoints.down('xl')]: {
     fontSize: '20px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     display: 'flex',
     alignItems: 'center',
   },

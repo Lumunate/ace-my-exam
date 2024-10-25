@@ -96,24 +96,24 @@ const Hero: React.FC = () => {
                 <HeroLink href={'#'}>
                   <Image
                     src={'/icons/youtube.svg'}
-                    width={17}
-                    height={11}
+                    width={27}
+                    height={21}
                     alt='icon'
                   />
                 </HeroLink>
                 <HeroLink href={'#'}>
                   <Image
                     src={'/icons/instagram.svg'}
-                    width={14}
-                    height={14}
+                    width={27}
+                    height={24}
                     alt='icon'
                   />
                 </HeroLink>
                 <HeroLink href={'#'}>
                   <Image
                     src={'/icons/degree.svg'}
-                    width={19}
-                    height={12}
+                    width={29}
+                    height={22}
                     alt='icon'
                   />
                 </HeroLink>

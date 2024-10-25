@@ -11,7 +11,7 @@ const CommonHeroTypography = styled(Typography)({
 
 export const HeroHeading = styled(CommonHeroTypography)(({ theme }) => ({
   fontWeight: 600,
-  fontSize: '49px',
+  fontSize: '50px',
   marginTop: '43px',
   lineHeight: '53px',
   fontFamily: 'Jost, sans-serif',
@@ -56,7 +56,7 @@ export const HeroContent = styled(CommonHeroTypography)(({ theme }) => ({
     fontSize: '14px',
     lineHeight: 'normal',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down(400)]: {
     fontSize: '12px',
   }
 
@@ -155,7 +155,7 @@ export const HeroCardHeading = styled(CommonHeroTypography)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     fontSize: '14px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down(400)]: {
     fontSize: '12px',
   }
 }));

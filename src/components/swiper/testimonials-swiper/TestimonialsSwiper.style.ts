@@ -86,7 +86,7 @@ export const TestimonialsCardHeading = styled(BaseTextStyle)(({ theme }) => ({
   color: '#474747',
   fontSize: '14px',
   fontWeight: 700,
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     fontSize: '10px',
   }
 }));
@@ -102,7 +102,7 @@ export const TestimonialsCardPara = styled(BaseTextStyle)(({ theme }) => ({
   fontSize: '14px',
   color: '#787878',
   marginTop: '29px',
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     fontSize: '9px',
     marginTop: '15px',
   }
@@ -118,7 +118,7 @@ export const TestimonialAvatar = styled(Avatar)(({ theme }) => ({
   width: 61,
   height: 61,
   marginRight: '15px',
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     width: 39,
     height: 39,
     marginRight: '10px',
@@ -145,7 +145,7 @@ export const TrustpilotImage = styled(Link)(({ theme }) => ({
   width: 140,
   height: 34,
   position: 'relative',
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     width: 80,
     height: 22,
   }
@@ -156,7 +156,7 @@ export const QuotationImageHead = styled(Box)(({ theme }) => ({
   height: 60,
   position: 'relative',
   marginLeft: '10px',
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     width: 38,
     height: 29,
   }

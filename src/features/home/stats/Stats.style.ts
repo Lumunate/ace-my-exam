@@ -38,7 +38,7 @@ export const StatsContentWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     top: '-230px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down(400)]: {
     top: '-190px',
   },
 }));
@@ -62,7 +62,7 @@ export const StatsCard = styled(Card)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     padding: '30px 15px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down(400)]: {
     padding: '20px 7px',
   },
 }));
@@ -71,10 +71,10 @@ export const StatCardHeading = styled(CommonStatTypography)(({ theme }) => ({
   fontWeight: 400,
   fontSize: '16px',
   color: '#111826',
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '16px',
+  [theme.breakpoints.down('md')]: {
+    fontSize: '14px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     fontSize: '12px',
   },
   [theme.breakpoints.down(400)]: {
@@ -84,7 +84,7 @@ export const StatCardHeading = styled(CommonStatTypography)(({ theme }) => ({
 
 export const StatCardValue = styled(CommonStatTypography)(({ theme }) => ({
   fontWeight: 500,
-  fontSize: '49px',
+  fontSize: '50px',
   color: '#DA9694',
   fontFamily: 'Jost, sans-serif',
   textShadow: '0px 4px 4px rgba(0, 0, 0, 0.16)',
@@ -99,7 +99,7 @@ export const StatCardValue = styled(CommonStatTypography)(({ theme }) => ({
     fontSize: '28px',
     margin: '8px 0',
   },
-  [theme.breakpoints.down('xs')]: {
+  [theme.breakpoints.down(400)]: {
     fontSize: '24px',
   },
 }));
