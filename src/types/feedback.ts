@@ -13,7 +13,6 @@ export const feedbackSchema = z.object({
 
     return val;
   }, z.date().nullable()),
-  link: z.string().url('Please provide a valid URL'),
   experience: z.string().min(1, 'Experience rating is required'),
   feedback: z.string().min(1, 'Feedback is required'),
 });
