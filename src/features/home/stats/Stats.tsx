@@ -6,7 +6,7 @@ import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 
 import FadeIn from '@/components/animations/FadeIn';
-import { useDynamicBorderRadius } from '@/components/animations/useDynamicBorderRadius'; // Import the hook
+import { useDynamicBorderRadius } from '@/components/animations/useDynamicBorderRadius';
 import { AppContentWrapper } from '@/components/common/Global.style';
 import {
   StatCardHeading,
@@ -48,21 +48,29 @@ const Stats: React.FC = () => {
   const statRefs = useRef<(HTMLSpanElement | null)[]>([]);
   const statsWrapperRef = useRef<HTMLDivElement | null>(null);
 
-  // Apply dynamic border radius animation
-  useDynamicBorderRadius(statsWrapperRef, 100, 5);
+  useDynamicBorderRadius(statsWrapperRef, 100, 1);
 
   useEffect(() => {
+    const timeline = gsap.timeline({
+      scrollTrigger: {
+        trigger: statsWrapperRef.current,
+        start: 'top 100%', 
+        end: 'top 40%',
+        toggleActions: 'play none none none', 
+      },
+    });
+
     statRefs.current.forEach((stat, index) => {
       const finalValue = parseInt(stats[index].value);
       const showPlus = stats[index].showPlus;
 
       if (stat) {
-        gsap.fromTo(
+        timeline.fromTo(
           stat,
           { innerHTML: 0 },
           {
             innerHTML: finalValue,
-            duration: 2,
+            duration: 1,
             ease: 'power1.out',
             snap: { innerHTML: 1 },
             onUpdate: function () {
@@ -73,10 +81,15 @@ const Stats: React.FC = () => {
                 stat.innerHTML += '+';
               }
             },
-          }
+          },
+          '-=0.8' 
         );
       }
     });
+
+    return () => {
+      timeline.kill();
+    };
   }, []);
 
   return (

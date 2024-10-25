@@ -68,17 +68,17 @@ const FooterMediaItem = styled(ListItem)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     paddingLeft: '6px',
   },
-  '&:hover': {
+  '& img:hover': {
     filter: 'brightness(0) saturate(100%) invert(61%) sepia(68%) saturate(5764%) hue-rotate(316deg) brightness(93%) contrast(82%)',
-    transform: 'scale(1.2)' 
-
+    transform: 'scale(1.2)',
+    transition: 'transform 0.3s ease',
   },
 }));
 
 const FooterLink = styled(Link)(({ theme }) => ({
   color: '#fff',
   fontWeight: 400,
-  fontSize: '15px',
+  fontSize: '16px',
   textTransform: 'capitalize',
   fontStyle: 'normal',
   fontFamily: 'Lato, sans-serif',
@@ -136,13 +136,13 @@ const Footer: FC = () => {
 
             <FooterMediaIcons>
               <FooterMediaItem>
-                <Image src={'/footer/Youtube.svg'} width={24} height={24} alt='youtube' />
+                <Image src={'/footer/Youtube.svg'} width={26} height={26} alt='youtube' />
               </FooterMediaItem>
               <FooterMediaItem>
-                <Image src={'/footer/Facebook.svg'} width={19} height={19} alt='facebook' />
+                <Image src={'/footer/Facebook.svg'} width={22} height={22} alt='facebook' />
               </FooterMediaItem>
               <FooterMediaItem>
-                <Image src={'/footer/Instagram.svg'} width={19} height={19} alt='instagram' />
+                <Image src={'/footer/Instagram.svg'} width={22} height={22} alt='instagram' />
               </FooterMediaItem>
             </FooterMediaIcons>
           </FooterWrapper>

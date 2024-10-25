@@ -17,7 +17,8 @@ import {
   FounderCardInnerHead,
   FounderCardDivider,
   FounderCardHeading,
-  FounderCardListText
+  FounderCardListText,
+  FounderHeadingTwo
 } from './Founder.style';
 
 const AboutFounder: React.FC = () => {
@@ -82,7 +83,7 @@ const AboutFounder: React.FC = () => {
                 gradientType="second"
               />
               <FounderHeading>Dr. Asma Chaudhri</FounderHeading>
-              <FounderSubHeading sx={{ mb: { xs: '20px', md: '30px' } }}>An Educator Driven by Passion</FounderSubHeading>
+              <FounderHeadingTwo sx={{ mb: { xs: '20px', md: '30px' } }}>An Educator Driven by Passion</FounderHeadingTwo>
               <FounderContent>
                 Meet Dr. Asma Chaudhri, our founder. She&apos;s been helping students reach their full potential for over 16 years!
                 She&apos;s got a passion for helping students succeed and her background in both academia and high-stakes finance gives her a unique perspective.

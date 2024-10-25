@@ -22,7 +22,7 @@ export const  AboutTestimonialsWrapper = styled(Box)(({ theme }) => ({
 
 export const  AboutTestimonialsHeading = styled(Typography)(({ theme }) => ({
   fontWeight: 700,
-  fontSize: '49px',
+  fontSize: '50px',
   color: '#000000',
   fontFamily: 'Jost, sans-serif',
   margin: '10px 0',

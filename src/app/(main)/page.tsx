@@ -1,9 +1,5 @@
 'use client';
 
-import { Box } from '@mui/material';
-
-import FadeIn from '@/components/animations/FadeIn';
-import FadeInOpacity from '@/components/animations/FadeInOpacity';
 import { AppContentWrapper } from '@/components/common/Global.style';
 import About from '@/features/home/about/About';
 import Hero from '@/features/home/hero/Hero';
@@ -19,47 +15,17 @@ export default function Home() {
     <>
       <Hero />
       <Stats />
-
       <AppContentWrapper>
-        <FadeInOpacity duration={1.5}>
-          <FadeIn direction="up" distance={100} duration={1.5}>
-            <About />
-          </FadeIn>
-        </FadeInOpacity>
+        <About />
       </AppContentWrapper>
-
-      <FadeInOpacity duration={1.5}>
-        <FadeIn direction="up" distance={100} duration={1.5}>
-          <Process />
-        </FadeIn>
-      </FadeInOpacity>
-
-      <FadeInOpacity duration={1.5}>
-        <Institutes />
-      </FadeInOpacity>
-
+      <Process />
+      <Institutes />
       <AppContentWrapper>
-        <FadeInOpacity duration={1.5}>
-          <FadeIn direction="up" distance={100} duration={1.5}>
-            <Resources />
-          </FadeIn>
-        </FadeInOpacity>
+        <Resources />
       </AppContentWrapper>
-
-      <FadeInOpacity duration={1.5}>
-        <FadeIn direction="up" distance={100} duration={1.5}>
-          <Support />
-        </FadeIn>
-      </FadeInOpacity>
-
+      <Support />
       <AppContentWrapper>
-        <Box sx={{ overflow: 'hidden' }}>
-          <FadeInOpacity duration={1.5}>
-            <FadeIn direction="up" distance={100} duration={1.5}>
-              <Testimonials />
-            </FadeIn>
-          </FadeInOpacity>
-        </Box>
+        <Testimonials />
       </AppContentWrapper>
     </>
   );

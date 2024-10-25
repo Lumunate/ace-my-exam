@@ -23,7 +23,7 @@ export const PricingWrapper = styled(Box)(({ theme }) => ({
 
 export const PricingHeading = styled(Typography)(({ theme }) => ({
   fontWeight: 600,
-  fontSize: '49px',
+  fontSize: '50px',
   color: '#000000',
   fontFamily: 'Jost, sans-serif',
   margin: '20px 0',

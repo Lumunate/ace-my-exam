@@ -7,27 +7,40 @@ import Link from 'next/link';
 export const AboutWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
   position: 'relative',
+  paddingTop: '150px',
+  [theme.breakpoints.down('lg')]: {
+    paddingTop: '100px'
+  },
   [theme.breakpoints.down('md')]: {
     paddingTop: '80px'
   },
   [theme.breakpoints.down('sm')]: {
-    paddingTop: '60px'
+    paddingTop: '60px',
   },
-  [theme.breakpoints.down(576)]: {
-    paddingTop: '40px'
+  [theme.breakpoints.down(400)]: {
+    paddingTop: '40px',
   },
 }));
 
-export const AboutImgHead = styled(Box)({
+export const AboutImgHead = styled(Box)(({ theme }) =>({
   width: '100%',
-});
+  [theme.breakpoints.down(1300.98)]: {
+    height: '580px',
+  },
+  [theme.breakpoints.down(1199.98)]: {
+    height: '650px',
+  },
+  [theme.breakpoints.down('lg')]: {
+    height: 'unset',
+  },
+}));
 
 export const AboutOverlayHead = styled(Box)(({ theme }) => ({
   position: 'absolute',
   right: 0,
   top: '52px',
   width: '300px',
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     right: '0px',
     top: '10px',
     width: '80%',
@@ -60,7 +73,7 @@ const CommonHeroTypography = styled(Typography)({
 
 export const AboutHeading = styled(CommonHeroTypography)(({ theme }) => ({
   fontWeight: 600,
-  fontSize: '49px',
+  fontSize: '50px',
   margin: '23px 0',
   fontFamily: 'Jost, sans-serif',
   maxWidth: '600px',
@@ -107,12 +120,15 @@ export const AboutPara = styled(CommonHeroTypography)(({ theme }) => ({
   },
 }));
 
-export const AboutCardHeading = styled(CommonHeroTypography)<{ textColor: string }>(({ textColor }) => ({
-  fontSize: '12px',
+export const AboutCardHeading = styled(CommonHeroTypography)<{ textColor: string }>(({theme, textColor }) => ({
+  fontSize: '18px',
   fontFamily: 'Lato, sans-serif',
   color: textColor || '#000',
-  fontWeight: 700,
-  marginLeft: '12px'
+  fontWeight: 400,
+  marginLeft: '12px',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '14px',
+  },
 }));
 
 export const AboutCardContainer = styled(Box)<{ bgColor: string, alignment:string}>(({ theme, bgColor ,alignment}) => ({
@@ -125,11 +141,11 @@ export const AboutCardContainer = styled(Box)<{ bgColor: string, alignment:strin
   alignItems: 'center',
   height: '100%',
   marginBottom: '8px',
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     marginBottom: '4px',
     padding: '17px 10px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     padding: '10px 10px',
     borderRadius: '12px',
   },

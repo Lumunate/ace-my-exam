@@ -22,7 +22,7 @@ export const ResourcesWrapper = styled(Box)(({ theme }) => ({
 
 export const ResourcesHeading = styled(Typography)(({ theme }) => ({
   fontWeight: 600,
-  fontSize: '49px',
+  fontSize: '50px',
   color: '#000000',
   fontFamily: 'Jost, sans-serif',
   fontStyle: 'normal',
@@ -106,28 +106,25 @@ export const BaseTypography = styled(Typography)({
 });
 
 export const ResourcesCardHeading = styled(BaseTypography)(({ theme }) => ({
-  fontSize: '30px',
+  fontSize: '32px',
   marginBottom: '20px',
   lineHeight: '36px',
-  maxWidth: '315px',
+  maxWidth: '340px',
   [theme.breakpoints.down('lg')]: {
     fontSize: '28px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     fontSize: '20px',
     lineHeight: 'normal',
     maxWidth: '100%',
   },
 }));
 
-export const ResourcesCardSubHeading = styled(BaseTypography)(({ theme }) => ({
+export const ResourcesCardSubHeading = styled(BaseTypography)({
   fontSize: '14px',
   marginBottom: '10px',
   opacity: 0,
   transform: 'translateY(20px)', 
   transition: 'all 0.3s ease-in-out',
   textShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)',
-  [theme.breakpoints.down(400)]: {
-    fontSize: '12px',
-  },
-}));
+});

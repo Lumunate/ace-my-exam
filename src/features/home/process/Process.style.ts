@@ -26,7 +26,7 @@ export const ProcessMain = styled(Box)({
 
 export const ProcessHeading = styled(Typography)(({ theme }) =>({
   fontWeight: 600,
-  fontSize: '49px',
+  fontSize: '50px',
   color: '#000000',
   fontFamily: 'Jost, sans-serif',
   fontStyle: 'normal',
@@ -38,7 +38,7 @@ export const ProcessHeading = styled(Typography)(({ theme }) =>({
     fontSize: '30px',
     marginTop: '15px',
   },
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     fontSize: '28px',
     marginTop: '10px',
   },
