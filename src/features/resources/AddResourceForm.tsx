@@ -1,12 +1,12 @@
-"use client";
-import React from 'react'
-import { CustomFormControl, StyledSelectField, StyledTextField } from '@/components/form/Form.style'
-import { LoginInput } from '@/types/auth'
-import { zodResolver } from '@hookform/resolvers/zod'
-import { Controller, FieldError, FieldErrorsImpl, Merge, useForm } from 'react-hook-form'
-import { Box, FormHelperText, InputLabel, MenuItem } from '@mui/material'
-import { CreateResourceInput, createResourceSchema } from "@/types/resources";
+'use client';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Box, FormHelperText, InputLabel, MenuItem } from '@mui/material';
 import Image from 'next/image';
+import React from 'react';
+import { Controller, FieldError, FieldErrorsImpl, Merge, useForm } from 'react-hook-form';
+
+import { CustomFormControl, StyledSelectField, StyledTextField } from '@/components/form/Form.style';
+import { CreateResourceInput, createResourceSchema } from '@/types/resources';
 
 const getErrorMessage = (
   error: FieldError | Merge<FieldError, FieldErrorsImpl<CreateResourceInput>> | undefined
@@ -16,7 +16,7 @@ const getErrorMessage = (
 
 const AddResourceForm = () => {
 
-  const { control, register, reset, handleSubmit, formState: { errors } } = useForm<any>({
+  const { control, register, formState: { errors } } = useForm<CreateResourceInput>({
     resolver: zodResolver(createResourceSchema),
     defaultValues: {},
   });
@@ -27,7 +27,7 @@ const AddResourceForm = () => {
       backgroundColor: 'background.white',
       borderRadius: '8px',
       padding: '2rem',
-      boxShadow: "0px 0px 10px 0px rgba(0, 0, 0, 0.05)",
+      boxShadow: '0px 0px 10px 0px rgba(0, 0, 0, 0.05)',
     }}>
 
       <form action="">
@@ -188,8 +188,7 @@ const AddResourceForm = () => {
 
       </form>
     </Box>
-  )
-}
+  );
+};
 
-export default AddResourceForm
-
+export default AddResourceForm;

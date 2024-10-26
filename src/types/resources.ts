@@ -1,15 +1,15 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export enum ResourceType {
-  NOTE = "NOTE",
-  PAST_PAPER = "PAST_PAPER",
-  REVISION_PAPER = "REVISION_PAPER",
-  MARKING_SCHEME = "MARKING_SCHEME",
+  NOTE = 'NOTE',
+  PAST_PAPER = 'PAST_PAPER',
+  REVISION_PAPER = 'REVISION_PAPER',
+  MARKING_SCHEME = 'MARKING_SCHEME',
 }
 
 export enum EducationLevel {
-  O_LEVEL = "O_LEVEL",
-  A_LEVEL = "A_LEVEL",
+  O_LEVEL = 'O_LEVEL',
+  A_LEVEL = 'A_LEVEL',
 }
 
 export const createResourceSchema = z.object({
@@ -23,7 +23,7 @@ export const createResourceSchema = z.object({
   is_public: z.boolean().default(true),
   tags: z.array(z.string()).optional(),
   file: z.custom<File>((val) => val instanceof File, {
-    message: "File is required",
+    message: 'File is required',
   }),
 });
 

@@ -1,7 +1,7 @@
-import { AdminContentBox, AdminContentWrapper } from '@/components/admin/Content.style'
-import { AdminPageHeading } from '@/components/admin/Headings.style'
-import { Box } from '@mui/material'
-import React from 'react'
+import React from 'react';
+
+import { AdminContentBox } from '@/components/admin/Content.style';
+import { AdminPageHeading } from '@/components/admin/Headings.style';
 
 const page = () => {
   return (
@@ -11,7 +11,7 @@ const page = () => {
         Dashboard
       </AdminContentBox>
     </>
-  )
-}
+  );
+};
 
-export default page
+export default page;

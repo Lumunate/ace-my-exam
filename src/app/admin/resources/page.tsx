@@ -1,9 +1,10 @@
-import { AdminContentBox } from "@/components/admin/Content.style";
-import { AdminContentHeading, AdminPageHeading } from "@/components/admin/Headings.style";
-import React from "react";
-import AddIcon from "@mui/icons-material/Add";
-import { AddResourceButton } from "./Resources.style";
+import AddIcon from '@mui/icons-material/Add';
+import React from 'react';
 
+import { AdminContentBox } from '@/components/admin/Content.style';
+import { AdminContentHeading, AdminPageHeading } from '@/components/admin/Headings.style';
+
+import { AddResourceButton } from './Resources.style';
 
 const Page = () => {
   return (
