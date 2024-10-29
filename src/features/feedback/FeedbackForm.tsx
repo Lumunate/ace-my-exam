@@ -22,7 +22,6 @@ const defaultValues: IFeedback = {
   lastName: '',
   course: '',
   sessionDate: new Date(),
-  link: '',
   experience: '',
   feedback: '',
 };
@@ -170,20 +169,6 @@ export default function FeedbackForm() {
                   </FormHelperText>
                 )}
               </Box>
-            </Grid>
-
-            <Grid size={{ xs: 24, md: 12 }}>
-              <StyledTextField
-                label='Link'
-                variant='standard'
-                fullWidth
-                margin='none'
-                error={!!errors.link}
-                helperText={errors.link?.message}
-                {...register('link')}
-                inputfontsize='20px'
-                labelfontsize='14px'
-              />
             </Grid>
 
             <Grid size={{ xs: 24, md: 12 }}>

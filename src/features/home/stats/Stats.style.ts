@@ -20,8 +20,9 @@ export const StatsContentWrapper = styled(Box)(({ theme }) => ({
     width: '100%',
     height: '50%',
     backgroundColor: '#fffbfb',
-    borderRadius: '100px 100px 0 0',
+    borderRadius: 'var(--dynamic-border-radius, 0 0 0 0)', 
     zIndex: '-1',
+    transition: 'border-radius 0.5s ease-in-out',
     [theme.breakpoints.down('md')]: {
       borderRadius: '30px 30px 0 0',
     },
@@ -32,10 +33,13 @@ export const StatsContentWrapper = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('md')]: {
     transform: 'none',
     position: 'absolute',
-    top: '-250px'
+    top: '-250px',
   },
   [theme.breakpoints.down('sm')]: {
-    top: '-230px'
+    top: '-230px',
+  },
+  [theme.breakpoints.down(400)]: {
+    top: '-190px',
   },
 }));
 
@@ -58,7 +62,7 @@ export const StatsCard = styled(Card)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     padding: '30px 15px',
   },
-  [theme.breakpoints.down('xs')]: {
+  [theme.breakpoints.down(400)]: {
     padding: '20px 7px',
   },
 }));
@@ -67,20 +71,20 @@ export const StatCardHeading = styled(CommonStatTypography)(({ theme }) => ({
   fontWeight: 400,
   fontSize: '16px',
   color: '#111826',
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '16px',
-  },
-  [theme.breakpoints.down('xs')]: {
+  [theme.breakpoints.down('md')]: {
     fontSize: '14px',
   },
-  [theme.breakpoints.down(400)]: {
+  [theme.breakpoints.down('sm')]: {
     fontSize: '12px',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '10px',
   },
 }));
 
 export const StatCardValue = styled(CommonStatTypography)(({ theme }) => ({
   fontWeight: 500,
-  fontSize: '49px',
+  fontSize: '50px',
   color: '#DA9694',
   fontFamily: 'Jost, sans-serif',
   textShadow: '0px 4px 4px rgba(0, 0, 0, 0.16)',
@@ -95,7 +99,7 @@ export const StatCardValue = styled(CommonStatTypography)(({ theme }) => ({
     fontSize: '28px',
     margin: '8px 0',
   },
-  [theme.breakpoints.down('xs')]: {
+  [theme.breakpoints.down(400)]: {
     fontSize: '24px',
   },
 }));

@@ -18,9 +18,6 @@ export default class Feedback {
     sessionDate!: Date | null;
 
   @Column()
-    link!: string;
-
-  @Column()
     experience!: string;
 
   @Column('text')

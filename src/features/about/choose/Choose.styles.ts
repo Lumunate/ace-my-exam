@@ -80,7 +80,7 @@ const CommonHeroTypography = styled(Typography)({
 
 export const ChooseHeading = styled(CommonHeroTypography)(({ theme }) => ({
   fontWeight: 600,
-  fontSize: '49px',
+  fontSize: '50px',
   marginTop: '10px',
   marginBottom: '10px',
   fontFamily: 'Jost, sans-serif',

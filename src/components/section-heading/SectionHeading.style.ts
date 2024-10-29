@@ -26,7 +26,7 @@ export const CommonHeadingContainer = styled(Box)<{ align: string }>(({ theme, a
   [theme.breakpoints.down('sm')]: {
     gap: '10px',
   },
-  [theme.breakpoints.down('xs')]: {
+  [theme.breakpoints.down(400)]: {
     fontSize: '12px',
   }
 }));
@@ -43,7 +43,7 @@ export const CommonHeadingTypography = styled(Typography)<{ textColor: string; t
     fontSize: '14px',
     maxWidth: '140px',
   },
-  [theme.breakpoints.down('xs')]: {
+  [theme.breakpoints.down(400)]: {
     fontSize: '12px',
   }
 }));

@@ -19,26 +19,14 @@ export const ProcessMain = styled(Box)({
   width: '100%',
   overflow: 'auto',
   '&::-webkit-scrollbar': {
-    width: '10px',
-    borderRadius: '50px',
-    height: '10px'
+    display: 'none !important'
   },
-
-  '&::-webkit-scrollbar-track': {
-    background: '#da969440',
-    borderRadius: '50px',
-  },
-
-  '&::-webkit-scrollbar-thumb': {
-    background: '#1f1f1f',
-    borderRadius: '50px',
-  }
 
 });
 
 export const ProcessHeading = styled(Typography)(({ theme }) =>({
   fontWeight: 600,
-  fontSize: '49px',
+  fontSize: '50px',
   color: '#000000',
   fontFamily: 'Jost, sans-serif',
   fontStyle: 'normal',
@@ -50,7 +38,7 @@ export const ProcessHeading = styled(Typography)(({ theme }) =>({
     fontSize: '30px',
     marginTop: '15px',
   },
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     fontSize: '28px',
     marginTop: '10px',
   },

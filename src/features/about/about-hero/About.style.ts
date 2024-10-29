@@ -10,7 +10,7 @@ const CommonHeroTypography = styled(Typography)({
 
 export const AboutHeroHeading = styled(CommonHeroTypography)(({ theme }) => ({
   fontWeight: 600,
-  fontSize: '49px',
+  fontSize: '50px',
   marginTop: '25px',
   marginBottom: '10px',
   lineHeight: '53px',
@@ -50,7 +50,7 @@ export const AboutHeroContent = styled(CommonHeroTypography)(({ theme }) => ({
     fontSize: '14px',
     lineHeight: 'normal',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down(400)]: {
     fontSize: '12px',
   }
 }));
@@ -66,7 +66,7 @@ export const AboutHeroWrapper = styled(Box)(({ theme }) => ({
     width: '100%',
     height: '150px',
     backgroundColor: '#fffbfb',
-    borderRadius: '100px 100px 0 0',
+    borderRadius: 'var(--dynamic-border-radius, 0px)',
     zIndex: '0',
     [theme.breakpoints.down('lg')]: {
       borderRadius: '50px 50px 0 0',
