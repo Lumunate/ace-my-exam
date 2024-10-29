@@ -35,7 +35,7 @@ export const FeedbackHeadingTypography = styled(Typography)(({ theme }) => ({
   fontWeight: 700,
   fontFamily: 'Jost, sans-serif',
   color: '#1F1F1F',
-  fontSize: '49px',
+  fontSize: '50px',
   textTransform: 'uppercase',
   [theme.breakpoints.down('xl')]: {
     fontSize: '40px',

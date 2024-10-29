@@ -13,9 +13,9 @@ interface ButtonProps extends ButtonBaseProps {
 
 export const Button = styled(ButtonBase, {
   shouldForwardProp: (prop) => prop !== 'special' && prop !== 'borderRadius' && prop !== 'fontSize' && prop !== 'width' && prop !== 'height',
-})<ButtonProps>(({theme, special = false, borderRadius = '8px', fontSize = '12px', width = '96px', height = '37px' }) => ({
+})<ButtonProps>(({theme, special = false, borderRadius = '8px', fontSize = '16px', width = '96px', height = '37px' }) => ({
   padding: '11px 30px',
-  fontWeight: 700,
+  fontWeight: 400,
   width: width,
   height: height,
   fontFamily: 'Lato, sans-serif',
@@ -30,11 +30,16 @@ export const Button = styled(ButtonBase, {
   textTransform: 'capitalize',
   whiteSpace: 'nowrap',
   '&:hover': {
-    backgroundColor: special ? '#d74642' : '',
+    backgroundColor: special ? '#DA5077' : '',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     fontSize: '14px !important',
     width: '142px !important',
     height: '41px !important',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '12px !important',
+    width: '100px !important',
+    height: '34px !important',
   },
 }));

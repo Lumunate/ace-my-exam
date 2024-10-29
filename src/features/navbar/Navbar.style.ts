@@ -5,6 +5,7 @@ import Link from 'next/link';
 const CommonNavbarBox = styled(Box)({
   display: 'flex',
   alignItems: 'center',
+
 });
 
 export const CommonMenu = styled(Menu)({
@@ -17,18 +18,20 @@ export const CommonMenu = styled(Menu)({
   },
   '& .MuiMenuItem-root': {
     color: '#000',
-    fontWeight: 400,
-    fontSize: '10px',
+    fontWeight: 500,
+    fontSize: '12px',
     textTransform: 'capitalize',
+    lineHeight: '27.75px',
     fontFamily: 'Lato, sans-serif',
     borderRadius: '4px',
     padding: '8px',
+    justifyContent: 'center'
   },
 });
 
 export const NavbarContainer = styled(AppBar)({
   width: '100%',
-  marginTop: '25px !important',
+  marginTop: '20px !important',
   backgroundColor: 'transparent',
   boxShadow: 'none',
 });
@@ -51,7 +54,6 @@ export const NavbarLinksContainer = styled(CommonNavbarBox)({});
 export const NavbarButtonsContainer = styled(CommonNavbarBox)({
   justifyContent: 'space-between',
   gap: '11px',
-  // width: '203px',
 });
 
 export const NavbarLogoHead = styled(Link)(({ theme }) => ({
@@ -94,15 +96,19 @@ export const NavbarLinkWrapper = styled(ListItem)<{ smallSR?: boolean }>(
 
 export const NavbarLink = styled(Link)({
   color: '#000',
-  fontWeight: 700,
-  fontSize: '15px',
+  fontWeight: 400,
+  fontSize: '16px',
   textTransform: 'capitalize',
   fontFamily: 'Lato, sans-serif',
+  '&:hover':{
+    color: '#DA5077',
+    transition: 'all 0.3s ease',
+  },
 });
 
 export const NavTypography = styled(Typography)({
   color: '#000',
-  fontWeight: 700,
+  fontWeight: 400,
   fontSize: '15px',
   textTransform: 'capitalize',
   fontFamily: 'Lato, sans-serif',

@@ -17,10 +17,12 @@ export default async function MainLayout({
   const session = await getServerSession();
 
   return (
-    <AuthProvider session={session} >
-      <Navbar />
-      {children}
-      <Footer />
-    </AuthProvider>
+    <>
+      <AuthProvider session={session} >
+        <Navbar />
+        {children}
+        <Footer />
+      </AuthProvider>
+    </>
   );
 }

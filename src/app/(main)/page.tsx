@@ -1,3 +1,5 @@
+'use client';
+
 import { AppContentWrapper } from '@/components/common/Global.style';
 import About from '@/features/home/about/About';
 import Hero from '@/features/home/hero/Hero';
@@ -15,10 +17,10 @@ export default function Home() {
       <Stats />
       <AppContentWrapper>
         <About />
-        <Process />
       </AppContentWrapper>
+      <Process />
       <Institutes />
-      <AppContentWrapper>     
+      <AppContentWrapper>
         <Resources />
       </AppContentWrapper>
       <Support />
