@@ -1,4 +1,7 @@
+'use client';
+
 import { Box } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/buttons/Button.style';
 import SectionHeading from '@/components/section-heading/SectionHeading';
@@ -18,30 +21,32 @@ const cardsData = [
   {
     subTitle: 'AQA, AQA, EDEXCEL, OCR, & CIE',
     title: 'Alevel Maths Resources',
-    image: '/home/Resources1.webp', 
-    buttonText: 'Start Now'
+    image: '/home/Resources1.webp',
+    buttonText: 'Get Started'
   },
   {
     subTitle: 'AQA, EDEXCEL, OCR, & CIE',
     title: 'GCSE/IGCSE Maths Resources',
-    image: '/home/Resources2.webp', 
-    buttonText: 'Start Now'
+    image: '/home/Resources2.webp',
+    buttonText: 'Get Started'
   },
   {
     subTitle: 'AQA, EDEXCEL, OCR, & CIE',
     title: 'GCSE/IGCSE Science Resources',
-    image: '/home/Resources3.webp', 
-    buttonText: 'Start Now'
+    image: '/home/Resources3.webp',
+    buttonText: 'Get Started'
   },
   {
     subTitle: 'Math & Science',
     title: 'Entrance & scholarship Exams Resources',
-    image: '/home/Resources3.webp', 
-    buttonText: 'Start Now'
+    image: '/home/Resources3.webp',
+    buttonText: 'Get Started'
   }
 ];
 
 const Resources: React.FC = () => {
+  const router = useRouter();
+
   return (
     <ResourcesWrapper>
       <SectionHeading
@@ -59,7 +64,7 @@ const Resources: React.FC = () => {
       <ResourceGrid container columns={24} spacing={'17px'}>
         {cardsData.map((card, index) => (
           <ResourceGrid key={index} size={{ xs: 24, md: 12 }}>
-            <ResourceCard key={index}>
+            <ResourceCard key={index} onClick={()=> router.push('/resources')}>
               <ResourcesImageContainer>
                 <ResourcesImage
                   src={card.image}
