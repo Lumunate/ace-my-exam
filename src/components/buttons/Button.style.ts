@@ -32,9 +32,14 @@ export const Button = styled(ButtonBase, {
   '&:hover': {
     backgroundColor: special ? '#d74642' : '',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     fontSize: '14px !important',
     width: '142px !important',
     height: '41px !important',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '12px !important',
+    width: '100px !important',
+    height: '34px !important',
   },
 }));
