@@ -1,4 +1,7 @@
+'use client';
+
 import { Box } from '@mui/material';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '@/components/buttons/Button.style';
 import SectionHeading from '@/components/section-heading/SectionHeading';
@@ -42,6 +45,8 @@ const cardsData = [
 ];
 
 const Resources: React.FC = () => {
+  const router = useRouter();
+
   return (
     <ResourcesWrapper>
       <SectionHeading
@@ -59,7 +64,7 @@ const Resources: React.FC = () => {
       <ResourceGrid container columns={24} spacing={'17px'}>
         {cardsData.map((card, index) => (
           <ResourceGrid key={index} size={{ xs: 24, md: 12 }}>
-            <ResourceCard key={index}>
+            <ResourceCard key={index} onClick={()=> router.push('/resources')}>
               <ResourcesImageContainer>
                 <ResourcesImage
                   src={card.image}
