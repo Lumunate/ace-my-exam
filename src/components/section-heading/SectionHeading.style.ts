@@ -39,11 +39,12 @@ export const CommonHeadingTypography = styled(Typography)<{ textColor: string; t
   textTransform: 'capitalize',
   fontStyle: 'normal',
   width: textSize,
+  whiteSpace: 'nowrap',
   [theme.breakpoints.down('md')]: {
     fontSize: '14px',
     maxWidth: '140px',
   },
-  [theme.breakpoints.down(400)]: {
+  [theme.breakpoints.down('sm')]: {
     fontSize: '12px',
   }
 }));

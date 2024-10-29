@@ -8,6 +8,7 @@ import {
   styled,
 } from '@mui/material';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 
@@ -37,7 +38,7 @@ import {
 const pages = [
   { name: 'Home', link: '/' },
   { name: 'About', link: '/about' },
-  { name: 'Resources', link: '/' },
+  { name: 'Resources', link: '' },
   { name: 'Pricing', link: '/pricing' },
   { name: 'Contact', link: '/contact' },
 ];
@@ -45,6 +46,7 @@ const pages = [
 const resources = ['Alevel Maths', 'GCSE/IGCSE Maths', 'GCSE/IGCSE Science', 'Entrance & Scholarship Exams'];
 
 const Navbar: React.FC = () => {
+  const router = useRouter();
   const session = useSession();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
@@ -65,6 +67,10 @@ const Navbar: React.FC = () => {
   };
 
   const handleClose = () => {
+    setAnchorEl(null);
+  };
+  const handleResourcesClick = () => {
+    router.push('/resources');
     setAnchorEl(null);
   };
 
@@ -136,7 +142,7 @@ const Navbar: React.FC = () => {
                       anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
                     >
                       {resources.map((resource, idx) => (
-                        <MenuItem key={idx} onClick={handleClose}>
+                        <MenuItem key={idx} onClick={handleResourcesClick}>
                           {resource}
                         </MenuItem>
                       ))}
