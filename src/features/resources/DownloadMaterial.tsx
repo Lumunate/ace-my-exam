@@ -32,7 +32,7 @@ const DownloadMaterialStep: React.FC = () => {
             <TableRow>
               <TableCell>Name</TableCell>
               <TableCell>Topic/Type</TableCell>
-              <TableCell align="center"></TableCell>
+              <TableCell align='center'></TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
@@ -40,9 +40,9 @@ const DownloadMaterialStep: React.FC = () => {
               <TableRow key={index}>
                 <TableCell>{material.name}</TableCell>
                 <TableCell><TablePara>{material.topic}</TablePara></TableCell>
-                <TableCell align="center">
+                <TableCell align='center'>
                   <IconButton
-                    color="primary"
+                    color='primary'
                     onClick={() => handleDownload(material.fileUrl)}
                   >
                     <Image
@@ -53,7 +53,7 @@ const DownloadMaterialStep: React.FC = () => {
                     />
                   </IconButton>
                   <StyledLink
-                    variant="body2"
+                    variant='body2'
                     onClick={() => handleDownload(material.fileUrl)}
                   >
                     Download

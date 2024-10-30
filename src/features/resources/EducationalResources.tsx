@@ -5,8 +5,8 @@ import { ResourcesCard, ResourcesCardTitle, } from './ResourcesSteps.style';
 
 const resources = [
   { title: 'Alevel Maths', SubTitle: 'Alevel Maths', icon: '/resources/mathsImg.svg' },
-  { title: 'GCSE/IGCSE Maths', SubTitle: 'GCSE/IGCSE Maths', icon: '/resources/mathsImg.svg' },
-  { title: 'GCSE/IGCSE Science', SubTitle: 'GCSE/IGCSE Science', icon: '/resources/ScienceImg.svg' },
+  { title: 'GCSE / IGCSE Maths', SubTitle: 'GCSE / IGCSE Maths', icon: '/resources/mathsImg.svg' },
+  { title: 'GCSE / IGCSE Science', SubTitle: 'GCSE / IGCSE Science', icon: '/resources/ScienceImg.svg' },
   { title: 'Entrance & scholarship Exams', SubTitle: 'Entrance & scholarship Exams', icon: '/resources/ExamImg.svg' },
 ];
 
@@ -30,7 +30,7 @@ const Step1_EducationalResources: React.FC<Step1Props> = ({ selectedResource, on
               width={54}
               height={54}
             />
-            <ResourcesCardTitle variant="h6">{resource.title}</ResourcesCardTitle>
+            <ResourcesCardTitle variant='h6'>{resource.title}</ResourcesCardTitle>
           </ResourcesCard>
         </Grid>
       ))}
