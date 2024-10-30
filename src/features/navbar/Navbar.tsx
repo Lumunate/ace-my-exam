@@ -38,12 +38,12 @@ import {
 const pages = [
   { name: 'Home', link: '/' },
   { name: 'About', link: '/about' },
-  { name: 'Resources', link: '' },
+  { name: 'Resources', link: '/resources' },
   { name: 'Pricing', link: '/pricing' },
   { name: 'Contact', link: '/contact' },
 ];
 
-const resources = ['Alevel Maths', 'GCSE/IGCSE Maths', 'GCSE/IGCSE Science', 'Entrance & Scholarship Exams'];
+const resources = ['Alevel Maths', 'GCSE / IGCSE Maths', 'GCSE / IGCSE Science', 'Entrance & Scholarship Exams'];
 
 const Navbar: React.FC = () => {
   const router = useRouter();
@@ -69,9 +69,11 @@ const Navbar: React.FC = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleResourcesClick = () => {
-    router.push('/resources');
-    setAnchorEl(null);
+
+  const handleResourcesClick = (resource: string) => {
+    sessionStorage.setItem('selectedResource', resource); 
+    router.push('/resources'); 
+    handleClose();
   };
 
   const handleAvatarClose = () => {
@@ -104,11 +106,11 @@ const Navbar: React.FC = () => {
 
   return (
     <>
-      <NavbarContainer position="fixed">
+      <NavbarContainer position='fixed'>
         <AppContentWrapper>
           <NavbarContentWrapper>
-            <NavbarLogoHead href="/">
-              <Image src={'/logo.png'} width={52} height={49} alt="Logo" />
+            <NavbarLogoHead href='/'>
+              <Image src={'/logo.png'} width={52} height={49} alt='Logo' />
             </NavbarLogoHead>
 
             <NavbarLinksContainer sx={{ display: { xs: 'none', lg: 'flex' } }}>
@@ -117,20 +119,19 @@ const Navbar: React.FC = () => {
                   <DropdownMenuWrapper key={index}>
                     <NavbarLinkWrapper>
                       <NavbarLink
-                        id="fade-button"
+                        id='fade-button'
                         aria-controls={open ? 'fade-menu' : undefined}
-                        aria-haspopup="true"
+                        aria-haspopup='true'
                         aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}
-                        href=""
+                        href='/resources'
                       >
                         {page.name}
-                        <DropdownIcon src="/icons/down-black.svg" alt="dropdown-icon" open={open} width={12} height={9} />
                       </NavbarLink>
+                      <DropdownIcon src='/icons/down-black.svg' alt='dropdown-icon' open={open} width={12} height={9}  onClick={handleClick} />
                     </NavbarLinkWrapper>
 
                     <CommonMenu
-                      id="fade-menu"
+                      id='fade-menu'
                       MenuListProps={{
                         'aria-labelledby': 'fade-button',
                       }}
@@ -140,9 +141,10 @@ const Navbar: React.FC = () => {
                       disableScrollLock={true}
                       transformOrigin={{ horizontal: 'center', vertical: 'top' }}
                       anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
+                      sx={{transform:'translate(-40px ,20px)'}}
                     >
                       {resources.map((resource, idx) => (
-                        <MenuItem key={idx} onClick={handleResourcesClick}>
+                        <MenuItem key={idx} onClick={() => handleResourcesClick(resource)}>
                           {resource}
                         </MenuItem>
                       ))}
@@ -161,10 +163,10 @@ const Navbar: React.FC = () => {
               {session.data ? (
                 <AvatarDropdownMenuWrapper>
                   <IconButton onClick={handleAvatarClick}>
-                    <Avatar src="" alt="User Avatar" />
+                    <Avatar src='' alt='User Avatar' />
                   </IconButton>
                   <CommonMenu
-                    id="avatar-menu"
+                    id='avatar-menu'
                     anchorEl={avatarAnchorEl}
                     open={avatarOpen}
                     onClose={handleAvatarClose}
@@ -203,24 +205,24 @@ const Navbar: React.FC = () => {
             </NavbarButtonsContainer>
 
             <IconButton
-              edge="start"
-              color="inherit"
-              aria-label="menu"
+              edge='start'
+              color='inherit'
+              aria-label='menu'
               onClick={toggleDrawer(true)}
               sx={{ display: { xs: 'block', lg: 'none' } }}
             >
-              <Image src="/icons/menu.svg" alt="menu icon" width={24} height={24} style={{ filter: 'brightness(0%)' }} />
+              <Image src='/icons/menu.svg' alt='menu icon' width={24} height={24} style={{ filter: 'brightness(0%)' }} />
             </IconButton>
 
             <NavbarDrawer
-              anchor="right"
+              anchor='right'
               open={drawerOpen}
               onClose={toggleDrawer(false)}
               sx={{ display: { xs: 'block', lg: 'none' } }}
             >
               <Box
                 sx={{ maxWidth: 297, width: '90%', padding: '61px 58px' }}
-                role="presentation"
+                role='presentation'
                 onClick={toggleDrawer(false)}
                 onKeyDown={toggleDrawer(false)}
               >
@@ -234,9 +236,9 @@ const Navbar: React.FC = () => {
                 <Box sx={{ mt: 2 }}>
                   <NavTypography>Follow Us</NavTypography>
                   <Box sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <IconHeadBlack src="/icons/youtube.svg" alt="YouTube" width={17} height={12} />
-                    <IconHeadBlack src="/icons/instagram.svg" alt="Instagram" width={14} height={14} />
-                    <IconHeadBlack src="/icons/degree.svg" alt="degree" width={19} height={12} />
+                    <IconHeadBlack src='/icons/youtube.svg' alt='YouTube' width={17} height={12} />
+                    <IconHeadBlack src='/icons/instagram.svg' alt='Instagram' width={14} height={14} />
+                    <IconHeadBlack src='/icons/degree.svg' alt='degree' width={19} height={12} />
                   </Box>
                 </Box>
                 <NavbarButtonsContainer sx={{ display: { xs: 'flex', lg: 'none' }, mt: '20px' }}>

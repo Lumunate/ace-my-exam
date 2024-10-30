@@ -2,7 +2,7 @@
 
 import { Box, Breadcrumbs } from '@mui/material';
 import Image from 'next/image';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { Button } from '@/components/buttons/Button.style';
 import { AppContentWrapper } from '@/components/common/Global.style';
@@ -12,7 +12,15 @@ import Step1_EducationalResources from '@/features/resources/EducationalResource
 import ExaminationBoardStep from '@/features/resources/ExaminationBoard';
 import ResourcesTypeStep from '@/features/resources/ResourceType';
 
-import { ResourcesContainer, ResourcesHeading, ResourcesPara, Resourceswrapper, BreadcrumbsHeading, ResourcesSubHeading, ResourcesErrorPara } from './Resources.style';
+import {
+  ResourcesContainer,
+  ResourcesHeading,
+  ResourcesPara,
+  Resourceswrapper,
+  BreadcrumbsHeading,
+  ResourcesSubHeading,
+  ResourcesErrorPara
+} from './Resources.style';
 
 const steps = [
   'Resources',
@@ -24,13 +32,12 @@ const steps = [
 const Resources: React.FC = () => {
   const [activeStep, setActiveStep] = useState(0);
   const [selectedTitles, setSelectedTitles] = useState<string[]>(['Resources']);
-
   const [selectedResource, setSelectedResource] = useState<string | null>(null);
+
   const [selectedBoard, setSelectedBoard] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
-  // Handlers for selecting items at each step
   const handleResourceSelection = (resourceName: string) => {
     setSelectedResource(resourceName);
   };
@@ -43,7 +50,6 @@ const Resources: React.FC = () => {
     setSelectedType(typeName);
   };
 
-  // Update the breadcrumbs based on current selections
   const updateBreadcrumbs = (step: number) => {
     const newTitles = ['Resources'];
 
@@ -53,9 +59,7 @@ const Resources: React.FC = () => {
     setSelectedTitles(newTitles);
   };
 
-  // Navigation handlers
   const handleNext = () => {
-    // Validate selection before allowing navigation
     if (
       (activeStep === 0 && !selectedResource) ||
       (activeStep === 1 && !selectedBoard) ||
@@ -79,15 +83,46 @@ const Resources: React.FC = () => {
     updateBreadcrumbs(prevStep);
   };
 
-  // Render content based on the active step
+  useEffect(() => {
+    const storedResource = sessionStorage.getItem('selectedResource');
+
+    if (storedResource) {
+      setSelectedResource(storedResource);
+      setActiveStep(1); 
+      updateBreadcrumbs(1); 
+      sessionStorage.removeItem('selectedResource'); 
+    }
+  }, []);
+  
+  useEffect(() => {
+    if (selectedResource) {
+      updateBreadcrumbs(activeStep); 
+    }
+  }, [selectedResource, activeStep]);
+  
   const renderStepContent = (stepIndex: number) => {
     switch (stepIndex) {
     case 0:
-      return <Step1_EducationalResources selectedResource={selectedResource} onSelectResource={handleResourceSelection} />;
+      return (
+        <Step1_EducationalResources
+          selectedResource={selectedResource}
+          onSelectResource={handleResourceSelection}
+        />
+      );
     case 1:
-      return <ExaminationBoardStep selectedBoard={selectedBoard} onSelectBoard={handleBoardSelection} />;
+      return (
+        <ExaminationBoardStep
+          selectedBoard={selectedBoard}
+          onSelectBoard={handleBoardSelection}
+        />
+      );
     case 2:
-      return <ResourcesTypeStep selectedType={selectedType} onSelectType={handleTypeSelection} />;
+      return (
+        <ResourcesTypeStep
+          selectedType={selectedType}
+          onSelectType={handleTypeSelection}
+        />
+      );
     case 3:
       return <DownloadMaterialStep />;
     default:
@@ -101,48 +136,56 @@ const Resources: React.FC = () => {
         <ResourcesContainer>
           <Box>
             <SectionHeading
-              text="Start Practicing"
-              align="center"
+              text='Start Practicing'
+              align='center'
               showLeftLine={true}
-              color="#DA9694"
-              textWidth="150px"
-              gradientType="second"
+              color='#DA9694'
+              textWidth='150px'
+              gradientType='second'
             />
-            <ResourcesHeading variant="h2">
-              {steps[activeStep]}
-            </ResourcesHeading>
+            <ResourcesHeading variant='h2'>{steps[activeStep]}</ResourcesHeading>
             {activeStep === 0 && (
-              <ResourcesPara variant="body1" sx={{ mb: '23px' }}>
+              <ResourcesPara variant='body1' sx={{ mb: '23px' }}>
                 Choose Your Resource
               </ResourcesPara>
             )}
           </Box>
           <Box sx={{ mt: '30px', display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
-            <Breadcrumbs aria-label="breadcrumb" separator={
+            <Breadcrumbs aria-label='breadcrumb' separator={
               <Image
                 src={'/icons/right-arrow.svg'}
                 alt={'icon'}
                 width={9}
                 height={9}
-                style={{transform: 'translateY(20%)'}}
-              />}>
+                style={{ transform: 'translateY(20%)' }}
+              />
+            }>
               {selectedTitles.map((title, index) => (
-                <BreadcrumbsHeading key={index} variant="body2">
+                <BreadcrumbsHeading key={index} variant='body2'>
                   {title}
                 </BreadcrumbsHeading>
               ))}
             </Breadcrumbs>
           </Box>
-          <Box sx={{ my: { xs: '20px', sm: '30px', } }}>
-            <ResourcesSubHeading >{activeStep == 0 ? selectedTitles[0] : activeStep == 1 ? selectedTitles[1] : activeStep == 2 ? selectedTitles[2] : activeStep == 3 ? selectedTitles[3] : '....'}</ResourcesSubHeading>
+          <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
+            <ResourcesSubHeading>
+              {activeStep == 0 ? selectedTitles[0] : activeStep == 1 ? selectedTitles[1] : activeStep == 2 ? selectedTitles[2] : activeStep == 3 ? selectedTitles[3] : '....'}
+            </ResourcesSubHeading>
             <ResourcesPara variant='body1' sx={{ textAlign: 'start' }}>
-              {activeStep == 0 ? 'Select the Resources' : activeStep == 1 ? 'Select the Examination Board' : activeStep == 2 ? 'Pick Your Resource Type' : activeStep == 3 ? 'Select the Content Type' : '....'}
+              {activeStep == 0
+                ? 'Select the Resources'
+                : activeStep == 1
+                  ? 'Select the Examination Board'
+                  : activeStep == 2
+                    ? 'Pick Your Resource Type'
+                    : activeStep == 3
+                      ? 'Select the Content Type'
+                      : '....'}
             </ResourcesPara>
           </Box>
           <Box>{renderStepContent(activeStep)}</Box>
-          {/* Error Message */}
           {errorMessage && (
-            <ResourcesErrorPara variant="body2" color="error">
+            <ResourcesErrorPara variant='body2' color='error'>
               {errorMessage}
             </ResourcesErrorPara>
           )}
@@ -154,10 +197,10 @@ const Resources: React.FC = () => {
             }}
           >
             <Button
-              fontSize="16px"
-              borderRadius="50px"
-              width="212px"
-              height="60px"
+              fontSize='16px'
+              borderRadius='50px'
+              width='212px'
+              height='60px'
               disabled={activeStep === 0}
               onClick={handleBack}
             >
@@ -165,10 +208,10 @@ const Resources: React.FC = () => {
             </Button>
             <Button
               special
-              fontSize="16px"
-              borderRadius="50px"
-              width="212px"
-              height="60px"
+              fontSize='16px'
+              borderRadius='50px'
+              width='212px'
+              height='60px'
               onClick={handleNext}
               disabled={activeStep === steps.length - 1}
             >

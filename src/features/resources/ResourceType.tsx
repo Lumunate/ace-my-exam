@@ -29,7 +29,7 @@ const ResourcesTypeStep: React.FC<ResourceTypeProps> = ({ selectedType, onSelect
               width={54}
               height={54}
             />
-            <ResourcesCardTitle variant="h6">{type.title}</ResourcesCardTitle>
+            <ResourcesCardTitle variant='h6'>{type.title}</ResourcesCardTitle>
           </ResourcesCard>
         </Grid>
       ))}
