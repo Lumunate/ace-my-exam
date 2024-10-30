@@ -12,7 +12,7 @@ import Step1_EducationalResources from '@/features/resources/EducationalResource
 import ExaminationBoardStep from '@/features/resources/ExaminationBoard';
 import ResourcesTypeStep from '@/features/resources/ResourceType';
 
-import { ResourcesContainer, ResourcesHeading, ResourcesPara, Resourceswrapper, BreadcrumbsHeading } from './Resources.style';
+import { ResourcesContainer, ResourcesHeading, ResourcesPara, Resourceswrapper, BreadcrumbsHeading, ResourcesSubHeading, ResourcesErrorPara } from './Resources.style';
 
 const steps = [
   'Resources',
@@ -28,6 +28,7 @@ const Resources: React.FC = () => {
   const [selectedResource, setSelectedResource] = useState<string | null>(null);
   const [selectedBoard, setSelectedBoard] = useState<string | null>(null);
   const [selectedType, setSelectedType] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
 
   // Handlers for selecting items at each step
   const handleResourceSelection = (resourceName: string) => {
@@ -54,10 +55,21 @@ const Resources: React.FC = () => {
 
   // Navigation handlers
   const handleNext = () => {
+    // Validate selection before allowing navigation
+    if (
+      (activeStep === 0 && !selectedResource) ||
+      (activeStep === 1 && !selectedBoard) ||
+      (activeStep === 2 && !selectedType)
+    ) {
+      setErrorMessage('Please select an option before proceeding.');
+
+      return;
+    }
     const nextStep = activeStep + 1;
 
     setActiveStep(nextStep);
     updateBreadcrumbs(nextStep);
+    setErrorMessage(null);
   };
 
   const handleBack = () => {
@@ -105,13 +117,14 @@ const Resources: React.FC = () => {
               </ResourcesPara>
             )}
           </Box>
-          <Box sx={{ mt: '40px', mb: '10px', display: {xs: 'none', sm: 'flex'}, alignItems: 'center' }}>
+          <Box sx={{ mt: '30px', display: { xs: 'none', sm: 'flex' }, alignItems: 'center' }}>
             <Breadcrumbs aria-label="breadcrumb" separator={
               <Image
                 src={'/icons/right-arrow.svg'}
                 alt={'icon'}
                 width={9}
                 height={9}
+                style={{transform: 'translateY(20%)'}}
               />}>
               {selectedTitles.map((title, index) => (
                 <BreadcrumbsHeading key={index} variant="body2">
@@ -120,7 +133,19 @@ const Resources: React.FC = () => {
               ))}
             </Breadcrumbs>
           </Box>
+          <Box sx={{ my: { xs: '20px', sm: '30px', } }}>
+            <ResourcesSubHeading >{activeStep == 0 ? selectedTitles[0] : activeStep == 1 ? selectedTitles[1] : activeStep == 2 ? selectedTitles[2] : activeStep == 3 ? selectedTitles[3] : '....'}</ResourcesSubHeading>
+            <ResourcesPara variant='body1' sx={{ textAlign: 'start' }}>
+              {activeStep == 0 ? 'Select the Resources' : activeStep == 1 ? 'Select the Examination Board' : activeStep == 2 ? 'Pick Your Resource Type' : activeStep == 3 ? 'Select the Content Type' : '....'}
+            </ResourcesPara>
+          </Box>
           <Box>{renderStepContent(activeStep)}</Box>
+          {/* Error Message */}
+          {errorMessage && (
+            <ResourcesErrorPara variant="body2" color="error">
+              {errorMessage}
+            </ResourcesErrorPara>
+          )}
           <Box
             sx={{
               display: 'flex',

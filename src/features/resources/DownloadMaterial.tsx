@@ -2,10 +2,7 @@ import { TableBody, TableHead, TableRow, IconButton, TableCell } from '@mui/mate
 import Image from 'next/image';
 import React from 'react';
 
-import { ResourcesPara } from '@/app/(main)/resources/Resources.style';
-
 import { StyledLink, StyledTable, ResourcesTableContainer, TablePara  } from './ResourcesSteps.style';
-import { ExaminationBoardHeading } from './ResourcesSteps.style';
 
 const materials = [
   { name: 'Chapter 1: Introduction to Algebra', topic: 'Number Toolkit', fileUrl: '/materials/algebra.pdf' },
@@ -29,8 +26,6 @@ const DownloadMaterialStep: React.FC = () => {
 
   return (
     <>
-      <ExaminationBoardHeading sx={{mt: {xs: '20px', sm: '30', lg: '60px'}}}>Revision Notes</ExaminationBoardHeading>
-      <ResourcesPara variant='body1' sx={{ textAlign: 'start', mb: '10px' }}>Select the Content Type</ResourcesPara>
       <ResourcesTableContainer >
         <StyledTable  sx={{ minWidth: 768 }}>
           <TableHead>
