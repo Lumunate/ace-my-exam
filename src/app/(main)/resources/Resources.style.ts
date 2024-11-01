@@ -5,7 +5,7 @@ export const Resourceswrapper = styled(Box)({
 });
 
 export const ResourcesContainer = styled(Box)(({ theme }) => ({
-  padding: '56px 130px',
+  padding: '50px 80px',
   backgroundColor: '#FCFDFF',
   borderRadius: '20px',
   border: '1px solid rgba(218, 150, 148, 0.32)',
@@ -13,9 +13,6 @@ export const ResourcesContainer = styled(Box)(({ theme }) => ({
   maxWidth: ' 1300px',
   width: '100%',
   margin: '0 auto',
-  [theme.breakpoints.down('xl')]: {
-    padding: '56px 80px',
-  },
   [theme.breakpoints.down('lg')]: {
     padding: '50px',
   },
@@ -80,5 +77,38 @@ export const BreadcrumbsHeading = styled(Typography)(({ theme }) => ({
   },
   [theme.breakpoints.down(400)]: {
     fontSize: '10px',
+  },
+}));
+
+export const ResourcesSubHeading = styled(Typography)(({ theme }) => ({
+  color: '#000',
+  fontSize: '30px',
+  fontWeight: 600,
+  fontFamily: 'Jost, sans-serif',
+  textTransform: 'capitalize',
+  [theme.breakpoints.down('lg')]: {
+    fontSize: '24px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '22px',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '14px',
+  },
+}));
+
+export const ResourcesErrorPara = styled(Typography)(({ theme }) => ({
+  fontSize: '18px',
+  fontWeight: 300,
+  fontFamily: 'Jost, sans-serif',
+  textTransform: 'capitalize',
+  [theme.breakpoints.down('lg')]: {
+    fontSize: '16px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '14px',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '12px',
   },
 }));

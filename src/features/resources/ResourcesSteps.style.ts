@@ -1,11 +1,6 @@
 import { Card, styled, Typography, Link, Table, TableContainer } from '@mui/material';
 import LinkNext from 'next/link';
 
-interface ResourcesCardProps {
-  padding?: string;
-  height?: string;
-}
-
 export const ResourcesStepsLink = styled(LinkNext)(({ theme }) => ({
   color: '#818181',
   textAlign: 'start',
@@ -21,73 +16,31 @@ export const ResourcesStepsLink = styled(LinkNext)(({ theme }) => ({
   },
 }));
 
-export const ResourcesCard = styled(Card, {
-  shouldForwardProp: (prop) => prop !== 'padding' && prop !== 'height',
-})<ResourcesCardProps>(({ theme, padding = '15px', height = '100%' }) => ({
+export const ResourcesCard = styled(Card)(({ theme }) => ({
   background: '#FFF',
-  padding: padding,
+  padding: '30px 20px',
   borderRadius: '20px',
   boxShadow: '0px 4px 39.5px 0px rgba(0, 0, 0, 0.10)',
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
   height: '100%',
-  minHeight: height,
   justifyContent: 'center',
-  [theme.breakpoints.down('md')]: {
-    padding: '10px',
+  [theme.breakpoints.down('xl')]: {
+    padding: '30px 15px',
   },
 }));
 
 export const ResourcesCardTitle = styled(Typography)(({ theme }) => ({
   color: '#000',
-  fontSize: '22px',
+  fontSize: '20px',
   fontWeight: 400,
   textAlign: 'center',
   fontFamily: 'Lato, sans-serif',
   marginTop: '12px',
   lineHeight: 'normal',
-  [theme.breakpoints.down('lg')]: {
-    fontSize: '18px',
-  },
-}));
-
-export const ExaminationBoardHeading = styled(Typography)(({ theme }) => ({
-  color: '#000',
-  fontSize: '40px',
-  fontWeight: 600,
-  fontFamily: 'Jost, sans-serif',
-  textTransform: 'capitalize',
-  [theme.breakpoints.down('lg')]: {
-    fontSize: '26px',
-  },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '24px',
-  },
-  [theme.breakpoints.down(400)]: {
-    fontSize: '14px',
-  },
-}));
-
-export const ResourceCardSubTitle = styled(Typography)(({ theme }) => ({
-  color: '#111826',
-  fontSize: '30px',
-  fontWeight: 400,
-  fontFamily: 'Lato, sans-serif',
-  textTransform: 'capitalize',
-  marginTop: '12px',
-  lineHeight: 'normal',
   [theme.breakpoints.down('xl')]: {
-    fontSize: '26px',
-  },
-  [theme.breakpoints.down('lg')]: {
-    fontSize: '20px',
-  },
-  [theme.breakpoints.down('md')]: {
-    fontSize: '16px',
-  },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '20px',
+    fontSize: '18px',
   },
 }));
 
