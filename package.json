@@ -17,6 +17,7 @@
     "@emotion/react": "^11.13.3",
     "@emotion/styled": "^11.13.0",
     "@hookform/resolvers": "^3.9.0",
+    "@mui/icons-material": "^6.1.6",
     "@mui/material": "^6.1.2",
     "@next/font": "^14.2.15",
     "@toolpad/core": "^0.8.1",
