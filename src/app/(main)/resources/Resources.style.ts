@@ -14,7 +14,7 @@ export const ResourcesContainer = styled(Box)(({ theme }) => ({
   width: '100%',
   margin: '0 auto',
   [theme.breakpoints.down('lg')]: {
-    padding: '50px',
+    padding: '40px',
   },
   [theme.breakpoints.down('md')]: {
     padding: '40px 30px',
@@ -112,3 +112,11 @@ export const ResourcesErrorPara = styled(Typography)(({ theme }) => ({
     fontSize: '12px',
   },
 }));
+
+export const PaginationHead = styled(Box)({
+  padding: '4px 10px',
+  border: '1px solid #818181',
+  boxShadow: '0px 4px 52.5px 0px rgba(0, 0, 0, 0.08)',
+  borderRadius: '50px',
+  background: '#fcfdff',
+});
