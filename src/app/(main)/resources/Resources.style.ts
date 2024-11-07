@@ -22,7 +22,7 @@ export const ResourcesContainer = styled(Box)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     padding: '30px 20px',
   },
-  [theme.breakpoints.down(400)]: {
+  [theme.breakpoints.down(350)]: {
     padding: '30px 10px',
   },
 }));
@@ -61,22 +61,6 @@ export const ResourcesPara = styled(Typography)(({ theme }) => ({
   },
   [theme.breakpoints.down(400)]: {
     fontSize: '12px',
-  },
-}));
-
-export const BreadcrumbsHeading = styled(Typography)(({ theme }) => ({
-  color: '#818181',
-  fontFamily: 'lato, sans-serif',
-  fontSize: '16px',
-  fontWeight: 400,
-  [theme.breakpoints.down('md')]: {
-    fontSize: '14px',
-  },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '12px',
-  },
-  [theme.breakpoints.down(400)]: {
-    fontSize: '10px',
   },
 }));
 

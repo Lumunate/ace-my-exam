@@ -30,6 +30,7 @@ export const ResourcesCard = styled(Card)<ResourcesCardProps>(({ theme, height }
   alignItems: 'center',
   height: height || '100%',
   justifyContent: 'center',
+  cursor: 'pointer',
   [theme.breakpoints.down('xl')]: {
     padding: '30px 15px',
   },
@@ -60,16 +61,6 @@ export const ResourcesCardTitle = styled(Typography)(({ theme }) => ({
   lineHeight: 'normal',
   [theme.breakpoints.down('xl')]: {
     fontSize: '18px',
-  },
-}));
-
-export const TablePara = styled(Typography)(({ theme }) => ({
-  color: '#818181',
-  fontSize: '16px',
-  fontWeight: 400,
-  fontFamily: 'Jost, sans-serif',
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '14px',
   },
 }));
 
@@ -118,5 +109,31 @@ export const StyledLink = styled(Link)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     fontSize: '12px',
     marginLeft: '4px',
+  },
+}));
+
+export const TablePara = styled(Typography)(({ theme }) => ({
+  color: '#818181',
+  fontSize: '16px',
+  fontWeight: 400,
+  fontFamily: 'Jost, sans-serif',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '14px',
+  },
+}));
+
+export const BreadcrumbsHeading = styled(Typography)(({ theme }) => ({
+  color: '#818181',
+  fontFamily: 'lato, sans-serif',
+  fontSize: '16px',
+  fontWeight: 400,
+  [theme.breakpoints.down('md')]: {
+    fontSize: '14px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '12px',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '10px',
   },
 }));

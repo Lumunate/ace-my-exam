@@ -6,7 +6,7 @@ export const StyledPagination = styled(Pagination)(({ theme }) => ({
     justifyContent: 'center',
     padding: '10px',
     [theme.breakpoints.down(400)]: {
-      padding: '2px 0',
+      padding: '6px 0',
     }
   },
   '& .MuiPaginationItem-root': {
