@@ -2,14 +2,23 @@
 
 import React from 'react';
 
-import { MultiStepProvider } from '@/contexts/MultiStepContext';
-import StepComponent from '@/features/resources/StepComponent';
+import Layout from '@/app/(main)/resources/Layout';
+import { AppContentWrapper } from '@/components/common/Global.style';
+import ResourcesForm from '@/features/resources/ResourcesStepper';
+
+import { ResourcesContainer, Resourceswrapper } from './Resources.style';
 
 const Resources: React.FC = () => {
   return (
-    <MultiStepProvider>
-      <StepComponent />
-    </MultiStepProvider>
+    <Resourceswrapper>
+      <AppContentWrapper>
+        <ResourcesContainer>
+          <Layout>
+            <ResourcesForm />
+          </Layout>
+        </ResourcesContainer>
+      </AppContentWrapper>
+    </Resourceswrapper>
   );
 };
 

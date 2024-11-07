@@ -22,7 +22,7 @@ export default async function MainLayout({
       <AuthProvider session={session} >
         <Box sx={{display: 'flex', minHeight: '100vh', flexDirection: 'column'}}>
           <Navbar />
-          <Box sx={{flex: 1}}>{children}</Box>
+          <main style={{flex: 1}}>{children}</main>
           <Footer />
         </Box>
       </AuthProvider>
