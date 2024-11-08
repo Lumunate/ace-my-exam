@@ -1,3 +1,4 @@
+import { Box } from '@mui/material';
 import { getServerSession } from 'next-auth';
 
 import AuthProvider from '@/contexts/AuthContext';
@@ -19,9 +20,11 @@ export default async function MainLayout({
   return (
     <>
       <AuthProvider session={session} >
-        <Navbar />
-        {children}
-        <Footer />
+        <Box sx={{display: 'flex', minHeight: '100vh', flexDirection: 'column'}}>
+          <Navbar />
+          <main style={{flex: 1}}>{children}</main>
+          <Footer />
+        </Box>
       </AuthProvider>
     </>
   );

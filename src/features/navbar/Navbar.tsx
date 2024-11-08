@@ -1,12 +1,6 @@
 'use client';
 
-import {
-  Avatar,
-  Box,
-  IconButton,
-  MenuItem,
-  styled,
-} from '@mui/material';
+import { Avatar, Box, IconButton, MenuItem, styled } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
@@ -16,6 +10,7 @@ import { Button } from '@/components/buttons/Button.style';
 import { AppContentWrapper } from '@/components/common/Global.style';
 import LoginModal from '@/features/auth/login/LoginModal';
 import SignUpModal from '@/features/auth/sign-up/SignUpModal';
+import useMultiStepForm from '@/hooks/useMultiStepper';
 
 import {
   CommonMenu,
@@ -38,22 +33,29 @@ import {
 const pages = [
   { name: 'Home', link: '/' },
   { name: 'About', link: '/about' },
-  { name: 'Resources', link: '' },
+  { name: 'Resources', link: '/resources' },
   { name: 'Pricing', link: '/pricing' },
   { name: 'Contact', link: '/contact' },
 ];
 
-const resources = ['Alevel Maths', 'GCSE/IGCSE Maths', 'GCSE/IGCSE Science', 'Entrance & Scholarship Exams'];
+const resources = ['A levels', 'GCSE', 'IGCSE', 'KS3', 'Entrance Exam'];
 
 const Navbar: React.FC = () => {
   const router = useRouter();
   const session = useSession();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
-  const [avatarAnchorEl, setAvatarAnchorEl] = useState<null | HTMLElement>(null);
+  const [avatarAnchorEl, setAvatarAnchorEl] = useState<null | HTMLElement>(
+    null
+  );
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [openLogin, setOpenLogin] = useState(false);
   const [openSignUp, setOpenSignUp] = useState(false);
+
+  const {
+    selectOptionNavbar,
+    setCurrentStep,
+  } = useMultiStepForm();
 
   const open = Boolean(anchorEl);
   const avatarOpen = Boolean(avatarAnchorEl);
@@ -69,9 +71,17 @@ const Navbar: React.FC = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const handleResourcesClick = () => {
+
+  const handleResourcesClick = (resource: string) => {
+    selectOptionNavbar(resource);
+
+    const step = resource === 'Entrance Exam' ? 1.5 : 2;
+
+    setCurrentStep(step);
+
     router.push('/resources');
-    setAnchorEl(null);
+
+    handleClose();
   };
 
   const handleAvatarClose = () => {
@@ -92,15 +102,17 @@ const Navbar: React.FC = () => {
 
   const handleCloseSignUp = () => setOpenSignUp(false);
 
-  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
-    if (
-      event.type === 'keydown' &&
-      ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
-    ) {
-      return;
-    }
-    setDrawerOpen(open);
-  };
+  const toggleDrawer =
+    (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+      if (
+        event.type === 'keydown' &&
+        ((event as React.KeyboardEvent).key === 'Tab' ||
+          (event as React.KeyboardEvent).key === 'Shift')
+      ) {
+        return;
+      }
+      setDrawerOpen(open);
+    };
 
   return (
     <>
@@ -121,12 +133,19 @@ const Navbar: React.FC = () => {
                         aria-controls={open ? 'fade-menu' : undefined}
                         aria-haspopup="true"
                         aria-expanded={open ? 'true' : undefined}
-                        onClick={handleClick}
-                        href=""
+                        href="/resources"
                       >
                         {page.name}
-                        <DropdownIcon src="/icons/down-black.svg" alt="dropdown-icon" open={open} width={12} height={9} />
                       </NavbarLink>
+                      <DropdownIcon
+                        src="/icons/down-black.svg"
+                        alt="dropdown-icon"
+                        sx={{ cursor: 'pointer' }}
+                        open={open}
+                        width={12}
+                        height={9}
+                        onClick={handleClick}
+                      />
                     </NavbarLinkWrapper>
 
                     <CommonMenu
@@ -138,11 +157,21 @@ const Navbar: React.FC = () => {
                       open={open}
                       onClose={handleClose}
                       disableScrollLock={true}
-                      transformOrigin={{ horizontal: 'center', vertical: 'top' }}
-                      anchorOrigin={{ horizontal: 'center', vertical: 'bottom' }}
+                      transformOrigin={{
+                        horizontal: 'center',
+                        vertical: 'top',
+                      }}
+                      anchorOrigin={{
+                        horizontal: 'center',
+                        vertical: 'bottom',
+                      }}
+                      sx={{ transform: 'translate(-40px ,20px)' }}
                     >
                       {resources.map((resource, idx) => (
-                        <MenuItem key={idx} onClick={handleResourcesClick}>
+                        <MenuItem
+                          key={idx}
+                          onClick={() => handleResourcesClick(resource)}
+                        >
                           {resource}
                         </MenuItem>
                       ))}
@@ -156,7 +185,9 @@ const Navbar: React.FC = () => {
               )}
             </NavbarLinksContainer>
 
-            <NavbarButtonsContainer sx={{ display: { xs: 'none', lg: 'flex' } }}>
+            <NavbarButtonsContainer
+              sx={{ display: { xs: 'none', lg: 'flex' } }}
+            >
               {/* Avatar Dropdown for logged-in user, were going to use it in future */}
               {session.data ? (
                 <AvatarDropdownMenuWrapper>
@@ -177,23 +208,35 @@ const Navbar: React.FC = () => {
                     </MenuItem>
                     <MenuItem>john.doe@example.com</MenuItem>
                     <MenuItem>Profile</MenuItem>
-                    <MenuItem onClick={() => { signOut(); }}>Logout</MenuItem>
+                    <MenuItem
+                      onClick={() => {
+                        signOut();
+                      }}
+                    >
+                      Logout
+                    </MenuItem>
                   </CommonMenu>
                 </AvatarDropdownMenuWrapper>
               ) : (
                 <>
-                  <Button fontSize='16px'
-                    borderRadius='8px'
-                    width='96px'
-                    height='37px'
-                    onClick={handleOpenLogin}>Login</Button>
+                  <Button
+                    fontSize="16px"
+                    borderRadius="8px"
+                    width="96px"
+                    height="37px"
+                    onClick={handleOpenLogin}
+                  >
+                    Login
+                  </Button>
 
-                  <Button special
-                    fontSize='16px'
-                    borderRadius='8px'
-                    width='96px'
-                    height='37px'
-                    onClick={handleOpenSignUp}>
+                  <Button
+                    special
+                    fontSize="16px"
+                    borderRadius="8px"
+                    width="96px"
+                    height="37px"
+                    onClick={handleOpenSignUp}
+                  >
                     Sign Up
                   </Button>
                 </>
@@ -209,7 +252,13 @@ const Navbar: React.FC = () => {
               onClick={toggleDrawer(true)}
               sx={{ display: { xs: 'block', lg: 'none' } }}
             >
-              <Image src="/icons/menu.svg" alt="menu icon" width={24} height={24} style={{ filter: 'brightness(0%)' }} />
+              <Image
+                src="/icons/menu.svg"
+                alt="menu icon"
+                width={24}
+                height={24}
+                style={{ filter: 'brightness(0%)' }}
+              />
             </IconButton>
 
             <NavbarDrawer
@@ -233,33 +282,62 @@ const Navbar: React.FC = () => {
                 </SmallScreenList>
                 <Box sx={{ mt: 2 }}>
                   <NavTypography>Follow Us</NavTypography>
-                  <Box sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}>
-                    <IconHeadBlack src="/icons/youtube.svg" alt="YouTube" width={17} height={12} />
-                    <IconHeadBlack src="/icons/instagram.svg" alt="Instagram" width={14} height={14} />
-                    <IconHeadBlack src="/icons/degree.svg" alt="degree" width={19} height={12} />
+                  <Box
+                    sx={{ display: 'flex', alignItems: 'center', gap: '20px' }}
+                  >
+                    <IconHeadBlack
+                      src="/icons/youtube.svg"
+                      alt="YouTube"
+                      width={17}
+                      height={12}
+                    />
+                    <IconHeadBlack
+                      src="/icons/instagram.svg"
+                      alt="Instagram"
+                      width={14}
+                      height={14}
+                    />
+                    <IconHeadBlack
+                      src="/icons/degree.svg"
+                      alt="degree"
+                      width={19}
+                      height={12}
+                    />
                   </Box>
                 </Box>
-                <NavbarButtonsContainer sx={{ display: { xs: 'flex', lg: 'none' }, mt: '20px' }}>
+                <NavbarButtonsContainer
+                  sx={{ display: { xs: 'flex', lg: 'none' }, mt: '20px' }}
+                >
                   {session.data ? (
-                    <Button special sx={{
-                      minWidth: '140px'
-                    }} onClick={handleOpenSignUp}>
+                    <Button
+                      special
+                      sx={{
+                        minWidth: '140px',
+                      }}
+                      onClick={handleOpenSignUp}
+                    >
                       Your Account
                     </Button>
                   ) : (
                     <>
-                      <Button fontSize='16px'
-                        borderRadius='8px'
-                        width='96px'
-                        height='37px'
-                        onClick={handleOpenLogin}>Login</Button>
+                      <Button
+                        fontSize="16px"
+                        borderRadius="8px"
+                        width="96px"
+                        height="37px"
+                        onClick={handleOpenLogin}
+                      >
+                        Login
+                      </Button>
 
-                      <Button special
-                        fontSize='16px'
-                        borderRadius='8px'
-                        width='96px'
-                        height='37px'
-                        onClick={handleOpenSignUp}>
+                      <Button
+                        special
+                        fontSize="16px"
+                        borderRadius="8px"
+                        width="96px"
+                        height="37px"
+                        onClick={handleOpenSignUp}
+                      >
                         Sign Up
                       </Button>
                     </>
@@ -271,8 +349,16 @@ const Navbar: React.FC = () => {
         </AppContentWrapper>
       </NavbarContainer>
 
-      <LoginModal open={openLogin} handleClose={handleCloseLogin} onSwitchToSignUp={handleOpenSignUp} />
-      <SignUpModal open={openSignUp} handleClose={handleCloseSignUp} onSwitchToLogin={handleOpenLogin} />
+      <LoginModal
+        open={openLogin}
+        handleClose={handleCloseLogin}
+        onSwitchToSignUp={handleOpenSignUp}
+      />
+      <SignUpModal
+        open={openSignUp}
+        handleClose={handleCloseSignUp}
+        onSwitchToLogin={handleOpenLogin}
+      />
     </>
   );
 };
