@@ -112,7 +112,12 @@ const FooterHeading = styled(Typography)({
 });
 
 const Footer: FC = () => {
-  const pages = ['Home', 'Resources', 'About', 'Contact Us'];
+  const pages = [
+    { name: 'Home', link: '/' },
+    { name: 'About', link: '/about' },
+    { name: 'Resources', link: '/resources' },
+    { name: 'Contact', link: '/contact' },
+  ];
 
   return (
     <>
@@ -127,8 +132,8 @@ const Footer: FC = () => {
             <FooterLinksContainer>
               {pages.map((page, index) => (
                 <ListItem key={index} sx={{ p: 0 }}>
-                  <FooterLink href={page === 'Contact' ? '/contact' : '/'}>
-                    {page}
+                  <FooterLink href={page.link}>
+                    {page.name}
                   </FooterLink>
                 </ListItem>
               ))}

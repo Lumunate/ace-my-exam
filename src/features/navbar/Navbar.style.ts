@@ -11,21 +11,26 @@ const CommonNavbarBox = styled(Box)({
 export const CommonMenu = styled(Menu)({
   '& .MuiPaper-root': {
     borderRadius: '0 0 15px 15px',
-    boxShadow: '0px 30px 20.5px 0 rgba(0,0,0,0.17)',
+    boxShadow: '0px 20px 20.5px 0 rgba(0,0,0,0.10)',
     background: '#FCFDFF',
     padding: '10px',
     paddingTop: '20px',
+    minWidth: '195px'
   },
   '& .MuiMenuItem-root': {
     color: '#000',
-    fontWeight: 500,
-    fontSize: '12px',
+    fontWeight: 400,
+    fontSize: '14px',
     textTransform: 'capitalize',
     lineHeight: '27.75px',
     fontFamily: 'Lato, sans-serif',
     borderRadius: '4px',
-    padding: '8px',
-    justifyContent: 'center'
+    padding: '4px',
+    justifyContent: 'center',
+    background: 'transparent',
+    '&:hover':{
+      backgroundColor: '#c0c0c042',
+    }
   },
 });
 

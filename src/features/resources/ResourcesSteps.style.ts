@@ -1,5 +1,9 @@
-import { Card, styled, Typography, Link, Table, TableContainer } from '@mui/material';
+import { Card, Link, styled, Table, TableContainer, Typography } from '@mui/material';
 import LinkNext from 'next/link';
+
+interface ResourcesCardProps {
+  height?: string;
+}
 
 export const ResourcesStepsLink = styled(LinkNext)(({ theme }) => ({
   color: '#818181',
@@ -16,7 +20,7 @@ export const ResourcesStepsLink = styled(LinkNext)(({ theme }) => ({
   },
 }));
 
-export const ResourcesCard = styled(Card)(({ theme }) => ({
+export const ResourcesCard = styled(Card)<ResourcesCardProps>(({ theme, height }) => ({
   background: '#FFF',
   padding: '30px 20px',
   borderRadius: '20px',
@@ -24,10 +28,26 @@ export const ResourcesCard = styled(Card)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'center',
-  height: '100%',
+  height: height || '100%',
   justifyContent: 'center',
+  cursor: 'pointer',
   [theme.breakpoints.down('xl')]: {
     padding: '30px 15px',
+  },
+  [theme.breakpoints.down('lg')]: {
+    height:'100%',
+  },
+}));
+
+export const ResourcesCardNumber = styled(Typography)(({ theme }) => ({
+  color: '#00324C',
+  fontSize: '50px',
+  fontWeight: 700,
+  textAlign: 'center',
+  lineHeight: 'normal',
+  fontFamily: 'Lato, sans-serif',
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '32px',
   },
 }));
 
@@ -37,20 +57,10 @@ export const ResourcesCardTitle = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   textAlign: 'center',
   fontFamily: 'Lato, sans-serif',
-  marginTop: '12px',
+  marginTop: '10px',
   lineHeight: 'normal',
   [theme.breakpoints.down('xl')]: {
     fontSize: '18px',
-  },
-}));
-
-export const TablePara = styled(Typography)(({ theme }) => ({
-  color: '#818181',
-  fontSize: '16px',
-  fontWeight: 400,
-  fontFamily: 'Jost, sans-serif',
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '14px',
   },
 }));
 
@@ -99,5 +109,31 @@ export const StyledLink = styled(Link)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     fontSize: '12px',
     marginLeft: '4px',
+  },
+}));
+
+export const TablePara = styled(Typography)(({ theme }) => ({
+  color: '#818181',
+  fontSize: '16px',
+  fontWeight: 400,
+  fontFamily: 'Jost, sans-serif',
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '14px',
+  },
+}));
+
+export const BreadcrumbsHeading = styled(Typography)(({ theme }) => ({
+  color: '#818181',
+  fontFamily: 'lato, sans-serif',
+  fontSize: '16px',
+  fontWeight: 400,
+  [theme.breakpoints.down('md')]: {
+    fontSize: '14px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '12px',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '10px',
   },
 }));

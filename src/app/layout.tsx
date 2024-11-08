@@ -1,10 +1,11 @@
 'use client';
 
-import './globals.css';
 import CssBaseline from '@mui/material/CssBaseline';
 import { ThemeProvider } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import './globals.css';
 
+import { MultiStepFormProvider } from '@/contexts/MultiStepperContext';
 import { SnackbarProvider } from '@/contexts/SnackbarContext';
 import theme from '@/theme/theme';
 
@@ -15,14 +16,15 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-
   return (
     <html lang="en">
       <body>
         <QueryClientProvider client={queryClient}>
           <ThemeProvider theme={theme}>
             <CssBaseline />
-            <SnackbarProvider>{children}</SnackbarProvider>
+            <SnackbarProvider>
+              <MultiStepFormProvider>{children}</MultiStepFormProvider>
+            </SnackbarProvider>
           </ThemeProvider>
         </QueryClientProvider>
       </body>
