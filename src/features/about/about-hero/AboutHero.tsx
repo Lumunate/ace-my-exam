@@ -53,12 +53,17 @@ const AboutHero: React.FC = () => {
   return (
     <AboutHeroWrapper ref={aboutHeroWrapperRef}>
       <AboutHeroImageContainer>
-        <AboutHeroImage
-          src={'/home/hero-bg.png'}
-          width={1197}
-          height={100}
-          alt='Hero background'
-        />
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/home/hero-bg-mbl.webp" />
+          <source media="(min-width: 769px)" srcSet="/home/hero-bg.webp" />
+          <AboutHeroImage
+            src={'/home/hero-bg.webp'}
+            width={0}
+            height={0}
+            sizes='100vw'
+            alt='about'
+          />
+        </picture>
         <AboutHeroImageOverlay />
       </AboutHeroImageContainer>
       <AppContentWrapper width="1450px">

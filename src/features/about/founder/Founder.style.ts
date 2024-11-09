@@ -85,7 +85,6 @@ export const FounderSubHeading = styled(CommonHeroTypography)(({ theme }) => ({
   },
   [theme.breakpoints.down('sm')]: {
     fontSize: '14px',
-    marginBottom: '20px',
   },
   [theme.breakpoints.down(400)]: {
     fontSize: '12px',
@@ -184,6 +183,6 @@ export const FounderCardListText = styled(CommonHeroTypography)(({ theme }) => (
   color: '#787878',
   fontWeight: 400,
   [theme.breakpoints.down('xl')]: {
-    fontSize: '12px',
+    fontSize: '14px',
   },
 }));
