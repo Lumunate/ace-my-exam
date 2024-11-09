@@ -31,6 +31,7 @@ export default function Home() {
         pinSpacing: false,
         onUpdate: (self) => {
           const opacity = 1 - self.progress;
+
           gsap.set('.scrolling-section', { opacity: opacity });
         }
       },
