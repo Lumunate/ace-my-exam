@@ -25,10 +25,14 @@ export default function Home() {
       scrollTrigger: {
         trigger: '.scrolling-section',
         start: 'top  center',
-        end: '+=300%',
+        end: '+=30%',
         scrub: true,
         pin: true,
         pinSpacing: false,
+        onUpdate: (self) => {
+          const opacity = 1 - self.progress;
+          gsap.set('.scrolling-section', { opacity: opacity });
+        }
       },
     });
 
