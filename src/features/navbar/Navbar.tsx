@@ -120,7 +120,7 @@ const Navbar: React.FC = () => {
         <AppContentWrapper>
           <NavbarContentWrapper>
             <NavbarLogoHead href="/">
-              <Image src={'/logo.png'} width={52} height={49} alt="Logo" />
+              <Image src={'/logo.svg'} width={120} height={65} alt="Logo" />
             </NavbarLogoHead>
 
             <NavbarLinksContainer sx={{ display: { xs: 'none', lg: 'flex' } }}>
