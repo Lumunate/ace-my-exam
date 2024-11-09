@@ -4,7 +4,7 @@ import { Box, styled, Typography } from '@mui/material';
 
 export const PricingWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
-  padding: '280px 0 150px',
+  padding: '209px 0 150px',
   textAlign: 'center',
   overflow: 'hidden',
   [theme.breakpoints.down('lg')]: {

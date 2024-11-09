@@ -38,14 +38,7 @@ const AboutFounder: React.FC = () => {
       subject: 'Physics (First Class Honours)',
       institution: 'Imperial College London',
     },
-    {
-      degree: 'A-levels',
-      institution: 'All A grades: Chemistry, Physics, Maths, Urdu',
-    },
-    {
-      degree: 'O-levels',
-      institution: "9 A's and 2 B's",
-    },
+   
   ];
 
   const stats = [

@@ -1,13 +1,14 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { CircularProgress } from '@mui/material';
+import { Box, CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
+import { Button } from '@/components/buttons/Button.style';
 import { StyledTextField } from '@/components/form/Form.style';
 import { useSnackbar } from '@/contexts/SnackbarContext';
-import { ContactButton, ContactFormContainer } from '@/features/contact/ContactForm.style';
+import { ContactFormContainer } from '@/features/contact/ContactForm.style';
 import { useSubmitContactForm } from '@/hooks/useContactForm';
 import { contactSchema, IContact } from '@/types/contact';
 
@@ -111,9 +112,18 @@ export default function ContactForm() {
               />
             </Grid>
           </Grid>
-          <ContactButton type="submit">
-            {isLoading ? <CircularProgress size={24} /> : 'Send Message'}
-          </ContactButton>
+          <Box sx={{mt: {xs: '30px', lg: '60px'}}}>
+            <Button
+              type='submit'
+              special
+              fontSize='14px'
+              borderRadius='4px'
+              width='170px'
+              height='41px'
+            >
+              {isLoading ? <CircularProgress size={24} /> : 'Send Message'}
+            </Button>
+          </Box>
         </form>
       </ContactFormContainer>
     </>

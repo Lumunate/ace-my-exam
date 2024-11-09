@@ -85,7 +85,7 @@ export const StyledTable = styled(Table)(({ theme }) => ({
     },
   },
   '& .MuiTableCell-root': {
-    color: '#000',
+    color: '#000000',
     fontSize: '18px',
     fontWeight: 400,
     fontFamily: 'Jost, sans-serif',
