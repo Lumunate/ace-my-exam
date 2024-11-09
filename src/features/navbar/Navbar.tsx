@@ -1,6 +1,6 @@
 'use client';
 
-import { Avatar, Box, IconButton, MenuItem, styled } from '@mui/material';
+import { Avatar, Box, IconButton, MenuItem, } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
@@ -364,9 +364,3 @@ const Navbar: React.FC = () => {
 };
 
 export default Navbar;
-
-export const NavbarAvatar = styled(Avatar)({
-  width: 30,
-  height: 30,
-  marginRight: '1.5rem',
-});
