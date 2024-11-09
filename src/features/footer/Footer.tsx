@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, List, ListItem, styled, Typography } from '@mui/material';
+import { Box, List, ListItem, styled } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
@@ -42,6 +42,7 @@ const FooterLinksContainer = styled(List)(({ theme }) =>({
 const FooterLogoHead = styled(Link)(({ theme }) =>({
   display: 'flex',
   alignItems: 'center',
+  filter: 'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7491%) hue-rotate(327deg) brightness(104%) contrast(100%)',
   [theme.breakpoints.down('sm')]: {
     width: '50%'
   },
@@ -100,17 +101,6 @@ const FooterLink = styled(Link)(({ theme }) => ({
   },
 }));
 
-const FooterHeading = styled(Typography)({
-  color: '#fff',
-  fontWeight: 400,
-  fontSize: '15px',
-  textTransform: 'capitalize',
-  fontStyle: 'normal',
-  fontFamily: 'Lato, sans-serif',
-  marginLeft: '6.5px',
-  whiteSpace: 'nowrap',
-});
-
 const Footer: FC = () => {
   const pages = [
     { name: 'Home', link: '/' },
@@ -125,8 +115,7 @@ const Footer: FC = () => {
         <FooterContainer>
           <FooterWrapper>
             <FooterLogoHead href={'/'}>
-              <Image src={'/white-logo.png'} width={52} height={49} alt='Logo' />
-              <FooterHeading variant="h2">Acemyexam</FooterHeading>
+              <Image src={'/logo.svg'} width={120} height={65} alt="Logo" />
             </FooterLogoHead>
 
             <FooterLinksContainer>
