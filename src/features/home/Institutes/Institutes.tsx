@@ -6,16 +6,16 @@ import { FC, useEffect, useRef } from 'react';
 import { InstituteWrapper, InstituteTrack } from './Institutes.style';
 
 const instituteImages = [
-  '/home/institution/tonbridgeLogo.svg',
+  '/home/tonbridgeLogo.svg',
   '/home/imperial.svg',
   '/home/UOC.svg',
   '/home/UCL.svg',
-  '/home/institution/Caterhamlogo.svg',
+  '/home/Caterhamlogo.svg',
   '/home/UWM.svg',
-  '/home/institution/ladiesLogo.svg',
+  '/home/ladiesLogo.svg',
   '/home/SPC.svg',
-  '/home/institution/institution2.svg',
-  '/home/institution/oxfordLogo.svg',
+  '/home/institution2.svg',
+  '/home/oxfordLogo.svg',
 ];
 
 const Institutes: FC = () => {

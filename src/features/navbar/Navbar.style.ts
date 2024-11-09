@@ -67,6 +67,7 @@ export const NavbarButtonsContainer = styled(CommonNavbarBox)({
 export const NavbarLogoHead = styled(Link)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
+  width: '203px',
   [theme.breakpoints.up('lg')]: {
     width: '203px',
   },
