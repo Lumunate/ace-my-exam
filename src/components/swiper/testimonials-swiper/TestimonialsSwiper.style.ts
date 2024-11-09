@@ -8,7 +8,7 @@ const BaseBoxFlex = styled(Box)({
   alignItems: 'center',
 });
 
-export const TestimonialsSwiperWrapper = styled(Box)<{ withPadding?: boolean, aboutSwiperOpen?: boolean }>(({withPadding, aboutSwiperOpen }) => ({
+export const TestimonialsSwiperWrapper = styled(Box)<{ withPadding?: boolean, aboutSwiperOpen?: boolean }>(({theme, withPadding, aboutSwiperOpen }) => ({
   width: '100%',
   height: '100% !important',
   overflow: 'hidden',
@@ -28,11 +28,14 @@ export const TestimonialsSwiperWrapper = styled(Box)<{ withPadding?: boolean, ab
   },
   '& .swiper-slide': {
     maxWidth: aboutSwiperOpen ? '100%': '556px',
-    width: '90%',
+    width: '95%',
     transition: 'all 0.3s ease !important',
     minHeight: '426px !important',
     maxHeight: '100% !important',
     padding: withPadding ? '0 10px' : '0',
+    [theme.breakpoints.down('sm')]: {
+      minHeight: '360px !important',
+    },
   },
   '& .swiper-slide-active, & .swiper-slide-prev, & .swiper-slide-next': {
     visibility: 'visible !important',
@@ -62,6 +65,7 @@ export const TestimonialsCard = styled(Box)(({ theme }) => ({
     padding: '30px 10px',
     height: '100% !important',
     maxHeight: '100% !important',
+    minHeight: '360px',
   },
 }));
 
@@ -103,8 +107,7 @@ export const TestimonialsCardPara = styled(BaseTextStyle)(({ theme }) => ({
   color: '#787878',
   marginTop: '29px',
   [theme.breakpoints.down('sm')]: {
-    fontSize: '9px',
-    marginTop: '15px',
+    fontSize: '12px',
   }
 }));
 

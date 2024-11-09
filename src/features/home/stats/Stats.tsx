@@ -54,9 +54,9 @@ const Stats: React.FC = () => {
     const timeline = gsap.timeline({
       scrollTrigger: {
         trigger: statsWrapperRef.current,
-        start: 'top 100%', 
+        start: window.innerWidth < 768 ? 'top 120%' : 'top 100%', 
         end: 'top 40%',
-        toggleActions: 'play none none none', 
+        toggleActions: 'play none none none',
       },
     });
 
@@ -82,7 +82,7 @@ const Stats: React.FC = () => {
               }
             },
           },
-          '-=0.8' 
+          '-=0.8'
         );
       }
     });
@@ -93,7 +93,7 @@ const Stats: React.FC = () => {
   }, []);
 
   return (
-    <Box ref={statsWrapperRef} sx={{ position: 'relative' ,height:'0px' }}>
+    <Box ref={statsWrapperRef} sx={{ position: 'relative', height: '0px' }}>
       <StatsContentWrapper>
         <AppContentWrapper>
           <StatsCardHead>

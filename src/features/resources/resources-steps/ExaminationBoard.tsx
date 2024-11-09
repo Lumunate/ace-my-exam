@@ -98,13 +98,23 @@ const ExaminationBoard: React.FC = () => {
               outline: selectedExaminationBoard === board.name ? '2px solid #DA9694' : 'unset',
             }}
           >
-            <Box sx={{width: '70%', height: '80px', mx: 'auto', position: 'relative'}}>
+            <Box
+              sx={{
+                width: { xs: '80%', sm: '80%' },
+                maxWidth: '185px', 
+                height: { xs: '60px', sm: '60px' }, 
+                mx: 'auto',
+                position: 'relative',
+              }}
+            >
               <Image
                 src={board?.imageUrl}
                 alt={board?.name ?? ''}
-                layout='fill' objectFit='contain'
+                layout="fill"
+                objectFit="contain"
               />
             </Box>
+
           </ResourcesCard>
         </Grid>
       ))}
