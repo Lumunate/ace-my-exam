@@ -39,7 +39,17 @@ const Hero: React.FC = () => {
   return (
     <HeroWrapper>
       <HeroImageContainer>
-        <HeroImage src={'/home/hero-bg.webp'} width={0} height={0} sizes='100wv' fill alt="Hero background" />
+        <picture>
+          <source media="(max-width: 768px)" srcSet="/home/hero-bg-mbl.webp" />
+          <source media="(min-width: 769px)" srcSet="/home/hero-bg.webp" />
+          <HeroImage
+            src="/home/hero-bg.webp"
+            alt="Hero background"
+            layout="fill"
+            sizes="100vw"
+            style={{ objectFit: 'cover' }}
+          />
+        </picture>
         <HeroImageOverlay />
       </HeroImageContainer>
       <AppContentWrapper>

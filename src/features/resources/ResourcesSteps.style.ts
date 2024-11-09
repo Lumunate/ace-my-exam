@@ -22,7 +22,7 @@ export const ResourcesStepsLink = styled(LinkNext)(({ theme }) => ({
 
 export const ResourcesCard = styled(Card)<ResourcesCardProps>(({ theme, height }) => ({
   background: '#FFF',
-  padding: '30px 20px',
+  padding: '30px 34px',
   borderRadius: '20px',
   boxShadow: '0px 4px 39.5px 0px rgba(0, 0, 0, 0.10)',
   display: 'flex',
@@ -32,9 +32,9 @@ export const ResourcesCard = styled(Card)<ResourcesCardProps>(({ theme, height }
   justifyContent: 'center',
   cursor: 'pointer',
   [theme.breakpoints.down('xl')]: {
-    padding: '30px 15px',
+    padding: '30px',
   },
-  [theme.breakpoints.down('lg')]: {
+  [theme.breakpoints.down('sm')]: {
     height:'100%',
   },
 }));

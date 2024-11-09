@@ -98,7 +98,6 @@ export const ResourcesErrorPara = styled(Typography)(({ theme }) => ({
 }));
 
 export const PaginationHead = styled(Box)({
-  padding: '4px 10px',
   border: '1px solid #818181',
   boxShadow: '0px 4px 52.5px 0px rgba(0, 0, 0, 0.08)',
   borderRadius: '50px',

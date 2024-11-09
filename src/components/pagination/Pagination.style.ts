@@ -5,9 +5,14 @@ export const StyledPagination = styled(Pagination)(({ theme }) => ({
   '& .MuiPagination-ul': {
     justifyContent: 'center',
     padding: '10px',
+    [theme.breakpoints.down('sm')]: {
+      padding: '0',
+      height: '41px'
+    },
     [theme.breakpoints.down(400)]: {
-      padding: '6px 0',
-    }
+      height: '34px !important',
+      padding: '0',
+    },
   },
   '& .MuiPaginationItem-root': {
     color: '#000',

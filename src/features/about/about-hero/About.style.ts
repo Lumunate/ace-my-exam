@@ -71,6 +71,9 @@ export const AboutHeroWrapper = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down('lg')]: {
       borderRadius: '50px 50px 0 0',
     },
+    [theme.breakpoints.down('md')]: {
+      height: '100px',
+    },
   },
 }));
 
@@ -78,7 +81,7 @@ export const AboutHeroImage = styled(Image)({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-  objectPosition: 'top',
+  objectPosition: 'center',
 });
 
 export const AboutHeroImageContainer = styled(Box)({
@@ -96,7 +99,8 @@ export const AboutHeroImageOverlay = styled(Box)({
   left: 0,
   width: '100%',
   height: '100%',
-  background: 'linear-gradient(106deg, rgba(0, 0, 0, 0.29) 0.91%, rgba(218, 150, 148, 0.45) 99.09%)',
+  background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.46) 0%, rgba(0, 0, 0, 0.46) 100%)',
+  filter: 'drop-shadow(0px 4px 20.8px rgba(0, 0, 0, 0.55)'
 });
 
 export const AboutHeroContentContainer = styled(Box)(({ theme }) => ({
