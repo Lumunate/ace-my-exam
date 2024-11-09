@@ -41,7 +41,7 @@ export const NavbarContainer = styled(AppBar)({
   boxShadow: 'none',
 });
 
-export const NavbarContentWrapper = styled(Toolbar)({
+export const NavbarContentWrapper = styled(Toolbar)(({ theme }) => ({
   backgroundColor: '#FCFDFF',
   margin: '0 auto',
   width: '100%',
@@ -52,7 +52,10 @@ export const NavbarContentWrapper = styled(Toolbar)({
   alignItems: 'center',
   justifyContent: 'space-between',
   padding: '10px 20px',
-});
+  [theme.breakpoints.up('md')]: {
+    height: '60px',
+  },
+}));
 
 export const NavbarLinksContainer = styled(CommonNavbarBox)({});
 

@@ -7,7 +7,7 @@ import {
 } from '@mui/material';
 
 export const FeedbackContainer = styled(Box)(({ theme }) => ({
-  padding: '235px 0',
+  padding: '112px 0',
   textAlign: 'center',
   [theme.breakpoints.down('lg')]: {
     padding: '170px 0 100px',
@@ -24,8 +24,8 @@ export const FeedbackContainer = styled(Box)(({ theme }) => ({
 }));
 export const FeedbackIconHead = styled(Box)(({ theme }) => ({
   position: 'absolute',
-  left: '-50px',
-  top: '-60px',
+  left: '-38px',
+  top: '100px',
   [theme.breakpoints.down('lg')]: {
     left: '0px',
   },

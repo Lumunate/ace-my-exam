@@ -15,7 +15,6 @@ import {
   ResourcesTableContainer,
   StyledLink,
   StyledTable,
-  TablePara,
 } from '../ResourcesSteps.style';
 
 const topicQuestionsData = [
@@ -83,7 +82,7 @@ const TopicQuestionsTable: React.FC = () => {
           {topicQuestionsData.map((material, index) => (
             <TableRow key={index}>
               <TableCell>
-                <TablePara>{material.topic}</TablePara>
+                {material.topic}
               </TableCell>
               <TableCell>
                 <Box sx={{ display: 'flex', alignItems: 'center' }}>

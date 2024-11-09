@@ -18,14 +18,14 @@ const subjectsData: Record<string, SubjectOption[]> = {
     { name: 'Maths', icon: '/resources/math.svg' },
     { name: 'Chemistry', icon: '/resources/chemistry.svg' },
     { name: 'Physics', icon: '/resources/Physics.svg' },
-    { name: 'Biology', icon: '/resources/Physics.svg' },
+    { name: 'Biology', icon: '/resources/biology.svg' },
     { name: 'Further Maths', icon: '/resources/Furthermaths.svg' },
   ],
   School: [
     { name: 'Maths', icon: '/resources/math.svg' },
     { name: 'Chemistry', icon: '/resources/chemistry.svg' },
     { name: 'Physics', icon: '/resources/Physics.svg' },
-    { name: 'Biology', icon: '/resources/Physics.svg' },
+    { name: 'Biology', icon: '/resources/biology.svg' },
     { name: 'Science', icon: '/resources/Science.svg' },
   ],
 };

@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
 
 import FadeIn from '@/components/animations/FadeIn'; 
 import { Button } from '@/components/buttons/Button.style';
@@ -38,7 +39,7 @@ const Hero: React.FC = () => {
   return (
     <HeroWrapper>
       <HeroImageContainer>
-        <HeroImage src={'/home/hero-bg.png'} width={1197} height={100} alt="Hero background" />
+        <HeroImage src={'/home/hero-bg.webp'} width={0} height={0} sizes='100wv' fill alt="Hero background" />
         <HeroImageOverlay />
       </HeroImageContainer>
       <AppContentWrapper>
@@ -52,15 +53,19 @@ const Hero: React.FC = () => {
                   Based in Cambridge, UK, Acemyexam provides best-in-class personalised learning to students in order to achieve academic excellence, confidence, and academic growth.
                 </HeroContent>
                 <HeroContent sx={{ mt: '30px' }}>Excel Academically Today!</HeroContent>
-                <Button
-                  special
-                  fontSize='16px'
-                  borderRadius='50px'
-                  width='212px'
-                  height='60px'
-                >
+                <Link href={'/resources'}>
+                  <Button
+                    special
+                    fontSize='16px'
+                    borderRadius='50px'
+                    width='212px'
+                    height='60px'
+                  
+                  >
                   Get Started
-                </Button>
+                  </Button>
+                </Link>
+                
               </Box>
             </FadeIn>
           </HeroLeftContentCont>

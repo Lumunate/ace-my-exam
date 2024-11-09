@@ -17,7 +17,7 @@ export default function FeedbackPage() {
     <FeedbackContainer>
       <AppContentWrapper>
         <Grid container columns={24} sx={{ px:{xs: '0', md: '40px'}, maxWidth: '900px', mx: 'auto' }}>
-          <Grid size={{ xs: 24}} sx={{ mt: '80px', position: 'relative' }}>
+          <Grid size={{ xs: 24}} sx={{  position: 'relative' }}>
             <FeedbackHeadingTypography variant='h1'>
             Your Feedback Matters!
             </FeedbackHeadingTypography>

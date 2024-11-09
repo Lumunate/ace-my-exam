@@ -100,6 +100,20 @@ export const StyledSelectField = styled(Select)<{
   },
 }));
 
+export const CustomInputLabel = styled(MenuItem)({
+  color: '#818181',
+  fontWeight: 600,
+  fontSize: '16px', 
+  textTransform: 'capitalize',
+  fontFamily: 'Lato, sans-serif',
+  padding: '0',
+  background: 'none',
+  '&:hover ': {
+    background: 'none'
+  },
+
+});
+
 export const StyledFormControl = styled(FormControl)({
   margin: '16px 0',
   minWidth: 120,

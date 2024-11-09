@@ -93,7 +93,7 @@ const Stats: React.FC = () => {
   }, []);
 
   return (
-    <Box ref={statsWrapperRef} sx={{ position: 'relative' }}>
+    <Box ref={statsWrapperRef} sx={{ position: 'relative' ,height:'0px' }}>
       <StatsContentWrapper>
         <AppContentWrapper>
           <StatsCardHead>
