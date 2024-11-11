@@ -7,14 +7,15 @@ import {
   CreateDateColumn,
   UpdateDateColumn,
   JoinColumn,
-} from "typeorm";
-import { TopicalQuestion } from "./topical-question";
-import { RevisionNote } from "./revision-note";
+} from 'typeorm';
+
+import { RevisionNote } from './revision-note';
+import { TopicalQuestion } from './topical-question';
 
 export enum ContentType {
-  CHAPTER = "chapter",
-  TOPIC = "topic",
-  SUBTOPIC = "subtopic",
+  CHAPTER = 'chapter',
+  TOPIC = 'topic',
+  SUBTOPIC = 'subtopic',
 }
 
 export enum ContentLevel {
@@ -23,50 +24,50 @@ export enum ContentLevel {
   SUBTOPIC = 3,
 }
 
-@Entity("content")
+@Entity('content')
 export class Content {
   @PrimaryGeneratedColumn()
-  id!: number;
+    id!: number;
 
   @Column({ nullable: true })
-  parent_id!: number;
+    parent_id!: number;
 
   @ManyToOne(() => Content, (content) => content.children, {
-    onDelete: "CASCADE",
+    onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: "parent_id" })
-  parent!: Content;
+  @JoinColumn({ name: 'parent_id' })
+    parent!: Content;
 
   @OneToMany(() => Content, (content) => content.parent)
-  children!: Content[];
+    children!: Content[];
 
   @Column()
-  name!: string;
+    name!: string;
 
   @Column({
-    type: "enum",
+    type: 'enum',
     enum: ContentType,
   })
-  type!: ContentType;
+    type!: ContentType;
 
   @Column({
-    type: "int",
+    type: 'int',
     enum: ContentLevel,
   })
-  level!: ContentLevel;
+    level!: ContentLevel;
 
-  @Column({ type: "text", nullable: true })
-  description!: string;
+  @Column({ type: 'text', nullable: true })
+    description!: string;
 
   @OneToMany(() => TopicalQuestion, (topicalQuestion) => topicalQuestion.content)
-  topicalQuestions!: TopicalQuestion[];
+    topicalQuestions!: TopicalQuestion[];
 
   @OneToMany(() => RevisionNote, (revisionNote) => revisionNote.content)
-  revisionNotes!: RevisionNote[];
+    revisionNotes!: RevisionNote[];
 
   @CreateDateColumn()
-  created_at!: Date;
+    created_at!: Date;
 
   @UpdateDateColumn()
-  updated_at!: Date;
+    updated_at!: Date;
 }

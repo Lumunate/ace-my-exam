@@ -1,8 +1,8 @@
-import { Content, ContentType } from "@/entities/content";
-import { Resource } from "@/entities/resource";
-import { TopicalQuestion } from "@/entities/topical-question";
-import { TopicalQuestionResource, TopicalQuestionResourceType } from "@/entities/topical-resource-resource";
-import AppDataSource from "@/utils/typeorm";
+import { Content, ContentType } from '@/entities/content';
+import { Resource } from '@/entities/resource';
+import { TopicalQuestion } from '@/entities/topical-question';
+import { TopicalQuestionResource, TopicalQuestionResourceType } from '@/entities/topical-resource-resource';
+import AppDataSource from '@/utils/typeorm';
 
 export const TopicalQuestionRepository = AppDataSource.getRepository(TopicalQuestion).extend({
   async createWithResources(data: {
@@ -12,6 +12,7 @@ export const TopicalQuestionRepository = AppDataSource.getRepository(TopicalQues
     markingScheme: string
   }) {
     const queryRunner = AppDataSource.createQueryRunner();
+
     await queryRunner.connect();
     await queryRunner.startTransaction();
 
@@ -20,6 +21,7 @@ export const TopicalQuestionRepository = AppDataSource.getRepository(TopicalQues
       const content = await queryRunner.manager.findOne(Content, {
         where: { id: data.subtopicId, type: ContentType.SUBTOPIC }
       });
+
       if (!content) throw new Error('Invalid subtopic ID');
 
       // Create topical question

@@ -1,31 +1,32 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { RevisionNoteResource } from "./revision-note-resource";
-import { PastPaperResource } from "./past-paper-resource";
-import { TopicalQuestionResource } from "./topical-resource-resource";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity("resource")
+import { PastPaperResource } from './past-paper-resource';
+import { RevisionNoteResource } from './revision-note-resource';
+import { TopicalQuestionResource } from './topical-resource-resource';
+
+@Entity('resource')
 export class Resource {
   @PrimaryGeneratedColumn()
-  id!: number;
+    id!: number;
 
   @Column()
-  url!: string;
+    url!: string;
 
   @Column()
-  type!: string;
+    type!: string;
 
   @OneToMany(() => PastPaperResource, (ppr) => ppr.resource)
-  pastPaperResources!: PastPaperResource[];
+    pastPaperResources!: PastPaperResource[];
 
   @OneToMany(() => TopicalQuestionResource, (tqr) => tqr.resource)
-  topicalQuestionResources!: TopicalQuestionResource[];
+    topicalQuestionResources!: TopicalQuestionResource[];
 
   @OneToMany(() => RevisionNoteResource, (rnr) => rnr.resource)
-  revisionNoteResources!: RevisionNoteResource[];
+    revisionNoteResources!: RevisionNoteResource[];
 
   @CreateDateColumn()
-  created_at!: Date;
+    created_at!: Date;
 
   @UpdateDateColumn()
-  updated_at!: Date;
+    updated_at!: Date;
 }

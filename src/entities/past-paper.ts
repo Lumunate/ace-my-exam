@@ -1,23 +1,24 @@
-import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
-import { PastPaperResource } from "./past-paper-resource";
+import { Column, CreateDateColumn, Entity, OneToMany, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity("past_paper")
+import { PastPaperResource } from './past-paper-resource';
+
+@Entity('past_paper')
 export class PastPaper {
   @PrimaryGeneratedColumn()
-  id!: number;
+    id!: number;
 
   @Column()
-  title!: string;
+    title!: string;
 
   @Column()
-  year!: number;
+    year!: number;
 
   @OneToMany(() => PastPaperResource, (ppr) => ppr.pastPaper)
-  resources!: PastPaperResource[];
+    resources!: PastPaperResource[];
 
   @CreateDateColumn()
-  created_at!: Date;
+    created_at!: Date;
 
   @UpdateDateColumn()
-  updated_at!: Date;
+    updated_at!: Date;
 }

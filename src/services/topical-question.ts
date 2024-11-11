@@ -1,4 +1,4 @@
-import { TopicalQuestionRepository } from "@/repositories/topical-question";
+import { TopicalQuestionRepository } from '@/repositories/topical-question';
 
 export async function addTopicalQuestion(data: {
   title: string;

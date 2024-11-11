@@ -7,33 +7,34 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from "typeorm";
-import { Content } from "./content";
-import { RevisionNoteResource } from "./revision-note-resource";
+} from 'typeorm';
 
-@Entity("revision_note")
+import { Content } from './content';
+import { RevisionNoteResource } from './revision-note-resource';
+
+@Entity('revision_note')
 export class RevisionNote {
   @PrimaryGeneratedColumn()
-  id!: number;
+    id!: number;
 
   @Column()
-  content_id!: number;
+    content_id!: number;
 
   @Column()
-  title!: string;
+    title!: string;
 
   @ManyToOne(() => Content, (content) => content.revisionNotes, {
-    onDelete: "CASCADE",
+    onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: "content_id" })
-  content!: Content;
+  @JoinColumn({ name: 'content_id' })
+    content!: Content;
 
   @OneToMany(() => RevisionNoteResource, (rnr) => rnr.revisionNote)
-  resources!: RevisionNoteResource[];
+    resources!: RevisionNoteResource[];
 
   @CreateDateColumn()
-  created_at!: Date;
+    created_at!: Date;
 
   @UpdateDateColumn()
-  updated_at!: Date;
+    updated_at!: Date;
 }

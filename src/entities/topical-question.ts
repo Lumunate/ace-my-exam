@@ -7,33 +7,34 @@ import {
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
-} from "typeorm";
-import { Content } from "./content";
-import { TopicalQuestionResource } from "./topical-resource-resource";
+} from 'typeorm';
 
-@Entity("topical_question")
+import { Content } from './content';
+import { TopicalQuestionResource } from './topical-resource-resource';
+
+@Entity('topical_question')
 export class TopicalQuestion {
   @PrimaryGeneratedColumn()
-  id!: number;
+    id!: number;
 
   @Column()
-  content_id!: number;
+    content_id!: number;
 
   @Column()
-  title!: string;
+    title!: string;
 
   @ManyToOne(() => Content, (content) => content.topicalQuestions, {
-    onDelete: "CASCADE",
+    onDelete: 'CASCADE',
   })
-  @JoinColumn({ name: "content_id" })
-  content!: Content;
+  @JoinColumn({ name: 'content_id' })
+    content!: Content;
 
   @OneToMany(() => TopicalQuestionResource, (tqr) => tqr.topicalQuestion)
-  resources!: TopicalQuestionResource[];
+    resources!: TopicalQuestionResource[];
 
   @CreateDateColumn()
-  created_at!: Date;
+    created_at!: Date;
 
   @UpdateDateColumn()
-  updated_at!: Date;
+    updated_at!: Date;
 }

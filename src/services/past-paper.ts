@@ -1,4 +1,4 @@
-import { PastPaperRepository } from "@/repositories/past-paper";
+import { PastPaperRepository } from '@/repositories/past-paper';
 
 export async function createPastPaper(data: {
   title: string;
