@@ -6,14 +6,16 @@ import { FC, useEffect, useRef } from 'react';
 import { InstituteWrapper, InstituteTrack } from './Institutes.style';
 
 const instituteImages = [
-  '/home/pearson.svg',
-  '/home/warwick.svg',
-  '/home/UOC.svg',
-  '/home/aqa.svg',
-  '/home/UWM.svg',
-  '/home/UCL.svg',
+  '/home/tonbridgeLogo.svg',
   '/home/imperial.svg',
+  '/home/UOC.svg',
+  '/home/UCL.svg',
+  '/home/Caterham.svg',
+  '/home/UWM.svg',
+  '/home/ladiesLogo.svg',
   '/home/SPC.svg',
+  '/home/institution2.svg',
+  '/home/oxfordLogo.svg',
 ];
 
 const Institutes: FC = () => {
@@ -27,13 +29,13 @@ const Institutes: FC = () => {
 
       if (viewportWidth < 576) {
         img.style.height = '40px';
-        img.style.padding = '0 20px'; 
+        img.style.padding = '0 10px'; 
       } else if (viewportWidth < 768) {
-        img.style.height = '60px'; 
-        img.style.padding = '0 30px';
+        img.style.height = '40px'; 
+        img.style.padding = '0 20px';
       } else {
-        img.style.height = '100px'; 
-        img.style.padding = '0 40px';
+        img.style.height = '50px'; 
+        img.style.padding = '0 20px';
       }
     };
 
@@ -72,14 +74,21 @@ const Institutes: FC = () => {
 
       const updatedTrackWidth = track.scrollWidth;
 
+      // GSAP smooth animation for continuous scroll
       const tl = gsap.timeline({ repeat: -1, ease: 'none' });
 
       tl.to(track, {
         x: -updatedTrackWidth / 2,
-        duration: 20,
+        duration: 20, 
         ease: 'linear',
+        modifiers: {
+          x: function (x) {
+            return parseFloat(x) % (updatedTrackWidth / 1) + 'px';
+          },
+        },
       });
 
+      // Event listener to pause/resume scrolling on hover
       track.addEventListener('mouseenter', () => {
         tl.pause();
       });
@@ -88,6 +97,7 @@ const Institutes: FC = () => {
         tl.resume();
       });
 
+      // Ensure image size updates on window resize
       window.addEventListener('resize', () => {
         const imgs = Array.from(track.getElementsByTagName('img')) as HTMLImageElement[];
 

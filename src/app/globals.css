@@ -10,7 +10,7 @@ body {
 
 body {
   font-family: "Lato", sans-serif;
-  background: #fffbfb;
+  background: #fffbfb !important;
 }
 
 * {

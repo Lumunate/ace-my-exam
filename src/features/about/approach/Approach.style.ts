@@ -80,7 +80,7 @@ export const  ApproachCardHeading = styled(Typography)(({ theme }) => ({
 
 export const  ApproachCardPara = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
-  fontSize: '14px',
+  fontSize: '18px',
   color: '#000000',
   fontFamily: 'Lato, sans-serif',
   [theme.breakpoints.down('sm')]: {

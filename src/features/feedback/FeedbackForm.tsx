@@ -1,7 +1,7 @@
 'use client';
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, CircularProgress, FormHelperText, InputLabel, MenuItem } from '@mui/material';
+import { Box, CircularProgress, FormHelperText, InputLabel, MenuItem, Rating } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 import DatePicker from 'react-datepicker';
@@ -10,7 +10,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import 'react-datepicker/dist/react-datepicker.css';
 
 import { Button } from '@/components/buttons/Button.style';
-import { CustomFormControl, StyledSelectField, StyledTextField } from '@/components/form/Form.style';
+import { CustomFormControl, StyledSelectField, StyledTextField, CustomInputLabel } from '@/components/form/Form.style';
 import { useSnackbar } from '@/contexts/SnackbarContext';
 import { useSubmitFeedbackForm } from '@/hooks/useFeedbackForm';
 import { feedbackSchema, IFeedback } from '@/types/feedback';
@@ -22,7 +22,7 @@ const defaultValues: IFeedback = {
   lastName: '',
   course: '',
   sessionDate: new Date(),
-  experience: '',
+  experience: '4',  // Default to 4 stars as string
   feedback: '',
 };
 
@@ -37,19 +37,26 @@ export default function FeedbackForm() {
     formState: { errors },
   } = useForm<IFeedback>({
     resolver: zodResolver(feedbackSchema),
-    defaultValues
+    defaultValues,
   });
 
   const { mutate: submitForm, isLoading } = useSubmitFeedbackForm();
+  
   const onSubmit: SubmitHandler<IFeedback> = async (data) => {
-    submitForm(data, {
+    // Convert the experience value to string before submitting (if it's not already a string)
+    const formattedData = {
+      ...data,
+      experience: String(data.experience),
+    };
+
+    submitForm(formattedData, {
       onSuccess: () => {
         showSnackbar('Form submitted successfully!');
         reset();
       },
       onError: () => {
         showSnackbar('Failed to submit Contact Form. Please try again later!');
-      }
+      },
     });
   };
 
@@ -60,10 +67,10 @@ export default function FeedbackForm() {
           <Grid
             container
             columns={24}
-            columnSpacing={{xs: '20px', lg: '40px'}}
-            rowSpacing={{xs: '20px', lg: '40px'}}
+            columnSpacing={{ xs: '20px', lg: '40px' }}
+            rowSpacing={{ xs: '20px', lg: '40px' }}
             alignItems={'start'}
-            sx={{mb: '40px'}}
+            sx={{ mb: '40px' }}
           >
             <Grid size={{ xs: 24, md: 12 }}>
               <StyledTextField
@@ -74,8 +81,8 @@ export default function FeedbackForm() {
                 error={!!errors.name}
                 helperText={errors.name?.message}
                 {...register('name')}
-                inputfontsize='20px'
-                labelfontsize='14px'
+                inputfontsize='18px'
+                labelfontsize='16px'
               />
             </Grid>
             <Grid size={{ xs: 24, md: 12 }}>
@@ -87,18 +94,13 @@ export default function FeedbackForm() {
                 error={!!errors.lastName}
                 helperText={errors.lastName?.message}
                 {...register('lastName')}
-                inputfontsize='20px'
-                labelfontsize='14px'
+                inputfontsize='18px'
+                labelfontsize='16px'
               />
             </Grid>
 
             <Grid size={{ xs: 24, md: 12 }}>
-              <CustomFormControl
-                fullWidth
-                variant='standard'
-                labelfontsize='14px'
-                error={!!errors.course}
-              >
+              <CustomFormControl fullWidth variant='standard' labelfontsize='16px' error={!!errors.course}>
                 <InputLabel id='course'>Course/Subject</InputLabel>
                 <Controller
                   name='course'
@@ -109,15 +111,10 @@ export default function FeedbackForm() {
                       value={field.value}
                       onChange={field.onChange}
                       variant='standard'
-                      inputfontsize='20px'
+                      inputfontsize='18px'
                       fullWidth
                       IconComponent={() => (
-                        <Image
-                          src='/icons/down.svg'
-                          alt='Custom Dropdown Icon'
-                          width={7}
-                          height={8}
-                        />
+                        <Image src='/icons/down.svg' alt='Custom Dropdown Icon' width={7} height={8} />
                       )}
                       MenuProps={{
                         disableScrollLock: true,
@@ -129,11 +126,7 @@ export default function FeedbackForm() {
                     </StyledSelectField>
                   )}
                 />
-                {errors.course && (
-                  <FormHelperText error>
-                    {errors.course?.message}
-                  </FormHelperText>
-                )}
+                {errors.course && <FormHelperText error>{errors.course?.message}</FormHelperText>}
               </CustomFormControl>
             </Grid>
 
@@ -164,7 +157,7 @@ export default function FeedbackForm() {
                   )}
                 />
                 {errors.sessionDate && (
-                  <FormHelperText error sx={{fontSize:'10px'}}>
+                  <FormHelperText error sx={{ fontSize: '10px' }}>
                     {errors.sessionDate?.message}
                   </FormHelperText>
                 )}
@@ -172,51 +165,29 @@ export default function FeedbackForm() {
             </Grid>
 
             <Grid size={{ xs: 24, md: 12 }}>
-              <CustomFormControl
-                fullWidth
-                variant='standard'
-                labelfontsize='14px'
-                error={!!errors.experience}
-              >
-                <InputLabel id='experience'>Rate Your Experience</InputLabel>
+              <Box sx={{ width: '100%', display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
+                <CustomInputLabel id='experience'>Rate Your Experience</CustomInputLabel>
                 <Controller
                   name='experience'
                   control={control}
                   render={({ field }) => (
-                    <StyledSelectField
-                      label='Rate Your Experience'
-                      labelId='experience'
-                      value={field.value}
-                      onChange={field.onChange}
-                      variant='standard'
-                      inputfontsize='20px'
-                      fullWidth
-                      IconComponent={() => (
-                        <Image
-                          src='/icons/down.svg'
-                          alt='Custom Dropdown Icon'
-                          width={7}
-                          height={8}
-                        />
-                      )}
-                      MenuProps={{
-                        disableScrollLock: true,
+                    <Rating
+                      name='experience'
+                      value={field.value ? Number(field.value) : 4} 
+                      onChange={(_, newValue) => field.onChange(String(newValue))}  
+                      size='large'
+                      icon={<Image src='/icons/filledStar.svg' alt='Filled Star' width={26} height={25} />} 
+                      emptyIcon={<Image src='/icons/unFilledStar.svg' alt='Outlined Star' width={26} height={25} />} 
+                      sx={{
+                        '& .MuiRating-icon': {
+                          marginRight: '5px', 
+                        }
                       }}
-                    >
-                      <MenuItem value='1'>1 - Poor</MenuItem>
-                      <MenuItem value='2'>2 - Fair</MenuItem>
-                      <MenuItem value='3'>3 - Good</MenuItem>
-                      <MenuItem value='4'>4 - Very Good</MenuItem>
-                      <MenuItem value='5'>5 - Excellent</MenuItem>
-                    </StyledSelectField>
+                    />
                   )}
                 />
-                {errors.experience && (
-                  <FormHelperText error>
-                    {errors.experience?.message}
-                  </FormHelperText>
-                )}
-              </CustomFormControl>
+                {errors.experience && <FormHelperText error>{errors.experience?.message}</FormHelperText>}
+              </Box>
             </Grid>
 
             <Grid size={{ xs: 24 }}>
@@ -230,20 +201,13 @@ export default function FeedbackForm() {
                 error={!!errors.feedback}
                 helperText={errors.feedback?.message}
                 {...register('feedback')}
-                inputfontsize='20px'
-                labelfontsize='14px'
+                inputfontsize='18px'
+                labelfontsize='16px'
               />
             </Grid>
           </Grid>
 
-          <Button
-            type='submit'
-            special
-            fontSize='14px'
-            borderRadius='4px'
-            width='170px'
-            height='41px'
-          >
+          <Button type='submit' special fontSize='14px' borderRadius='4px' width='170px' height='41px'>
             {isLoading ? <CircularProgress size={24} /> : 'Submit Feedback'}
           </Button>
         </form>

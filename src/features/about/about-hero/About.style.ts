@@ -25,16 +25,6 @@ export const AboutHeroHeading = styled(CommonHeroTypography)(({ theme }) => ({
     fontSize: '30px',
     lineHeight: 'normal',
   },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '24px',
-    maxWidth: '450px',
-    lineHeight: 'normal',
-    marginTop: '20px',
-  },
-  [theme.breakpoints.down(400)]: {
-    fontSize: '16px',
-    marginTop: '10px',
-  },
 }));
 
 export const AboutHeroContent = styled(CommonHeroTypography)(({ theme }) => ({
@@ -46,13 +36,6 @@ export const AboutHeroContent = styled(CommonHeroTypography)(({ theme }) => ({
   [theme.breakpoints.down('xl')]: {
     fontSize: '16px',
   },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '14px',
-    lineHeight: 'normal',
-  },
-  [theme.breakpoints.down(400)]: {
-    fontSize: '12px',
-  }
 }));
 
 export const AboutHeroWrapper = styled(Box)(({ theme }) => ({
@@ -71,6 +54,9 @@ export const AboutHeroWrapper = styled(Box)(({ theme }) => ({
     [theme.breakpoints.down('lg')]: {
       borderRadius: '50px 50px 0 0',
     },
+    [theme.breakpoints.down('md')]: {
+      height: '100px',
+    },
   },
 }));
 
@@ -78,7 +64,7 @@ export const AboutHeroImage = styled(Image)({
   width: '100%',
   height: '100%',
   objectFit: 'cover',
-  objectPosition: 'top',
+  objectPosition: 'center',
 });
 
 export const AboutHeroImageContainer = styled(Box)({
@@ -96,19 +82,13 @@ export const AboutHeroImageOverlay = styled(Box)({
   left: 0,
   width: '100%',
   height: '100%',
-  background: 'linear-gradient(106deg, rgba(0, 0, 0, 0.29) 0.91%, rgba(218, 150, 148, 0.45) 99.09%)',
+  background: 'linear-gradient(0deg, rgba(0, 0, 0, 0.46) 0%, rgba(0, 0, 0, 0.46) 100%)',
+  filter: 'drop-shadow(0px 4px 20.8px rgba(0, 0, 0, 0.55)'
 });
 
 export const AboutHeroContentContainer = styled(Box)(({ theme }) => ({
-  padding: '265px 0 244px',
+  padding: '244px 0',
   [theme.breakpoints.down('lg')]: {
-    padding: '180px 0 300px',
     flexWrap: 'wrap'
-  },
-  [theme.breakpoints.down('sm')]: {
-    padding: '160px 0 280px',
-  },
-  [theme.breakpoints.down(400)]: {
-    padding: '100px 0 240px',
   },
 }));

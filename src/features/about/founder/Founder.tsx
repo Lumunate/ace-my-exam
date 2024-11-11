@@ -38,14 +38,7 @@ const AboutFounder: React.FC = () => {
       subject: 'Physics (First Class Honours)',
       institution: 'Imperial College London',
     },
-    {
-      degree: 'A-levels',
-      institution: 'All A grades: Chemistry, Physics, Maths, Urdu',
-    },
-    {
-      degree: 'O-levels',
-      institution: "9 A's and 2 B's",
-    },
+   
   ];
 
   const stats = [
@@ -97,10 +90,16 @@ const AboutFounder: React.FC = () => {
                       width={23}
                       height={23}
                       alt="icon"
-                      style={{ marginRight: '8px' }}
+                      style={{ marginRight: '8px'}}
                     />
                     <FounderSubHeading>
-                      <strong>{edu.degree}</strong> {edu.subject && `in ${edu.subject}`} {edu.institution && <strong>{`– ${edu.institution}`}</strong>}
+                      <strong>{edu.degree}</strong> {edu.subject && `in ${edu.subject}`} 
+                      {edu.institution && (
+                        <strong>
+                          {' – '}
+                          <span style={{ whiteSpace: 'nowrap' }}>{edu.institution}</span>
+                        </strong>
+                      )}
                     </FounderSubHeading>
                   </FounderListItem>
                 ))}
@@ -109,7 +108,7 @@ const AboutFounder: React.FC = () => {
           </Grid>
 
           <Grid size={{ xs: 24, lg: 10 }} sx={{ px: {xs: '0', md: '15px'} }}>
-            <FadeIn direction="up" distance={500} duration={1.5} delay={0.6}>
+            <FadeIn direction="up" distance={300} duration={1.5} delay={0.2}>
               <FounderImgHead>
                 <Image src="/about/founder.webp" alt="founder" layout="fill" objectFit="cover" />
               </FounderImgHead>

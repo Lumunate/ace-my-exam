@@ -144,7 +144,7 @@ const About: React.FC = () => {
                   />
                 </Grid>
               </Grid>
-              <AboutLink href={'#'}>
+              <AboutLink href={'/about'}>
                 Learn More
                 <Image
                   src={'/icons/arrow-right.svg'}
