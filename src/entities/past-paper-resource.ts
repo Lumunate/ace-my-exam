@@ -3,9 +3,9 @@ import { PastPaper } from "./past-paper";
 import { Resource } from "./resource";
 
 export enum PastPaperResourceType {
-  QUESTION_PAPER = "question_paper",
-  MARKING_SCHEME = "marking_scheme",
-  SOLUTION_BOOKLET = "solution_booklet",
+  QUESTION_PAPER = "QUESTION_PAPER",
+  MARKING_SCHEME = "MARKING_SCHEME",
+  SOLUTION_BOOKLET = "SOLUTION_BOOKLET",
 }
 
 @Entity("past_paper_resource")

@@ -3,8 +3,8 @@ import { TopicalQuestion } from "./topical-question";
 import { Resource } from "./resource";
 
 export enum TopicalQuestionResourceType {
-  QUESTION_PAPER = "question_paper",
-  MARKING_SCHEME = "marking_scheme",
+  QUESTION_PAPER = "QUESTION_PAPER",
+  MARKING_SCHEME = "MARKING_SCHEME",
 }
 
 @Entity("topical_question_resource")
