@@ -25,16 +25,6 @@ export const AboutHeroHeading = styled(CommonHeroTypography)(({ theme }) => ({
     fontSize: '30px',
     lineHeight: 'normal',
   },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '24px',
-    maxWidth: '450px',
-    lineHeight: 'normal',
-    marginTop: '20px',
-  },
-  [theme.breakpoints.down(400)]: {
-    fontSize: '16px',
-    marginTop: '10px',
-  },
 }));
 
 export const AboutHeroContent = styled(CommonHeroTypography)(({ theme }) => ({
@@ -46,13 +36,6 @@ export const AboutHeroContent = styled(CommonHeroTypography)(({ theme }) => ({
   [theme.breakpoints.down('xl')]: {
     fontSize: '16px',
   },
-  [theme.breakpoints.down('sm')]: {
-    fontSize: '14px',
-    lineHeight: 'normal',
-  },
-  [theme.breakpoints.down(400)]: {
-    fontSize: '12px',
-  }
 }));
 
 export const AboutHeroWrapper = styled(Box)(({ theme }) => ({
@@ -104,15 +87,8 @@ export const AboutHeroImageOverlay = styled(Box)({
 });
 
 export const AboutHeroContentContainer = styled(Box)(({ theme }) => ({
-  padding: '265px 0 244px',
+  padding: '244px 0',
   [theme.breakpoints.down('lg')]: {
-    padding: '180px 0 300px',
     flexWrap: 'wrap'
-  },
-  [theme.breakpoints.down('sm')]: {
-    padding: '160px 0 280px',
-  },
-  [theme.breakpoints.down(400)]: {
-    padding: '100px 0 240px',
   },
 }));

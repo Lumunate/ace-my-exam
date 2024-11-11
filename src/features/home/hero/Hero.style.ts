@@ -64,7 +64,10 @@ export const HeroContent = styled(CommonHeroTypography)(({ theme }) => ({
 
 export const HeroWrapper = styled(Box)({
   width: '100%',
+  minHeight: 'calc(100vh + 135px)',
   position: 'relative',
+  display: 'flex', 
+  alignItems: 'center'
 });
 
 export const HeroImage = styled(Image)({
