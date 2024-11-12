@@ -14,12 +14,15 @@ const ScrollingFadeOut = ({ children }: { children: React.ReactNode }) => {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: 'top  center',
-        end: '+=30%',
+        end: '+=70%',
         scrub: true,
         pin: true,
         pinSpacing: false,
         onUpdate: (self) => {
-          const opacity = 1 - self.progress;
+            let opacity = 1;
+            if (self.progress > 0.5) {
+            opacity = gsap.utils.interpolate(1, 0, (self.progress - 0.5) * 2);
+            }
 
           gsap.set(sectionRef.current, { opacity: opacity });
         },
