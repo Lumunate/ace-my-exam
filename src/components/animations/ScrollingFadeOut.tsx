@@ -19,10 +19,11 @@ const ScrollingFadeOut = ({ children }: { children: React.ReactNode }) => {
         pin: true,
         pinSpacing: false,
         onUpdate: (self) => {
-            let opacity = 1;
-            if (self.progress > 0.5) {
+          let opacity = 1;
+
+          if (self.progress > 0.5) {
             opacity = gsap.utils.interpolate(1, 0, (self.progress - 0.5) * 2);
-            }
+          }
 
           gsap.set(sectionRef.current, { opacity: opacity });
         },
