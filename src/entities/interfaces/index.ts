@@ -1,4 +1,4 @@
-import { PastPaperResourceType } from "../enums";
+import { PastPaperResourceType } from '../enums';
 
 export interface IContent {
   id: number;

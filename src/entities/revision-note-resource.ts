@@ -1,24 +1,25 @@
 
 import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
+
 import { BaseEntity } from './base-entity';
-import { RevisionNote } from './revision-note';
-import { Resource } from './resource';
 import { RevisionNoteResourceType } from './enums/resource-types';
+import { Resource } from './resource';
+import { RevisionNote } from './revision-note';
 
 @Entity('revision_note_resource')
 export class RevisionNoteResource extends BaseEntity {
   @Column()
-  revision_note_id: number;
+    revision_note_id: number;
 
   @Column()
-  resource_id: number;
+    resource_id: number;
 
   @Column({
     type: 'enum',
     enum: RevisionNoteResourceType,
     default: RevisionNoteResourceType.NOTE
   })
-  resource_type: RevisionNoteResourceType;
+    resource_type: RevisionNoteResourceType;
 
   @ManyToOne(
     'RevisionNote',
@@ -28,7 +29,7 @@ export class RevisionNoteResource extends BaseEntity {
     }
   )
   @JoinColumn({ name: 'revision_note_id' })
-  revisionNote?: RevisionNote;
+    revisionNote?: RevisionNote;
 
   @ManyToOne(
     'Resource',
@@ -37,5 +38,5 @@ export class RevisionNoteResource extends BaseEntity {
     }
   )
   @JoinColumn({ name: 'resource_id' })
-  resource?: Resource;
+    resource?: Resource;
 }
