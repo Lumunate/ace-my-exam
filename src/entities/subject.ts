@@ -3,6 +3,7 @@ import { BaseEntity } from "./base-entity";
 import { Content } from "./content";
 import type { SubjectMetadata } from "./enums/subject-types";
 import { SubjectResourceType } from "./enums/subject-types";
+import { PastPaper } from "./past-paper";
 
 @Entity("subjects")
 export class Subject extends BaseEntity {
@@ -27,6 +28,9 @@ export class Subject extends BaseEntity {
 
   @OneToMany(() => Content, (content) => content.subject)
   contents: Content[];
+
+  @OneToMany(() => PastPaper, (ppr) => ppr.subject)
+  pastPapers: PastPaper[];
 
   addTag(tag: string): void {
     if (!this.metadata.tags) {
