@@ -2,7 +2,7 @@ import { Entity, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 
 import { BaseEntity } from './base-entity';
 import { PastPaperResource } from './past-paper-resource';
-import { Subject } from './subject';
+import type { Subject } from './subject';
 @Entity("past_paper")
 export class PastPaper extends BaseEntity {
   @Column()
@@ -16,7 +16,7 @@ export class PastPaper extends BaseEntity {
   })
   resources?: PastPaperResource[];
 
-  @ManyToOne(() => Subject, (subject) => subject.contents, {
+  @ManyToOne("Subject", (subject: Subject) => subject.pastPapers, {
     onDelete: "SET NULL",
   })
   @JoinColumn({ name: "subject_id" })
