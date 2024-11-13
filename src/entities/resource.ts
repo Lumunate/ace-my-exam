@@ -1,24 +1,13 @@
 
-import { Entity, Column, OneToMany } from 'typeorm';
+import { Entity, Column } from 'typeorm';
 import { BaseEntity } from './base-entity';
-import { PastPaperResource } from './past-paper-resource';
-import { TopicalQuestionResource } from './topical-question-resource';
-import { RevisionNoteResource } from './revision-note-resource';
+import { IResource } from './interfaces';
 
 @Entity('resource')
-export class Resource extends BaseEntity {
+export class Resource extends BaseEntity implements IResource {
   @Column()
-  url!: string;
+  url: string;
 
   @Column()
-  type!: string;
-
-  @OneToMany(() => PastPaperResource, ppr => ppr.resource)
-  pastPaperResources!: PastPaperResource[];
-
-  @OneToMany(() => TopicalQuestionResource, tqr => tqr.resource)
-  topicalQuestionResources!: TopicalQuestionResource[];
-
-  @OneToMany(() => RevisionNoteResource, rnr => rnr.resource)
-  revisionNoteResources!: RevisionNoteResource[];
+  type: string;
 }
