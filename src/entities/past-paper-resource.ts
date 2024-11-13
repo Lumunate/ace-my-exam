@@ -1,0 +1,33 @@
+
+import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
+import { BaseEntity } from './base-entity';
+import { PastPaper } from './past-paper';
+import { Resource } from './resource';
+import { PastPaperResourceType } from './enums';
+
+@Entity('past_paper_resource')
+export class PastPaperResource extends BaseEntity {
+  @Column()
+  past_paper_id!: number;
+
+  @Column()
+  resource_id!: number;
+
+  @Column({
+    type: 'enum',
+    enum: PastPaperResourceType
+  })
+  resource_type!: PastPaperResourceType;
+
+  @ManyToOne(() => PastPaper, pastPaper => pastPaper.resources, {
+    onDelete: 'CASCADE'
+  })
+  @JoinColumn({ name: 'past_paper_id' })
+  pastPaper!: PastPaper;
+
+  @ManyToOne(() => Resource, resource => resource.pastPaperResources, {
+    onDelete: 'CASCADE'
+  })
+  @JoinColumn({ name: 'resource_id' })
+  resource!: Resource;
+}
