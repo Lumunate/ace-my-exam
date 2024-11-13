@@ -1,23 +1,24 @@
 
 import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
+
 import { BaseEntity } from './base-entity';
 import { TopicalQuestionResourceType } from './enums';
-import { TopicalQuestion } from './topical-question';
 import { Resource } from './resource';
+import { TopicalQuestion } from './topical-question';
 
 @Entity('topical_question_resource')
 export class TopicalQuestionResource extends BaseEntity {
   @Column()
-  topical_question_id: number;
+    topical_question_id: number;
 
   @Column()
-  resource_id: number;
+    resource_id: number;
 
   @Column({
     type: 'enum',
     enum: TopicalQuestionResourceType,
   })
-  resource_type: TopicalQuestionResourceType;
+    resource_type: TopicalQuestionResourceType;
 
   @ManyToOne(
     'TopicalQuestion',
@@ -27,7 +28,7 @@ export class TopicalQuestionResource extends BaseEntity {
     }
   )
   @JoinColumn({ name: 'topical_question_id' })
-  topicalQuestion?: TopicalQuestion;
+    topicalQuestion?: TopicalQuestion;
 
   @ManyToOne(
     'Resource',
@@ -36,5 +37,5 @@ export class TopicalQuestionResource extends BaseEntity {
     }
   )
   @JoinColumn({ name: 'resource_id' })
-  resource?: Resource;
+    resource?: Resource;
 }

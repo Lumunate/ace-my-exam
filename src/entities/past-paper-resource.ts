@@ -1,23 +1,24 @@
 
 import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
+
 import { BaseEntity } from './base-entity';
+import { PastPaperResourceType } from './enums';
 import { PastPaper } from './past-paper';
 import { Resource } from './resource';
-import { PastPaperResourceType } from './enums';
 
 @Entity('past_paper_resource')
 export class PastPaperResource extends BaseEntity {
   @Column()
-  past_paper_id: number;
+    past_paper_id: number;
 
   @Column()
-  resource_id: number;
+    resource_id: number;
 
   @Column({
     type: 'enum',
     enum: PastPaperResourceType,
   })
-  resource_type: PastPaperResourceType;
+    resource_type: PastPaperResourceType;
 
   @ManyToOne(
     'PastPaper',
@@ -27,7 +28,7 @@ export class PastPaperResource extends BaseEntity {
     }
   )
   @JoinColumn({ name: 'past_paper_id' })
-  pastPaper?: PastPaper;
+    pastPaper?: PastPaper;
 
   @ManyToOne(
     'Resource',
@@ -36,5 +37,5 @@ export class PastPaperResource extends BaseEntity {
     }
   )
   @JoinColumn({ name: 'resource_id' })
-  resource?: Resource;
+    resource?: Resource;
 }

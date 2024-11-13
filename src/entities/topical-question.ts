@@ -1,18 +1,17 @@
 
 import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
+
 import { BaseEntity } from './base-entity';
 import { Content } from './content';
 import { TopicalQuestionResource } from './topical-question-resource';
-import { ITopicalQuestion } from './interfaces';
-
 
 @Entity('topical_question')
 export class TopicalQuestion extends BaseEntity {
   @Column()
-  content_id: number;
+    content_id: number;
 
   @Column()
-  title: string;
+    title: string;
 
   @ManyToOne(
     'Content',
@@ -21,7 +20,7 @@ export class TopicalQuestion extends BaseEntity {
     }
   )
   @JoinColumn({ name: 'content_id' })
-  content?: Content;
+    content?: Content;
 
   @OneToMany(
     'TopicalQuestionResource',
@@ -30,5 +29,5 @@ export class TopicalQuestion extends BaseEntity {
       cascade: true
     }
   )
-  resources?: TopicalQuestionResource[];
+    resources?: TopicalQuestionResource[];
 }

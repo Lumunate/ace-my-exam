@@ -4,7 +4,7 @@ import Feedback from './feedback';
 export {
   Contact,
   Feedback,
-}
+};
 
 // Next auth
 export { User, AccountEntity, SessionEntity, VerificationTokenEntity } from './user';
@@ -19,4 +19,3 @@ export { TopicalQuestion } from './topical-question';
 export { TopicalQuestionResource } from './topical-question-resource';
 export { RevisionNote } from './revision-note';
 export { RevisionNoteResource } from './revision-note-resource';
-
