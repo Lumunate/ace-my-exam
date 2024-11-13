@@ -8,7 +8,7 @@ export async function POST(request: NextRequest) {
     await initializeDataSource();
     const body = await request.json();
 
-    await createFullChapterStructure(body);
+    createFullChapterStructure(body);
     return NextResponse.json({ error: "K" }, { status: 200 });
   } catch (error: any) {
     console.error(error);
