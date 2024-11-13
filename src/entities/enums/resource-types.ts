@@ -20,3 +20,9 @@ export enum TopicalQuestionResourceType {
   QUESTION_PAPER = 'question_paper',
   MARKING_SCHEME = 'marking_scheme'
 }
+
+export enum RevisionNoteResourceType {
+  NOTE = 'NOTE',
+  ATTACHMENT = 'ATTACHMENT',
+  SUMMARY = 'SUMMARY'
+}

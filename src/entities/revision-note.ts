@@ -7,17 +7,26 @@ import { RevisionNoteResource } from './revision-note-resource';
 @Entity('revision_note')
 export class RevisionNote extends BaseEntity {
   @Column()
-  content_id!: number;
+  content_id: number;
 
   @Column()
-  title!: string;
+  title: string;
 
-  @ManyToOne(() => Content, content => content.revisionNotes, {
-    onDelete: 'CASCADE'
-  })
+  @ManyToOne(
+    'Content',
+    {
+      onDelete: 'CASCADE',
+    }
+  )
   @JoinColumn({ name: 'content_id' })
-  content!: Content;
+  content?: Content;
 
-  @OneToMany(() => RevisionNoteResource, rnr => rnr.revisionNote)
-  resources!: RevisionNoteResource[];
+  @OneToMany(
+    'RevisionNoteResource',
+    (resource: RevisionNoteResource) => resource.revisionNote,
+    {
+      cascade: true
+    }
+  )
+  resources?: RevisionNoteResource[];
 }

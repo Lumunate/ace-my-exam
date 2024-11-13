@@ -8,26 +8,33 @@ import { Resource } from './resource';
 @Entity('topical_question_resource')
 export class TopicalQuestionResource extends BaseEntity {
   @Column()
-  topical_question_id!: number;
+  topical_question_id: number;
 
   @Column()
-  resource_id!: number;
+  resource_id: number;
 
   @Column({
     type: 'enum',
-    enum: TopicalQuestionResourceType
+    enum: TopicalQuestionResourceType,
   })
-  resource_type!: TopicalQuestionResourceType;
+  resource_type: TopicalQuestionResourceType;
 
-  @ManyToOne(() => TopicalQuestion, topicalQuestion => topicalQuestion.resources, {
-    onDelete: 'CASCADE'
-  })
+  @ManyToOne(
+    'TopicalQuestion',
+    (topicalQuestion: TopicalQuestion) => topicalQuestion.resources,
+    {
+      onDelete: 'CASCADE',
+    }
+  )
   @JoinColumn({ name: 'topical_question_id' })
-  topicalQuestion!: TopicalQuestion;
+  topicalQuestion?: TopicalQuestion;
 
-  @ManyToOne(() => Resource, resource => resource.topicalQuestionResources, {
-    onDelete: 'CASCADE'
-  })
+  @ManyToOne(
+    'Resource',
+    {
+      onDelete: 'CASCADE',
+    }
+  )
   @JoinColumn({ name: 'resource_id' })
-  resource!: Resource;
+  resource?: Resource;
 }
