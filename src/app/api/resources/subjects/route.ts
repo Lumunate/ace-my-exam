@@ -1,15 +1,15 @@
 import { NextRequest, NextResponse } from "next/server";
 
-import { createFullChapterStructure } from "@/services/content";
 import { initializeDataSource } from "@/utils/typeorm";
+import { createSubject } from "@/services/subject";
 
 export async function POST(request: NextRequest) {
   try {
     await initializeDataSource();
     const body = await request.json();
 
-    await createFullChapterStructure(body);
-    return NextResponse.json({ error: "K" }, { status: 200 });
+    const createdSubject = await createSubject(body);
+    return NextResponse.json({ data: createdSubject }, { status: 200 });
   } catch (error: any) {
     console.error(error);
 
