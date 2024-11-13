@@ -1,4 +1,4 @@
-import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
+import { Entity, Column, ManyToOne, OneToMany, JoinColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
 
 import { BaseEntity } from './base-entity';
 import { ContentLevel, ContentType } from './enums';
@@ -55,4 +55,15 @@ export class Content extends BaseEntity {
   )
   @JoinColumn({ name: 'subject_id' })
   subject?: Subject;
+
+   /**
+   * Validation: If content type is CHAPTER, it must be linked to a Subject.
+   */
+   @BeforeInsert()
+   @BeforeUpdate()
+   async validateChapterSubject() {
+     if (this.type === ContentType.CHAPTER && !this.subject_id) {
+       throw new Error('Content of type "CHAPTER" must be associated with a Subject.');
+     }
+   }
 }
