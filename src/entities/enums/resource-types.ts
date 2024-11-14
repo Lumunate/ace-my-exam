@@ -1,7 +1,7 @@
 export enum ContentType {
-  CHAPTER = 'chapter',
-  TOPIC = 'topic',
-  SUBTOPIC = 'subtopic'
+  CHAPTER = 'CHAPTER',
+  TOPIC = 'TOPIC',
+  SUBTOPIC = 'SUBTOPIC'
 }
 
 export enum ContentLevel {
@@ -11,14 +11,14 @@ export enum ContentLevel {
 }
 
 export enum PastPaperResourceType {
-  QUESTION_PAPER = 'question_paper',
-  MARKING_SCHEME = 'marking_scheme',
-  SOLUTION_BOOKLET = 'solution_booklet'
+  QUESTION_PAPER = 'QUESTION_PAPER',
+  MARKING_SCHEME = 'MARKING_SCHEME',
+  SOLUTION_BOOKLET = 'SOLUTION_BOOKLET'
 }
 
 export enum TopicalQuestionResourceType {
-  QUESTION_PAPER = 'question_paper',
-  MARKING_SCHEME = 'marking_scheme'
+  QUESTION_PAPER = 'QUESTION_PAPER',
+  MARKING_SCHEME = 'MARKING_SCHEME'
 }
 
 export enum RevisionNoteResourceType {
