@@ -8,7 +8,7 @@ export async function getAllSubjectsWithContents(): Promise<Subject[]> {
 }
 
 export async function getSubjectById(id: number): Promise<Subject | null> {
-  return SubjectRepository.findWithContents(id);
+  return SubjectRepository.findOneWithContents(id);
 }
 
 export async function getSubjectByCode(code: string): Promise<Subject | null> {
@@ -57,4 +57,48 @@ export async function findSubjectsByResourceType(resourceType: SubjectResourceTy
 
 export async function searchSubjectsByMetadata(criteria: Partial<SubjectMetadata>): Promise<Subject[]> {
   return SubjectRepository.searchByMetadata(criteria);
+}
+
+
+export interface IReferenceData {
+  examBoards: string[];
+  subjects: { id: number; subject: string; tags: string[] }[];
+  validResources: {
+    pastPaper: boolean;
+    topcialQuestions: boolean;
+    revisionNotes: boolean;
+  };
+}
+
+export async function getEducationOptionBySelection(data: {
+  educationLevel: string | null;
+  examBoard: string | null;
+  subject: string | null;
+  meta: string | null;
+}): Promise<Partial<IReferenceData>> {
+  if (!data.educationLevel) {
+    throw new Error("Education Level must be defined");
+  }
+
+  if (!data.examBoard) {
+    const _data = await SubjectRepository.getExamBoardsByEducationLevel(data.educationLevel);
+
+    return {
+      examBoards: _data,
+    };
+  }
+
+  if (!data.subject) {
+    const _data = await SubjectRepository.getSubjectsByEducationLevelAndExamBoard(data.educationLevel, data.examBoard);
+
+    return {
+      subjects: _data,
+    };
+  }
+
+  const _data = await SubjectRepository.findOneWithContentsByMeta(data);
+
+  return {
+    validResources: _data,
+  };
 }

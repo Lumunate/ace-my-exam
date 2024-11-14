@@ -10,7 +10,7 @@ export enum SubjectResourceType {
 export interface SubjectMetadata {
   tags: string[];
   resourceType: SubjectResourceType;
-  resource: string;
+  educationLevel: string;
   examBoard: string;
   difficulty?: 'beginner' | 'intermediate' | 'advanced';
   prerequisites?: string[];
