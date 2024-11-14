@@ -1,10 +1,71 @@
-import { Subject } from "@/entities";
+import { Subject, TopicalQuestion } from "@/entities";
 import { SubjectMetadata, SubjectResourceType } from "@/entities/enums/subject-types";
 import AppDataSource from "@/utils/typeorm";
 import { ILike } from "typeorm";
 
 export const SubjectRepository = AppDataSource.getRepository(Subject).extend({
-  async findWithContents(id: number): Promise<Subject | null> {
+  async getExamBoardsByEducationLevel(educationLevel: string) {
+    const examBoard = await this.createQueryBuilder("subject")
+      .select("DISTINCT(subject.metadata ->> 'examBoard')", "examBoard")
+      .where("subject.metadata ->> 'educationLevel' = :educationLevel", {
+        educationLevel,
+      })
+      .getRawMany();
+
+    return examBoard.map((examBoard) => examBoard.examBoard);
+  },
+
+  async getSubjectsByEducationLevelAndExamBoard(educationLevel: string, examBoard: string): Promise<{ id: number; subject: string; tags: string[] }[]> {
+    const subjects = await this.createQueryBuilder("subject")
+      .select(["id", "subject.name AS subject", "subject.metadata ->> 'tags' AS tags"])
+      .where("subject.metadata ->> 'educationLevel' = :educationLevel", {
+        educationLevel,
+      })
+      .andWhere("subject.metadata ->> 'examBoard' = :examBoard", {
+        examBoard,
+      })
+      .getRawMany();
+
+    return subjects.map((subject) => {
+      return {
+        id: subject.id,
+        subject: subject.subject,
+        tags: JSON.parse(subject.tags as string),
+      };
+    });
+  },
+
+  async findOneWithContentsByMeta(data: {
+    educationLevel: string | null;
+    examBoard: string | null;
+    subject: string | null;
+    meta: string | null;
+  }): Promise<any | null> {
+    const contents = await this.createQueryBuilder("subject")
+      .select(["chapter.id AS cid", "subcontent.id AS sid"])
+      .innerJoin("subject.contents", "chapter")
+      .leftJoin("chapter.children", "subcontent")
+      .where("subject.id = :id", {
+        id: parseInt(data.subject as string),
+      })
+      .getRawOne();
+
+    const pastPapers = await this.createQueryBuilder("subject")
+      .select("subject.id")
+      .innerJoin("subject.pastPapers", "past_paper")
+      .where("subject.id = :id", {
+        id: parseInt(data.subject as string),
+      })
+      .getRawOne();
+
+    return {
+      pastPapers: !!pastPapers,
+      revisionNotes: !!contents,
+      topicalQuestions: !!contents?.sid,
+    };
+  },
+
+  async findOneWithContents(id: number): Promise<Subject | null> {
     return this.findOne({
       where: { id },
       relations: ["contents"],

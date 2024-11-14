@@ -1,6 +1,7 @@
 import { ContentRepository } from '@/repositories/content';
 
 export async function createFullChapterStructure(data: {
+  subject_id: number; 
   chapterName: string;
   topics: Array<{
     name: string;
