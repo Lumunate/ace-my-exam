@@ -41,7 +41,7 @@ export const SubjectRepository = AppDataSource.getRepository(Subject).extend({
     examBoard: string | null;
     subject: string | null;
     meta: string | null;
-  }): Promise<{ pastPapers: boolean; revisionNotes: boolean; topicalQuestions: boolean }> {
+  }): Promise<{ pastPapers: boolean; revisionNotes: boolean; topicalQuestions: boolean } | null> {
     const contents = await this.createQueryBuilder('subject')
       .select(['chapter.id AS cid', 'subcontent.id AS sid'])
       .innerJoin('subject.contents', 'chapter')

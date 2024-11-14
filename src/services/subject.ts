@@ -67,8 +67,8 @@ export interface IReferenceData {
   examBoards: string[];
   subjects: { id: number; subject: string; tags: string[] }[];
   validResources: {
-    pastPapers: boolean;
-    topicalQuestions: boolean;
+    pastPaper: boolean;
+    topcialQuestions: boolean;
     revisionNotes: boolean;
   };
 }
