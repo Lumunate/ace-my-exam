@@ -1,36 +1,37 @@
-import { Entity, Column, OneToMany } from "typeorm";
-import { BaseEntity } from "./base-entity";
-import { Content } from "./content";
-import type { SubjectMetadata } from "./enums/subject-types";
-import { SubjectResourceType } from "./enums/subject-types";
-import { PastPaper } from "./past-paper";
+import { Entity, Column, OneToMany } from 'typeorm';
 
-@Entity("subjects")
+import { BaseEntity } from './base-entity';
+import { Content } from './content';
+import type { SubjectMetadata } from './enums/subject-types';
+import { SubjectResourceType } from './enums/subject-types';
+import { PastPaper } from './past-paper';
+
+@Entity('subjects')
 export class Subject extends BaseEntity {
   @Column()
-  name: string;
+    name: string;
 
-  @Column({ type: "text", nullable: true })
-  description?: string;
+  @Column({ type: 'text', nullable: true })
+    description?: string;
 
   @Column({ nullable: true })
-  code?: string;
+    code?: string;
 
   @Column({
-    type: "jsonb",
+    type: 'jsonb',
     nullable: true,
     default: {
       tags: [],
       resourceType: SubjectResourceType.OTHER,
     },
   })
-  metadata: SubjectMetadata;
+    metadata: SubjectMetadata;
 
   @OneToMany(() => Content, (content) => content.subject)
-  contents: Content[];
+    contents: Content[];
 
   @OneToMany(() => PastPaper, (ppr) => ppr.subject)
-  pastPapers: PastPaper[];
+    pastPapers: PastPaper[];
 
   addTag(tag: string): void {
     if (!this.metadata.tags) {
@@ -60,7 +61,7 @@ export class Subject extends BaseEntity {
     }
   }
 
-  setCustomField(key: string, value: any): void {
+  setCustomField(key: string, value: string): void {
     if (!this.metadata.customFields) {
       this.metadata.customFields = {};
     }
