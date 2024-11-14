@@ -7,7 +7,7 @@ import { Subject } from './subject';
 @Entity('content')
 export class Content extends BaseEntity {
   @Column({ nullable: true })
-  parent_id: number;
+    parent_id: number;
 
   @ManyToOne(
     () => Content,
@@ -17,34 +17,34 @@ export class Content extends BaseEntity {
     }
   )
   @JoinColumn({ name: 'parent_id' })
-  parent?: Content;
+    parent?: Content;
 
   @OneToMany(
     () => Content,
     (content) => content.parent
   )
-  children?: Content[];
+    children?: Content[];
 
   @Column()
-  name: string;
+    name: string;
 
   @Column({
     type: 'enum',
     enum: ContentType,
   })
-  type: ContentType;
+    type: ContentType;
 
   @Column({
     type: 'int',
     enum: ContentLevel,
   })
-  level: ContentLevel;
+    level: ContentLevel;
 
   @Column({ type: 'text', nullable: true })
-  description?: string;
+    description?: string;
 
   @Column({ nullable: true })
-  subject_id: number;
+    subject_id: number;
 
   @ManyToOne(
     () => Subject,
@@ -54,16 +54,16 @@ export class Content extends BaseEntity {
     }
   )
   @JoinColumn({ name: 'subject_id' })
-  subject?: Subject;
+    subject?: Subject;
 
    /**
    * Validation: If content type is CHAPTER, it must be linked to a Subject.
    */
    @BeforeInsert()
    @BeforeUpdate()
-   async validateChapterSubject() {
-     if (this.type === ContentType.CHAPTER && !this.subject_id) {
-       throw new Error('Content of type "CHAPTER" must be associated with a Subject.');
-     }
-   }
+  async validateChapterSubject() {
+    if (this.type === ContentType.CHAPTER && !this.subject_id) {
+      throw new Error('Content of type "CHAPTER" must be associated with a Subject.');
+    }
+  }
 }

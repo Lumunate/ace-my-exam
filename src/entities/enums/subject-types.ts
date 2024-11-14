@@ -17,5 +17,5 @@ export interface SubjectMetadata {
   estimatedHours?: number;
   languages?: string[];
   frameworks?: string[];
-  customFields?: Record<string, any>;
+  customFields?: Record<string, string>;
 }

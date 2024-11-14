@@ -1,7 +1,7 @@
-import { Subject } from "@/entities";
-import type { SubjectMetadata } from "@/entities/enums/subject-types";
-import { SubjectResourceType } from "@/entities/enums/subject-types";
-import { SubjectRepository } from "@/repositories/subject";
+import { Subject } from '@/entities';
+import type { SubjectMetadata } from '@/entities/enums/subject-types';
+import { SubjectResourceType } from '@/entities/enums/subject-types';
+import { SubjectRepository } from '@/repositories/subject';
 
 export async function getAllSubjectsWithContents(): Promise<Subject[]> {
   return SubjectRepository.findAllWithContents();
@@ -25,9 +25,11 @@ export async function updateSubject(id: number, data: Partial<Subject>): Promise
 
 export async function deleteSubject(id: number): Promise<boolean> {
   const subject = await SubjectRepository.findOneBy({ id });
+
   if (!subject) return false;
 
   await SubjectRepository.remove(subject);
+
   return true;
 }
 
@@ -37,9 +39,11 @@ export async function addTagToSubject(id: number, tag: string): Promise<Subject 
 
 export async function removeTagFromSubject(id: number, tag: string): Promise<Subject | null> {
   const subject = await SubjectRepository.findOneBy({ id });
+
   if (!subject) return null;
 
   subject.removeTag(tag);
+
   return SubjectRepository.save(subject);
 }
 
@@ -59,7 +63,6 @@ export async function searchSubjectsByMetadata(criteria: Partial<SubjectMetadata
   return SubjectRepository.searchByMetadata(criteria);
 }
 
-
 export interface IReferenceData {
   examBoards: string[];
   subjects: { id: number; subject: string; tags: string[] }[];
@@ -77,7 +80,7 @@ export async function getEducationOptionBySelection(data: {
   meta: string | null;
 }): Promise<Partial<IReferenceData>> {
   if (!data.educationLevel) {
-    throw new Error("Education Level must be defined");
+    throw new Error('Education Level must be defined');
   }
 
   if (!data.examBoard) {
