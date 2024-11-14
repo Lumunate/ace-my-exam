@@ -8,17 +8,18 @@ import {
 import Link from 'next/link';
 
 export const ContactContainer = styled(Box)(({ theme }) => ({
-  padding: '235px 0',
+  padding: '150px 0 100px',
+  minHeight: 'calc(100vh - 109px)',
+  display: 'flex', 
+  flexDirection: 'column', 
+  justifyContent: 'center',
   [theme.breakpoints.down('lg')]: {
-    padding: '170px 0 100px',
-  },
-  [theme.breakpoints.down('md')]: {
     padding: '150px 0 80px',
   },
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     padding: '150px 0 60px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     padding: '120px 0 40px',
   },
 }));
