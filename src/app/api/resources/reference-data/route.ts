@@ -1,9 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 
 import { initializeDataSource } from "@/utils/typeorm";
-import { createSubject, getEducationOptionBySelection } from "@/services/subject";
-
-
+import { createSubject, getEducationOptionBySelection, IReferenceData } from "@/services/subject";
 
 export async function GET(request: NextRequest) {
   await initializeDataSource();
@@ -16,7 +14,7 @@ export async function GET(request: NextRequest) {
       meta: query.get("meta"),
     };
 
-    const _data = await getEducationOptionBySelection(data);
+    const _data: Partial<IReferenceData> = await getEducationOptionBySelection(data);
 
     return NextResponse.json({ success: true, ..._data }, { status: 200 });
   } catch (error: any) {
