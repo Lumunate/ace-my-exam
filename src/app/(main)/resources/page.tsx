@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import ResourcesLayout from '@/app/(main)/resources/Layout';
+import Layout from '@/app/(main)/resources/Layout';
 import { AppContentWrapper } from '@/components/common/Global.style';
 import ResourcesForm from '@/features/resources/ResourcesStepper';
 
@@ -13,9 +13,9 @@ const Resources: React.FC = () => {
     <Resourceswrapper>
       <AppContentWrapper>
         <ResourcesContainer>
-          <ResourcesLayout>
+          <Layout>
             <ResourcesForm />
-          </ResourcesLayout>
+          </Layout>
         </ResourcesContainer>
       </AppContentWrapper>
     </Resourceswrapper>
