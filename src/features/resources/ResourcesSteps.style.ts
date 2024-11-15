@@ -39,6 +39,18 @@ export const ResourcesCard = styled(Card)<ResourcesCardProps>(({ theme, height }
   },
 }));
 
+export const ResourcesCardSmall = styled(Card)<ResourcesCardProps>(({ theme, height }) => ({
+  background: "#FFF",
+  padding: "1.6rem 5rem",
+  borderRadius: "20px",
+  boxShadow: "0px 0px 12.6px 0px rgba(0, 0, 0, 0.08)",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  height: height || "100%",
+  cursor: "pointer",
+}));
+
 export const ResourcesCardNumber = styled(Typography)(({ theme }) => ({
   color: '#00324C',
   fontSize: '50px',

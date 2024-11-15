@@ -7,79 +7,42 @@ import React, { useEffect, useState } from 'react';
 
 import useMultiStepForm from '@/hooks/useMultiStepper';
 
-import { ResourcesCard } from '../ResourcesSteps.style';
+import { ResourcesCard, ResourcesCardSmall } from '../ResourcesSteps.style';
+import { useGetExamBoards } from '@/hooks/resources/useReferenceData';
 
 interface BoardOption {
   name: string;
   imageUrl: string;
 }
 
-const boardData: Record<string, BoardOption[]> = {
-  'A levels': [
-    { name: 'Edexcel', imageUrl: '/resources/edexcel-Logo.svg' },
-    { name: 'AQA', imageUrl: '/resources/AQA-LOGO.svg' },
-    { name: 'OCR-A', imageUrl: '/resources/ocr-a.png' },
-    { name: 'OCR-B', imageUrl: '/resources/ocr-b.png' },
-    { name: 'Cambridge', imageUrl: '/resources/CIE.svg' },
-    { name: 'Edexcel International', imageUrl: '/resources/edexcel-internationnal.png' },
-  ],
-  GCSE: [
-    { name: 'Edexcel', imageUrl: '/resources/edexcel-Logo.svg' },
-    { name: 'AQA', imageUrl: '/resources/AQA-LOGO.svg' },
-    { name: 'OCR', imageUrl: '/resources/OCR-logo.svg' },
-    { name: 'Wjec', imageUrl: '/resources/wjec.svg' },
-    { name: 'OCR-Gateway', imageUrl: '/resources/ocr-gateway.png' },
-    { name: 'OCR-21st Century', imageUrl: '/resources/ocr-21st.png' },
-  ],
-  IGCSE: [
-    { name: 'Edexcel', imageUrl: '/resources/edexcel-Logo.svg' },
-    { name: 'Cambridge', imageUrl: '/resources/CIE.svg' },
-    { name: 'OxfordAQA', imageUrl: '/resources/OxfordAQA.svg' },
-  ],
-  KS3: [
-    { name: 'Edexcel', imageUrl: '/resources/edexcel-Logo.svg' },
-    { name: 'Cambridge', imageUrl: '/resources/CIE.svg' },
-    { name: 'OxfordAQA', imageUrl: '/resources/OxfordAQA.svg' },
-  ],
-  'Primary School': [
-    { name: 'ISEB', imageUrl: '/resources/ISEB.svg' },
-    { name: 'School', imageUrl: '/resources/school.svg' },
-  ],
-  'Secondary School': [
-    { name: 'ISEB', imageUrl: '/resources/ISEB.svg' },
-    { name: 'School', imageUrl: '/resources/school.svg' },
-  ],
-  'Higher Secondary': [
-    { name: 'ISEB', imageUrl: '/resources/ISEB.svg' },
-    { name: 'School', imageUrl: '/resources/school.svg' },
-  ],
-  Scholarship: [
-    { name: 'ISEB', imageUrl: '/resources/ISEB.svg' },
-    { name: 'School', imageUrl: '/resources/school.svg' },
-  ],
+const boardImages: Record<string, string> = {
+  AQA: '/resources/AQA-LOGO.svg',
+  CAMBRIDGE: '/resources/CIE.svg',
+  EDEXCEL: '/resources/edexcel-Logo.svg',
+  EDEXCEL_INTERNATIONAL: '/resources/edexcel-internationnal.png',
+  ISEB: '/resources/ISEB.svg',
+  OCR: '/resources/OCR-logo.svg',
+  OCR_21: '/resources/ocr-21st.png',
+  OCR_A: '/resources/ocr-a.png',
+  OCR_B: '/resources/ocr-b.png',
+  OCR_GATEWAY: '/resources/ocr-gateway.png',
+  SCHOOL: '/resources/school.svg',
 };
 
 const ExaminationBoard: React.FC = () => {
   const { selectOption, selectedOptions } = useMultiStepForm();
   const selectedResource = selectedOptions[1.5] || selectedOptions[1];
   const selectedExaminationBoard = selectedOptions[2];
-  const [boardOptions, setBoardOptions] = useState<BoardOption[]>([]);
+  const { data: boardOptions, isLoading } = useGetExamBoards(selectedResource);
 
-  useEffect(() => {
-    if (selectedResource && selectedResource in boardData) {
-      setBoardOptions(boardData[selectedResource]);
-    } else {
-      setBoardOptions([]);
-    }
-  }, [selectedResource]);
+  if (isLoading || !boardOptions) return <div>Loading...</div>;
 
   return (
     <Grid
       container
       spacing={'20px'}
-      sx={{ mb: '40px', maxWidth: '718px', mx: 'auto' }}
       justifyContent={'center'}
-      columns={24}
+      columns={12}
     >
       {boardOptions.map((board) => (
         <Grid
@@ -89,33 +52,21 @@ const ExaminationBoard: React.FC = () => {
             md: 8,
             lg: 8,
           }}
-          key={board.name}
+          key={board}
         >
-          <ResourcesCard
-            onClick={() => selectOption(board.name)}
-            height='124px'
+          <ResourcesCardSmall
+            onClick={() => selectOption(board)}
             sx={{
-              outline: selectedExaminationBoard === board.name ? '2px solid #DA9694' : 'unset',
+              outline: selectedExaminationBoard === board ? '2px solid #DA9694' : 'unset',
             }}
           >
-            <Box
-              sx={{
-                width: { xs: '80%', sm: '80%' },
-                maxWidth: '185px', 
-                height: { xs: '60px', sm: '60px' }, 
-                mx: 'auto',
-                position: 'relative',
-              }}
-            >
               <Image
-                src={board?.imageUrl}
-                alt={board?.name ?? ''}
-                layout="fill"
-                objectFit="contain"
+              src={boardImages[board]}
+              alt={board ?? ''}
+              width={82}
+              height={22}
               />
-            </Box>
-
-          </ResourcesCard>
+          </ResourcesCardSmall>
         </Grid>
       ))}
     </Grid>

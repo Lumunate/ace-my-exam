@@ -30,23 +30,52 @@ const fetchReferenceData = async (params: {
 };
 
 export const useGetExamBoards = (educationLevel: string) => {
-  return useQuery<Partial<IReferenceData>, Error>({
-    queryKey: ['examBoards', educationLevel],
-    queryFn: () => fetchReferenceData({ educationLevel, examBoard: null, subject: null, meta: null }),
+  return useQuery<string[], Error>({
+    queryKey: ["examBoards", educationLevel],
+    queryFn: async () => {
+      const data = await fetchReferenceData({ educationLevel, examBoard: null, subject: null, meta: null });
+      return data.examBoards || [];
+    },
   });
 };
 
 export const useGetSubjects = (educationLevel: string, examBoard: string) => {
-  return useQuery<Partial<IReferenceData>, Error>({
-    queryKey: ['subjects', educationLevel, examBoard],
-    queryFn: () => fetchReferenceData({ educationLevel, examBoard, subject: null, meta: null }),
+  return useQuery<
+    {
+      id: number;
+      subject: string;
+      tags: string[];
+    }[],
+    Error
+  >({
+    queryKey: ["subjects", educationLevel, examBoard],
+    queryFn: async () => {
+      const data = await fetchReferenceData({ educationLevel, examBoard: null, subject: null, meta: null });
+      return data.subjects || [];
+    },
   });
 };
 
 export const useGetValidResources = (educationLevel: string, examBoard: string, subject: string) => {
-  return useQuery<Partial<IReferenceData>, Error>({
-    queryKey: ['validResources', educationLevel, examBoard, subject],
-    queryFn: () => fetchReferenceData({ educationLevel, examBoard, subject, meta: null }),
+  return useQuery<
+    {
+      pastPapers: boolean;
+      topicalQuestions: boolean;
+      revisionNotes: boolean;
+    },
+    Error
+  >({
+    queryKey: ["validResources", educationLevel, examBoard, subject],
+    queryFn: async () => {
+      const data = await fetchReferenceData({ educationLevel, examBoard: null, subject: null, meta: null });
+      return (
+        data.validResources || {
+          pastPapers: false,
+          topicalQuestions: false,
+          revisionNotes: false,
+        }
+      );
+    },
   });
 };
 

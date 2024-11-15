@@ -7,13 +7,14 @@ import React from 'react';
 import useMultiStepForm from '@/hooks/useMultiStepper';
 
 import { ResourcesCard, ResourcesCardTitle } from '../ResourcesSteps.style';
+import { EducationLevel } from '@/types/resources';
 
 const options = [
-  { name: 'A levels', icon: '/resources/ALevels.svg' },
-  { name: 'GCSE', icon: '/resources/GCSE.svg' },
-  { name: 'IGCSE', icon: '/resources/IGCSE.svg' },
-  { name: 'KS3', icon: '/resources/KS3.svg' },
-  { name: 'Entrance Exam', icon: '/resources/EntranceExam.svg' },
+  { name: 'A levels', icon: '/resources/ALevels.svg', value: EducationLevel.A_LEVEL },
+  { name: 'GCSE', icon: '/resources/GCSE.svg', value: EducationLevel.GCSE },
+  { name: 'IGCSE', icon: '/resources/IGCSE.svg', value: EducationLevel.IGCSE },
+  { name: 'KS3', icon: '/resources/KS3.svg', value: EducationLevel.KS3 },
+  { name: 'Entrance Exam', icon: '/resources/EntranceExam.svg', value: EducationLevel.ENTRANCE_EXAMS },
 ];
 
 const EducationalResources: React.FC = () => {
@@ -40,7 +41,7 @@ const EducationalResources: React.FC = () => {
         >
           <ResourcesCard
             height={'245px'}
-            onClick={() => selectOption(option.name)}
+            onClick={() => selectOption(option.value)}
             sx={{
               outline: selectedResource === option.name ? '2px solid #DA9694' : 'unset',
             }}
