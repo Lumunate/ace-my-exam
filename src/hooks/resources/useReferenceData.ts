@@ -1,6 +1,9 @@
+'use client';
 import { useQuery } from 'react-query';
 
 import { IReferenceData } from '@/services/subject';
+import { IStepOption } from '@/contexts/MultiStepperContext';
+import { ExamBoards, Subjects } from "@/types/resources";
 
 // ============================== GET ==============================
 
@@ -12,16 +15,16 @@ const fetchReferenceData = async (params: {
 }): Promise<Partial<IReferenceData>> => {
   const queryParams = new URLSearchParams();
 
-  queryParams.append('educationLevel', params.educationLevel);
+  queryParams.append("educationLevel", params.educationLevel);
 
-  if (params.examBoard) queryParams.append('examBoard', params.examBoard);
-  if (params.subject) queryParams.append('subject', params.subject);
-  if (params.meta) queryParams.append('meta', params.meta);
+  if (params.examBoard) queryParams.append("examBoard", params.examBoard);
+  if (params.subject) queryParams.append("subject", params.subject);
+  if (params.meta) queryParams.append("meta", params.meta);
 
   const response = await fetch(`/api/resources/reference-data?${queryParams.toString()}`);
 
   if (!response.ok) {
-    throw new Error('Network response was not ok');
+    throw new Error("Network response was not ok");
   }
 
   const data = await response.json();
@@ -29,12 +32,62 @@ const fetchReferenceData = async (params: {
   return data;
 };
 
+const boardData: Record<string, IStepOption> = {
+  AQA: { name: "AQA", icon: "/resources/AQA-LOGO.svg", value: ExamBoards.AQA },
+  CAMBRIDGE: { name: "Cambridge", icon: "/resources/CIE.svg", value: ExamBoards.CAMBRIDGE },
+  EDEXCEL: { name: "Edexcel", icon: "/resources/edexcel-Logo.svg", value: ExamBoards.EDEXCEL },
+  EDEXCEL_INTERNATIONAL: {
+    name: "Edexcel International",
+    icon: "/resources/edexcel-internationnal.png",
+    value: ExamBoards.EDEXCEL_INTERNATIONAL,
+  },
+  ISEB: { name: "ISEB", icon: "/resources/ISEB.svg", value: ExamBoards.ISEB },
+  OCR: { name: "OCR", icon: "/resources/OCR-logo.svg", value: ExamBoards.OCR },
+  OCR_21: { name: "OCR-21", icon: "/resources/ocr-21st.png", value: ExamBoards.OCR_21 },
+  OCR_A: { name: "OCR-A", icon: "/resources/ocr-a.png", value: ExamBoards.OCR_A },
+  OCR_B: { name: "OCR-B", icon: "/resources/ocr-b.png", value: ExamBoards.OCR_B },
+  OCR_GATEWAY: { name: "OCR-Gateway", icon: "/resources/ocr-gateway.png", value: ExamBoards.OCR_GATEWAY },
+  SCHOOL: { name: "School", icon: "/resources/school.svg", value: ExamBoards.SCHOOL },
+};
+
 export const useGetExamBoards = (educationLevel: string) => {
-  return useQuery<string[], Error>({
+  return useQuery<IStepOption[], Error>({
     queryKey: ["examBoards", educationLevel],
     queryFn: async () => {
       const data = await fetchReferenceData({ educationLevel, examBoard: null, subject: null, meta: null });
-      return data.examBoards || [];
+
+      return (
+        data.examBoards?.map((board) => {
+          return boardData[board];
+        }) || []
+      );
+    },
+  });
+};
+
+const subjectsData: Record<string, IStepOption> = {
+  Math: { name: "Maths", icon: "/resources/math.svg", value: Subjects.MATH },
+  Physics: { name: "Chemistry", icon: "/resources/chemistry.svg", value: Subjects.PHYSICS },
+  Chemistry: { name: "Physics", icon: "/resources/Physics.svg", value: Subjects.CHEMISTRY },
+  Biology: { name: "Biology", icon: "/resources/biology.svg", value: Subjects.BIOLOGY },
+  "Further Math": { name: "Further Maths", icon: "/resources/Furthermaths.svg", value: Subjects.FURTHER_MATH },
+};
+
+export const useGetUniqueSubjects = (educationLevel: string, examBoard: string) => {
+  return useQuery<IStepOption[], Error>({
+    queryKey: ["subjects", educationLevel, examBoard],
+    queryFn: async () => {
+      const data = await fetchReferenceData({ educationLevel, examBoard: examBoard, subject: null, meta: null });
+      
+      const uniqueSubjects: IStepOption[] = [];
+      data.subjects?.map((subject) => {
+        const data = subjectsData[subject.subject];
+        if (!uniqueSubjects.includes(data)) {
+          uniqueSubjects.push(data);
+        }
+      });
+
+      return uniqueSubjects;
     },
   });
 };
@@ -50,7 +103,7 @@ export const useGetSubjects = (educationLevel: string, examBoard: string) => {
   >({
     queryKey: ["subjects", educationLevel, examBoard],
     queryFn: async () => {
-      const data = await fetchReferenceData({ educationLevel, examBoard: null, subject: null, meta: null });
+      const data = await fetchReferenceData({ educationLevel, examBoard: examBoard, subject: null, meta: null });
       return data.subjects || [];
     },
   });
@@ -67,7 +120,7 @@ export const useGetValidResources = (educationLevel: string, examBoard: string, 
   >({
     queryKey: ["validResources", educationLevel, examBoard, subject],
     queryFn: async () => {
-      const data = await fetchReferenceData({ educationLevel, examBoard: null, subject: null, meta: null });
+      const data = await fetchReferenceData({ educationLevel, examBoard: examBoard, subject: subject, meta: null });
       return (
         data.validResources || {
           pastPapers: false,

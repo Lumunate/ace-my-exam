@@ -49,6 +49,16 @@ export const ResourcesCardSmall = styled(Card)<ResourcesCardProps>(({ theme, hei
   alignItems: "center",
   height: height || "100%",
   cursor: "pointer",
+  minWidth: "20rem",
+}));
+
+export const ResourcesCardSmallDisabled = styled(ResourcesCardSmall)<ResourcesCardProps>(({ theme, height }) => ({
+  background: "#E8E8E8",
+  cursor: "default",
+}));
+
+export const ResourcesCardSmallLoading = styled(ResourcesCardSmallDisabled)<ResourcesCardProps>(({ theme, height }) => ({
+  animation: "blink 1s linear infinite",
 }));
 
 export const ResourcesCardNumber = styled(Typography)(({ theme }) => ({

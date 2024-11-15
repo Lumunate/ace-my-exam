@@ -13,6 +13,8 @@ import { IStepOption } from "@/contexts/MultiStepperContext";
 import {
   ResourcesContentHeading,
   ResourcesContentPara,
+  ResourcesPara,
+  ResourcesSubHeading,
 } from "@/app/(main)/resources/Resources.style";
 
 const options: IStepOption[] = [
@@ -29,9 +31,12 @@ const EducationalResources: React.FC = () => {
 
   return (
     <Box>
-      <ResourcesContentHeading>Resources</ResourcesContentHeading>
-      <ResourcesContentPara>Choose your Resource</ResourcesContentPara>
-
+      <Box sx={{ my: { xs: "20px", sm: "30px" } }}>
+        <ResourcesSubHeading>Resources</ResourcesSubHeading>
+        <ResourcesPara variant="body1" sx={{ textAlign: "start" }}>
+          Choose your Resource
+        </ResourcesPara>
+      </Box>
       <Grid container spacing={"22px"} sx={{ mb: "40px" }} justifyContent={"center"} columns={20}>
         {options.map((option: IStepOption) => (
           <Grid
