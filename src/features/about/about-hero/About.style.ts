@@ -47,7 +47,7 @@ export const AboutHeroWrapper = styled(Box)(({ theme }) => ({
     bottom: '-2px',
     left: '0',
     width: '100%',
-    height: '150px',
+    height: '50px',
     backgroundColor: '#fffbfb',
     borderRadius: 'var(--dynamic-border-radius, 0px)',
     zIndex: '0',

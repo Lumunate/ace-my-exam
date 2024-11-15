@@ -32,13 +32,24 @@ export default function Home() {
         }}
       >
         <Institutes />
-        <AppContentWrapper>
-          <Resources />
-        </AppContentWrapper>
-        <Support />
-        <AppContentWrapper>
-          <Testimonials />
-        </AppContentWrapper>
+        <ScrollingFadeOut>
+          <AppContentWrapper>
+            <Resources />
+          </AppContentWrapper>
+        </ScrollingFadeOut>
+
+        <Box
+          sx={{
+            backgroundColor: '#fffbfb',
+            zIndex: 20,
+            position: 'relative',
+          }}
+        >
+          <Support />
+          <AppContentWrapper>
+            <Testimonials />
+          </AppContentWrapper>
+        </Box>
       </Box>
     </>
   );
