@@ -12,6 +12,7 @@ import ExaminationBoard from './resources-steps/ExaminationBoard';
 import ResourceType from './resources-steps/ResourceType';
 import Subject from './resources-steps/Subject';
 import StepNavigation from './StepNavigation';
+import ExaminationBoardAndSubject from './resources-steps/EaxminationBoardAndSubject';
 
 const ResourcesForm: React.FC = () => {
   const { currentStep } = useMultiStepForm();
@@ -22,7 +23,7 @@ const ResourcesForm: React.FC = () => {
     } else if (currentStep === 1.5) {
       return <AgeGroup />;
     } else if (currentStep === 2) {
-      return <ExaminationBoard />;
+      return <ExaminationBoardAndSubject />;
     } else if (currentStep === 3) {
       return <Subject />;
     } else if (currentStep === 4) {

@@ -47,6 +47,25 @@ export const ResourcesHeading = styled(Typography)(({ theme }) => ({
   },
 }));
 
+export const ResourcesContentHeading = styled(Typography)(({ theme }) => ({ 
+  fontWeight: 600,
+  fontSize: '4rem',
+  color: '#000000',
+  fontFamily: 'Jost, sans-serif',
+  [theme.breakpoints.down('xl')]: {
+    fontSize: '3rem',
+  },
+  [theme.breakpoints.down('lg')]: {
+    fontSize: '2rem',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '1.8rem',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '1.2rem',
+  },
+}));
+
 export const ResourcesPara = styled(Typography)(({ theme }) => ({
   color: '#808080',
   textAlign: 'center',
@@ -64,7 +83,42 @@ export const ResourcesPara = styled(Typography)(({ theme }) => ({
   },
 }));
 
+export const ResourcesContentPara = styled(Typography)(({ theme }) => ({
+  color: '#808080',
+  fontFamily: 'Jost, sans-serif',
+  marginBottom: '2.3rem',
+  fontSize: '18px',
+  fontWeight: 500,
+  [theme.breakpoints.down('md')]: {
+    fontSize: '16px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '14px',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '12px',
+  },
+}));
+
+
 export const ResourcesSubHeading = styled(Typography)(({ theme }) => ({
+  color: '#000',
+  fontSize: '30px',
+  fontWeight: 600,
+  fontFamily: 'Jost, sans-serif',
+  textTransform: 'capitalize',
+  [theme.breakpoints.down('lg')]: {
+    fontSize: '24px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '22px',
+  },
+  [theme.breakpoints.down(400)]: {
+    fontSize: '14px',
+  },
+}));
+
+export const ResourcesContentSubHeading = styled(Typography)(({ theme }) => ({
   color: '#000',
   fontSize: '30px',
   fontWeight: 600,

@@ -15,11 +15,14 @@ import {
 const ResourcesLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const { mainTitle, subTitle, subHeadingPara, currentStep } =
+
+  const { currentStep } =
     useMultiStepForm();
 
   return (
     <Box>
+
+
       <Box>
         <SectionHeading
           text="Start Practicing"
@@ -29,29 +32,22 @@ const ResourcesLayout: React.FC<{ children: React.ReactNode }> = ({
           textWidth="150px"
           gradientType="second"
         />
-        <ResourcesHeading variant="h2">{mainTitle}</ResourcesHeading>
-        {currentStep === 1 && (
-          <ResourcesPara variant="body1" sx={{ mb: '23px' }}>
-            {subHeadingPara}
-          </ResourcesPara>
-        )}
+
+        <ResourcesHeading variant="h2">
+          {currentStep === 1 ? 'Educational Resources' : 'Hello world'}
+        </ResourcesHeading>
       </Box>
 
       <Box
         sx={{
-          mt: '30px',
+          margin: '6.9rem 0',
           display: { xs: 'none', sm: 'flex' },
           alignItems: 'center',
         }}
       >
         <ResourcesBreadcrumbs />
       </Box>
-      <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
-        <ResourcesSubHeading>{subTitle}</ResourcesSubHeading>
-        <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
-          {subHeadingPara}
-        </ResourcesPara>
-      </Box>
+
       {children}
     </Box>
   );
