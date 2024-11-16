@@ -6,11 +6,8 @@ import useMultiStepForm from '@/hooks/useMultiStepper';
 
 import { BreadcrumbsHeading } from './ResourcesSteps.style';
 
-const ResourcesBreadcrumbs: React.FC = () => {
-  const { selectedOptions } = useMultiStepForm();
-  const [breadcrumbs, setBreadcrumbs] = useState<
-    { key: number; title: string }[]
-  >([]);
+const ResourcesBreadcrumbs: React.FC<{ permanentBreadcrumbs?: { key: number; title: string }[] }> = ({ permanentBreadcrumbs }) => {
+  const { breadcrumbs, setBreadcrumbs, selectedOptions } = useMultiStepForm();
 
   useEffect(() => {
     const stepsOrder = [
@@ -24,7 +21,7 @@ const ResourcesBreadcrumbs: React.FC = () => {
 
     const filteredSteps = stepsOrder.filter((step) => step.title);
 
-    setBreadcrumbs(filteredSteps);
+    setBreadcrumbs(permanentBreadcrumbs || filteredSteps);
   }, [selectedOptions]);
 
   return (

@@ -11,7 +11,9 @@ import {
   ResourcesHeading,
 } from '../../app/(main)/resources/Resources.style';
 
-const ResourcesLayout: React.FC<{ children: React.ReactNode }> = ({
+const ResourcesLayout: React.FC<{ permanentBreadcrumbs?: { key: number; title: string }[], permanentHeading?: string, children: React.ReactNode }> = ({
+  permanentBreadcrumbs,
+  permanentHeading,
   children,
 }) => {
   const { currentStep, selectedOptions } = useMultiStepForm();
@@ -30,7 +32,7 @@ const ResourcesLayout: React.FC<{ children: React.ReactNode }> = ({
     } else if (currentStep === 3) {
       heading = selectedOptions.subject?.name;
     }
-    setDynamicHeading(heading);
+    setDynamicHeading(permanentHeading || heading);
   }, [currentStep]);
 
   return (
@@ -57,7 +59,7 @@ const ResourcesLayout: React.FC<{ children: React.ReactNode }> = ({
           alignItems: 'center',
         }}
       >
-        <ResourcesBreadcrumbs />
+        <ResourcesBreadcrumbs permanentBreadcrumbs={permanentBreadcrumbs} />
       </Box>
 
       {children}

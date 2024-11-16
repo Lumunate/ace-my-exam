@@ -1,8 +1,8 @@
-'use client';
-import { useRouter } from 'next/navigation';
-import React, { createContext, useState } from 'react';
+"use client";
+import { useRouter } from "next/navigation";
+import React, { createContext, useState } from "react";
 
-import { EducationLevel } from '@/types/resources';
+import { EducationLevel } from "@/types/resources";
 
 type StepKey = 1 | 1.5 | 2 | 3 | 4 | 5;
 
@@ -14,22 +14,35 @@ interface MultiStepFormContextProps {
   handleBack: () => void;
   selectOption: (stepName: string, option: IStepOption) => void;
   selectOptionNavbar: (stepName: string, option: IStepOption) => void;
-  setSelectedOptions: React.Dispatch<React.SetStateAction<Record<string, IStepOption>>>; 
+  setSelectedOptions: React.Dispatch<React.SetStateAction<Record<string, IStepOption>>>;
   setCurrentStep: (step: StepKey) => void;
+  breadcrumbs: {
+    key: number;
+    title: string;
+  }[];
+  setBreadcrumbs: React.Dispatch<
+    React.SetStateAction<
+      {
+        key: number;
+        title: string;
+      }[]
+    >
+  >;
 }
 
 const MultiStepFormContext = createContext<MultiStepFormContextProps | undefined>(undefined);
 
 export interface IStepOption {
-  name: string,
-  value: string
-  icon: string
+  name: string;
+  value: string;
+  icon: string;
 }
 
 export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentStep, setCurrentStep] = useState<StepKey>(1);
   const [selectedOptions, setSelectedOptions] = useState<Record<string, IStepOption>>({});
   const [isNextDisabled, setIsNextDisabled] = useState(true);
+  const [breadcrumbs, setBreadcrumbs] = useState<{ key: number; title: string }[]>([]);
 
   const router = useRouter();
 
@@ -37,9 +50,10 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
     let nextStep: StepKey = currentStep;
 
     if (currentStep === 3) {
-      router.push(`/resources/${selectedOptions.subjectSubtype?.value}/${selectedOptions.resourceType?.value}`);
-    }
-    else if (currentStep === 1) {
+      const queryParams = breadcrumbs.map((step) => step.title).join(';');
+
+      router.push(`/resources/${selectedOptions.subjectSubtype?.value}/${selectedOptions.resourceType?.value}?breadcrumbs=${queryParams}`);
+    } else if (currentStep === 1) {
       nextStep = selectedOptions.educationLevel?.value === EducationLevel.ENTRANCE_EXAMS ? 1.5 : 2;
     } else if (currentStep === 1.5) {
       nextStep = 2;
@@ -77,7 +91,7 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const selectOptionNavbar = (stepName: string, option: IStepOption) => {
-    setSelectedOptions({ [stepName]: option }); 
+    setSelectedOptions({ [stepName]: option });
     setIsNextDisabled(false);
   };
 
@@ -93,6 +107,8 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
         selectOptionNavbar,
         setCurrentStep,
         setSelectedOptions,
+        breadcrumbs,
+        setBreadcrumbs,
       }}
     >
       {children}
