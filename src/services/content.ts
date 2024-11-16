@@ -1,4 +1,5 @@
 import { ContentRepository } from '@/repositories/content';
+import { PastPaperRepository } from "@/repositories/past-paper";
 
 export async function createFullChapterStructure(data: {
   subject_id: number; 
@@ -27,4 +28,15 @@ export async function createFullChapterStructure(data: {
   }
   
   return ContentRepository.getChapterWithContent(chapter.id);
+}
+
+export async function getSubjectContentAndPastPapers(subjectId: number) {
+  const content = await ContentRepository.getSubjectWithContent(subjectId);
+  const pastPapers = await PastPaperRepository.findPastPapers(subjectId);
+
+  return {
+    pastPapers: pastPapers,
+    chapters: content,
+    topics: content.map((chapter) => chapter.children).flatMap((topic) => topic),
+  };
 }

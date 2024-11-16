@@ -32,7 +32,7 @@ export const PastPaperRepository = AppDataSource.getRepository(PastPaper).extend
       if (data.resources.questionPaper) {
         const resource = await queryRunner.manager.save(Resource, {
           url: data.resources.questionPaper,
-          type: 'pdf',
+          type: "pdf",
         });
 
         resources.push(
@@ -47,7 +47,7 @@ export const PastPaperRepository = AppDataSource.getRepository(PastPaper).extend
       if (data.resources.markingScheme) {
         const resource = await queryRunner.manager.save(Resource, {
           url: data.resources.markingScheme,
-          type: 'pdf',
+          type: "pdf",
         });
 
         resources.push(
@@ -62,7 +62,7 @@ export const PastPaperRepository = AppDataSource.getRepository(PastPaper).extend
       if (data.resources.solutionBooklet) {
         const resource = await queryRunner.manager.save(Resource, {
           url: data.resources.solutionBooklet,
-          type: 'pdf',
+          type: "pdf",
         });
 
         resources.push(
@@ -79,7 +79,7 @@ export const PastPaperRepository = AppDataSource.getRepository(PastPaper).extend
 
       return this.findOne({
         where: { id: pastPaper.id },
-        relations: ['resources', 'resources.resource'],
+        relations: ["resources", "resources.resource"],
       });
     } catch (err) {
       await queryRunner.rollbackTransaction();
@@ -92,7 +92,14 @@ export const PastPaperRepository = AppDataSource.getRepository(PastPaper).extend
   async findWithResources(id: number) {
     return this.findOne({
       where: { id },
-      relations: ['resources', 'resources.resource'],
+      relations: ["resources", "resources.resource"],
+    });
+  },
+
+  async findPastPapers(subjectId: number) {
+    return this.find({
+      where: { subject_id: subjectId },
+      relations: ["resources", "resources.resource"],
     });
   },
 });

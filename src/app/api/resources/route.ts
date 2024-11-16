@@ -1,7 +1,28 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { createFullChapterStructure } from '@/services/content';
-import { initializeDataSource } from '@/utils/typeorm';
+import { createFullChapterStructure, getSubjectContentAndPastPapers } from "@/services/content";
+import { initializeDataSource } from "@/utils/typeorm";
+
+export async function GET(request: NextRequest) {
+  await initializeDataSource();
+  try {
+    const query = request.nextUrl.searchParams;
+    const subjectId = query.get("subjectId");
+    if (!subjectId || isNaN(parseInt(subjectId))) {
+      return NextResponse.json({ error: "Subject ID is required" }, { status: 400 });
+    }
+
+    const data = await getSubjectContentAndPastPapers(parseInt(subjectId));
+
+    return NextResponse.json({ ...data }, { status: 200 });
+  } catch (error: unknown) {
+    if (error instanceof Error) {
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
+
+    return NextResponse.json({ error: "An unknown error occurred" }, { status: 500 });
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {

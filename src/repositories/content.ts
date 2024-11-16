@@ -55,4 +55,12 @@ export const ContentRepository = AppDataSource.getRepository(Content).extend({
       .andWhere('chapter.type = :type', { type: ContentType.CHAPTER })
       .getOne();
   },
+
+  async getSubjectWithContent(subjectId: number) {
+    return this.createQueryBuilder('chapter')
+      .leftJoinAndSelect('chapter.children', 'topics')
+      .leftJoinAndSelect('topics.children', 'subtopics')
+      .where('chapter.subject_id = :id', { id: subjectId })
+      .getMany();
+  },
 });
