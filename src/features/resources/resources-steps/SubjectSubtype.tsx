@@ -13,6 +13,7 @@ import { Box, Typography } from "@mui/material";
 import { StepsDisabled, StepsLoader } from "./StepsLoader";
 import { IStepOption } from "@/contexts/MultiStepperContext";
 import { EducationLevel, ExamBoards, Subjects } from "@/types/resources";
+import { ResourcesCardTypography } from "@/app/(main)/resources/Resources.style";
 
 const SubjectSubtype: React.FC = () => {
   const { selectOption, selectedOptions } = useMultiStepForm();
@@ -91,9 +92,9 @@ const Year1Year2Subjects = ({
                 outline: selectedSubjectSubtype?.value === subject.id?.toString() ? "2px solid #DA9694" : "unset",
               }}
             >
-              <Typography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
-                Year 1 - {subject.tags.join(" - ")}
-              </Typography>
+              <ResourcesCardTypography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
+                AS {subject.tags.join(" - ")}
+              </ResourcesCardTypography>
             </ResourcesCardSmall>
           </Grid>
         ))
@@ -114,9 +115,9 @@ const Year1Year2Subjects = ({
                 outline: selectedSubjectSubtype?.value === subject.id?.toString() ? "2px solid #DA9694" : "unset",
               }}
             >
-              <Typography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
-                Year 2 - {subject.tags.join(" - ")}
-              </Typography>
+              <ResourcesCardTypography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
+                A Level {subject.tags.join(" - ")}
+              </ResourcesCardTypography>
             </ResourcesCardSmall>
           </Grid>
         ))
@@ -162,9 +163,9 @@ const SimpleSubjects = ({
               outline: selectedSubjectSubtype?.value === subject.id?.toString() ? "2px solid #DA9694" : "unset",
             }}
           >
-            <Typography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
+            <ResourcesCardTypography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
               {subject.tags?.join(" - ")}
-            </Typography>
+            </ResourcesCardTypography>
           </ResourcesCardSmall>
         </Grid>
       ))}

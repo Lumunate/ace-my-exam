@@ -12,6 +12,7 @@ import { useGetSubjects, useGetUniqueSubjects } from '@/hooks/resources/useRefer
 import { Subjects as SubjectTypes } from '@/types/resources';
 import { Box, Typography } from '@mui/material';
 import { StepsDisabled, StepsLoader } from './StepsLoader';
+import { ResourcesCardTypography } from '@/app/(main)/resources/Resources.style';
 
 interface SubjectOption {
   name: string;
@@ -72,9 +73,9 @@ const Subject: React.FC = () => {
                 height={22}
               />
 
-              <Typography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+              <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
                 {subject.name}
-              </Typography>
+              </ResourcesCardTypography>
             </Box>
           </ResourcesCardSmall>
         </Grid>

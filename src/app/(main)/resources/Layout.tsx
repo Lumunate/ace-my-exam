@@ -11,18 +11,31 @@ import {
   ResourcesPara,
   ResourcesSubHeading,
 } from './Resources.style';
+import { useEffect, useState } from 'react';
 
 const ResourcesLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const { currentStep, selectedOptions } = useMultiStepForm();
 
-  const { currentStep } =
-    useMultiStepForm();
+  const [dynamicHeading, setDynamicHeading] = useState<string>('');
+
+  useEffect(() => {
+    let heading = '';
+    if (currentStep === 1) {
+      heading = 'Educational Resources';
+    } else if (currentStep === 1.5) {
+      heading = 'Age Group';
+    } else if (currentStep === 2) {
+      heading = selectedOptions.educationalResources?.name;
+    } else if (currentStep === 3) {
+      heading = selectedOptions.subject?.name;
+    }
+    setDynamicHeading(heading);
+  }, [currentStep]);
 
   return (
     <Box>
-
-
       <Box>
         <SectionHeading
           text="Start Practicing"
@@ -34,13 +47,13 @@ const ResourcesLayout: React.FC<{ children: React.ReactNode }> = ({
         />
 
         <ResourcesHeading variant="h2">
-          {currentStep === 1 ? 'Educational Resources' : 'Hello world'}
+          {dynamicHeading}
         </ResourcesHeading>
       </Box>
 
       <Box
         sx={{
-          margin: '6.9rem 0',
+          margin: '4.2rem 0 6.9rem',
           display: { xs: 'none', sm: 'flex' },
           alignItems: 'center',
         }}

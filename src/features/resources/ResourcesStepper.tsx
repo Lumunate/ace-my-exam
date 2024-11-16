@@ -27,10 +27,6 @@ const ResourcesForm: React.FC = () => {
       return <ExaminationBoardAndSubject />;
     } else if (currentStep === 3) {
       return <SubejctSubtypeAndResourceType />;
-    } else if (currentStep === 4) {
-      return <ResourceType />;
-    } else if (currentStep === 5) {
-      return <DownloadMaterial />;
     } else {
       return null;
     }

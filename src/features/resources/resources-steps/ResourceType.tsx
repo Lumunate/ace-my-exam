@@ -11,6 +11,7 @@ import { ResourceType as IResourceType } from "@/types/resources";
 import { IStepOption } from "@/contexts/MultiStepperContext";
 import { useGetValidResources } from "@/hooks/resources/useReferenceData";
 import { Box, Typography } from "@mui/material";
+import { ResourcesCardTypography } from "@/app/(main)/resources/Resources.style";
 
 const resourceTypes: Record<string, IStepOption> = {
   revisionNotes: { name: "Revision Notes", icon: "/resources/RevisionNotesImg.svg", value: IResourceType.REVISION_NOTES },
@@ -57,9 +58,9 @@ const ResourceType: React.FC = () => {
         >
           <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <Image src={resourceTypes.revisionNotes.icon} alt={resourceTypes.revisionNotes.name} width={82} height={22} />
-            <Typography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
+            <ResourcesCardTypography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
               {resourceTypes.revisionNotes.name}
-            </Typography>
+            </ResourcesCardTypography>
           </Box>
         </ResourcesCardSmall>
       </Grid>
@@ -86,13 +87,13 @@ const ResourceType: React.FC = () => {
         >
           <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <Image src={resourceTypes.topicalQuestions.icon} alt={resourceTypes.topicalQuestions.name} width={82} height={22} />
-            <Typography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
+            <ResourcesCardTypography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
               {resourceTypes.topicalQuestions.name}
-            </Typography>
+            </ResourcesCardTypography>
           </Box>
         </ResourcesCardSmall>
       </Grid>
-      
+
       <Grid
         size={{
           xs: 12,
@@ -115,9 +116,9 @@ const ResourceType: React.FC = () => {
         >
           <Box sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
             <Image src={resourceTypes.pastPapers.icon} alt={resourceTypes.pastPapers.name} width={82} height={22} />
-            <Typography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
+            <ResourcesCardTypography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
               {resourceTypes.pastPapers.name}
-            </Typography>
+            </ResourcesCardTypography>
           </Box>
         </ResourcesCardSmall>
       </Grid>

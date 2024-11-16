@@ -14,12 +14,12 @@ const ResourcesBreadcrumbs: React.FC = () => {
 
   useEffect(() => {
     const stepsOrder = [
-      { key: 1, title: selectedOptions[1] || '' },
-      { key: 1.5, title: selectedOptions[1.5] || '' },
-      { key: 2, title: selectedOptions[2] || '' },
-      { key: 3, title: selectedOptions[3] || '' },
-      { key: 4, title: selectedOptions[4] || '' },
-      { key: 5, title: selectedOptions[5] || '' },
+      { key: 1, title: selectedOptions.educationalResources?.name || '' },
+      { key: 1.5, title: selectedOptions.agreGroup?.name || '' },
+      { key: 2, title: selectedOptions.examBoard?.name || '' },
+      { key: 2.5, title: selectedOptions.subject?.name || '' },
+      { key: 3, title: selectedOptions.subjectSubtype?.name || '' },
+      { key: 3.5, title: selectedOptions.resourceType?.name || '' },
     ];
 
     const filteredSteps = stepsOrder.filter((step) => step.title);
