@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import Layout from '@/app/(main)/resources/Layout';
+import Layout from '@/features/resources/ResourcesLayout';
 import { AppContentWrapper } from '@/components/common/Global.style';
 import ResourcesForm from '@/features/resources/ResourcesStepper';
 

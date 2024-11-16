@@ -9,7 +9,7 @@ import useMultiStepForm from '@/hooks/useMultiStepper';
 
 import {
   ResourcesHeading,
-} from './Resources.style';
+} from '../../app/(main)/resources/Resources.style';
 
 const ResourcesLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
