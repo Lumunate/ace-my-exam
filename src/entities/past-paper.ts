@@ -16,6 +16,9 @@ export class PastPaper extends BaseEntity {
   })
     resources?: PastPaperResource[];
 
+  @Column({ nullable: true })
+    subject_id: number;
+
   @ManyToOne('Subject', (subject: Subject) => subject.pastPapers, {
     onDelete: 'SET NULL',
   })

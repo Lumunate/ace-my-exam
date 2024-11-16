@@ -6,11 +6,9 @@ import React from 'react';
 import useMultiStepForm from '@/hooks/useMultiStepper';
 
 import AgeGroup from './resources-steps/AgeGroup';
-import DownloadMaterial from './resources-steps/DownloadMaterial';
+import ExaminationBoardAndSubject from './resources-steps/EaxminationBoardAndSubject';
 import EducationalResources from './resources-steps/EducationalResources';
-import ExaminationBoard from './resources-steps/ExaminationBoard';
-import ResourceType from './resources-steps/ResourceType';
-import Subject from './resources-steps/Subject';
+import SubejctSubtypeAndResourceType from './resources-steps/SubejctSubtypeAndResourceType';
 import StepNavigation from './StepNavigation';
 
 const ResourcesForm: React.FC = () => {
@@ -22,13 +20,9 @@ const ResourcesForm: React.FC = () => {
     } else if (currentStep === 1.5) {
       return <AgeGroup />;
     } else if (currentStep === 2) {
-      return <ExaminationBoard />;
+      return <ExaminationBoardAndSubject />;
     } else if (currentStep === 3) {
-      return <Subject />;
-    } else if (currentStep === 4) {
-      return <ResourceType />;
-    } else if (currentStep === 5) {
-      return <DownloadMaterial />;
+      return <SubejctSubtypeAndResourceType />;
     } else {
       return null;
     }

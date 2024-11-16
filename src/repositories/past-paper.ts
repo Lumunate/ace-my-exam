@@ -95,4 +95,11 @@ export const PastPaperRepository = AppDataSource.getRepository(PastPaper).extend
       relations: ['resources', 'resources.resource'],
     });
   },
+
+  async findPastPapers(subjectId: number) {
+    return this.find({
+      where: { subject_id: subjectId },
+      relations: ['resources', 'resources.resource'],
+    });
+  },
 });

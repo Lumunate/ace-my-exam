@@ -13,7 +13,6 @@ const StepNavigation: React.FC = () => {
     handleBack,
     handleNext,
     currentStep,
-    selectedOptions,
     isNextDisabled,
   } = useMultiStepForm();
 
@@ -46,17 +45,17 @@ const StepNavigation: React.FC = () => {
         >
           Previous
         </Button>
-        {currentStep < 5 && (
+        {currentStep <= 3 && (
           <Button
             special
             fontSize="16px"
             borderRadius="50px"
             width="212px"
             height="60px"
-            onClick={() => handleNext(selectedOptions[currentStep] || '')}
+            onClick={() => handleNext()}
             disabled={isNextDisabled}
           >
-            {currentStep === 5 ? 'Finish' : 'Next'}
+            {currentStep === 3 ? 'Finish' : 'Next'}
           </Button>
         )}
       </Box>
