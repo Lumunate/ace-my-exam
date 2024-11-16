@@ -1,10 +1,9 @@
 'use client';
-import { useQuery } from 'react-query';
+import {useQuery} from 'react-query';
 
-import { IStepOption } from '@/contexts/MultiStepperContext';
-import { IReferenceData } from '@/services/subject';
-import { EducationLevel, ExamBoards, Subjects } from '@/types/resources';
-
+import {IStepOption} from '@/contexts/MultiStepperContext';
+import {IReferenceData} from '@/services/subject';
+import {EducationLevel, ExamBoards, Subjects} from '@/types/resources';
 
 export const educationLevelOptions: IStepOption[] = [
   { name: 'A levels', icon: '/resources/ALevels.svg', value: EducationLevel.A_LEVEL },
@@ -34,9 +33,7 @@ const fetchReferenceData = async (params: {
     throw new Error('Network response was not ok');
   }
 
-  const data = await response.json();
-
-  return data;
+  return await response.json();
 };
 
 const boardData: Record<string, IStepOption> = {

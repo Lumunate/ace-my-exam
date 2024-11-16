@@ -4,7 +4,6 @@ import { PastPaperRepository } from '@/repositories/past-paper';
 
 export async function createFullChapterStructure(data: {
   subject_id: number;
-
   chapterName: string;
   topics: Array<{
     name: string;
@@ -14,6 +13,7 @@ export async function createFullChapterStructure(data: {
   const chapter = await ContentRepository.createChapter({
     name: data.chapterName,
   });
+
   for (const topicData of data.topics) {
     const topic = await ContentRepository.createTopic({
       name: topicData.name,
