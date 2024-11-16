@@ -1,6 +1,7 @@
 'use client';
 
 import { Box } from '@mui/material';
+import { useEffect, useState } from 'react';
 
 import SectionHeading from '@/components/section-heading/SectionHeading';
 import ResourcesBreadcrumbs from '@/features/resources/ResourcesBreadcrumbs';
@@ -8,10 +9,7 @@ import useMultiStepForm from '@/hooks/useMultiStepper';
 
 import {
   ResourcesHeading,
-  ResourcesPara,
-  ResourcesSubHeading,
 } from './Resources.style';
-import { useEffect, useState } from 'react';
 
 const ResourcesLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -22,6 +20,7 @@ const ResourcesLayout: React.FC<{ children: React.ReactNode }> = ({
 
   useEffect(() => {
     let heading = '';
+
     if (currentStep === 1) {
       heading = 'Educational Resources';
     } else if (currentStep === 1.5) {

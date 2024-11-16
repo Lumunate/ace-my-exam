@@ -1,39 +1,39 @@
-import { z } from "zod";
+import { z } from 'zod';
 
 export enum ResourceType {
-  REVISION_NOTES = "REVISION_NOTES",
-  PAST_PAPER = "PAST_PAPER",
-  TOPIC_QUESTIONS = "TOPIC_QUESTIONS",
+  REVISION_NOTES = 'REVISION_NOTES',
+  PAST_PAPER = 'PAST_PAPER',
+  TOPIC_QUESTIONS = 'TOPIC_QUESTIONS',
 }
 
 export enum Subjects {
-  MATH = "MATH",
-  PHYSICS = "PHYSICS",
-  CHEMISTRY = "CHEMISTRY",
-  BIOLOGY = "BIOLOGY",
-  FURTHER_MATH = "FURTHER_MATH",
+  MATH = 'MATH',
+  PHYSICS = 'PHYSICS',
+  CHEMISTRY = 'CHEMISTRY',
+  BIOLOGY = 'BIOLOGY',
+  FURTHER_MATH = 'FURTHER_MATH',
 }
 
 export enum EducationLevel {
-  A_LEVEL = "A_LEVEL",
-  GCSE = "GCSE",
-  IGCSE = "IGCSE",
-  KS3 = "KS3",
-  ENTRANCE_EXAMS = "ENTRANCE_EXAMS",
+  A_LEVEL = 'A_LEVEL',
+  GCSE = 'GCSE',
+  IGCSE = 'IGCSE',
+  KS3 = 'KS3',
+  ENTRANCE_EXAMS = 'ENTRANCE_EXAMS',
 }
 
 export enum ExamBoards {
-  AQA = "AQA",
-  EDEXCEL = "EDEXCEL",
-  EDEXCEL_INTERNATIONAL = "EDEXCEL_INTERNATIONAL",
-  CAMBRIDGE = "CAMBRIDGE",
-  OCR_A = "OCR_A",
-  OCR_B = "OCR_B",
-  OCR = "OCR",
-  OCR_21 = "OCR_21",
-  OCR_GATEWAY = "OCR_GATEWAY",
-  ISEB = "ISEB",
-  SCHOOL = "SCHOOL",
+  AQA = 'AQA',
+  EDEXCEL = 'EDEXCEL',
+  EDEXCEL_INTERNATIONAL = 'EDEXCEL_INTERNATIONAL',
+  CAMBRIDGE = 'CAMBRIDGE',
+  OCR_A = 'OCR_A',
+  OCR_B = 'OCR_B',
+  OCR = 'OCR',
+  OCR_21 = 'OCR_21',
+  OCR_GATEWAY = 'OCR_GATEWAY',
+  ISEB = 'ISEB',
+  SCHOOL = 'SCHOOL',
 }
 
 const ResourceLink = z.string().url();

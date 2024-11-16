@@ -1,19 +1,16 @@
-"use client";
+'use client';
 
-import Grid from "@mui/material/Grid2";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import Grid from '@mui/material/Grid2';
+import React, { useEffect } from 'react';
 
-import useMultiStepForm from "@/hooks/useMultiStepper";
+import { ResourcesCardTypography } from '@/app/(main)/resources/Resources.style';
+import { IStepOption } from '@/contexts/MultiStepperContext';
+import { useGetSubjects } from '@/hooks/resources/useReferenceData';
+import useMultiStepForm from '@/hooks/useMultiStepper';
+import { EducationLevel, Subjects } from '@/types/resources';
 
-import { ResourcesCard, ResourcesCardSmall, ResourcesCardTitle } from "../ResourcesSteps.style";
-import { useGetSubjects, useGetUniqueSubjects } from "@/hooks/resources/useReferenceData";
-
-import { Box, Typography } from "@mui/material";
-import { StepsDisabled, StepsLoader } from "./StepsLoader";
-import { IStepOption } from "@/contexts/MultiStepperContext";
-import { EducationLevel, ExamBoards, Subjects } from "@/types/resources";
-import { ResourcesCardTypography } from "@/app/(main)/resources/Resources.style";
+import {  ResourcesCardSmall } from '../ResourcesSteps.style';
+import {  StepsLoader } from './StepsLoader';
 
 const SubjectSubtype: React.FC = () => {
   const { selectOption, selectedOptions } = useMultiStepForm();
@@ -23,13 +20,12 @@ const SubjectSubtype: React.FC = () => {
 
   const { data: subjectOptions, isLoading, refetch } = useGetSubjects(educationLevel?.value, examBoard?.value, subject?.value);
 
-  console.log(subject);
-  console.log('ssssss', subjectOptions);
   useEffect(() => {
     refetch();
   }, [educationLevel, examBoard, subject]);
 
   const selectedSubject = selectedOptions.subjectSubtype;
+
   if (isLoading || !subjectOptions) return <StepsLoader />;
 
   if (educationLevel.value === EducationLevel.A_LEVEL && subject.value === Subjects.MATH) {
@@ -56,22 +52,22 @@ const Year1Year2Subjects = ({
   selectedSubjectSubtype: IStepOption;
   selectOption: (stepName: string, option: IStepOption) => void;
 }) => {
-  const year1Subjects = subjectOptions.filter((s) => s.tags?.includes("YEAR_1")).map((s) => ({
+  const year1Subjects = subjectOptions.filter((s) => s.tags?.includes('YEAR_1')).map((s) => ({
     ...s, tags: s.tags?.filter((s) => {
-      return s !== "YEAR_1";
+      return s !== 'YEAR_1';
     })
   }));
-  const year2Subjects = subjectOptions.filter((s) => s.tags?.includes("YEAR_2")).map((s) => ({
+  const year2Subjects = subjectOptions.filter((s) => s.tags?.includes('YEAR_2')).map((s) => ({
     ...s, tags: s.tags?.filter((s) => {
-      return s !== "YEAR_2";
+      return s !== 'YEAR_2';
     })
   }));
 
   return (
     <Grid
       container
-      spacing={"20px"}
-      sx={{ mb: "40px" }}
+      spacing={'20px'}
+      sx={{ mb: '40px' }}
       columns={{
         sm: 6,
         md: 12,
@@ -87,13 +83,13 @@ const Year1Year2Subjects = ({
             key={subject.id}
           >
             <ResourcesCardSmall
-              onClick={() => selectOption("subjectSubtype", { name: subject.subject, value: subject.id?.toString(), icon: "" })}
+              onClick={() => selectOption('subjectSubtype', { name: subject.subject, value: subject.id?.toString(), icon: '' })}
               sx={{
-                outline: selectedSubjectSubtype?.value === subject.id?.toString() ? "2px solid #DA9694" : "unset",
+                outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '2px solid #DA9694' : 'unset',
               }}
             >
-              <ResourcesCardTypography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
-                AS {subject.tags.join(" - ")}
+              <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+                AS {subject.tags.join(' - ')}
               </ResourcesCardTypography>
             </ResourcesCardSmall>
           </Grid>
@@ -110,13 +106,13 @@ const Year1Year2Subjects = ({
             key={subject.id}
           >
             <ResourcesCardSmall
-              onClick={() => selectOption("subjectSubtype", { name: subject.subject, value: subject.id?.toString(), icon: "" })}
+              onClick={() => selectOption('subjectSubtype', { name: subject.subject, value: subject.id?.toString(), icon: '' })}
               sx={{
-                outline: selectedSubjectSubtype?.value === subject.id?.toString() ? "2px solid #DA9694" : "unset",
+                outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '2px solid #DA9694' : 'unset',
               }}
             >
-              <ResourcesCardTypography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
-                A Level {subject.tags.join(" - ")}
+              <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+                A Level {subject.tags.join(' - ')}
               </ResourcesCardTypography>
             </ResourcesCardSmall>
           </Grid>
@@ -142,8 +138,8 @@ const SimpleSubjects = ({
   return (
     <Grid
       container
-      spacing={"20px"}
-      sx={{ mb: "40px" }}
+      spacing={'20px'}
+      sx={{ mb: '40px' }}
       columns={{
         sm: 6,
         md: 12,
@@ -158,13 +154,13 @@ const SimpleSubjects = ({
           key={subject.id}
         >
           <ResourcesCardSmall
-            onClick={() => selectOption("subjectSubtype", { name: subject.subject, value: subject.id?.toString(), icon: "" })}
+            onClick={() => selectOption('subjectSubtype', { name: subject.subject, value: subject.id?.toString(), icon: '' })}
             sx={{
-              outline: selectedSubjectSubtype?.value === subject.id?.toString() ? "2px solid #DA9694" : "unset",
+              outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '2px solid #DA9694' : 'unset',
             }}
           >
-            <ResourcesCardTypography variant="body1" sx={{ ml: "1px", textWrap: "nowrap" }}>
-              {subject.tags?.join(" - ")}
+            <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+              {subject.tags?.join(' - ')}
             </ResourcesCardTypography>
           </ResourcesCardSmall>
         </Grid>

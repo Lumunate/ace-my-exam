@@ -1,9 +1,11 @@
-import Grid from "@mui/material/Grid";
-import React from 'react'
-import ExaminationBoard from './ExaminationBoard'
-import Subject from './Subject'
-import { Box } from "@mui/material";
-import { ResourcesPara, ResourcesSubHeading } from "@/app/(main)/resources/Resources.style";
+import { Box } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import React from 'react';
+
+import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
+
+import ExaminationBoard from './ExaminationBoard';
+import Subject from './Subject';
 
 const ExaminationBoardAndSubject = () => {
   return (
@@ -17,25 +19,25 @@ const ExaminationBoardAndSubject = () => {
       columns={12}
     >
       <Grid xs={5}>
-        <Box sx={{ my: { xs: "20px", sm: "30px" } }}>
+        <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
           <ResourcesSubHeading>Examination Board</ResourcesSubHeading>
-          <ResourcesPara variant="body1" sx={{ textAlign: "start" }}>
+          <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
             Select the Examination Board
           </ResourcesPara>
         </Box>
         <ExaminationBoard />
       </Grid>
       <Grid xs={5}>
-        <Box sx={{ my: { xs: "20px", sm: "30px" } }}>
+        <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
           <ResourcesSubHeading>Subject</ResourcesSubHeading>
-          <ResourcesPara variant="body1" sx={{ textAlign: "start" }}>
+          <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
             Select the Subject
           </ResourcesPara>
         </Box>
         <Subject />
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default ExaminationBoardAndSubject
+export default ExaminationBoardAndSubject;

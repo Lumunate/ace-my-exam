@@ -1,15 +1,15 @@
-"use client";
+'use client';
 
-import { Box } from "@mui/material";
-import Grid from "@mui/material/Grid2";
-import Image from "next/image";
-import React, { useEffect, useState } from "react";
+import { Box } from '@mui/material';
+import Grid from '@mui/material/Grid2';
+import Image from 'next/image';
+import React from 'react';
 
-import useMultiStepForm from "@/hooks/useMultiStepper";
+import { useGetExamBoards } from '@/hooks/resources/useReferenceData';
+import useMultiStepForm from '@/hooks/useMultiStepper';
 
-import { ResourcesCard, ResourcesCardSmall } from "../ResourcesSteps.style";
-import { useGetExamBoards } from "@/hooks/resources/useReferenceData";
-import { StepsLoader } from "./StepsLoader";
+import {  ResourcesCardSmall } from '../ResourcesSteps.style';
+import { StepsLoader } from './StepsLoader';
 
 const ExaminationBoard: React.FC = () => {
   const { selectOption, selectedOptions } = useMultiStepForm();
@@ -23,7 +23,7 @@ const ExaminationBoard: React.FC = () => {
   return (
     <Box>
 
-      <Grid container spacing={"20px"} columns={{
+      <Grid container spacing={'20px'} columns={{
         sm: 6,
         md: 12,
       }}>
@@ -36,12 +36,12 @@ const ExaminationBoard: React.FC = () => {
             key={board.value}
           >
             <ResourcesCardSmall
-              onClick={() => selectOption("examBoard", board)}
+              onClick={() => selectOption('examBoard', board)}
               sx={{
-                outline: selectedExaminationBoard?.value === board.value ? "2px solid #DA9694" : "unset",
+                outline: selectedExaminationBoard?.value === board.value ? '2px solid #DA9694' : 'unset',
               }}
             >
-              <Image src={board.icon} alt={board.name ?? ""} width={82} height={22} /> 
+              <Image src={board.icon} alt={board.name ?? ''} width={82} height={22} /> 
             </ResourcesCardSmall>
           </Grid>
         ))}

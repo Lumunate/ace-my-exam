@@ -1,40 +1,32 @@
 'use client';
 
+import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
+import { ResourcesCardTypography } from '@/app/(main)/resources/Resources.style';
+import { useGetUniqueSubjects } from '@/hooks/resources/useReferenceData';
 import useMultiStepForm from '@/hooks/useMultiStepper';
 
-import { ResourcesCard, ResourcesCardSmall, ResourcesCardTitle } from '../ResourcesSteps.style';
-import { useGetSubjects, useGetUniqueSubjects } from '@/hooks/resources/useReferenceData';
-
-import { Subjects as SubjectTypes } from '@/types/resources';
-import { Box, Typography } from '@mui/material';
+import { ResourcesCardSmall } from '../ResourcesSteps.style';
 import { StepsDisabled, StepsLoader } from './StepsLoader';
-import { ResourcesCardTypography } from '@/app/(main)/resources/Resources.style';
-
-interface SubjectOption {
-  name: string;
-  icon: string;
-}
-
 
 const Subject: React.FC = () => {
   const { selectOption, selectedOptions } = useMultiStepForm();
   const educationLevel = selectedOptions.educationalResources;
   const examBoard = selectedOptions.examBoard;
 
-  if (!examBoard) return <StepsDisabled />
+  const { data: subjectOptions, isLoading, refetch } = useGetUniqueSubjects(educationLevel?.value, examBoard?.value);
 
-  const { data: subjectOptions, isLoading, refetch } = useGetUniqueSubjects(educationLevel.value, examBoard.value);
   useEffect(() => {
     refetch();
   }, [educationLevel, examBoard]);
 
-  console.log(subjectOptions);
+  if (!examBoard) return <StepsDisabled />;
 
   const selectedSubject = selectedOptions.subject;
+
   if (isLoading || !subjectOptions) return <StepsLoader />;
 
   return (

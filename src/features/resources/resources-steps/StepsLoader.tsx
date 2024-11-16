@@ -1,10 +1,11 @@
-import { Grid2, Skeleton } from '@mui/material'
-import React from 'react'
-import { ResourcesCardSmall, ResourcesCardSmallDisabled, ResourcesCardSmallLoading } from '../ResourcesSteps.style'
+import { Grid2 } from '@mui/material';
+import React from 'react';
+
+import {  ResourcesCardSmallDisabled, ResourcesCardSmallLoading } from '../ResourcesSteps.style';
 
 export const StepsLoader = () => {
   return (
-    <Grid2 container spacing={"20px"} columns={{
+    <Grid2 container spacing={'20px'} columns={{
       sm: 6,
       md: 12,
     }}>
@@ -20,13 +21,12 @@ export const StepsLoader = () => {
         </Grid2>
       ))}
     </Grid2>
-  )
-}
-
+  );
+};
 
 export const StepsDisabled = () => {
   return (
-    <Grid2 container spacing={"20px"} columns={{
+    <Grid2 container spacing={'20px'} columns={{
       sm: 6,
       md: 12,
     }}>
@@ -42,5 +42,5 @@ export const StepsDisabled = () => {
         </Grid2>
       ))}
     </Grid2>
-  )
-}
+  );
+};

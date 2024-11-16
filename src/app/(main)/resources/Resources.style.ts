@@ -100,7 +100,6 @@ export const ResourcesContentPara = styled(Typography)(({ theme }) => ({
   },
 }));
 
-
 export const ResourcesSubHeading = styled(Typography)(({ theme }) => ({
   color: '#000',
   fontSize: '30px',

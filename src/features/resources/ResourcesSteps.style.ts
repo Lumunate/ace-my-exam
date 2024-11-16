@@ -39,26 +39,26 @@ export const ResourcesCard = styled(Card)<ResourcesCardProps>(({ theme, height }
   },
 }));
 
-export const ResourcesCardSmall = styled(Card)<ResourcesCardProps>(({ theme, height }) => ({
-  background: "#FFF",
-  padding: "1.6rem 5rem",
-  borderRadius: "20px",
-  boxShadow: "0px 0px 12.6px 0px rgba(0, 0, 0, 0.08)",
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  height: height || "100%",
-  cursor: "pointer",
-  minWidth: "20rem",
+export const ResourcesCardSmall = styled(Card)<ResourcesCardProps>(({ height }) => ({
+  background: '#FFF',
+  padding: '1.6rem 5rem',
+  borderRadius: '20px',
+  boxShadow: '0px 0px 12.6px 0px rgba(0, 0, 0, 0.08)',
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  height: height || '100%',
+  cursor: 'pointer',
+  minWidth: '20rem',
 }));
 
-export const ResourcesCardSmallDisabled = styled(ResourcesCardSmall)<ResourcesCardProps>(({ theme, height }) => ({
-  background: "#E8E8E8",
-  cursor: "default",
+export const ResourcesCardSmallDisabled = styled(ResourcesCardSmall)<ResourcesCardProps>(() => ({
+  background: '#E8E8E8',
+  cursor: 'default',
 }));
 
-export const ResourcesCardSmallLoading = styled(ResourcesCardSmallDisabled)<ResourcesCardProps>(({ theme, height }) => ({
-  animation: "blink 1s linear infinite",
+export const ResourcesCardSmallLoading = styled(ResourcesCardSmallDisabled)<ResourcesCardProps>(() => ({
+  animation: 'blink 1s linear infinite',
 }));
 
 export const ResourcesCardNumber = styled(Typography)(({ theme }) => ({

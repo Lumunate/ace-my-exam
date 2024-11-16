@@ -6,14 +6,10 @@ import React from 'react';
 import useMultiStepForm from '@/hooks/useMultiStepper';
 
 import AgeGroup from './resources-steps/AgeGroup';
-import DownloadMaterial from './resources-steps/DownloadMaterial';
-import EducationalResources from './resources-steps/EducationalResources';
-import ExaminationBoard from './resources-steps/ExaminationBoard';
-import ResourceType from './resources-steps/ResourceType';
-import Subject from './resources-steps/Subject';
-import StepNavigation from './StepNavigation';
 import ExaminationBoardAndSubject from './resources-steps/EaxminationBoardAndSubject';
+import EducationalResources from './resources-steps/EducationalResources';
 import SubejctSubtypeAndResourceType from './resources-steps/SubejctSubtypeAndResourceType';
+import StepNavigation from './StepNavigation';
 
 const ResourcesForm: React.FC = () => {
   const { currentStep } = useMultiStepForm();

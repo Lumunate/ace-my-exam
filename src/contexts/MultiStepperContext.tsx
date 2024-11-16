@@ -1,8 +1,8 @@
 'use client';
+import { useRouter } from 'next/navigation';
 import React, { createContext, useState } from 'react';
 
 import { EducationLevel } from '@/types/resources';
-import { useRouter } from 'next/navigation';
 
 type StepKey = 1 | 1.5 | 2 | 3 | 4 | 5;
 
@@ -20,13 +20,11 @@ interface MultiStepFormContextProps {
 
 const MultiStepFormContext = createContext<MultiStepFormContextProps | undefined>(undefined);
 
-
 export interface IStepOption {
   name: string,
   value: string
   icon: string
 }
-
 
 export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentStep, setCurrentStep] = useState<StepKey>(1);
@@ -83,7 +81,6 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsNextDisabled(false);
   };
 
-  // Get step-specific titles and text
   return (
     <MultiStepFormContext.Provider
       value={{

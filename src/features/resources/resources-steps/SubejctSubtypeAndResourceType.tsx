@@ -1,14 +1,15 @@
 'use client';
-import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style'
-import { Box, Grid } from '@mui/material'
-import React from 'react'
-import Subject from './Subject'
-import ResourceType from './ResourceType'
+import { Box, Grid } from '@mui/material';
+import React from 'react';
+
+import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
 import useMultiStepForm from '@/hooks/useMultiStepper';
+
+import ResourceType from './ResourceType';
 import SubjectSubtype from './SubjectSubtype';
 
 const SubejctSubtypeAndResourceType = () => {
-  const { selectOption, selectedOptions } = useMultiStepForm();
+  const { selectedOptions } = useMultiStepForm();
   const examBoard = selectedOptions.examBoard;
   const subject = selectedOptions.subject;
 
@@ -23,25 +24,25 @@ const SubejctSubtypeAndResourceType = () => {
       columns={12}
     >
       <Grid xs={5}>
-        <Box sx={{ my: { xs: "20px", sm: "30px" } }}>
+        <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
           <ResourcesSubHeading>{examBoard?.name} {subject?.name}</ResourcesSubHeading>
-          <ResourcesPara variant="body1" sx={{ textAlign: "start" }}>
+          <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
             Select the Subject
           </ResourcesPara>
         </Box>
         <SubjectSubtype />
       </Grid>
       <Grid xs={5}>
-        <Box sx={{ my: { xs: "20px", sm: "30px" } }}>
+        <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
           <ResourcesSubHeading>Resources</ResourcesSubHeading>
-          <ResourcesPara variant="body1" sx={{ textAlign: "start" }}>
+          <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
             Select the Resource Type
           </ResourcesPara>
         </Box>
         <ResourceType />
       </Grid>
     </Grid>
-  )
-}
+  );
+};
 
-export default SubejctSubtypeAndResourceType
+export default SubejctSubtypeAndResourceType;
