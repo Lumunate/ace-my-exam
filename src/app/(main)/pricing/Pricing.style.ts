@@ -4,19 +4,16 @@ import { Box, styled, Typography } from '@mui/material';
 
 export const PricingWrapper = styled(Box)(({ theme }) => ({
   width: '100%',
-  padding: '209px 0 150px',
+  padding: '150px 0 100px',
   textAlign: 'center',
   overflow: 'hidden',
   [theme.breakpoints.down('lg')]: {
-    padding: '170px 0 100px',
-  },
-  [theme.breakpoints.down('md')]: {
     padding: '150px 0 80px',
   },
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     padding: '150px 0 60px',
   },
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down('sm')]: {
     padding: '120px 0 40px',
   },
 }));

@@ -64,7 +64,7 @@ const TestimonialsSwiper: FC = () => {
   };
 
   return (
-    <TestimonialsSwiperWrapper withPadding={false}>
+    <TestimonialsSwiperWrapper>
       <TestimonialsNavigationWrapper positionLeft='50%' width='300px'>
         <Box className='swiper-button-prev'>
           <Image src='/icons/prev.svg' alt='Prev' width={14} height={11} loading='lazy' />
