@@ -10,18 +10,10 @@ import {
   ResourcesSubHeading,
 } from '@/app/(main)/resources/Resources.style';
 import { IStepOption } from '@/contexts/MultiStepperContext';
+import { educationLevelOptions } from '@/hooks/resources/useReferenceData';
 import useMultiStepForm from '@/hooks/useMultiStepper';
-import { EducationLevel } from '@/types/resources';
 
 import { ResourcesCard, ResourcesCardTitle } from '../ResourcesSteps.style';
-
-const options: IStepOption[] = [
-  { name: 'A levels', icon: '/resources/ALevels.svg', value: EducationLevel.A_LEVEL },
-  { name: 'GCSE', icon: '/resources/GCSE.svg', value: EducationLevel.GCSE },
-  { name: 'IGCSE', icon: '/resources/IGCSE.svg', value: EducationLevel.IGCSE },
-  { name: 'KS3', icon: '/resources/KS3.svg', value: EducationLevel.KS3 },
-  { name: 'Entrance Exam', icon: '/resources/EntranceExam.svg', value: EducationLevel.ENTRANCE_EXAMS },
-];
 
 const EducationalResources: React.FC = () => {
   const { selectOption, selectedOptions } = useMultiStepForm();
@@ -36,7 +28,7 @@ const EducationalResources: React.FC = () => {
         </ResourcesPara>
       </Box>
       <Grid container spacing={'22px'} sx={{ mb: '40px' }} justifyContent={'center'} columns={20}>
-        {options.map((option: IStepOption) => (
+        {educationLevelOptions.map((option: IStepOption) => (
           <Grid
             size={{
               xs: 20,

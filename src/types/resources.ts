@@ -22,6 +22,13 @@ export enum EducationLevel {
   ENTRANCE_EXAMS = 'ENTRANCE_EXAMS',
 }
 
+export enum AgeGroups {
+  PRIMARY_SCHOOL = 'PRIMARY_SCHOOL',
+  SECONDARY_SCHOOL = 'SECONDARY_SCHOOL',
+  HIGHER_SECONDARY = 'HIGHER_SECONDARY',
+  SCHOLARSHIP = 'SCHOLARSHIP',
+}
+
 export enum ExamBoards {
   AQA = 'AQA',
   EDEXCEL = 'EDEXCEL',
