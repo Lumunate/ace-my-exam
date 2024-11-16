@@ -2,6 +2,7 @@
 import React, { createContext, useState } from 'react';
 
 import { EducationLevel } from '@/types/resources';
+import { useRouter } from 'next/navigation';
 
 type StepKey = 1 | 1.5 | 2 | 3 | 4 | 5;
 
@@ -32,10 +33,15 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
   const [selectedOptions, setSelectedOptions] = useState<Record<string, IStepOption>>({});
   const [isNextDisabled, setIsNextDisabled] = useState(true);
 
+  const router = useRouter();
+
   const handleNext = () => {
     let nextStep: StepKey = currentStep;
 
-    if (currentStep === 1) {
+    if (currentStep === 3) {
+      router.push(`/resources/${selectedOptions.subjectSubtype?.value}/${selectedOptions.resourceType?.value}`);
+    }
+    else if (currentStep === 1) {
       nextStep = selectedOptions.educationLevel?.value === EducationLevel.ENTRANCE_EXAMS ? 1.5 : 2;
     } else if (currentStep === 1.5) {
       nextStep = 2;
