@@ -54,7 +54,7 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
 
       router.push(`/resources/${selectedOptions.subjectSubtype?.value}/${selectedOptions.resourceType?.value}?breadcrumbs=${queryParams}`);
     } else if (currentStep === 1) {
-      nextStep = selectedOptions.educationLevel?.value === EducationLevel.ENTRANCE_EXAMS ? 1.5 : 2;
+      nextStep = selectedOptions.educationalResources?.value === EducationLevel.ENTRANCE_EXAMS ? 1.5 : 2;
     } else if (currentStep === 1.5) {
       nextStep = 2;
     } else {
