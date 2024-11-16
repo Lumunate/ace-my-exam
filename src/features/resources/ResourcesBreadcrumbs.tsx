@@ -12,7 +12,7 @@ const ResourcesBreadcrumbs: React.FC<{ permanentBreadcrumbs?: { key: number; tit
   useEffect(() => {
     const stepsOrder = [
       { key: 1, title: selectedOptions.educationalResources?.name || '' },
-      { key: 1.5, title: selectedOptions.agreGroup?.name || '' },
+      { key: 1.5, title: selectedOptions.ageGroup?.name || '' },
       { key: 2, title: selectedOptions.examBoard?.name || '' },
       { key: 2.5, title: selectedOptions.subject?.name || '' },
       { key: 3, title: selectedOptions.subjectSubtype?.name || '' },
