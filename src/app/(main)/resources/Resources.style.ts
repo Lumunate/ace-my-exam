@@ -1,8 +1,21 @@
 import { styled, Box, Typography } from '@mui/material';
 
-export const Resourceswrapper = styled(Box)({
-  padding: '135px 0  42px',
-});
+export const Resourceswrapper = styled(Box)(({ theme }) => ({
+  padding: '150px 0 100px',
+  minHeight: 'calc(100vh - 109px)',
+  display: 'flex', 
+  flexDirection: 'column', 
+  justifyContent: 'center',
+  [theme.breakpoints.down('lg')]: {
+    padding: '150px 0 80px',
+  },
+  [theme.breakpoints.down('md')]: {
+    padding: '150px 0 60px',
+  },
+  [theme.breakpoints.down('sm')]: {
+    padding: '120px 0 40px',
+  },
+}));
 
 export const ResourcesContainer = styled(Box)(({ theme }) => ({
   padding: '50px 80px',

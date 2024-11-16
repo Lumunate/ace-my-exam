@@ -63,7 +63,7 @@ const AboutTestimonialsSwiper: FC = () => {
   };
 
   return (
-    <TestimonialsSwiperWrapper withPadding={true} aboutSwiperOpen={true}>
+    <TestimonialsSwiperWrapper aboutSwiperOpen={true}>
       <TestimonialsNavigationWrapper positionLeft='50%' width='300px'>
         <Box className='swiper-button-prev'>
           <Image src='/icons/prev.svg' alt='Prev' width={14} height={11} />
@@ -89,7 +89,7 @@ const AboutTestimonialsSwiper: FC = () => {
       >
         {testimonialsData?.map((testimonial: Testimonial, index: number) => (
           <SwiperSlide key={index}>
-            <TestimonialsCard>
+            <TestimonialsCard isSpace={true}>
               <Box>
                 <TestimonialsInfoHead
                 >
