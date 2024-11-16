@@ -5,6 +5,7 @@ import { Box, styled, Typography, List, ListItem, Divider } from '@mui/material'
 export const FounderWrapper = styled(Box)({
   width: '100%',
   position: 'relative',
+  paddingTop: '100px',
 });
 
 export const FounderContentContainer = styled(Box)(({ theme }) => ({

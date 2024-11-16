@@ -5,7 +5,6 @@ import { IStepOption } from '@/contexts/MultiStepperContext';
 import { IReferenceData } from '@/services/subject';
 import { EducationLevel, ExamBoards, Subjects } from '@/types/resources';
 
-// ============================== GET ==============================
 
 export const educationLevelOptions: IStepOption[] = [
   { name: 'A levels', icon: '/resources/ALevels.svg', value: EducationLevel.A_LEVEL },
