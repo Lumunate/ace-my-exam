@@ -67,8 +67,8 @@ export const useGetExamBoards = (educationLevel: string) => {
 
 const subjectsData: Record<string, IStepOption> = {
   Math: { name: "Maths", icon: "/resources/math.svg", value: Subjects.MATH },
-  Physics: { name: "Chemistry", icon: "/resources/chemistry.svg", value: Subjects.PHYSICS },
-  Chemistry: { name: "Physics", icon: "/resources/Physics.svg", value: Subjects.CHEMISTRY },
+  Physics: { name: "Chemistry", icon: "/resources/chemistry.svg", value: Subjects.CHEMISTRY },
+  Chemistry: { name: "Physics", icon: "/resources/Physics.svg", value: Subjects.PHYSICS },
   Biology: { name: "Biology", icon: "/resources/biology.svg", value: Subjects.BIOLOGY },
   "Further Math": { name: "Further Maths", icon: "/resources/Furthermaths.svg", value: Subjects.FURTHER_MATH },
 };
@@ -92,7 +92,7 @@ export const useGetUniqueSubjects = (educationLevel: string, examBoard: string) 
   });
 };
 
-export const useGetSubjects = (educationLevel: string, examBoard: string) => {
+export const useGetSubjects = (educationLevel: string, examBoard: string, subject: string) => {
   return useQuery<
     {
       id: number;
@@ -104,7 +104,8 @@ export const useGetSubjects = (educationLevel: string, examBoard: string) => {
     queryKey: ["subjects", educationLevel, examBoard],
     queryFn: async () => {
       const data = await fetchReferenceData({ educationLevel, examBoard: examBoard, subject: null, meta: null });
-      return data.subjects || [];
+      console.log('dddddddddddd',data.subjects);
+      return data.subjects?.filter((s) => subjectsData[s.subject]?.value === subject) || [];
     },
   });
 };
