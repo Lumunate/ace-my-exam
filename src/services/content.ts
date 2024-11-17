@@ -1,6 +1,6 @@
-import { IResourceData } from "@/app/api/resources/route";
-import { ContentRepository } from "@/repositories/content";
-import { PastPaperRepository } from "@/repositories/past-paper";
+import { IResourceData } from '@/app/api/resources/route';
+import { ContentRepository } from '@/repositories/content';
+import { PastPaperRepository } from '@/repositories/past-paper';
 
 export async function createFullChapterStructure(data: {
   subject_id: number;

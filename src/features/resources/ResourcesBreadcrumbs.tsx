@@ -1,6 +1,6 @@
 import { Breadcrumbs } from '@mui/material';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import useMultiStepForm from '@/hooks/useMultiStepper';
 

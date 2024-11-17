@@ -1,8 +1,8 @@
-"use client";
-import { useRouter } from "next/navigation";
-import React, { createContext, useState } from "react";
+'use client';
+import { useRouter } from 'next/navigation';
+import React, { createContext, useState } from 'react';
 
-import { EducationLevel } from "@/types/resources";
+import { EducationLevel } from '@/types/resources';
 
 type StepKey = 1 | 1.5 | 2 | 3 | 4 | 5;
 

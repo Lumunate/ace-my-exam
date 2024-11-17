@@ -1,14 +1,15 @@
-"use client";
+'use client';
 
 import {
   IconButton,
   Box,
-} from "@mui/material";
-import Image from "next/image";
-import React from "react";
+} from '@mui/material';
+import Image from 'next/image';
+import React from 'react';
 
-import type { Content } from "@/entities";
-import { ResourcesPara, ResourcesSubHeading } from "@/app/(main)/resources/Resources.style";
+import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
+import type { Content } from '@/entities';
+
 import {
   ChapterHeading,
   CollapseContainer,
@@ -16,14 +17,14 @@ import {
   RessourcesTableHeading,
   SubtopicHeading,
   TopicHeading,
-} from "./ResourceTables.style";
+} from './ResourceTables.style';
 
-const RevisionNotesTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({ data, isLoading }) => {
+const RevisionNotesTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({ data }) => {
   const handleDownload = (fileUrl: string) => {
-    const link = document.createElement("a");
+    const link = document.createElement('a');
 
     link.href = fileUrl;
-    link.download = fileUrl.split("/").pop() || "download.pdf";
+    link.download = fileUrl.split('/').pop() || 'download.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -31,16 +32,16 @@ const RevisionNotesTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({
 
   return (
     <Box>
-      <Box sx={{ my: { xs: "20px", sm: "30px" } }}>
+      <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
         <ResourcesSubHeading>Revision Notes</ResourcesSubHeading>
-        <ResourcesPara variant="body1" sx={{ textAlign: "start" }}>
+        <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
           Select the Content
         </ResourcesPara>
       </Box>
       <Box>
         <Box sx={{ minWidth: 700 }}>
           <Box>
-            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <RessourcesTableHeading>Name</RessourcesTableHeading>
               <RessourcesTableHeading>Download</RessourcesTableHeading>
             </Box>
@@ -60,18 +61,18 @@ const RevisionNotesTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({
                       </TopicHeading>
 
                       <InnerCollapse>
-                        {topic.children?.map((subtopic, index) => (
-                          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+                        {topic.children?.map((subtopic) => (
+                          <Box key={subtopic.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                             <SubtopicHeading>{subtopic.name}</SubtopicHeading>
                             <IconButton
                               onClick={() => handleDownload(subtopic.name)}
                               sx={{
-                                color: "#CCC",
-                                fontSize: "20px",
+                                color: '#CCC',
+                                fontSize: '20px',
                                 fontWeight: 400,
-                                fontFamily: "Jost, sans-serif",
-                                border: "none",
-                                padding: "15px 0",
+                                fontFamily: 'Jost, sans-serif',
+                                border: 'none',
+                                padding: '15px 0',
                               }}
                             >
                               <Image src="/download.svg" alt="download" width={20} height={20} />

@@ -1,16 +1,17 @@
-"use client";
-import React from "react";
+'use client';
+import { Box } from '@mui/material';
+import { useSearchParams } from 'next/navigation';
+import React from 'react';
 
-import RevisionNotesTable from "@/features/resources/resources-tables/RevisionNotesTable";
-import TopicQuestionsTable from "@/features/resources/resources-tables/TopicQuestionsTable";
-import PastPapersTable from "@/features/resources/resources-tables/PastPapersTable";
-import { Box } from "@mui/material";
-import { ResourceType } from "@/types/resources";
-import ResourcesLayout from "@/features/resources/ResourcesLayout";
-import { ResourcesContainer, Resourceswrapper } from "../../Resources.style";
-import { AppContentWrapper } from "@/components/common/Global.style";
-import { usePathname, useSearchParams } from "next/navigation";
-import { useGetResources } from "@/hooks/resources/useResources";
+import { AppContentWrapper } from '@/components/common/Global.style';
+import PastPapersTable from '@/features/resources/resources-tables/PastPapersTable';
+import RevisionNotesTable from '@/features/resources/resources-tables/RevisionNotesTable';
+import TopicQuestionsTable from '@/features/resources/resources-tables/TopicQuestionsTable';
+import ResourcesLayout from '@/features/resources/ResourcesLayout';
+import { useGetResources } from '@/hooks/resources/useResources';
+import { ResourceType } from '@/types/resources';
+
+import { ResourcesContainer, Resourceswrapper } from '../../Resources.style';
 
 interface DynamicPageProps {
   params: {
@@ -22,7 +23,7 @@ interface DynamicPageProps {
 const DownloadMaterial = ({ params }: DynamicPageProps) => {
   const { subjectId, resourceType } = params;
   const searchParams = useSearchParams();
-  const breadcrumbs = searchParams.get("breadcrumbs")?.split(";") || [];
+  const breadcrumbs = searchParams.get('breadcrumbs')?.split(';') || [];
 
   const { data, isLoading } = useGetResources(parseInt(subjectId));
 
@@ -31,7 +32,7 @@ const DownloadMaterial = ({ params }: DynamicPageProps) => {
       <AppContentWrapper>
         <ResourcesContainer>
           <ResourcesLayout
-            permanentHeading={"Study Material"}
+            permanentHeading={'Study Material'}
             permanentBreadcrumbs={breadcrumbs.map((b, i) => ({ key: i, title: b }))}
           >
             {isLoading ? (

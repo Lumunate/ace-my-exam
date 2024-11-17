@@ -1,10 +1,12 @@
-"use client";
+'use client';
 
-import { Box } from "@mui/material";
-import Image from "next/image";
-import React from "react";
+import { Box } from '@mui/material';
+import Image from 'next/image';
+import React from 'react';
 
-import { ResourcesPara, ResourcesSubHeading } from "@/app/(main)/resources/Resources.style";
+import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
+import type { PastPaper } from '@/entities';
+
 import {
   ChapterHeading,
   CollapseContainer,
@@ -12,25 +14,25 @@ import {
   InnerCollapse,
   RessourcesTableHeading,
   SubtopicHeading,
-} from "./ResourceTables.style";
-import type { PastPaper } from "@/entities";
+} from './ResourceTables.style';
 
-const PastPapersTable: React.FC<{ data: PastPaper[]; isLoading: boolean }> = ({ data, isLoading }) => {
+const PastPapersTable: React.FC<{ data: PastPaper[]; isLoading: boolean }> = ({ data }) => {
 
   const papersByYear = data.reduce((acc, paper) => {
     if (!acc[paper.year]) {
       acc[paper.year] = [];
     }
     acc[paper.year].push(paper);
+
     return acc;
   }, {} as Record<string, PastPaper[]>);
 
   const handleDownload = (fileName: string) => {
     const fileUrl = `/path/to/files/${fileName}.pdf`;
-    const link = document.createElement("a");
+    const link = document.createElement('a');
 
     link.href = fileUrl;
-    link.target = "_blank";
+    link.target = '_blank';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -38,20 +40,20 @@ const PastPapersTable: React.FC<{ data: PastPaper[]; isLoading: boolean }> = ({ 
 
   return (
     <Box>
-      <Box sx={{ my: { xs: "20px", sm: "30px" } }}>
+      <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
         <ResourcesSubHeading>Topical Questions</ResourcesSubHeading>
-        <ResourcesPara variant="body1" sx={{ textAlign: "start" }}>
+        <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
           Select the Content
         </ResourcesPara>
       </Box>
       <Box>
         <Box sx={{ minWidth: 700 }}>
           <Box>
-            <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-              <RessourcesTableHeading sx={{ flex: "0 0 calc(50% + 6rem)" }}>Exam</RessourcesTableHeading>
-              <RessourcesTableHeading sx={{ flex: "0 0 13.67%", textAlign: "center" }}>Download</RessourcesTableHeading>
-              <RessourcesTableHeading sx={{ flex: "0 0 18.67%" }}>Marking Scheme</RessourcesTableHeading>
-              <RessourcesTableHeading sx={{ flex: "0 0 16.67%" }}>Answer</RessourcesTableHeading>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <RessourcesTableHeading sx={{ flex: '0 0 calc(50% + 6rem)' }}>Exam</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 13.67%', textAlign: 'center' }}>Download</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 18.67%' }}>Marking Scheme</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 16.67%' }}>Answer</RessourcesTableHeading>
             </Box>
           </Box>
           <Box></Box>
@@ -62,16 +64,16 @@ const PastPapersTable: React.FC<{ data: PastPaper[]; isLoading: boolean }> = ({ 
               </ChapterHeading>
 
               <InnerCollapse>
-                {papersByYear[year].map((paper, index) => (
-                  <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-                    <SubtopicHeading sx={{ flex: "0 0 50%" }}>{paper.title}</SubtopicHeading>
-                    <DownloadIconButton sx={{ flex: "0 0 16.67%" }} onClick={() => handleDownload(paper.title)}>
+                {papersByYear[year].map((paper) => (
+                  <Box key={paper.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                    <SubtopicHeading sx={{ flex: '0 0 50%' }}>{paper.title}</SubtopicHeading>
+                    <DownloadIconButton sx={{ flex: '0 0 16.67%' }} onClick={() => handleDownload(paper.title)}>
                       <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                     </DownloadIconButton>
-                    <DownloadIconButton sx={{ flex: "0 0 16.67%" }} onClick={() => handleDownload(paper.title)}>
+                    <DownloadIconButton sx={{ flex: '0 0 16.67%' }} onClick={() => handleDownload(paper.title)}>
                       <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                     </DownloadIconButton>
-                    <DownloadIconButton sx={{ flex: "0 0 16.67%" }} onClick={() => handleDownload(paper.title)}>
+                    <DownloadIconButton sx={{ flex: '0 0 16.67%' }} onClick={() => handleDownload(paper.title)}>
                       <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                     </DownloadIconButton>
                   </Box>

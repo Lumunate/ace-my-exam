@@ -2,8 +2,8 @@
 
 import React from 'react';
 
-import Layout from '@/features/resources/ResourcesLayout';
 import { AppContentWrapper } from '@/components/common/Global.style';
+import Layout from '@/features/resources/ResourcesLayout';
 import ResourcesForm from '@/features/resources/ResourcesStepper';
 
 import { ResourcesContainer, Resourceswrapper } from './Resources.style';
