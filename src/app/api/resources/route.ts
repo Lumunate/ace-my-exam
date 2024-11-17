@@ -2,6 +2,13 @@ import { NextRequest, NextResponse } from 'next/server';
 
 import { createFullChapterStructure, getSubjectContentAndPastPapers } from "@/services/content";
 import { initializeDataSource } from "@/utils/typeorm";
+import { Content, PastPaper } from "@/entities";
+
+export interface IResourceData {
+  pastPapers: PastPaper[];
+  chapters: Content[];
+  topics: Content[];
+}
 
 export async function GET(request: NextRequest) {
   await initializeDataSource();
@@ -12,7 +19,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: "Subject ID is required" }, { status: 400 });
     }
 
-    const data = await getSubjectContentAndPastPapers(parseInt(subjectId));
+    const data: IResourceData = await getSubjectContentAndPastPapers(parseInt(subjectId));
 
     return NextResponse.json({ ...data }, { status: 200 });
   } catch (error: unknown) {

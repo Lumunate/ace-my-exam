@@ -10,6 +10,7 @@ import ResourcesLayout from "@/features/resources/ResourcesLayout";
 import { ResourcesContainer, Resourceswrapper } from "../../Resources.style";
 import { AppContentWrapper } from "@/components/common/Global.style";
 import { usePathname, useSearchParams } from "next/navigation";
+import { useGetResources } from "@/hooks/resources/useResources";
 
 interface DynamicPageProps {
   params: {
@@ -23,6 +24,8 @@ const DownloadMaterial = ({ params }: DynamicPageProps) => {
   const searchParams = useSearchParams();
   const breadcrumbs = searchParams.get("breadcrumbs")?.split(";") || [];
 
+  const { data, isLoading } = useGetResources(parseInt(subjectId));
+
   return (
     <Resourceswrapper>
       <AppContentWrapper>
@@ -31,9 +34,21 @@ const DownloadMaterial = ({ params }: DynamicPageProps) => {
             permanentHeading={"Study Material"}
             permanentBreadcrumbs={breadcrumbs.map((b, i) => ({ key: i, title: b }))}
           >
-            {resourceType === ResourceType.REVISION_NOTES && <RevisionNotesTable />}
-            {resourceType === ResourceType.TOPIC_QUESTIONS && <TopicQuestionsTable />}
-            {resourceType === ResourceType.PAST_PAPER && <PastPapersTable />}
+            {isLoading ? (
+              <Box>Loading Data...</Box>
+            ) : (
+              <>
+                {resourceType === ResourceType.REVISION_NOTES && (
+                  <RevisionNotesTable isLoading={isLoading} data={data?.chapters || []} />
+                )}
+                {resourceType === ResourceType.TOPIC_QUESTIONS && (
+                  <TopicQuestionsTable isLoading={isLoading} data={data?.chapters || []} />
+                )}
+                {resourceType === ResourceType.PAST_PAPER && (
+                  <PastPapersTable isLoading={isLoading} data={data?.pastPapers || []} />
+                )}
+              </>
+            )}
           </ResourcesLayout>
         </ResourcesContainer>
       </AppContentWrapper>
