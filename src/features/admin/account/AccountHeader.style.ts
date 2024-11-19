@@ -5,7 +5,7 @@ export const AccountHeaderBox = styled(Box)(({ theme }) => ({
   width: '100%',
   height: '30rem',
   borderRadius: '8px',
-  backgroundColor: theme.palette.accent.main,
+  backgroundColor: theme.palette.secondary.main,
   position: 'relative',
   padding: '2.3rem',
 

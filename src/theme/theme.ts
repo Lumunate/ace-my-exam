@@ -33,6 +33,9 @@ const palette = {
     grey: 'rgba(180, 180, 180, 1)',
     light: 'rgba(255, 255, 255, 1)',
   },
+  secondary:{
+    main: 'rgba(218, 150, 148, 1)', 
+  }
 };
 
 const theme = createTheme({
