@@ -22,7 +22,7 @@ export default function Home() {
       </AppContentWrapper>
 
       {/* <ScrollingFadeOut> */}
-        <Process />
+      <Process />
       {/* </ScrollingFadeOut> */}
       <Box
         sx={{

@@ -4,12 +4,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import React, { useEffect, useRef } from 'react';
 
-
 // Only register the plugin once, ideally in a top-level component or _app.js
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
-
 
 const ScrollingFadeOut = ({ children }: { children: React.ReactNode }) => {
   const sectionRef = useRef(null);
