@@ -13,6 +13,13 @@ export const educationLevelOptions: IStepOption[] = [
   { name: 'Entrance Exam', icon: '/resources/EntranceExam.svg', value: EducationLevel.ENTRANCE_EXAMS },
 ];
 
+export const useGetEducationLevels = () => {
+  return useQuery<IStepOption[], Error>(
+    ["sendReferenceData"],
+    async () => educationLevelOptions
+  );
+};
+
 const fetchReferenceData = async (params: {
   educationLevel: string;
   examBoard: string | null;
@@ -111,6 +118,7 @@ export const useGetSubjects = (educationLevel: string, examBoard: string, subjec
     queryFn: async () => {
       const data = await fetchReferenceData({ educationLevel, examBoard: examBoard, subject: null, meta: null });
 
+      console.log('subjectsData', data.subjects);
       return data.subjects?.filter((s) => subjectsData[s.subject]?.value === subject) || [];
     },
   });
