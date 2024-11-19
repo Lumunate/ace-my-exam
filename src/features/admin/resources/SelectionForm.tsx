@@ -2,15 +2,15 @@
 import React, { useState } from "react";
 import ResourceSelectionForm from "./ResourceSelectionForm";
 import { Box } from "@mui/material";
-import { IStepOption } from "@/contexts/MultiStepperContext";
 import { AdminSectionInnerSpacer } from "../Admin.style";
 import ContentSelectionForm from "./ContentSelectionForm";
 import { ResourceType } from "@/types/resources";
+import type { Content } from "@/entities";
 
 const SelectionForm = () => {
   const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState("");
   const [selectedResourceType, setSelectedResourceType] = useState("");
-  const [selectedSubtopic, setSelectedSubtopic] = useState("");
+  const [selectedSubtopic, setSelectedSubtopic] = useState<Content | undefined>();
 
   return (
     <Box>
@@ -27,11 +27,7 @@ const SelectionForm = () => {
 
       <AdminSectionInnerSpacer />
 
-      <Box>
-        <h3>Selected Subtopic: {selectedSubtopic}</h3>
-        <p>Selected Resource Type: {selectedResourceType}</p>
-        <p>Selected Subject Subtype: {selectedSubjectSubtype}</p>
-      </Box>
+
     </Box>
   );
 };
