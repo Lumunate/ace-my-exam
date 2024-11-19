@@ -21,9 +21,9 @@ export default function Home() {
         <About />
       </AppContentWrapper>
 
-      <ScrollingFadeOut>
+      {/* <ScrollingFadeOut> */}
         <Process />
-      </ScrollingFadeOut>
+      {/* </ScrollingFadeOut> */}
       <Box
         sx={{
           backgroundColor: '#fffbfb',
