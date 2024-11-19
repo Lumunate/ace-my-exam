@@ -8,26 +8,29 @@ import {
   useGetUniqueSubjects,
   useGetValidResources,
 } from "@/hooks/resources/useReferenceData";
+import { ResourceType } from "@/types/resources";
 
 interface IResourceSelectionFormProps {
-  selectedSubjectSubtype: string;
-  setSelectedSubjectSubtype: React.Dispatch<React.SetStateAction<string>>;
-  selectedResourceType: string;
-  setSelectedResourceType: React.Dispatch<React.SetStateAction<string>>;
+  H_selectedSubjectSubtype: string;
+  H_setSelectedSubjectSubtype: React.Dispatch<React.SetStateAction<string>>;
+  H_selectedResourceType: string;
+  H_setSelectedResourceType: React.Dispatch<React.SetStateAction<string>>;
   onSubmit: (educationLevel: string, examBoard: string, subject: string, subjectSubtype: string, resourceType: string) => void;
 }
 
 export default function ResourceSelectionForm({
-  selectedSubjectSubtype,
-  setSelectedSubjectSubtype,
-  selectedResourceType,
-  setSelectedResourceType,
+  H_selectedSubjectSubtype,
+  H_setSelectedSubjectSubtype,
+  H_selectedResourceType,
+  H_setSelectedResourceType,
   onSubmit,
 }: IResourceSelectionFormProps) {
   // State for tracking selected values
   const [selectedEducationLevel, setSelectedEducationLevel] = useState("");
   const [selectedExamBoard, setSelectedExamBoard] = useState("");
   const [selectedSubject, setSelectedSubject] = useState("");
+  const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState("");
+  const [selectedResourceType, setSelectedResourceType] = useState("");
 
   // Fetch data using custom hooks
   const { data: educationLevels, isLoading: educationLevelsIsLoading, refetch: educationLevelsRefetch } = useGetEducationLevels();
@@ -55,13 +58,9 @@ export default function ResourceSelectionForm({
   // Handle form submission
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    console.log({
-      educationLevel: selectedEducationLevel,
-      examBoard: selectedExamBoard,
-      subject: selectedSubject,
-      subjectSubtype: selectedSubjectSubtype,
-      resourceType: selectedResourceType,
-    });
+
+    H_setSelectedSubjectSubtype(selectedSubjectSubtype);
+    H_setSelectedResourceType(selectedResourceType);
   };
 
   useEffect(() => {
@@ -79,9 +78,6 @@ export default function ResourceSelectionForm({
     setSelectedSubjectSubtype("");
     setSelectedResourceType("");
   };
-
-  {console.log('selectedSubjectSubtype', subjectSubtypes, 'aaaaaaaa', selectedSubjectSubtype, 'bbbb', selectedSubject)}
-
 
   return (
     <Box>
@@ -163,9 +159,9 @@ export default function ResourceSelectionForm({
               }}
             >
               {subjectSubtypes &&
-                subjectSubtypes.map((subtype) => (
+                subjectSubtypes.map((subtype, i) => (
                   <MenuItem key={subtype.id} value={subtype.id}>
-                    {subtype.tags?.join(" - ")} 
+                    {subtype.tags?.join(" - ")}
                   </MenuItem>
                 ))}
             </Select>
@@ -182,17 +178,26 @@ export default function ResourceSelectionForm({
               label="Resource Type"
               onChange={(e) => setSelectedResourceType(e.target.value)}
             >
-              {resourceTypes &&
-                Object.keys(resourceTypes).map((type) => (
-                  <MenuItem key={type} value={type}>
-                    {type}
-                  </MenuItem>
-                ))}
+              {resourceTypes?.pastPapers === true && (
+                <MenuItem value={ResourceType.PAST_PAPER}>
+                  Past Paper
+                </MenuItem>
+              )}
+              {resourceTypes?.topicalQuestions === true && (
+                <MenuItem value={ResourceType.TOPIC_QUESTIONS}>
+                  Topical Questions
+                </MenuItem>
+              )}
+              {resourceTypes?.revisionNotes === true && (
+                <MenuItem value={ResourceType.REVISION_NOTES}>
+                  Revision Notes
+                </MenuItem>
+              )}
             </Select>
           </FormControl>
 
           {/* Submit Button */}
-          <Button type="submit" variant="contained" disabled={!selectedResourceType}>
+          <Button type="submit" onClick={handleSubmit} variant="contained" disabled={!selectedResourceType}>
             Get Resources
           </Button>
         </Box>

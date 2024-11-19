@@ -114,11 +114,14 @@ export const useGetSubjects = (educationLevel: string, examBoard: string, subjec
     }[],
     Error
   >({
-    queryKey: ['subjects', educationLevel, examBoard],
+    queryKey: ["subjects", educationLevel, examBoard, subject],
     queryFn: async () => {
+      if (!educationLevel || !examBoard || !subject) {
+        throw new Error("Missing required parameters");
+      }
+
       const data = await fetchReferenceData({ educationLevel, examBoard: examBoard, subject: null, meta: null });
 
-      console.log('subjectsData', data.subjects);
       return data.subjects?.filter((s) => subjectsData[s.subject]?.value === subject) || [];
     },
   });
