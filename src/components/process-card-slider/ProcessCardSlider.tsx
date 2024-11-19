@@ -19,29 +19,29 @@ interface StepCard {
 }
 
 const cardSteps: StepCard[] = [
-  { number: 1, title: "Student's Initial Assessment", description: 'Student’s assessment to determine baseline and gaps.' },
-  { number: 2, title: 'Step Two', description: 'This is the second step in the process.' },
-  { number: 3, title: 'Step Three', description: 'This is the third step in the process.' },
-  { number: 4, title: 'Step Four', description: 'This is the fourth step in the process.' },
-  { number: 5, title: 'Step Five', description: 'This is the fifth step in the process.' },
-  { number: 6, title: 'Step Six', description: 'This is the sixth step in the process.' },
-  { number: 7, title: 'Step Seven', description: 'This is the seventh step in the process.' },
-  { number: 8, title: 'Step Eight', description: 'This is the eighth step in the process.' },
-  { number: 9, title: 'Step Nine', description: 'This is the ninth step in the process.' },
+  { number: 1, title: 'Student’s Initial Assessment', description: 'Initial assessment to identify knowledge gaps and evaluate exam technique' },
+  { number: 2, title: 'Personalized Success Session', description: 'Student success session with me to establish a personalized road map.' },
+  { number: 3, title: 'Live Weekly Lessons', description: 'Weekly group live lessons to cover all the content and practice exam questions.' },
+  { number: 4, title: 'Drop-In Support Sessions', description: 'Weekly drop-in sessions for when your child is struggling with the content.' },
+  { number: 5, title: 'Progress Tracking Tool', description: 'Tracker to measure progress.' },
+  { number: 6, title: 'Weekly Homework Practice', description: 'Weekly homework to consolidate learning' },
+  { number: 7, title: 'Comprehensive Resource Library', description: 'Library of resources covering the whole syllabus of A-Level maths.' },
+  { number: 8, title: 'One-on-One Support Calls', description: 'One-to-one calls for when students need support or encouragement.' },
+  { number: 9, title: 'Monthly Parent Reports', description: 'Parent monthly reports to keep parents informed and students accountable.' },
 ];
 
 const ProcessCardSlider: React.FC = () => {
-  const [activeCard, setActiveCard] = useState<number | null>(null); // Track the currently hovered card
+  const [activeCard, setActiveCard] = useState<number | null>(null); 
 
   const handleCardHover = (index: number) => {
     // Skip hover effect for the first card (index === 0)
     if (index !== 0) {
-      setActiveCard(index); // Set the hovered card as active
+      setActiveCard(index); 
     }
   };
 
   const handleMouseLeave = () => {
-    setActiveCard(null); // Reset the active card when the mouse leaves
+    setActiveCard(null); 
   };
 
   return (
@@ -49,21 +49,31 @@ const ProcessCardSlider: React.FC = () => {
       {cardSteps.map((step, index) => (
         <ProcessCard
           key={step.number}
-          active={index === activeCard} // Pass active prop to handle styling
-          index={index} // Pass the index to dynamically assign z-index
-          onMouseOver={() => handleCardHover(index)} // Set the card as active on hover, except for the first card
-          onMouseLeave={handleMouseLeave} // Reset the active card on mouse leave
+          active={index === activeCard} 
+          index={index}
+          onMouseOver={() => handleCardHover(index)} 
+          onMouseLeave={handleMouseLeave} 
         >             
           <ProcessCardNumber variant="h4">{step.number}</ProcessCardNumber>
           <ProcessContent>
-            <Image
-              src={'/icons/Vivid-Icons.svg'}
-              width={21}
-              height={28}
-              alt='icon'
-            />
-            <ProcessCardTitle variant="h6">{step.title}</ProcessCardTitle>
-            <ProcessCardDescription variant="body2">{step.description}</ProcessCardDescription>
+
+            {(index === 0 || index === activeCard) && (
+              <>
+                <Image
+                  src="/icons/Vivid-Icons.svg"
+                  width={21}
+                  height={28}
+                  alt="icon"
+                />
+                <ProcessCardTitle variant="h6">
+                  {step.title}
+                </ProcessCardTitle>
+                <ProcessCardDescription variant="body2">
+                  {step.description}
+                </ProcessCardDescription>
+              </>
+            )}
+
           </ProcessContent>
         </ProcessCard>
       ))}

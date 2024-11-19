@@ -36,10 +36,10 @@ export const StatsContentWrapper = styled(Box)(({ theme }) => ({
     top: '-250px',
   },
   [theme.breakpoints.down('sm')]: {
-    top: '-230px',
+    top: '-210px',
   },
   [theme.breakpoints.down(400)]: {
-    top: '-190px',
+    top: '-170px',
   },
 }));
 

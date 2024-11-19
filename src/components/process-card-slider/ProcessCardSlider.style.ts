@@ -33,21 +33,21 @@ export const BaseTypography = styled(Typography)({
 
 export const ProcessCard = styled(Card)<ProcessCardProps>(({ theme, active, index }) => ({
   position: 'relative',
-  marginLeft: active ? '0px' : index === 0 ? '0px': '-149px',
-  width: '236px',
-  height: '292px',
+  marginLeft: active ? '0px' : index === 0 ? '0px': '-178px',
+  width: '278px',
+  height: '344px',
   cursor: 'pointer',
-  padding: '17px 24px',
+  padding: active ? '50px 62px 17px 30px' : index === 0 ? '50px 62px 17px 30px': '50px 24px 17px 30px',
   boxShadow: '0px 4px 61.5px 0px rgba(0, 0, 0, 0.09)',
   backgroundColor: '#fff',
   borderRadius: '20px',
   overflow: 'hidden',
-  transition: 'margin-left 0.4s ease, z-index 0.4s ease',
+  transition: 'margin-left 0.4s ease, z-index 0.4s ease, padding 0.4s ease',
   zIndex: 10 - index,
   [theme.breakpoints.down(576)]: {
-    width: '200px',
-    padding: '15px 18px',
-    marginLeft: active ? '0px' : index === 0 ? '0px': '-139px',
+    width: '220px',
+    padding: active ? '50px 24px 17px 24px' : index === 0 ? '50px 24px 17px 24px': '50px 24px 17px 24px',
+    marginLeft: active ? '0px' : index === 0 ? '0px': '-130px',
   },
 }));
 
