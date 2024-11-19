@@ -69,9 +69,8 @@ export const ResourcesImageOverlay = styled(Box)({
 });
 
 export const ResourceGrid = styled(Grid)({
-  maxWidth: '907px',
-  margin: '0 auto',
   position: 'relative',
+  justifyContent: 'center'
 });
 
 export const ResourceCard = styled(Box)(({ theme }) => ({

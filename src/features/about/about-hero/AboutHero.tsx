@@ -80,7 +80,6 @@ const AboutHero: React.FC = () => {
             <AboutHeroContent>
               Shaping Futures Through Personalized Education
             </AboutHeroContent>
-            <AboutHeroContent>Lprem Ipsum</AboutHeroContent>
           </FadeIn>
         </AboutHeroContentContainer>
       </AppContentWrapper>

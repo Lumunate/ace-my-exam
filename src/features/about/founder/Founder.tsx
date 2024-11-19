@@ -78,8 +78,10 @@ const AboutFounder: React.FC = () => {
               <FounderHeading>Dr. Asma Chaudhri</FounderHeading>
               <FounderHeadingTwo sx={{ mb: { xs: '20px', md: '30px' } }}>An Educator Driven by Passion</FounderHeadingTwo>
               <FounderContent>
-                Meet Dr. Asma Chaudhri, our founder. She&apos;s been helping students reach their full potential for over 16 years!
-                She&apos;s got a passion for helping students succeed and her background in both academia and high-stakes finance gives her a unique perspective.
+              Meet Dr. Asma Chaudhri, our founder. She&apos;s been helping students reach their full potential for over 16 years! With a passion for student success and a background in both academia and high-stakes finance, she brings a unique perspective that helps students truly understand the material.   
+              </FounderContent>
+              <FounderContent>
+              Together with her dedicated team of expert tutors, she’s here to guide every student on their journey to success.
               </FounderContent>
 
               <FounderList>
