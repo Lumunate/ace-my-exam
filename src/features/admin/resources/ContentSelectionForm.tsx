@@ -11,7 +11,7 @@ import ReplayIcon from "@mui/icons-material/Replay";
 interface ContentSelectionFormProps {
   subject: string;
   resourceType: ResourceType;
-  setSelectedSubtopic: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedSubtopic: React.Dispatch<React.SetStateAction<Content | undefined>>;
 }
 
 const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, resourceType, setSelectedSubtopic }) => {
@@ -39,10 +39,10 @@ export default ContentSelectionForm;
 
 type RecursiveContentRenderProps = {
   data: Content;
-  setSelectedSubtopic: React.Dispatch<React.SetStateAction<string>>;
+  setSelectedSubtopic: React.Dispatch<React.SetStateAction<Content | undefined>>;
 };
 const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentRenderProps) => {
-  if (data.level === 3) return <ResourceItem onClick={() => setSelectedSubtopic(data.id.toString())}>{data.name}</ResourceItem>;
+  if (data.level === 3) return <ResourceItem onClick={() => setSelectedSubtopic(data)}>{data.name}</ResourceItem>;
 
   return (
     <CollapseContainer>
@@ -62,9 +62,12 @@ export const ResourceHeading = styled(AccordionSummary)(() => ({
   border: "none",
 }));
 
-export const ResourceItem = styled(AccordionSummary)(() => ({
+export const ResourceItem = styled(AccordionSummary)(({ theme }) => ({
   color: "#333",
   fontSize: "1.2rem",
   fontWeight: 400,
   border: "none",
+  ":hover": {
+    color: theme.palette.text.secondary,
+  }
 }));
