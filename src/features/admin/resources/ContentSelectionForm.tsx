@@ -1,12 +1,12 @@
 'use client';
-import type { Content } from "@/entities";
-import { CollapseContainer, InnerCollapse } from "@/features/resources/resources-tables/ResourceTables.style";
-import { useGetResources } from "@/hooks/resources/useResources";
-import { ResourceType } from "@/types/resources";
-import { AccordionSummary, Box, IconButton, styled } from "@mui/material";
-import React, { useEffect } from "react";
+import ReplayIcon from '@mui/icons-material/Replay';
+import { AccordionSummary, Box, IconButton, styled } from '@mui/material';
+import React, { useEffect } from 'react';
 
-import ReplayIcon from "@mui/icons-material/Replay";
+import type { Content } from '@/entities';
+import { CollapseContainer, InnerCollapse } from '@/features/resources/resources-tables/ResourceTables.style';
+import { useGetResources } from '@/hooks/resources/useResources';
+import { ResourceType } from '@/types/resources';
 
 interface ContentSelectionFormProps {
   subject: string;
@@ -24,13 +24,13 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, re
   if (!data || isLoading) return <div>Loading...</div>;
 
   return (
-    <Box sx={{ position: "relative" }}>
-      <Box sx={{ position: "absolute", top: "-10px", right: "10px", zIndex: 10 }}>
+    <Box sx={{ position: 'relative' }}>
+      <Box sx={{ position: 'absolute', top: '-10px', right: '10px', zIndex: 10 }}>
         <IconButton onClick={() => refetch()}>
           <ReplayIcon />
         </IconButton>
       </Box>
-      {data.chapters?.map((child) => <RecursiveContentRender setSelectedSubtopic={setSelectedSubtopic} data={child} />)}
+      {data.chapters?.map((child) => <RecursiveContentRender key={child.id} setSelectedSubtopic={setSelectedSubtopic} data={child} />)}
     </Box>
   );
 };
@@ -49,25 +49,25 @@ const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentR
       <ResourceHeading>{data.name}</ResourceHeading>
 
       <InnerCollapse>
-        {data.children?.map((child) => <RecursiveContentRender data={child} setSelectedSubtopic={setSelectedSubtopic} />)}
+        {data.children?.map((child) => <RecursiveContentRender key={child.id} data={child} setSelectedSubtopic={setSelectedSubtopic} />)}
       </InnerCollapse>
     </CollapseContainer>
   );
 };
 
 export const ResourceHeading = styled(AccordionSummary)(() => ({
-  color: "#000",
-  fontSize: "1.4rem",
+  color: '#000',
+  fontSize: '1.4rem',
   fontWeight: 600,
-  border: "none",
+  border: 'none',
 }));
 
 export const ResourceItem = styled(AccordionSummary)(({ theme }) => ({
-  color: "#333",
-  fontSize: "1.2rem",
+  color: '#333',
+  fontSize: '1.2rem',
   fontWeight: 400,
-  border: "none",
-  ":hover": {
+  border: 'none',
+  ':hover': {
     color: theme.palette.text.secondary,
   }
 }));

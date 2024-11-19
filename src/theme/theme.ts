@@ -17,21 +17,21 @@ const breakpoints = {
 
 const palette = {
   background: {
-    white: "rgba(255, 255, 255, 1)",
-    default: "rgba(255, 251, 251, 1)",
-    gray: "rgba(248, 249, 250, 1)",
+    white: 'rgba(255, 255, 255, 1)',
+    default: 'rgba(255, 251, 251, 1)',
+    gray: 'rgba(248, 249, 250, 1)',
   },
   accent: {
-    main: "rgba(218, 150, 148, 1)",
+    main: 'rgba(218, 150, 148, 1)',
   },
   primary: {
-    main: "rgba(0, 0, 0, 1)",
+    main: 'rgba(0, 0, 0, 1)',
   },
   text: {
-    primary: "rgba(0, 0, 0, 1)",
-    secondary: "rgba(218, 150, 148, 1)",
-    grey: "rgba(180, 180, 180, 1)",
-    light: "rgba(255, 255, 255, 1)",
+    primary: 'rgba(0, 0, 0, 1)',
+    secondary: 'rgba(218, 150, 148, 1)',
+    grey: 'rgba(180, 180, 180, 1)',
+    light: 'rgba(255, 255, 255, 1)',
   },
 };
 

@@ -18,10 +18,10 @@ export const AdminSectionHeading = styled(Typography)(() => ({
 }));
 
 export const AdminSectionInnerSpacer = styled(Box)(() => ({
-  width: "100%",
-  height: "1px",
-  backgroundColor: "rgba(0,0,0,0.1)",
-  margin: "3rem 0",
+  width: '100%',
+  height: '1px',
+  backgroundColor: 'rgba(0,0,0,0.1)',
+  margin: '3rem 0',
 }));
 
 export const AdminSectionSubHeading = styled(Typography)(() => ({
