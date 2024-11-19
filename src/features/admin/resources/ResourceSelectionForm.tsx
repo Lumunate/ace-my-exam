@@ -164,7 +164,17 @@ export default function ResourceSelectionForm({
               {subjectSubtypes &&
                 subjectSubtypes.map((subtype) => (
                   <MenuItem key={subtype.id} value={subtype.id}>
-                    {subtype.tags?.join(' - ')}
+                    {
+                      subtype.tags?.map((tag) => {
+                        if (tag === 'YEAR_1') {
+                          return 'AS Level';
+                        } else if (tag === 'YEAR_2') {
+                          return 'A Level';
+                        } else {
+                          return tag;
+                        }
+                      }).join(' - ')
+                    }
                   </MenuItem>
                 ))}
             </Select>
