@@ -9,7 +9,7 @@ if (process.env.NODE_ENV === 'production') {
     type: 'postgres',
     url: process.env.DATABASE_URL,
     entities: Object.values(entities),
-    synchronize: false,
+    synchronize: true,
     ssl: {
       rejectUnauthorized: false,
     },
