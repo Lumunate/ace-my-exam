@@ -1,45 +1,66 @@
-// src/contexts/MultiStepFormContext.tsx
-
+'use client';
+import { useRouter } from 'next/navigation';
 import React, { createContext, useState } from 'react';
 
-import { stepData } from '@/features/resources/StepHeaderData';
+import { EducationLevel } from '@/types/resources';
 
 type StepKey = 1 | 1.5 | 2 | 3 | 4 | 5;
 
 interface MultiStepFormContextProps {
   currentStep: StepKey;
-  selectedOptions: Record<number, string>;
+  selectedOptions: Record<string, IStepOption>;
   isNextDisabled: boolean;
-  mainTitle: string;
-  subTitle: string;
-  subHeadingPara: string;
-  handleNext: (option: string) => void;
+  handleNext: () => void;
   handleBack: () => void;
-  selectOption: (option: string) => void;
-  selectOptionNavbar: (option: string) => void;
-  setSelectedOptions: (option: string) => void;
+  selectOption: (stepName: string, option: IStepOption) => void;
+  selectOptionNavbar: (stepName: string, option: IStepOption) => void;
+  setSelectedOptions: React.Dispatch<React.SetStateAction<Record<string, IStepOption>>>;
   setCurrentStep: (step: StepKey) => void;
+  breadcrumbs: {
+    key: number;
+    title: string;
+  }[];
+  setBreadcrumbs: React.Dispatch<
+    React.SetStateAction<
+      {
+        key: number;
+        title: string;
+      }[]
+    >
+  >;
 }
 
 const MultiStepFormContext = createContext<MultiStepFormContextProps | undefined>(undefined);
 
+export interface IStepOption {
+  name: string;
+  value: string;
+  icon: string;
+}
+
 export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [currentStep, setCurrentStep] = useState<StepKey>(1);
-  const [selectedOptions, setSelectedOptions] = useState<Record<number, string>>({});
+  const [selectedOptions, setSelectedOptions] = useState<Record<string, IStepOption>>({});
   const [isNextDisabled, setIsNextDisabled] = useState(true);
+  const [breadcrumbs, setBreadcrumbs] = useState<{ key: number; title: string }[]>([]);
 
-  const handleNext = (option: string) => {
+  const router = useRouter();
+
+  const handleNext = () => {
     let nextStep: StepKey = currentStep;
 
-    if (currentStep === 1) {
-      nextStep = option === 'Entrance Exam' ? 1.5 : 2;
+    if (currentStep === 3) {
+      const queryParams = breadcrumbs.map((step) => step.title).join(';');
+
+      router.push(`/resources/${selectedOptions.subjectSubtype?.value}/${selectedOptions.resourceType?.value}?breadcrumbs=${queryParams}`);
+    } else if (currentStep === 1) {
+      nextStep = selectedOptions.educationalResources?.value === EducationLevel.ENTRANCE_EXAMS ? 1.5 : 2;
     } else if (currentStep === 1.5) {
       nextStep = 2;
     } else {
       nextStep = (currentStep + 1) as StepKey;
     }
 
-    setSelectedOptions((prev) => ({ ...prev, [currentStep]: option }));
     setCurrentStep(nextStep);
     setIsNextDisabled(true);
   };
@@ -54,7 +75,7 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
     });
 
     setCurrentStep((prev) => {
-      if (prev === 2 && selectedOptions[1] === 'Entrance Exam') {
+      if (prev === 2 && selectedOptions.educationLevel?.value === EducationLevel.ENTRANCE_EXAMS) {
         return 1.5;
       }
 
@@ -64,19 +85,15 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
     setIsNextDisabled(false);
   };
 
-  const selectOption = (option: string) => {
-    setSelectedOptions((prev) => ({ ...prev, [currentStep]: option }));
+  const selectOption = (stepName: string, option: IStepOption) => {
+    setSelectedOptions((prev) => ({ ...prev, [stepName]: option }));
     setIsNextDisabled(false);
   };
 
-  const selectOptionNavbar = (option: string) => {
-    setSelectedOptions({ 1: option }); 
+  const selectOptionNavbar = (stepName: string, option: IStepOption) => {
+    setSelectedOptions({ [stepName]: option });
     setIsNextDisabled(false);
   };
-
-  // Get step-specific titles and text
-  const { mainTitle, subTitle, subHeadingPara } = stepData[currentStep];
-  const dynamicSubTitle = typeof subTitle === 'function' ? subTitle(selectedOptions) : subTitle;
 
   return (
     <MultiStepFormContext.Provider
@@ -84,15 +101,14 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
         currentStep,
         selectedOptions,
         isNextDisabled,
-        mainTitle,
-        subTitle: dynamicSubTitle,
-        subHeadingPara,
         handleNext,
         handleBack,
         selectOption,
         selectOptionNavbar,
         setCurrentStep,
         setSelectedOptions,
+        breadcrumbs,
+        setBreadcrumbs,
       }}
     >
       {children}

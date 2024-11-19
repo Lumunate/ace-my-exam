@@ -1,62 +1,22 @@
 'use client';
 
-import {
-  Box,
-  IconButton,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableRow,
-} from '@mui/material';
+import { Box } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 
+import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
+import type { Content } from '@/entities';
+
 import {
-  ResourcesTableContainer,
-  StyledLink,
-  StyledTable,
-} from '../ResourcesSteps.style';
+  ChapterHeading,
+  CollapseContainer,
+  DownloadIconButton,
+  InnerCollapse,
+  RessourcesTableHeading,
+  SubtopicHeading,
+} from './ResourceTables.style';
 
-const topicQuestionsData = [
-  {
-    topic: '2.1 Algebra & Functions',
-    question: 'Question 01',
-    markingScheme: 'Marking Scheme 01',
-    answer: 'Answer 01',
-  },
-  {
-    topic: '2.1 Algebra & Functions',
-    question: 'Question 02',
-    markingScheme: 'Marking Scheme 02',
-    answer: 'Answer 02',
-  },
-  {
-    topic: '2.1 Algebra & Functions',
-    question: 'Question 03',
-    markingScheme: 'Marking Scheme 03',
-    answer: 'Answer 03',
-  },
-  {
-    topic: '2.1 Algebra & Functions',
-    question: 'Question 04',
-    markingScheme: 'Marking Scheme 04',
-    answer: 'Answer 04',
-  },
-  {
-    topic: '2.1 Algebra & Functions',
-    question: 'Question 05',
-    markingScheme: 'Marking Scheme 05',
-    answer: 'Answer 05',
-  },
-  {
-    topic: '2.1 Algebra & Functions',
-    question: 'Question 06',
-    markingScheme: 'Marking Scheme 06',
-    answer: 'Answer 06',
-  },
-];
-
-const TopicQuestionsTable: React.FC = () => {
+const TopicQuestionsTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({ data }) => {
   const handleDownload = (url: string) => {
     const link = document.createElement('a');
 
@@ -68,110 +28,52 @@ const TopicQuestionsTable: React.FC = () => {
   };
 
   return (
-    <ResourcesTableContainer>
-      <StyledTable sx={{ minWidth: 700 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Topics</TableCell>
-            <TableCell>Question</TableCell>
-            <TableCell>Marking Scheme</TableCell>
-            <TableCell align="right">Answer</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {topicQuestionsData.map((material, index) => (
-            <TableRow key={index}>
-              <TableCell>
-                {material.topic}
-              </TableCell>
-              <TableCell>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <IconButton
-                    onClick={() =>
-                      handleDownload(
-                        `/path/to/question/${material.question}.pdf`
-                      )
-                    }
-                  >
-                    <Image
-                      src="/icons/downloadIcon.svg"
-                      alt="Download Question Icon"
-                      width={17}
-                      height={17}
-                    />
-                  </IconButton>
-                  <StyledLink
-                    onClick={() =>
-                      handleDownload(
-                        `/path/to/question/${material.question}.pdf`
-                      )
-                    }
-                  >
-                    {material.question}
-                  </StyledLink>
-                </Box>
-              </TableCell>
-              <TableCell>
-                <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                  <IconButton
-                    onClick={() =>
-                      handleDownload(
-                        `/path/to/markingScheme/${material.markingScheme}.pdf`
-                      )
-                    }
-                  >
-                    <Image
-                      src="/icons/downloadIcon.svg"
-                      alt="Download Marking Scheme Icon"
-                      width={17}
-                      height={17}
-                    />
-                  </IconButton>
-                  <StyledLink
-                    onClick={() =>
-                      handleDownload(
-                        `/path/to/markingScheme/${material.markingScheme}.pdf`
-                      )
-                    }
-                  >
-                    {material.markingScheme}
-                  </StyledLink>
-                </Box>
-              </TableCell>
-              <TableCell>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'end',
-                  }}
-                >
-                  <IconButton
-                    onClick={() =>
-                      handleDownload(`/path/to/answer/${material.answer}.pdf`)
-                    }
-                  >
-                    <Image
-                      src="/icons/downloadIcon.svg"
-                      alt="Download Answer Icon"
-                      width={17}
-                      height={17}
-                    />
-                  </IconButton>
-                  <StyledLink
-                    onClick={() =>
-                      handleDownload(`/path/to/answer/${material.answer}.pdf`)
-                    }
-                  >
-                    {material.answer}
-                  </StyledLink>
-                </Box>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </StyledTable>
-    </ResourcesTableContainer>
+    <Box>
+      <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
+        <ResourcesSubHeading>Topical Questions</ResourcesSubHeading>
+        <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
+          Select the Content
+        </ResourcesPara>
+      </Box>
+      <Box>
+        <Box sx={{ minWidth: 700 }}>
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <RessourcesTableHeading sx={{ flex: '0 0 calc(50% + 6rem)' }}>Name</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 13.67%', textAlign: 'center' }}>Download</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 18.67%' }}>Marking Scheme</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 16.67%' }}>Answer</RessourcesTableHeading>
+            </Box>
+          </Box>
+          <Box>
+            {data.map((topic, index) => (
+              <CollapseContainer key={index}>
+                <ChapterHeading>
+                  {index + 1}. {topic.name}
+                </ChapterHeading>
+
+                <InnerCollapse>
+                  {topic.children?.map((subtopic) => (
+                    <Box key={subtopic.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                      <SubtopicHeading sx={{ flex: '0 0 50%' }}>{subtopic.name}</SubtopicHeading>
+                      <DownloadIconButton sx={{ flex: '0 0 16.67%' }} onClick={() => handleDownload(subtopic.name)}>
+                        <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
+                      </DownloadIconButton>
+                      <DownloadIconButton sx={{ flex: '0 0 16.67%' }} onClick={() => handleDownload(subtopic.name)}>
+                        <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
+                      </DownloadIconButton>
+                      <DownloadIconButton sx={{ flex: '0 0 16.67%' }} onClick={() => handleDownload(subtopic.name)}>
+                        <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
+                      </DownloadIconButton>
+                    </Box>
+                  ))}
+                </InnerCollapse>
+              </CollapseContainer>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

@@ -1,30 +1,27 @@
 import { Breadcrumbs } from '@mui/material';
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 
 import useMultiStepForm from '@/hooks/useMultiStepper';
 
 import { BreadcrumbsHeading } from './ResourcesSteps.style';
 
-const ResourcesBreadcrumbs: React.FC = () => {
-  const { selectedOptions } = useMultiStepForm();
-  const [breadcrumbs, setBreadcrumbs] = useState<
-    { key: number; title: string }[]
-  >([]);
+const ResourcesBreadcrumbs: React.FC<{ permanentBreadcrumbs?: { key: number; title: string }[] }> = ({ permanentBreadcrumbs }) => {
+  const { breadcrumbs, setBreadcrumbs, selectedOptions } = useMultiStepForm();
 
   useEffect(() => {
     const stepsOrder = [
-      { key: 1, title: selectedOptions[1] || '' },
-      { key: 1.5, title: selectedOptions[1.5] || '' },
-      { key: 2, title: selectedOptions[2] || '' },
-      { key: 3, title: selectedOptions[3] || '' },
-      { key: 4, title: selectedOptions[4] || '' },
-      { key: 5, title: selectedOptions[5] || '' },
+      { key: 1, title: selectedOptions.educationalResources?.name || '' },
+      { key: 1.5, title: selectedOptions.ageGroup?.name || '' },
+      { key: 2, title: selectedOptions.examBoard?.name || '' },
+      { key: 2.5, title: selectedOptions.subject?.name || '' },
+      { key: 3, title: selectedOptions.subjectSubtype?.name || '' },
+      { key: 3.5, title: selectedOptions.resourceType?.name || '' },
     ];
 
     const filteredSteps = stepsOrder.filter((step) => step.title);
 
-    setBreadcrumbs(filteredSteps);
+    setBreadcrumbs(permanentBreadcrumbs || filteredSteps);
   }, [selectedOptions]);
 
   return (

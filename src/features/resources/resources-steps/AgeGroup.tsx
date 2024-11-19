@@ -3,20 +3,24 @@
 import Grid from '@mui/material/Grid2';
 import React from 'react';
 
+import { IStepOption } from '@/contexts/MultiStepperContext';
 import useMultiStepForm from '@/hooks/useMultiStepper';
+import { AgeGroups } from '@/types/resources';
 
 import { ResourcesCard, ResourcesCardTitle, ResourcesCardNumber } from '../ResourcesSteps.style';
 
-const ageGroups = [
-  { name: 'Primary School', age: '11+' },
-  { name: 'Secondary School', age: '13+' },
-  { name: 'Higher Secondary', age: '16+' },
-  { name: 'Scholarship', age: '13+' },
+type IAgeGroupOptions = IStepOption & { age: string };
+
+const ageGroups: IAgeGroupOptions[] = [
+  { name: 'Primary School', age: '11+', icon: '', value: AgeGroups.PRIMARY_SCHOOL },
+  { name: 'Secondary School', age: '13+', icon: '', value: AgeGroups.SECONDARY_SCHOOL },
+  { name: 'Higher Secondary', age: '16+', icon: '', value: AgeGroups.HIGHER_SECONDARY },
+  { name: 'Scholarship', age: '13+', icon: '', value: AgeGroups.SCHOLARSHIP },
 ];
 
 const AgeGroup: React.FC = () => {
   const { selectOption, selectedOptions } = useMultiStepForm();
-  const selectedAgeGroup = selectedOptions[1.5]; 
+  const selectedAgeGroup = selectedOptions.ageGroup; 
 
   return (
     <Grid
@@ -34,13 +38,13 @@ const AgeGroup: React.FC = () => {
             md: 6,
             lg: 4,
           }}
-          key={group.name}
+          key={group.value}
         >
           <ResourcesCard
             height={'245px'}
-            onClick={() => selectOption(group.name)}
+            onClick={() => selectOption('ageGroup', group)}
             sx={{
-              outline: selectedAgeGroup === group.name ? '2px solid #DA9694' : 'unset',
+              outline: selectedAgeGroup?.value === group.value ? '2px solid #DA9694' : 'unset',
             }}
           >
             <ResourcesCardNumber variant="subtitle1">{group.age}</ResourcesCardNumber>

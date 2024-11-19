@@ -1,8 +1,6 @@
 import { DataSource } from 'typeorm';
 
-import Contact from '@/entities/contact';
-import Feedback from '@/entities/feedback';
-import { AccountEntity, SessionEntity, User, VerificationTokenEntity } from '@/entities/user';
+import * as entities from '@/entities';
 
 let AppDataSource: DataSource;
 
@@ -10,7 +8,7 @@ if (process.env.NODE_ENV === 'production') {
   AppDataSource = new DataSource({
     type: 'postgres',
     url: process.env.DATABASE_URL,
-    entities: [Contact, Feedback, User, SessionEntity, VerificationTokenEntity, AccountEntity],
+    entities: Object.values(entities),
     synchronize: false,
     ssl: {
       rejectUnauthorized: false,
@@ -20,7 +18,7 @@ if (process.env.NODE_ENV === 'production') {
   AppDataSource = new DataSource({
     type: 'postgres',
     url: process.env.DATABASE_URL,
-    entities: [Contact, Feedback, User, SessionEntity, VerificationTokenEntity, AccountEntity],
+    entities: Object.values(entities),
     synchronize: true,
   });
 }

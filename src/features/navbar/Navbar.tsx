@@ -8,9 +8,12 @@ import React, { useState } from 'react';
 
 import { Button } from '@/components/buttons/Button.style';
 import { AppContentWrapper } from '@/components/common/Global.style';
+import { IStepOption } from '@/contexts/MultiStepperContext';
 import LoginModal from '@/features/auth/login/LoginModal';
 import SignUpModal from '@/features/auth/sign-up/SignUpModal';
+import { educationLevelOptions } from '@/hooks/resources/useReferenceData';
 import useMultiStepForm from '@/hooks/useMultiStepper';
+import { EducationLevel } from '@/types/resources';
 
 import {
   CommonMenu,
@@ -37,8 +40,6 @@ const pages = [
   { name: 'Pricing', link: '/pricing' },
   { name: 'Contact', link: '/contact' },
 ];
-
-const resources = ['A levels', 'GCSE', 'IGCSE', 'KS3', 'Entrance Exam'];
 
 const Navbar: React.FC = () => {
   const router = useRouter();
@@ -72,10 +73,10 @@ const Navbar: React.FC = () => {
     setAnchorEl(null);
   };
 
-  const handleResourcesClick = (resource: string) => {
-    selectOptionNavbar(resource);
+  const handleResourcesClick = (resource: IStepOption) => {
+    selectOptionNavbar('educationalResources', resource);
 
-    const step = resource === 'Entrance Exam' ? 1.5 : 2;
+    const step = resource.value === EducationLevel.ENTRANCE_EXAMS ? 1.5 : 2;
 
     setCurrentStep(step);
 
@@ -167,12 +168,12 @@ const Navbar: React.FC = () => {
                       }}
                       sx={{ transform: 'translate(-40px ,20px)' }}
                     >
-                      {resources.map((resource, idx) => (
+                      {educationLevelOptions.map((resource, idx) => (
                         <MenuItem
                           key={idx}
                           onClick={() => handleResourcesClick(resource)}
                         >
-                          {resource}
+                          {resource.name}
                         </MenuItem>
                       ))}
                     </CommonMenu>

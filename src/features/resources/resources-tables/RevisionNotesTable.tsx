@@ -1,22 +1,25 @@
 'use client';
 
-import { TableBody, TableHead, TableRow, TableCell, IconButton, Box } from '@mui/material';
+import {
+  IconButton,
+  Box,
+} from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 
-import { StyledLink, StyledTable, ResourcesTableContainer, TablePara } from '../ResourcesSteps.style';
+import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
+import type { Content } from '@/entities';
 
-const revisionNotesData = [
-  { name: 'Chapter 1: Introduction to Algebra', topic: 'Number Toolkit', fileUrl: '' },
-  { name: 'Chapter 1: Introduction to Algebra', topic: 'Number Toolkit', fileUrl: '' },
-  { name: 'Chapter 1: Introduction to Algebra', topic: 'Number Toolkit', fileUrl: '' },
-  { name: 'Chapter 1: Introduction to Algebra', topic: 'Number Toolkit', fileUrl: '' },
-  { name: 'Chapter 1: Introduction to Algebra', topic: 'Number Toolkit', fileUrl: '' },
-  { name: 'Chapter 1: Introduction to Algebra', topic: 'Number Toolkit', fileUrl: '' },
+import {
+  ChapterHeading,
+  CollapseContainer,
+  InnerCollapse,
+  RessourcesTableHeading,
+  SubtopicHeading,
+  TopicHeading,
+} from './ResourceTables.style';
 
-];
-
-const RevisionNotesTable: React.FC = () => {
+const RevisionNotesTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({ data }) => {
   const handleDownload = (fileUrl: string) => {
     const link = document.createElement('a');
 
@@ -28,33 +31,64 @@ const RevisionNotesTable: React.FC = () => {
   };
 
   return (
-    <ResourcesTableContainer>
-      <StyledTable sx={{ minWidth: 700 }}>
-        <TableHead>
-          <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>Topic</TableCell>
-            <TableCell align="center"></TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {revisionNotesData.map((material, index) => (
-            <TableRow key={index}>
-              <TableCell>{material.name}</TableCell>
-              <TableCell><TablePara>{material.topic}</TablePara></TableCell>
-              <TableCell align="center">
-                <Box sx={{display: 'flex', alignItems: 'center', justifyContent: 'end'}}>
-                  <IconButton onClick={() => handleDownload(material.fileUrl)}>
-                    <Image src="/icons/downloadIcon.svg" alt="Download Icon" width={17} height={17} />
-                  </IconButton>
-                  <StyledLink onClick={() => handleDownload(material.fileUrl)}>Download</StyledLink>
-                </Box>
-              </TableCell>
-            </TableRow>
-          ))}
-        </TableBody>
-      </StyledTable>
-    </ResourcesTableContainer>
+    <Box>
+      <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
+        <ResourcesSubHeading>Revision Notes</ResourcesSubHeading>
+        <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
+          Select the Content
+        </ResourcesPara>
+      </Box>
+      <Box>
+        <Box sx={{ minWidth: 700 }}>
+          <Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <RessourcesTableHeading>Name</RessourcesTableHeading>
+              <RessourcesTableHeading>Download</RessourcesTableHeading>
+            </Box>
+          </Box>
+          <Box>
+            {data.map((chapter, index) => (
+              <CollapseContainer key={index}>
+                <ChapterHeading>
+                  {index + 1}. {chapter.name}
+                </ChapterHeading>
+
+                <InnerCollapse>
+                  {chapter.children?.map((topic, index2) => (
+                    <CollapseContainer key={index2}>
+                      <TopicHeading>
+                        {index + 1}.{index2 + 1}. {topic.name}
+                      </TopicHeading>
+
+                      <InnerCollapse>
+                        {topic.children?.map((subtopic) => (
+                          <Box key={subtopic.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                            <SubtopicHeading>{subtopic.name}</SubtopicHeading>
+                            <IconButton
+                              onClick={() => handleDownload(subtopic.name)}
+                              sx={{
+                                color: '#CCC',
+                                fontSize: '20px',
+                                fontWeight: 400,
+                                fontFamily: 'Jost, sans-serif',
+                                border: 'none',
+                                padding: '15px 0',
+                              }}
+                            >
+                              <Image src="/download.svg" alt="download" width={20} height={20} />
+                            </IconButton>
+                          </Box>
+                        ))}
+                      </InnerCollapse>
+                    </CollapseContainer>
+                  ))}
+                </InnerCollapse>
+              </CollapseContainer>
+            ))}
+          </Box>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 
