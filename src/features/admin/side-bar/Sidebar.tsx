@@ -46,9 +46,9 @@ const MENU_ITEMS: MenuItems[] = [
         path: '/admin/starred',
       },
       {
-        text: 'Drafts',
+        text: 'Resources',
         icon: <DraftsIcon />,
-        path: '/admin/drafts',
+        path: '/admin/resources',
       },
     ]
   },
