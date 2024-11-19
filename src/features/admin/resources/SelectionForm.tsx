@@ -1,16 +1,19 @@
 'use client';
-import React, { useState } from "react";
-import ResourceSelectionForm from "./ResourceSelectionForm";
-import { Box } from "@mui/material";
-import { AdminSectionInnerSpacer } from "../Admin.style";
-import ContentSelectionForm from "./ContentSelectionForm";
-import { ResourceType } from "@/types/resources";
-import type { Content } from "@/entities";
+import { Box } from '@mui/material';
+import React, { useState } from 'react';
+
+import type { Content } from '@/entities';
+import { ResourceType } from '@/types/resources';
+
+import ResourceSelectionForm from './ResourceSelectionForm';
+import { AdminSectionInnerSpacer } from '../Admin.style';
+import ContentSelectionForm from './ContentSelectionForm';
 
 const SelectionForm = () => {
-  const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState("");
-  const [selectedResourceType, setSelectedResourceType] = useState("");
-  const [selectedSubtopic, setSelectedSubtopic] = useState<Content | undefined>();
+  const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState('');
+  const [selectedResourceType, setSelectedResourceType] = useState('');
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [_selectedSubtopic, setSelectedSubtopic] = useState<Content | undefined>();
 
   return (
     <Box>
@@ -26,7 +29,6 @@ const SelectionForm = () => {
       <ContentSelectionForm setSelectedSubtopic={setSelectedSubtopic} subject={selectedSubjectSubtype} resourceType={selectedResourceType as ResourceType} />
 
       <AdminSectionInnerSpacer />
-
 
     </Box>
   );

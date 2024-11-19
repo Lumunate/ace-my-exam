@@ -1,7 +1,13 @@
 'use client';
+import AllInboxIcon from '@mui/icons-material/AllInbox';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
+import DraftsIcon from '@mui/icons-material/Drafts';
+import GridViewIcon from '@mui/icons-material/GridView';
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
+import PersonIcon from '@mui/icons-material/Person';
+import StarRateIcon from '@mui/icons-material/StarRate';
+import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 import { Box, IconButton, List, ListItem, ListItemButton, ListItemIcon, ListItemText, MenuItem, Typography } from '@mui/material';
 import { usePathname, useRouter } from 'next/navigation';
 import { useState } from 'react';
@@ -18,14 +24,6 @@ interface MenuItems {
   section: string;
   items: MenuItem[];
 }
-
-import GridViewIcon from '@mui/icons-material/GridView';
-import AllInboxIcon from '@mui/icons-material/AllInbox';
-import StarRateIcon from '@mui/icons-material/StarRate';
-import DraftsIcon from '@mui/icons-material/Drafts';
-import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
-import PersonIcon from '@mui/icons-material/Person';
-import SupervisorAccountIcon from '@mui/icons-material/SupervisorAccount';
 
 const MENU_ITEMS: MenuItems[] = [
   {

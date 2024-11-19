@@ -15,7 +15,7 @@ export const educationLevelOptions: IStepOption[] = [
 
 export const useGetEducationLevels = () => {
   return useQuery<IStepOption[], Error>(
-    ["sendReferenceData"],
+    ['sendReferenceData'],
     async () => educationLevelOptions
   );
 };
@@ -114,10 +114,10 @@ export const useGetSubjects = (educationLevel: string, examBoard: string, subjec
     }[],
     Error
   >({
-    queryKey: ["subjects", educationLevel, examBoard, subject],
+    queryKey: ['subjects', educationLevel, examBoard, subject],
     queryFn: async () => {
       if (!educationLevel || !examBoard || !subject) {
-        throw new Error("Missing required parameters");
+        throw new Error('Missing required parameters');
       }
 
       const data = await fetchReferenceData({ educationLevel, examBoard: examBoard, subject: null, meta: null });

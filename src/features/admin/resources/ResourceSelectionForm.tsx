@@ -1,14 +1,15 @@
-"use client";
-import React, { useEffect, useState } from "react";
-import { Box, FormControl, InputLabel, Select, MenuItem, Button, Container, Stack } from "@mui/material";
+'use client';
+import { Box, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+
 import {
   useGetEducationLevels,
   useGetExamBoards,
   useGetSubjects,
   useGetUniqueSubjects,
   useGetValidResources,
-} from "@/hooks/resources/useReferenceData";
-import { ResourceType } from "@/types/resources";
+} from '@/hooks/resources/useReferenceData';
+import { ResourceType } from '@/types/resources';
 
 interface IResourceSelectionFormProps {
   H_selectedSubjectSubtype: string;
@@ -19,43 +20,44 @@ interface IResourceSelectionFormProps {
 }
 
 export default function ResourceSelectionForm({
-  H_selectedSubjectSubtype,
   H_setSelectedSubjectSubtype,
-  H_selectedResourceType,
   H_setSelectedResourceType,
-  onSubmit,
 }: IResourceSelectionFormProps) {
   // State for tracking selected values
-  const [selectedEducationLevel, setSelectedEducationLevel] = useState("");
-  const [selectedExamBoard, setSelectedExamBoard] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState("");
-  const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState("");
-  const [selectedResourceType, setSelectedResourceType] = useState("");
+  const [selectedEducationLevel, setSelectedEducationLevel] = useState('');
+  const [selectedExamBoard, setSelectedExamBoard] = useState('');
+  const [selectedSubject, setSelectedSubject] = useState('');
+  const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState('');
+  const [selectedResourceType, setSelectedResourceType] = useState('');
 
   // Fetch data using custom hooks
-  const { data: educationLevels, isLoading: educationLevelsIsLoading, refetch: educationLevelsRefetch } = useGetEducationLevels();
+  const { data: educationLevels,
+    //  isLoading: _educationLevelsIsLoading, 
+    // refetch: educationLevelsRefetch 
+  } = useGetEducationLevels();
   const {
     data: examBoards,
-    isLoading: examBoardsIsLoading,
+    // isLoading: _examBoardsIsLoading,
     refetch: examBoardsRefetch,
   } = useGetExamBoards(selectedEducationLevel);
   const {
     data: subjects,
-    isLoading: subjectsIsLoading,
+    // isLoading: _subjectsIsLoading,
     refetch: subjectsRefetch,
   } = useGetUniqueSubjects(selectedEducationLevel, selectedExamBoard);
   const {
     data: subjectSubtypes,
-    isLoading: subjectSubtypesIsLoading,
+    // isLoading: _subjectSubtypesIsLoading,
     refetch: subjectSubtypesRefetch,
   } = useGetSubjects(selectedEducationLevel, selectedExamBoard, selectedSubject);
   const {
     data: resourceTypes,
-    isLoading: resourceTypesIsLoading,
+    // isLoading: _resourceTypesIsLoading,
     refetch: resourceTypesRefetch,
   } = useGetValidResources(selectedEducationLevel, selectedExamBoard, selectedSubjectSubtype);
 
   // Handle form submission
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
@@ -71,18 +73,19 @@ export default function ResourceSelectionForm({
   }, [selectedEducationLevel, selectedExamBoard, selectedSubject, selectedSubjectSubtype, selectedResourceType]);
 
   // Reset form when education level changes
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleEducationLevelChange = (value: any) => {
     setSelectedEducationLevel(value);
-    setSelectedExamBoard("");
-    setSelectedSubject("");
-    setSelectedSubjectSubtype("");
-    setSelectedResourceType("");
+    setSelectedExamBoard('');
+    setSelectedSubject('');
+    setSelectedSubjectSubtype('');
+    setSelectedResourceType('');
   };
 
   return (
     <Box>
       <Box component="form" onSubmit={handleSubmit} sx={{ mt: 4 }}>
-        <Box sx={{ display: "flex", gap: "20px" }}>
+        <Box sx={{ display: 'flex', gap: '20px' }}>
           {/* Education Level Dropdown */}
           <FormControl fullWidth>
             <InputLabel>Education Level</InputLabel>
@@ -110,9 +113,9 @@ export default function ResourceSelectionForm({
               disabled={!selectedEducationLevel || !examBoards}
               onChange={(e) => {
                 setSelectedExamBoard(e.target.value);
-                setSelectedSubject("");
-                setSelectedSubjectSubtype("");
-                setSelectedResourceType("");
+                setSelectedSubject('');
+                setSelectedSubjectSubtype('');
+                setSelectedResourceType('');
               }}
             >
               {examBoards &&
@@ -133,8 +136,8 @@ export default function ResourceSelectionForm({
               disabled={!selectedEducationLevel || !selectedExamBoard || !subjects}
               onChange={(e) => {
                 setSelectedSubject(e.target.value);
-                setSelectedSubjectSubtype("");
-                setSelectedResourceType("");
+                setSelectedSubjectSubtype('');
+                setSelectedResourceType('');
               }}
             >
               {subjects &&
@@ -155,13 +158,13 @@ export default function ResourceSelectionForm({
               disabled={!selectedEducationLevel || !selectedExamBoard || !selectedSubject || !subjectSubtypes}
               onChange={(e) => {
                 setSelectedSubjectSubtype(e.target.value);
-                setSelectedResourceType("");
+                setSelectedResourceType('');
               }}
             >
               {subjectSubtypes &&
-                subjectSubtypes.map((subtype, i) => (
+                subjectSubtypes.map((subtype) => (
                   <MenuItem key={subtype.id} value={subtype.id}>
-                    {subtype.tags?.join(" - ")}
+                    {subtype.tags?.join(' - ')}
                   </MenuItem>
                 ))}
             </Select>

@@ -1,7 +1,9 @@
-import { Box } from "@mui/material";
-import React from "react";
-import { AdminSectionHeading, AdminSectionSubHeading } from "../Admin.style";
-import type { Content } from "@/entities";
+import { Box } from '@mui/material';
+import React from 'react';
+
+import type { Content } from '@/entities';
+
+import { AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
 
 interface AddResourceFormProps {
   selectedSubtopic: Content | undefined;
@@ -9,7 +11,7 @@ interface AddResourceFormProps {
   selectedSubjectSubtype: string;
 }
 
-const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, selectedResourceType, selectedSubjectSubtype }) => {
+const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, selectedResourceType }) => {
   return (
     <Box>
       <AdminSectionHeading>{selectedSubtopic?.name}</AdminSectionHeading>
