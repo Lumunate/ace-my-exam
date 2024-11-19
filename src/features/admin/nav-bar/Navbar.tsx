@@ -45,9 +45,9 @@ const Navbar = () => {
       <NavbarMenuIcon >
         <SettingsIcon />
       </NavbarMenuIcon>
-      <NavbarMenuIcon >
+      {/* <NavbarMenuIcon >
         <NotificationsIcon />
-      </NavbarMenuIcon>
+      </NavbarMenuIcon> */}
     </Box>
   </Box>;
 };

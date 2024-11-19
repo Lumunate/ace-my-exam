@@ -33,16 +33,16 @@ const MENU_ITEMS: MenuItems[] = [
         icon: <GridViewIcon />,
         path: '/admin',
       },
-      {
-        text: 'Inbox',
-        icon: <AllInboxIcon />,
-        path: '/admin/inbox',
-      },
-      {
-        text: 'Starred',
-        icon: <StarRateIcon />,
-        path: '/admin/starred',
-      },
+      // {
+      //   text: 'Inbox',
+      //   icon: <AllInboxIcon />,
+      //   path: '/admin/inbox',
+      // },
+      // {
+      //   text: 'Starred',
+      //   icon: <StarRateIcon />,
+      //   path: '/admin/starred',
+      // },
       {
         text: 'Resources',
         icon: <DraftsIcon />,
@@ -57,16 +57,16 @@ const MENU_ITEMS: MenuItems[] = [
         icon: <PersonIcon />,
         path: '/admin/account',
       },
-      {
-        text: 'Settings',
-        icon: <ManageAccountsIcon />,
-        path: '/admin/account/settings',
-      },
-      {
-        text: 'Users',
-        icon: <SupervisorAccountIcon />,
-        path: '/admin/account/users',
-      },
+      // {
+      //   text: 'Settings',
+      //   icon: <ManageAccountsIcon />,
+      //   path: '/admin/account/settings',
+      // },
+      // {
+      //   text: 'Users',
+      //   icon: <SupervisorAccountIcon />,
+      //   path: '/admin/account/users',
+      // },
     ]
   },
 ];
