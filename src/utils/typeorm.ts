@@ -1,3 +1,5 @@
+import path from 'path';
+
 import { DataSource } from 'typeorm';
 
 import * as entities from '@/entities';
@@ -10,7 +12,9 @@ if (process.env.NODE_ENV === 'production') {
   AppDataSource = new DataSource({
     type: 'postgres',
     url: process.env.DATABASE_URL,
-    entities: Object.values(entities),
+    entities: [
+      path.join(__dirname, 'entities', '*.js'),
+    ],
     synchronize: true,
     ssl: {
       rejectUnauthorized: false,
