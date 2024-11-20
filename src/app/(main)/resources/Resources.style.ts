@@ -132,8 +132,8 @@ export const ResourcesSubHeading = styled(Typography)(({ theme }) => ({
 
 export const ResourcesCardTypography = styled(Typography)(({ theme }) => ({
   color: '#000',
-  fontSize: '1.6rem',
-  fontWeight: 500,
+  fontSize: '16px',
+  fontWeight: 400,
   fontFamily: 'Lato, sans-serif',
   [theme.breakpoints.down('lg')]: {
     fontSize: '1.4rem',

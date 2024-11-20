@@ -66,29 +66,26 @@ const Year1Year2Subjects = ({
   return (
     <Grid
       container
-      spacing={'20px'}
+      rowSpacing={'17px'} columnSpacing={'24px'}
       sx={{ mb: '40px' }}
-      columns={{
-        sm: 6,
-        md: 12,
-      }}
+      columns={12}
     >
       {
         year1Subjects.map((subject) => (
           <Grid
             size={{
               xs: 12,
-              sm: 6,
+              lg: 6,
             }}
             key={subject.id}
           >
             <ResourcesCardSmall
               onClick={() => selectOption('subjectSubtype', { name: subject.subject, value: subject.id?.toString(), icon: '' })}
               sx={{
-                outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '2px solid #DA9694' : 'unset',
+                outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '1px solid #DA9694' : 'unset',
               }}
             >
-              <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+              <ResourcesCardTypography variant="body1" sx={{ ml: '4px', }}>
                 AS {subject.tags.join(' - ')}
               </ResourcesCardTypography>
             </ResourcesCardSmall>
@@ -101,17 +98,17 @@ const Year1Year2Subjects = ({
           <Grid
             size={{
               xs: 12,
-              sm: 6,
+              lg: 6,
             }}
             key={subject.id}
           >
             <ResourcesCardSmall
               onClick={() => selectOption('subjectSubtype', { name: subject.subject, value: subject.id?.toString(), icon: '' })}
               sx={{
-                outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '2px solid #DA9694' : 'unset',
+                outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '1px solid #DA9694' : 'unset',
               }}
             >
-              <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+              <ResourcesCardTypography variant="body1" sx={{ ml: '4px', }}>
                 A Level {subject.tags.join(' - ')}
               </ResourcesCardTypography>
             </ResourcesCardSmall>
@@ -140,26 +137,23 @@ const SimpleSubjects = ({
       container
       spacing={'20px'}
       sx={{ mb: '40px' }}
-      columns={{
-        sm: 6,
-        md: 12,
-      }}
+      columns={12}
     >
       {subjectOptions.map((subject) => (
         <Grid
           size={{
             xs: 12,
-            sm: 6,
+            lg: 6,
           }}
           key={subject.id}
         >
           <ResourcesCardSmall
             onClick={() => selectOption('subjectSubtype', { name: subject.subject, value: subject.id?.toString(), icon: '' })}
             sx={{
-              outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '2px solid #DA9694' : 'unset',
+              outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '1px solid #DA9694' : 'unset',
             }}
           >
-            <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+            <ResourcesCardTypography variant="body1" sx={{ ml: '4px', }}>
               {subject.tags?.join(' - ')}
             </ResourcesCardTypography>
           </ResourcesCardSmall>
