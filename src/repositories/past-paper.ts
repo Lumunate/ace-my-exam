@@ -2,18 +2,11 @@ import { PastPaperResourceType } from '@/entities/enums';
 import { PastPaper } from '@/entities/past-paper';
 import { PastPaperResource } from '@/entities/past-paper-resource';
 import { Resource } from '@/entities/resource';
+import { IPastPaperData } from '@/types/past-paper';
 import AppDataSource from '@/utils/typeorm';
 
 export const PastPaperRepository = AppDataSource.getRepository(PastPaper).extend({
-  async createWithResources(data: {
-    title: string;
-    year: number;
-    resources: {
-      questionPaper?: string;
-      markingScheme?: string;
-      solutionBooklet?: string;
-    };
-  }) {
+  async createWithResources(data: IPastPaperData) {
     const queryRunner = AppDataSource.createQueryRunner();
 
     await queryRunner.connect();

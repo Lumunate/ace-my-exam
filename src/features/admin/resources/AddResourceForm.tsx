@@ -8,6 +8,7 @@ import FileUpload from "./FileUpload";
 import UploadRevisionNotes from "./upload-data-forms/UploadRevisionNotes";
 import { ResourceType } from "@/types/resources";
 import UplaodTopicalQuestions from "./upload-data-forms/UploadTopicalQuestions";
+import UploadPastPapers from "./upload-data-forms/UploadPastPapers";
 
 interface AddResourceFormProps {
   selectedSubtopic: Content | undefined;
@@ -16,6 +17,8 @@ interface AddResourceFormProps {
 }
 
 const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, selectedResourceType }) => {
+
+  if (selectedResourceType === ResourceType.PAST_PAPER) return <UploadPastPapers />;
   if (!selectedSubtopic || !selectedResourceType) return null;
 
   return (
@@ -25,21 +28,11 @@ const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, sel
         {selectedResourceType.replace("_", " ")} for {selectedSubtopic?.name}
       </AdminSectionSubHeading>
 
-      {selectedResourceType === ResourceType.REVISION_NOTES && (
-        <UploadRevisionNotes subtopicId={selectedSubtopic.id} />
-      )}
+      {selectedResourceType === ResourceType.REVISION_NOTES && <UploadRevisionNotes subtopicId={selectedSubtopic.id} />}
 
-      {selectedResourceType === ResourceType.TOPIC_QUESTIONS && (
-        <UplaodTopicalQuestions subtopicId={selectedSubtopic.id} />
-      )}
-
-      {selectedResourceType === ResourceType.PAST_PAPER && (
-        <UploadRevisionNotes subtopicId={selectedSubtopic.id} />
-      )}
-
+      {selectedResourceType === ResourceType.TOPIC_QUESTIONS && <UplaodTopicalQuestions subtopicId={selectedSubtopic.id} />}
     </Box>
   );
 };
 
 export default AddResourceForm;
-
