@@ -1,5 +1,3 @@
-import path from 'path';
-
 import { DataSource } from 'typeorm';
 
 import * as entities from '@/entities';
@@ -13,7 +11,8 @@ if (process.env.NODE_ENV === 'production') {
     type: 'postgres',
     url: process.env.DATABASE_URL,
     entities: [
-      path.join(__dirname, 'entities', '*.js'),
+      __dirname + '/entities/*.ts',
+      __dirname + '/entities/*.js',
     ],
     synchronize: true,
     ssl: {
