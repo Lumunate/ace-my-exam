@@ -2,18 +2,13 @@ import { DataSource } from 'typeorm';
 
 import * as entities from '@/entities';
 
-console.log('testing=', Object.values(entities));
-
 let AppDataSource: DataSource;
 
 if (process.env.NODE_ENV === 'production') {
   AppDataSource = new DataSource({
     type: 'postgres',
     url: process.env.DATABASE_URL,
-    entities: [
-      __dirname + '/entities/*.ts',
-      __dirname + '/entities/*.js',
-    ],
+    entities: Object.values(entities),
     synchronize: true,
     ssl: {
       rejectUnauthorized: false,
