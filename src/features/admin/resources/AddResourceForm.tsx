@@ -7,6 +7,7 @@ import { AdminSectionHeading, AdminSectionSubHeading } from "../Admin.style";
 import FileUpload from "./FileUpload";
 import UploadRevisionNotes from "./upload-data-forms/UploadRevisionNotes";
 import { ResourceType } from "@/types/resources";
+import UplaodTopicalQuestions from "./upload-data-forms/UploadTopicalQuestions";
 
 interface AddResourceFormProps {
   selectedSubtopic: Content | undefined;
@@ -27,9 +28,9 @@ const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, sel
       {selectedResourceType === ResourceType.REVISION_NOTES && (
         <UploadRevisionNotes subtopicId={selectedSubtopic.id} />
       )}
-      
+
       {selectedResourceType === ResourceType.TOPIC_QUESTIONS && (
-        <UploadRevisionNotes subtopicId={selectedSubtopic.id} />
+        <UplaodTopicalQuestions subtopicId={selectedSubtopic.id} />
       )}
 
       {selectedResourceType === ResourceType.PAST_PAPER && (
