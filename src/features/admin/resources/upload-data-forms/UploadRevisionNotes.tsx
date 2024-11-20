@@ -1,13 +1,14 @@
 import { IRevisionNoteData, revisionNoteSchema } from "@/types/revision-note";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Box, Button, Paper, styled, TextField, Typography } from "@mui/material";
-import { Controller, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import FileUpload from "../FileUpload";
-
+import { useUploadRevisionNotes } from "@/hooks/resources/useUploadResources";
+import { useSnackbar } from "@/contexts/SnackbarContext";
 
 const FormContainer = styled(Box)({
-  display: 'flex',
-  flexDirection: 'column',
+  display: "flex",
+  flexDirection: "column",
   gap: 24,
 });
 interface UploadRevisionNotesProps {
@@ -15,26 +16,36 @@ interface UploadRevisionNotesProps {
 }
 
 const UploadRevisionNotes = ({ subtopicId }: UploadRevisionNotesProps) => {
+  const { showSnackbar } = useSnackbar();
 
   const {
     control,
     handleSubmit,
     formState: { errors },
     setValue,
-    trigger
+    trigger,
+    reset,
   } = useForm<IRevisionNoteData>({
     resolver: zodResolver(revisionNoteSchema),
     defaultValues: {
-      title: '',
+      title: "",
       subtopicId: subtopicId,
-      noteUrl: ''
-    }
+      noteUrl: "",
+    },
   });
 
-  const onSubmitForm = (data: IRevisionNoteData) => {
-    console.log('Form submitted:', data);
+  const { mutate: submitForm, isLoading } = useUploadRevisionNotes();
+  const onSubmitForm: SubmitHandler<IRevisionNoteData> = async (data: IRevisionNoteData) => {
+    submitForm(data, {
+      onSuccess: () => {
+        showSnackbar("Form submitted successfully!");
+        reset();
+      },
+      onError: () => {
+        showSnackbar("Failed to submit Contact Form. Please try again later!");
+      },
+    });
   };
-
 
   return (
     <Box>
@@ -63,8 +74,8 @@ const UploadRevisionNotes = ({ subtopicId }: UploadRevisionNotesProps) => {
                 <label htmlFor="noteUrl">Upload file:</label>
                 <FileUpload
                   hoist={(file: string) => {
-                    setValue('noteUrl', file);
-                    trigger('noteUrl');
+                    setValue("noteUrl", file);
+                    trigger("noteUrl");
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
@@ -78,12 +89,7 @@ const UploadRevisionNotes = ({ subtopicId }: UploadRevisionNotesProps) => {
             )}
           />
 
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            fullWidth
-          >
+          <Button type="submit" variant="contained" color="primary" fullWidth>
             Submit
           </Button>
         </FormContainer>
