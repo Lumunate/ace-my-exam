@@ -1,9 +1,10 @@
 'use client';
-import {useQuery} from 'react-query';
+import { useMutation, useQuery } from "react-query";
 
 import {IStepOption} from '@/contexts/MultiStepperContext';
 import {IReferenceData} from '@/services/subject';
 import {EducationLevel, ExamBoards, Subjects} from '@/types/resources';
+import { ICreateContent } from "@/types/content";
 
 export const educationLevelOptions: IStepOption[] = [
   { name: 'A levels', icon: '/resources/ALevels.svg', value: EducationLevel.A_LEVEL },
@@ -153,35 +154,24 @@ export const useGetValidResources = (educationLevel: string, examBoard: string, 
 
 // ============================== POST ==============================
 
-// interface INewSubject {
-//   // TODO Define the structure of your new subject here
-// }
+export const useAddContent = () => {
+  return useMutation({
+    mutationFn: async (data: ICreateContent) => {
+      const response = await fetch("/api/resources/reference-data", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-// const createSubject = async (newSubject: INewSubject): Promise<IReferenceData> => {
-//   const response = await fetch('/api/resources/reference-data', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(newSubject),
-//   });
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
 
-//   if (!response.ok) {
-//     throw new Error('Network response was not ok');
-//   }
-
-//   const data = await response.json();
-
-//   return data;
-// };
-
-// export const useCreateSubject = () => {
-//   const queryClient = useQueryClient();
-
-//   return useMutation<IReferenceData, Error, INewSubject>({
-//     mutationFn: createSubject,
-//     onSuccess: () => {
-//       queryClient.invalidateQueries('referenceData');
-//     },
-//   });
-// };
+      return response.json();
+    },
+    onSuccess: () => {},
+    onError: () => {},
+  });
+};
