@@ -1,9 +1,10 @@
-import { Box } from '@mui/material';
-import React from 'react';
+import { Box } from "@mui/material";
+import React from "react";
 
-import type { Content } from '@/entities';
+import type { Content } from "@/entities";
 
-import { AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
+import { AdminSectionHeading, AdminSectionSubHeading } from "../Admin.style";
+import FileUpload from "./FileUpload";
 
 interface AddResourceFormProps {
   selectedSubtopic: Content | undefined;
@@ -16,10 +17,23 @@ const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, sel
     <Box>
       <AdminSectionHeading>{selectedSubtopic?.name}</AdminSectionHeading>
       <AdminSectionSubHeading>
-        Add {selectedResourceType} for {selectedSubtopic?.name}
+        {selectedResourceType.replace("_", " ")} for {selectedSubtopic?.name}
       </AdminSectionSubHeading>
+
+      <UploadDetailsRevisionNotes />
     </Box>
   );
 };
 
 export default AddResourceForm;
+
+const UploadDetailsRevisionNotes = () => {
+  return (
+    <div>
+      <FileUpload
+        maxFileSize={5 * 1024 * 1024} // 5MB
+        maxFiles={3}
+      />
+    </div>
+  );
+};

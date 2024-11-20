@@ -1,12 +1,14 @@
 'use client';
 import ReplayIcon from '@mui/icons-material/Replay';
-import { AccordionSummary, Box, IconButton, styled } from '@mui/material';
+import { AccordionSummary, Box, IconButton, styled, Typography } from '@mui/material';
 import React, { useEffect } from 'react';
 
 import type { Content } from '@/entities';
 import { CollapseContainer, InnerCollapse } from '@/features/resources/resources-tables/ResourceTables.style';
 import { useGetResources } from '@/hooks/resources/useResources';
 import { ResourceType } from '@/types/resources';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
 
 interface ContentSelectionFormProps {
   subject: string;
@@ -46,7 +48,21 @@ const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentR
 
   return (
     <CollapseContainer>
-      <ResourceHeading>{data.name}</ResourceHeading>
+
+      <ResourceHeading>
+        <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+          {data.name}
+        </Typography>
+
+        <Box sx={{ display: 'flex', alignItems: 'center', transform: 'translateY(-5px)', marginLeft: '2rem' }}>
+          <IconButton>
+            <EditIcon />
+          </IconButton>
+          <IconButton>
+            <AddIcon />
+          </IconButton>
+        </Box>
+      </ResourceHeading>
 
       <InnerCollapse>
         {data.children?.map((child) => <RecursiveContentRender key={child.id} data={child} setSelectedSubtopic={setSelectedSubtopic} />)}
@@ -60,6 +76,10 @@ export const ResourceHeading = styled(AccordionSummary)(() => ({
   fontSize: '1.4rem',
   fontWeight: 600,
   border: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  width: '100%',
 }));
 
 export const ResourceItem = styled(AccordionSummary)(({ theme }) => ({

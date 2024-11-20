@@ -8,6 +8,7 @@ import { ResourceType } from '@/types/resources';
 import ResourceSelectionForm from './ResourceSelectionForm';
 import { AdminSectionInnerSpacer } from '../Admin.style';
 import ContentSelectionForm from './ContentSelectionForm';
+import AddResourceForm from './AddResourceForm';
 
 const SelectionForm = () => {
   const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState('');
@@ -29,6 +30,8 @@ const SelectionForm = () => {
       <ContentSelectionForm setSelectedSubtopic={setSelectedSubtopic} subject={selectedSubjectSubtype} resourceType={selectedResourceType as ResourceType} />
 
       <AdminSectionInnerSpacer />
+
+      <AddResourceForm selectedSubtopic={_selectedSubtopic} selectedSubjectSubtype={selectedSubjectSubtype} selectedResourceType={selectedResourceType as ResourceType} />
 
     </Box>
   );
