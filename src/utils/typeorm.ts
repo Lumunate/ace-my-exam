@@ -2,6 +2,8 @@ import { DataSource } from 'typeorm';
 
 import * as entities from '@/entities';
 
+console.log('testing=', Object.values(entities));
+
 let AppDataSource: DataSource;
 
 if (process.env.NODE_ENV === 'production') {
