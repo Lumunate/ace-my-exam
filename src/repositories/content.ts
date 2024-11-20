@@ -1,11 +1,13 @@
 import { Content } from '@/entities/content';
 import { ContentLevel, ContentType } from '@/entities/enums';
+import { ICreateContent } from "@/types/content";
 import AppDataSource from '@/utils/typeorm';
 
 export const ContentRepository = AppDataSource.getRepository(Content).extend({
-  async createChapter(data: { name: string; description?: string }) {
+  async createChapter(data: Omit<ICreateContent, "parentId">) {
     const chapter = this.create({
       ...data,
+      subject_id: data.subjectId,
       type: ContentType.CHAPTER,
       level: ContentLevel.CHAPTER,
     });
@@ -13,11 +15,11 @@ export const ContentRepository = AppDataSource.getRepository(Content).extend({
     return this.save(chapter);
   },
 
-  async createTopic(data: { name: string; parentId: number; description?: string }) {
+  async createTopic(data: Omit<ICreateContent, 'subjectId'>) {
     const parent = await this.findOneBy({ id: data.parentId });
 
     if (!parent || parent.type !== ContentType.CHAPTER) {
-      throw new Error('Topics must be created under chapters');
+      throw new Error("Topics must be created under chapters");
     }
 
     const topic = this.create({
@@ -30,11 +32,11 @@ export const ContentRepository = AppDataSource.getRepository(Content).extend({
     return this.save(topic);
   },
 
-  async createSubtopic(data: { name: string; parentId: number; description?: string }) {
+  async createSubtopic(data: Omit<ICreateContent, 'subjectId'>) {
     const parent = await this.findOneBy({ id: data.parentId });
 
     if (!parent || parent.type !== ContentType.TOPIC) {
-      throw new Error('Subtopics must be created under topics');
+      throw new Error("Subtopics must be created under topics");
     }
 
     const subtopic = this.create({
@@ -48,19 +50,19 @@ export const ContentRepository = AppDataSource.getRepository(Content).extend({
   },
 
   async getChapterWithContent(chapterId: number) {
-    return this.createQueryBuilder('chapter')
-      .leftJoinAndSelect('chapter.children', 'topics')
-      .leftJoinAndSelect('topics.children', 'subtopics')
-      .where('chapter.id = :id', { id: chapterId })
-      .andWhere('chapter.type = :type', { type: ContentType.CHAPTER })
+    return this.createQueryBuilder("chapter")
+      .leftJoinAndSelect("chapter.children", "topics")
+      .leftJoinAndSelect("topics.children", "subtopics")
+      .where("chapter.id = :id", { id: chapterId })
+      .andWhere("chapter.type = :type", { type: ContentType.CHAPTER })
       .getOne();
   },
 
   async getSubjectWithContent(subjectId: number) {
-    return this.createQueryBuilder('chapter')
-      .leftJoinAndSelect('chapter.children', 'topics')
-      .leftJoinAndSelect('topics.children', 'subtopics')
-      .where('chapter.subject_id = :id', { id: subjectId })
+    return this.createQueryBuilder("chapter")
+      .leftJoinAndSelect("chapter.children", "topics")
+      .leftJoinAndSelect("topics.children", "subtopics")
+      .where("chapter.subject_id = :id", { id: subjectId })
       .getMany();
   },
 });
