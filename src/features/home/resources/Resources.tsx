@@ -16,29 +16,39 @@ import {
   ResourcesImageOverlay,
   ResourcesCardSubHeading
 } from '@/features/home/resources/Resources.style';
+import useMultiStepForm from '@/hooks/useMultiStepper';
+
+// Define the StepKey type for steps
+type StepKey = 1 | 1.5 | 2 | 3 | 4 | 5;
 
 const cardsData = [
   {
-    subTitle: 'AQA, AQA, EDEXCEL, OCR, & CIE',
-    title: 'Alevel Maths Resources',
+    subTitle: 'Maths, Further Maths Physics, Chemistry, Biology',
+    title: 'Alevel',
     image: '/home/Resources1.webp',
     buttonText: 'Get Started'
   },
   {
-    subTitle: 'AQA, EDEXCEL, OCR, & CIE',
-    title: 'GCSE/IGCSE Maths Resources',
+    subTitle: 'Maths, Further Maths Physics, Chemistry, Biology',
+    title: 'GCSE',
     image: '/home/Resources2.webp',
     buttonText: 'Get Started'
   },
   {
-    subTitle: 'AQA, EDEXCEL, OCR, & CIE',
-    title: 'GCSE/IGCSE Science Resources',
+    subTitle: 'Maths, Further Maths Physics, Chemistry, Biology',
+    title: 'IGCSE',
+    image: '/home/Resources2.webp',
+    buttonText: 'Get Started'
+  },
+  {
+    subTitle: 'Maths, Physics, Chemistry, Biology',
+    title: 'KS3',
     image: '/home/Resources3.webp',
     buttonText: 'Get Started'
   },
   {
-    subTitle: 'Math & Science',
-    title: 'Entrance & scholarship Exams Resources',
+    subTitle: '11+, 13+, 16+, 13+ ',
+    title: 'Entrance Exams',
     image: '/home/Resources3.webp',
     buttonText: 'Get Started'
   }
@@ -46,6 +56,25 @@ const cardsData = [
 
 const Resources: React.FC = () => {
   const router = useRouter();
+  const { selectOptionNavbar, setCurrentStep } = useMultiStepForm();
+
+  const handleGetStartedClick = (cardTitle: string) => {
+    let step: StepKey = 2; 
+    
+    if (cardTitle === 'Entrance Exams') {
+      step = 1.5; 
+    } else {
+      selectOptionNavbar('educationalResources', {
+        name: cardTitle,
+        value: cardTitle, 
+        icon: '/resources/some-icon.svg' 
+      });
+    }
+
+    setCurrentStep(step);
+
+    router.push('/resources');
+  };
 
   return (
     <ResourcesWrapper>
@@ -61,10 +90,10 @@ const Resources: React.FC = () => {
         The Key to Your Academic Success
       </ResourcesHeading>
 
-      <ResourceGrid container columns={24} spacing={'17px'}>
+      <ResourceGrid container columns={24} spacing={'17px'} sx={{ mb: '40px' }} justifyContent={'center'}>
         {cardsData.map((card, index) => (
-          <ResourceGrid key={index} size={{ xs: 24, md: 12 }}>
-            <ResourceCard key={index} onClick={()=> router.push('/resources')}>
+          <ResourceGrid key={index} size={{ xs: 24, md: 12, lg: 8 }}>
+            <ResourceCard key={index} onClick={() => handleGetStartedClick(card.title)}>
               <ResourcesImageContainer>
                 <ResourcesImage
                   src={card.image}

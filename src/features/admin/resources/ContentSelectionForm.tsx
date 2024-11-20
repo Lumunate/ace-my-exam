@@ -1,9 +1,8 @@
 'use client';
-import AddIcon from '@mui/icons-material/Add';
-import EditIcon from '@mui/icons-material/Edit';
+
 import ReplayIcon from '@mui/icons-material/Replay';
-import { AccordionSummary, Box, IconButton, styled, Typography } from '@mui/material';
-import React, { useEffect, useState } from 'react';
+import { AccordionSummary, Box, IconButton, styled } from '@mui/material';
+import React, { useEffect } from 'react';
 
 import type { Content } from '@/entities';
 import { CollapseContainer, InnerCollapse } from '@/features/resources/resources-tables/ResourceTables.style';

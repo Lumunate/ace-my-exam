@@ -30,10 +30,9 @@ export default function ResourceSelectionForm({
   const [selectedResourceType, setSelectedResourceType] = useState('');
 
   // Fetch data using custom hooks
-  const {
-    data: educationLevels,
-    //  isLoading: _educationLevelsIsLoading,
-    // refetch: educationLevelsRefetch
+  const { data: educationLevels,
+    //  isLoading: _educationLevelsIsLoading, 
+    // refetch: educationLevelsRefetch 
   } = useGetEducationLevels();
   const {
     data: examBoards,
@@ -50,6 +49,7 @@ export default function ResourceSelectionForm({
     // isLoading: _subjectSubtypesIsLoading,
     refetch: subjectSubtypesRefetch,
   } = useGetSubjects(selectedEducationLevel, selectedExamBoard, selectedSubject);
+
   // Handle form submission
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (e: any) => {

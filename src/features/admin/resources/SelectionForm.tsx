@@ -32,7 +32,6 @@ const SelectionForm = () => {
       <AdminSectionInnerSpacer />
 
       <AddResourceForm selectedSubtopic={_selectedSubtopic} selectedSubjectSubtype={selectedSubjectSubtype} selectedResourceType={selectedResourceType as ResourceType} />
-
     </Box>
   );
 };

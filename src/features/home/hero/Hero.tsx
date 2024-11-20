@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
                   Based in Cambridge, UK, Acemyexam provides best-in-class personalised learning to students in order to achieve academic excellence, confidence, and academic growth.
                 </HeroContent>
                 <HeroContent sx={{ mt: '30px' }}>Excel Academically Today!</HeroContent>
-                <Link href={'/resources'}>
+                <Link href={'/pricing'}>
                   <Button
                     special
                     fontSize='16px'
