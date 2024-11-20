@@ -7,4 +7,11 @@ export const createContentSchema = z.object({
   description: z.string().optional(),
 });
 
+export const editContentSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  description: z.string().optional(),
+});
+
 export type ICreateContent = z.infer<typeof createContentSchema>;
+export type IEditContent = z.infer<typeof editContentSchema>;

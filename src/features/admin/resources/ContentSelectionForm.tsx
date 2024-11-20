@@ -10,6 +10,7 @@ import { ResourceType } from "@/types/resources";
 import AddIcon from "@mui/icons-material/Add";
 import EditIcon from "@mui/icons-material/Edit";
 import CreateContentForm from "./CreateContentFormModal";
+import EditContentFormModal from "./EditContentFormModal";
 
 interface ContentSelectionFormProps {
   subject: string;
@@ -46,9 +47,14 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, re
         <RecursiveContentRender key={child.id} setSelectedSubtopic={setSelectedSubtopic} data={child} />
       ))}
 
-
-      {editContentOpen && <div>Edit Content</div>}
-      {createContentOpen && <CreateContentForm open={createContentOpen} onClose={() => setCreateContentOpen(false)} subjectId={parseInt(subject)} parentId={null} />}
+      {createContentOpen && (
+        <CreateContentForm
+          open={createContentOpen}
+          onClose={() => setCreateContentOpen(false)}
+          subjectId={parseInt(subject)}
+          parentId={null}
+        />
+      )}
     </Box>
   );
 };
@@ -74,7 +80,7 @@ const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentR
           </Typography>
 
           <Box sx={{ display: "flex", alignItems: "center", transform: "translateY(-5px)", marginLeft: "2rem" }}>
-            <IconButton>
+            <IconButton onClick={() => setEditContentOpen(true)}>
               <EditIcon />
             </IconButton>
             <IconButton onClick={() => setCreateContentOpen(true)}>
@@ -90,8 +96,23 @@ const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentR
         </InnerCollapse>
       </CollapseContainer>
 
-      {editContentOpen && <div>Edit Content</div>}
-      {createContentOpen && <CreateContentForm open={createContentOpen} onClose={() => setCreateContentOpen(false)} subjectId={null} parentId={data.id} />}
+      {editContentOpen && (
+        <EditContentFormModal
+          open={editContentOpen}
+          onClose={() => setEditContentOpen(false)}
+          id={data.id}
+          name={data.name}
+          description={data.description}
+        />
+      )}
+      {createContentOpen && (
+        <CreateContentForm
+          open={createContentOpen}
+          onClose={() => setCreateContentOpen(false)}
+          subjectId={null}
+          parentId={data.id}
+        />
+      )}
     </>
   );
 };
