@@ -50,6 +50,7 @@ export const ResourcesCardSmall = styled(Card)<ResourcesCardProps>(({ height }) 
   height: height || '100%',
   cursor: 'pointer',
   minWidth: '20rem',
+
 }));
 
 export const ResourcesCardSmallDisabled = styled(ResourcesCardSmall)<ResourcesCardProps>(() => ({

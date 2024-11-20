@@ -74,12 +74,13 @@ const Year1Year2Subjects = ({
       }}
     >
       {
-        year1Subjects.map((subject) => (
+        year1Subjects.map((subject, index) => (
           <Grid
             size={{
               xs: 12,
               sm: 6,
             }}
+            gridArea={`0/${index}`}
             key={subject.id}
           >
             <ResourcesCardSmall
@@ -97,12 +98,13 @@ const Year1Year2Subjects = ({
       }
 
       {
-        year2Subjects.map((subject) => (
+        year2Subjects.map((subject, index) => (
           <Grid
             size={{
               xs: 12,
               sm: 6,
             }}
+            gridArea={`1/${index}`}
             key={subject.id}
           >
             <ResourcesCardSmall

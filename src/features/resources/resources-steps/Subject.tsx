@@ -57,11 +57,12 @@ const Subject: React.FC = () => {
               display: 'flex',
               justifyContent: 'center',
               alignItems: 'center',
+              gap: '8px',
             }}>
               <Image
                 src={subject.icon}
                 alt={subject.name ?? ''}
-                width={82}
+                width={22}
                 height={22}
               />
 

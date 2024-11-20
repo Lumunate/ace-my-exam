@@ -54,7 +54,7 @@ const ResourcesLayout: React.FC<{ permanentBreadcrumbs?: { key: number; title: s
 
       <Box
         sx={{
-          margin: '4.2rem 0 6.9rem',
+          margin: '4.2rem 0 2.4rem',
           display: { xs: 'none', sm: 'flex' },
           alignItems: 'center',
         }}
