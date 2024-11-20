@@ -1,7 +1,6 @@
-import AdminCard from "@/features/admin/cards/Card";
-import { StatCardHeading, StatCardValue, StatsCard } from "@/features/home/stats/Stats.style";
-import { Box, Grid2 } from "@mui/material";
+import { Box, Grid2 } from '@mui/material';
 
+import { StatCardHeading, StatCardValue, StatsCard } from '@/features/home/stats/Stats.style';
 
 interface StatItem {
   name: string;
@@ -33,7 +32,7 @@ const stats: StatItem[] = [
 
 const Page = () => {
   return (
-    <Box sx={{margin: "1rem 10%"}}>
+    <Box sx={{margin: '1rem 10%'}}>
       <Grid2 container columnSpacing={{ xs: '8px', md: '24px', lg: '48px' }} columns={24}>
         {stats.map((stat, index) => (
           <Grid2 size={{ xs: 8 }} key={index}>

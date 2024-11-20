@@ -1,16 +1,17 @@
-"use client";
-import ReplayIcon from "@mui/icons-material/Replay";
-import { AccordionSummary, Box, IconButton, styled, Typography } from "@mui/material";
-import React, { useEffect, useState } from "react";
+'use client';
+import AddIcon from '@mui/icons-material/Add';
+import EditIcon from '@mui/icons-material/Edit';
+import ReplayIcon from '@mui/icons-material/Replay';
+import { AccordionSummary, Box, IconButton, styled, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 
-import type { Content } from "@/entities";
-import { CollapseContainer, InnerCollapse } from "@/features/resources/resources-tables/ResourceTables.style";
-import { useGetResources } from "@/hooks/resources/useResources";
-import { ResourceType } from "@/types/resources";
-import AddIcon from "@mui/icons-material/Add";
-import EditIcon from "@mui/icons-material/Edit";
-import CreateContentForm from "./CreateContentFormModal";
-import EditContentFormModal from "./EditContentFormModal";
+import type { Content } from '@/entities';
+import { CollapseContainer, InnerCollapse } from '@/features/resources/resources-tables/ResourceTables.style';
+import { useGetResources } from '@/hooks/resources/useResources';
+import { ResourceType } from '@/types/resources';
+
+import CreateContentForm from './CreateContentFormModal';
+import EditContentFormModal from './EditContentFormModal';
 
 interface ContentSelectionFormProps {
   subject: string;
@@ -22,7 +23,6 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, re
   const { data, isLoading, refetch } = useGetResources(parseInt(subject));
 
   const [createContentOpen, setCreateContentOpen] = useState<boolean>(false);
-  const [editContentOpen, setEditContentOpen] = useState<boolean>(false);
 
   useEffect(() => {
     refetch();
@@ -31,13 +31,10 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, re
   if (!data || isLoading) return <div>Loading...</div>;
 
   return (
-    <Box sx={{ position: "relative" }}>
-      <Box sx={{ position: "absolute", top: "-10px", right: "10px", zIndex: 10 }}>
+    <Box sx={{ position: 'relative' }}>
+      <Box sx={{ position: 'absolute', top: '-10px', right: '10px', zIndex: 10 }}>
         <IconButton onClick={() => refetch()}>
           <ReplayIcon />
-        </IconButton>
-        <IconButton>
-          <EditIcon />
         </IconButton>
         <IconButton onClick={() => setCreateContentOpen(true)}>
           <AddIcon />
@@ -75,11 +72,11 @@ const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentR
     <>
       <CollapseContainer>
         <ResourceHeading>
-          <Typography variant="h6" sx={{ fontWeight: "bold" }}>
+          <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
             {data.name}
           </Typography>
 
-          <Box sx={{ display: "flex", alignItems: "center", transform: "translateY(-5px)", marginLeft: "2rem" }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', transform: 'translateY(-5px)', marginLeft: '2rem' }}>
             <IconButton onClick={() => setEditContentOpen(true)}>
               <EditIcon />
             </IconButton>
@@ -118,22 +115,22 @@ const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentR
 };
 
 export const ResourceHeading = styled(AccordionSummary)(() => ({
-  color: "#000",
-  fontSize: "1.4rem",
+  color: '#000',
+  fontSize: '1.4rem',
   fontWeight: 600,
-  border: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  width: "100%",
+  border: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  width: '100%',
 }));
 
 export const ResourceItem = styled(AccordionSummary)(({ theme }) => ({
-  color: "#333",
-  fontSize: "1.2rem",
+  color: '#333',
+  fontSize: '1.2rem',
   fontWeight: 400,
-  border: "none",
-  ":hover": {
+  border: 'none',
+  ':hover': {
     color: theme.palette.text.secondary,
   },
 }));

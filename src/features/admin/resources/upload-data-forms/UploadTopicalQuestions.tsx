@@ -1,14 +1,16 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Button, styled, TextField, Typography } from "@mui/material";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import FileUpload from "../FileUpload";
-import { useUploadTopicalQuestions } from "@/hooks/resources/useUploadResources";
-import { useSnackbar } from "@/contexts/SnackbarContext";
-import { ITopicalQuestionData, topicalQuestionSchema } from "@/types/topical-qeustion";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Box, Button, styled, TextField, Typography } from '@mui/material';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+
+import { useSnackbar } from '@/contexts/SnackbarContext';
+import { useUploadTopicalQuestions } from '@/hooks/resources/useUploadResources';
+import { ITopicalQuestionData, topicalQuestionSchema } from '@/types/topical-qeustion';
+
+import FileUpload from '../FileUpload';
 
 const FormContainer = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
+  display: 'flex',
+  flexDirection: 'column',
   gap: 24,
 });
 
@@ -29,10 +31,10 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
   } = useForm<ITopicalQuestionData>({
     resolver: zodResolver(topicalQuestionSchema),
     defaultValues: {
-      title: "",
+      title: '',
       subtopicId: subtopicId,
-      questionPaper: "",
-      markingScheme: "",
+      questionPaper: '',
+      markingScheme: '',
     },
   });
 
@@ -40,11 +42,11 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
   const onSubmitForm: SubmitHandler<ITopicalQuestionData> = async (data: ITopicalQuestionData) => {
     submitForm(data, {
       onSuccess: () => {
-        showSnackbar("Form submitted successfully!");
+        showSnackbar('Form submitted successfully!');
         reset();
       },
       onError: () => {
-        showSnackbar("Failed to submit Contact Form. Please try again later!");
+        showSnackbar('Failed to submit Contact Form. Please try again later!');
       },
     });
   };
@@ -71,13 +73,13 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
           <Controller
             name="questionPaper"
             control={control}
-            render={({ field }) => (
+            render={() => (
               <Box>
                 <label htmlFor="noteUrl">Upload Question Paper:</label>
                 <FileUpload
                   hoist={(file: string) => {
-                    setValue("questionPaper", file);
-                    trigger("questionPaper");
+                    setValue('questionPaper', file);
+                    trigger('questionPaper');
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
@@ -94,13 +96,13 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
           <Controller
             name="markingScheme"
             control={control}
-            render={({ field }) => (
+            render={() => (
               <Box>
                 <label htmlFor="noteUrl">Upload Marking Scheme:</label>
                 <FileUpload
                   hoist={(file: string) => {
-                    setValue("markingScheme", file);
-                    trigger("markingScheme");
+                    setValue('markingScheme', file);
+                    trigger('markingScheme');
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
@@ -114,8 +116,8 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
             )}
           />
 
-          <Button type="submit" variant="contained" color="primary" fullWidth>
-            Submit
+          <Button disabled={isLoading} type="submit" variant="contained" color="primary" fullWidth>
+            {isLoading ? 'Submitting...' : 'Submit'}
           </Button>
         </FormContainer>
       </form>

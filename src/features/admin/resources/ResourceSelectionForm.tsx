@@ -1,15 +1,14 @@
-"use client";
-import { Box, FormControl, InputLabel, Select, MenuItem, Button } from "@mui/material";
-import React, { useEffect, useState } from "react";
+'use client';
+import { Box, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 
 import {
   useGetEducationLevels,
   useGetExamBoards,
   useGetSubjects,
   useGetUniqueSubjects,
-  useGetValidResources,
-} from "@/hooks/resources/useReferenceData";
-import { ResourceType } from "@/types/resources";
+} from '@/hooks/resources/useReferenceData';
+import { ResourceType } from '@/types/resources';
 
 interface IResourceSelectionFormProps {
   H_selectedSubjectSubtype: string;
@@ -24,11 +23,11 @@ export default function ResourceSelectionForm({
   H_setSelectedResourceType,
 }: IResourceSelectionFormProps) {
   // State for tracking selected values
-  const [selectedEducationLevel, setSelectedEducationLevel] = useState("");
-  const [selectedExamBoard, setSelectedExamBoard] = useState("");
-  const [selectedSubject, setSelectedSubject] = useState("");
-  const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState("");
-  const [selectedResourceType, setSelectedResourceType] = useState("");
+  const [selectedEducationLevel, setSelectedEducationLevel] = useState('');
+  const [selectedExamBoard, setSelectedExamBoard] = useState('');
+  const [selectedSubject, setSelectedSubject] = useState('');
+  const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState('');
+  const [selectedResourceType, setSelectedResourceType] = useState('');
 
   // Fetch data using custom hooks
   const {
@@ -70,16 +69,16 @@ export default function ResourceSelectionForm({
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleEducationLevelChange = (value: any) => {
     setSelectedEducationLevel(value);
-    setSelectedExamBoard("");
-    setSelectedSubject("");
-    setSelectedSubjectSubtype("");
-    setSelectedResourceType("");
+    setSelectedExamBoard('');
+    setSelectedSubject('');
+    setSelectedSubjectSubtype('');
+    setSelectedResourceType('');
   };
 
   return (
     <Box>
       <Box component="form" onSubmit={handleSubmit} sx={{ mt: 4 }}>
-        <Box sx={{ display: "flex", gap: "20px" }}>
+        <Box sx={{ display: 'flex', gap: '20px' }}>
           {/* Education Level Dropdown */}
           <FormControl fullWidth>
             <InputLabel>Education Level</InputLabel>
@@ -107,9 +106,9 @@ export default function ResourceSelectionForm({
               disabled={!selectedEducationLevel || !examBoards}
               onChange={(e) => {
                 setSelectedExamBoard(e.target.value);
-                setSelectedSubject("");
-                setSelectedSubjectSubtype("");
-                setSelectedResourceType("");
+                setSelectedSubject('');
+                setSelectedSubjectSubtype('');
+                setSelectedResourceType('');
               }}
             >
               {examBoards &&
@@ -130,8 +129,8 @@ export default function ResourceSelectionForm({
               disabled={!selectedEducationLevel || !selectedExamBoard || !subjects}
               onChange={(e) => {
                 setSelectedSubject(e.target.value);
-                setSelectedSubjectSubtype("");
-                setSelectedResourceType("");
+                setSelectedSubjectSubtype('');
+                setSelectedResourceType('');
               }}
             >
               {subjects &&
@@ -152,7 +151,7 @@ export default function ResourceSelectionForm({
               disabled={!selectedEducationLevel || !selectedExamBoard || !selectedSubject || !subjectSubtypes}
               onChange={(e) => {
                 setSelectedSubjectSubtype(e.target.value);
-                setSelectedResourceType("");
+                setSelectedResourceType('');
               }}
             >
               {subjectSubtypes &&
@@ -160,15 +159,15 @@ export default function ResourceSelectionForm({
                   <MenuItem key={subtype.id} value={subtype.id}>
                     {subtype.tags
                       ?.map((tag) => {
-                        if (tag === "YEAR_1") {
-                          return "AS Level";
-                        } else if (tag === "YEAR_2") {
-                          return "A Level";
+                        if (tag === 'YEAR_1') {
+                          return 'AS Level';
+                        } else if (tag === 'YEAR_2') {
+                          return 'A Level';
                         } else {
                           return tag;
                         }
                       })
-                      .join(" - ")}
+                      .join(' - ')}
                   </MenuItem>
                 ))}
             </Select>

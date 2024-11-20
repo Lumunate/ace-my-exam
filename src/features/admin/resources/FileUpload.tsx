@@ -1,22 +1,14 @@
-import React, { useState, useCallback, useEffect } from "react";
-import { styled } from "@mui/material/styles";
+import { CloudUpload as UploadIcon } from '@mui/icons-material';
+import AttachFileIcon from '@mui/icons-material/AttachFile';
 import {
   Box,
-  Typography,
-  Paper,
   Button,
-  Alert,
-  AlertTitle,
-  LinearProgress,
-  IconButton,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemSecondaryAction,
   CircularProgress,
-} from "@mui/material";
-import { CloudUpload as UploadIcon, Close as CloseIcon, PictureAsPdf as PdfIcon } from "@mui/icons-material";
-import AttachFileIcon from "@mui/icons-material/AttachFile";
+} from '@mui/material';
+import { styled } from '@mui/material/styles';
+import React, { useState, useCallback, useEffect } from 'react';
+
+import { useSnackbar } from '@/contexts/SnackbarContext';
 // Types
 interface CloudinaryUploadResponse {
   secure_url: string;
@@ -29,7 +21,7 @@ interface CloudinaryUploadResponse {
 }
 
 interface UploadStatus {
-  type: "success" | "error";
+  type: 'success' | 'error';
   message: string;
   urls?: string[];
 }
@@ -48,47 +40,46 @@ interface SignatureResponse {
 }
 
 // Styled Components
-const UploadContainer = styled(Box)(({ theme }) => ({
-  width: "8rem",
-  height: "8rem",
+const UploadContainer = styled(Box)(() => ({
+  width: '4rem',
+  height: '4rem',
 }));
 
 const DropZone = styled(Box)(({ theme }) => ({
-  margin: "auto 0",
-  width: "4rem",
-  height: "4rem",
+  margin: 'auto 0',
+  width: '4rem',
+  height: '4rem',
   border: `2px dashed ${theme.palette.primary.main}`,
   borderRadius: theme.shape.borderRadius,
-  textAlign: "center",
-  cursor: "pointer",
-  transition: "border .24s ease-in-out",
+  textAlign: 'center',
+  cursor: 'pointer',
+  transition: 'border .24s ease-in-out',
 }));
 
-const Input = styled("input")({
-  display: "none",
+const Input = styled('input')({
+  display: 'none',
 });
-
-const FileList = styled(List)(({ theme }) => ({
-  marginTop: theme.spacing(2),
-}));
 
 const FileUpload: React.FC<FileUploadProps> = ({
   maxFileSize = 10 * 1024 * 1024, // 10MB default
   maxFiles = 5,
-  hoist = (file: string) => {},
+  hoist = () => { },
 }) => {
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState<boolean>(false);
-  const [uploadStatus, setUploadStatus] = useState<UploadStatus | null>(null);
-  const [uploadProgress, setUploadProgress] = useState<{ [key: string]: number }>({});
+  const [, setUploadStatus] = useState<UploadStatus | null>(null);
+  const [, setUploadProgress] = useState<{ [key: string]: number }>({});
+  const { showSnackbar } = useSnackbar();
 
   const validateFiles = (fileList: File[]): { isValid: boolean; error?: string } => {
-    const hasInvalidType = fileList.some((file) => file.type !== "application/pdf");
+    const hasInvalidType = fileList.some((file) => file.type !== 'application/pdf');
+
     if (hasInvalidType) {
-      return { isValid: false, error: "Only PDF files are allowed" };
+      return { isValid: false, error: 'Only PDF files are allowed' };
     }
 
     const hasInvalidSize = fileList.some((file) => file.size > maxFileSize);
+
     if (hasInvalidSize) {
       return {
         isValid: false,
@@ -107,12 +98,12 @@ const FileUpload: React.FC<FileUploadProps> = ({
   };
 
   const getSignature = async (): Promise<SignatureResponse> => {
-    const response = await fetch("/api/resources/upload", {
-      method: "POST",
+    const response = await fetch('/api/resources/upload', {
+      method: 'POST',
     });
 
     if (!response.ok) {
-      throw new Error("Failed to get upload signature");
+      throw new Error('Failed to get upload signature');
     }
 
     return response.json();
@@ -120,19 +111,20 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
   const uploadFile = async (file: File, signature: SignatureResponse): Promise<CloudinaryUploadResponse> => {
     const formData = new FormData();
-    formData.append("file", file);
-    formData.append("api_key", signature.apiKey);
-    formData.append("timestamp", signature.timestamp.toString());
-    formData.append("signature", signature.signature);
-    formData.append("resource_type", "auto");
+
+    formData.append('file', file);
+    formData.append('api_key', signature.apiKey);
+    formData.append('timestamp', signature.timestamp.toString());
+    formData.append('signature', signature.signature);
+    formData.append('resource_type', 'auto');
 
     const response = await fetch(`https://api.cloudinary.com/v1_1/${signature.cloudName}/auto/upload`, {
-      method: "POST",
+      method: 'POST',
       body: formData,
     });
 
     if (!response.ok) {
-      throw new Error("Upload failed");
+      throw new Error('Upload failed');
     }
 
     return response.json();
@@ -153,9 +145,10 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
       if (!validation.isValid) {
         setUploadStatus({
-          type: "error",
-          message: validation.error || "Validation failed",
+          type: 'error',
+          message: validation.error || 'Validation failed',
         });
+
         return;
       }
 
@@ -173,9 +166,10 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
     if (!validation.isValid) {
       setUploadStatus({
-        type: "error",
-        message: validation.error || "Validation failed",
+        type: 'error',
+        message: validation.error || 'Validation failed',
       });
+
       return;
     }
 
@@ -200,6 +194,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
           }));
 
           const result = await uploadFile(file, signature);
+
           uploadedUrls.push(result.secure_url);
 
           // Set progress to 100 for completed file
@@ -207,14 +202,14 @@ const FileUpload: React.FC<FileUploadProps> = ({
             ...prev,
             [file.name]: 100,
           }));
-        } catch (error) {
-          console.error(`Error uploading ${file.name}:`, error);
+        } catch {
+          showSnackbar(`Failed to upload ${file.name}`);
           throw new Error(`Failed to upload ${file.name}`);
         }
       }
 
       setUploadStatus({
-        type: "success",
+        type: 'success',
         message: `Successfully uploaded ${uploadedUrls.length} files`,
         urls: uploadedUrls,
       });
@@ -226,8 +221,8 @@ const FileUpload: React.FC<FileUploadProps> = ({
       setUploadProgress({});
     } catch (error) {
       setUploadStatus({
-        type: "error",
-        message: error instanceof Error ? error.message : "Failed to upload files",
+        type: 'error',
+        message: error instanceof Error ? error.message : 'Failed to upload files',
       });
     } finally {
       setUploading(false);
@@ -245,16 +240,16 @@ const FileUpload: React.FC<FileUploadProps> = ({
       {files.length > 0 ? (
         <Box
           sx={{
-            width: "4rem",
-            height: "4rem",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            width: '4rem',
+            height: '4rem',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             border: `2px dashed primary.main`,
-            borderRadius: "8px",
+            borderRadius: '8px',
           }}
         >
-          <AttachFileIcon sx={{ mr: 2, color: "black" }} />
+          <AttachFileIcon sx={{ mr: 2, color: 'black' }} />
         </Box>
       ) : (
         <DropZone onDragOver={onDragOver} onDrop={onDrop}>
@@ -267,16 +262,16 @@ const FileUpload: React.FC<FileUploadProps> = ({
               sx={{
                 padding: 0,
                 margin: 0,
-                width: "2.6rem",
-                height: "4rem",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
+                width: '2.6rem',
+                height: '4rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
               }}
             >
               <UploadIcon
                 sx={{
-                  margin: "0 auto",
+                  margin: '0 auto',
                 }}
               />
             </Button>
@@ -285,7 +280,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
       )}
 
       {uploading && (
-        <Box sx={{ display: "flex", alignItems: "center" }}>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
           <CircularProgress size={24} color="inherit" sx={{ mr: 1 }} />
           Uploading...
         </Box>

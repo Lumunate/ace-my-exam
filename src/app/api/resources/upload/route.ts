@@ -1,5 +1,5 @@
-import { v2 as cloudinary } from "cloudinary";
-import { NextRequest, NextResponse } from "next/server";
+import { v2 as cloudinary } from 'cloudinary';
+import { NextRequest, NextResponse } from 'next/server';
 
 cloudinary.config({
   cloud_name: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
@@ -7,7 +7,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export async function POST(req: NextRequest) {
+export async function POST(_req: NextRequest) {
   try {
     const timestamp = Math.round(new Date().getTime() / 1000);
 
@@ -27,8 +27,7 @@ export async function POST(req: NextRequest) {
       },
       { status: 200 }
     );
-  } catch (error) {
-    console.error("Error generating signature:", error);
-    return NextResponse.json({ message: "Error generating signature" }, { status: 500 });
+  } catch {
+    return NextResponse.json({ message: 'Error generating signature' }, { status: 500 });
   }
 }

@@ -1,14 +1,16 @@
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Box, Button, Paper, styled, TextField, Typography } from "@mui/material";
-import { Controller, SubmitHandler, useForm } from "react-hook-form";
-import FileUpload from "../FileUpload";
-import { useUploadPastPapers } from "@/hooks/resources/useUploadResources";
-import { useSnackbar } from "@/contexts/SnackbarContext";
-import { IPastPaperData, pastPaperSchema } from "@/types/past-paper";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Box, Button, styled, TextField, Typography } from '@mui/material';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+
+import { useSnackbar } from '@/contexts/SnackbarContext';
+import { useUploadPastPapers } from '@/hooks/resources/useUploadResources';
+import { IPastPaperData, pastPaperSchema } from '@/types/past-paper';
+
+import FileUpload from '../FileUpload';
 
 const FormContainer = styled(Box)({
-  display: "flex",
-  flexDirection: "column",
+  display: 'flex',
+  flexDirection: 'column',
   gap: 24,
 });
 
@@ -25,12 +27,12 @@ const UploadPastPapers = () => {
   } = useForm<IPastPaperData>({
     resolver: zodResolver(pastPaperSchema),
     defaultValues: {
-      title: "",
+      title: '',
       year: new Date().getFullYear(),
       resources: {
-        questionPaper: "",
-        markingScheme: "",
-        solutionBooklet: "",
+        questionPaper: '',
+        markingScheme: '',
+        solutionBooklet: '',
       },
     },
   });
@@ -39,11 +41,11 @@ const UploadPastPapers = () => {
   const onSubmitForm: SubmitHandler<IPastPaperData> = async (data: IPastPaperData) => {
     submitForm(data, {
       onSuccess: () => {
-        showSnackbar("Form submitted successfully!");
+        showSnackbar('Form submitted successfully!');
         reset();
       },
       onError: () => {
-        showSnackbar("Failed to submit Contact Form. Please try again later!");
+        showSnackbar('Failed to submit Contact Form. Please try again later!');
       },
     });
   };
@@ -83,17 +85,16 @@ const UploadPastPapers = () => {
             )}
           />
 
-
           <Controller
             name="resources.questionPaper"
             control={control}
-            render={({ field }) => (
+            render={() => (
               <Box>
                 <label htmlFor="resources.questionPaper">Upload Question Paper:</label>
                 <FileUpload
                   hoist={(file: string) => {
-                    setValue("resources.questionPaper", file);
-                    trigger("resources.questionPaper");
+                    setValue('resources.questionPaper', file);
+                    trigger('resources.questionPaper');
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
@@ -110,12 +111,12 @@ const UploadPastPapers = () => {
           <Controller
             name="resources.markingScheme"
             control={control}
-            render={({ field }) => (
+            render={() => (
               <Box>
                 <label htmlFor="resources.markingScheme">Upload Marking Scheme:</label>
                 <FileUpload
                   hoist={(file: string) => {
-                    setValue("resources.markingScheme", file);
+                    setValue('resources.markingScheme', file);
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
@@ -132,13 +133,13 @@ const UploadPastPapers = () => {
 
             name="resources.solutionBooklet"
             control={control}
-            render={({ field }) => (
+            render={() => (
               <Box>
                 <label htmlFor="resources.solutionBooklet">Upload Solution Booklet:</label>
                 <FileUpload
                   hoist={(file: string) => {
-                    setValue("resources.solutionBooklet", file);
-                    trigger("resources.solutionBooklet");
+                    setValue('resources.solutionBooklet', file);
+                    trigger('resources.solutionBooklet');
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
@@ -152,8 +153,8 @@ const UploadPastPapers = () => {
             )}
           />
 
-          <Button type="submit" variant="contained" color="primary" fullWidth>
-            Submit
+          <Button type="submit" disabled={isLoading} variant="contained" color="primary" fullWidth>
+            {isLoading ? 'Submitting...' : 'Submit'}
           </Button>
         </FormContainer>
       </form>

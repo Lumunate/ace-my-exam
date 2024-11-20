@@ -1,10 +1,10 @@
 'use client';
-import { useMutation, useQuery } from "react-query";
+import { useMutation, useQuery } from 'react-query';
 
 import {IStepOption} from '@/contexts/MultiStepperContext';
 import {IReferenceData} from '@/services/subject';
+import { ICreateContent, IEditContent } from '@/types/content';
 import {EducationLevel, ExamBoards, Subjects} from '@/types/resources';
-import { ICreateContent, IEditContent } from "@/types/content";
 
 export const educationLevelOptions: IStepOption[] = [
   { name: 'A levels', icon: '/resources/ALevels.svg', value: EducationLevel.A_LEVEL },
@@ -157,16 +157,16 @@ export const useGetValidResources = (educationLevel: string, examBoard: string, 
 export const useAddContent = () => {
   return useMutation({
     mutationFn: async (data: ICreateContent) => {
-      const response = await fetch("/api/resources/reference-data", {
-        method: "POST",
+      const response = await fetch('/api/resources/reference-data', {
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error('Network response was not ok');
       }
 
       return response.json();
@@ -179,16 +179,16 @@ export const useAddContent = () => {
 export const useEditContent = () => {
   return useMutation({
     mutationFn: async (data: IEditContent) => {
-      const response = await fetch("/api/resources/reference-data", {
-        method: "PATCH",
+      const response = await fetch('/api/resources/reference-data', {
+        method: 'PATCH',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(data),
       });
 
       if (!response.ok) {
-        throw new Error("Network response was not ok");
+        throw new Error('Network response was not ok');
       }
 
       return response.json();

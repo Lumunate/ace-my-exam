@@ -19,7 +19,7 @@ export const TopicalQuestionRepository = AppDataSource.getRepository(TopicalQues
         where: { id: data.subtopicId, type: ContentType.SUBTOPIC },
       });
 
-      if (!content) throw new Error("Invalid subtopic ID");
+      if (!content) throw new Error('Invalid subtopic ID');
 
       // Create topical question
       const topicalQuestion = await queryRunner.manager.save(TopicalQuestion, {
@@ -30,12 +30,12 @@ export const TopicalQuestionRepository = AppDataSource.getRepository(TopicalQues
       // Create resources
       const questionPaperResource = await queryRunner.manager.save(Resource, {
         url: data.questionPaper,
-        type: "pdf",
+        type: 'pdf',
       });
 
       const markingSchemeResource = await queryRunner.manager.save(Resource, {
         url: data.markingScheme,
-        type: "pdf",
+        type: 'pdf',
       });
 
       // Create resource relationships
@@ -56,7 +56,7 @@ export const TopicalQuestionRepository = AppDataSource.getRepository(TopicalQues
 
       return this.findOne({
         where: { id: topicalQuestion.id },
-        relations: ["resources", "resources.resource"],
+        relations: ['resources', 'resources.resource'],
       });
     } catch (err) {
       await queryRunner.rollbackTransaction();
@@ -69,7 +69,7 @@ export const TopicalQuestionRepository = AppDataSource.getRepository(TopicalQues
   async findBySubtopic(subtopicId: number) {
     return this.find({
       where: { content_id: subtopicId },
-      relations: ["resources", "resources.resource"],
+      relations: ['resources', 'resources.resource'],
     });
   },
 });
