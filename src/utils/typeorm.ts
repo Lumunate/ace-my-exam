@@ -1,6 +1,22 @@
 import { DataSource } from 'typeorm';
 
-import * as entities from '@/entities';
+import {
+  AccountEntity,
+  BaseEntity,
+  Contact,
+  Content,
+  PastPaper,
+  PastPaperResource,
+  Resource,
+  RevisionNote,
+  RevisionNoteResource,
+  SessionEntity,
+  Subject,
+  TopicalQuestion,
+  TopicalQuestionResource,
+  User,
+  VerificationTokenEntity
+} from '@/entities';
 
 let AppDataSource: DataSource;
 
@@ -8,7 +24,23 @@ if (process.env.NODE_ENV === 'production') {
   AppDataSource = new DataSource({
     type: 'postgres',
     url: process.env.DATABASE_URL,
-    entities: Object.values(entities),
+    entities: [
+      AccountEntity,
+      BaseEntity,
+      Contact,
+      Content,
+      PastPaper,
+      PastPaperResource,
+      Resource,
+      RevisionNote,
+      RevisionNoteResource,
+      SessionEntity,
+      Subject,
+      TopicalQuestion,
+      TopicalQuestionResource,
+      User,
+      VerificationTokenEntity
+    ],
     synchronize: true,
     ssl: {
       rejectUnauthorized: false,
@@ -18,7 +50,23 @@ if (process.env.NODE_ENV === 'production') {
   AppDataSource = new DataSource({
     type: 'postgres',
     url: process.env.DATABASE_URL,
-    entities: Object.values(entities),
+    entities: [
+      AccountEntity,
+      BaseEntity,
+      Contact,
+      Content,
+      PastPaper,
+      PastPaperResource,
+      Resource,
+      RevisionNote,
+      RevisionNoteResource,
+      SessionEntity,
+      Subject,
+      TopicalQuestion,
+      TopicalQuestionResource,
+      User,
+      VerificationTokenEntity
+    ],
     synchronize: true,
   });
 }
