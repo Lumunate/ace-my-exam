@@ -18,6 +18,8 @@ import {
   VerificationTokenEntity
 } from '@/entities';
 
+console.log('result=', User);
+
 let AppDataSource: DataSource;
 
 if (process.env.NODE_ENV === 'production') {
