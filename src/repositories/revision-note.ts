@@ -3,10 +3,11 @@ import { ContentType } from '@/entities/enums';
 import { Resource } from '@/entities/resource';
 import { RevisionNote } from '@/entities/revision-note';
 import { RevisionNoteResource } from '@/entities/revision-note-resource';
+import { IRevisionNoteData } from '@/types/revision-note';
 import AppDataSource from '@/utils/typeorm';
 
 export const RevisionNoteRepository = AppDataSource.getRepository(RevisionNote).extend({
-  async createWithResource(data: { title: string; subtopicId: number; noteUrl: string }) {
+  async createWithResource(data: IRevisionNoteData) {
     const queryRunner = AppDataSource.createQueryRunner();
 
     await queryRunner.connect();

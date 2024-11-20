@@ -5,6 +5,8 @@ import type { Content } from "@/entities";
 
 import { AdminSectionHeading, AdminSectionSubHeading } from "../Admin.style";
 import FileUpload from "./FileUpload";
+import UploadRevisionNotes from "./upload-data-forms/UploadRevisionNotes";
+import { ResourceType } from "@/types/resources";
 
 interface AddResourceFormProps {
   selectedSubtopic: Content | undefined;
@@ -13,6 +15,8 @@ interface AddResourceFormProps {
 }
 
 const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, selectedResourceType }) => {
+  if (!selectedSubtopic || !selectedResourceType) return null;
+
   return (
     <Box>
       <AdminSectionHeading>{selectedSubtopic?.name}</AdminSectionHeading>
@@ -20,20 +24,21 @@ const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, sel
         {selectedResourceType.replace("_", " ")} for {selectedSubtopic?.name}
       </AdminSectionSubHeading>
 
-      <UploadDetailsRevisionNotes />
+      {selectedResourceType === ResourceType.REVISION_NOTES && (
+        <UploadRevisionNotes subtopicId={selectedSubtopic.id} />
+      )}
+      
+      {selectedResourceType === ResourceType.TOPIC_QUESTIONS && (
+        <UploadRevisionNotes subtopicId={selectedSubtopic.id} />
+      )}
+
+      {selectedResourceType === ResourceType.PAST_PAPER && (
+        <UploadRevisionNotes subtopicId={selectedSubtopic.id} />
+      )}
+
     </Box>
   );
 };
 
 export default AddResourceForm;
 
-const UploadDetailsRevisionNotes = () => {
-  return (
-    <div>
-      <FileUpload
-        maxFileSize={5 * 1024 * 1024} // 5MB
-        maxFiles={3}
-      />
-    </div>
-  );
-};
