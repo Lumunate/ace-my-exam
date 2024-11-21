@@ -45,6 +45,7 @@ const fetchReferenceData = async (params: {
 };
 
 const boardData: Record<string, IStepOption> = {
+  NONE: { name: 'NONE', icon: '', value: ExamBoards.NONE },
   AQA: { name: 'AQA', icon: '/resources/AQA-LOGO.svg', value: ExamBoards.AQA },
   CAMBRIDGE: { name: 'Cambridge', icon: '/resources/CIE.svg', value: ExamBoards.CAMBRIDGE },
   EDEXCEL: { name: 'Edexcel', icon: '/resources/edexcel-Logo.svg', value: ExamBoards.EDEXCEL },
@@ -55,6 +56,8 @@ const boardData: Record<string, IStepOption> = {
   },
   ISEB: { name: 'ISEB', icon: '/resources/ISEB.svg', value: ExamBoards.ISEB },
   OCR: { name: 'OCR', icon: '/resources/OCR-logo.svg', value: ExamBoards.OCR },
+  WJEC: { name: 'WJEC', icon: '/resources/wjec.svg', value: ExamBoards.WJEC }, 
+  OCR_MEI: { name: 'OCR_MEI', icon: '/resources/OCR-MEI.svg', value: ExamBoards.OCR_MEI }, 
   OCR_21: { name: 'OCR-21', icon: '/resources/ocr-21st.png', value: ExamBoards.OCR_21 },
   OCR_A: { name: 'OCR-A', icon: '/resources/ocr-a.png', value: ExamBoards.OCR_A },
   OCR_B: { name: 'OCR-B', icon: '/resources/ocr-b.png', value: ExamBoards.OCR_B },
@@ -82,6 +85,7 @@ const subjectsData: Record<string, IStepOption> = {
   Physics: { name: 'Chemistry', icon: '/resources/chemistry.svg', value: Subjects.CHEMISTRY },
   Chemistry: { name: 'Physics', icon: '/resources/Physics.svg', value: Subjects.PHYSICS },
   Biology: { name: 'Biology', icon: '/resources/biology.svg', value: Subjects.BIOLOGY },
+  Science: { name: 'Science', icon: '/resources/Science.svg', value: Subjects.SCIENCE },
   'Further Math': { name: 'Further Maths', icon: '/resources/Furthermaths.svg', value: Subjects.FURTHER_MATH },
 };
 
