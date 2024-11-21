@@ -1,6 +1,7 @@
-import { createSubject } from "@/services/subject";
-import { initializeDataSource } from "@/utils/typeorm";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest, NextResponse } from 'next/server';
+
+import { createSubject } from '@/services/subject';
+import { initializeDataSource } from '@/utils/typeorm';
 
 export async function POST(request: NextRequest) {
   await initializeDataSource();
@@ -15,6 +16,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
 
-    return NextResponse.json({ error: "An unknown error occurred" }, { status: 500 });
+    return NextResponse.json({ error: 'An unknown error occurred' }, { status: 500 });
   }
 }
