@@ -1,7 +1,7 @@
 import { AccountEntity, SessionEntity, User, VerificationTokenEntity } from '@/entities';
-import AppDataSource from '@/utils/typeorm';
+import { getDataSource } from '@/utils/typeorm';
 
-export const UserRepository = AppDataSource.getRepository(User).extend({
+export const UserRepository = getDataSource().getRepository(User).extend({
   async registerUser(userData: Omit<User, 'id' | 'createdAt'>) {
     const user = this.create(userData);
 
@@ -19,7 +19,7 @@ function generateVerificationToken() {
   return Math.random().toString(36).substring(2, 15);
 }
 
-export const TokensRepository = AppDataSource.getRepository(VerificationTokenEntity).extend({
+export const TokensRepository = getDataSource().getRepository(VerificationTokenEntity).extend({
   async createEmailVerificationToken(userId: string) {
     const token = this.create({
       userId,
@@ -45,5 +45,5 @@ export const TokensRepository = AppDataSource.getRepository(VerificationTokenEnt
     return token;
   },
 });
-export const SessionsRepository = AppDataSource.getRepository(SessionEntity).extend({});
-export const AccountsRepository = AppDataSource.getRepository(AccountEntity).extend({});
+export const SessionsRepository = getDataSource().getRepository(SessionEntity).extend({});
+export const AccountsRepository = getDataSource().getRepository(AccountEntity).extend({});

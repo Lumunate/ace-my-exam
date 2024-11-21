@@ -1,9 +1,9 @@
 import { Content } from '@/entities';
 import { ContentLevel, ContentType } from '@/entities/enums';
 import { ICreateContent } from '@/types/content';
-import AppDataSource from '@/utils/typeorm';
+import { getDataSource } from '@/utils/typeorm';
 
-export const ContentRepository = AppDataSource.getRepository(Content).extend({
+export const ContentRepository = getDataSource().getRepository(Content).extend({
   async createChapter(data: Omit<ICreateContent, 'parentId'>) {
     const chapter = this.create({
       ...data,

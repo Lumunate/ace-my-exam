@@ -1,11 +1,11 @@
 import { Content, Resource, TopicalQuestion, TopicalQuestionResource } from '@/entities';
 import { ContentType, TopicalQuestionResourceType } from '@/entities/enums';
 import { ITopicalQuestionData } from '@/types/topical-qeustion';
-import AppDataSource from '@/utils/typeorm';
+import { getDataSource } from '@/utils/typeorm';
 
-export const TopicalQuestionRepository = AppDataSource.getRepository(TopicalQuestion).extend({
+export const TopicalQuestionRepository = getDataSource().getRepository(TopicalQuestion).extend({
   async createWithResources(data: ITopicalQuestionData) {
-    const queryRunner = AppDataSource.createQueryRunner();
+    const queryRunner = getDataSource().createQueryRunner();
 
     await queryRunner.connect();
     await queryRunner.startTransaction();

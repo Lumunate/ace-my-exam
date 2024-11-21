@@ -1,11 +1,11 @@
 import { PastPaper, PastPaperResource, Resource } from '@/entities';
 import { PastPaperResourceType } from '@/entities/enums';
 import { IPastPaperData } from '@/types/past-paper';
-import AppDataSource from '@/utils/typeorm';
+import { getDataSource } from '@/utils/typeorm';
 
-export const PastPaperRepository = AppDataSource.getRepository(PastPaper).extend({
+export const PastPaperRepository = getDataSource().getRepository(PastPaper).extend({
   async createWithResources(data: IPastPaperData) {
-    const queryRunner = AppDataSource.createQueryRunner();
+    const queryRunner = getDataSource().createQueryRunner();
 
     await queryRunner.connect();
     await queryRunner.startTransaction();

@@ -1,7 +1,7 @@
 import Contact from '@/entities/contact';
-import AppDataSource from '@/utils/typeorm';
+import { getDataSource } from '@/utils/typeorm';
 
-export const ContactRepository = AppDataSource.getRepository(Contact).extend({
+export const ContactRepository = getDataSource().getRepository(Contact).extend({
   async createContact(contactData: Omit<Contact, 'id' | 'createdAt'>) {
     const contact = this.create(contactData);
 

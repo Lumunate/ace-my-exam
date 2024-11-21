@@ -1,41 +1,45 @@
 import { DataSource } from 'typeorm';
 
-import * as entities from '@/entities';
+import { Entities } from '@/entities';
 
-let AppDataSource: DataSource;
+let AppDataSource: DataSource | null = null;
 
-if (process.env.NODE_ENV === 'production') {
-  AppDataSource = new DataSource({
-    type: 'postgres',
-    url: process.env.DATABASE_URL,
-    entities: Object.values(entities),
-    synchronize: true,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-  });
-} else {
-  AppDataSource = new DataSource({
-    type: 'postgres',
-    url: process.env.DATABASE_URL,
-    entities: Object.values(entities),
-    synchronize: true,
-    logging: true,
-  });
-}
-
-export default AppDataSource;
-
-export async function initializeDataSource() {
-  console.log('=====================================');
-  Object.keys(entities).forEach((entityName: string) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    console.log(entityName, (entities as Record<string, any>)[entityName]);
-  });
-  console.log('=====================================');
-
-  if (!AppDataSource.isInitialized) {
-    await AppDataSource.initialize();
+export const getDataSource = () => {
+  if (AppDataSource instanceof DataSource) {
+    return AppDataSource;
   }
+
+  AppDataSource = new DataSource({
+    type: 'postgres',
+    url: process.env.DATABASE_URL,
+    entities: [...Entities],
+    synchronize: process.env.NODE_ENV !== 'production',
+    ssl:
+      process.env.NODE_ENV === 'production'
+        ? {
+          rejectUnauthorized: false,
+        }
+        : undefined,
+  });
+
+  return AppDataSource;
+};
+
+console.log('=====================================');
+console.log('Entities=', Entities);
+console.log('AppDataSource=', AppDataSource);
+console.log('=====================================');
+export async function initializeDataSource() {
+  const dataSource = getDataSource();
+
+  if (!dataSource.isInitialized) {
+    await dataSource.initialize().catch((error) => {
+      console.error('Error initializing DataSource:', error);
+      throw error;
+    });
+  }
+
+  return dataSource;
 }
+
+export default getDataSource();

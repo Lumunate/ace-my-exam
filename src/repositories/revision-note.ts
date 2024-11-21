@@ -1,11 +1,11 @@
 import { Content, Resource, RevisionNote, RevisionNoteResource } from '@/entities';
 import { ContentType } from '@/entities/enums';
 import { IRevisionNoteData } from '@/types/revision-note';
-import AppDataSource from '@/utils/typeorm';
+import { getDataSource } from '@/utils/typeorm';
 
-export const RevisionNoteRepository = AppDataSource.getRepository(RevisionNote).extend({
+export const RevisionNoteRepository = getDataSource().getRepository(RevisionNote).extend({
   async createWithResource(data: IRevisionNoteData) {
-    const queryRunner = AppDataSource.createQueryRunner();
+    const queryRunner = getDataSource().createQueryRunner();
 
     await queryRunner.connect();
     await queryRunner.startTransaction();

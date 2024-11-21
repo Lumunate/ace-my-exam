@@ -1,17 +1,75 @@
-export { default as Resource } from './resource';
-export { default as Contact } from './contact';
-export { default as Feedback } from './feedback';
+import BaseEntity from './base-entity';
+import Contact from './contact';
+import Content from './content';
+import Feedback from './feedback';
+import PastPaper from './past-paper';
+import PastPaperResource from './past-paper-resource';
+import Resource from './resource';
+import RevisionNote from './revision-note';
+import RevisionNoteResource from './revision-note-resource';
+import Subject from './subject';
+import TopicalQuestion from './topical-question';
+import TopicalQuestionResource from './topical-question-resource';
+import { User, AccountEntity, SessionEntity, VerificationTokenEntity } from './user';
 
-// Next auth
-export { User, AccountEntity, SessionEntity, VerificationTokenEntity } from './user';
+// Create a consolidated array of all entities
+export const Entities = [
+  // Auth entities
+  User,
+  AccountEntity,
+  SessionEntity,
+  VerificationTokenEntity,
+  
+  // Base entity
+  BaseEntity,
+  
+  // Core entities
+  Resource,
+  Contact,
+  Feedback,
+  Content,
+  Subject,
+  
+  // Past Paper entities
+  PastPaper,
+  PastPaperResource,
+  
+  // Topical Question entities
+  TopicalQuestion,
+  TopicalQuestionResource,
+  
+  // Revision Note entities
+  RevisionNote,
+  RevisionNoteResource,
+] as const;
 
-// Resources
-export { default as BaseEntity } from './base-entity';
-export { default as Content } from './content';
-export { default as PastPaper } from './past-paper';
-export { default as PastPaperResource } from './past-paper-resource';
-export { default as TopicalQuestion } from './topical-question';
-export { default as TopicalQuestionResource } from './topical-question-resource';
-export { default as RevisionNote } from './revision-note';
-export { default as RevisionNoteResource } from './revision-note-resource';
-export { default as Subject } from './subject';
+// Individual exports
+export {
+  // Auth
+  User,
+  AccountEntity,
+  SessionEntity,
+  VerificationTokenEntity,
+  
+  // Base
+  BaseEntity,
+  
+  // Core
+  Resource,
+  Contact,
+  Feedback,
+  Content,
+  Subject,
+  
+  // Past Paper
+  PastPaper,
+  PastPaperResource,
+  
+  // Topical Question
+  TopicalQuestion,
+  TopicalQuestionResource,
+  
+  // Revision Note
+  RevisionNote,
+  RevisionNoteResource,
+};
