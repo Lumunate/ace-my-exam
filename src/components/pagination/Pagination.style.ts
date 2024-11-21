@@ -1,5 +1,5 @@
 import { Pagination } from '@mui/material';
-import {  styled } from '@mui/system';
+import { styled } from '@mui/system';
 
 export const StyledPagination = styled(Pagination)(({ theme }) => ({
   '& .MuiPagination-ul': {
@@ -18,10 +18,12 @@ export const StyledPagination = styled(Pagination)(({ theme }) => ({
     color: '#000',
     fontSize: '14px',
     fontFamily: 'Lato, sans-serif',
+    margin: '0 8px',
     [theme.breakpoints.down('sm')]: {
       minWidth: '20px',
       height: '20px',
       fontSize: '12px',
+      margin: '0 4px',
     },
     '&.Mui-selected': {
       backgroundColor: '#DA9694', 
