@@ -272,6 +272,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
               <UploadIcon
                 sx={{
                   margin: '0 auto',
+                  transform: 'translate(-14px, -2px)'
                 }}
               />
             </Button>
