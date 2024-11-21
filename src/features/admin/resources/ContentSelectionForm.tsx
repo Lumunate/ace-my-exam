@@ -1,16 +1,17 @@
 'use client';
 
 import ReplayIcon from '@mui/icons-material/Replay';
-import { AccordionSummary, Box, IconButton, styled } from '@mui/material';
-import React, { useEffect } from 'react';
+import { AccordionSummary, Box, IconButton, styled, Typography } from '@mui/material';
+import React, { useEffect, useState } from 'react';
 
-import type { Content } from '@/entities';
-import { CollapseContainer, InnerCollapse } from '@/features/resources/resources-tables/ResourceTables.style';
-import { useGetResources } from '@/hooks/resources/useResources';
-import { ResourceType } from '@/types/resources';
-
-import CreateContentForm from './CreateContentFormModal';
-import EditContentFormModal from './EditContentFormModal';
+import type { Content } from "@/entities";
+import { CollapseContainer, InnerCollapse } from "@/features/resources/resources-tables/ResourceTables.style";
+import { useGetResources } from "@/hooks/resources/useResources";
+import { ResourceType } from "@/types/resources";
+import AddIcon from "@mui/icons-material/Add";
+import EditIcon from "@mui/icons-material/Edit";
+import CreateContentForm from "./CreateContentFormModal";
+import EditContentFormModal from "./EditContentFormModal";
 
 interface ContentSelectionFormProps {
   subject: string;
