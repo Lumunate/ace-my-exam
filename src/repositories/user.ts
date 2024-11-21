@@ -1,4 +1,4 @@
-import { AccountEntity, SessionEntity, User, VerificationTokenEntity } from '@/entities/user';
+import { AccountEntity, SessionEntity, User, VerificationTokenEntity } from '@/entities';
 import AppDataSource from '@/utils/typeorm';
 
 export const UserRepository = AppDataSource.getRepository(User).extend({
