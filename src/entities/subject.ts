@@ -1,13 +1,13 @@
 import { Entity, Column, OneToMany } from 'typeorm';
 
-import { BaseEntity } from './base-entity';
-import { Content } from './content';
+import BaseEntity from './base-entity';
+import Content from './content';
 import type { SubjectMetadata } from './enums/subject-types';
 import { SubjectResourceType } from './enums/subject-types';
-import { PastPaper } from './past-paper';
+import PastPaper from './past-paper';
 
 @Entity('subjects')
-export class Subject extends BaseEntity {
+export default class Subject extends BaseEntity {
   @Column()
     name: string;
 

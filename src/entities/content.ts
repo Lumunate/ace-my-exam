@@ -1,11 +1,11 @@
 import { Entity, Column, ManyToOne, OneToMany, JoinColumn, BeforeInsert, BeforeUpdate } from 'typeorm';
 
-import { BaseEntity } from './base-entity';
+import BaseEntity from './base-entity';
 import { ContentLevel, ContentType } from './enums';
-import { Subject } from './subject';
+import Subject from './subject';
 
 @Entity('content')
-export class Content extends BaseEntity {
+export default class Content extends BaseEntity {
   @Column({ nullable: true })
     parent_id: number;
 

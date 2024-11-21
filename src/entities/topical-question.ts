@@ -1,12 +1,12 @@
 
 import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 
-import { BaseEntity } from './base-entity';
-import { Content } from './content';
-import { TopicalQuestionResource } from './topical-question-resource';
+import BaseEntity from './base-entity';
+import Content from './content';
+import TopicalQuestionResource from './topical-question-resource';
 
 @Entity('topical_question')
-export class TopicalQuestion extends BaseEntity {
+export default class TopicalQuestion extends BaseEntity {
   @Column()
     content_id: number;
 

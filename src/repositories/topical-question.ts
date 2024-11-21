@@ -1,8 +1,5 @@
-import { Content } from '@/entities/content';
+import { Content, Resource, TopicalQuestion, TopicalQuestionResource } from '@/entities';
 import { ContentType, TopicalQuestionResourceType } from '@/entities/enums';
-import { Resource } from '@/entities/resource';
-import { TopicalQuestion } from '@/entities/topical-question';
-import { TopicalQuestionResource } from '@/entities/topical-question-resource';
 import { ITopicalQuestionData } from '@/types/topical-qeustion';
 import AppDataSource from '@/utils/typeorm';
 

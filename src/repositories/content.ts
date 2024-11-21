@@ -1,4 +1,4 @@
-import { Content } from '@/entities/content';
+import { Content } from '@/entities';
 import { ContentLevel, ContentType } from '@/entities/enums';
 import { ICreateContent } from '@/types/content';
 import AppDataSource from '@/utils/typeorm';

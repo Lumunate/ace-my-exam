@@ -1,13 +1,13 @@
 
 import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 
-import { BaseEntity } from './base-entity';
+import BaseEntity from './base-entity';
 import { TopicalQuestionResourceType } from './enums';
-import { Resource } from './resource';
-import { TopicalQuestion } from './topical-question';
+import Resource from './resource';
+import TopicalQuestion from './topical-question';
 
 @Entity('topical_question_resource')
-export class TopicalQuestionResource extends BaseEntity {
+export default class TopicalQuestionResource extends BaseEntity {
   @Column()
     topical_question_id: number;
 

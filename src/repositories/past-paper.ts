@@ -1,7 +1,5 @@
+import { PastPaper, PastPaperResource, Resource } from '@/entities';
 import { PastPaperResourceType } from '@/entities/enums';
-import { PastPaper } from '@/entities/past-paper';
-import { PastPaperResource } from '@/entities/past-paper-resource';
-import { Resource } from '@/entities/resource';
 import { IPastPaperData } from '@/types/past-paper';
 import AppDataSource from '@/utils/typeorm';
 

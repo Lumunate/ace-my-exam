@@ -1,8 +1,5 @@
-import { Content } from '@/entities/content';
+import { Content, Resource, RevisionNote, RevisionNoteResource } from '@/entities';
 import { ContentType } from '@/entities/enums';
-import { Resource } from '@/entities/resource';
-import { RevisionNote } from '@/entities/revision-note';
-import { RevisionNoteResource } from '@/entities/revision-note-resource';
 import { IRevisionNoteData } from '@/types/revision-note';
 import AppDataSource from '@/utils/typeorm';
 

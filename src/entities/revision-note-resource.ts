@@ -1,13 +1,13 @@
 
 import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 
-import { BaseEntity } from './base-entity';
+import BaseEntity from './base-entity';
 import { RevisionNoteResourceType } from './enums/resource-types';
-import { Resource } from './resource';
-import { RevisionNote } from './revision-note';
+import Resource from './resource';
+import RevisionNote from './revision-note';
 
 @Entity('revision_note_resource')
-export class RevisionNoteResource extends BaseEntity {
+export default class RevisionNoteResource extends BaseEntity {
   @Column()
     revision_note_id: number;
 

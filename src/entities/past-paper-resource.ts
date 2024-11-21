@@ -1,13 +1,13 @@
 
 import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 
-import { BaseEntity } from './base-entity';
+import BaseEntity from './base-entity';
 import { PastPaperResourceType } from './enums';
-import { PastPaper } from './past-paper';
-import { Resource } from './resource';
+import type PastPaper from './past-paper';
+import type Resource from './resource';
 
 @Entity('past_paper_resource')
-export class PastPaperResource extends BaseEntity {
+export default class PastPaperResource extends BaseEntity {
   @Column()
     past_paper_id: number;
 

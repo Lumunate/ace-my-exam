@@ -1,12 +1,12 @@
 
 import { Entity, Column, ManyToOne, OneToMany, JoinColumn } from 'typeorm';
 
-import { BaseEntity } from './base-entity';
-import { Content } from './content';
-import { RevisionNoteResource } from './revision-note-resource';
+import BaseEntity from './base-entity';
+import Content from './content';
+import RevisionNoteResource from './revision-note-resource';
 
 @Entity('revision_note')
-export class RevisionNote extends BaseEntity {
+export default class RevisionNote extends BaseEntity {
   @Column()
     content_id: number;
 
