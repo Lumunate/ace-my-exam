@@ -33,6 +33,7 @@ export enum AgeGroups {
 export enum ExamBoards {
   NONE = 'NONE',
   AQA = 'AQA',
+  OXFORD_AQA = 'OXFORD_AQA',
   EDEXCEL = 'EDEXCEL',
   EDEXCEL_INTERNATIONAL = 'EDEXCEL_INTERNATIONAL',
   CAMBRIDGE = 'CAMBRIDGE',
