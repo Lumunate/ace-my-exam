@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity('feedback_forms')
+@Entity('feedback_forms', { name: 'feedback_forms' })
 export default class Feedback {
   @PrimaryGeneratedColumn()
     id!: number;

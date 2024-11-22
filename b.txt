@@ -1,0 +1,557 @@
+
+--- File: contact.ts ---
+import Contact from '@/entities/contact';
+import { getDataSource } from '@/utils/typeorm';
+
+export const ContactRepository = getDataSource().getRepository(Contact).extend({
+  async createContact(contactData: Omit<Contact, 'id' | 'createdAt'>) {
+    const contact = this.create(contactData);
+
+    await this.save(contact);
+
+    return contact;
+  },
+
+  async findByEmail(email: string) {
+    return this.findOne({ where: { email } });
+  },
+});
+
+
+--- File: feedback.ts ---
+import Feedback from '@/entities/feedback';
+import { getDataSource } from '@/utils/typeorm';
+
+export const FeedbackRepository = getDataSource().getRepository(Feedback).extend({
+  async createFeedback(feedbackData: Omit<Feedback, 'id' | 'createdAt'>) {
+    const feedback = this.create(feedbackData);
+
+    await this.save(feedback);
+
+    return feedback;
+  },
+
+  async findAllFeedbacks(): Promise<Feedback[]> {
+    const feedbacks = await this.find();
+
+    return feedbacks;
+  },
+});
+
+
+--- File: subject.ts ---
+import { ILike } from 'typeorm';
+
+import { Subject } from '@/entities';
+import { SubjectMetadata, SubjectResourceType } from '@/entities/enums/subject-types';
+import { getDataSource } from '@/utils/typeorm';
+
+export const SubjectRepository = getDataSource()
+  .getRepository(Subject)
+  .extend({
+    async getExamBoardsByEducationLevel(educationLevel: string) {
+      const examBoard = await this.createQueryBuilder('subject')
+        .select("DISTINCT(subject.metadata ->> 'examBoard')", 'examBoard')
+        .where("subject.metadata ->> 'educationLevel' = :educationLevel", {
+          educationLevel,
+        })
+        .getRawMany();
+
+      return examBoard.map((examBoard) => examBoard.examBoard);
+    },
+
+    async getSubjectsByEducationLevelAndExamBoard(
+      educationLevel: string,
+      examBoard: string
+    ): Promise<{ id: number; subject: string; tags: string[] }[]> {
+      const subjects = await this.createQueryBuilder('subject')
+        .select(['id', 'subject.name AS subject', "subject.metadata ->> 'tags' AS tags"])
+        .where("subject.metadata ->> 'educationLevel' = :educationLevel", {
+          educationLevel,
+        })
+        .andWhere("subject.metadata ->> 'examBoard' = :examBoard", {
+          examBoard,
+        })
+        .getRawMany();
+
+      return subjects.map((subject) => {
+        return {
+          id: subject.id,
+          subject: subject.subject,
+          tags: JSON.parse(subject.tags as string),
+        };
+      });
+    },
+
+    async findOneWithContentsByMeta(data: {
+      educationLevel: string | null;
+      examBoard: string | null;
+      subject: string | null;
+      meta: string | null;
+    }): Promise<{ pastPapers: boolean; revisionNotes: boolean; topicalQuestions: boolean }> {
+      const contents = await this.createQueryBuilder('subject')
+        .select(['chapter.id AS cid', 'subcontent.id AS sid'])
+        .innerJoin('subject.contents', 'chapter')
+        .leftJoin('chapter.children', 'subcontent')
+        .where('subject.id = :id', {
+          id: parseInt(data.subject as string),
+        })
+        .getRawOne();
+
+      const pastPapers = await this.createQueryBuilder('subject')
+        .select('subject.id')
+        .innerJoin('subject.pastPapers', 'past_paper')
+        .where('subject.id = :id', {
+          id: parseInt(data.subject as string),
+        })
+        .getRawOne();
+
+      return {
+        pastPapers: !!pastPapers,
+        revisionNotes: !!contents,
+        topicalQuestions: !!contents?.sid,
+      };
+    },
+
+    async findOneWithContents(id: number): Promise<Subject | null> {
+      return this.findOne({
+        where: { id },
+        relations: ['contents'],
+      });
+    },
+
+    async findWithContentsByCode(code: string): Promise<Subject | null> {
+      return this.findOne({
+        where: { code },
+        relations: ['contents'],
+      });
+    },
+
+    async findAllWithContents(): Promise<Subject[]> {
+      return this.find({
+        relations: ['contents'],
+      });
+    },
+
+    async createSubject(data: Partial<Subject>): Promise<Subject> {
+      const subject = this.create(data);
+
+      return this.save(subject);
+    },
+
+    async updateSubject(id: number, data: Partial<Subject>): Promise<Subject | null> {
+      await this.update(id, data);
+
+      return this.findOneBy({ id });
+    },
+
+    // New metadata-specific methods
+    async findByTags(tags: string[]): Promise<Subject[]> {
+      return this.createQueryBuilder('subject').where("subject.metadata->'tags' ?& ARRAY[:...tags]", { tags }).getMany();
+    },
+
+    async findByResourceType(resourceType: SubjectResourceType): Promise<Subject[]> {
+      return this.find({
+        where: {
+          metadata: ILike(`%"resourceType":"${resourceType}"%`),
+        },
+      });
+    },
+
+    async updateMetadata(id: number, metadata: Partial<SubjectMetadata>): Promise<Subject | null> {
+      const subject = await this.findOneBy({ id });
+
+      if (!subject) return null;
+
+      subject.metadata = {
+        ...subject.metadata,
+        ...metadata,
+      };
+
+      return this.save(subject);
+    },
+
+    async addTagToSubject(id: number, tag: string): Promise<Subject | null> {
+      const subject = await this.findOneBy({ id });
+
+      if (!subject) return null;
+
+      subject.addTag(tag);
+
+      return this.save(subject);
+    },
+
+    async searchByMetadata(criteria: Partial<SubjectMetadata>): Promise<Subject[]> {
+      const queryBuilder = this.createQueryBuilder('subject');
+
+      Object.entries(criteria).forEach(([key, value]) => {
+        if (Array.isArray(value)) {
+          queryBuilder.andWhere(`subject.metadata->>'${key}' ?& ARRAY[:...${key}]`, { [key]: value });
+        } else {
+          queryBuilder.andWhere(`subject.metadata->>'${key}' = :${key}`, { [key]: value });
+        }
+      });
+
+      return queryBuilder.getMany();
+    },
+  });
+
+
+--- File: content.ts ---
+import { Content } from '@/entities';
+import { ContentLevel, ContentType } from '@/entities/enums';
+import { ICreateContent } from '@/types/content';
+import { getDataSource } from '@/utils/typeorm';
+
+export const ContentRepository = getDataSource().getRepository(Content).extend({
+  async createChapter(data: Omit<ICreateContent, 'parentId'>) {
+    const chapter = this.create({
+      ...data,
+      subject_id: data.subjectId,
+      type: ContentType.CHAPTER,
+      level: ContentLevel.CHAPTER,
+    });
+
+    return this.save(chapter);
+  },
+
+  async createTopic(data: Omit<ICreateContent, 'subjectId'>) {
+    const parent = await this.findOneBy({ id: data.parentId });
+
+    if (!parent || parent.type !== ContentType.CHAPTER) {
+      throw new Error('Topics must be created under chapters');
+    }
+
+    const topic = this.create({
+      ...data,
+      parentd: parent,
+      type: ContentType.TOPIC,
+      level: ContentLevel.TOPIC,
+    });
+
+    return this.save(topic);
+  },
+
+  async createSubtopic(data: Omit<ICreateContent, 'subjectId'>) {
+    const parent = await this.findOneBy({ id: data.parentId });
+
+    if (!parent || parent.type !== ContentType.TOPIC) {
+      throw new Error('Subtopics must be created under topics');
+    }
+
+    const subtopic = this.create({
+      ...data,
+      parentd: parent,
+      type: ContentType.SUBTOPIC,
+      level: ContentLevel.SUBTOPIC,
+    });
+
+    return this.save(subtopic);
+  },
+
+  async getChapterWithContent(chapterId: number) {
+    return this.createQueryBuilder('chapter')
+      .leftJoinAndSelect('chapter.children', 'topics')
+      .leftJoinAndSelect('topics.children', 'subtopics')
+      .where('chapter.id = :id', { id: chapterId })
+      .andWhere('chapter.type = :type', { type: ContentType.CHAPTER })
+      .getOne();
+  },
+
+  async getSubjectWithContent(subjectId: number) {
+    return this.createQueryBuilder('chapter')
+      .leftJoinAndSelect('chapter.children', 'topics')
+      .leftJoinAndSelect('topics.children', 'subtopics')
+      .where('chapter.subject_id = :id', { id: subjectId })
+      .getMany();
+  },
+});
+
+
+--- File: past-paper.ts ---
+import { PastPaper, PastPaperResource, Resource } from '@/entities';
+import { PastPaperResourceType } from '@/entities/enums';
+import { IPastPaperData } from '@/types/past-paper';
+import { getDataSource } from '@/utils/typeorm';
+
+export const PastPaperRepository = getDataSource().getRepository(PastPaper).extend({
+  async createWithResources(data: IPastPaperData) {
+    const queryRunner = getDataSource().createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      // Create past paper
+      const pastPaper = await queryRunner.manager.save(PastPaper, {
+        title: data.title,
+        year: data.year,
+      });
+
+      const resources: PastPaperResource[] = [];
+
+      // Create resources
+      if (data.resources.questionPaper) {
+        const resource = await queryRunner.manager.save(Resource, {
+          url: data.resources.questionPaper,
+          type: 'pdf',
+        });
+
+        resources.push(
+          queryRunner.manager.create(PastPaperResource, {
+            pastPaper,
+            resource,
+            resource_type: PastPaperResourceType.QUESTION_PAPER,
+          })
+        );
+      }
+
+      if (data.resources.markingScheme) {
+        const resource = await queryRunner.manager.save(Resource, {
+          url: data.resources.markingScheme,
+          type: 'pdf',
+        });
+
+        resources.push(
+          queryRunner.manager.create(PastPaperResource, {
+            pastPaper,
+            resource,
+            resource_type: PastPaperResourceType.MARKING_SCHEME,
+          })
+        );
+      }
+
+      if (data.resources.solutionBooklet) {
+        const resource = await queryRunner.manager.save(Resource, {
+          url: data.resources.solutionBooklet,
+          type: 'pdf',
+        });
+
+        resources.push(
+          queryRunner.manager.create(PastPaperResource, {
+            pastPaper,
+            resource,
+            resource_type: PastPaperResourceType.SOLUTION_BOOKLET,
+          })
+        );
+      }
+
+      await queryRunner.manager.save(resources);
+      await queryRunner.commitTransaction();
+
+      return this.findOne({
+        where: { id: pastPaper.id },
+        relations: ['resources', 'resources.resource'],
+      });
+    } catch (err) {
+      await queryRunner.rollbackTransaction();
+      throw err;
+    } finally {
+      await queryRunner.release();
+    }
+  },
+
+  async findWithResources(id: number) {
+    return this.findOne({
+      where: { id },
+      relations: ['resources', 'resources.resource'],
+    });
+  },
+
+  async findPastPapers(subjectId: number) {
+    return this.find({
+      where: { subject_id: subjectId },
+      relations: ['resources', 'resources.resource'],
+    });
+  },
+});
+
+
+--- File: revision-note.ts ---
+import { Content, Resource, RevisionNote, RevisionNoteResource } from '@/entities';
+import { ContentType } from '@/entities/enums';
+import { IRevisionNoteData } from '@/types/revision-note';
+import { getDataSource } from '@/utils/typeorm';
+
+export const RevisionNoteRepository = getDataSource().getRepository(RevisionNote).extend({
+  async createWithResource(data: IRevisionNoteData) {
+    const queryRunner = getDataSource().createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      // Verify subtopic
+      const content = await queryRunner.manager.findOne(Content, {
+        where: { id: data.subtopicId, type: ContentType.SUBTOPIC },
+      });
+
+      if (!content) throw new Error('Invalid subtopic ID');
+
+      // Create revision note
+      const revisionNote = await queryRunner.manager.save(RevisionNote, {
+        title: data.title,
+        content,
+      });
+
+      // Create resource
+      const resource = await queryRunner.manager.save(Resource, {
+        url: data.noteUrl,
+        type: 'pdf',
+      });
+
+      // Create resource relationship
+      await queryRunner.manager.save(RevisionNoteResource, {
+        revisionNote,
+        resource,
+      });
+
+      await queryRunner.commitTransaction();
+
+      return this.findOne({
+        where: { id: revisionNote.id },
+        relations: ['resources', 'resources.resource'],
+      });
+    } catch (err) {
+      await queryRunner.rollbackTransaction();
+      throw err;
+    } finally {
+      await queryRunner.release();
+    }
+  },
+
+  async findBySubtopic(subtopicId: number) {
+    return this.find({
+      where: { content_id: subtopicId },
+      relations: ['resources', 'resources.resource'],
+    });
+  },
+});
+
+
+--- File: topical-question.ts ---
+import { Content, Resource, TopicalQuestion, TopicalQuestionResource } from '@/entities';
+import { ContentType, TopicalQuestionResourceType } from '@/entities/enums';
+import { ITopicalQuestionData } from '@/types/topical-qeustion';
+import { getDataSource } from '@/utils/typeorm';
+
+export const TopicalQuestionRepository = getDataSource().getRepository(TopicalQuestion).extend({
+  async createWithResources(data: ITopicalQuestionData) {
+    const queryRunner = getDataSource().createQueryRunner();
+
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      // Verify subtopic
+      const content = await queryRunner.manager.findOne(Content, {
+        where: { id: data.subtopicId, type: ContentType.SUBTOPIC },
+      });
+
+      if (!content) throw new Error('Invalid subtopic ID');
+
+      // Create topical question
+      const topicalQuestion = await queryRunner.manager.save(TopicalQuestion, {
+        title: data.title,
+        content,
+      });
+
+      // Create resources
+      const questionPaperResource = await queryRunner.manager.save(Resource, {
+        url: data.questionPaper,
+        type: 'pdf',
+      });
+
+      const markingSchemeResource = await queryRunner.manager.save(Resource, {
+        url: data.markingScheme,
+        type: 'pdf',
+      });
+
+      // Create resource relationships
+      await queryRunner.manager.save(TopicalQuestionResource, [
+        {
+          topicalQuestion,
+          resource: questionPaperResource,
+          resource_type: TopicalQuestionResourceType.QUESTION_PAPER,
+        },
+        {
+          topicalQuestion,
+          resource: markingSchemeResource,
+          resource_type: TopicalQuestionResourceType.MARKING_SCHEME,
+        },
+      ]);
+
+      await queryRunner.commitTransaction();
+
+      return this.findOne({
+        where: { id: topicalQuestion.id },
+        relations: ['resources', 'resources.resource'],
+      });
+    } catch (err) {
+      await queryRunner.rollbackTransaction();
+      throw err;
+    } finally {
+      await queryRunner.release();
+    }
+  },
+
+  async findBySubtopic(subtopicId: number) {
+    return this.find({
+      where: { content_id: subtopicId },
+      relations: ['resources', 'resources.resource'],
+    });
+  },
+});
+
+
+--- File: user.ts ---
+import { AccountEntity, SessionEntity, User, VerificationTokenEntity } from '@/entities';
+import { getDataSource } from '@/utils/typeorm';
+
+export const UserRepository = getDataSource().getRepository(User).extend({
+  async registerUser(userData: Omit<User, 'id' | 'createdAt'>) {
+    const user = this.create(userData);
+
+    await this.save(user);
+
+    return user;
+  },
+
+  async getUserbyEmail(email: string) {
+    return this.findOne({ where: { email } });
+  },
+});
+
+function generateVerificationToken() {
+  return Math.random().toString(36).substring(2, 15);
+}
+
+export const TokensRepository = getDataSource().getRepository(VerificationTokenEntity).extend({
+  async createEmailVerificationToken(userId: string) {
+    const token = this.create({
+      userId,
+      token: generateVerificationToken(),
+      identifier: 'EMAIL_VERIFICAITON_TOKEN',
+      expires: new Date(Date.now() + 1000 * 60 * 60 * 24).toISOString(),
+    });
+
+    await this.save(token);
+
+    return token;
+  },
+  async createPasswordResetToken(userId: string) {
+    const token = this.create({
+      userId,
+      token: generateVerificationToken(),
+      identifier: 'PASSWORD_RESET_TOKEN',
+      expires: new Date(Date.now() + 7 * 60 * 60 * 24).toISOString(),
+    });
+
+    await this.save(token);
+
+    return token;
+  },
+});
+export const SessionsRepository = getDataSource().getRepository(SessionEntity).extend({});
+export const AccountsRepository = getDataSource().getRepository(AccountEntity).extend({});
+

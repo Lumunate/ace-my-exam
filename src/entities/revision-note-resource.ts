@@ -3,10 +3,10 @@ import { Entity, Column, ManyToOne, JoinColumn } from 'typeorm';
 
 import BaseEntity from './base-entity';
 import { RevisionNoteResourceType } from './enums/resource-types';
-import Resource from './resource';
+import type Resource from './resource';
 import RevisionNote from './revision-note';
 
-@Entity('revision_note_resource')
+@Entity('revision_note_resource', { name: 'revision_note_resource' })
 export default class RevisionNoteResource extends BaseEntity {
   @Column()
     revision_note_id: number;
@@ -17,26 +17,19 @@ export default class RevisionNoteResource extends BaseEntity {
   @Column({
     type: 'enum',
     enum: RevisionNoteResourceType,
-    default: RevisionNoteResourceType.NOTE
+    default: RevisionNoteResourceType.NOTE,
   })
     resource_type: RevisionNoteResourceType;
 
-  @ManyToOne(
-    'RevisionNote',
-    (revisionNote: RevisionNote) => revisionNote.resources,
-    {
-      onDelete: 'CASCADE',
-    }
-  )
+  @ManyToOne(() => RevisionNote, (revisionNote) => revisionNote.resources, {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'revision_note_id' })
     revisionNote?: RevisionNote;
 
-  @ManyToOne(
-    'Resource',
-    {
-      onDelete: 'CASCADE',
-    }
-  )
+  @ManyToOne('Resource', {
+    onDelete: 'CASCADE',
+  })
   @JoinColumn({ name: 'resource_id' })
-    resource?: Resource;
+    resource!: Resource;
 }

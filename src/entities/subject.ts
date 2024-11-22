@@ -2,14 +2,14 @@ import { Entity, Column, OneToMany } from 'typeorm';
 
 import BaseEntity from './base-entity';
 import Content from './content';
-import type { SubjectMetadata } from './enums/subject-types';
 import { SubjectResourceType } from './enums/subject-types';
-import PastPaper from './past-paper';
+import type { SubjectMetadata } from './enums/subject-types';
+import type PastPaper from './past-paper';
 
-@Entity('subjects')
+@Entity('subjects', { name: 'subjects' })
 export default class Subject extends BaseEntity {
   @Column()
-    name: string;
+    name!: string;
 
   @Column({ type: 'text', nullable: true })
     description?: string;
@@ -19,19 +19,18 @@ export default class Subject extends BaseEntity {
 
   @Column({
     type: 'jsonb',
-    nullable: true,
     default: {
       tags: [],
       resourceType: SubjectResourceType.OTHER,
     },
   })
-    metadata: SubjectMetadata;
+    metadata!: SubjectMetadata;
 
-  @OneToMany(() => Content, (content) => content.subject)
-    contents: Content[];
+    @OneToMany(() => Content, (content) => content.subject)
+      contents?: Content[];
 
-  @OneToMany(() => PastPaper, (ppr) => ppr.subject)
-    pastPapers: PastPaper[];
+  @OneToMany('PastPaper', (ppr: PastPaper) => ppr.subject)
+    pastPapers!: PastPaper[];
 
   addTag(tag: string): void {
     if (!this.metadata.tags) {

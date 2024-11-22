@@ -13,7 +13,7 @@ export const getDataSource = () => {
     type: 'postgres',
     url: process.env.DATABASE_URL,
     entities: [...Entities],
-    synchronize: process.env.NODE_ENV !== 'production',
+    synchronize: true,
     ssl:
       process.env.NODE_ENV === 'production'
         ? {
@@ -26,9 +26,12 @@ export const getDataSource = () => {
 };
 
 console.log('=====================================');
-console.log('Entities=', Entities);
+Entities.forEach((entity) => {
+  console.log(`Entity name: ${entity.name}, Entity object:`, entity);
+});
 console.log('AppDataSource=', AppDataSource);
 console.log('=====================================');
+
 export async function initializeDataSource() {
   const dataSource = getDataSource();
 

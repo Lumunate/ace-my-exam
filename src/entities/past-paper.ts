@@ -1,24 +1,28 @@
 import { Entity, Column, OneToMany, ManyToOne, JoinColumn } from 'typeorm';
 
 import BaseEntity from './base-entity';
-import type PastPaperResource from './past-paper-resource';
+import PastPaperResource from './past-paper-resource';
 import type Subject from './subject';
 
-@Entity('past_paper')
+@Entity('past_paper', { name: 'past_paper' })
 export default class PastPaper extends BaseEntity {
   @Column()
-    title: string;
+    title!: string;
 
   @Column()
-    year: number;
+    year!: number;
 
-  @OneToMany('PastPaperResource', (pastPaperResource: PastPaperResource) => pastPaperResource.pastPaper, {
+  // @OneToMany('PastPaperResource', (pastPaperResource: PastPaperResource) => pastPaperResource.pastPaper, {
+  //   cascade: true,
+  // })
+  //   resourcesa?: PastPaperResource[];
+  @OneToMany(() => PastPaperResource, (pastPaperResource) => pastPaperResource.pastPaper, {
     cascade: true,
   })
-    resources?: PastPaperResource[];
-
+    resources!: PastPaperResource[];
+  
   @Column({ nullable: true })
-    subject_id: number;
+    subject_id!: number;
 
   @ManyToOne('Subject', (subject: Subject) => subject.pastPapers, {
     onDelete: 'SET NULL',

@@ -24,7 +24,7 @@ export const ContentRepository = getDataSource().getRepository(Content).extend({
 
     const topic = this.create({
       ...data,
-      parent,
+      parentd: parent,
       type: ContentType.TOPIC,
       level: ContentLevel.TOPIC,
     });
@@ -41,7 +41,7 @@ export const ContentRepository = getDataSource().getRepository(Content).extend({
 
     const subtopic = this.create({
       ...data,
-      parent,
+      parentd: parent,
       type: ContentType.SUBTOPIC,
       level: ContentLevel.SUBTOPIC,
     });
