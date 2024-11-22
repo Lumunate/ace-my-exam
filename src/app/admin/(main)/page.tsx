@@ -1,6 +1,6 @@
 import { Box, Grid2 } from '@mui/material';
 
-import { StatCardHeading, StatCardValue, StatsCard } from '@/features/home/stats/Stats.style';
+import { StatCardHeading, StatCardValue, StatsCard } from '../../../features/home/stats/Stats.style';
 
 interface StatItem {
   name: string;

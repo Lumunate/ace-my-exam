@@ -2,11 +2,10 @@
 
 import React from 'react';
 
-import { AppContentWrapper } from '@/components/common/Global.style';
-import Layout from '@/features/resources/ResourcesLayout';
-import ResourcesForm from '@/features/resources/ResourcesStepper';
-
 import { ResourcesContainer, Resourceswrapper } from './Resources.style';
+import { AppContentWrapper } from '../../../components/common/Global.style';
+import Layout from '../../../features/resources/ResourcesLayout';
+import ResourcesForm from '../../../features/resources/ResourcesStepper';
 
 const Resources: React.FC = () => {
   return (

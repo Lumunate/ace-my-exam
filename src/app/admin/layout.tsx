@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
 import { getServerSession } from 'next-auth';
 
-import AuthProvider from '@/contexts/AuthContext';
-import SideBar from '@/features/admin/side-bar/Sidebar';
+import AuthProvider from '../../contexts/AuthContext';
+import SideBar from '../../features/admin/side-bar/Sidebar';
 export default async function AdminDashboardLayout({
   children,
 }: Readonly<{

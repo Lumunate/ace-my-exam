@@ -2,11 +2,11 @@
 
 import Grid from '@mui/material/Grid';
 
-import { PricingWrapper, PricingHeading, PricingPara } from '@/app/(main)/pricing/Pricing.style';
-import FadeInOpacity from '@/components/animations/FadeInOpacity'; 
-import { AppContentWrapper } from '@/components/common/Global.style';
-import PricingCard from '@/components/pricing/pricing-card/PricingCard';
-import SectionHeading from '@/components/section-heading/SectionHeading';
+import { PricingWrapper, PricingHeading, PricingPara } from './Pricing.style';
+import FadeInOpacity from '../../../components/animations/FadeInOpacity'; 
+import { AppContentWrapper } from '../../../components/common/Global.style';
+import PricingCard from '../../../components/pricing/pricing-card/PricingCard';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
 
 const pricingData = {
   individualRates: [

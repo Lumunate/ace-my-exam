@@ -1,4 +1,4 @@
-import { AdminSectionHeading, AdminSectionsLayout, AdminSectionWrapper } from '@/features/admin/Admin.style';
+import { AdminSectionHeading, AdminSectionsLayout, AdminSectionWrapper } from '../../../features/admin/Admin.style';
 
 const Page = () => {
   return (

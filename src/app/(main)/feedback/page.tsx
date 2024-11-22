@@ -2,15 +2,14 @@ import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 
-import { AppContentWrapper } from '@/components/common/Global.style';
-import FeedbackForm from '@/features/feedback/FeedbackForm';
-
 import {
   FeedbackContainer,
   FeedbackHeadingTypography,
   FeedbackParaTypography,
   FeedbackIconHead,
 } from './Feedback.style';
+import { AppContentWrapper } from '../../../components/common/Global.style';
+import FeedbackForm from '../../../features/feedback/FeedbackForm';
 
 export default function FeedbackPage() {
   return (
