@@ -1,16 +1,14 @@
-import Contact from '@/entities/contact';
-import { getDataSource } from '@/utils/typeorm';
+import prisma from "@/utils/prisma";
+import { Contact } from "@prisma/client";
 
-export const ContactRepository = getDataSource().getRepository(Contact).extend({
-  async createContact(contactData: Omit<Contact, 'id' | 'createdAt'>) {
-    const contact = this.create(contactData);
+export async function createContact(contactData: Omit<Contact, "id" | "createdAt">) {
+  return prisma.contact.create({
+    data: contactData,
+  });
+}
 
-    await this.save(contact);
-
-    return contact;
-  },
-
-  async findByEmail(email: string) {
-    return this.findOne({ where: { email } });
-  },
-});
+export async function findByEmail(email: string) {
+  return prisma.contact.findFirst({
+    where: { email },
+  });
+}

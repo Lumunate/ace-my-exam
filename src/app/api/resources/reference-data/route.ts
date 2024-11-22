@@ -3,10 +3,8 @@ import { NextRequest, NextResponse } from 'next/server';
 import { createContent } from '@/services/content';
 import {  getEducationOptionBySelection, IReferenceData } from '@/services/subject';
 import { createContentSchema } from '@/types/content';
-import { initializeDataSource } from '@/utils/typeorm';
 
 export async function GET(request: NextRequest) {
-  await initializeDataSource();
   try {
     const query = request.nextUrl.searchParams;
     const data = {
@@ -30,7 +28,6 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  await initializeDataSource();
   try {
     const body = await request.json();
     const data = createContentSchema.parse(body);

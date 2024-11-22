@@ -1,4 +1,4 @@
-import { RevisionNoteRepository } from '@/repositories/revision-note';
+import * as RevisionNoteRepository from '@/repositories/revision-note';
 import { IRevisionNoteData } from '@/types/revision-note';
 
 export async function addRevisionNote(data: IRevisionNoteData) {

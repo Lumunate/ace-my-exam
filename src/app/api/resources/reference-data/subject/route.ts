@@ -1,10 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 import { createSubject } from '@/services/subject';
-import { initializeDataSource } from '@/utils/typeorm';
 
 export async function POST(request: NextRequest) {
-  await initializeDataSource();
   try {
     const body = await request.json();
 

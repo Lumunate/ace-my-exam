@@ -2,7 +2,6 @@ import { NextURL } from 'next/dist/server/web/next-url';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { getTestimonials } from '@/services/testimonials';
-import { initializeDataSource } from '@/utils/typeorm';
 
 function getQueryParams(url: NextURL): { [key: string]: string } {
   const searchParams = url.searchParams;
@@ -18,7 +17,6 @@ function getQueryParams(url: NextURL): { [key: string]: string } {
 
 export async function GET(request: NextRequest) {
   getQueryParams(request.nextUrl);
-  await initializeDataSource();
   try {
     const testimonials = await getTestimonials();
 

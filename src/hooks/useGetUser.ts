@@ -1,6 +1,5 @@
+import { User } from '@prisma/client';
 import { useQuery } from 'react-query';
-
-import type { User } from '@/entities';
 
 const fetchUser = async (email: string): Promise<User> => {
   const response = await fetch(`/api/auth/user?email=${email}`);

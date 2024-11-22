@@ -3,10 +3,8 @@ import { ZodError } from 'zod';
 
 import { createPastPaper } from '@/services/past-paper';
 import { pastPaperSchema } from '@/types/past-paper';
-import { initializeDataSource } from '@/utils/typeorm';
 
 export async function POST(request: NextRequest) {
-  await initializeDataSource();
   try {
     const body = await request.json();
     const data = pastPaperSchema.parse(body);

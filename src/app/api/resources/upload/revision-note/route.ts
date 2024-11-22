@@ -3,10 +3,8 @@ import {  ZodError } from 'zod';
 
 import { addRevisionNote } from '@/services/revision-note';
 import { revisionNoteSchema } from '@/types/revision-note';
-import { initializeDataSource } from '@/utils/typeorm';
 
 export async function POST(request: NextRequest) {
-  await initializeDataSource();
   try {
     const body = await request.json();
     const data = revisionNoteSchema.parse(body);

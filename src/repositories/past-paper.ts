@@ -1,96 +1,106 @@
-import { PastPaper, PastPaperResource, Resource } from '@/entities';
-import { PastPaperResourceType } from '@/entities/enums';
-import { IPastPaperData } from '@/types/past-paper';
-import { getDataSource } from '@/utils/typeorm';
+import { PastPaperResourceType } from "@prisma/client";
+import { IPastPaperData } from "@/types/past-paper";
+import prisma from "@/utils/prisma";
 
-export const PastPaperRepository = getDataSource().getRepository(PastPaper).extend({
-  async createWithResources(data: IPastPaperData) {
-    const queryRunner = getDataSource().createQueryRunner();
-
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-
-    try {
-      // Create past paper
-      const pastPaper = await queryRunner.manager.save(PastPaper, {
+export async function createWithResources(data: IPastPaperData) {
+  return prisma.$transaction(async (tx) => {
+    const pastPaper = await tx.pastPaper.create({
+      data: {
         title: data.title,
         year: data.year,
-      });
+      },
+    });
 
-      const resources: PastPaperResource[] = [];
+    const resources = [];
 
-      // Create resources
-      if (data.resources.questionPaper) {
-        const resource = await queryRunner.manager.save(Resource, {
-          url: data.resources.questionPaper,
-          type: 'pdf',
-        });
-
-        resources.push(
-          queryRunner.manager.create(PastPaperResource, {
-            pastPaper,
-            resource,
-            resource_type: PastPaperResourceType.QUESTION_PAPER,
-          })
-        );
-      }
-
-      if (data.resources.markingScheme) {
-        const resource = await queryRunner.manager.save(Resource, {
-          url: data.resources.markingScheme,
-          type: 'pdf',
-        });
-
-        resources.push(
-          queryRunner.manager.create(PastPaperResource, {
-            pastPaper,
-            resource,
-            resource_type: PastPaperResourceType.MARKING_SCHEME,
-          })
-        );
-      }
-
-      if (data.resources.solutionBooklet) {
-        const resource = await queryRunner.manager.save(Resource, {
-          url: data.resources.solutionBooklet,
-          type: 'pdf',
-        });
-
-        resources.push(
-          queryRunner.manager.create(PastPaperResource, {
-            pastPaper,
-            resource,
-            resource_type: PastPaperResourceType.SOLUTION_BOOKLET,
-          })
-        );
-      }
-
-      await queryRunner.manager.save(resources);
-      await queryRunner.commitTransaction();
-
-      return this.findOne({
-        where: { id: pastPaper.id },
-        relations: ['resources', 'resources.resource'],
-      });
-    } catch (err) {
-      await queryRunner.rollbackTransaction();
-      throw err;
-    } finally {
-      await queryRunner.release();
+    if (data.resources.questionPaper) {
+      resources.push(
+        tx.resource.create({
+          data: {
+            url: data.resources.questionPaper,
+            type: "pdf",
+            pastPaperResources: {
+              create: {
+                pastPaper: { connect: { id: pastPaper.id } },
+                resource_type: PastPaperResourceType.QUESTION_PAPER,
+              },
+            },
+          },
+        })
+      );
     }
-  },
 
-  async findWithResources(id: number) {
-    return this.findOne({
-      where: { id },
-      relations: ['resources', 'resources.resource'],
-    });
-  },
+    if (data.resources.markingScheme) {
+      resources.push(
+        tx.resource.create({
+          data: {
+            url: data.resources.markingScheme,
+            type: "pdf",
+            pastPaperResources: {
+              create: {
+                pastPaper: { connect: { id: pastPaper.id } },
+                resource_type: PastPaperResourceType.MARKING_SCHEME,
+              },
+            },
+          },
+        })
+      );
+    }
 
-  async findPastPapers(subjectId: number) {
-    return this.find({
-      where: { subject_id: subjectId },
-      relations: ['resources', 'resources.resource'],
+    if (data.resources.solutionBooklet) {
+      resources.push(
+        tx.resource.create({
+          data: {
+            url: data.resources.solutionBooklet,
+            type: "pdf",
+            pastPaperResources: {
+              create: {
+                pastPaper: { connect: { id: pastPaper.id } },
+                resource_type: PastPaperResourceType.SOLUTION_BOOKLET,
+              },
+            },
+          },
+        })
+      );
+    }
+
+    await Promise.all(resources);
+
+    return tx.pastPaper.findUnique({
+      where: { id: pastPaper.id },
+      include: {
+        resources: {
+          include: {
+            resource: true,
+          },
+        },
+      },
     });
-  },
-});
+  });
+}
+
+export async function findWithResources(id: number) {
+  return prisma.pastPaper.findUnique({
+    where: { id },
+    include: {
+      resources: {
+        include: {
+          resource: true,
+        },
+      },
+    },
+  });
+}
+
+export async function findPastPapers(subjectId: number) {
+  return prisma.pastPaper.findMany({
+    where: { subject_id: subjectId },
+    include: {
+      resources: {
+        include: {
+          resource: true,
+        },
+      },
+    },
+  });
+}

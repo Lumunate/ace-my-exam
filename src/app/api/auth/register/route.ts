@@ -4,10 +4,8 @@ import { ZodError } from 'zod';
 import { registerUser } from '@/services/auth';
 import { registerSchema } from '@/types/auth';
 import AuthError from '@/types/auth-error';
-import { initializeDataSource } from '@/utils/typeorm';
 
 export async function POST(request: NextRequest) {
-  await initializeDataSource();
 
   try {
     const body = await request.json();

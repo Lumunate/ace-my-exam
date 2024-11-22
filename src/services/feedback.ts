@@ -1,4 +1,4 @@
-import { FeedbackRepository } from '@/repositories/feedback';
+import * as FeedbackRepository from '@/repositories/feedback';
 import { IFeedback } from '@/types/feedback';
 
 export async function createFeedback(data: IFeedback) {

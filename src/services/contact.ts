@@ -1,4 +1,4 @@
-import { ContactRepository } from '@/repositories/contact';
+import * as ContactRepository from '@/repositories/contact'; 
 import { IContact } from '@/types/contact';
 
 export async function createContact(data: IContact) {
