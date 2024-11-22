@@ -4,21 +4,21 @@ import AddIcon from '@mui/icons-material/Add';
 import EditIcon from '@mui/icons-material/Edit';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { AccordionSummary, Box, IconButton, styled, Typography } from '@mui/material';
+import { Content, ContentLevel } from '@prisma/client';
 import React, { useEffect, useState } from 'react';
 
 import { CollapseContainer, InnerCollapse } from '@/features/resources/resources-tables/ResourceTables.style';
 import { useGetResources } from '@/hooks/resources/useResources';
+import { ContentWithChildren } from '@/types/content';
 import { ResourceType } from '@/types/resources';
 
 import CreateContentForm from './CreateContentFormModal';
 import EditContentFormModal from './EditContentFormModal';
 
-import type { Content } from '@/entities';
-
 interface ContentSelectionFormProps {
   subject: string;
   resourceType: ResourceType;
-  setSelectedSubtopic: React.Dispatch<React.SetStateAction<Content | undefined>>;
+  setSelectedSubtopic: React.Dispatch<React.SetStateAction<ContentWithChildren | undefined>>;
 }
 
 const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, resourceType, setSelectedSubtopic }) => {
@@ -61,14 +61,14 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, re
 export default ContentSelectionForm;
 
 type RecursiveContentRenderProps = {
-  data: Content;
+  data: ContentWithChildren;
   setSelectedSubtopic: React.Dispatch<React.SetStateAction<Content | undefined>>;
 };
 const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentRenderProps) => {
   const [createContentOpen, setCreateContentOpen] = useState<boolean>(false);
   const [editContentOpen, setEditContentOpen] = useState<boolean>(false);
 
-  if (data.level === 3) return <ResourceItem onClick={() => setSelectedSubtopic(data)}>{data.name}</ResourceItem>;
+  if (data.level === ContentLevel.SUBTOPIC) return <ResourceItem onClick={() => setSelectedSubtopic(data)}>{data.name}</ResourceItem>;
 
   return (
     <>
@@ -101,7 +101,7 @@ const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentR
           onClose={() => setEditContentOpen(false)}
           id={data.id}
           name={data.name}
-          description={data.description}
+          description={data.description ?? ''}
         />
       )}
       {createContentOpen && (

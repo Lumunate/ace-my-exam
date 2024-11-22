@@ -1,6 +1,7 @@
 'use client';
 
 import { Box } from '@mui/material';
+import { PastPaper } from '@prisma/client';
 import Image from 'next/image';
 import React from 'react';
 
@@ -14,8 +15,6 @@ import {
   RessourcesTableHeading,
   SubtopicHeading,
 } from './ResourceTables.style';
-
-import type { PastPaper } from '@/entities';
 
 const PastPapersTable: React.FC<{ data: PastPaper[]; isLoading: boolean }> = ({ data }) => {
 

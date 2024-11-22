@@ -1,5 +1,6 @@
 'use client';
 import { Box } from '@mui/material';
+import { Content } from '@prisma/client';
 import React, { useState } from 'react';
 
 import { ResourceType } from '@/types/resources';
@@ -8,8 +9,6 @@ import ResourceSelectionForm from './ResourceSelectionForm';
 import { AdminSectionInnerSpacer } from '../Admin.style';
 import AddResourceForm from './AddResourceForm';
 import ContentSelectionForm from './ContentSelectionForm';
-
-import type { Content } from '@/entities';
 
 const SelectionForm = () => {
   const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState('');

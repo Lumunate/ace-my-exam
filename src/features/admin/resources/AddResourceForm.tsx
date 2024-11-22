@@ -1,4 +1,5 @@
 import { Box } from '@mui/material';
+import { Content } from '@prisma/client';
 import React from 'react';
 
 import { ResourceType } from '@/types/resources';
@@ -7,8 +8,6 @@ import { AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
 import UploadPastPapers from './upload-data-forms/UploadPastPapers';
 import UploadRevisionNotes from './upload-data-forms/UploadRevisionNotes';
 import UplaodTopicalQuestions from './upload-data-forms/UploadTopicalQuestions';
-
-import type { Content } from '@/entities';
 
 interface AddResourceFormProps {
   selectedSubtopic: Content | undefined;

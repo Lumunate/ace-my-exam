@@ -1,12 +1,13 @@
-import { Content, PastPaper } from '@prisma/client';
+import { PastPaper } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { createFullChapterStructure, getSubjectContentAndPastPapers } from '@/services/content';
+import { ContentWithChildren } from '@/types/content';
 
 export interface IResourceData {
   pastPapers: PastPaper[];
-  chapters: Content[];
-  topics: Content[];
+  chapters: ContentWithChildren[];
+  topics: ContentWithChildren[];
 }
 
 export async function GET(request: NextRequest) {
