@@ -1,7 +1,8 @@
-import prisma from "@/utils/prisma";
-import { Contact } from "@prisma/client";
+import { Contact } from '@prisma/client';
 
-export async function createContact(contactData: Omit<Contact, "id" | "createdAt">) {
+import prisma from '@/utils/prisma';
+
+export async function createContact(contactData: Omit<Contact, 'id' | 'createdAt'>) {
   return prisma.contact.create({
     data: contactData,
   });

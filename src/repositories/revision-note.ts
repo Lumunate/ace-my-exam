@@ -1,6 +1,7 @@
-import { ContentType } from "@prisma/client";
-import { IRevisionNoteData } from "@/types/revision-note";
-import prisma from "@/utils/prisma";
+import { ContentType } from '@prisma/client';
+
+import { IRevisionNoteData } from '@/types/revision-note';
+import prisma from '@/utils/prisma';
 
 export async function createWithResource(data: IRevisionNoteData) {
   return prisma.$transaction(async (tx) => {
@@ -11,7 +12,7 @@ export async function createWithResource(data: IRevisionNoteData) {
       },
     });
 
-    if (!content) throw new Error("Invalid subtopic ID");
+    if (!content) throw new Error('Invalid subtopic ID');
 
     const revisionNote = await tx.revisionNote.create({
       data: {
@@ -24,7 +25,7 @@ export async function createWithResource(data: IRevisionNoteData) {
             resource: {
               create: {
                 url: data.noteUrl,
-                type: "pdf",
+                type: 'pdf',
               },
             },
           },

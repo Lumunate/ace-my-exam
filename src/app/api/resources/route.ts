@@ -1,7 +1,7 @@
+import { Content, PastPaper } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { createFullChapterStructure, getSubjectContentAndPastPapers } from '@/services/content';
-import { Content, PastPaper } from "@prisma/client";
 
 export interface IResourceData {
   pastPapers: PastPaper[];

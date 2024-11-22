@@ -1,6 +1,7 @@
-import { ContentType, ContentLevel } from "@prisma/client";
-import { ICreateContent } from "@/types/content";
-import prisma from "@/utils/prisma";
+import { ContentType, ContentLevel } from '@prisma/client';
+
+import { ICreateContent } from '@/types/content';
+import prisma from '@/utils/prisma';
 
 export async function findOneBy(id: number) {
   return await prisma.content.findUnique({
@@ -15,10 +16,11 @@ export async function findOneBy(id: number) {
   });
 }
 
-export async function createChapter(data: Omit<ICreateContent, "parentId">) {
+export async function createChapter(data: Omit<ICreateContent, 'parentId'>) {
   if (data.subjectId === undefined) {
-    throw new Error("subjectId is required");
+    throw new Error('subjectId is required');
   }
+
   return prisma.content.create({
     data: {
       name: data.name,
@@ -29,13 +31,13 @@ export async function createChapter(data: Omit<ICreateContent, "parentId">) {
   });
 }
 
-export async function createTopic(data: Omit<ICreateContent, "subjectId">) {
+export async function createTopic(data: Omit<ICreateContent, 'subjectId'>) {
   const parent = await prisma.content.findUnique({
     where: { id: data.parentId },
   });
 
   if (!parent || parent.type !== ContentType.CHAPTER) {
-    throw new Error("Topics must be created under chapters");
+    throw new Error('Topics must be created under chapters');
   }
 
   return prisma.content.create({
@@ -53,13 +55,13 @@ export async function createTopic(data: Omit<ICreateContent, "subjectId">) {
   });
 }
 
-export async function createSubtopic(data: Omit<ICreateContent, "subjectId">) {
+export async function createSubtopic(data: Omit<ICreateContent, 'subjectId'>) {
   const parent = await prisma.content.findUnique({
     where: { id: data.parentId },
   });
 
   if (!parent || parent.type !== ContentType.TOPIC) {
-    throw new Error("Subtopics must be created under topics");
+    throw new Error('Subtopics must be created under topics');
   }
 
   return prisma.content.create({

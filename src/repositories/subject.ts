@@ -1,24 +1,29 @@
-import { SubjectResourceType } from "@/entities/enums/subject-types";
-import prisma from "@/utils/prisma";
-import { Prisma } from "@prisma/client";
+import { Prisma } from '@prisma/client';
 
-export async function getExamBoardsByEducationLevel(educationLevel: string) {
+import { SubjectResourceType } from '@/entities/enums/subject-types';
+import prisma from '@/utils/prisma';
+
+export async function getExamBoardsByEducationLevel(educationLevel: string): Promise<string[]> {
   const subjects = await prisma.subject.findMany({
     where: {
       metadata: {
-        path: ["educationLevel"],
+        path: ['educationLevel'],
         equals: educationLevel,
       },
     },
     select: {
       metadata: true,
     },
-    distinct: ["metadata"],
+    distinct: ['metadata'],
   });
 
   return subjects
-    .map((subject) => (subject.metadata as any).examBoard)
-    .filter((value, index, self) => self.indexOf(value) === index);
+    .map((subject) => {
+      const metadata = subject.metadata as { examBoard?: string };
+
+      return metadata.examBoard;
+    })
+    .filter((value, index, self) => value && self.indexOf(value) === index) as string[];
 }
 
 export async function getSubjectsByEducationLevelAndExamBoard(educationLevel: string, examBoard: string) {
@@ -27,13 +32,13 @@ export async function getSubjectsByEducationLevelAndExamBoard(educationLevel: st
       AND: [
         {
           metadata: {
-            path: ["educationLevel"],
+            path: ['educationLevel'],
             equals: educationLevel,
           },
         },
         {
           metadata: {
-            path: ["examBoard"],
+            path: ['examBoard'],
             equals: examBoard,
           },
         },
@@ -46,11 +51,15 @@ export async function getSubjectsByEducationLevelAndExamBoard(educationLevel: st
     },
   });
 
-  return subjects.map((subject) => ({
-    id: subject.id,
-    subject: subject.name,
-    tags: (subject.metadata as any).tags || [],
-  }));
+  return subjects.map((subject) => {
+    const metadata = subject.metadata as { tags?: string[] };
+
+    return {
+      id: subject.id,
+      subject: subject.name,
+      tags: metadata.tags || [],
+    };
+  });
 }
 
 export async function findOneWithContentsByMeta(data: {
@@ -117,7 +126,7 @@ export async function findByTags(tags: string[]) {
   return prisma.subject.findMany({
     where: {
       metadata: {
-        path: ["tags"],
+        path: ['tags'],
         array_contains: tags,
       },
     },
@@ -128,7 +137,7 @@ export async function findByResourceType(resourceType: SubjectResourceType) {
   return prisma.subject.findMany({
     where: {
       metadata: {
-        path: ["resourceType"],
+        path: ['resourceType'],
         equals: resourceType,
       },
     },

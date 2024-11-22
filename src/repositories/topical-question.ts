@@ -1,6 +1,7 @@
-import { ContentType, TopicalQuestionResourceType } from "@prisma/client";
-import prisma from "@/utils/prisma";
-import { ITopicalQuestionData } from "@/types/topical-qeustion";
+import { ContentType, TopicalQuestionResourceType } from '@prisma/client';
+
+import { ITopicalQuestionData } from '@/types/topical-qeustion';
+import prisma from '@/utils/prisma';
 
 export async function createWithResources(data: ITopicalQuestionData) {
   return prisma.$transaction(async (tx) => {
@@ -11,7 +12,7 @@ export async function createWithResources(data: ITopicalQuestionData) {
       },
     });
 
-    if (!content) throw new Error("Invalid subtopic ID");
+    if (!content) throw new Error('Invalid subtopic ID');
 
     const topicalQuestion = await tx.topicalQuestion.create({
       data: {
@@ -25,7 +26,7 @@ export async function createWithResources(data: ITopicalQuestionData) {
               resource: {
                 create: {
                   url: data.questionPaper,
-                  type: "pdf",
+                  type: 'pdf',
                 },
               },
               resource_type: TopicalQuestionResourceType.QUESTION_PAPER,
@@ -34,7 +35,7 @@ export async function createWithResources(data: ITopicalQuestionData) {
               resource: {
                 create: {
                   url: data.markingScheme,
-                  type: "pdf",
+                  type: 'pdf',
                 },
               },
               resource_type: TopicalQuestionResourceType.MARKING_SCHEME,
@@ -50,6 +51,7 @@ export async function createWithResources(data: ITopicalQuestionData) {
         },
       },
     });
+
     return topicalQuestion;
   });
 }

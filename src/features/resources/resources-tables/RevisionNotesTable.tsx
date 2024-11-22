@@ -8,7 +8,6 @@ import Image from 'next/image';
 import React from 'react';
 
 import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
-import type { Content } from '@/entities';
 
 import {
   ChapterHeading,
@@ -18,6 +17,8 @@ import {
   SubtopicHeading,
   TopicHeading,
 } from './ResourceTables.style';
+
+import type { Content } from '@/entities';
 
 const RevisionNotesTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({ data }) => {
   const handleDownload = (fileUrl: string) => {

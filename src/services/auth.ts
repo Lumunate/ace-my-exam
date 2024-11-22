@@ -1,9 +1,9 @@
-import { hash } from "bcrypt";
+import { hash } from 'bcrypt';
 
-import * as UserRepository from "@/repositories/user";
-import { RegisterInput } from "@/types/auth";
-import AuthError, { AuthErrorType } from "@/types/auth-error";
-import prisma from "@/utils/prisma";
+import * as UserRepository from '@/repositories/user';
+import { RegisterInput } from '@/types/auth';
+import AuthError, { AuthErrorType } from '@/types/auth-error';
+import prisma from '@/utils/prisma';
 
 export async function registerUser(userData: RegisterInput) {
   if (await UserRepository.getUserByEmail(userData.email)) {
@@ -13,8 +13,8 @@ export async function registerUser(userData: RegisterInput) {
   const user = await UserRepository.registerUser({
     name: userData.name,
     email: userData.email,
-    image: "",
-    role: "USER",
+    image: '',
+    role: 'USER',
     password: await getHashedPassword(userData.password),
     emailVerified: false,
     createdAt: new Date(),
@@ -44,7 +44,7 @@ export async function verifyUser(identifier: string, token: string) {
   }
 
   const updatedUser = await prisma.user.update({
-    where: { id: identifier.split("&&&")[0] },
+    where: { id: identifier.split('&&&')[0] },
     data: {
       emailVerified: true,
     },

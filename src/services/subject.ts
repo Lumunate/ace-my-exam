@@ -1,5 +1,6 @@
-import * as SubjectRepository from "@/repositories/subject";
-import { Prisma, Subject } from "@prisma/client";
+import { Prisma, Subject } from '@prisma/client';
+
+import * as SubjectRepository from '@/repositories/subject';
 
 export async function getAllSubjectsWithContents(): Promise<Subject[]> {
   return SubjectRepository.findAllWithContents();
@@ -34,7 +35,7 @@ export async function getEducationOptionBySelection(data: {
   meta: string | null;
 }): Promise<Partial<IReferenceData>> {
   if (!data.educationLevel) {
-    throw new Error("Education Level must be defined");
+    throw new Error('Education Level must be defined');
   }
 
   if (!data.examBoard) {

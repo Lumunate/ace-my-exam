@@ -1,6 +1,7 @@
-import { PastPaperResourceType } from "@prisma/client";
-import { IPastPaperData } from "@/types/past-paper";
-import prisma from "@/utils/prisma";
+import { PastPaperResourceType } from '@prisma/client';
+
+import { IPastPaperData } from '@/types/past-paper';
+import prisma from '@/utils/prisma';
 
 export async function createWithResources(data: IPastPaperData) {
   return prisma.$transaction(async (tx) => {
@@ -18,7 +19,7 @@ export async function createWithResources(data: IPastPaperData) {
         tx.resource.create({
           data: {
             url: data.resources.questionPaper,
-            type: "pdf",
+            type: 'pdf',
             pastPaperResources: {
               create: {
                 pastPaper: { connect: { id: pastPaper.id } },
@@ -35,7 +36,7 @@ export async function createWithResources(data: IPastPaperData) {
         tx.resource.create({
           data: {
             url: data.resources.markingScheme,
-            type: "pdf",
+            type: 'pdf',
             pastPaperResources: {
               create: {
                 pastPaper: { connect: { id: pastPaper.id } },
@@ -52,7 +53,7 @@ export async function createWithResources(data: IPastPaperData) {
         tx.resource.create({
           data: {
             url: data.resources.solutionBooklet,
-            type: "pdf",
+            type: 'pdf',
             pastPaperResources: {
               create: {
                 pastPaper: { connect: { id: pastPaper.id } },

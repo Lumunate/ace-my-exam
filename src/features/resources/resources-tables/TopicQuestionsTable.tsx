@@ -5,7 +5,6 @@ import Image from 'next/image';
 import React from 'react';
 
 import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
-import type { Content } from '@/entities';
 
 import {
   ChapterHeading,
@@ -15,6 +14,8 @@ import {
   RessourcesTableHeading,
   SubtopicHeading,
 } from './ResourceTables.style';
+
+import type { Content } from '@/entities';
 
 const TopicQuestionsTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({ data }) => {
   const handleDownload = (url: string) => {

@@ -1,8 +1,9 @@
-import prisma from "@/utils/prisma";
-import { User } from "@prisma/client";
-import { hash } from "bcrypt";
+import { User } from '@prisma/client';
+import { hash } from 'bcrypt';
 
-export async function registerUser(userData: Omit<User, "id">) {
+import prisma from '@/utils/prisma';
+
+export async function registerUser(userData: Omit<User, 'id'>) {
   return prisma.user.create({
     data: userData,
   });

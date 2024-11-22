@@ -1,7 +1,8 @@
-import prisma from "@/utils/prisma";
-import { Feedback } from "@prisma/client";
+import { Feedback } from '@prisma/client';
 
-export async function createFeedback(feedbackData: Omit<Feedback, "id" | "createdAt">) {
+import prisma from '@/utils/prisma';
+
+export async function createFeedback(feedbackData: Omit<Feedback, 'id' | 'createdAt'>) {
   return prisma.feedback.create({
     data: feedbackData,
   });

@@ -2,13 +2,14 @@
 import { Box } from '@mui/material';
 import React, { useState } from 'react';
 
-import type { Content } from '@/entities';
 import { ResourceType } from '@/types/resources';
 
 import ResourceSelectionForm from './ResourceSelectionForm';
 import { AdminSectionInnerSpacer } from '../Admin.style';
 import AddResourceForm from './AddResourceForm';
 import ContentSelectionForm from './ContentSelectionForm';
+
+import type { Content } from '@/entities';
 
 const SelectionForm = () => {
   const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState('');

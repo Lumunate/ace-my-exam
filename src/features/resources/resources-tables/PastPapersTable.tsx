@@ -5,7 +5,6 @@ import Image from 'next/image';
 import React from 'react';
 
 import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
-import type { PastPaper } from '@/entities';
 
 import {
   ChapterHeading,
@@ -15,6 +14,8 @@ import {
   RessourcesTableHeading,
   SubtopicHeading,
 } from './ResourceTables.style';
+
+import type { PastPaper } from '@/entities';
 
 const PastPapersTable: React.FC<{ data: PastPaper[]; isLoading: boolean }> = ({ data }) => {
 

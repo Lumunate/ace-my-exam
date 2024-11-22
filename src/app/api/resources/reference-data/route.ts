@@ -18,7 +18,6 @@ export async function GET(request: NextRequest) {
 
     return NextResponse.json({ success: true, ..._data }, { status: 200 });
   } catch (error: unknown) {
-    console.log(error);
     if (error instanceof Error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }
