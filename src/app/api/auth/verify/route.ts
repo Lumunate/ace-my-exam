@@ -28,9 +28,9 @@ export async function GET(request: NextRequest) {
         },
       ]);
 
-    const user = await verifyUser(identifier, token);
+    await verifyUser(identifier, token);
 
-    return NextResponse.json(user, { status: 200 });
+    return NextResponse.redirect(new URL('/', request.url));
   } catch (error: unknown) {
     if (error instanceof AuthError) {
       return NextResponse.json({ errors: error.message, name: error.name }, { status: error.statusCode });
