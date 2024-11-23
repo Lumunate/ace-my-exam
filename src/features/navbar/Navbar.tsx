@@ -203,10 +203,9 @@ const Navbar: React.FC = () => {
                     transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                     anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                   >
-                    <MenuItem>
-                      <strong>John Doe</strong>
+                    <MenuItem> 
+                      <strong style={{ textTransform: 'none' }}>{session.data?.user?.email}</strong> 
                     </MenuItem>
-                    <MenuItem>john.doe@example.com</MenuItem>
                     <MenuItem>Profile</MenuItem>
                     <MenuItem
                       onClick={() => {
