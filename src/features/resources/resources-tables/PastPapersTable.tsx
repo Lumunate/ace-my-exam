@@ -5,7 +5,7 @@ import { PastPaper } from '@prisma/client';
 import Image from 'next/image';
 import React from 'react';
 
-import { StyledPagination } from 'components/pagination/Pagination.style';
+import { StyledPagination } from '../../../components/pagination/Pagination.style';
 
 import {
   ChapterHeading,
