@@ -9,24 +9,27 @@ import prisma from '../utils/prisma';
 import { EmailError, sendEmail } from '../utils/send-email';
 
 export async function registerUser(userData: RegisterInput) {
+  let user;
+  
   if (await UserRepository.getUserByEmail(userData.email)) {
-    throw new AuthError(AuthErrorType.EMAIL_ALREADY_EXISTS, 400);
+    user = await reRegisterUser(userData);
+  } else {
+    user = await UserRepository.registerUser({
+      name: userData.name,
+      email: userData.email,
+      image: "",
+      role: "USER",
+      password: await getHashedPassword(userData.password),
+      emailVerified: false,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
   }
 
-  const user = await UserRepository.registerUser({
-    name: userData.name,
-    email: userData.email,
-    image: '',
-    role: 'USER',
-    password: await getHashedPassword(userData.password),
-    emailVerified: false,
-    createdAt: new Date(),
-    updatedAt: new Date(),
-  });
 
   const tokenIdentifier = `${user.id};;;EMAIL_VERIFICATION_TOKEN`;
   const token = await UserRepository.createVerificationToken(tokenIdentifier);
-
+  
   await sendVerificationEmail(user.email, {
     userName: user.name,
     identifier: tokenIdentifier, 
@@ -34,6 +37,22 @@ export async function registerUser(userData: RegisterInput) {
   });
 
   return user;
+}
+
+export async function reRegisterUser(userData: RegisterInput) {
+  const user = await prisma.user.update({
+    where: { email: userData.email },
+    data: {
+      name: userData.name,
+      image: "",
+      role: "USER",
+      password: await getHashedPassword(userData.password),
+      emailVerified: false,
+      updatedAt: new Date(),
+    },
+  }); 
+
+  return user;  
 }
 
 async function sendVerificationEmail(
