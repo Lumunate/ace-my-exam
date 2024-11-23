@@ -70,11 +70,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
       reset();
       handleClose();
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error: unknown) {
       if (error instanceof Error) {
         showSnackbar(error.message);
       }
+
+      showSnackbar("Login Failed");
     } finally {
       setLoading(false);
     }
