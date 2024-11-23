@@ -1,9 +1,12 @@
+import { render } from '@react-email/render';
 import { hash } from 'bcrypt';
 
+import EmailVerificationTemplate, { EmailVerificationProps } from '../emails/email-verification';
 import * as UserRepository from '../repositories/user';
 import { RegisterInput } from '../types/auth';
 import AuthError, { AuthErrorType } from '../types/auth-error';
 import prisma from '../utils/prisma';
+import { EmailError, sendEmail } from '../utils/send-email';
 
 export async function registerUser(userData: RegisterInput) {
   if (await UserRepository.getUserByEmail(userData.email)) {
@@ -21,15 +24,38 @@ export async function registerUser(userData: RegisterInput) {
     updatedAt: new Date(),
   });
 
-  const token = await UserRepository.createVerificationToken(`${user.id}&&&EMAIL_VERIFICATION-TOKEN`);
+  const tokenIdentifier = `${user.id};;;EMAIL_VERIFICATION_TOKEN`;
+  const token = await UserRepository.createVerificationToken(tokenIdentifier);
 
-  await sendVerificationEmail(user.email!, token);
+  await sendVerificationEmail(user.email, {
+    userName: user.name,
+    identifier: tokenIdentifier, 
+    token: token,
+  });
 
   return user;
 }
 
-async function sendVerificationEmail(_email: string, _verificationToken: string) {
-  // TODO: implement email verification link
+async function sendVerificationEmail(
+  email: string, 
+  data: EmailVerificationProps, 
+): Promise<string> {
+  try {
+    const html = await render(EmailVerificationTemplate({ ...data }));
+    
+    return await sendEmail(html, {
+      to: email,
+      subject: 'Verify your Account',
+      from: 'fizoneechan@gmail.com',
+      fromName: 'Ace My Exams',
+      replyTo: 'acemyexams@gmail.com',
+    });
+  } catch (error) {
+    if (error instanceof EmailError) {
+      throw error;
+    }
+    throw new EmailError('Failed to prepare verification email', error);
+  }
 }
 
 async function getHashedPassword(password: string) {
@@ -44,7 +70,7 @@ export async function verifyUser(identifier: string, token: string) {
   }
 
   const updatedUser = await prisma.user.update({
-    where: { id: identifier.split('&&&')[0] },
+    where: { id: identifier.split(';;;')[0] },
     data: {
       emailVerified: true,
     },
@@ -64,7 +90,7 @@ export async function resetPassword(email: string) {
     throw new AuthError(AuthErrorType.USER_NOT_FOUND, 404);
   }
 
-  const resetToken = await UserRepository.createVerificationToken(`${user.id}&&&PASSWORD_RESET_TOKEN`);
+  const resetToken = await UserRepository.createVerificationToken(`${user.id};;;PASSWORD_RESET_TOKEN`);
 
   await sendPasswordResetEmail(email, resetToken);
 }
