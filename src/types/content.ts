@@ -1,4 +1,4 @@
-import { Content } from '@prisma/client';
+import { Content, Resource, RevisionNote, RevisionNoteResource, TopicalQuestion, TopicalQuestionResource } from '@prisma/client';
 import { z } from 'zod';
 
 export const createContentSchema = z.object({
@@ -19,4 +19,6 @@ export type IEditContent = z.infer<typeof editContentSchema>;
 
 export interface ContentWithChildren extends Content {
   children?: ContentWithChildren[] | null;
+  revisionNotes?: (RevisionNote & { resources: (RevisionNoteResource & { resource: Resource })[] })[];
+  topicalQuestions?: (TopicalQuestion & { resources: (TopicalQuestionResource & { resource: Resource })[] })[];
 }

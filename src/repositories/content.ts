@@ -103,7 +103,28 @@ export async function getSubjectWithContent(subjectId: number) {
     include: {
       children: {
         include: {
-          children: true,
+          children: {
+            include: {
+              revisionNotes: {
+                include: {
+                  resources: {
+                    include: {
+                      resource: true,
+                    },
+                  },
+                },
+              },
+              topicalQuestions: {
+                include: {
+                  resources: {
+                    include: {
+                      resource: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
         },
       },
     },

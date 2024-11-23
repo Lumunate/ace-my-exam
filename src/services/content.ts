@@ -59,10 +59,10 @@ export async function getSubjectContentAndPastPapers(subjectId: number): Promise
 
   return {
     pastPapers: pastPapers,
-    chapters: content,
+    chapters: content.filter((chapter) => chapter.level === ContentType.CHAPTER),
     topics: content
       .map((chapter) => chapter.children)
       .flatMap((topic) => topic)
-      .filter((topic) => !!topic),
+      .filter((topic) => !!topic && topic.level === ContentType.TOPIC),
   };
 }

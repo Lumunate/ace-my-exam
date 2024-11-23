@@ -1,11 +1,12 @@
-import { PastPaper } from '@prisma/client';
+import { PastPaper, PastPaperResource, Resource } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
 import { createFullChapterStructure, getSubjectContentAndPastPapers } from '../../../services/content';
 import { ContentWithChildren } from '../../../types/content';
 
+export type PastPaperWithResource = PastPaper & { resources: (PastPaperResource & { resource: Resource })[] };
 export interface IResourceData {
-  pastPapers: PastPaper[];
+  pastPapers: PastPaperWithResource[];
   chapters: ContentWithChildren[];
   topics: ContentWithChildren[];
 }
