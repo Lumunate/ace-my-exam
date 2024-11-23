@@ -1,16 +1,18 @@
-import React from "react";
-import { Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text } from "@react-email/components";
+import { Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text } from '@react-email/components';
+import React from 'react';
 
-interface EmailVerificationProps {
+export interface EmailVerificationProps {
   userName: string;
-  verificationLink: string;
+  identifier: string;
+  token: string;
   expiryTime?: string; // Optional expiry time for the verification link
 }
 
-const baseUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "";
+const baseUrl = process.env.VERCEL_URL ? process.env.VERCEL_URL : ''; 
 
-const EmailVerificationTemplate = ({ userName, verificationLink, expiryTime }: EmailVerificationProps) => {
-  const accentColor = "#da9694";
+const EmailVerificationTemplate = ({ userName, identifier, token, expiryTime }: EmailVerificationProps) => {
+  const verificationLink = `${baseUrl}/api/auth/verify?identifier=${identifier}&token=${token}`;  
+  const accentColor = '#da9694';
 
   return (
     <Html>
@@ -43,10 +45,10 @@ const EmailVerificationTemplate = ({ userName, verificationLink, expiryTime }: E
             </Text>
           )}
           <Text style={paragraph}>
-            If you didn't create an account with Ace My Exams, you can safely ignore this email.
+            If you didn&apos;t create an account with Ace My Exams, you can safely ignore this email.
           </Text>
           <Text style={paragraph}>
-            If you're having trouble clicking the button, copy and paste this URL into your browser:
+            If you&apos;re having trouble clicking the button, copy and paste this URL into your browser:
             <br />
             <span style={linkText}>{verificationLink}</span>
           </Text>
@@ -62,80 +64,80 @@ const EmailVerificationTemplate = ({ userName, verificationLink, expiryTime }: E
 export default EmailVerificationTemplate;
 
 const main = {
-  backgroundColor: "#f4f6f8",
+  backgroundColor: '#f4f6f8',
   fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
-  padding: "20px",
+  padding: '20px',
 };
 
 const imgSection = {
   marginTop: 32,
   marginBottom: 10,
-  textAlign: "center" as const,
+  textAlign: 'center' as const,
 };
 
 const img = {
-  margin: "0 auto",
+  margin: '0 auto',
 };
 
 const container = {
-  backgroundColor: "#ffffff",
-  margin: "0 auto",
-  padding: "20px",
-  borderRadius: "8px",
-  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-  maxWidth: "600px",
+  backgroundColor: '#ffffff',
+  margin: '0 auto',
+  padding: '20px',
+  borderRadius: '8px',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+  maxWidth: '600px',
 };
 
 const heading = {
-  fontSize: "24px",
-  lineHeight: "1.3",
-  fontWeight: "700",
-  textAlign: "center" as const,
-  marginBottom: "20px",
+  fontSize: '24px',
+  lineHeight: '1.3',
+  fontWeight: '700',
+  textAlign: 'center' as const,
+  marginBottom: '20px',
 };
 
 const paragraph = {
-  fontSize: "16px",
-  lineHeight: "26px",
-  color: "#555",
-  marginBottom: "20px",
+  fontSize: '16px',
+  lineHeight: '26px',
+  color: '#555',
+  marginBottom: '20px',
 };
 
 const actionSection = {
-  textAlign: "center" as const,
-  marginTop: "32px",
-  marginBottom: "32px",
+  textAlign: 'center' as const,
+  marginTop: '32px',
+  marginBottom: '32px',
 };
 
 const actionButton = {
-  backgroundColor: "#da9694",
-  borderRadius: "5px",
-  color: "#ffffff",
-  fontSize: "16px",
-  fontWeight: "bold",
-  textDecoration: "none",
-  textAlign: "center" as const,
-  padding: "12px 30px",
-  display: "inline-block",
+  backgroundColor: '#da9694',
+  borderRadius: '5px',
+  color: '#ffffff',
+  fontSize: '16px',
+  fontWeight: 'bold',
+  textDecoration: 'none',
+  textAlign: 'center' as const,
+  padding: '12px 30px',
+  display: 'inline-block',
 };
 
 const warningText = {
-  fontSize: "14px",
-  color: "#f5a623",
-  textAlign: "center" as const,
-  marginTop: "16px",
-  marginBottom: "24px",
+  fontSize: '14px',
+  color: '#f5a623',
+  textAlign: 'center' as const,
+  marginTop: '16px',
+  marginBottom: '24px',
 };
 
 const linkText = {
-  color: "#da9694",
-  fontSize: "14px",
+  color: '#da9694',
+  fontSize: '14px',
   // wordBreak: "break-all",
 };
 
 const footer = {
-  color: "#8898aa",
-  fontSize: "12px",
-  marginTop: "24px",
-  textAlign: "center" as const,
+  color: '#8898aa',
+  fontSize: '12px',
+  marginTop: '24px',
+  textAlign: 'center' as const,
 };

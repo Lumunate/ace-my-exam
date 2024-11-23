@@ -1,4 +1,4 @@
-import sgMail from "./sendgrid";
+import sgMail from './sendgrid';
 
 export type EmailConfig = {
   defaultFrom: string;
@@ -14,17 +14,11 @@ export type SendEmailOptions = {
   replyTo: string;
 };
 
-export type VerificationEmailData = {
-  userName: string;
-  verificationLink: string;
-  expiryTime?: string;
-};
-
 // Simple error class for email-related errors
 export class EmailError extends Error {
   constructor(message: string, public cause?: unknown) {
     super(message);
-    this.name = "EmailError";
+    this.name = 'EmailError';
   }
 }
 
@@ -42,8 +36,9 @@ export async function sendEmail(html: string, options: SendEmailOptions): Promis
     };
 
     const [response] = await sgMail.send(msg);
-    return response.headers["x-message-id"] || "unknown";
+
+    return response.headers['x-message-id'] || 'unknown';
   } catch (error) {
-    throw new EmailError("Failed to send email", error);
+    throw new EmailError('Failed to send email', error);
   }
 }
