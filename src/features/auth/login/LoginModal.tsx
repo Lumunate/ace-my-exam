@@ -41,7 +41,12 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
   const [loading, setLoading] = useState(false);
   const { showSnackbar } = useSnackbar();
 
-  const { register, reset, handleSubmit, formState: { errors } } = useForm<LoginFormInputs>({
+  const {
+    register,
+    reset,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<LoginFormInputs>({
     resolver: zodResolver(loginSchema),
     defaultValues: { email: '', password: '' },
   });
@@ -58,16 +63,19 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
       });
 
       if (!login?.ok) {
-        throw new Error('Login failed');
+        throw new Error(login?.error || 'Login failed');
       }
 
       showSnackbar('Login successful');
       reset();
       handleClose();
 
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
-      showSnackbar('Login failed');
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        showSnackbar(error.message);
+      }
+
+      showSnackbar('Login Failed');
     } finally {
       setLoading(false);
     }
