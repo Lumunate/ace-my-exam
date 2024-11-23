@@ -5,8 +5,6 @@ import { PastPaper } from '@prisma/client';
 import Image from 'next/image';
 import React from 'react';
 
-import { StyledPagination } from '../../../components/pagination/Pagination.style';
-
 import {
   ChapterHeading,
   CollapseContainer,
@@ -17,6 +15,7 @@ import {
   ExpandIconHead
 } from './ResourceTables.style';
 import { PaginationHead, ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
+import { StyledPagination } from '../../../components/pagination/Pagination.style';
 
 const PastPapersTable: React.FC<{ data: PastPaper[]; isLoading: boolean }> = ({ data }) => {
 
