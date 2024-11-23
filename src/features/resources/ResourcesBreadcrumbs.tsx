@@ -32,7 +32,7 @@ const ResourcesBreadcrumbs: React.FC<{ permanentBreadcrumbs?: { key: number; tit
           alt={'icon'}
           width={9}
           height={9}
-          style={{ transform: 'translateY(20%)' }}
+          style={{ transform: 'translateY(1px)' }}
         />
       }
     >

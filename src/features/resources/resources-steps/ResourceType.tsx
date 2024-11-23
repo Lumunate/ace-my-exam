@@ -66,7 +66,7 @@ const ResourceType: React.FC = () => {
   const selectedResourceType = selectedOptions.resourceType;
 
   return (
-    <Grid container spacing={'22px'} sx={{ mb: '40px' }} columns={12}>
+    <Grid container rowSpacing={'17px'} columnSpacing={'24px'} sx={{ mb: '40px' }} columns={12}>
       {revision_notes_show && (
         <Grid
           size={{
@@ -80,9 +80,7 @@ const ResourceType: React.FC = () => {
             }}
             sx={{
               justifyContent: 'flex-start',
-              width: '30rem',
-              paddingLeft: '2rem',
-              outline: selectedResourceType?.value === resourceTypes.revisionNotes.value ? '2px solid #DA9694' : 'unset',
+              outline: selectedResourceType?.value === resourceTypes.revisionNotes.value ? '1px solid #DA9694' : 'unset',
               position: 'relative',
               cursor: !validResources?.revisionNotes ? 'default' : 'pointer',
               opacity: !validResources?.revisionNotes ? '0.5' : '1',
@@ -90,7 +88,7 @@ const ResourceType: React.FC = () => {
           >
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Image src={resourceTypes.revisionNotes.icon} alt={resourceTypes.revisionNotes.name} width={82} height={22} />
-              <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+              <ResourcesCardTypography variant="body1" sx={{ ml: '12px', textWrap: 'nowrap' }}>
                 {resourceTypes.revisionNotes.name}
               </ResourcesCardTypography>
             </Box>
@@ -111,9 +109,7 @@ const ResourceType: React.FC = () => {
             }}
             sx={{
               justifyContent: 'flex-start',
-              width: '30rem',
-              paddingLeft: '2rem',
-              outline: selectedResourceType?.value === resourceTypes.topicalQuestions.value ? '2px solid #DA9694' : 'unset',
+              outline: selectedResourceType?.value === resourceTypes.topicalQuestions.value ? '1px solid #DA9694' : 'unset',
               position: 'relative',
               cursor: !validResources?.topicalQuestions ? 'default' : 'pointer',
               opacity: !validResources?.topicalQuestions ? '0.5' : '1',
@@ -121,7 +117,7 @@ const ResourceType: React.FC = () => {
           >
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Image src={resourceTypes.topicalQuestions.icon} alt={resourceTypes.topicalQuestions.name} width={82} height={22} />
-              <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+              <ResourcesCardTypography variant="body1" sx={{ ml: '12px', textWrap: 'nowrap' }}>
                 {resourceTypes.topicalQuestions.name}
               </ResourcesCardTypography>
             </Box>
@@ -142,9 +138,7 @@ const ResourceType: React.FC = () => {
             }}
             sx={{
               justifyContent: 'flex-start',
-              width: '30rem',
-              paddingLeft: '2rem',
-              outline: selectedResourceType?.value === resourceTypes.pastPapers.value ? '2px solid #DA9694' : 'unset',
+              outline: selectedResourceType?.value === resourceTypes.pastPapers.value ? '1px solid #DA9694' : 'unset',
               position: 'relative',
               cursor: !validResources?.pastPapers ? 'default' : 'pointer',
               opacity: !validResources?.pastPapers ? '0.5' : '1',
@@ -152,7 +146,7 @@ const ResourceType: React.FC = () => {
           >
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Image src={resourceTypes.pastPapers.icon} alt={resourceTypes.pastPapers.name} width={82} height={22} />
-              <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+              <ResourcesCardTypography variant="body1" sx={{ ml: '12px', textWrap: 'nowrap' }}>
                 {resourceTypes.pastPapers.name}
               </ResourcesCardTypography>
             </Box>

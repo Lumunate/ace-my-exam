@@ -4,6 +4,9 @@ import LinkNext from 'next/link';
 interface ResourcesCardProps {
   height?: string;
 }
+interface ResourcesSmallCardProps {
+  contentAlign?: string;
+}
 
 export const ResourcesStepsLink = styled(LinkNext)(({ theme }) => ({
   color: '#818181',
@@ -39,26 +42,25 @@ export const ResourcesCard = styled(Card)<ResourcesCardProps>(({ theme, height }
   },
 }));
 
-export const ResourcesCardSmall = styled(Card)<ResourcesCardProps>(({ height }) => ({
+export const ResourcesCardSmall = styled(Card)<ResourcesSmallCardProps>(({ contentAlign }) => ({
   background: '#FFF',
-  padding: '1.6rem 5rem',
+  padding: '0px 17px',
   borderRadius: '20px',
   boxShadow: '0px 0px 12.6px 0px rgba(0, 0, 0, 0.08)',
   display: 'flex',
-  justifyContent: 'center',
+  justifyContent: contentAlign || 'start',
   alignItems: 'center',
-  height: height || '100%',
+  minHeight: '56px',
+  height: '100%',
   cursor: 'pointer',
-  minWidth: '20rem',
-
 }));
 
-export const ResourcesCardSmallDisabled = styled(ResourcesCardSmall)<ResourcesCardProps>(() => ({
+export const ResourcesCardSmallDisabled = styled(ResourcesCardSmall)<ResourcesSmallCardProps>(() => ({
   background: '#E8E8E8',
   cursor: 'default',
 }));
 
-export const ResourcesCardSmallLoading = styled(ResourcesCardSmallDisabled)<ResourcesCardProps>(() => ({
+export const ResourcesCardSmallLoading = styled(ResourcesCardSmallDisabled)<ResourcesSmallCardProps>(() => ({
   animation: 'blink 1s linear infinite',
 }));
 
