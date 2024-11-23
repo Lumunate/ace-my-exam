@@ -4,12 +4,9 @@ import {
   IconButton,
   Box,
 } from '@mui/material';
+import { RevisionNoteResourceType } from '@prisma/client';
 import Image from 'next/image';
 import React from 'react';
-
-import { PaginationHead, ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
-import { StyledPagination } from '@/components/pagination/Pagination.style';
-import type { Content } from '@/entities';
 
 import {
   ChapterHeading,
@@ -20,8 +17,11 @@ import {
   TopicHeading,
   ExpandIconHead
 } from './ResourceTables.style';
+import { PaginationHead, ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
+import { StyledPagination } from '../../../components/pagination/Pagination.style';
+import { ContentWithChildren } from '../../../types/content';
 
-const RevisionNotesTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({ data }) => {
+const RevisionNotesTable: React.FC<{ data: ContentWithChildren[]; isLoading: boolean }> = ({ data }) => {
   const handleDownload = (fileUrl: string) => {
     const link = document.createElement('a');
 
@@ -30,6 +30,13 @@ const RevisionNotesTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+  };
+
+  const getDownloadUrl = (data: ContentWithChildren, resourceType: RevisionNoteResourceType) => {
+    if (data.revisionNotes && data.revisionNotes[0].resources)
+      return data.revisionNotes[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
+
+    return '';
   };
 
   return (
@@ -88,7 +95,7 @@ const RevisionNotesTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({
                           <Box key={subtopic.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px',py: '2px' }}>
                             <SubtopicHeading sx={{color: '#808080'}}>{subtopic.name}</SubtopicHeading>
                             <IconButton
-                              onClick={() => handleDownload(subtopic.name)}
+                              onClick={() => handleDownload(getDownloadUrl(subtopic, RevisionNoteResourceType.NOTE))}
                               sx={{
                                 color: '#CCC',
                                 fontSize: '20px',
@@ -98,7 +105,7 @@ const RevisionNotesTable: React.FC<{ data: Content[]; isLoading: boolean }> = ({
                                 padding: 0,
                               }}
                             >
-                              <Image src="/download.svg" alt="download" width={20} height={20} />
+                              <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                             </IconButton>
                           </Box>
                         ))}

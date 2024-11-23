@@ -2,13 +2,9 @@ import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import React from 'react';
 
-import {
-  ResourcesPara,
-  ResourcesSubHeading,
-} from '@/app/(main)/resources/Resources.style';
-
 import ExaminationBoard from './ExaminationBoard';
 import Subject from './Subject';
+import { ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
 
 const ExaminationBoardAndSubject = () => {
   return (

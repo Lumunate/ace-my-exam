@@ -1,4 +1,4 @@
-import AccountHeader from '@/features/admin/account/AccountHeader';
+import AccountHeader from '../../../features/admin/account/AccountHeader';
 
 const AdminAccountLayout = ({
   children,

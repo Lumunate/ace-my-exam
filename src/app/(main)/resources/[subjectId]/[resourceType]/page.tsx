@@ -3,14 +3,13 @@ import { Box } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import React from 'react';
 
-import { AppContentWrapper } from '@/components/common/Global.style';
-import PastPapersTable from '@/features/resources/resources-tables/PastPapersTable';
-import RevisionNotesTable from '@/features/resources/resources-tables/RevisionNotesTable';
-import TopicQuestionsTable from '@/features/resources/resources-tables/TopicQuestionsTable';
-import ResourcesLayout from '@/features/resources/ResourcesLayout';
-import { useGetResources } from '@/hooks/resources/useResources';
-import { ResourceType } from '@/types/resources';
-
+import { AppContentWrapper } from '../../../../../components/common/Global.style';
+import PastPapersTable from '../../../../../features/resources/resources-tables/PastPapersTable';
+import RevisionNotesTable from '../../../../../features/resources/resources-tables/RevisionNotesTable';
+import TopicQuestionsTable from '../../../../../features/resources/resources-tables/TopicQuestionsTable';
+import ResourcesLayout from '../../../../../features/resources/ResourcesLayout';
+import { useGetResources } from '../../../../../hooks/resources/useResources';
+import { ResourceType } from '../../../../../types/resources';
 import { ResourcesContainer, Resourceswrapper } from '../../Resources.style';
 
 interface DynamicPageProps {

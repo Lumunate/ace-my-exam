@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query';
 
-import { IContact } from '@/types/contact'; // Import your form input type
+import { IContact } from '../types/contact'; // Import your form input type
 
 export const useSubmitContactForm = () => {
   return useMutation({

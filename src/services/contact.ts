@@ -1,5 +1,5 @@
-import { ContactRepository } from '@/repositories/contact';
-import { IContact } from '@/types/contact';
+import * as ContactRepository from '../repositories/contact';
+import { IContact } from '../types/contact';
 
 export async function createContact(data: IContact) {
   const contact = await ContactRepository.createContact(data);

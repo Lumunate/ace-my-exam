@@ -5,12 +5,12 @@ import { Box, CircularProgress } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import { SubmitHandler, useForm } from 'react-hook-form';
 
-import { Button } from '@/components/buttons/Button.style';
-import { StyledTextField } from '@/components/form/Form.style';
-import { useSnackbar } from '@/contexts/SnackbarContext';
-import { ContactFormContainer } from '@/features/contact/ContactForm.style';
-import { useSubmitContactForm } from '@/hooks/useContactForm';
-import { contactSchema, IContact } from '@/types/contact';
+import { Button } from '../../components/buttons/Button.style';
+import { StyledTextField } from '../../components/form/Form.style';
+import { useSnackbar } from '../../contexts/SnackbarContext';
+import { ContactFormContainer } from '../../features/contact/ContactForm.style';
+import { useSubmitContactForm } from '../../hooks/useContactForm';
+import { contactSchema, IContact } from '../../types/contact';
 
 const defaultValues: IContact = {
   name: '',

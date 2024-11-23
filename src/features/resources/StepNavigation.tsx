@@ -3,10 +3,10 @@
 import { Box } from '@mui/material';
 import React from 'react';
 
-import { PaginationHead } from '@/app/(main)/resources/Resources.style';
-import { Button } from '@/components/buttons/Button.style';
-import { StyledPagination } from '@/components/pagination/Pagination.style';
-import useMultiStepForm from '@/hooks/useMultiStepper';
+import { PaginationHead } from '../../app/(main)/resources/Resources.style';
+import { Button } from '../../components/buttons/Button.style';
+import { StyledPagination } from '../../components/pagination/Pagination.style';
+import useMultiStepForm from '../../hooks/useMultiStepper';
 
 const StepNavigation: React.FC = () => {
   const {

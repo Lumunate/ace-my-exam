@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import { Button } from '@/components/buttons/Button.style';
-import SectionHeading from '@/components/section-heading/SectionHeading';
-import TestimonialsSwiper from '@/components/swiper/testimonials-swiper/TestimonialsSwiper';
-import { TestimonialsHeading, TestimonialsWrapper } from '@/features/home/testimonials/Testimonials.style';
+import { Button } from '../../../components/buttons/Button.style';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
+import TestimonialsSwiper from '../../../components/swiper/testimonials-swiper/TestimonialsSwiper';
+import { TestimonialsHeading, TestimonialsWrapper } from '../../../features/home/testimonials/Testimonials.style';
 
 const Testimonials = () => {
   return (

@@ -5,9 +5,8 @@ import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 import React from 'react';
 
-import { useGetExamBoards } from '@/hooks/resources/useReferenceData';
-import useMultiStepForm from '@/hooks/useMultiStepper';
-
+import { useGetExamBoards } from '../../../hooks/resources/useReferenceData';
+import useMultiStepForm from '../../../hooks/useMultiStepper';
 import {  ResourcesCardSmall } from '../ResourcesSteps.style';
 import { StepsLoader } from './StepsLoader';
 

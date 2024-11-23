@@ -1,6 +1,10 @@
-import { IResourceData } from '@/app/api/resources/route';
-import { ContentRepository } from '@/repositories/content';
-import { PastPaperRepository } from '@/repositories/past-paper';
+
+import { ContentType } from '@prisma/client';
+
+import { IResourceData } from '../app/api/resources/route';
+import * as ContentRepository from '../repositories/content';
+import * as PastPaperRepository from '../repositories/past-paper';
+import { ICreateContent } from '../types/content';
 
 export async function createFullChapterStructure(data: {
   subject_id: number;
@@ -31,16 +35,34 @@ export async function createFullChapterStructure(data: {
   return ContentRepository.getChapterWithContent(chapter.id);
 }
 
+export async function createContent(data: ICreateContent) {
+  if (!data.parentId) {
+    return ContentRepository.createChapter(data);
+  }
+
+  const parent = await ContentRepository.findOneBy(data.parentId);
+
+  if (!parent || parent.type === ContentType.SUBTOPIC) {
+    throw new Error('Topics and Subtopics must be created under chapters and Topics');
+  }
+
+  if (parent.type === ContentType.CHAPTER) {
+    return ContentRepository.createTopic(data);
+  }
+
+  return ContentRepository.createSubtopic(data);
+}
+
 export async function getSubjectContentAndPastPapers(subjectId: number): Promise<IResourceData> {
   const content = await ContentRepository.getSubjectWithContent(subjectId);
   const pastPapers = await PastPaperRepository.findPastPapers(subjectId);
 
   return {
     pastPapers: pastPapers,
-    chapters: content,
+    chapters: content.filter((chapter) => chapter.level === ContentType.CHAPTER),
     topics: content
       .map((chapter) => chapter.children)
       .flatMap((topic) => topic)
-      .filter((topic) => !!topic),
+      .filter((topic) => !!topic && topic.level === ContentType.TOPIC),
   };
 }

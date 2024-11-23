@@ -1,17 +1,17 @@
+import { PastPaper, PastPaperResource, Resource } from '@prisma/client';
 import { NextRequest, NextResponse } from 'next/server';
 
-import { Content, PastPaper } from '@/entities';
-import { createFullChapterStructure, getSubjectContentAndPastPapers } from '@/services/content';
-import { initializeDataSource } from '@/utils/typeorm';
+import { createFullChapterStructure, getSubjectContentAndPastPapers } from '../../../services/content';
+import { ContentWithChildren } from '../../../types/content';
 
+export type PastPaperWithResource = PastPaper & { resources: (PastPaperResource & { resource: Resource })[] };
 export interface IResourceData {
-  pastPapers: PastPaper[];
-  chapters: Content[];
-  topics: Content[];
+  pastPapers: PastPaperWithResource[];
+  chapters: ContentWithChildren[];
+  topics: ContentWithChildren[];
 }
 
 export async function GET(request: NextRequest) {
-  await initializeDataSource();
   try {
     const query = request.nextUrl.searchParams;
     const subjectId = query.get('subjectId');
@@ -34,7 +34,6 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   try {
-    await initializeDataSource();
     const body = await request.json();
 
     await createFullChapterStructure(body);

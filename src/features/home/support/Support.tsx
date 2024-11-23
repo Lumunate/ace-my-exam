@@ -2,8 +2,8 @@
 
 import Image from 'next/image';
 
-import FadeIn from '@/components/animations/FadeIn';
-import { AppContentWrapper } from '@/components/common/Global.style';
+import FadeIn from '../../../components/animations/FadeIn';
+import { AppContentWrapper } from '../../../components/common/Global.style';
 import {
   SupportButton,
   SupportCard,
@@ -18,7 +18,7 @@ import {
   SupportImageOverlay,
   SupportPara,
   SupportWrapper,
-} from '@/features/home/support/Support.style';
+} from '../../../features/home/support/Support.style';
 
 const Support: React.FC = () => {
   return (

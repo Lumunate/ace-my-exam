@@ -1,61 +1,58 @@
-import { Content } from '@/entities/content';
-import { ContentType } from '@/entities/enums';
-import { Resource } from '@/entities/resource';
-import { RevisionNote } from '@/entities/revision-note';
-import { RevisionNoteResource } from '@/entities/revision-note-resource';
-import AppDataSource from '@/utils/typeorm';
+import { ContentType } from '@prisma/client';
 
-export const RevisionNoteRepository = AppDataSource.getRepository(RevisionNote).extend({
-  async createWithResource(data: { title: string; subtopicId: number; noteUrl: string }) {
-    const queryRunner = AppDataSource.createQueryRunner();
+import { IRevisionNoteData } from '../types/revision-note';
+import prisma from '../utils/prisma';
 
-    await queryRunner.connect();
-    await queryRunner.startTransaction();
-
-    try {
-      // Verify subtopic
-      const content = await queryRunner.manager.findOne(Content, {
-        where: { id: data.subtopicId, type: ContentType.SUBTOPIC },
-      });
-
-      if (!content) throw new Error('Invalid subtopic ID');
-
-      // Create revision note
-      const revisionNote = await queryRunner.manager.save(RevisionNote, {
-        title: data.title,
-        content,
-      });
-
-      // Create resource
-      const resource = await queryRunner.manager.save(Resource, {
-        url: data.noteUrl,
-        type: 'pdf',
-      });
-
-      // Create resource relationship
-      await queryRunner.manager.save(RevisionNoteResource, {
-        revisionNote,
-        resource,
-      });
-
-      await queryRunner.commitTransaction();
-
-      return this.findOne({
-        where: { id: revisionNote.id },
-        relations: ['resources', 'resources.resource'],
-      });
-    } catch (err) {
-      await queryRunner.rollbackTransaction();
-      throw err;
-    } finally {
-      await queryRunner.release();
-    }
-  },
-
-  async findBySubtopic(subtopicId: number) {
-    return this.find({
-      where: { content_id: subtopicId },
-      relations: ['resources', 'resources.resource'],
+export async function createWithResource(data: IRevisionNoteData) {
+  return prisma.$transaction(async (tx) => {
+    const content = await tx.content.findFirst({
+      where: {
+        id: data.subtopicId,
+        type: ContentType.SUBTOPIC,
+      },
     });
-  },
-});
+
+    if (!content) throw new Error('Invalid subtopic ID');
+
+    const revisionNote = await tx.revisionNote.create({
+      data: {
+        title: data.title,
+        content: {
+          connect: { id: content.id },
+        },
+        resources: {
+          create: {
+            resource: {
+              create: {
+                url: data.noteUrl,
+                type: 'pdf',
+              },
+            },
+          },
+        },
+      },
+      include: {
+        resources: {
+          include: {
+            resource: true,
+          },
+        },
+      },
+    });
+
+    return revisionNote;
+  });
+}
+
+export async function findBySubtopic(subtopicId: number) {
+  return prisma.revisionNote.findMany({
+    where: { content_id: subtopicId },
+    include: {
+      resources: {
+        include: {
+          resource: true,
+        },
+      },
+    },
+  });
+}

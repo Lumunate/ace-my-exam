@@ -3,11 +3,10 @@ import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import React from 'react';
 
-import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
-import useMultiStepForm from '@/hooks/useMultiStepper';
-
 import ResourceType from './ResourceType';
 import SubjectSubtype from './SubjectSubtype';
+import { ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
+import useMultiStepForm from '../../../hooks/useMultiStepper';
 
 const SubejctSubtypeAndResourceType = () => {
   const { selectedOptions } = useMultiStepForm();

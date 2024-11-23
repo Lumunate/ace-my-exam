@@ -1,10 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { createSubject, getEducationOptionBySelection, IReferenceData } from '@/services/subject';
-import { initializeDataSource } from '@/utils/typeorm';
+import { createContent } from '../../../../services/content';
+import {  getEducationOptionBySelection, IReferenceData } from '../../../../services/subject';
+import { createContentSchema } from '../../../../types/content';
 
 export async function GET(request: NextRequest) {
-  await initializeDataSource();
   try {
     const query = request.nextUrl.searchParams;
     const data = {
@@ -27,11 +27,11 @@ export async function GET(request: NextRequest) {
 }
 
 export async function POST(request: NextRequest) {
-  await initializeDataSource();
   try {
     const body = await request.json();
+    const data = createContentSchema.parse(body);
 
-    const createdSubject = await createSubject(body);
+    const createdSubject = await createContent(data);
 
     return NextResponse.json({ success: true, data: createdSubject }, { status: 200 });
   } catch (error: unknown) {

@@ -1,66 +1,132 @@
-import { Content } from '@/entities/content';
-import { ContentLevel, ContentType } from '@/entities/enums';
-import AppDataSource from '@/utils/typeorm';
+import { ContentType, ContentLevel } from '@prisma/client';
 
-export const ContentRepository = AppDataSource.getRepository(Content).extend({
-  async createChapter(data: { name: string; description?: string }) {
-    const chapter = this.create({
-      ...data,
+import { ICreateContent } from '../types/content';
+import prisma from '../utils/prisma';
+
+export async function findOneBy(id: number) {
+  return await prisma.content.findUnique({
+    where: { id },
+    include: {
+      children: {
+        include: {
+          children: true,
+        },
+      },
+    },
+  });
+}
+
+export async function createChapter(data: Omit<ICreateContent, 'parentId'>) {
+  if (data.subjectId === undefined) {
+    throw new Error('subjectId is required');
+  }
+
+  return prisma.content.create({
+    data: {
+      name: data.name,
+      subject_id: data.subjectId,
       type: ContentType.CHAPTER,
       level: ContentLevel.CHAPTER,
-    });
+    },
+  });
+}
 
-    return this.save(chapter);
-  },
+export async function createTopic(data: Omit<ICreateContent, 'subjectId'>) {
+  const parent = await prisma.content.findUnique({
+    where: { id: data.parentId },
+  });
 
-  async createTopic(data: { name: string; parentId: number; description?: string }) {
-    const parent = await this.findOneBy({ id: data.parentId });
+  if (!parent || parent.type !== ContentType.CHAPTER) {
+    throw new Error('Topics must be created under chapters');
+  }
 
-    if (!parent || parent.type !== ContentType.CHAPTER) {
-      throw new Error('Topics must be created under chapters');
-    }
-
-    const topic = this.create({
-      ...data,
-      parent,
+  return prisma.content.create({
+    data: {
+      name: data.name,
       type: ContentType.TOPIC,
       level: ContentLevel.TOPIC,
-    });
+      subject: {
+        connect: { id: parent.subject_id },
+      },
+      parent: {
+        connect: { id: data.parentId },
+      },
+    },
+  });
+}
 
-    return this.save(topic);
-  },
+export async function createSubtopic(data: Omit<ICreateContent, 'subjectId'>) {
+  const parent = await prisma.content.findUnique({
+    where: { id: data.parentId },
+  });
 
-  async createSubtopic(data: { name: string; parentId: number; description?: string }) {
-    const parent = await this.findOneBy({ id: data.parentId });
+  if (!parent || parent.type !== ContentType.TOPIC) {
+    throw new Error('Subtopics must be created under topics');
+  }
 
-    if (!parent || parent.type !== ContentType.TOPIC) {
-      throw new Error('Subtopics must be created under topics');
-    }
-
-    const subtopic = this.create({
-      ...data,
-      parent,
+  return prisma.content.create({
+    data: {
+      name: data.name,
       type: ContentType.SUBTOPIC,
       level: ContentLevel.SUBTOPIC,
-    });
+      subject: {
+        connect: { id: parent.subject_id },
+      },
+      parent: {
+        connect: { id: data.parentId },
+      },
+    },
+  });
+}
 
-    return this.save(subtopic);
-  },
+export async function getChapterWithContent(chapterId: number) {
+  return prisma.content.findUnique({
+    where: {
+      id: chapterId,
+      type: ContentType.CHAPTER,
+    },
+    include: {
+      children: {
+        include: {
+          children: true,
+        },
+      },
+    },
+  });
+}
 
-  async getChapterWithContent(chapterId: number) {
-    return this.createQueryBuilder('chapter')
-      .leftJoinAndSelect('chapter.children', 'topics')
-      .leftJoinAndSelect('topics.children', 'subtopics')
-      .where('chapter.id = :id', { id: chapterId })
-      .andWhere('chapter.type = :type', { type: ContentType.CHAPTER })
-      .getOne();
-  },
-
-  async getSubjectWithContent(subjectId: number) {
-    return this.createQueryBuilder('chapter')
-      .leftJoinAndSelect('chapter.children', 'topics')
-      .leftJoinAndSelect('topics.children', 'subtopics')
-      .where('chapter.subject_id = :id', { id: subjectId })
-      .getMany();
-  },
-});
+export async function getSubjectWithContent(subjectId: number) {
+  return prisma.content.findMany({
+    where: {
+      subject_id: subjectId,
+    },
+    include: {
+      children: {
+        include: {
+          children: {
+            include: {
+              revisionNotes: {
+                include: {
+                  resources: {
+                    include: {
+                      resource: true,
+                    },
+                  },
+                },
+              },
+              topicalQuestions: {
+                include: {
+                  resources: {
+                    include: {
+                      resource: true,
+                    },
+                  },
+                },
+              },
+            },
+          },
+        },
+      },
+    },
+  });
+}

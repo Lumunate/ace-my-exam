@@ -8,6 +8,7 @@ export enum ResourceType {
 
 export enum Subjects {
   MATH = 'MATH',
+  SCIENCE = 'SCIENCE', 
   PHYSICS = 'PHYSICS',
   CHEMISTRY = 'CHEMISTRY',
   BIOLOGY = 'BIOLOGY',
@@ -30,15 +31,19 @@ export enum AgeGroups {
 }
 
 export enum ExamBoards {
+  NONE = 'NONE',
   AQA = 'AQA',
+  OXFORD_AQA = 'OXFORD_AQA',
   EDEXCEL = 'EDEXCEL',
   EDEXCEL_INTERNATIONAL = 'EDEXCEL_INTERNATIONAL',
   CAMBRIDGE = 'CAMBRIDGE',
+  WJEC = 'WJEC',
   OCR_A = 'OCR_A',
   OCR_B = 'OCR_B',
   OCR = 'OCR',
   OCR_21 = 'OCR_21',
   OCR_GATEWAY = 'OCR_GATEWAY',
+  OCR_MEI = 'OCR_MEI',
   ISEB = 'ISEB',
   SCHOOL = 'SCHOOL',
 }

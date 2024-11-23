@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 
-import { createContact } from '@/services/contact';
-import { contactSchema } from '@/types/contact';
-import { initializeDataSource } from '@/utils/typeorm';
+import { createContact } from '../../../services/contact';
+import { contactSchema } from '../../../types/contact';
 
 export async function POST(request: NextRequest) {
-  await initializeDataSource();
   
   try {
     const body = await request.json();

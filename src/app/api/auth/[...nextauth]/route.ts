@@ -1,10 +1,9 @@
-import { TypeORMAdapter } from '@auth/typeorm-adapter';
+import { PrismaAdapter } from '@next-auth/prisma-adapter';
 import { compare } from 'bcrypt';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
-import { UserRepository } from '@/repositories/user';
-import { initializeDataSource } from '@/utils/typeorm';
+import prisma from '../../../../utils/prisma';
 
 const handler = NextAuth({
   providers: [
@@ -15,30 +14,37 @@ const handler = NextAuth({
         email: { label: 'Email', type: 'text' },
         password: { label: 'Password', type: 'password' },
       },
-      async authorize(credentials, _req) {
-        await initializeDataSource();
-
+      async authorize(credentials) {
         if (!credentials?.email || !credentials?.password) {
-          return null;
+          throw new Error('Missing credentials');
         }
 
-        const user = await UserRepository.getUserbyEmail(credentials.email);
+        const user = await prisma.user.findUnique({
+          where: {
+            email: credentials.email,
+          },
+        });
 
         if (!user || !user.emailVerified) {
-          return null;
+          throw new Error('Invalid credentials');
         }
 
-        const isValid = await compare(credentials.password, user.password);
+        const isValidPassword = await compare(credentials.password, user.password);
 
-        if (!isValid) {
-          return null;
+        if (!isValidPassword) {
+          throw new Error('Invalid credentials');
         }
 
-        return { id: user.id.toString(), email: user.email, name: user.name };
+        return {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          role: user.role,
+        };
       },
     }),
   ],
-  adapter: TypeORMAdapter(process.env.DATABASE_URL!),
+  adapter: PrismaAdapter(prisma),
   session: {
     strategy: 'jwt',
   },

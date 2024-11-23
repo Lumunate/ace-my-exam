@@ -1,4 +1,4 @@
-import Navbar from '@/features/admin/nav-bar/Navbar';
+import Navbar from '../../../features/admin/nav-bar/Navbar';
 
 const AdminMainLayout = ({
   children,

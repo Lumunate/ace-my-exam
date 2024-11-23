@@ -1,8 +1,6 @@
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 
-import SectionHeading from '@/components/section-heading/SectionHeading';
-
 import {
   ApproachWrapper,
   ApproachHeading,
@@ -11,6 +9,7 @@ import {
   ApproachCardPara,
   ApproachCardDivider
 } from './Approach.style';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
 
 const AboutApproach: React.FC = () => {
   return (

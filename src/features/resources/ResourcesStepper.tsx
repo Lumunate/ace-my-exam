@@ -3,13 +3,12 @@
 import { Box } from '@mui/material';
 import React from 'react';
 
-import useMultiStepForm from '@/hooks/useMultiStepper';
-
 import AgeGroup from './resources-steps/AgeGroup';
 import ExaminationBoardAndSubject from './resources-steps/EaxminationBoardAndSubject';
 import EducationalResources from './resources-steps/EducationalResources';
 import SubejctSubtypeAndResourceType from './resources-steps/SubejctSubtypeAndResourceType';
 import StepNavigation from './StepNavigation';
+import useMultiStepForm from '../../hooks/useMultiStepper';
 
 const ResourcesForm: React.FC = () => {
   const { currentStep } = useMultiStepForm();

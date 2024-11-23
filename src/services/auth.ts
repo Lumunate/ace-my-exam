@@ -1,11 +1,12 @@
 import { hash } from 'bcrypt';
 
-import { TokensRepository, UserRepository } from '@/repositories/user';
-import { RegisterInput } from '@/types/auth';
-import AuthError, { AuthErrorType } from '@/types/auth-error';
+import * as UserRepository from '../repositories/user';
+import { RegisterInput } from '../types/auth';
+import AuthError, { AuthErrorType } from '../types/auth-error';
+import prisma from '../utils/prisma';
 
 export async function registerUser(userData: RegisterInput) {
-  if (await UserRepository.getUserbyEmail(userData.email)) {
+  if (await UserRepository.getUserByEmail(userData.email)) {
     throw new AuthError(AuthErrorType.EMAIL_ALREADY_EXISTS, 400);
   }
 
@@ -14,16 +15,15 @@ export async function registerUser(userData: RegisterInput) {
     email: userData.email,
     image: '',
     role: 'USER',
-    sessions: [],
-    accounts: [],
-    token: [],
     password: await getHashedPassword(userData.password),
     emailVerified: false,
+    createdAt: new Date(),
+    updatedAt: new Date(),
   });
 
-  const token = await TokensRepository.createEmailVerificationToken(user.id);
+  const token = await UserRepository.createVerificationToken(`${user.id}&&&EMAIL_VERIFICATION-TOKEN`);
 
-  await sendVerificationEmail(user.email!, token.token);
+  await sendVerificationEmail(user.email!, token);
 
   return user;
 }
@@ -36,40 +36,37 @@ async function getHashedPassword(password: string) {
   return await hash(password, 10);
 }
 
-export async function verifyUser(token: string) {
-  const verificationToken = await TokensRepository.findOne({ where: { token, identifier: 'EMAIL_VERIFICATION_TOKEN' } });
+export async function verifyUser(identifier: string, token: string) {
+  const verificationToken = await UserRepository.validateVerificationToken(identifier, token);
 
-  if (!token) {
+  if (!verificationToken) {
     throw new AuthError(AuthErrorType.TOKEN_INVALID, 401);
   }
 
-  const user = await UserRepository.findOne({ where: { id: verificationToken?.userId } });
+  const updatedUser = await prisma.user.update({
+    where: { id: identifier.split('&&&')[0] },
+    data: {
+      emailVerified: true,
+    },
+  });
 
-  if (!user) {
+  if (!updatedUser) {
     throw new AuthError(AuthErrorType.USER_NOT_FOUND, 404);
   }
 
-  user.emailVerified = true;
-  await UserRepository.save(user);
-
-  TokensRepository.delete({ userId: user.id, identifier: 'EMAIL_VERIFICATION_TOKEN' });
-
-  return user;
+  return updatedUser;
 }
 
 export async function resetPassword(email: string) {
-  const user = await UserRepository.getUserbyEmail(email);
+  const user = await UserRepository.getUserByEmail(email);
 
   if (!user) {
     throw new AuthError(AuthErrorType.USER_NOT_FOUND, 404);
   }
 
-  const resetToken = await TokensRepository.createPasswordResetToken(user.id);
+  const resetToken = await UserRepository.createVerificationToken(`${user.id}&&&PASSWORD_RESET_TOKEN`);
 
-  await sendPasswordResetEmail(email, resetToken.token);
-  await UserRepository.save(user);
-
-  return;
+  await sendPasswordResetEmail(email, resetToken);
 }
 
 async function sendPasswordResetEmail(_email: string, _resetToken: string) {

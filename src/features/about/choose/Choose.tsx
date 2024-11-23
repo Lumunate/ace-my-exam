@@ -1,9 +1,6 @@
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 
-import { Button } from '@/components/buttons/Button.style';
-import SectionHeading from '@/components/section-heading/SectionHeading';
-
 import {
   ChooseWrapper,
   ChooseCard,
@@ -13,6 +10,8 @@ import {
   ChooseSkillCard,
   ChooseSkillCardHeading
 } from './Choose.styles';
+import { Button } from '../../../components/buttons/Button.style';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
 
 const AboutChoose: React.FC = () => {
 

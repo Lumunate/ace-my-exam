@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query';
 
-import { RegisterInput } from '@/types/auth';
+import { RegisterInput } from '../types/auth';
 
 export const useRegister = () => {
   return useMutation({
@@ -10,6 +10,7 @@ export const useRegister = () => {
         headers: {
           'Content-Type': 'application/json',
         },
+        cache: 'no-store',
         body: JSON.stringify(formData),
       });
 

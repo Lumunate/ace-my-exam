@@ -1,9 +1,9 @@
 import { Box } from '@mui/material';
 import { getServerSession } from 'next-auth';
 
-import AuthProvider from '@/contexts/AuthContext';
-import Footer from '@/features/footer/Footer';
-import Navbar from '@/features/navbar/Navbar';
+import AuthProvider from '../../contexts/AuthContext';
+import Footer from '../../features/footer/Footer';
+import Navbar from '../../features/navbar/Navbar';
 
 export const metadata = {
   title: 'Ace My Exams',

@@ -5,16 +5,16 @@ import Grid from '@mui/material/Grid2';
 import { gsap } from 'gsap';
 import { useEffect, useRef } from 'react';
 
-import FadeIn from '@/components/animations/FadeIn';
-import { useDynamicBorderRadius } from '@/components/animations/useDynamicBorderRadius';
-import { AppContentWrapper } from '@/components/common/Global.style';
+import FadeIn from '../../../components/animations/FadeIn';
+import { useDynamicBorderRadius } from '../../../components/animations/useDynamicBorderRadius';
+import { AppContentWrapper } from '../../../components/common/Global.style';
 import {
   StatCardHeading,
   StatCardValue,
   StatsCard,
   StatsCardHead,
   StatsContentWrapper,
-} from '@/features/home/stats/Stats.style';
+} from '../../../features/home/stats/Stats.style';
 
 interface StatItem {
   name: string;
