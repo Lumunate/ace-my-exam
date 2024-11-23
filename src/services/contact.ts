@@ -50,6 +50,6 @@ async function sendClientRecieveEmail(data: NewContactNotificationProps): Promis
     if (error instanceof EmailError) {
       throw error;
     }
-    throw new EmailError("Failed to prepare verification email", error);
+    throw new EmailError('Failed to prepare client recieve email', error);
   }
 }
