@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 
-import { registerUser } from 'services/auth';
-import { registerSchema } from 'types/auth';
-import AuthError from 'types/auth-error';
+import { registerUser } from '../../../../services/auth';
+import { registerSchema } from '../../../../types/auth';
+import AuthError from '../../../../types/auth-error';
 
 export async function POST(request: NextRequest) {
 
