@@ -4,8 +4,6 @@ import { Box } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 
-import { StyledPagination } from '../../../components/pagination/Pagination.style';
-
 import {
   ChapterHeading,
   CollapseContainer,
@@ -16,6 +14,7 @@ import {
   ExpandIconHead
 } from './ResourceTables.style';
 import { PaginationHead, ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
+import { StyledPagination } from '../../../components/pagination/Pagination.style';
 import { ContentWithChildren } from '../../../types/content';
 
 const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: boolean }> = ({ data }) => {
