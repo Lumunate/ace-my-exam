@@ -20,10 +20,10 @@ export async function _sendAcknowledgementEmail(email: string, data: FeedbackAck
 
     return await sendEmail(html, {
       to: email,
-      subject: 'Thank you for contacting Ace My Exams',
-      from: 'fizoneechan@gmail.com',
-      fromName: 'Ace My Exams',
-      replyTo: 'acemyexams@gmail.com',
+      subject: "Thank you for contacting Ace My Exams",
+      from: "fizoneechan@gmail.com",
+      fromName: "Ace My Exams",
+      replyTo: "asma@acemyexam.co.uk",
     });
   } catch (error) {
     if (error instanceof EmailError) {

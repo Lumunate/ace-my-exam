@@ -45,10 +45,10 @@ async function sendVerificationEmail(
     
     return await sendEmail(html, {
       to: email,
-      subject: 'Verify your Account',
-      from: 'fizoneechan@gmail.com',
-      fromName: 'Ace My Exams',
-      replyTo: 'acemyexams@gmail.com',
+      subject: "Verify your Account",
+      from: "fizoneechan@gmail.com",
+      fromName: "Ace My Exams",
+      replyTo: "asma@acemyexam.co.uk",
     });
   } catch (error) {
     if (error instanceof EmailError) {
