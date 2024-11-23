@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 
 import {
   AccountDetailsBox,
@@ -11,10 +12,10 @@ import {
   NavbarWrapper,
 } from './AccountHeader.style';
 import Navbar from '../nav-bar/Navbar';
-import { useSession } from 'next-auth/react';
 
 const AccountHeader = () => {
   const session = useSession();
+
   return (
     <AccountHeaderBox>
       <BgWrapper>

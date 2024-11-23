@@ -1,14 +1,14 @@
-"use client";
+'use client';
 
-import { zodResolver } from "@hookform/resolvers/zod";
-import { CircularProgress } from "@mui/material";
-import { signIn } from "next-auth/react";
-import { useState } from "react";
-import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from "react-hook-form";
+import { zodResolver } from '@hookform/resolvers/zod';
+import { CircularProgress } from '@mui/material';
+import { signIn } from 'next-auth/react';
+import { useState } from 'react';
+import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from 'react-hook-form';
 
-import { StyledTextField } from "../../../components/form/Form.style";
-import { useSnackbar } from "../../../contexts/SnackbarContext";
-import { loginSchema } from "../../../features/auth/login/LoginSchema";
+import { StyledTextField } from '../../../components/form/Form.style';
+import { useSnackbar } from '../../../contexts/SnackbarContext';
+import { loginSchema } from '../../../features/auth/login/LoginSchema';
 import {
   AuthButton,
   AuthModalContainer,
@@ -18,7 +18,7 @@ import {
   AuthBackdrop,
   AuthStyledLinkOne,
   AuthStyledLinkTwo,
-} from "../AuthModals.style";
+} from '../AuthModals.style';
 
 interface LoginFormInputs {
   email: string;
@@ -48,25 +48,25 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
     formState: { errors },
   } = useForm<LoginFormInputs>({
     resolver: zodResolver(loginSchema),
-    defaultValues: { email: "", password: "" },
+    defaultValues: { email: '', password: '' },
   });
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onSubmit: SubmitHandler<LoginFormInputs> = async (data) => {
     setLoading(true);
     try {
-      const login = await signIn("credentials", {
+      const login = await signIn('credentials', {
         redirect: false,
         email: data.email,
         password: data.password,
-        callbackUrl: "/",
+        callbackUrl: '/',
       });
 
       if (!login?.ok) {
-        throw new Error(login?.error || "Login failed");
+        throw new Error(login?.error || 'Login failed');
       }
 
-      showSnackbar("Login successful");
+      showSnackbar('Login successful');
       reset();
       handleClose();
 
@@ -75,7 +75,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
         showSnackbar(error.message);
       }
 
-      showSnackbar("Login Failed");
+      showSnackbar('Login Failed');
     } finally {
       setLoading(false);
     }
@@ -94,7 +94,7 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
               margin="normal"
               error={!!errors.email}
               helperText={getErrorMessage(errors.email)}
-              {...register("email")}
+              {...register('email')}
             />
             <StyledTextField
               label="Password"
@@ -104,15 +104,15 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
               margin="normal"
               error={!!errors.password}
               helperText={getErrorMessage(errors.password)}
-              {...register("password")}
+              {...register('password')}
             />
             <AuthStyledLinkOne href="#">Forgot Password?</AuthStyledLinkOne>
-            <AuthButton type="submit" sx={{ mb: "12px" }}>
-              {loading ? <CircularProgress size={20} /> : "Login"}
+            <AuthButton type="submit" sx={{ mb: '12px' }}>
+              {loading ? <CircularProgress size={20} /> : 'Login'}
             </AuthButton>
           </form>
           <AuthParaTypography variant="h6">
-            Don’t have an account?{" "}
+            Don’t have an account?{' '}
             <AuthStyledLinkTwo href="#" onClick={onSwitchToSignUp}>
               Sign Up
             </AuthStyledLinkTwo>

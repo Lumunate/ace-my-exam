@@ -3,8 +3,9 @@ import { compare } from 'bcrypt';
 import NextAuth from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 
+import AuthError, { AuthErrorType } from 'types/auth-error';
+
 import prisma from '../../../../utils/prisma';
-import AuthError, { AuthErrorType } from "types/auth-error";
 
 const handler = NextAuth({
   providers: [

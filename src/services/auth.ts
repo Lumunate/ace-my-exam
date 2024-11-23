@@ -17,15 +17,14 @@ export async function registerUser(userData: RegisterInput) {
     user = await UserRepository.registerUser({
       name: userData.name,
       email: userData.email,
-      image: "",
-      role: "USER",
+      image: '',
+      role: 'USER',
       password: await getHashedPassword(userData.password),
       emailVerified: false,
       createdAt: new Date(),
       updatedAt: new Date(),
     });
   }
-
 
   const tokenIdentifier = `${user.id};;;EMAIL_VERIFICATION_TOKEN`;
   const token = await UserRepository.createVerificationToken(tokenIdentifier);
@@ -44,8 +43,8 @@ export async function reRegisterUser(userData: RegisterInput) {
     where: { email: userData.email },
     data: {
       name: userData.name,
-      image: "",
-      role: "USER",
+      image: '',
+      role: 'USER',
       password: await getHashedPassword(userData.password),
       emailVerified: false,
       updatedAt: new Date(),
