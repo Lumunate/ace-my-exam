@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import Image from 'next/image';
+import { useSession } from 'next-auth/react';
 
 import {
   AccountDetailsBox,
@@ -13,6 +14,8 @@ import {
 import Navbar from '../nav-bar/Navbar';
 
 const AccountHeader = () => {
+  const session = useSession();
+
   return (
     <AccountHeaderBox>
       <BgWrapper>
@@ -27,8 +30,8 @@ const AccountHeader = () => {
         <AccountDetailsBox>
           <Image src={'/decorative/dummy-account.png'} alt="Profile Picture" width={80} height={80} style={{ borderRadius: '6px' }} />
           <Box>
-            <AccountName>John Doe</AccountName>
-            <AccountTag>@johndoe</AccountTag>
+            <AccountName>{session.data?.user?.username}</AccountName>
+            <AccountTag>{session.data?.user?.email}</AccountTag>
           </Box>
         </AccountDetailsBox>
       </AccountWrapper>

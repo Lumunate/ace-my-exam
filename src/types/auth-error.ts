@@ -10,6 +10,7 @@ export enum AuthErrorType {
   USER_LOCKED_OUT = 'User is locked out after too many attempts',
   SERVER_ERROR = 'Internal server error',
   MISSING_FIELDS = 'Missing required fields',
+  ACCOUNT_UNVERIFIED = 'Please check email for account verification link',
 }
 
 export default class AuthError extends Error {
