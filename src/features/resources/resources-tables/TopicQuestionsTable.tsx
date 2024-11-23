@@ -89,7 +89,7 @@ const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: bo
                       </DownloadIconButton>
                       <DownloadIconButton
                         sx={{ flex: '0 0 16.67%' }}
-                        onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.SOLUTION_BOOKLET))}
+                        // onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.SOLUTION_BOOKLET))}
                       >
                         <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                       </DownloadIconButton>
