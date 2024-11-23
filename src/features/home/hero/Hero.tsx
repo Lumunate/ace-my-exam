@@ -2,11 +2,6 @@ import { Box } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import FadeIn from '@/components/animations/FadeIn'; 
-import { Button } from '@/components/buttons/Button.style';
-import { AppContentWrapper } from '@/components/common/Global.style';
-import SectionHeading from '@/components/section-heading/SectionHeading';
-
 import {
   HeroCard,
   HeroCardHeading,
@@ -23,6 +18,10 @@ import {
   HeroWrapper,
   SocialIconsWrapper,
 } from './Hero.style';
+import FadeIn from '../../../components/animations/FadeIn'; 
+import { Button } from '../../../components/buttons/Button.style';
+import { AppContentWrapper } from '../../../components/common/Global.style';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
 
 interface HeroCardProps {
   width: number;

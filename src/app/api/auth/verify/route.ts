@@ -2,14 +2,12 @@ export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError, ZodIssueCode } from 'zod';
 
-import { verifyUser } from '@/services/auth';
-import AuthError from '@/types/auth-error';
-import { initializeDataSource } from '@/utils/typeorm';
+import { verifyUser } from '../../../../services/auth';
+import AuthError from '../../../../types/auth-error';
 
 export async function GET(request: NextRequest) {
-  await initializeDataSource();
-  
   try {
+    const identifier = request.nextUrl.searchParams.get('identifier');
     const token = request.nextUrl.searchParams.get('token');
 
     if (!token || token === 'null')
@@ -21,7 +19,16 @@ export async function GET(request: NextRequest) {
         },
       ]);
 
-    const user = await verifyUser(token);
+    if (!identifier || identifier === 'null')
+      throw new ZodError([
+        {
+          path: ['identifier'],
+          message: 'Identifier is either missing or invalid.',
+          code: ZodIssueCode.custom,
+        },
+      ]);
+
+    const user = await verifyUser(identifier, token);
 
     return NextResponse.json(user, { status: 200 });
   } catch (error: unknown) {

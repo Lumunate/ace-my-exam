@@ -2,14 +2,14 @@
 import { Box, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
+import { getDisplayOptions } from '../../../features/resources/resources-steps/ResourceType';
 import {
   useGetEducationLevels,
   useGetExamBoards,
   useGetSubjects,
   useGetUniqueSubjects,
-  useGetValidResources,
-} from '@/hooks/resources/useReferenceData';
-import { ResourceType } from '@/types/resources';
+} from '../../../hooks/resources/useReferenceData';
+import { ResourceType } from '../../../types/resources';
 
 interface IResourceSelectionFormProps {
   H_selectedSubjectSubtype: string;
@@ -31,9 +31,10 @@ export default function ResourceSelectionForm({
   const [selectedResourceType, setSelectedResourceType] = useState('');
 
   // Fetch data using custom hooks
-  const { data: educationLevels,
-    //  isLoading: _educationLevelsIsLoading, 
-    // refetch: educationLevelsRefetch 
+  const {
+    data: educationLevels,
+  //  isLoading: _educationLevelsIsLoading,
+  // refetch: educationLevelsRefetch
   } = useGetEducationLevels();
   const {
     data: examBoards,
@@ -50,11 +51,6 @@ export default function ResourceSelectionForm({
     // isLoading: _subjectSubtypesIsLoading,
     refetch: subjectSubtypesRefetch,
   } = useGetSubjects(selectedEducationLevel, selectedExamBoard, selectedSubject);
-  const {
-    data: resourceTypes,
-    // isLoading: _resourceTypesIsLoading,
-    refetch: resourceTypesRefetch,
-  } = useGetValidResources(selectedEducationLevel, selectedExamBoard, selectedSubjectSubtype);
 
   // Handle form submission
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -65,11 +61,18 @@ export default function ResourceSelectionForm({
     H_setSelectedResourceType(selectedResourceType);
   };
 
+  const { past_paper_show, topic_question_show, revision_notes_show } = getDisplayOptions(
+    { name: '', value: selectedEducationLevel, icon: '' },
+    { name: '', value: selectedExamBoard, icon: '' },
+    { name: '', value: selectedSubjectSubtype, icon: '' },
+    { name: '', value: selectedSubject, icon: '' },
+    { name: '', value: selectedSubjectSubtype, icon: '' },
+  );
+
   useEffect(() => {
     examBoardsRefetch();
     subjectsRefetch();
     subjectSubtypesRefetch();
-    resourceTypesRefetch();
   }, [selectedEducationLevel, selectedExamBoard, selectedSubject, selectedSubjectSubtype, selectedResourceType]);
 
   // Reset form when education level changes
@@ -164,7 +167,17 @@ export default function ResourceSelectionForm({
               {subjectSubtypes &&
                 subjectSubtypes.map((subtype) => (
                   <MenuItem key={subtype.id} value={subtype.id}>
-                    {subtype.tags?.join(' - ')}
+                    {subtype.tags
+                      ?.map((tag) => {
+                        if (tag === 'YEAR_1') {
+                          return 'AS Level';
+                        } else if (tag === 'YEAR_2') {
+                          return 'A Level';
+                        } else {
+                          return tag;
+                        }
+                      })
+                      .join(' - ')}
                   </MenuItem>
                 ))}
             </Select>
@@ -175,27 +188,13 @@ export default function ResourceSelectionForm({
             <InputLabel>Resource Type</InputLabel>
             <Select
               value={selectedResourceType}
-              disabled={
-                !selectedEducationLevel || !selectedExamBoard || !selectedSubject || !selectedSubjectSubtype || !resourceTypes
-              }
+              disabled={!selectedEducationLevel || !selectedExamBoard || !selectedSubject || !selectedSubjectSubtype}
               label="Resource Type"
               onChange={(e) => setSelectedResourceType(e.target.value)}
             >
-              {resourceTypes?.pastPapers === true && (
-                <MenuItem value={ResourceType.PAST_PAPER}>
-                  Past Paper
-                </MenuItem>
-              )}
-              {resourceTypes?.topicalQuestions === true && (
-                <MenuItem value={ResourceType.TOPIC_QUESTIONS}>
-                  Topical Questions
-                </MenuItem>
-              )}
-              {resourceTypes?.revisionNotes === true && (
-                <MenuItem value={ResourceType.REVISION_NOTES}>
-                  Revision Notes
-                </MenuItem>
-              )}
+              {past_paper_show && <MenuItem value={ResourceType.PAST_PAPER}>Past Paper</MenuItem>}
+              {topic_question_show && <MenuItem value={ResourceType.TOPIC_QUESTIONS}>Topical Questions</MenuItem>}
+              {revision_notes_show && <MenuItem value={ResourceType.REVISION_NOTES}>Revision Notes</MenuItem>}
             </Select>
           </FormControl>
 

@@ -4,52 +4,86 @@ import { EditNotifications } from '@mui/icons-material';
 import ArchiveIcon from '@mui/icons-material/Archive';
 import FileCopyIcon from '@mui/icons-material/FileCopy';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
-import NotificationsIcon from '@mui/icons-material/Notifications';
 import PersonIcon from '@mui/icons-material/Person';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { Box, Divider, IconButton, MenuItem, Typography } from '@mui/material';
-import { usePathname } from 'next/navigation';
-import { useId, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { useSession } from 'next-auth/react';
+import { useEffect, useId, useState } from 'react';
 
 import { StyledMenu } from './Navbar.style';
+import LoginModal from '../../../features/auth/login/LoginModal';
+import useGetUser from '../../../hooks/useGetUser';
 
 const Navbar = () => {
   const pathname = usePathname().split('/');
+  const router = useRouter();
+  const session = useSession();
 
-  return <Box sx={{
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: '1rem',
-  }}>
-    <Box>
-      <BreadCrumbs pathname={pathname} />
-      <Typography
+  const [openLogin, setOpenLogin] = useState(false);
+
+  const handleOpenLogin = () => {
+    setOpenLogin(true);
+  };
+
+  const handleCloseLogin = () => setOpenLogin(false);
+
+  const { data: user } = useGetUser(session?.data?.user?.email as string);
+
+  useEffect(() => {
+    if (user?.role !== 'ADMIN') {
+      handleOpenLogin();
+    }
+  }, [user]);
+
+  return (
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        marginBottom: '1rem',
+      }}
+    >
+      <Box>
+        <BreadCrumbs pathname={pathname} />
+        <Typography
+          sx={{
+            color: 'text.primary',
+            fontWeight: 'bold',
+            fontSize: '1.4rem',
+          }}
+        >
+          {pathname[pathname.length - 1].charAt(0).toUpperCase() + pathname[pathname.length - 1].slice(1)}
+        </Typography>
+      </Box>
+
+      <Box
         sx={{
+          display: 'flex',
           color: 'text.primary',
-          fontWeight: 'bold',
-          fontSize: '1.4rem',
         }}
       >
-        {pathname[pathname.length - 1].charAt(0).toUpperCase() + pathname[pathname.length - 1].slice(1)}
-      </Typography>
-    </Box>
-
-    <Box sx={{
-      display: 'flex',
-      color: 'text.primary',
-    }}>
-      <NavbarMenuIcon >
-        <PersonIcon />
-      </NavbarMenuIcon>
-      <NavbarMenuIcon >
-        <SettingsIcon />
-      </NavbarMenuIcon>
-      <NavbarMenuIcon >
+        <NavbarMenuIcon>
+          <PersonIcon />
+        </NavbarMenuIcon>
+        <NavbarMenuIcon>
+          <SettingsIcon />
+        </NavbarMenuIcon>
+        {/* <NavbarMenuIcon >
         <NotificationsIcon />
-      </NavbarMenuIcon>
+      </NavbarMenuIcon> */}
+      </Box>
+
+      <LoginModal
+        open={openLogin}
+        handleClose={handleCloseLogin}
+        onSwitchToSignUp={() => {
+          router.replace('/');
+        }}
+      />
     </Box>
-  </Box>;
+  );
 };
 
 const NavbarMenuIcon = ({ children }: { children: React.ReactNode }) => {
@@ -68,11 +102,7 @@ const NavbarMenuIcon = ({ children }: { children: React.ReactNode }) => {
 
   return (
     <>
-      <IconButton
-        onClick={handleClick}
-      >
-        {children}
-      </IconButton>
+      <IconButton onClick={handleClick}>{children}</IconButton>
 
       <StyledMenu
         id={id}
@@ -102,7 +132,6 @@ const NavbarMenuIcon = ({ children }: { children: React.ReactNode }) => {
         </MenuItem>
       </StyledMenu>
     </>
-
   );
 };
 const BreadCrumbs = ({ pathname }: { pathname: string[] }) => {
@@ -121,10 +150,8 @@ const BreadCrumbs = ({ pathname }: { pathname: string[] }) => {
             }}
             key={index}
           >
-            {path.charAt(0).toUpperCase() + path.slice(1)}{index !== pathname.length - 1 && <>
-              &nbsp;/&nbsp;
-            </>
-            }
+            {path.charAt(0).toUpperCase() + path.slice(1)}
+            {index !== pathname.length - 1 && <>&nbsp;/&nbsp;</>}
           </Typography>
         );
       })}

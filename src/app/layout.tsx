@@ -5,9 +5,9 @@ import { ThemeProvider } from '@mui/material/styles';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import './globals.css';
 
-import { MultiStepFormProvider } from '@/contexts/MultiStepperContext';
-import { SnackbarProvider } from '@/contexts/SnackbarContext';
-import theme from '@/theme/theme';
+import { MultiStepFormProvider } from '../contexts/MultiStepperContext';
+import { SnackbarProvider } from '../contexts/SnackbarContext';
+import theme from '../theme/theme';
 
 const queryClient = new QueryClient();
 

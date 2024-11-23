@@ -2,9 +2,6 @@ import { Box } from '@mui/material';
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 
-import { AppContentWrapper } from '@/components/common/Global.style';
-import ContactForm from '@/features/contact/ContactForm';
-
 import {
   ContactContainer,
   ContactHeadingTypography,
@@ -13,6 +10,8 @@ import {
   ContactStyledLinkOne,
   ContactIconHead,
 } from './Contact.style';
+import { AppContentWrapper } from '../../../components/common/Global.style';
+import ContactForm from '../../../features/contact/ContactForm';
 
 export default function ContactPage() {
   return (

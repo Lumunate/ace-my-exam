@@ -7,6 +7,7 @@ import { EffectCoverflow, Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Swiper as SwiperType } from 'swiper/types';
 
+import testimonialsData from './testimonialsData.json';
 import {
   TestimonialsAvatarNameWrapper,
   TestimonialsCard,
@@ -22,13 +23,11 @@ import {
   TestimonialsDateHead,
   TrustpilotImage,
   QuotationImageHead
-} from '@/components/swiper/testimonials-swiper/TestimonialsSwiper.style';
+} from '../../../components/swiper/testimonials-swiper/TestimonialsSwiper.style';
 import 'swiper/css';
 import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
-
-import testimonialsData from './testimonialsData.json';
 
 interface Testimonial {
   name: string;

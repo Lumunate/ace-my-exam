@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query';
 
-import { RegisterInput } from '@/types/auth';
+import { RegisterInput } from '../types/auth';
 
 export const useRegister = () => {
   return useMutation({

@@ -4,12 +4,11 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { CircularProgress } from '@mui/material';
 import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from 'react-hook-form';
 
-import { StyledTextField } from '@/components/form/Form.style';
-import { useSnackbar } from '@/contexts/SnackbarContext';
-import { signUpSchema } from '@/features/auth/sign-up/SignUpSchema';
-import { useRegister } from '@/hooks/useRegister';
-import { RegisterInput } from '@/types/auth';
-
+import { StyledTextField } from '../../../components/form/Form.style';
+import { useSnackbar } from '../../../contexts/SnackbarContext';
+import { signUpSchema } from '../../../features/auth/sign-up/SignUpSchema';
+import { useRegister } from '../../../hooks/useRegister';
+import { RegisterInput } from '../../../types/auth';
 import {
   AuthButton,
   AuthModalContainer,

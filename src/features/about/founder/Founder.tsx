@@ -1,9 +1,6 @@
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 
-import FadeIn from '@/components/animations/FadeIn';
-import SectionHeading from '@/components/section-heading/SectionHeading';
-
 import {
   FounderContent,
   FounderContentContainer,
@@ -20,6 +17,8 @@ import {
   FounderCardListText,
   FounderHeadingTwo
 } from './Founder.style';
+import FadeIn from '../../../components/animations/FadeIn';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
 
 const AboutFounder: React.FC = () => {
   const educationList = [

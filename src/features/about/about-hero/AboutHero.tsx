@@ -4,10 +4,6 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger';
 import { useEffect, useRef } from 'react';
 
-import FadeIn from '@/components/animations/FadeIn';
-import { AppContentWrapper } from '@/components/common/Global.style';
-import SectionHeading from '@/components/section-heading/SectionHeading';
-
 import {
   AboutHeroContent,
   AboutHeroContentContainer,
@@ -17,6 +13,9 @@ import {
   AboutHeroImageOverlay,
   AboutHeroWrapper,
 } from './About.style';
+import FadeIn from '../../../components/animations/FadeIn';
+import { AppContentWrapper } from '../../../components/common/Global.style';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
 
 if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);

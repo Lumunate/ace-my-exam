@@ -2,7 +2,7 @@
 
 import { useContext } from 'react';
 
-import { MultiStepFormContext } from '@/contexts/MultiStepperContext';
+import { MultiStepFormContext } from '../contexts/MultiStepperContext';
 
 const useMultiStepForm = () => {
   const context = useContext(MultiStepFormContext);

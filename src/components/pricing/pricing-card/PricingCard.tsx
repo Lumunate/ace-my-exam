@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import { Button } from '@/components/buttons/Button.style';
-import { PricingCardContentWrapper, PricingCardImageWrapper, PricingCardList, PricingCardListItem, PricingCardListItemText, PricingCardListItemTextPricing, PricingCardTextHead, PricingCardTitle, PricingCardWrapper } from '@/components/pricing/pricing-card/PricingCard.style';
+import { Button } from '../../buttons/Button.style';
+import { PricingCardContentWrapper, PricingCardImageWrapper, PricingCardList, PricingCardListItem, PricingCardListItemText, PricingCardListItemTextPricing, PricingCardTextHead, PricingCardTitle, PricingCardWrapper } from '../../pricing/pricing-card/PricingCard.style';
 
 interface CardProps {
   imageSrc: string;

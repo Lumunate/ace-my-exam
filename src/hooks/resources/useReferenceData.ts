@@ -1,9 +1,10 @@
 'use client';
-import {useQuery} from 'react-query';
+import { useMutation, useQuery } from 'react-query';
 
-import {IStepOption} from '@/contexts/MultiStepperContext';
-import {IReferenceData} from '@/services/subject';
-import {EducationLevel, ExamBoards, Subjects} from '@/types/resources';
+import {IStepOption} from '../../contexts/MultiStepperContext';
+import {IReferenceData} from '../../services/subject';
+import { ICreateContent, IEditContent } from '../../types/content';
+import {EducationLevel, ExamBoards, Subjects} from '../../types/resources';
 
 export const educationLevelOptions: IStepOption[] = [
   { name: 'A levels', icon: '/resources/ALevels.svg', value: EducationLevel.A_LEVEL },
@@ -44,7 +45,9 @@ const fetchReferenceData = async (params: {
 };
 
 const boardData: Record<string, IStepOption> = {
+  NONE: { name: 'NONE', icon: '', value: ExamBoards.NONE },
   AQA: { name: 'AQA', icon: '/resources/AQA-LOGO.svg', value: ExamBoards.AQA },
+  OXFORD_AQA: { name: 'Oxford AQA', icon: '/resources/OxfordAQA.svg', value: ExamBoards.OXFORD_AQA },
   CAMBRIDGE: { name: 'Cambridge', icon: '/resources/CIE.svg', value: ExamBoards.CAMBRIDGE },
   EDEXCEL: { name: 'Edexcel', icon: '/resources/edexcel-Logo.svg', value: ExamBoards.EDEXCEL },
   EDEXCEL_INTERNATIONAL: {
@@ -54,6 +57,8 @@ const boardData: Record<string, IStepOption> = {
   },
   ISEB: { name: 'ISEB', icon: '/resources/ISEB.svg', value: ExamBoards.ISEB },
   OCR: { name: 'OCR', icon: '/resources/OCR-logo.svg', value: ExamBoards.OCR },
+  WJEC: { name: 'WJEC', icon: '/resources/wjec.svg', value: ExamBoards.WJEC }, 
+  OCR_MEI: { name: 'OCR_MEI', icon: '/resources/OCR-MEI.svg', value: ExamBoards.OCR_MEI }, 
   OCR_21: { name: 'OCR-21', icon: '/resources/ocr-21st.png', value: ExamBoards.OCR_21 },
   OCR_A: { name: 'OCR-A', icon: '/resources/ocr-a.png', value: ExamBoards.OCR_A },
   OCR_B: { name: 'OCR-B', icon: '/resources/ocr-b.png', value: ExamBoards.OCR_B },
@@ -81,6 +86,7 @@ const subjectsData: Record<string, IStepOption> = {
   Physics: { name: 'Chemistry', icon: '/resources/chemistry.svg', value: Subjects.CHEMISTRY },
   Chemistry: { name: 'Physics', icon: '/resources/Physics.svg', value: Subjects.PHYSICS },
   Biology: { name: 'Biology', icon: '/resources/biology.svg', value: Subjects.BIOLOGY },
+  Science: { name: 'Science', icon: '/resources/Science.svg', value: Subjects.SCIENCE },
   'Further Math': { name: 'Further Maths', icon: '/resources/Furthermaths.svg', value: Subjects.FURTHER_MATH },
 };
 
@@ -153,35 +159,46 @@ export const useGetValidResources = (educationLevel: string, examBoard: string, 
 
 // ============================== POST ==============================
 
-// interface INewSubject {
-//   // TODO Define the structure of your new subject here
-// }
+export const useAddContent = () => {
+  return useMutation({
+    mutationFn: async (data: ICreateContent) => {
+      const response = await fetch('/api/resources/reference-data', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-// const createSubject = async (newSubject: INewSubject): Promise<IReferenceData> => {
-//   const response = await fetch('/api/resources/reference-data', {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//     },
-//     body: JSON.stringify(newSubject),
-//   });
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
 
-//   if (!response.ok) {
-//     throw new Error('Network response was not ok');
-//   }
+      return response.json();
+    },
+    onSuccess: () => {},
+    onError: () => {},
+  });
+};
 
-//   const data = await response.json();
+export const useEditContent = () => {
+  return useMutation({
+    mutationFn: async (data: IEditContent) => {
+      const response = await fetch('/api/resources/reference-data', {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
 
-//   return data;
-// };
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
 
-// export const useCreateSubject = () => {
-//   const queryClient = useQueryClient();
-
-//   return useMutation<IReferenceData, Error, INewSubject>({
-//     mutationFn: createSubject,
-//     onSuccess: () => {
-//       queryClient.invalidateQueries('referenceData');
-//     },
-//   });
-// };
+      return response.json();
+    },
+    onSuccess: () => {},
+    onError: () => {},
+  });
+};

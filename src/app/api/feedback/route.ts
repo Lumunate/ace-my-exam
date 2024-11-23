@@ -1,12 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 
-import { createFeedback } from '@/services/feedback';
-import { feedbackSchema } from '@/types/feedback';
-import { initializeDataSource } from '@/utils/typeorm';
+import { createFeedback } from '../../../services/feedback';
+import { feedbackSchema } from '../../../types/feedback';
 
 export async function POST(request: NextRequest) {
-  await initializeDataSource();
   try {
     const body = await request.json();
     const validatedData = feedbackSchema.parse(body);

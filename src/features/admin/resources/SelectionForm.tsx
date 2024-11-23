@@ -1,12 +1,12 @@
 'use client';
 import { Box } from '@mui/material';
+import { Content } from '@prisma/client';
 import React, { useState } from 'react';
 
-import type { Content } from '@/entities';
-import { ResourceType } from '@/types/resources';
-
 import ResourceSelectionForm from './ResourceSelectionForm';
+import { ResourceType } from '../../../types/resources';
 import { AdminSectionInnerSpacer } from '../Admin.style';
+import AddResourceForm from './AddResourceForm';
 import ContentSelectionForm from './ContentSelectionForm';
 
 const SelectionForm = () => {
@@ -30,6 +30,7 @@ const SelectionForm = () => {
 
       <AdminSectionInnerSpacer />
 
+      <AddResourceForm selectedSubtopic={_selectedSubtopic} selectedSubjectSubtype={selectedSubjectSubtype} selectedResourceType={selectedResourceType as ResourceType} />
     </Box>
   );
 };

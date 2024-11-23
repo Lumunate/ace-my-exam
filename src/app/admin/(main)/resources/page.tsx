@@ -6,8 +6,8 @@ import {
   AdminSectionsLayout,
   AdminSectionSubHeading,
   AdminSectionWrapper,
-} from '@/features/admin/Admin.style';
-import SelectionForm from '@/features/admin/resources/SelectionForm';
+} from '../../../../features/admin/Admin.style';
+import SelectionForm from '../../../../features/admin/resources/SelectionForm';
 
 const Page = () => {
   return (

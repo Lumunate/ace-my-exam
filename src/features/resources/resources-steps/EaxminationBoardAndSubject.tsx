@@ -1,11 +1,10 @@
 import { Box } from '@mui/material';
-import Grid from '@mui/material/Grid';
+import Grid from '@mui/material/Grid2';
 import React from 'react';
-
-import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
 
 import ExaminationBoard from './ExaminationBoard';
 import Subject from './Subject';
+import { ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
 
 const ExaminationBoardAndSubject = () => {
   return (
@@ -13,12 +12,18 @@ const ExaminationBoardAndSubject = () => {
       sx={{
         width: '100%',
       }}
-      gap={2}
       justifyContent="space-between"
       container
       columns={12}
+      columnSpacing={'30px'}
     >
-      <Grid xs={5}>
+      <Grid
+        size={{
+          xs: 12,
+          sm: 6,
+          xl: 5
+        }}
+      >
         <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
           <ResourcesSubHeading>Examination Board</ResourcesSubHeading>
           <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
@@ -26,12 +31,17 @@ const ExaminationBoardAndSubject = () => {
           </ResourcesPara>
         </Box>
         <ExaminationBoard />
-      </Grid>
-      <Grid xs={5}>
+      </Grid><Grid
+        size={{
+          xs: 12,
+          sm: 6,
+          xl: 5
+        }}
+      >
         <Box sx={{ my: { xs: '20px', sm: '30px' } }}>
           <ResourcesSubHeading>Subject</ResourcesSubHeading>
           <ResourcesPara variant="body1" sx={{ textAlign: 'start' }}>
-            Select the Subject
+              Select the Subject
           </ResourcesPara>
         </Box>
         <Subject />

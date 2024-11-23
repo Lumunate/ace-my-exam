@@ -6,15 +6,6 @@ import { useRouter } from 'next/navigation';
 import { signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 
-import { Button } from '@/components/buttons/Button.style';
-import { AppContentWrapper } from '@/components/common/Global.style';
-import { IStepOption } from '@/contexts/MultiStepperContext';
-import LoginModal from '@/features/auth/login/LoginModal';
-import SignUpModal from '@/features/auth/sign-up/SignUpModal';
-import { educationLevelOptions } from '@/hooks/resources/useReferenceData';
-import useMultiStepForm from '@/hooks/useMultiStepper';
-import { EducationLevel } from '@/types/resources';
-
 import {
   CommonMenu,
   DropdownMenuWrapper,
@@ -32,6 +23,14 @@ import {
   AvatarDropdownMenuWrapper,
   DropdownIcon,
 } from './Navbar.style';
+import { Button } from '../../components/buttons/Button.style';
+import { AppContentWrapper } from '../../components/common/Global.style';
+import { IStepOption } from '../../contexts/MultiStepperContext';
+import LoginModal from '../../features/auth/login/LoginModal';
+import SignUpModal from '../../features/auth/sign-up/SignUpModal';
+import { educationLevelOptions } from '../../hooks/resources/useReferenceData';
+import useMultiStepForm from '../../hooks/useMultiStepper';
+import { EducationLevel } from '../../types/resources';
 
 const pages = [
   { name: 'Home', link: '/' },

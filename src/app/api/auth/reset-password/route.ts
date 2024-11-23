@@ -1,13 +1,11 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 
-import { resetPassword } from '@/services/auth';
-import { resetPasswordSchema } from '@/types/auth';
-import AuthError from '@/types/auth-error';
-import { initializeDataSource } from '@/utils/typeorm';
+import { resetPassword } from '../../../../services/auth';
+import { resetPasswordSchema } from '../../../../types/auth';
+import AuthError from '../../../../types/auth-error';
 
 export async function POST(request: NextRequest) {
-  await initializeDataSource();
 
   try {
     const body = await request.json();

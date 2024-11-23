@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-import { ITestimonials } from '@/types/testimonials';
+import { ITestimonials } from '../types/testimonials';
 
 const fetchTestimonials = async (): Promise<ITestimonials[]> => {
   const response = await fetch('/api/testimonials');

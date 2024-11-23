@@ -1,18 +1,13 @@
-import Feedback from '@/entities/feedback';
-import AppDataSource from '@/utils/typeorm';
+import { Feedback } from '@prisma/client';
 
-export const FeedbackRepository = AppDataSource.getRepository(Feedback).extend({
-  async createFeedback(feedbackData: Omit<Feedback, 'id' | 'createdAt'>) {
-    const feedback = this.create(feedbackData);
+import prisma from '../utils/prisma';
 
-    await this.save(feedback);
+export async function createFeedback(feedbackData: Omit<Feedback, 'id' | 'createdAt'>) {
+  return prisma.feedback.create({
+    data: feedbackData,
+  });
+}
 
-    return feedback;
-  },
-
-  async findAllFeedbacks(): Promise<Feedback[]> {
-    const feedbacks = await this.find();
-
-    return feedbacks;
-  },
-});
+export async function findAllFeedbacks() {
+  return prisma.feedback.findMany();
+}

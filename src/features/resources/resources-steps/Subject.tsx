@@ -5,12 +5,11 @@ import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 
-import { ResourcesCardTypography } from '@/app/(main)/resources/Resources.style';
-import { useGetUniqueSubjects } from '@/hooks/resources/useReferenceData';
-import useMultiStepForm from '@/hooks/useMultiStepper';
-
 import { ResourcesCardSmall } from '../ResourcesSteps.style';
 import { StepsDisabled, StepsLoader } from './StepsLoader';
+import { ResourcesCardTypography } from '../../../app/(main)/resources/Resources.style';
+import { useGetUniqueSubjects } from '../../../hooks/resources/useReferenceData';
+import useMultiStepForm from '../../../hooks/useMultiStepper';
 
 const Subject: React.FC = () => {
   const { selectOption, selectedOptions } = useMultiStepForm();
@@ -32,40 +31,38 @@ const Subject: React.FC = () => {
   return (
     <Grid
       container
-      spacing={'20px'}
+      rowSpacing={'17px'} columnSpacing={'24px'}
       sx={{ mb: '40px' }}
-      columns={{
-        sm: 6,
-        md: 12,
-      }}
+      columns={12}
     >
       {subjectOptions.map((subject) => (
         <Grid
           size={{
             xs: 12,
-            sm: 6,
+            lg: 6,
           }}
           key={subject.value}
         >
           <ResourcesCardSmall
+            contentAlign={'start'}
             onClick={() => selectOption('subject', subject)}
             sx={{
-              outline: selectedSubject?.value === subject.value ? '2px solid #DA9694' : 'unset',
+              outline: selectedSubject?.value === subject.value ? '1px solid #DA9694' : 'unset',
             }}
           >
             <Box sx={{
               display: 'flex',
-              justifyContent: 'center',
               alignItems: 'center',
+              gap: '8px',
             }}>
               <Image
                 src={subject.icon}
                 alt={subject.name ?? ''}
-                width={82}
-                height={22}
+                width={16}
+                height={16}
               />
 
-              <ResourcesCardTypography variant="body1" sx={{ ml: '1px', textWrap: 'nowrap' }}>
+              <ResourcesCardTypography variant="body1" sx={{ ml: '4px', textWrap: 'nowrap' }}>
                 {subject.name}
               </ResourcesCardTypography>
             </Box>
