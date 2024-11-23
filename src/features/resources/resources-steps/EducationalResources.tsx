@@ -8,11 +8,10 @@ import React from 'react';
 import {
   ResourcesPara,
   ResourcesSubHeading,
-} from '@/app/(main)/resources/Resources.style';
-import { IStepOption } from '@/contexts/MultiStepperContext';
-import { educationLevelOptions } from '@/hooks/resources/useReferenceData';
-import useMultiStepForm from '@/hooks/useMultiStepper';
-
+} from '../../../app/(main)/resources/Resources.style';
+import { IStepOption } from '../../../contexts/MultiStepperContext';
+import { educationLevelOptions } from '../../../hooks/resources/useReferenceData';
+import useMultiStepForm from '../../../hooks/useMultiStepper';
 import { ResourcesCard, ResourcesCardTitle } from '../ResourcesSteps.style';
 
 const EducationalResources: React.FC = () => {

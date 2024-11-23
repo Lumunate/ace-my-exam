@@ -9,13 +9,12 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-import { Button } from '@/components/buttons/Button.style';
-import { CustomFormControl, StyledSelectField, StyledTextField, CustomInputLabel } from '@/components/form/Form.style';
-import { useSnackbar } from '@/contexts/SnackbarContext';
-import { useSubmitFeedbackForm } from '@/hooks/useFeedbackForm';
-import { feedbackSchema, IFeedback } from '@/types/feedback';
-
 import { FeedbackFormContainer } from './FeedbackFrom.style';
+import { Button } from '../../components/buttons/Button.style';
+import { CustomFormControl, StyledSelectField, StyledTextField, CustomInputLabel } from '../../components/form/Form.style';
+import { useSnackbar } from '../../contexts/SnackbarContext';
+import { useSubmitFeedbackForm } from '../../hooks/useFeedbackForm';
+import { feedbackSchema, IFeedback } from '../../types/feedback';
 
 const defaultValues: IFeedback = {
   name: '',

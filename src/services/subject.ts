@@ -1,6 +1,6 @@
 import { Prisma, Subject } from '@prisma/client';
 
-import * as SubjectRepository from '@/repositories/subject';
+import * as SubjectRepository from '../repositories/subject';
 
 export async function getAllSubjectsWithContents(): Promise<Subject[]> {
   return SubjectRepository.findAllWithContents();

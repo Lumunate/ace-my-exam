@@ -1,10 +1,10 @@
 
 import { ContentType } from '@prisma/client';
 
-import { IResourceData } from '@/app/api/resources/route';
-import * as ContentRepository from '@/repositories/content';
-import * as PastPaperRepository from '@/repositories/past-paper';
-import { ICreateContent } from '@/types/content';
+import { IResourceData } from '../app/api/resources/route';
+import * as ContentRepository from '../repositories/content';
+import * as PastPaperRepository from '../repositories/past-paper';
+import { ICreateContent } from '../types/content';
 
 export async function createFullChapterStructure(data: {
   subject_id: number;

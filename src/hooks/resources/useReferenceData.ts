@@ -1,10 +1,10 @@
 'use client';
 import { useMutation, useQuery } from 'react-query';
 
-import {IStepOption} from '@/contexts/MultiStepperContext';
-import {IReferenceData} from '@/services/subject';
-import { ICreateContent, IEditContent } from '@/types/content';
-import {EducationLevel, ExamBoards, Subjects} from '@/types/resources';
+import {IStepOption} from '../../contexts/MultiStepperContext';
+import {IReferenceData} from '../../services/subject';
+import { ICreateContent, IEditContent } from '../../types/content';
+import {EducationLevel, ExamBoards, Subjects} from '../../types/resources';
 
 export const educationLevelOptions: IStepOption[] = [
   { name: 'A levels', icon: '/resources/ALevels.svg', value: EducationLevel.A_LEVEL },

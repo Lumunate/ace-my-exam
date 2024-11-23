@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { createContent } from '@/services/content';
-import {  getEducationOptionBySelection, IReferenceData } from '@/services/subject';
-import { createContentSchema } from '@/types/content';
+import { createContent } from '../../../../services/content';
+import {  getEducationOptionBySelection, IReferenceData } from '../../../../services/subject';
+import { createContentSchema } from '../../../../types/content';
 
 export async function GET(request: NextRequest) {
   try {

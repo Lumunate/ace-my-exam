@@ -5,8 +5,6 @@ import { PastPaper } from '@prisma/client';
 import Image from 'next/image';
 import React from 'react';
 
-import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
-
 import {
   ChapterHeading,
   CollapseContainer,
@@ -15,6 +13,7 @@ import {
   RessourcesTableHeading,
   SubtopicHeading,
 } from './ResourceTables.style';
+import { ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
 
 const PastPapersTable: React.FC<{ data: PastPaper[]; isLoading: boolean }> = ({ data }) => {
 

@@ -1,9 +1,6 @@
 import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 
-import FadeIn from '@/components/animations/FadeIn';
-import SectionHeading from '@/components/section-heading/SectionHeading';
-
 import {
   AboutWrapper,
   AboutImgHead,
@@ -17,6 +14,8 @@ import {
   AboutCardTwoHead,
   AboutLink,
 } from './About.style';
+import FadeIn from '../../../components/animations/FadeIn';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
 
 interface AboutCardProps {
   title: string;

@@ -3,8 +3,8 @@
 import { Box } from '@mui/material';
 import { useRouter } from 'next/navigation';
 
-import { Button } from '@/components/buttons/Button.style';
-import SectionHeading from '@/components/section-heading/SectionHeading';
+import { Button } from '../../../components/buttons/Button.style';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
 import {
   ResourcesWrapper,
   ResourcesHeading,
@@ -15,8 +15,8 @@ import {
   ResourcesImage,
   ResourcesImageOverlay,
   ResourcesCardSubHeading
-} from '@/features/home/resources/Resources.style';
-import useMultiStepForm from '@/hooks/useMultiStepper';
+} from '../../../features/home/resources/Resources.style';
+import useMultiStepForm from '../../../hooks/useMultiStepper';
 
 // Define the StepKey type for steps
 type StepKey = 1 | 1.5 | 2 | 3 | 4 | 5;

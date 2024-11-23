@@ -1,7 +1,7 @@
 import { ContentType, ContentLevel } from '@prisma/client';
 
-import { ICreateContent } from '@/types/content';
-import prisma from '@/utils/prisma';
+import { ICreateContent } from '../types/content';
+import prisma from '../utils/prisma';
 
 export async function findOneBy(id: number) {
   return await prisma.content.findUnique({

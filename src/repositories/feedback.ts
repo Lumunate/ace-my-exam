@@ -1,6 +1,6 @@
 import { Feedback } from '@prisma/client';
 
-import prisma from '@/utils/prisma';
+import prisma from '../utils/prisma';
 
 export async function createFeedback(feedbackData: Omit<Feedback, 'id' | 'createdAt'>) {
   return prisma.feedback.create({

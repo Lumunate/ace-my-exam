@@ -4,9 +4,6 @@ import { Box } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 
-import { ResourcesPara, ResourcesSubHeading } from '@/app/(main)/resources/Resources.style';
-import { ContentWithChildren } from '@/types/content';
-
 import {
   ChapterHeading,
   CollapseContainer,
@@ -15,6 +12,8 @@ import {
   RessourcesTableHeading,
   SubtopicHeading,
 } from './ResourceTables.style';
+import { ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
+import { ContentWithChildren } from '../../../types/content';
 
 const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: boolean }> = ({ data }) => {
   const handleDownload = (url: string) => {

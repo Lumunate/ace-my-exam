@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-import LoginModal from '@/features/auth/login/LoginModal';
-import SignUpModal from '@/features/auth/sign-up/SignUpModal';
+import LoginModal from '../../features/auth/login/LoginModal';
+import SignUpModal from '../../features/auth/sign-up/SignUpModal';
 
 const AuthModals: React.FC = () => {
   const [isLoginOpen, setIsLoginOpen] = useState(false);

@@ -1,7 +1,7 @@
-import { AppContentWrapper } from '@/components/common/Global.style';
-import ProcessCardSlider from '@/components/process-card-slider/ProcessCardSlider';
-import SectionHeading from '@/components/section-heading/SectionHeading';
-import { ProcessHeading, ProcessWrapper, ProcessMain } from '@/features/home/process/Process.style';
+import { AppContentWrapper } from '../../../components/common/Global.style';
+import ProcessCardSlider from '../../../components/process-card-slider/ProcessCardSlider';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
+import { ProcessHeading, ProcessWrapper, ProcessMain } from '../../../features/home/process/Process.style';
 
 const Process: React.FC = () => {
   return (

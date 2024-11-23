@@ -5,12 +5,11 @@ import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 
-import { ResourcesCardTypography } from '@/app/(main)/resources/Resources.style';
-import { useGetUniqueSubjects } from '@/hooks/resources/useReferenceData';
-import useMultiStepForm from '@/hooks/useMultiStepper';
-
 import { ResourcesCardSmall } from '../ResourcesSteps.style';
 import { StepsDisabled, StepsLoader } from './StepsLoader';
+import { ResourcesCardTypography } from '../../../app/(main)/resources/Resources.style';
+import { useGetUniqueSubjects } from '../../../hooks/resources/useReferenceData';
+import useMultiStepForm from '../../../hooks/useMultiStepper';
 
 const Subject: React.FC = () => {
   const { selectOption, selectedOptions } = useMultiStepForm();

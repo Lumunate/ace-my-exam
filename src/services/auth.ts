@@ -1,9 +1,9 @@
 import { hash } from 'bcrypt';
 
-import * as UserRepository from '@/repositories/user';
-import { RegisterInput } from '@/types/auth';
-import AuthError, { AuthErrorType } from '@/types/auth-error';
-import prisma from '@/utils/prisma';
+import * as UserRepository from '../repositories/user';
+import { RegisterInput } from '../types/auth';
+import AuthError, { AuthErrorType } from '../types/auth-error';
+import prisma from '../utils/prisma';
 
 export async function registerUser(userData: RegisterInput) {
   if (await UserRepository.getUserByEmail(userData.email)) {

@@ -1,7 +1,7 @@
 import { PastPaperResourceType } from '@prisma/client';
 
-import { IPastPaperData } from '@/types/past-paper';
-import prisma from '@/utils/prisma';
+import { IPastPaperData } from '../types/past-paper';
+import prisma from '../utils/prisma';
 
 export async function createWithResources(data: IPastPaperData) {
   return prisma.$transaction(async (tx) => {

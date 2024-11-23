@@ -2,10 +2,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, styled, TextField, Typography } from '@mui/material';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { useSnackbar } from '@/contexts/SnackbarContext';
-import { useUploadPastPapers } from '@/hooks/resources/useUploadResources';
-import { IPastPaperData, pastPaperSchema } from '@/types/past-paper';
-
+import { useSnackbar } from '../../../../contexts/SnackbarContext';
+import { useUploadPastPapers } from '../../../../hooks/resources/useUploadResources';
+import { IPastPaperData, pastPaperSchema } from '../../../../types/past-paper';
 import FileUpload from '../FileUpload';
 
 const FormContainer = styled(Box)({

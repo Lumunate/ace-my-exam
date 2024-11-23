@@ -1,6 +1,6 @@
 import { useMutation } from 'react-query';
 
-import { IFeedback } from '@/types/feedback';
+import { IFeedback } from '../types/feedback';
 
 export const useSubmitFeedbackForm = () => {
   return useMutation({

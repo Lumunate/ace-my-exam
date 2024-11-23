@@ -2,9 +2,8 @@ import { Breadcrumbs } from '@mui/material';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 
-import useMultiStepForm from '@/hooks/useMultiStepper';
-
 import { BreadcrumbsHeading } from './ResourcesSteps.style';
+import useMultiStepForm from '../../hooks/useMultiStepper';
 
 const ResourcesBreadcrumbs: React.FC<{ permanentBreadcrumbs?: { key: number; title: string }[] }> = ({ permanentBreadcrumbs }) => {
   const { breadcrumbs, setBreadcrumbs, selectedOptions } = useMultiStepForm();

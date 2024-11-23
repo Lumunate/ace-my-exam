@@ -7,13 +7,12 @@ import { AccordionSummary, Box, IconButton, styled, Typography } from '@mui/mate
 import { Content, ContentLevel } from '@prisma/client';
 import React, { useEffect, useState } from 'react';
 
-import { CollapseContainer, InnerCollapse } from '@/features/resources/resources-tables/ResourceTables.style';
-import { useGetResources } from '@/hooks/resources/useResources';
-import { ContentWithChildren } from '@/types/content';
-import { ResourceType } from '@/types/resources';
-
 import CreateContentForm from './CreateContentFormModal';
 import EditContentFormModal from './EditContentFormModal';
+import { CollapseContainer, InnerCollapse } from '../../../features/resources/resources-tables/ResourceTables.style';
+import { useGetResources } from '../../../hooks/resources/useResources';
+import { ContentWithChildren } from '../../../types/content';
+import { ResourceType } from '../../../types/resources';
 
 interface ContentSelectionFormProps {
   subject: string;
@@ -42,7 +41,7 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, re
           <AddIcon />
         </IconButton>
       </Box>
-      {data.chapters?.map((child) => (
+      {data.chapters?.map((child: ContentWithChildren) => (
         <RecursiveContentRender key={child.id} setSelectedSubtopic={setSelectedSubtopic} data={child} />
       ))}
 

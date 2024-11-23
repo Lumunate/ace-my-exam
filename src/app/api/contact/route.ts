@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 
-import { createContact } from '@/services/contact';
-import { contactSchema } from '@/types/contact';
+import { createContact } from '../../../services/contact';
+import { contactSchema } from '../../../types/contact';
 
 export async function POST(request: NextRequest) {
   

@@ -6,7 +6,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
-import { useEditContent } from '@/hooks/resources/useReferenceData';
+import { useEditContent } from '../../../hooks/resources/useReferenceData';
 
 interface EditContentFormModalProps {
   open: boolean;

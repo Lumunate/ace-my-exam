@@ -1,8 +1,8 @@
 import { useMutation } from 'react-query';
 
-import { IPastPaperData } from '@/types/past-paper';
-import { IRevisionNoteData } from '@/types/revision-note';
-import { ITopicalQuestionData } from '@/types/topical-qeustion';
+import { IPastPaperData } from '../../types/past-paper';
+import { IRevisionNoteData } from '../../types/revision-note';
+import { ITopicalQuestionData } from '../../types/topical-qeustion';
 
 export const useUploadRevisionNotes = () => {
   return useMutation({

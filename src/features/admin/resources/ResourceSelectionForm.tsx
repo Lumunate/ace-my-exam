@@ -2,14 +2,14 @@
 import { Box, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
-import { getDisplayOptions } from '@/features/resources/resources-steps/ResourceType';
+import { getDisplayOptions } from '../../../features/resources/resources-steps/ResourceType';
 import {
   useGetEducationLevels,
   useGetExamBoards,
   useGetSubjects,
   useGetUniqueSubjects,
-} from '@/hooks/resources/useReferenceData';
-import { ResourceType } from '@/types/resources';
+} from '../../../hooks/resources/useReferenceData';
+import { ResourceType } from '../../../types/resources';
 
 interface IResourceSelectionFormProps {
   H_selectedSubjectSubtype: string;

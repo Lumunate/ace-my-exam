@@ -2,10 +2,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, styled, TextField, Typography } from '@mui/material';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { useSnackbar } from '@/contexts/SnackbarContext';
-import { useUploadRevisionNotes } from '@/hooks/resources/useUploadResources';
-import { IRevisionNoteData, revisionNoteSchema } from '@/types/revision-note';
-
+import { useSnackbar } from '../../../../contexts/SnackbarContext';
+import { useUploadRevisionNotes } from '../../../../hooks/resources/useUploadResources';
+import { IRevisionNoteData, revisionNoteSchema } from '../../../../types/revision-note';
 import FileUpload from '../FileUpload';
 
 const FormContainer = styled(Box)({

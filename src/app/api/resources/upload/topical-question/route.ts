@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 
-import { addTopicalQuestion } from '@/services/topical-question';
-import { topicalQuestionSchema } from '@/types/topical-qeustion';
+import { addTopicalQuestion } from '../../../../../services/topical-question';
+import { topicalQuestionSchema } from '../../../../../types/topical-qeustion';
 
 export async function POST(request: NextRequest) {
   try {

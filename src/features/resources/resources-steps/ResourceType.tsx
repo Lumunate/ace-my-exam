@@ -5,12 +5,11 @@ import Grid from '@mui/material/Grid2';
 import Image from 'next/image';
 import React, { useEffect } from 'react';
 
-import { ResourcesCardTypography } from '@/app/(main)/resources/Resources.style';
-import { IStepOption } from '@/contexts/MultiStepperContext';
-import { useGetValidResources } from '@/hooks/resources/useReferenceData';
-import useMultiStepForm from '@/hooks/useMultiStepper';
-import { AgeGroups, EducationLevel, ResourceType as IResourceType, Subjects } from '@/types/resources';
-
+import { ResourcesCardTypography } from '../../../app/(main)/resources/Resources.style';
+import { IStepOption } from '../../../contexts/MultiStepperContext';
+import { useGetValidResources } from '../../../hooks/resources/useReferenceData';
+import useMultiStepForm from '../../../hooks/useMultiStepper';
+import { AgeGroups, EducationLevel, ResourceType as IResourceType, Subjects } from '../../../types/resources';
 import { ResourcesCardSmall } from '../ResourcesSteps.style';
 
 const resourceTypes: Record<string, IStepOption> = {

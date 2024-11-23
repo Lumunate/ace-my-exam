@@ -1,7 +1,7 @@
 import { Feedback } from '@prisma/client';
 
-import * as FeedbackRepository from '@/repositories/feedback';
-import { ITestimonials } from '@/types/testimonials';
+import * as FeedbackRepository from '../repositories/feedback';
+import { ITestimonials } from '../types/testimonials';
 
 export async function getTestimonials() {
   const feedbacks = await FeedbackRepository.findAllFeedbacks();

@@ -11,10 +11,9 @@ import { usePathname, useRouter } from 'next/navigation';
 import { useSession } from 'next-auth/react';
 import { useEffect, useId, useState } from 'react';
 
-import LoginModal from '@/features/auth/login/LoginModal';
-import useGetUser from '@/hooks/useGetUser';
-
 import { StyledMenu } from './Navbar.style';
+import LoginModal from '../../../features/auth/login/LoginModal';
+import useGetUser from '../../../hooks/useGetUser';
 
 const Navbar = () => {
   const pathname = usePathname().split('/');

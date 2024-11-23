@@ -4,8 +4,8 @@ import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button } 
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 
-import { useAddContent } from '@/hooks/resources/useReferenceData';
-import { createContentSchema } from '@/types/content';
+import { useAddContent } from '../../../hooks/resources/useReferenceData';
+import { createContentSchema } from '../../../types/content';
 
 type CreateContentFormProps = {
   open: boolean;

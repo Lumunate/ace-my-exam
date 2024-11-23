@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 
-import { createFeedback } from '@/services/feedback';
-import { feedbackSchema } from '@/types/feedback';
+import { createFeedback } from '../../../services/feedback';
+import { feedbackSchema } from '../../../types/feedback';
 
 export async function POST(request: NextRequest) {
   try {

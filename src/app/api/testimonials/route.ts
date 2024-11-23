@@ -1,7 +1,7 @@
 import { NextURL } from 'next/dist/server/web/next-url';
 import { NextRequest, NextResponse } from 'next/server';
 
-import { getTestimonials } from '@/services/testimonials';
+import { getTestimonials } from '../../../services/testimonials';
 
 function getQueryParams(url: NextURL): { [key: string]: string } {
   const searchParams = url.searchParams;

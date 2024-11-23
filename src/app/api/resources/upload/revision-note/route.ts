@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import {  ZodError } from 'zod';
 
-import { addRevisionNote } from '@/services/revision-note';
-import { revisionNoteSchema } from '@/types/revision-note';
+import { addRevisionNote } from '../../../../../services/revision-note';
+import { revisionNoteSchema } from '../../../../../types/revision-note';
 
 export async function POST(request: NextRequest) {
   try {

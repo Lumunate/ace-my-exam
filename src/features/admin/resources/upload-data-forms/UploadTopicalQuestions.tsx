@@ -2,10 +2,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, styled, TextField, Typography } from '@mui/material';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
-import { useSnackbar } from '@/contexts/SnackbarContext';
-import { useUploadTopicalQuestions } from '@/hooks/resources/useUploadResources';
-import { ITopicalQuestionData, topicalQuestionSchema } from '@/types/topical-qeustion';
-
+import { useSnackbar } from '../../../../contexts/SnackbarContext';
+import { useUploadTopicalQuestions } from '../../../../hooks/resources/useUploadResources';
+import { ITopicalQuestionData, topicalQuestionSchema } from '../../../../types/topical-qeustion';
 import FileUpload from '../FileUpload';
 
 const FormContainer = styled(Box)({

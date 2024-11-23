@@ -1,6 +1,6 @@
 import { useQuery } from 'react-query';
 
-import { IResourceData } from '@/app/api/resources/route';
+import { IResourceData } from '../../app/api/resources/route';
 
 const fetchResources = async (subjectId: number) => {
   const response = await fetch(`/api/resources?subjectId=${subjectId}`);

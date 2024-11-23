@@ -2,8 +2,8 @@ export const dynamic = 'force-dynamic';
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError, ZodIssueCode } from 'zod';
 
-import { verifyUser } from '@/services/auth';
-import AuthError from '@/types/auth-error';
+import { verifyUser } from '../../../../services/auth';
+import AuthError from '../../../../types/auth-error';
 
 export async function GET(request: NextRequest) {
   try {

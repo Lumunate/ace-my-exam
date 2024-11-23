@@ -1,7 +1,7 @@
 import { ContentType } from '@prisma/client';
 
-import { IRevisionNoteData } from '@/types/revision-note';
-import prisma from '@/utils/prisma';
+import { IRevisionNoteData } from '../types/revision-note';
+import prisma from '../utils/prisma';
 
 export async function createWithResource(data: IRevisionNoteData) {
   return prisma.$transaction(async (tx) => {

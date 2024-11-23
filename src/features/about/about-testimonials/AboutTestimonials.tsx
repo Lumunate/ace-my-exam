@@ -1,14 +1,13 @@
 import Grid from '@mui/material/Grid2';
 
-import { Button } from '@/components/buttons/Button.style';
-import SectionHeading from '@/components/section-heading/SectionHeading';
-import AboutTestimonialsSwiper from '@/components/swiper/testimonials-swiper/AboutTestimonialsSwiper';
-
 import {
   AboutTestimonialsWrapper,
   AboutTestimonialsHeading,
   AboutTestimonialsPara
 } from './AboutTestimonials.style';
+import { Button } from '../../../components/buttons/Button.style';
+import SectionHeading from '../../../components/section-heading/SectionHeading';
+import AboutTestimonialsSwiper from '../../../components/swiper/testimonials-swiper/AboutTestimonialsSwiper';
 
 const AboutTestimonials: React.FC = () => {
   return (

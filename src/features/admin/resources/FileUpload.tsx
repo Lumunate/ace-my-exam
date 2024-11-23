@@ -8,7 +8,7 @@ import {
 import { styled } from '@mui/material/styles';
 import React, { useState, useCallback, useEffect } from 'react';
 
-import { useSnackbar } from '@/contexts/SnackbarContext';
+import { useSnackbar } from '../../../contexts/SnackbarContext';
 // Types
 interface CloudinaryUploadResponse {
   secure_url: string;

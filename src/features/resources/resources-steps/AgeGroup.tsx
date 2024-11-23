@@ -3,10 +3,9 @@
 import Grid from '@mui/material/Grid2';
 import React from 'react';
 
-import { IStepOption } from '@/contexts/MultiStepperContext';
-import useMultiStepForm from '@/hooks/useMultiStepper';
-import { AgeGroups } from '@/types/resources';
-
+import { IStepOption } from '../../../contexts/MultiStepperContext';
+import useMultiStepForm from '../../../hooks/useMultiStepper';
+import { AgeGroups } from '../../../types/resources';
 import { ResourcesCard, ResourcesCardTitle, ResourcesCardNumber } from '../ResourcesSteps.style';
 
 type IAgeGroupOptions = IStepOption & { age: string };

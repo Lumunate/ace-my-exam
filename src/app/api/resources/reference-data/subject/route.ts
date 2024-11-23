@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
-import { createSubject } from '@/services/subject';
-import prisma from '@/utils/prisma';
+import { createSubject } from '../../../../../services/subject';
+import prisma from '../../../../../utils/prisma';
 
 export async function GET() {
   try {

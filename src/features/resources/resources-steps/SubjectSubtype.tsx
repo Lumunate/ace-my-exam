@@ -3,14 +3,13 @@
 import Grid from '@mui/material/Grid2';
 import React, { useEffect } from 'react';
 
-import { ResourcesCardTypography } from '@/app/(main)/resources/Resources.style';
-import { IStepOption } from '@/contexts/MultiStepperContext';
-import { useGetSubjects } from '@/hooks/resources/useReferenceData';
-import useMultiStepForm from '@/hooks/useMultiStepper';
-import { EducationLevel, Subjects } from '@/types/resources';
-
 import {  ResourcesCardSmall } from '../ResourcesSteps.style';
 import {  StepsLoader } from './StepsLoader';
+import { ResourcesCardTypography } from '../../../app/(main)/resources/Resources.style';
+import { IStepOption } from '../../../contexts/MultiStepperContext';
+import { useGetSubjects } from '../../../hooks/resources/useReferenceData';
+import useMultiStepForm from '../../../hooks/useMultiStepper';
+import { EducationLevel, Subjects } from '../../../types/resources';
 
 const SubjectSubtype: React.FC = () => {
   const { selectOption, selectedOptions } = useMultiStepForm();

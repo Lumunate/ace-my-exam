@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { ZodError } from 'zod';
 
-import { createPastPaper } from '@/services/past-paper';
-import { pastPaperSchema } from '@/types/past-paper';
+import { createPastPaper } from '../../../../../services/past-paper';
+import { pastPaperSchema } from '../../../../../types/past-paper';
 
 export async function POST(request: NextRequest) {
   try {

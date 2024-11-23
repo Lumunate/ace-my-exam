@@ -1,5 +1,5 @@
-import * as FeedbackRepository from '@/repositories/feedback';
-import { IFeedback } from '@/types/feedback';
+import * as FeedbackRepository from '../repositories/feedback';
+import { IFeedback } from '../types/feedback';
 
 export async function createFeedback(data: IFeedback) {
   const feedback = await FeedbackRepository.createFeedback(data);

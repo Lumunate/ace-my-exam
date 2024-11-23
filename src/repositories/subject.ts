@@ -1,7 +1,7 @@
 import { Prisma } from '@prisma/client';
 
-import { SubjectResourceType } from '@/entities/enums/subject-types';
-import prisma from '@/utils/prisma';
+import { SubjectResourceType } from '../entities/enums/subject-types';
+import prisma from '../utils/prisma';
 
 export async function getExamBoardsByEducationLevel(educationLevel: string): Promise<string[]> {
   const subjects = await prisma.subject.findMany({

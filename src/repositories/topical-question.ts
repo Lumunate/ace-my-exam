@@ -1,7 +1,7 @@
 import { ContentType, TopicalQuestionResourceType } from '@prisma/client';
 
-import { ITopicalQuestionData } from '@/types/topical-qeustion';
-import prisma from '@/utils/prisma';
+import { ITopicalQuestionData } from '../types/topical-qeustion';
+import prisma from '../utils/prisma';
 
 export async function createWithResources(data: ITopicalQuestionData) {
   return prisma.$transaction(async (tx) => {
