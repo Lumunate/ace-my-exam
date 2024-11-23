@@ -1,10 +1,11 @@
-import { Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text } from "@react-email/components";
-import React from "react";
-import { IFeedback } from "types/feedback";
+import { Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text } from '@react-email/components';
+import React from 'react';
 
-export interface FeedbackAcknowledgmentProps extends IFeedback {}
+import { IFeedback } from 'types/feedback';
 
-const baseUrl = process.env.VERCEL_URL ? process.env.VERCEL_URL : "";
+export type FeedbackAcknowledgmentProps = IFeedback;
+
+const baseUrl = process.env.VERCEL_URL ? process.env.VERCEL_URL : '';
 
 const FeedbackAcknowledgmentTemplate = ({
   name,
@@ -14,17 +15,17 @@ const FeedbackAcknowledgmentTemplate = ({
   experience,
   feedback,
 }: FeedbackAcknowledgmentProps) => {
-  const accentColor = "#da9694";
+  const accentColor = '#da9694';
   const fullName = `${name} ${lastName}`;
 
   // Format the date if it exists
   const formattedDate = sessionDate
-    ? new Date(sessionDate).toLocaleDateString("en-GB", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      })
-    : "Not specified";
+    ? new Date(sessionDate).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+    })
+    : 'Not specified';
 
   return (
     <Html>
@@ -74,7 +75,7 @@ const FeedbackAcknowledgmentTemplate = ({
 
           <Text style={paragraph}>
             We greatly appreciate your honest feedback and will use it to enhance our educational services. If you have any
-            additional thoughts or suggestions in the future, please don't hesitate to reach out to us.
+            additional thoughts or suggestions in the future, please don&apos;t hesitate to reach out to us.
           </Text>
 
           <Section style={actionSection}>
@@ -85,7 +86,7 @@ const FeedbackAcknowledgmentTemplate = ({
 
           <Section style={rewardSection}>
             <Text style={rewardText}>
-              As a token of our appreciation, we've added reward points to your account which you can use towards future sessions.
+              As a token of our appreciation, we&apos;ve added reward points to your account which you can use towards future sessions.
             </Text>
           </Section>
 
@@ -102,128 +103,128 @@ const FeedbackAcknowledgmentTemplate = ({
 export default FeedbackAcknowledgmentTemplate;
 
 const main = {
-  backgroundColor: "#f4f6f8",
+  backgroundColor: '#f4f6f8',
   fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
-  padding: "20px",
+  padding: '20px',
 };
 
 const imgSection = {
   marginTop: 32,
   marginBottom: 10,
-  textAlign: "center" as const,
+  textAlign: 'center' as const,
 };
 
 const img = {
-  margin: "0 auto",
+  margin: '0 auto',
 };
 
 const container = {
-  backgroundColor: "#ffffff",
-  margin: "0 auto",
-  padding: "20px",
-  borderRadius: "8px",
-  boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-  maxWidth: "600px",
+  backgroundColor: '#ffffff',
+  margin: '0 auto',
+  padding: '20px',
+  borderRadius: '8px',
+  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+  maxWidth: '600px',
 };
 
 const heading = {
-  fontSize: "24px",
-  lineHeight: "1.3",
-  fontWeight: "700",
-  textAlign: "center" as const,
-  marginBottom: "20px",
+  fontSize: '24px',
+  lineHeight: '1.3',
+  fontWeight: '700',
+  textAlign: 'center' as const,
+  marginBottom: '20px',
 };
 
 const subheading = {
-  fontSize: "18px",
-  lineHeight: "1.3",
-  fontWeight: "600",
-  color: "#333333",
-  marginBottom: "15px",
+  fontSize: '18px',
+  lineHeight: '1.3',
+  fontWeight: '600',
+  color: '#333333',
+  marginBottom: '15px',
 };
 
 const paragraph = {
-  fontSize: "16px",
-  lineHeight: "26px",
-  color: "#555",
-  marginBottom: "20px",
+  fontSize: '16px',
+  lineHeight: '26px',
+  color: '#555',
+  marginBottom: '20px',
 };
 
 const detailsSection = {
-  backgroundColor: "#f9f9f9",
-  padding: "20px",
-  borderRadius: "8px",
-  marginBottom: "24px",
-  border: `1px solid ${lightenColor("#da9694", 0.8)}`,
+  backgroundColor: '#f9f9f9',
+  padding: '20px',
+  borderRadius: '8px',
+  marginBottom: '24px',
+  border: `1px solid ${lightenColor('#da9694', 0.8)}`,
 };
 
 const detailsContainer = {
-  marginTop: "10px",
+  marginTop: '10px',
 };
 
 const detailItem = {
-  fontSize: "15px",
-  lineHeight: "24px",
-  color: "#555",
-  marginBottom: "8px",
+  fontSize: '15px',
+  lineHeight: '24px',
+  color: '#555',
+  marginBottom: '8px',
 };
 
 const feedbackSection = {
-  backgroundColor: "#f9f9f9",
-  padding: "20px",
-  borderRadius: "8px",
-  marginBottom: "24px",
-  border: `1px solid ${lightenColor("#da9694", 0.8)}`,
+  backgroundColor: '#f9f9f9',
+  padding: '20px',
+  borderRadius: '8px',
+  marginBottom: '24px',
+  border: `1px solid ${lightenColor('#da9694', 0.8)}`,
 };
 
 const feedbackText = {
-  fontSize: "15px",
-  lineHeight: "24px",
-  color: "#555",
-  marginBottom: "0",
-  whiteSpace: "pre-wrap",
-  fontStyle: "italic",
+  fontSize: '15px',
+  lineHeight: '24px',
+  color: '#555',
+  marginBottom: '0',
+  whiteSpace: 'pre-wrap',
+  fontStyle: 'italic',
 };
 
 const actionSection = {
-  textAlign: "center" as const,
-  marginTop: "32px",
-  marginBottom: "32px",
+  textAlign: 'center' as const,
+  marginTop: '32px',
+  marginBottom: '32px',
 };
 
 const actionButton = {
-  backgroundColor: "#da9694",
-  borderRadius: "5px",
-  color: "#ffffff",
-  fontSize: "16px",
-  fontWeight: "bold",
-  textDecoration: "none",
-  textAlign: "center" as const,
-  padding: "12px 30px",
-  display: "inline-block",
+  backgroundColor: '#da9694',
+  borderRadius: '5px',
+  color: '#ffffff',
+  fontSize: '16px',
+  fontWeight: 'bold',
+  textDecoration: 'none',
+  textAlign: 'center' as const,
+  padding: '12px 30px',
+  display: 'inline-block',
 };
 
 const rewardSection = {
-  backgroundColor: lightenColor("#da9694", 0.9),
-  padding: "15px",
-  borderRadius: "8px",
-  marginBottom: "24px",
-  border: `1px solid ${lightenColor("#da9694", 0.8)}`,
+  backgroundColor: lightenColor('#da9694', 0.9),
+  padding: '15px',
+  borderRadius: '8px',
+  marginBottom: '24px',
+  border: `1px solid ${lightenColor('#da9694', 0.8)}`,
 };
 
 const rewardText = {
-  fontSize: "14px",
-  lineHeight: "22px",
-  color: "#555",
-  marginBottom: "0",
-  textAlign: "center" as const,
+  fontSize: '14px',
+  lineHeight: '22px',
+  color: '#555',
+  marginBottom: '0',
+  textAlign: 'center' as const,
 };
 
 const footer = {
-  color: "#8898aa",
-  fontSize: "12px",
-  marginTop: "24px",
-  textAlign: "center" as const,
+  color: '#8898aa',
+  fontSize: '12px',
+  marginTop: '24px',
+  textAlign: 'center' as const,
 };
 
 // Helper function to lighten a color
@@ -237,7 +238,7 @@ function lightenColor(hex: string, factor: number): string {
   const lightenChannel = (channel: number) => Math.round(channel + (255 - channel) * factor);
 
   // Convert back to hex
-  const toHex = (channel: number) => channel.toString(16).padStart(2, "0");
+  const toHex = (channel: number) => channel.toString(16).padStart(2, '0');
 
   return `#${toHex(lightenChannel(r))}${toHex(lightenChannel(g))}${toHex(lightenChannel(b))}`;
 }

@@ -1,5 +1,6 @@
 import { Body, Button, Container, Head, Heading, Html, Img, Preview, Section, Text } from '@react-email/components';
 import React from 'react';
+
 import { IContact } from 'types/contact';
 
 export interface ContactAcknowledgmentProps extends IContact {
@@ -66,7 +67,7 @@ const ContactAcknowledgmentTemplate = ({
           </Section>
 
           <Text style={paragraph}>
-            Our team typically responds within 24-48 business hours. If you have any urgent concerns, please don't hesitate to call us directly.
+            Our team typically responds within 24-48 business hours. If you have any urgent concerns, please don&apos;t hesitate to call us directly.
           </Text>
 
           <Section style={actionSection}>
