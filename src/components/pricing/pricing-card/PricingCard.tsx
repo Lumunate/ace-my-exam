@@ -1,7 +1,9 @@
+'use client';
 import Image from 'next/image';
 
 import { Button } from '../../buttons/Button.style';
 import { PricingCardContentWrapper, PricingCardImageWrapper, PricingCardList, PricingCardListItem, PricingCardListItemText, PricingCardListItemTextPricing, PricingCardTextHead, PricingCardTitle, PricingCardWrapper } from '../../pricing/pricing-card/PricingCard.style';
+import { useRouter } from 'next/navigation';
 
 interface CardProps {
   imageSrc: string;
@@ -10,6 +12,8 @@ interface CardProps {
 }
 
 const PricingCard: React.FC<CardProps> = ({ imageSrc, title, prices }) => {
+  const router = useRouter();
+
   return (
     <PricingCardWrapper>
       <PricingCardImageWrapper>
@@ -46,6 +50,7 @@ const PricingCard: React.FC<CardProps> = ({ imageSrc, title, prices }) => {
           borderRadius='50px'
           width='162px'
           height='46px'
+          onClick={() => router.push('/contact')}
         >
           Get Started
         </Button>
