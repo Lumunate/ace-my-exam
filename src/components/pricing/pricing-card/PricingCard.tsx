@@ -1,9 +1,9 @@
 'use client';
 import Image from 'next/image';
+import { useRouter } from 'next/navigation';
 
 import { Button } from '../../buttons/Button.style';
 import { PricingCardContentWrapper, PricingCardImageWrapper, PricingCardList, PricingCardListItem, PricingCardListItemText, PricingCardListItemTextPricing, PricingCardTextHead, PricingCardTitle, PricingCardWrapper } from '../../pricing/pricing-card/PricingCard.style';
-import { useRouter } from 'next/navigation';
 
 interface CardProps {
   imageSrc: string;
