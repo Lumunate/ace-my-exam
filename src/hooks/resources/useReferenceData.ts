@@ -48,7 +48,7 @@ const boardData: Record<string, IStepOption> = {
   NONE: { name: 'NONE', icon: '', value: ExamBoards.NONE },
   AQA: { name: 'AQA', icon: '/resources/AQA-LOGO.svg', value: ExamBoards.AQA },
   OXFORD_AQA: { name: 'Oxford AQA', icon: '/resources/OxfordAQA.svg', value: ExamBoards.OXFORD_AQA },
-  CAMBRIDGE: { name: 'Cambridge', icon: '/resources/CIE.svg', value: ExamBoards.CAMBRIDGE },
+  CAIE: { name: 'CAIE', icon: '/resources/CIE.svg', value: ExamBoards.CAIE },
   EDEXCEL: { name: 'Edexcel', icon: '/resources/edexcel-Logo.svg', value: ExamBoards.EDEXCEL },
   EDEXCEL_INTERNATIONAL: {
     name: 'Edexcel International',
