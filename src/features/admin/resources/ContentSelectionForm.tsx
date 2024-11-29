@@ -8,6 +8,8 @@ import { AccordionSummary, Box, IconButton, styled, Typography } from '@mui/mate
 import { Content, ContentLevel } from '@prisma/client';
 import React, { useEffect, useState } from 'react';
 
+import { ContentType } from 'entities/enums';
+
 import CreateContentForm from './CreateContentFormModal';
 import EditContentFormModal from './EditContentFormModal';
 import { CollapseContainer, InnerCollapse } from '../../../features/resources/resources-tables/ResourceTables.style';
@@ -57,6 +59,7 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
 
           {data?.chapters?.map((child: ContentWithChildren) => (
             <RecursiveContentRender
+              type={resourceType}
               key={child.id}
               selectedSubtopic={selectedSubtopic}
               setSelectedSubtopic={setSelectedSubtopic}
@@ -81,11 +84,12 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
 export default ContentSelectionForm;
 
 type RecursiveContentRenderProps = {
+  type: ResourceType;
   data: ContentWithChildren;
   selectedSubtopic: ContentWithChildren | undefined;
   setSelectedSubtopic: React.Dispatch<React.SetStateAction<Content | undefined>>;
 };
-const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic }: RecursiveContentRenderProps) => {
+const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, type }: RecursiveContentRenderProps) => {
   const [createContentOpen, setCreateContentOpen] = useState<boolean>(false);
   const [editContentOpen, setEditContentOpen] = useState<boolean>(false);
 
@@ -123,6 +127,7 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic }:
         <InnerCollapse>
           {data.children?.map((child) => (
             <RecursiveContentRender
+              type={type}
               key={child.id}
               data={child}
               selectedSubtopic={selectedSubtopic}
