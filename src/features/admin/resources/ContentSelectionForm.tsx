@@ -71,14 +71,14 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
   const [editContentOpen, setEditContentOpen] = useState<boolean>(false);
 
   const getRevisionNoteDownloadUrl = (data: ContentWithChildren, resourceType: RevisionNoteResourceType) => {
-    if (data.revisionNotes && data.revisionNotes[0].resources)
+    if (data.revisionNotes && data.revisionNotes[0]?.resources)
       return data.revisionNotes[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || "";
 
     return "";
   };
 
   const getTopicalQuestionDownloadUrl = (data: ContentWithChildren, resourceType: TopicalQuestionResourceType) => {
-    if (data.topicalQuestions && data.topicalQuestions[0].resources)
+    if (data.topicalQuestions && data.topicalQuestions[0]?.resources)
       return data.topicalQuestions[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || "";
 
     return "";
