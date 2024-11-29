@@ -1,5 +1,5 @@
 'use client';
-import { Box, DialogTitle, styled, Typography } from '@mui/material';
+import { Box, styled, Typography } from '@mui/material';
 
 export const AdminSectionWrapper = styled(Box)(({ theme }) => ({
   padding: '2.8rem 2.1rem',
