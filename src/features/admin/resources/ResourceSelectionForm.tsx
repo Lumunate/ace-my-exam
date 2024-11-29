@@ -30,29 +30,22 @@ export default function ResourceSelectionForm({
   const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState('');
   const [selectedResourceType, setSelectedResourceType] = useState('');
 
-  // Fetch data using custom hooks
   const {
     data: educationLevels,
-  //  isLoading: _educationLevelsIsLoading,
-  // refetch: educationLevelsRefetch
   } = useGetEducationLevels();
   const {
     data: examBoards,
-    // isLoading: _examBoardsIsLoading,
     refetch: examBoardsRefetch,
   } = useGetExamBoards(selectedEducationLevel);
   const {
     data: subjects,
-    // isLoading: _subjectsIsLoading,
     refetch: subjectsRefetch,
   } = useGetUniqueSubjects(selectedEducationLevel, selectedExamBoard);
   const {
     data: subjectSubtypes,
-    // isLoading: _subjectSubtypesIsLoading,
     refetch: subjectSubtypesRefetch,
   } = useGetSubjects(selectedEducationLevel, selectedExamBoard, selectedSubject);
 
-  // Handle form submission
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (e: any) => {
     e.preventDefault();
@@ -71,9 +64,13 @@ export default function ResourceSelectionForm({
 
   useEffect(() => {
     examBoardsRefetch();
+  }, [selectedEducationLevel]);
+  useEffect(() => {
     subjectsRefetch();
+  }, [selectedExamBoard]);
+  useEffect(() => {
     subjectSubtypesRefetch();
-  }, [selectedEducationLevel, selectedExamBoard, selectedSubject, selectedSubjectSubtype, selectedResourceType]);
+  }, [selectedSubject, selectedSubjectSubtype, selectedResourceType]); 
 
   // Reset form when education level changes
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
