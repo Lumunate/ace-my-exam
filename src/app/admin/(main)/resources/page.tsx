@@ -14,7 +14,7 @@ const Page = () => {
     <AdminSectionsLayout>
       <AdminSectionWrapper>
         <AdminSectionHeading>Resource Manager</AdminSectionHeading>
-        <AdminSectionSubHeading>Make a selection to manage resources.</AdminSectionSubHeading>
+        <AdminSectionSubHeading>Make a selection to view and manage resources.</AdminSectionSubHeading>
 
         <Box>
           <SelectionForm />

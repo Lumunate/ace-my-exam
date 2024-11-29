@@ -8,8 +8,6 @@ import { AccordionSummary, Box, IconButton, styled, Typography } from '@mui/mate
 import { Content, ContentLevel } from '@prisma/client';
 import React, { useEffect, useState } from 'react';
 
-import { ContentType } from 'entities/enums';
-
 import CreateContentForm from './CreateContentFormModal';
 import EditContentFormModal from './EditContentFormModal';
 import { CollapseContainer, InnerCollapse } from '../../../features/resources/resources-tables/ResourceTables.style';
@@ -38,6 +36,8 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
   useEffect(() => {
     refetch();
   }, [subject, resourceType]);
+
+  if (!resourceType) return null;
 
   return (
     <Box sx={{ position: 'relative' }}>
