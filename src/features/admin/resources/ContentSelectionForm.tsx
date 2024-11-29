@@ -13,6 +13,7 @@ import { CollapseContainer, InnerCollapse } from '../../../features/resources/re
 import { useGetResources } from '../../../hooks/resources/useResources';
 import { ContentWithChildren } from '../../../types/content';
 import { ResourceType } from '../../../types/resources';
+import { AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
 
 interface ContentSelectionFormProps {
   subject: string;
@@ -29,29 +30,37 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, re
     refetch();
   }, [subject, resourceType]);
 
-  if (!data || isLoading) return <div>Loading...</div>;
-
   return (
     <Box sx={{ position: 'relative' }}>
-      <Box sx={{ position: 'absolute', top: '-10px', right: '10px', zIndex: 10 }}>
-        <IconButton onClick={() => refetch()}>
-          <ReplayIcon />
-        </IconButton>
-        <IconButton onClick={() => setCreateContentOpen(true)}>
-          <AddIcon />
-        </IconButton>
-      </Box>
-      {data.chapters?.map((child: ContentWithChildren) => (
-        <RecursiveContentRender key={child.id} setSelectedSubtopic={setSelectedSubtopic} data={child} />
-      ))}
+      <AdminSectionHeading>Select Content</AdminSectionHeading>
+      <AdminSectionSubHeading>Select the subtopics where you want to upload.</AdminSectionSubHeading>
 
-      {createContentOpen && (
-        <CreateContentForm
-          open={createContentOpen}
-          onClose={() => setCreateContentOpen(false)}
-          subjectId={parseInt(subject)}
-          parentId={null}
-        />
+      {!data || isLoading ? (
+        <Box>Please make a selection to continue</Box>
+      ) : (
+        <>
+          <Box sx={{ position: 'absolute', top: '-10px', right: '10px', zIndex: 10 }}>
+            <IconButton onClick={() => refetch()}>
+              <ReplayIcon />
+            </IconButton>
+            <IconButton onClick={() => setCreateContentOpen(true)}>
+              <AddIcon />
+            </IconButton>
+          </Box>
+
+          {data?.chapters?.map((child: ContentWithChildren) => (
+            <RecursiveContentRender key={child.id} setSelectedSubtopic={setSelectedSubtopic} data={child} />
+          ))}
+
+          {createContentOpen && (
+            <CreateContentForm
+              open={createContentOpen}
+              onClose={() => setCreateContentOpen(false)}
+              subjectId={parseInt(subject)}
+              parentId={null}
+            />
+          )}
+        </>
       )}
     </Box>
   );
@@ -67,7 +76,8 @@ const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentR
   const [createContentOpen, setCreateContentOpen] = useState<boolean>(false);
   const [editContentOpen, setEditContentOpen] = useState<boolean>(false);
 
-  if (data.level === ContentLevel.SUBTOPIC) return <ResourceItem onClick={() => setSelectedSubtopic(data)}>{data.name}</ResourceItem>;
+  if (data.level === ContentLevel.SUBTOPIC)
+    return <ResourceItem onClick={() => setSelectedSubtopic(data)}>{data.name}</ResourceItem>;
 
   return (
     <>
