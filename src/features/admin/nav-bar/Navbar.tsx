@@ -117,7 +117,7 @@ const NavbarMenuIcon = ({ children }: { children: React.ReactNode }) => {
           <EditNotifications />
           Edit
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
+        {/* <MenuItem onClick={handleClose} disableRipple>
           <FileCopyIcon />
           Duplicate
         </MenuItem>
@@ -125,7 +125,7 @@ const NavbarMenuIcon = ({ children }: { children: React.ReactNode }) => {
         <MenuItem onClick={handleClose} disableRipple>
           <ArchiveIcon />
           Archive
-        </MenuItem>
+        </MenuItem> */}
         <MenuItem onClick={handleClose} disableRipple>
           <MoreHorizIcon />
           More
