@@ -28,9 +28,9 @@ const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, sel
 
   return (
     <Box>
-      <AdminSectionHeading>Upload - {selectedSubtopic?.name}</AdminSectionHeading>
+      <AdminSectionHeading>Upload - {selectedResourceType === ResourceType.REVISION_NOTES ? 'Revision Notes' : 'Topic Questions'}</AdminSectionHeading>
       <AdminSectionSubHeading>
-        {selectedResourceType.replace('_', ' ')} for {selectedSubtopic?.name}
+        Upload {selectedResourceType === ResourceType.REVISION_NOTES ? 'Revision Notes' : 'Topic Questions'} for {selectedSubtopic?.name}
       </AdminSectionSubHeading>
 
       {selectedResourceType === ResourceType.REVISION_NOTES && <UploadRevisionNotes subtopicId={selectedSubtopic.id} />}

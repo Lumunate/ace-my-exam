@@ -24,9 +24,13 @@ import {
 import { useGetResources } from "../../../hooks/resources/useResources";
 import { ContentWithChildren } from "../../../types/content";
 import { ResourceType } from "../../../types/resources";
-import { AdminModalHeading, AdminModalSubHeading, AdminSectionHeading, AdminSectionSubHeading } from "../Admin.style";
+import { AdminModalSubHeading, AdminSectionHeading, AdminSectionSubHeading } from "../Admin.style";
 import Image from "next/image";
 import { PastPaperWithResource } from "app/api/resources/route";
+
+export const AdminTableHeading = styled(AdminSectionHeading)(() => ({
+  fontSize: '1.6rem',
+}));
 
 const handleDownload = (fileName: string) => {
   const fileUrl = fileName;
@@ -192,8 +196,8 @@ const RevisionNotesSelectionForm: React.FC<DataFormProps> = ({ data, setSelected
   return (
     <>
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", p: 0 }}>
-        <AdminModalHeading>Name</AdminModalHeading>
-        <AdminModalHeading>Download</AdminModalHeading>
+        <AdminTableHeading>Name</AdminTableHeading>
+        <AdminTableHeading>Download</AdminTableHeading>
       </Box>
 
       {data?.map((child: ContentWithChildren) => (
@@ -214,10 +218,10 @@ const TopicalQuestionsSelectionForm: React.FC<DataFormProps> = ({ data, setSelec
   return (
     <>
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <AdminModalHeading sx={{ flex: "0 0 calc(50%)" }}>Name</AdminModalHeading>
-        <AdminModalHeading sx={{ flex: "0 0 1", textAlign: "center" }}>Download</AdminModalHeading>
-        <AdminModalHeading sx={{ flex: "0 0 1" }}>Marking Scheme</AdminModalHeading>
-        <AdminModalHeading sx={{ flex: "0 0 1" }}>Answer</AdminModalHeading>
+        <AdminTableHeading sx={{ flex: "0 0 calc(50%)" }}>Name</AdminTableHeading>
+        <AdminTableHeading sx={{ flex: "0 0 1", textAlign: "center" }}>Download</AdminTableHeading>
+        <AdminTableHeading sx={{ flex: "0 0 1" }}>Marking Scheme</AdminTableHeading>
+        <AdminTableHeading sx={{ flex: "0 0 1" }}>Answer</AdminTableHeading>
       </Box>
 
       {data?.map((child: ContentWithChildren) => (
@@ -241,7 +245,7 @@ const PastPaperViewForm: React.FC<{ data: PastPaperWithResource[] }> = ({ data }
   return (
     <>
       <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <AdminModalHeading sx={{ flex: "0 0 calc(50%)" }}>Exam</AdminModalHeading>
+        <AdminTableHeading sx={{ flex: "0 0 calc(50%)" }}>Exam</AdminTableHeading>
         <AdminModalSubHeading sx={{ flex: "0 0 1", textAlign: "center" }}>Download</AdminModalSubHeading>
         <AdminModalSubHeading sx={{ flex: "0 0 1" }}>Marking Scheme</AdminModalSubHeading>
         <AdminModalSubHeading sx={{ flex: "0 0 1" }}>Answer</AdminModalSubHeading>
