@@ -1,6 +1,7 @@
 'use client';
 
 import AddIcon from '@mui/icons-material/Add';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import EditIcon from '@mui/icons-material/Edit';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { AccordionSummary, Box, IconButton, styled, Typography } from '@mui/material';
@@ -18,10 +19,16 @@ import { AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
 interface ContentSelectionFormProps {
   subject: string;
   resourceType: ResourceType;
+  selectedSubtopic: ContentWithChildren | undefined;
   setSelectedSubtopic: React.Dispatch<React.SetStateAction<ContentWithChildren | undefined>>;
 }
 
-const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, resourceType, setSelectedSubtopic }) => {
+const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
+  subject,
+  resourceType,
+  setSelectedSubtopic,
+  selectedSubtopic,
+}) => {
   const { data, isLoading, refetch } = useGetResources(parseInt(subject));
 
   const [createContentOpen, setCreateContentOpen] = useState<boolean>(false);
@@ -49,7 +56,12 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, re
           </Box>
 
           {data?.chapters?.map((child: ContentWithChildren) => (
-            <RecursiveContentRender key={child.id} setSelectedSubtopic={setSelectedSubtopic} data={child} />
+            <RecursiveContentRender
+              key={child.id}
+              selectedSubtopic={selectedSubtopic}
+              setSelectedSubtopic={setSelectedSubtopic}
+              data={child}
+            />
           ))}
 
           {createContentOpen && (
@@ -57,7 +69,7 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({ subject, re
               open={createContentOpen}
               onClose={() => setCreateContentOpen(false)}
               subjectId={parseInt(subject)}
-              parentId={null}
+              parent={null}
             />
           )}
         </>
@@ -70,19 +82,30 @@ export default ContentSelectionForm;
 
 type RecursiveContentRenderProps = {
   data: ContentWithChildren;
+  selectedSubtopic: ContentWithChildren | undefined;
   setSelectedSubtopic: React.Dispatch<React.SetStateAction<Content | undefined>>;
 };
-const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentRenderProps) => {
+const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic }: RecursiveContentRenderProps) => {
   const [createContentOpen, setCreateContentOpen] = useState<boolean>(false);
   const [editContentOpen, setEditContentOpen] = useState<boolean>(false);
 
   if (data.level === ContentLevel.SUBTOPIC)
-    return <ResourceItem onClick={() => setSelectedSubtopic(data)}>{data.name}</ResourceItem>;
+    return (
+      <ResourceItem
+        sx={{
+          color: selectedSubtopic?.id === data.id ? 'secondary.main' : '',
+          fontWeight: selectedSubtopic?.id === data.id ? 'bold' : '',
+        }}
+        onClick={() => setSelectedSubtopic(data)}
+      >
+        {data.name}
+      </ResourceItem>
+    );
 
   return (
     <>
       <CollapseContainer>
-        <ResourceHeading>
+        <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
           <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
             {data.name}
           </Typography>
@@ -99,7 +122,12 @@ const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentR
 
         <InnerCollapse>
           {data.children?.map((child) => (
-            <RecursiveContentRender key={child.id} data={child} setSelectedSubtopic={setSelectedSubtopic} />
+            <RecursiveContentRender
+              key={child.id}
+              data={child}
+              selectedSubtopic={selectedSubtopic}
+              setSelectedSubtopic={setSelectedSubtopic}
+            />
           ))}
         </InnerCollapse>
       </CollapseContainer>
@@ -114,12 +142,7 @@ const RecursiveContentRender = ({ data, setSelectedSubtopic }: RecursiveContentR
         />
       )}
       {createContentOpen && (
-        <CreateContentForm
-          open={createContentOpen}
-          onClose={() => setCreateContentOpen(false)}
-          subjectId={null}
-          parentId={data.id}
-        />
+        <CreateContentForm open={createContentOpen} onClose={() => setCreateContentOpen(false)} subjectId={null} parent={data} />
       )}
     </>
   );
