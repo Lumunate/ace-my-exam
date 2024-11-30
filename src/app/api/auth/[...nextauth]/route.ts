@@ -45,6 +45,7 @@ const handler = NextAuth({
           email: user.email,
           name: user.name,
           role: user.role,
+          isAdmin: user.role === 'ADMIN',
         };
       },
     }),
