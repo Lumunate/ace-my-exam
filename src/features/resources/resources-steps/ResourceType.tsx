@@ -23,15 +23,15 @@ export const getDisplayOptions = (
   _examBoard: IStepOption,
   ageGroup: IStepOption,
   subject: IStepOption,
-  _subjectSubtype: IStepOption
+  subjectSubtype: { id: string, name: string, tags: string[] }
 ) => {
   const past_paper_show = (educationLevel?.value === EducationLevel.KS3);
   const topic_question_show =
     (educationLevel?.value === EducationLevel.A_LEVEL && subject?.value === Subjects.FURTHER_MATH) ||
-    (ageGroup?.value === AgeGroups.SECONDARY_SCHOOL && subject?.value === Subjects.SCIENCE);
+    (ageGroup?.value === AgeGroups.SECONDARY_SCHOOL && subject?.value === Subjects.SCIENCE) || (subjectSubtype?.name === '13+ Scholarship' || subjectSubtype?.name === '16+' || (subjectSubtype?.name === '13+' && subject?.value === Subjects.SCIENCE)); 
   const revision_notes_show =
     (educationLevel?.value === EducationLevel.A_LEVEL && subject?.value === Subjects.FURTHER_MATH) ||
-    (ageGroup?.value === AgeGroups.SECONDARY_SCHOOL && subject?.value === Subjects.SCIENCE);
+    (ageGroup?.value === AgeGroups.SECONDARY_SCHOOL && subject?.value === Subjects.SCIENCE) || (subjectSubtype?.name === '11+' || subjectSubtype?.name === '13+ Scholarship' || subjectSubtype?.name === '16+' || (subjectSubtype?.name === '13+' && subject?.value === Subjects.SCIENCE));
 
   return {
     past_paper_show: !past_paper_show,
@@ -56,7 +56,7 @@ const ResourceType: React.FC = () => {
     examBoard,
     ageGroup,
     subject,
-    subjectSubtype
+    { id: subjectSubtype.value as string, name: subjectSubtype.name, tags: [] }
   );
 
   useEffect(() => {

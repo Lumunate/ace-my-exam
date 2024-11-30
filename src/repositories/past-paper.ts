@@ -7,6 +7,7 @@ export async function createWithResources(data: IPastPaperData) {
   return prisma.$transaction(async (tx) => {
     const pastPaper = await tx.pastPaper.create({
       data: {
+        subject_id: data.subjectId,
         title: data.title,
         year: data.year,
       },
@@ -77,6 +78,8 @@ export async function createWithResources(data: IPastPaperData) {
         },
       },
     });
+  }, {
+    timeout: 10000, 
   });
 }
 

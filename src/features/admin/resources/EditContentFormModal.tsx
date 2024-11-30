@@ -7,6 +7,7 @@ import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { useEditContent } from '../../../hooks/resources/useReferenceData';
+import { AdminModalHeading, AdminModalSubHeading } from '../Admin.style';
 
 interface EditContentFormModalProps {
   open: boolean;
@@ -50,7 +51,10 @@ const EditContentFormModal: React.FC<EditContentFormModalProps> = ({
 
   return (
     <Dialog open={open} onClose={onClose}>
-      <DialogTitle>Edit Content</DialogTitle>
+      <DialogTitle>
+        <AdminModalHeading variant="h3">Edit Content - {initialName}</AdminModalHeading>
+        <AdminModalSubHeading variant="h3">Edit content for content # {id}</AdminModalSubHeading>
+      </DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit(onSubmit)}>
           <TextField label="ID" value={id} fullWidth margin="normal" disabled />

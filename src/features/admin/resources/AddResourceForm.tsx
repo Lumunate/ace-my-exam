@@ -14,23 +14,23 @@ interface AddResourceFormProps {
   selectedSubjectSubtype: string;
 }
 
-const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, selectedResourceType }) => {
+const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, selectedResourceType, selectedSubjectSubtype }) => {
   if (selectedResourceType === ResourceType.PAST_PAPER)
     return (
       <Box>
         <AdminSectionHeading>Upload - Past Paper</AdminSectionHeading>
         <AdminSectionSubHeading>Upload Past Papers.</AdminSectionSubHeading>
 
-        <UploadPastPapers />
+        <UploadPastPapers subjectId={parseInt(selectedSubjectSubtype)} />
       </Box>
     );
   if (!selectedSubtopic || !selectedResourceType) return null;
 
   return (
     <Box>
-      <AdminSectionHeading>Upload - {selectedSubtopic?.name}</AdminSectionHeading>
+      <AdminSectionHeading>Upload - {selectedResourceType === ResourceType.REVISION_NOTES ? 'Revision Notes' : 'Topic Questions'}</AdminSectionHeading>
       <AdminSectionSubHeading>
-        {selectedResourceType.replace('_', ' ')} for {selectedSubtopic?.name}
+        Upload {selectedResourceType === ResourceType.REVISION_NOTES ? 'Revision Notes' : 'Topic Questions'} for {selectedSubtopic?.name}
       </AdminSectionSubHeading>
 
       {selectedResourceType === ResourceType.REVISION_NOTES && <UploadRevisionNotes subtopicId={selectedSubtopic.id} />}

@@ -33,12 +33,12 @@ export const CollapseContainer = styled(Accordion)(() => ({
   '& .MuiPaper-root':{
   },
   '& .MuiAccordionSummary-content':{
-    margin: 0,
+    margin: '0 !important',
     height: 'unset',
     minHeight: 'unset',
   },
   '& .MuiAccordionSummary-root.Mui-expanded':{
-    margin: 0,
+    margin: '0 !important',
     height: 'unset',
     minHeight: 'unset',
   }
