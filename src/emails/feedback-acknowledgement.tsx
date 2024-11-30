@@ -30,7 +30,7 @@ const FeedbackAcknowledgmentTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>Thank you for your feedback - Ace My Exams</Preview>
+      <Preview>Thank you for your feedback - Acemyexam</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={imgSection}>
@@ -38,14 +38,14 @@ const FeedbackAcknowledgmentTemplate = ({
               src={`https://res.cloudinary.com/diiafjy31/image/upload/v1732335659/logo_olrpci.svg`}
               width="200"
               height="90"
-              alt="Ace My Exams"
+              alt="Acemyexam"
               style={img}
             />
           </Section>
           <Heading style={{ ...heading, color: accentColor }}>Thanks for Your Feedback!</Heading>
           <Text style={paragraph}>Dear {fullName},</Text>
           <Text style={paragraph}>
-            Thank you for taking the time to share your feedback about your experience with Ace My Exams. Your insights are
+            Thank you for taking the time to share your feedback about your experience with Acemyexam. Your insights are
             invaluable in helping us improve our services and provide better support to our students.
           </Text>
 
@@ -91,7 +91,7 @@ const FeedbackAcknowledgmentTemplate = ({
           </Section>
 
           <Text style={footer}>
-            This is an automated message from Ace My Exams. Your feedback has been recorded and will be reviewed by our team. If
+            This is an automated message from Acemyexam. Your feedback has been recorded and will be reviewed by our team. If
             you have any questions, please contact our support team.
           </Text>
         </Container>

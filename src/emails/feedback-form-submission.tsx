@@ -62,7 +62,7 @@ const NewFeedbackNotificationTemplate = ({
               src={`https://res.cloudinary.com/diiafjy31/image/upload/v1732335659/logo_olrpci.svg`}
               width="200"
               height="90"
-              alt="Ace My Exams"
+              alt="Acemyexam"
               style={img}
             />
           </Section>
@@ -130,7 +130,7 @@ const NewFeedbackNotificationTemplate = ({
               ))}
           </Section>
 
-          <Text style={footer}>This is an automated notification from Ace My Exams feedback system. Feedback ID: {id}</Text>
+          <Text style={footer}>This is an automated notification from Acemyexam feedback system. Feedback ID: {id}</Text>
         </Container>
       </Body>
     </Html>
