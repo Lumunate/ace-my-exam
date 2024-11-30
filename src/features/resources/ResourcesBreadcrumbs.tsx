@@ -18,8 +18,6 @@ const ResourcesBreadcrumbs: React.FC<{ permanentBreadcrumbs?: { key: number; tit
       { key: 3.5, title: selectedOptions.resourceType?.name || '' },
     ];
 
-    console.log(currentStep, stepsOrder);
-
     const filteredSteps = stepsOrder.filter((step) => (currentStep + 0.5) >= step.key && step.title);
 
     setBreadcrumbs(permanentBreadcrumbs || filteredSteps);

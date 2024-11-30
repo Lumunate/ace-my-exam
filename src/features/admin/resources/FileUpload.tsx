@@ -279,18 +279,18 @@ const FileUpload: React.FC<FileUploadProps> = ({
                 justifyContent: 'center',
               }}
             >
-                {uploadStatus?.type === 'error' ? (
-                  <ErrorIcon sx={{ mr: 2, color: 'black' }} />
-                ) : uploadStatus?.type === 'success' ? (
-                  <DoneAllIcon sx={{ mr: 2, color: 'black' }} />
-                ) : (
-                      <UploadIcon
-                        sx={{
-                          margin: '0 auto',
-                          transform: 'translate(-14px, -2px)'
-                        }}
-                      />
-                )}
+              {uploadStatus?.type === 'error' ? (
+                <ErrorIcon sx={{ mr: 2, color: 'black' }} />
+              ) : uploadStatus?.type === 'success' ? (
+                <DoneAllIcon sx={{ mr: 2, color: 'black' }} />
+              ) : (
+                <UploadIcon
+                  sx={{
+                    margin: '0 auto',
+                    transform: 'translate(-14px, -2px)'
+                  }}
+                />
+              )}
             </Button>
           </label>
         </DropZone>
