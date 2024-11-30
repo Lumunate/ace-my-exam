@@ -5,7 +5,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useSnackbar } from '../../../../contexts/SnackbarContext';
 import { useUploadTopicalQuestions } from '../../../../hooks/resources/useUploadResources';
 import { ITopicalQuestionData, topicalQuestionSchema } from '../../../../types/topical-qeustion';
-import FileUpload from '../FileUpload';
+import FileUpload, { DropZoneLabel } from '../FileUpload';
 
 const FormContainer = styled(Box)({
   display: 'flex',
@@ -74,7 +74,7 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
             control={control}
             render={() => (
               <Box>
-                <label htmlFor="noteUrl">Upload Question Paper:</label>
+                <DropZoneLabel htmlFor="noteUrl">Upload Question Paper:</DropZoneLabel>
                 <FileUpload
                   hoist={(file: string) => {
                     setValue('questionPaper', file);
@@ -97,7 +97,7 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
             control={control}
             render={() => (
               <Box>
-                <label htmlFor="noteUrl">Upload Marking Scheme:</label>
+                <DropZoneLabel htmlFor="noteUrl">Upload Marking Scheme:</DropZoneLabel>
                 <FileUpload
                   hoist={(file: string) => {
                     setValue('markingScheme', file);

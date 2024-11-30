@@ -1,9 +1,11 @@
 import { CloudUpload as UploadIcon } from '@mui/icons-material';
-import AttachFileIcon from '@mui/icons-material/AttachFile';
+import DoneAllIcon from '@mui/icons-material/DoneAll';
+import ErrorIcon from '@mui/icons-material/Error';
 import {
   Box,
   Button,
   CircularProgress,
+  FormLabel,
 } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import React, { useState, useCallback, useEffect } from 'react';
@@ -41,14 +43,14 @@ interface SignatureResponse {
 
 // Styled Components
 const UploadContainer = styled(Box)(() => ({
-  width: '4rem',
-  height: '4rem',
+  width: '100%',
+  height: '8rem',
 }));
 
 const DropZone = styled(Box)(({ theme }) => ({
   margin: 'auto 0',
-  width: '4rem',
-  height: '4rem',
+  width: '100%',
+  height: '8rem',
   border: `2px dashed ${theme.palette.primary.main}`,
   borderRadius: theme.shape.borderRadius,
   textAlign: 'center',
@@ -60,6 +62,13 @@ const Input = styled('input')({
   display: 'none',
 });
 
+export const DropZoneLabel = styled(FormLabel)({
+  fontSize: '1.2rem',
+  color: '#666',
+  fontWeight: 600,
+  marginBottom: '0.4rem',
+});
+
 const FileUpload: React.FC<FileUploadProps> = ({
   maxFileSize = 10 * 1024 * 1024, // 10MB default
   maxFiles = 5,
@@ -67,7 +76,7 @@ const FileUpload: React.FC<FileUploadProps> = ({
 }) => {
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState<boolean>(false);
-  const [, setUploadStatus] = useState<UploadStatus | null>(null);
+  const [uploadStatus, setUploadStatus] = useState<UploadStatus | null>(null);
   const [, setUploadProgress] = useState<{ [key: string]: number }>({});
   const { showSnackbar } = useSnackbar();
 
@@ -237,19 +246,20 @@ const FileUpload: React.FC<FileUploadProps> = ({
 
   return (
     <UploadContainer>
-      {files.length > 0 ? (
+
+      {uploading ? (
         <Box
           sx={{
-            width: '4rem',
-            height: '4rem',
+            width: '100%',
+            height: '8rem',
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'center',
-            border: `2px dashed primary.main`,
+            border: `2px dashed #ccc`,
             borderRadius: '8px',
           }}
         >
-          <AttachFileIcon sx={{ mr: 2, color: 'black' }} />
+          <CircularProgress size={2} color={'primary'} sx={{ mr: 2, color: '#ccc' }} />
         </Box>
       ) : (
         <DropZone onDragOver={onDragOver} onDrop={onDrop}>
@@ -262,29 +272,28 @@ const FileUpload: React.FC<FileUploadProps> = ({
               sx={{
                 padding: 0,
                 margin: 0,
-                width: '2.6rem',
-                height: '4rem',
+                width: '100%',
+                height: '8rem',
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'center',
               }}
             >
-              <UploadIcon
-                sx={{
-                  margin: '0 auto',
-                  transform: 'translate(-14px, -2px)'
-                }}
-              />
+                {uploadStatus?.type === 'error' ? (
+                  <ErrorIcon sx={{ mr: 2, color: 'black' }} />
+                ) : uploadStatus?.type === 'success' ? (
+                  <DoneAllIcon sx={{ mr: 2, color: 'black' }} />
+                ) : (
+                      <UploadIcon
+                        sx={{
+                          margin: '0 auto',
+                          transform: 'translate(-14px, -2px)'
+                        }}
+                      />
+                )}
             </Button>
           </label>
         </DropZone>
-      )}
-
-      {uploading && (
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <CircularProgress size={24} color="inherit" sx={{ mr: 1 }} />
-          Uploading...
-        </Box>
       )}
     </UploadContainer>
   );

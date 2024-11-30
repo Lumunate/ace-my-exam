@@ -5,7 +5,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useSnackbar } from '../../../../contexts/SnackbarContext';
 import { useUploadPastPapers } from '../../../../hooks/resources/useUploadResources';
 import { IPastPaperData, pastPaperSchema } from '../../../../types/past-paper';
-import FileUpload from '../FileUpload';
+import FileUpload, { DropZoneLabel } from '../FileUpload';
 
 const FormContainer = styled(Box)({
   display: 'flex',
@@ -89,7 +89,7 @@ const UploadPastPapers = () => {
             control={control}
             render={() => (
               <Box>
-                <label htmlFor="resources.questionPaper">Upload Question Paper:</label>
+                <DropZoneLabel htmlFor="resources.questionPaper">Upload Question Paper:</DropZoneLabel>
                 <FileUpload
                   hoist={(file: string) => {
                     setValue('resources.questionPaper', file);
@@ -112,7 +112,7 @@ const UploadPastPapers = () => {
             control={control}
             render={() => (
               <Box>
-                <label htmlFor="resources.markingScheme">Upload Marking Scheme:</label>
+                <DropZoneLabel htmlFor="resources.markingScheme">Upload Marking Scheme:</DropZoneLabel>
                 <FileUpload
                   hoist={(file: string) => {
                     setValue('resources.markingScheme', file);
@@ -134,7 +134,7 @@ const UploadPastPapers = () => {
             control={control}
             render={() => (
               <Box>
-                <label htmlFor="resources.solutionBooklet">Upload Solution Booklet:</label>
+                <DropZoneLabel htmlFor="resources.solutionBooklet">Upload Solution Booklet:</DropZoneLabel>
                 <FileUpload
                   hoist={(file: string) => {
                     setValue('resources.solutionBooklet', file);
