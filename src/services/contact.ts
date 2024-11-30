@@ -22,10 +22,10 @@ async function sendAcknowledgementEmail(email: string, data: ContactAcknowledgme
 
     return await sendEmail(html, {
       to: email,
-      subject: 'Thank you for contacting Ace My Exams',
-      from: 'fizoneechan@gmail.com',
-      fromName: 'Ace My Exams',
-      replyTo: 'asma@acemyexam.co.uk',
+      subject: "Thank you for contacting Acemyexam",
+      from: "fizoneechan@gmail.com",
+      fromName: "Acemyexam",
+      replyTo: "asma@acemyexam.co.uk",
     });
   } catch (error) {
     if (error instanceof EmailError) {
@@ -40,11 +40,11 @@ async function sendClientRecieveEmail(data: NewContactNotificationProps): Promis
     const html = await render(NewContactNotificationTemplate(data));
 
     return await sendEmail(html, {
-      to: 'asma@acemyexam.co.uk',
-      subject: 'New Contact Form Submission',
-      from: 'fizoneechan@gmail.com',
-      fromName: 'Ace My Exams',
-      replyTo: 'asma@acemyexam.co.uk',
+      to: "asma@acemyexam.co.uk",
+      subject: "New Contact Form Submission",
+      from: "fizoneechan@gmail.com",
+      fromName: "Acemyexam",
+      replyTo: "asma@acemyexam.co.uk",
     });
   } catch (error) {
     if (error instanceof EmailError) {

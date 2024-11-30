@@ -99,7 +99,7 @@ export default function SideBar() {
                   opacity: 0,
                 },
             ]}
-            primary="Ace My Exams"
+            primary="Acemyexam"
           />
           <IconButton onClick={open ? handleDrawerClose : handleDrawerOpen}>
             {!open ? <ChevronRightIcon /> : <ChevronLeftIcon />}

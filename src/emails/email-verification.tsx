@@ -17,7 +17,7 @@ const EmailVerificationTemplate = ({ userName, identifier, token, expiryTime }: 
   return (
     <Html>
       <Head />
-      <Preview>Verify your email address for Ace My Exams</Preview>
+      <Preview>Verify your email address for Acemyexam</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={imgSection}>
@@ -25,14 +25,14 @@ const EmailVerificationTemplate = ({ userName, identifier, token, expiryTime }: 
               src={`https://res.cloudinary.com/diiafjy31/image/upload/v1732335659/logo_olrpci.svg`}
               width="200"
               height="90"
-              alt="Ace My Exams"
+              alt="Acemyexam"
               style={img}
             />
           </Section>
           <Heading style={{ ...heading, color: accentColor }}>Verify Your Email Address</Heading>
           <Text style={paragraph}>Hi {userName},</Text>
           <Text style={paragraph}>
-            Thank you for signing up with Ace My Exams. To complete your registration and access our services, please verify your email address by clicking the button below:
+            Thank you for signing up with Acemyexam. To complete your registration and access our services, please verify your email address by clicking the button below:
           </Text>
           <Section style={actionSection}>
             <Button style={actionButton} href={verificationLink}>
@@ -45,7 +45,7 @@ const EmailVerificationTemplate = ({ userName, identifier, token, expiryTime }: 
             </Text>
           )}
           <Text style={paragraph}>
-            If you didn&apos;t create an account with Ace My Exams, you can safely ignore this email.
+            If you didn&apos;t create an account with Acemyexam, you can safely ignore this email.
           </Text>
           <Text style={paragraph}>
             If you&apos;re having trouble clicking the button, copy and paste this URL into your browser:
@@ -53,7 +53,7 @@ const EmailVerificationTemplate = ({ userName, identifier, token, expiryTime }: 
             <span style={linkText}>{verificationLink}</span>
           </Text>
           <Text style={footer}>
-            This is an automated message from Ace My Exams. Please do not reply to this email.
+            This is an automated message from Acemyexam. Please do not reply to this email.
           </Text>
         </Container>
       </Body>
