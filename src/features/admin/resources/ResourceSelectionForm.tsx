@@ -27,53 +27,43 @@ export default function ResourceSelectionForm({
   const [selectedEducationLevel, setSelectedEducationLevel] = useState('');
   const [selectedExamBoard, setSelectedExamBoard] = useState('');
   const [selectedSubject, setSelectedSubject] = useState('');
-  const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState('');
+  const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState({ id: '', tags: [], name: '' });
   const [selectedResourceType, setSelectedResourceType] = useState('');
 
-  // Fetch data using custom hooks
-  const {
-    data: educationLevels,
-  //  isLoading: _educationLevelsIsLoading,
-  // refetch: educationLevelsRefetch
-  } = useGetEducationLevels();
-  const {
-    data: examBoards,
-    // isLoading: _examBoardsIsLoading,
-    refetch: examBoardsRefetch,
-  } = useGetExamBoards(selectedEducationLevel);
-  const {
-    data: subjects,
-    // isLoading: _subjectsIsLoading,
-    refetch: subjectsRefetch,
-  } = useGetUniqueSubjects(selectedEducationLevel, selectedExamBoard);
-  const {
-    data: subjectSubtypes,
-    // isLoading: _subjectSubtypesIsLoading,
-    refetch: subjectSubtypesRefetch,
-  } = useGetSubjects(selectedEducationLevel, selectedExamBoard, selectedSubject);
+  const { data: educationLevels } = useGetEducationLevels();
+  const { data: examBoards, refetch: examBoardsRefetch } = useGetExamBoards(selectedEducationLevel);
+  const { data: subjects, refetch: subjectsRefetch } = useGetUniqueSubjects(selectedEducationLevel, selectedExamBoard);
+  const { data: subjectSubtypes, refetch: subjectSubtypesRefetch } = useGetSubjects(
+    selectedEducationLevel,
+    selectedExamBoard,
+    selectedSubject
+  );
 
-  // Handle form submission
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const handleSubmit = (e: any) => {
     e.preventDefault();
 
-    H_setSelectedSubjectSubtype(selectedSubjectSubtype);
+    H_setSelectedSubjectSubtype(selectedSubjectSubtype.id);
     H_setSelectedResourceType(selectedResourceType);
   };
 
   const { past_paper_show, topic_question_show, revision_notes_show } = getDisplayOptions(
     { name: '', value: selectedEducationLevel, icon: '' },
     { name: '', value: selectedExamBoard, icon: '' },
-    { name: '', value: selectedSubjectSubtype, icon: '' },
+    { name: selectedSubjectSubtype.name, value: selectedSubjectSubtype.id, icon: '' },  
     { name: '', value: selectedSubject, icon: '' },
-    { name: '', value: selectedSubjectSubtype, icon: '' },
+    { name: selectedSubjectSubtype.name, id: selectedSubjectSubtype.id, tags: [] }
   );
 
   useEffect(() => {
     examBoardsRefetch();
+  }, [selectedEducationLevel]);
+  useEffect(() => {
     subjectsRefetch();
+  }, [selectedExamBoard]);
+  useEffect(() => {
     subjectSubtypesRefetch();
-  }, [selectedEducationLevel, selectedExamBoard, selectedSubject, selectedSubjectSubtype, selectedResourceType]);
+  }, [selectedSubject, selectedSubjectSubtype, selectedResourceType]);
 
   // Reset form when education level changes
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -81,7 +71,7 @@ export default function ResourceSelectionForm({
     setSelectedEducationLevel(value);
     setSelectedExamBoard('');
     setSelectedSubject('');
-    setSelectedSubjectSubtype('');
+    setSelectedSubjectSubtype({ id: '', tags: [], name: '' });
     setSelectedResourceType('');
   };
 
@@ -117,14 +107,14 @@ export default function ResourceSelectionForm({
               onChange={(e) => {
                 setSelectedExamBoard(e.target.value);
                 setSelectedSubject('');
-                setSelectedSubjectSubtype('');
+                setSelectedSubjectSubtype({ id: '', tags: [], name: '' });
                 setSelectedResourceType('');
               }}
             >
               {examBoards &&
                 examBoards.map((board) => (
-                  <MenuItem key={board.value} value={board.value}>
-                    {board.name}
+                  <MenuItem key={board?.value} value={board?.value}>
+                    {board?.name}
                   </MenuItem>
                 ))}
             </Select>
@@ -139,7 +129,7 @@ export default function ResourceSelectionForm({
               disabled={!selectedEducationLevel || !selectedExamBoard || !subjects}
               onChange={(e) => {
                 setSelectedSubject(e.target.value);
-                setSelectedSubjectSubtype('');
+                setSelectedSubjectSubtype({ id: '', tags: [], name: '' });
                 setSelectedResourceType('');
               }}
             >
@@ -156,11 +146,29 @@ export default function ResourceSelectionForm({
           <FormControl fullWidth disabled={!selectedSubject}>
             <InputLabel>Subject Subtype</InputLabel>
             <Select
-              value={selectedSubjectSubtype}
+              value={selectedSubjectSubtype.id}
               label="Subject Subtype"
               disabled={!selectedEducationLevel || !selectedExamBoard || !selectedSubject || !subjectSubtypes}
               onChange={(e) => {
-                setSelectedSubjectSubtype(e.target.value);
+                const selectedSubtype = subjectSubtypes?.find((subtype) => subtype?.id === parseInt(e.target.value));
+
+                setSelectedSubjectSubtype({
+                  id: e.target.value as string,
+                  tags: [],
+                  name: selectedSubtype
+                    ? selectedSubtype.tags
+                      .map((tag) => {
+                        if (tag === 'YEAR_1') {
+                          return 'AS Level';
+                        } else if (tag === 'YEAR_2') {
+                          return 'A Level';
+                        } else {
+                          return tag;
+                        }
+                      })
+                      .join(' - ')
+                    : '',
+                });
                 setSelectedResourceType('');
               }}
             >

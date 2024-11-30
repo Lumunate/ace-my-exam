@@ -5,7 +5,7 @@ import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { useSnackbar } from '../../../../contexts/SnackbarContext';
 import { useUploadRevisionNotes } from '../../../../hooks/resources/useUploadResources';
 import { IRevisionNoteData, revisionNoteSchema } from '../../../../types/revision-note';
-import FileUpload from '../FileUpload';
+import FileUpload, { DropZoneLabel } from '../FileUpload';
 
 const FormContainer = styled(Box)({
   display: 'flex',
@@ -73,7 +73,7 @@ const UploadRevisionNotes = ({ subtopicId }: UploadRevisionNotesProps) => {
             control={control}
             render={() => (
               <Box>
-                <label htmlFor="noteUrl">Upload file:</label>
+                <DropZoneLabel htmlFor="noteUrl">Upload file:</DropZoneLabel>  
                 <FileUpload
                   hoist={(file: string) => {
                     setValue('noteUrl', file);

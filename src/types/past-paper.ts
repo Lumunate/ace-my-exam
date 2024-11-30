@@ -1,6 +1,7 @@
 import { z } from 'zod';
 
 export const pastPaperSchema = z.object({
+  subjectId: z.number(),
   title: z.string(),
   year: z.number(),
   resources: z.object({

@@ -1,40 +1,17 @@
 'use client';
 
-import { EditNotifications } from '@mui/icons-material';
-import ArchiveIcon from '@mui/icons-material/Archive';
-import FileCopyIcon from '@mui/icons-material/FileCopy';
-import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
+import { Logout } from '@mui/icons-material';
 import PersonIcon from '@mui/icons-material/Person';
-import SettingsIcon from '@mui/icons-material/Settings';
-import { Box, Divider, IconButton, MenuItem, Typography } from '@mui/material';
-import { usePathname, useRouter } from 'next/navigation';
-import { useSession } from 'next-auth/react';
-import { useEffect, useId, useState } from 'react';
+import { Box, IconButton, MenuItem, Typography } from '@mui/material';
+import { usePathname } from 'next/navigation';
+import { signOut, useSession } from 'next-auth/react';
+import React, { useState } from 'react';
 
 import { StyledMenu } from './Navbar.style';
-import LoginModal from '../../../features/auth/login/LoginModal';
-import useGetUser from '../../../hooks/useGetUser';
 
 const Navbar = () => {
   const pathname = usePathname().split('/');
-  const router = useRouter();
-  const session = useSession();
-
-  const [openLogin, setOpenLogin] = useState(false);
-
-  const handleOpenLogin = () => {
-    setOpenLogin(true);
-  };
-
-  const handleCloseLogin = () => setOpenLogin(false);
-
-  const { data: user } = useGetUser(session?.data?.user?.email as string);
-
-  useEffect(() => {
-    if (user?.role !== 'ADMIN') {
-      handleOpenLogin();
-    }
-  }, [user]);
+  const { data: session } = useSession();
 
   return (
     <Box
@@ -54,7 +31,8 @@ const Navbar = () => {
             fontSize: '1.4rem',
           }}
         >
-          {pathname[pathname.length - 1].charAt(0).toUpperCase() + pathname[pathname.length - 1].slice(1)}
+          {pathname[pathname.length - 1].charAt(0).toUpperCase() +
+            pathname[pathname.length - 1].slice(1)}
         </Typography>
       </Box>
 
@@ -64,76 +42,63 @@ const Navbar = () => {
           color: 'text.primary',
         }}
       >
-        <NavbarMenuIcon>
-          <PersonIcon />
-        </NavbarMenuIcon>
-        <NavbarMenuIcon>
-          <SettingsIcon />
-        </NavbarMenuIcon>
-        {/* <NavbarMenuIcon >
-        <NotificationsIcon />
-      </NavbarMenuIcon> */}
+        <NavbarMenuIcon email={session?.user?.email || ''} />
       </Box>
-
-      <LoginModal
-        open={openLogin}
-        handleClose={handleCloseLogin}
-        onSwitchToSignUp={() => {
-          router.replace('/');
-        }}
-      />
     </Box>
   );
 };
 
-const NavbarMenuIcon = ({ children }: { children: React.ReactNode }) => {
+const NavbarMenuIcon = ({ email }: { email: string }) => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const id = useId();
-
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorEl(event.currentTarget as HTMLElement);
+    setAnchorEl(event.currentTarget);
   };
 
   const handleClose = () => {
     setAnchorEl(null);
   };
 
+  const handleLogout = async () => {
+    setAnchorEl(null);
+    await signOut({ redirect: true, callbackUrl: '/' });
+  };
+
   return (
     <>
-      <IconButton onClick={handleClick}>{children}</IconButton>
+      <IconButton onClick={handleClick}>
+        <PersonIcon />
+      </IconButton>
 
       <StyledMenu
-        id={id}
-        MenuListProps={{
-          'aria-labelledby': id,
-        }}
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
+        MenuListProps={{
+          'aria-labelledby': 'account-menu',
+        }}
       >
-        <MenuItem onClick={handleClose} disableRipple>
-          <EditNotifications />
-          Edit
+        <MenuItem disableRipple>
+          <Typography
+            sx={{
+              fontWeight: 'bold',
+              fontSize: '1rem',
+              textAlign: 'center',
+            }}
+          >
+            {email}
+          </Typography>
         </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
-          <FileCopyIcon />
-          Duplicate
-        </MenuItem>
-        <Divider sx={{ my: 0.5 }} />
-        <MenuItem onClick={handleClose} disableRipple>
-          <ArchiveIcon />
-          Archive
-        </MenuItem>
-        <MenuItem onClick={handleClose} disableRipple>
-          <MoreHorizIcon />
-          More
+        <MenuItem onClick={handleLogout} disableRipple>
+          <Logout />
+          Logout
         </MenuItem>
       </StyledMenu>
     </>
   );
 };
+
 const BreadCrumbs = ({ pathname }: { pathname: string[] }) => {
   return (
     <Box sx={{ display: 'flex', alignItems: 'center' }}>

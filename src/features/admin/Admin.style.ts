@@ -37,3 +37,17 @@ export const AdminSectionsLayout = styled(Box)(() => ({
   width: '100%',
   height: 'max-content',
 }));
+
+export const AdminModalHeading = styled(Typography)(() => ({
+  color: 'text.primary',
+  fontSize: '1.8rem',
+  fontWeight: '600',
+  marginBottom: '0.4rem',
+}));
+
+export const AdminModalSubHeading = styled(Typography)(() => ({
+  color: 'rgba(120, 120, 120, 1)',
+  fontSize: '1rem',
+  fontWeight: '300',
+  marginBottom: '0.8rem',
+}));
