@@ -1,65 +1,67 @@
-"use client";
+'use client';
 
-import AddIcon from "@mui/icons-material/Add";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import EditIcon from "@mui/icons-material/Edit";
-import ReplayIcon from "@mui/icons-material/Replay";
-import { AccordionSummary, Box, IconButton, styled, Typography } from "@mui/material";
+import AddIcon from '@mui/icons-material/Add';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import EditIcon from '@mui/icons-material/Edit';
+import ReplayIcon from '@mui/icons-material/Replay';
+import { AccordionSummary, Box, Button, IconButton, styled, Typography } from '@mui/material';
 import {
   Content,
   ContentLevel,
   PastPaperResourceType,
   RevisionNoteResourceType,
   TopicalQuestionResourceType,
-} from "@prisma/client";
-import React, { useEffect, useState } from "react";
+} from '@prisma/client';
+import Image from 'next/image';
+import React, { useEffect, useState } from 'react';
 
-import CreateContentForm from "./CreateContentFormModal";
-import EditContentFormModal from "./EditContentFormModal";
+import { PastPaperWithResource } from 'app/api/resources/route';
+
+import CreateContentForm from './CreateContentFormModal';
+import EditContentFormModal from './EditContentFormModal';
 import {
   CollapseContainer,
   DownloadIconButton,
   InnerCollapse,
-} from "../../../features/resources/resources-tables/ResourceTables.style";
-import { useGetResources } from "../../../hooks/resources/useResources";
-import { ContentWithChildren } from "../../../types/content";
-import { ResourceType } from "../../../types/resources";
-import { AdminModalSubHeading, AdminSectionHeading, AdminSectionSubHeading } from "../Admin.style";
-import Image from "next/image";
-import { PastPaperWithResource } from "app/api/resources/route";
+} from '../../../features/resources/resources-tables/ResourceTables.style';
+import { useGetResources } from '../../../hooks/resources/useResources';
+import { ContentWithChildren } from '../../../types/content';
+import { ResourceType } from '../../../types/resources';
+import { AdminModalSubHeading, AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
 
 export const AdminTableHeading = styled(AdminSectionHeading)(() => ({
-  fontSize: '1.6rem',
+  fontSize: '1.4rem',
+  color:'#666'
 }));
 
 const handleDownload = (fileName: string) => {
   const fileUrl = fileName;
-  const link = document.createElement("a");
+  const link = document.createElement('a');
 
   link.href = fileUrl;
-  link.target = "_blank";
+  link.target = '_blank';
   document.body.appendChild(link);
   link.click();
   document.body.removeChild(link);
 };
 
 export const ResourceHeading = styled(AccordionSummary)(() => ({
-  color: "#000",
-  fontSize: "1.4rem",
+  color: '#000',
+  fontSize: '1.4rem',
   fontWeight: 600,
-  border: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  width: "100%",
+  border: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+  width: '100%',
 }));
 
 export const ResourceItem = styled(AccordionSummary)(({ theme }) => ({
-  color: "#333",
-  fontSize: "1.2rem",
+  color: '#333',
+  fontSize: '1.2rem',
   fontWeight: 400,
-  border: "none",
-  ":hover": {
+  border: 'none',
+  ':hover': {
     color: theme.palette.text.secondary,
   },
 }));
@@ -76,26 +78,26 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
 
   const getRevisionNoteDownloadUrl = (data: ContentWithChildren, resourceType: RevisionNoteResourceType) => {
     if (data.revisionNotes && data.revisionNotes[0]?.resources)
-      return data.revisionNotes[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || "";
+      return data.revisionNotes[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
 
-    return "";
+    return '';
   };
 
   const getTopicalQuestionDownloadUrl = (data: ContentWithChildren, resourceType: TopicalQuestionResourceType) => {
     if (data.topicalQuestions && data.topicalQuestions[0]?.resources)
-      return data.topicalQuestions[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || "";
+      return data.topicalQuestions[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
 
-    return "";
+    return '';
   };
 
   if (data.level === ContentLevel.SUBTOPIC) {
     if (type === ResourceType.REVISION_NOTES) {
       return (
-        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", p: 0 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
           <ResourceItem
             sx={{
-              color: selectedSubtopic?.id === data.id ? "secondary.main" : "",
-              fontWeight: selectedSubtopic?.id === data.id ? "bold" : "",
+              color: selectedSubtopic?.id === data.id ? 'secondary.main' : '',
+              fontWeight: selectedSubtopic?.id === data.id ? 'bold' : '',
             }}
             onClick={() => setSelectedSubtopic(data)}
           >
@@ -108,30 +110,30 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
       );
     } else if (type === ResourceType.TOPIC_QUESTIONS) {
       return (
-        <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", p: 0 }}>
+        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
           <ResourceItem
             sx={{
-              color: selectedSubtopic?.id === data.id ? "secondary.main" : "",
-              fontWeight: selectedSubtopic?.id === data.id ? "bold" : "",
+              color: selectedSubtopic?.id === data.id ? 'secondary.main' : '',
+              fontWeight: selectedSubtopic?.id === data.id ? 'bold' : '',
             }}
             onClick={() => setSelectedSubtopic(data)}
           >
             {data.name}
           </ResourceItem>
           <DownloadIconButton
-            sx={{ flex: "0 0 1" }}
+            sx={{ flex: '0 0 1' }}
             onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.QUESTION_PAPER))}
           >
             <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
           </DownloadIconButton>
           <DownloadIconButton
-            sx={{ flex: "0 0 1" }}
+            sx={{ flex: '0 0 1' }}
             onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.MARKING_SCHEME))}
           >
             <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
           </DownloadIconButton>
           <DownloadIconButton
-            sx={{ flex: "0 0 1" }}
+            sx={{ flex: '0 0 1' }}
             // onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.SOLUTION_BOOKLET))}
           >
             <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
@@ -147,7 +149,7 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
         <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
           <Typography variant="h6">{data.name}</Typography>
 
-          <Box sx={{ display: "flex", alignItems: "center", transform: "translateY(-5px)", marginLeft: "2rem" }}>
+          <Box sx={{ display: 'flex', alignItems: 'center', transform: 'translateY(-5px)', marginLeft: '2rem' }}>
             <IconButton onClick={() => setEditContentOpen(true)}>
               <EditIcon />
             </IconButton>
@@ -176,7 +178,7 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
           onClose={() => setEditContentOpen(false)}
           id={data.id}
           name={data.name}
-          description={data.description ?? ""}
+          description={data.description ?? ''}
         />
       )}
       {createContentOpen && (
@@ -195,7 +197,7 @@ interface DataFormProps {
 const RevisionNotesSelectionForm: React.FC<DataFormProps> = ({ data, setSelectedSubtopic, selectedSubtopic }) => {
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", p: 0 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
         <AdminTableHeading>Name</AdminTableHeading>
         <AdminTableHeading>Download</AdminTableHeading>
       </Box>
@@ -214,14 +216,13 @@ const RevisionNotesSelectionForm: React.FC<DataFormProps> = ({ data, setSelected
 };
 
 const TopicalQuestionsSelectionForm: React.FC<DataFormProps> = ({ data, setSelectedSubtopic, selectedSubtopic }) => {
-  console.log(data);
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <AdminTableHeading sx={{ flex: "0 0 calc(50%)" }}>Name</AdminTableHeading>
-        <AdminTableHeading sx={{ flex: "0 0 1", textAlign: "center" }}>Download</AdminTableHeading>
-        <AdminTableHeading sx={{ flex: "0 0 1" }}>Marking Scheme</AdminTableHeading>
-        <AdminTableHeading sx={{ flex: "0 0 1" }}>Answer</AdminTableHeading>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <AdminTableHeading sx={{ flex: '0 0 calc(50%)' }}>Name</AdminTableHeading>
+        <AdminTableHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Download</AdminTableHeading>
+        <AdminTableHeading sx={{ flex: '0 0 1' }}>Marking Scheme</AdminTableHeading>
+        <AdminTableHeading sx={{ flex: '0 0 1' }}>Answer</AdminTableHeading>
       </Box>
 
       {data?.map((child: ContentWithChildren) => (
@@ -239,39 +240,39 @@ const TopicalQuestionsSelectionForm: React.FC<DataFormProps> = ({ data, setSelec
 
 const PastPaperViewForm: React.FC<{ data: PastPaperWithResource[] }> = ({ data }) => {
   const getDownloadUrl = (data: PastPaperWithResource, resourceType: PastPaperResourceType) => {
-    return data.resources.find((resource) => resource.resource_type === resourceType)?.resource.url || "";
+    return data.resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
   };
 
   return (
     <>
-      <Box sx={{ display: "flex", alignItems: "center", justifyContent: "space-between" }}>
-        <AdminTableHeading sx={{ flex: "0 0 calc(50%)" }}>Exam</AdminTableHeading>
-        <AdminModalSubHeading sx={{ flex: "0 0 1", textAlign: "center" }}>Download</AdminModalSubHeading>
-        <AdminModalSubHeading sx={{ flex: "0 0 1" }}>Marking Scheme</AdminModalSubHeading>
-        <AdminModalSubHeading sx={{ flex: "0 0 1" }}>Answer</AdminModalSubHeading>
+      <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+        <AdminTableHeading sx={{ flex: '0 0 calc(50%)' }}>Exam</AdminTableHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Download</AdminModalSubHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1' }}>Marking Scheme</AdminModalSubHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1' }}>Answer</AdminModalSubHeading>
       </Box>
 
       {data?.map((child: PastPaperWithResource) => (
         <>
           <Box
             key={child.id}
-            sx={{ display: "flex", alignItems: "center", justifyContent: "space-between", mt: "4px", py: "2px" }}
+            sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px', py: '2px' }}
           >
-            <ResourceItem sx={{ flex: "0 0 calc(50%)" }}>{child.title}</ResourceItem>
+            <ResourceItem sx={{ flex: '0 0 calc(50%)' }}>{child.title}</ResourceItem>
             <DownloadIconButton
-              sx={{ flex: "0 0 1" }}
+              sx={{ flex: '0 0 1' }}
               onClick={() => handleDownload(getDownloadUrl(child, PastPaperResourceType.QUESTION_PAPER))}
             >
               <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
             </DownloadIconButton>
             <DownloadIconButton
-              sx={{ flex: "0 0 1" }}
+              sx={{ flex: '0 0 1' }}
               onClick={() => handleDownload(getDownloadUrl(child, PastPaperResourceType.MARKING_SCHEME))}
             >
               <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
             </DownloadIconButton>
             <DownloadIconButton
-              sx={{ flex: "0 0 1" }}
+              sx={{ flex: '0 0 1' }}
               onClick={() => handleDownload(getDownloadUrl(child, PastPaperResourceType.SOLUTION_BOOKLET))}
             >
               <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
@@ -307,7 +308,7 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
   if (!resourceType) return null;
 
   return (
-    <Box sx={{ position: "relative" }}>
+    <Box sx={{ position: 'relative' }}>
       <AdminSectionHeading>Select Content</AdminSectionHeading>
       <AdminSectionSubHeading>Select, Add and Edit the Chapter, Topic and Subtopic for your resources.</AdminSectionSubHeading>
 
@@ -315,14 +316,22 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
         <Box>Please make a selection to continue</Box>
       ) : (
         <>
-          <Box sx={{ position: "absolute", top: "-10px", right: "10px", zIndex: 10 }}>
-            <IconButton onClick={() => refetch()}>
-              <ReplayIcon />
-            </IconButton>
-            <IconButton onClick={() => setCreateContentOpen(true)}>
-              <AddIcon />
-            </IconButton>
-          </Box>
+
+          {resourceType === ResourceType.REVISION_NOTES && (
+            <Box sx={{ position: 'absolute', top: '-10px', right: '10px', zIndex: 10, display: 'flex', alignItems: 'center' }}>
+              <Button onClick={() => setCreateContentOpen(true)} sx={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}>
+                <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Chapter</Typography>
+                <AddIcon />
+              </Button>
+              <IconButton onClick={() => refetch()}>
+                <ReplayIcon />
+              </IconButton>
+            </Box>
+          )}
 
           {createContentOpen && (
             <CreateContentForm
