@@ -161,7 +161,7 @@ export const useGetValidResources = (educationLevel: string, examBoard: string, 
 
 export const useAddContent = () => {
   return useMutation({
-    mutationFn: async (data: ICreateContent) => {
+    mutationFn: async (data: ICreateContent) => {      
       const response = await fetch('/api/resources/reference-data', {
         method: 'POST',
         headers: {

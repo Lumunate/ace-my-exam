@@ -183,7 +183,7 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
         />
       )}
       {createContentOpen && (
-        <CreateContentForm open={createContentOpen} onClose={() => setCreateContentOpen(false)} subjectId={null} parent={data} />
+        <CreateContentForm open={createContentOpen} onClose={() => setCreateContentOpen(false)} subjectId={null} parent={data} isTopical={false} />
       )}
     </>
   );
@@ -320,8 +320,8 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
         ) : (
           <>
 
-            {resourceType === ResourceType.REVISION_NOTES && (
-              <Box sx={{ position: 'absolute', top: '-10px', right: '10px', zIndex: 10, display: 'flex', alignItems: 'center' }}>
+            <Box sx={{ position: 'absolute', top: '-10px', right: '10px', zIndex: 10, display: 'flex', alignItems: 'center' }}>
+              {resourceType === ResourceType.REVISION_NOTES && (
                 <Button onClick={() => setCreateContentOpen(true)} sx={{
                   display: 'flex',
                   alignItems: 'center',
@@ -330,17 +330,30 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
                   <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Chapter</Typography>
                   <AddIcon />
                 </Button>
-                <IconButton onClick={() => refetch()}>
-                  <ReplayIcon />
-                </IconButton>
-              </Box>
-            )}
+              )}
+
+              {resourceType === ResourceType.TOPIC_QUESTIONS && (
+                <Button onClick={() => setCreateContentOpen(true)} sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Topic</Typography>
+                  <AddIcon />
+                </Button>
+              )}
+              
+              <IconButton onClick={() => refetch()}>
+                <ReplayIcon />
+              </IconButton>
+            </Box>
 
             {createContentOpen && (
               <CreateContentForm
                 open={createContentOpen}
                 onClose={() => setCreateContentOpen(false)}
                 subjectId={parseInt(subject)}
+                isTopical={resourceType === ResourceType.TOPIC_QUESTIONS}
                 parent={null}
               />
             )}

@@ -31,10 +31,14 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const data = createContentSchema.parse(body);
 
+    console.log(data);
+
     const createdSubject = await createContent(data);
 
     return NextResponse.json({ success: true, data: createdSubject }, { status: 200 });
   } catch (error: unknown) {
+    console.error(error);
+
     if (error instanceof Error) {
       return NextResponse.json({ error: error.message }, { status: 500 });
     }

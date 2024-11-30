@@ -6,36 +6,45 @@ import * as ContentRepository from '../repositories/content';
 import * as PastPaperRepository from '../repositories/past-paper';
 import { ICreateContent } from '../types/content';
 
-export async function createFullChapterStructure(data: {
-  subject_id: number;
-  chapterName: string;
-  topics: Array<{
-    name: string;
-    subtopics: Array<{ name: string }>;
-  }>;
-}) {
-  const chapter = await ContentRepository.createChapter({
-    name: data.chapterName,
-  });
+// ================== DEPRECATED =========================
+// export async function createFullChapterStructure(data: {
+//   subject_id: number;
+//   chapterName: string;
+//   topics: Array<{
+//     name: string;
+//     subtopics: Array<{ name: string }>;
+//   }>;
+// }) {
+//   const chapter = await ContentRepository.createChapter({
+//     name: data.chapterName,
+//   });
 
-  for (const topicData of data.topics) {
-    const topic = await ContentRepository.createTopic({
-      name: topicData.name,
-      parentId: chapter.id,
-    });
+//   for (const topicData of data.topics) {
+//     const topic = await ContentRepository.createTopic({
+//       name: topicData.name,
+//       parentId: chapter.id,
+//     });
 
-    for (const subtopicData of topicData.subtopics) {
-      await ContentRepository.createSubtopic({
-        name: subtopicData.name,
-        parentId: topic.id,
-      });
-    }
-  }
+//     for (const subtopicData of topicData.subtopics) {
+//       await ContentRepository.createSubtopic({
+//         name: subtopicData.name,
+//         parentId: topic.id,
+//       });
+//     }
+//   }
 
-  return ContentRepository.getChapterWithContent(chapter.id);
-}
+//   return ContentRepository.getChapterWithContent(chapter.id);
+// }
 
 export async function createContent(data: ICreateContent) {
+  if (data.isTopical) {
+    if (!data.subjectId) {
+      throw new Error('Topical content must have a subject');
+    }
+
+    return ContentRepository.createTopic(data, ContentType.TOPICAL_TOPIC);
+  }
+
   if (!data.parentId) {
     return ContentRepository.createChapter(data);
   }
@@ -61,8 +70,6 @@ export async function getSubjectContentAndPastPapers(subjectId: number): Promise
     pastPapers: pastPapers,
     chapters: content.filter((chapter) => chapter.level === ContentType.CHAPTER),
     topics: content
-      .map((chapter) => chapter.children)
-      .flatMap((topic) => topic)
-      .filter((topic) => !!topic && topic.level === ContentType.TOPIC),
+      .filter((topic) => topic.type === ContentType.TOPICAL_TOPIC),
   };
 }

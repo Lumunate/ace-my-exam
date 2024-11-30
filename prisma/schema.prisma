@@ -12,6 +12,7 @@ enum ContentType {
   CHAPTER
   TOPIC
   SUBTOPIC
+  TOPICAL_TOPIC
 }
 
 enum ContentLevel {
