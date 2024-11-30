@@ -13,7 +13,11 @@ const FormContainer = styled(Box)({
   gap: 24,
 });
 
-const UploadPastPapers = () => {
+interface UploadPastPapersProps {
+  subjectId: number;
+}
+
+const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
   const { showSnackbar } = useSnackbar();
 
   const {
@@ -26,6 +30,7 @@ const UploadPastPapers = () => {
   } = useForm<IPastPaperData>({
     resolver: zodResolver(pastPaperSchema),
     defaultValues: {
+      subjectId: subjectId,
       title: '',
       year: new Date().getFullYear(),
       resources: {
