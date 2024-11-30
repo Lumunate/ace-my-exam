@@ -17,6 +17,14 @@ export const AdminSectionHeading = styled(Typography)(() => ({
   marginBottom: '0.4rem',
 }));
 
+export const AdminCenteredSectionHeading = styled(Typography)(() => ({
+  color: 'accent.main',
+  textAlign: 'center',
+  fontSize: '1.8rem',
+  fontWeight: '600',
+  marginBottom: '0.4rem',
+}));
+
 export const AdminSectionInnerSpacer = styled(Box)(() => ({
   width: '100%',
   height: '1px',
