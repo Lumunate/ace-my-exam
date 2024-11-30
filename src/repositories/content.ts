@@ -31,28 +31,48 @@ export async function createChapter(data: Omit<ICreateContent, 'parentId'>) {
   });
 }
 
-export async function createTopic(data: Omit<ICreateContent, 'subjectId'>) {
-  const parent = await prisma.content.findUnique({
-    where: { id: data.parentId },
-  });
+export async function createTopic(
+  data: Omit<ICreateContent, 'subjectId'> | Omit<ICreateContent, 'parentId'>,
+  type: ContentType = 'TOPIC'
+) {
+  if (type === 'TOPIC' && 'parentId' in data && data.parentId !== undefined) {
+    const parent = await prisma.content.findUnique({
+      where: { id: data.parentId },
+    });
 
-  if (!parent || parent.type !== ContentType.CHAPTER) {
-    throw new Error('Topics must be created under chapters');
+    if (!parent || parent.type !== ContentType.CHAPTER) {
+      throw new Error('Topics must be created under chapters');
+    }
+
+    return prisma.content.create({
+      data: {
+        name: data.name,
+        type: ContentType.TOPIC,
+        level: ContentLevel.TOPIC,
+        subject: {
+          connect: { id: parent.subject_id },
+        },
+        parent: {
+          connect: { id: data.parentId },
+        },
+      },
+    });
   }
 
-  return prisma.content.create({
-    data: {
-      name: data.name,
-      type: ContentType.TOPIC,
-      level: ContentLevel.TOPIC,
-      subject: {
-        connect: { id: parent.subject_id },
+  if (type === 'TOPICAL_TOPIC' && 'subjectId' in data && data.subjectId !== undefined) {
+    return prisma.content.create({
+      data: {
+        name: data.name,
+        type: ContentType.TOPICAL_TOPIC,
+        level: ContentLevel.TOPIC,
+        subject: {
+          connect: { id: data.subjectId },
+        },
       },
-      parent: {
-        connect: { id: data.parentId },
-      },
-    },
-  });
+    });
+  }
+
+  throw new Error('ParentId or SubjectId is required');
 }
 
 export async function createSubtopic(data: Omit<ICreateContent, 'subjectId'>) {
@@ -60,7 +80,7 @@ export async function createSubtopic(data: Omit<ICreateContent, 'subjectId'>) {
     where: { id: data.parentId },
   });
 
-  if (!parent || parent.type !== ContentType.TOPIC) {
+  if (!parent || parent.level !== ContentLevel.TOPIC) { 
     throw new Error('Subtopics must be created under topics');
   }
 
@@ -114,13 +134,13 @@ export async function getSubjectWithContent(subjectId: number) {
                   },
                 },
               },
-              topicalQuestions: {
+            },
+          },
+          topicalQuestions: {
+            include: {
+              resources: {
                 include: {
-                  resources: {
-                    include: {
-                      resource: true,
-                    },
-                  },
+                  resource: true,
                 },
               },
             },
