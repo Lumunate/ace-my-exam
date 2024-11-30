@@ -206,7 +206,14 @@ const Navbar: React.FC = () => {
                     <MenuItem> 
                       <strong style={{ textTransform: 'none' }}>{session.data?.user?.email}</strong> 
                     </MenuItem>
-                    <MenuItem>Profile</MenuItem>
+                    {console.log('sssssssss', session)}
+                    {session?.data?.user?.role === 'ADMIN' && (
+                      <MenuItem
+                        onClick={() => {
+                          router.push('/admin');
+                        }}
+                      > Admin</MenuItem>
+                    )}
                     <MenuItem
                       onClick={() => {
                         signOut();
