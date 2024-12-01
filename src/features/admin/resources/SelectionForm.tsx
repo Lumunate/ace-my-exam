@@ -12,7 +12,6 @@ import ContentSelectionForm from './ContentSelectionForm';
 const SelectionForm = () => {
   const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState('');
   const [selectedResourceType, setSelectedResourceType] = useState('');
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const [selectedSubtopic, setSelectedSubtopic] = useState<Content | undefined>();
 
   return (
@@ -24,22 +23,30 @@ const SelectionForm = () => {
         H_setSelectedResourceType={setSelectedResourceType}
         onSubmit={() => {}}
       />
-      <AdminSectionInnerSpacer />
 
-      <ContentSelectionForm
-        selectedSubtopic={selectedSubtopic}
-        setSelectedSubtopic={setSelectedSubtopic}
-        subject={selectedSubjectSubtype}
-        resourceType={selectedResourceType as ResourceType}
-      />
+      {selectedResourceType && (
+        <>
+          <AdminSectionInnerSpacer />
 
-      <AdminSectionInnerSpacer />
+          <ContentSelectionForm
+            selectedSubtopic={selectedSubtopic}
+            setSelectedSubtopic={setSelectedSubtopic}
+            subject={selectedSubjectSubtype}
+            resourceType={selectedResourceType as ResourceType}
+          />
+          {selectedSubtopic && (
+            <>
+              <AdminSectionInnerSpacer />
 
-      <AddResourceForm
-        selectedSubtopic={selectedSubtopic}
-        selectedSubjectSubtype={selectedSubjectSubtype}
-        selectedResourceType={selectedResourceType as ResourceType}
-      />
+              <AddResourceForm
+                selectedSubtopic={selectedSubtopic}
+                selectedSubjectSubtype={selectedSubjectSubtype}
+                selectedResourceType={selectedResourceType as ResourceType}
+              />
+            </>
+          )}
+        </>
+      )}
     </Box>
   );
 };
