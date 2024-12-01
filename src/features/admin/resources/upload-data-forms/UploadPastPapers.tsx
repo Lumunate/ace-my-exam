@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, styled, Typography } from '@mui/material';
+import { useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { PastPaperWithResource } from 'app/api/resources/route';
@@ -23,7 +24,7 @@ interface UploadPastPapersProps {
 
 const UploadPastPapers = ({ subjectId, selectedPastPaper }: UploadPastPapersProps) => {
   const { showSnackbar } = useSnackbar();
-
+  
   const {
     control,
     handleSubmit,
@@ -44,13 +45,21 @@ const UploadPastPapers = ({ subjectId, selectedPastPaper }: UploadPastPapersProp
       },
     },
   });
+  
+  const [isReset, setIsReset] = useState(false);
+  const handleReset = () => {
+    reset();
+    setIsReset(true);
+    // Reset the flag after a short delay to allow future uploads
+    setTimeout(() => setIsReset(false), 100);
+  };
 
   const { mutate: submitForm, isLoading } = useUploadPastPapers();
   const onSubmitForm: SubmitHandler<IPastPaperData> = async (data: IPastPaperData) => {
     submitForm(data, {
       onSuccess: () => {
         showSnackbar('Form submitted successfully!');
-        reset();
+        handleReset();
       },
       onError: () => {
         showSnackbar('Failed to submit Contact Form. Please try again later!');
@@ -76,6 +85,7 @@ const UploadPastPapers = ({ subjectId, selectedPastPaper }: UploadPastPapersProp
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
+                  reset={isReset}
                 />
                 {errors.resources && errors.resources.questionPaper && (
                   <Typography color="error" variant="caption" sx={{ mt: 1 }}>
@@ -98,6 +108,7 @@ const UploadPastPapers = ({ subjectId, selectedPastPaper }: UploadPastPapersProp
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
+                  reset={isReset}
                 />
                 {errors.resources && errors.resources.markingScheme && (
                   <Typography color="error" variant="caption" sx={{ mt: 1 }}>
@@ -121,6 +132,7 @@ const UploadPastPapers = ({ subjectId, selectedPastPaper }: UploadPastPapersProp
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
+                  reset={isReset}
                 />
                 {errors.resources && errors.resources.solutionBooklet && (
                   <Typography color="error" variant="caption" sx={{ mt: 1 }}>
