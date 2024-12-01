@@ -21,7 +21,6 @@ interface AddResourceFormProps {
 const AddResourceForm: React.FC<AddResourceFormProps> = ({
   selectedSubtopic,
   selectedResourceType,
-  selectedSubjectSubtype,
   selectedPastPaper,
   setSelectedPastPaper,
 }) => {
@@ -35,7 +34,6 @@ const AddResourceForm: React.FC<AddResourceFormProps> = ({
           <UploadPastPapers
             selectedPastPaper={selectedPastPaper}
             setSelectedPastPaper={setSelectedPastPaper}
-            subjectId={parseInt(selectedSubjectSubtype)}
           />
         </Box>
       )}
