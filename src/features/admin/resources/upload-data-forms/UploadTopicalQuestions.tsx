@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, Button, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, styled, Typography } from '@mui/material';
+import { Content } from '@prisma/client';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { useSnackbar } from '../../../../contexts/SnackbarContext';
@@ -14,10 +15,10 @@ const FormContainer = styled(Box)({
 });
 
 interface UplaodTopicalQuestionsProps {
-  subtopicId: number;
+  selectedSubtopic: Content;
 }
 
-const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => {
+const UplaodTopicalQuestions = ({ selectedSubtopic }: UplaodTopicalQuestionsProps) => {
   const { showSnackbar } = useSnackbar();
 
   const {
@@ -30,8 +31,8 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
   } = useForm<ITopicalQuestionData>({
     resolver: zodResolver(topicalQuestionSchema),
     defaultValues: {
-      title: '',
-      subtopicId: subtopicId,
+      title: selectedSubtopic.name,
+      subtopicId: selectedSubtopic.id,
       questionPaper: '',
       markingScheme: '',
     },
@@ -54,21 +55,6 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
     <Box>
       <form onSubmit={handleSubmit(onSubmitForm)}>
         <FormContainer>
-          <Controller
-            name="title"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Title"
-                variant="outlined"
-                fullWidth
-                error={!!errors.title}
-                helperText={errors.title?.message}
-              />
-            )}
-          />
-
           <Controller
             name="questionPaper"
             control={control}

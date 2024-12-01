@@ -54,9 +54,9 @@ const AddResourceForm: React.FC<AddResourceFormProps> = ({
             {selectedSubtopic?.name}
           </AdminSectionSubHeading>
 
-          {selectedResourceType === ResourceType.REVISION_NOTES && <UploadRevisionNotes subtopicId={selectedSubtopic.id} />}
+          {selectedResourceType === ResourceType.REVISION_NOTES && <UploadRevisionNotes selectedSubtopic={selectedSubtopic} />}
 
-          {selectedResourceType === ResourceType.TOPIC_QUESTIONS && <UplaodTopicalQuestions subtopicId={selectedSubtopic.id} />}
+          {selectedResourceType === ResourceType.TOPIC_QUESTIONS && <UplaodTopicalQuestions selectedSubtopic={selectedSubtopic} />}
         </Box>
       )}
     </Box>
