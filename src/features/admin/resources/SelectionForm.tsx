@@ -39,7 +39,8 @@ const SelectionForm = () => {
             subject={selectedSubjectSubtype}
             resourceType={selectedResourceType as ResourceType}
           />
-          {selectedSubtopic || selectedPastPaper && (
+
+          {(!!selectedSubtopic || !!selectedPastPaper) && (
             <>
               <AdminSectionInnerSpacer />
 
