@@ -4,7 +4,7 @@ import AddIcon from '@mui/icons-material/Add';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import EditIcon from '@mui/icons-material/Edit';
 import ReplayIcon from '@mui/icons-material/Replay';
-import { AccordionSummary, Box, Button, IconButton, styled, Typography } from '@mui/material';
+import { AccordionSummary, Box, Button, IconButton, Skeleton, styled, Typography } from '@mui/material';
 import {
   Content,
   ContentLevel,
@@ -306,8 +306,6 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
     refetch();
   }, [subject, resourceType]);
 
-  if (!resourceType) return null;
-
   return (
     <Box>
       <AdminCenteredSectionHeading>{resourceType === ResourceType.REVISION_NOTES ? 'Revision Notes' : resourceType === ResourceType.TOPIC_QUESTIONS ? 'Topical Questions' : 'Past Papers'}</AdminCenteredSectionHeading>
@@ -316,7 +314,11 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
         <AdminSectionSubHeading>Select, Add and Edit the Chapter, Topic and Subtopic for your resources.</AdminSectionSubHeading>
 
         {!data || isLoading ? (
-          <Box>Please make a selection to continue</Box>
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {[...Array(3)].map((_, index) => (
+              <Skeleton variant="text" key={index} width="100%" height={20} />
+            ))}
+          </Box>
         ) : (
           <>
 

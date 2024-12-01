@@ -9,7 +9,7 @@ import UploadRevisionNotes from './upload-data-forms/UploadRevisionNotes';
 import UplaodTopicalQuestions from './upload-data-forms/UploadTopicalQuestions';
 
 interface AddResourceFormProps {
-  selectedSubtopic: Content | undefined;
+  selectedSubtopic: Content;
   selectedResourceType: string;
   selectedSubjectSubtype: string;
 }
@@ -24,8 +24,7 @@ const AddResourceForm: React.FC<AddResourceFormProps> = ({ selectedSubtopic, sel
         <UploadPastPapers subjectId={parseInt(selectedSubjectSubtype)} />
       </Box>
     );
-  if (!selectedSubtopic || !selectedResourceType) return null;
-
+    
   return (
     <Box>
       <AdminSectionHeading>Upload - {selectedResourceType === ResourceType.REVISION_NOTES ? 'Revision Notes' : 'Topic Questions'}</AdminSectionHeading>
