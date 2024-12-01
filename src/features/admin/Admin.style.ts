@@ -12,7 +12,7 @@ export const AdminSectionWrapper = styled(Box)(({ theme }) => ({
 
 export const AdminSectionHeading = styled(Typography)(() => ({
   color: 'text.primary',
-  fontSize: '1.8rem',
+  fontSize: '2.4rem',
   fontWeight: '600',
   marginBottom: '0.4rem',
 }));
@@ -20,7 +20,7 @@ export const AdminSectionHeading = styled(Typography)(() => ({
 export const AdminCenteredSectionHeading = styled(Typography)(() => ({
   color: 'accent.main',
   textAlign: 'center',
-  fontSize: '1.8rem',
+  fontSize: '2.4rem',
   fontWeight: '600',
   marginBottom: '0.4rem',
 }));
@@ -34,28 +34,28 @@ export const AdminSectionInnerSpacer = styled(Box)(() => ({
 
 export const AdminSectionSubHeading = styled(Typography)(() => ({
   color: 'rgba(120, 120, 120, 1)',
-  fontSize: '1rem',
+  fontSize: '1.6rem',
   fontWeight: '300',
-  marginBottom: '0.8rem',
+  marginBottom: '1.6rem',
 }));
 
 export const AdminSectionsLayout = styled(Box)(() => ({
   display: 'flex',
-  gap: '1.2rem',
+  gap: '1.4rem',
   width: '100%',
   height: 'max-content',
 }));
 
 export const AdminModalHeading = styled(Typography)(() => ({
   color: 'text.primary',
-  fontSize: '1.8rem',
+  fontSize: '2rem',
   fontWeight: '600',
   marginBottom: '0.4rem',
 }));
 
 export const AdminModalSubHeading = styled(Typography)(() => ({
   color: 'rgba(120, 120, 120, 1)',
-  fontSize: '1rem',
+  fontSize: '1.6rem',
   fontWeight: '300',
   marginBottom: '0.8rem',
 }));

@@ -8,6 +8,7 @@ import { AccordionSummary, Box, Button, IconButton, Skeleton, styled, Typography
 import {
   Content,
   ContentLevel,
+  ContentType,
   PastPaperResourceType,
   RevisionNoteResourceType,
   TopicalQuestionResourceType,
@@ -30,7 +31,6 @@ import { ResourceType } from '../../../types/resources';
 import { AdminCenteredSectionHeading, AdminModalSubHeading, AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
 
 export const AdminTableHeading = styled(AdminSectionHeading)(() => ({
-  fontSize: '1.4rem',
   color: '#666',
 }));
 
@@ -47,7 +47,7 @@ const handleDownload = (fileName: string) => {
 
 export const ResourceHeading = styled(AccordionSummary)(() => ({
   color: '#000',
-  fontSize: '1.4rem',
+  fontSize: '2rem',
   fontWeight: 600,
   border: 'none',
   display: 'flex',
@@ -58,7 +58,7 @@ export const ResourceHeading = styled(AccordionSummary)(() => ({
 
 export const ResourceItem = styled(AccordionSummary)(({ theme }) => ({
   color: '#333',
-  fontSize: '1.2rem',
+  fontSize: '1.8rem',
   fontWeight: 400,
   border: 'none',
   ':hover': {
@@ -148,7 +148,7 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
     <>
       <CollapseContainer>
         <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
-          <Typography variant="h6" sx={{ fontWeight: data.level === ContentLevel.CHAPTER ? 'bold' : 'normal' }}>
+          <Typography variant="h6" sx={{ fontWeight: data.type === ContentType.CHAPTER || data.type === ContentType.TOPICAL_TOPIC ? 'bold' : 'normal', fontSize: 'inherit' }}>  
             {data.name}
           </Typography>
 
@@ -283,7 +283,7 @@ const PastPaperSelectionForm: React.FC<{
       {Object.keys(papersByYear).map((year) => (
         <CollapseContainer key={year}>
           <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
-            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+            <Typography sx={{ fontWeight: 'bold', fontSize: 'inherit' }}>
               {year}
             </Typography>
 

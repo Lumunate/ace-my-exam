@@ -64,10 +64,10 @@ const Input = styled('input')({
 });
 
 export const DropZoneLabel = styled(FormLabel)({
-  fontSize: '1.2rem',
+  fontSize: '1.6rem',
   color: '#666',
   fontWeight: 600,
-  marginBottom: '0.4rem',
+  marginBottom: '0.8rem',
 });
 
 const FileUpload: React.FC<FileUploadProps> = ({
