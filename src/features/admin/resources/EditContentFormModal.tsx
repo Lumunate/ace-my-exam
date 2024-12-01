@@ -66,14 +66,7 @@ const EditContentFormModal: React.FC<EditContentFormModalProps> = ({
             fullWidth
             margin="normal"
           />
-          <TextField
-            label="Description"
-            {...register('description')}
-            error={!!errors.description}
-            helperText={errors.description ? errors.description.message : ''}
-            fullWidth
-            margin="normal"
-          />
+
           <DialogActions>
             <Button onClick={onClose} sx={{ mr: 1 }}>
               Cancel
