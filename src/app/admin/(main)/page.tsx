@@ -21,7 +21,7 @@ const Page = () => {
   const [stats, setStats] = useState<Record<string, StatItem>>({
     pastPapers: {
       name: 'Revision Notes',
-      value: '15',
+      value: '0',
       subTitle: 'Uploaded',
       showPlus: true,
     },
