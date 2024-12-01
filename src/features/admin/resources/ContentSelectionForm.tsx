@@ -29,6 +29,7 @@ import { useGetResources } from '../../../hooks/resources/useResources';
 import { ContentWithChildren } from '../../../types/content';
 import { ResourceType } from '../../../types/resources';
 import { AdminCenteredSectionHeading, AdminModalSubHeading, AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
+import { CreatePastPaperForm, EditPastPaperFormModal } from './PastPaperModals';
 
 export const AdminTableHeading = styled(AdminSectionHeading)(() => ({
   color: '#666',
@@ -148,7 +149,13 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
     <>
       <CollapseContainer>
         <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
-          <Typography variant="h6" sx={{ fontWeight: data.type === ContentType.CHAPTER || data.type === ContentType.TOPICAL_TOPIC ? 'bold' : 'normal', fontSize: 'inherit' }}>  
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: data.type === ContentType.CHAPTER || data.type === ContentType.TOPICAL_TOPIC ? 'bold' : 'normal',
+              fontSize: 'inherit',
+            }}
+          >
             {data.name}
           </Typography>
 
@@ -256,8 +263,7 @@ const PastPaperSelectionForm: React.FC<{
     return data.resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
   };
 
-  const [, setCreateContentOpen] = useState<boolean>(false);
-  const [, setEditContentOpen] = useState<boolean>(false);
+  const [editContentOpen, setEditContentOpen] = useState<boolean>(false);
 
   const papersByYear = data.reduce((acc: Record<string, PastPaperWithResource[]>, paper) => {
     const year = paper.year.toString();
@@ -283,69 +289,63 @@ const PastPaperSelectionForm: React.FC<{
       {Object.keys(papersByYear).map((year) => (
         <CollapseContainer key={year}>
           <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
-            <Typography sx={{ fontWeight: 'bold', fontSize: 'inherit' }}>
-              {year}
-            </Typography>
-
-            <Box sx={{ display: 'flex', alignItems: 'center', transform: 'translateY(-5px)', marginLeft: '2rem' }}>
-              <IconButton onClick={() => setEditContentOpen(true)}>
-                <EditIcon />
-              </IconButton>
-              <IconButton onClick={() => setCreateContentOpen(true)}>
-                <AddIcon />
-              </IconButton>
-            </Box>
+            <Typography sx={{ fontWeight: 'bold', fontSize: 'inherit' }}>{year}</Typography>
           </ResourceHeading>
 
           <InnerCollapse>
             {papersByYear[year].map((paper) => (
-              <Box key={paper.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
-                <ResourceItem
-                  sx={{
-                    flex: '0 0 calc(50%)',
-                    color: selectedPastPaper?.id === paper.id ? 'secondary.main' : '',
-                    fontWeight: selectedPastPaper?.id === paper.id ? 'bold' : '',
-                  }}
-                  onClick={() => setSelectedPastPaper(paper)}
-                >
-                  {paper.title}
-                </ResourceItem>
-                <DownloadIconButton
-                  sx={{ flex: '0 0 1' }}
-                  onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER))}
-                >
-                  <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-                </DownloadIconButton>
-                <DownloadIconButton
-                  sx={{ flex: '0 0 1' }}
-                  onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME))}
-                >
-                  <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-                </DownloadIconButton>
-                <DownloadIconButton
-                  sx={{ flex: '0 0 1' }}
-                  onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET))}
-                >
-                  <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-                </DownloadIconButton>
-              </Box>
+              <>
+                <Box key={paper.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
+                  <ResourceItem
+                    sx={{
+                      flex: '0 0 calc(50%)',
+                      color: selectedPastPaper?.id === paper.id ? 'secondary.main' : '',
+                      fontWeight: selectedPastPaper?.id === paper.id ? 'bold' : '',
+                    }}
+                    onClick={() => setSelectedPastPaper(paper)}
+                  >
+                    {paper.title}
+
+                    <Box sx={{ display: 'flex', alignItems: 'center', transform: 'translateY(-5px)', marginLeft: '2rem' }}>
+                      <IconButton onClick={() => setEditContentOpen(true)}>
+                        <EditIcon />
+                      </IconButton>
+                    </Box>
+                  </ResourceItem>
+                  <DownloadIconButton
+                    sx={{ flex: '0 0 1' }}
+                    onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER))}
+                  >
+                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+                  </DownloadIconButton>
+                  <DownloadIconButton
+                    sx={{ flex: '0 0 1' }}
+                    onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME))}
+                  >
+                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+                  </DownloadIconButton>
+                  <DownloadIconButton
+                    sx={{ flex: '0 0 1' }}
+                    onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET))}
+                  >
+                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+                  </DownloadIconButton>
+                </Box>
+                {editContentOpen && selectedPastPaper && (
+                  <EditPastPaperFormModal
+                    open={editContentOpen}
+                    onClose={() => setEditContentOpen(false)}
+                    id={paper.id}
+                    title={paper.title}
+                    year={paper.year}
+                    subjectId={paper.subject_id ?? 0}
+                  />
+                )}
+              </>
             ))}
           </InnerCollapse>
         </CollapseContainer>
       ))}
-      {/* TODO */}
-      {/* {editContentOpen && selectedPastPaper && (
-        <EditContentFormModal
-          open={editContentOpen}
-          onClose={() => setEditContentOpen(false)}
-          id={selectedPastPaper.id}
-          name={selectedPastPaper.title}
-          description={''}
-        />
-      )}
-      {createContentOpen && selectedPastPaper && (
-        <CreateContentForm open={createContentOpen} onClose={() => setCreateContentOpen(false)} subjectId={null} parent={null} isTopical={false} />
-      )} */}
     </>
   );
 };
@@ -365,11 +365,12 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
   setSelectedSubtopic,
   setSelectedPastPaper,
   selectedSubtopic,
-  selectedPastPaper
+  selectedPastPaper,
 }) => {
   const { data, isLoading, refetch } = useGetResources(parseInt(subject));
 
   const [createContentOpen, setCreateContentOpen] = useState<boolean>(false);
+  const [createPastPaperOpen, setCreatePastPaperOpen] = useState<boolean>(false);
 
   useEffect(() => {
     refetch();
@@ -425,6 +426,20 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
                 </Button>
               )}
 
+              {resourceType === ResourceType.PAST_PAPER && (
+                <Button
+                  onClick={() => setCreatePastPaperOpen(true)}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Past Paper</Typography>
+                  <AddIcon />
+                </Button>
+              )}
+
               <IconButton onClick={() => refetch()}>
                 <ReplayIcon />
               </IconButton>
@@ -437,6 +452,14 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
                 subjectId={parseInt(subject)}
                 isTopical={resourceType === ResourceType.TOPIC_QUESTIONS}
                 parent={null}
+              />
+            )}
+
+            {createPastPaperOpen && (
+              <CreatePastPaperForm
+                open={createPastPaperOpen}
+                onClose={() => setCreatePastPaperOpen(false)}
+                subjectId={parseInt(subject)}
               />
             )}
 
@@ -457,7 +480,11 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
             )}
 
             {resourceType === ResourceType.PAST_PAPER && (
-              <PastPaperSelectionForm selectedPastPaper={selectedPastPaper} setSelectedPastPaper={setSelectedPastPaper} data={data.pastPapers as PastPaperWithResource[]} />
+              <PastPaperSelectionForm
+                selectedPastPaper={selectedPastPaper}
+                setSelectedPastPaper={setSelectedPastPaper}
+                data={data.pastPapers as PastPaperWithResource[]}
+              />
             )}
           </>
         )}

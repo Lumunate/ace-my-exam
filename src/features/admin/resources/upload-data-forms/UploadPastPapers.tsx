@@ -4,10 +4,10 @@ import { useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { PastPaperWithResource } from 'app/api/resources/route';
+import { useUploadPastPaperResources } from 'hooks/resources/usePastPaper';
 
 import { useSnackbar } from '../../../../contexts/SnackbarContext';
-import { useUploadPastPapers } from '../../../../hooks/resources/useUploadResources';
-import { IPastPaperData, pastPaperSchema } from '../../../../types/past-paper';
+import { IPastPaperResourcesData, pastPaperResourcesSchema } from '../../../../types/past-paper';
 import FileUpload, { DropZoneLabel } from '../FileUpload';
 
 const FormContainer = styled(Box)({
@@ -17,12 +17,11 @@ const FormContainer = styled(Box)({
 });
 
 interface UploadPastPapersProps {
-  subjectId: number;
   selectedPastPaper: PastPaperWithResource;
   setSelectedPastPaper: React.Dispatch<React.SetStateAction<PastPaperWithResource | undefined>>;
 }
 
-const UploadPastPapers = ({ subjectId, selectedPastPaper }: UploadPastPapersProps) => {
+const UploadPastPapers = ({ selectedPastPaper }: UploadPastPapersProps) => {
   const { showSnackbar } = useSnackbar();
   
   const {
@@ -32,12 +31,10 @@ const UploadPastPapers = ({ subjectId, selectedPastPaper }: UploadPastPapersProp
     setValue,
     trigger,
     reset,
-  } = useForm<IPastPaperData>({
-    resolver: zodResolver(pastPaperSchema),
+  } = useForm<IPastPaperResourcesData>({
+    resolver: zodResolver(pastPaperResourcesSchema),
     defaultValues: {
-      subjectId: selectedPastPaper?.subject_id ?? subjectId,
-      title: selectedPastPaper.title,
-      year: selectedPastPaper.year,
+      pastPaperId: selectedPastPaper.id,
       resources: {
         questionPaper: '',
         markingScheme: '',
@@ -54,8 +51,8 @@ const UploadPastPapers = ({ subjectId, selectedPastPaper }: UploadPastPapersProp
     setTimeout(() => setIsReset(false), 100);
   };
 
-  const { mutate: submitForm, isLoading } = useUploadPastPapers();
-  const onSubmitForm: SubmitHandler<IPastPaperData> = async (data: IPastPaperData) => {
+  const { mutate: submitForm, isLoading } = useUploadPastPaperResources();
+  const onSubmitForm: SubmitHandler<IPastPaperResourcesData> = async (data: IPastPaperResourcesData) => {
     submitForm(data, {
       onSuccess: () => {
         showSnackbar('Form submitted successfully!');
