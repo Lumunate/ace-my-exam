@@ -22,9 +22,9 @@ export async function _sendAcknowledgementEmail(email: string, data: FeedbackAck
 
     return await sendEmail(html, {
       to: email,
-      subject: 'Thank you for contacting Ace My Exams',
+      subject: 'Thank you for contacting Acemyexam',
       from: 'fizoneechan@gmail.com',
-      fromName: 'Ace My Exams',
+      fromName: 'Acemyexam',
       replyTo: 'asma@acemyexam.co.uk',
     });
   } catch (error) {
@@ -43,7 +43,7 @@ export async function sendClientRecieveEmail(data: NewFeedbackNotificationProps)
       to: 'asma@acemyexam.co.uk',
       subject: 'New Feedback Form Submission',
       from: 'fizoneechan@gmail.com',
-      fromName: 'Ace My Exams',
+      fromName: 'Acemyexam',
       replyTo: 'asma@acemyexam.co.uk',
     });
   } catch (error) {

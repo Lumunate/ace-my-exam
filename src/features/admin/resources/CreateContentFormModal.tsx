@@ -12,11 +12,12 @@ type CreateContentFormProps = {
   onClose: () => void;
 };
 
-const CreateContentForm: React.FC<CreateContentFormProps & { subjectId: number | null; parent: ContentWithChildren | null }> = ({
+const CreateContentForm: React.FC<CreateContentFormProps & { subjectId: number | null; parent: ContentWithChildren | null, isTopical: boolean }> = ({
   open,
   onClose,
   subjectId,
   parent,
+  isTopical
 }) => {
   const {
     control,
@@ -29,6 +30,7 @@ const CreateContentForm: React.FC<CreateContentFormProps & { subjectId: number |
       description: '',
       subjectId: subjectId ?? undefined,
       parentId: parent?.id ?? undefined,
+      isTopical: isTopical ?? false,
     },
   });
 
@@ -42,7 +44,7 @@ const CreateContentForm: React.FC<CreateContentFormProps & { subjectId: number |
     <Dialog open={open} onClose={onClose}>
       {subjectId ? (
         <DialogTitle>
-          <AdminModalHeading variant="h3">Create Chapter</AdminModalHeading>
+          <AdminModalHeading variant="h3">Create {isTopical ? 'Topic' : 'Chapter'}</AdminModalHeading>
           <AdminModalSubHeading variant="h3">Create chapter for subject # {subjectId}</AdminModalSubHeading>
         </DialogTitle>
       ) : (

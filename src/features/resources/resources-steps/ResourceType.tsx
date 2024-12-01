@@ -56,7 +56,7 @@ const ResourceType: React.FC = () => {
     examBoard,
     ageGroup,
     subject,
-    { id: subjectSubtype.value as string, name: subjectSubtype.name, tags: [] }
+    { id: subjectSubtype?.value, name: subjectSubtype?.name, tags: [] }
   );
 
   useEffect(() => {

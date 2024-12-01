@@ -27,7 +27,7 @@ import {
 import { useGetResources } from '../../../hooks/resources/useResources';
 import { ContentWithChildren } from '../../../types/content';
 import { ResourceType } from '../../../types/resources';
-import { AdminModalSubHeading, AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
+import { AdminCenteredSectionHeading, AdminModalSubHeading, AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
 
 export const AdminTableHeading = styled(AdminSectionHeading)(() => ({
   fontSize: '1.4rem',
@@ -113,6 +113,7 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
           <ResourceItem
             sx={{
+              flex: '0 0 calc(50%)',
               color: selectedSubtopic?.id === data.id ? 'secondary.main' : '',
               fontWeight: selectedSubtopic?.id === data.id ? 'bold' : '',
             }}
@@ -147,7 +148,7 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
     <>
       <CollapseContainer>
         <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
-          <Typography variant="h6">{data.name}</Typography>
+          <Typography variant="h6" sx={{ fontWeight: data.level === ContentLevel.CHAPTER ? 'bold' : 'normal' }}>{data.name}</Typography>
 
           <Box sx={{ display: 'flex', alignItems: 'center', transform: 'translateY(-5px)', marginLeft: '2rem' }}>
             <IconButton onClick={() => setEditContentOpen(true)}>
@@ -182,7 +183,7 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
         />
       )}
       {createContentOpen && (
-        <CreateContentForm open={createContentOpen} onClose={() => setCreateContentOpen(false)} subjectId={null} parent={data} />
+        <CreateContentForm open={createContentOpen} onClose={() => setCreateContentOpen(false)} subjectId={null} parent={data} isTopical={false} />
       )}
     </>
   );
@@ -199,7 +200,7 @@ const RevisionNotesSelectionForm: React.FC<DataFormProps> = ({ data, setSelected
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
         <AdminTableHeading>Name</AdminTableHeading>
-        <AdminTableHeading>Download</AdminTableHeading>
+        <AdminModalSubHeading>Note</AdminModalSubHeading>
       </Box>
 
       {data?.map((child: ContentWithChildren) => (
@@ -220,9 +221,9 @@ const TopicalQuestionsSelectionForm: React.FC<DataFormProps> = ({ data, setSelec
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <AdminTableHeading sx={{ flex: '0 0 calc(50%)' }}>Name</AdminTableHeading>
-        <AdminTableHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Download</AdminTableHeading>
-        <AdminTableHeading sx={{ flex: '0 0 1' }}>Marking Scheme</AdminTableHeading>
-        <AdminTableHeading sx={{ flex: '0 0 1' }}>Answer</AdminTableHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Question Paper</AdminModalSubHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1' }}>Marking Scheme</AdminModalSubHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1' }}>Answer</AdminModalSubHeading>
       </Box>
 
       {data?.map((child: ContentWithChildren) => (
@@ -247,7 +248,7 @@ const PastPaperViewForm: React.FC<{ data: PastPaperWithResource[] }> = ({ data }
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <AdminTableHeading sx={{ flex: '0 0 calc(50%)' }}>Exam</AdminTableHeading>
-        <AdminModalSubHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Download</AdminModalSubHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Question Paper</AdminModalSubHeading>
         <AdminModalSubHeading sx={{ flex: '0 0 1' }}>Marking Scheme</AdminModalSubHeading>
         <AdminModalSubHeading sx={{ flex: '0 0 1' }}>Answer</AdminModalSubHeading>
       </Box>
@@ -308,59 +309,75 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
   if (!resourceType) return null;
 
   return (
-    <Box sx={{ position: 'relative' }}>
-      <AdminSectionHeading>Select Content</AdminSectionHeading>
-      <AdminSectionSubHeading>Select, Add and Edit the Chapter, Topic and Subtopic for your resources.</AdminSectionSubHeading>
+    <Box>
+      <AdminCenteredSectionHeading>{resourceType === ResourceType.REVISION_NOTES ? 'Revision Notes' : resourceType === ResourceType.TOPIC_QUESTIONS ? 'Topical Questions' : 'Past Papers'}</AdminCenteredSectionHeading>
+      <Box sx={{ position: 'relative' }}>
+        <AdminSectionHeading>Select Content</AdminSectionHeading>
+        <AdminSectionSubHeading>Select, Add and Edit the Chapter, Topic and Subtopic for your resources.</AdminSectionSubHeading>
 
-      {!data || isLoading ? (
-        <Box>Please make a selection to continue</Box>
-      ) : (
-        <>
+        {!data || isLoading ? (
+          <Box>Please make a selection to continue</Box>
+        ) : (
+          <>
 
-          {resourceType === ResourceType.REVISION_NOTES && (
             <Box sx={{ position: 'absolute', top: '-10px', right: '10px', zIndex: 10, display: 'flex', alignItems: 'center' }}>
-              <Button onClick={() => setCreateContentOpen(true)} sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Chapter</Typography>
-                <AddIcon />
-              </Button>
+              {resourceType === ResourceType.REVISION_NOTES && (
+                <Button onClick={() => setCreateContentOpen(true)} sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Chapter</Typography>
+                  <AddIcon />
+                </Button>
+              )}
+
+              {resourceType === ResourceType.TOPIC_QUESTIONS && (
+                <Button onClick={() => setCreateContentOpen(true)} sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                }}>
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Topic</Typography>
+                  <AddIcon />
+                </Button>
+              )}
+              
               <IconButton onClick={() => refetch()}>
                 <ReplayIcon />
               </IconButton>
             </Box>
-          )}
 
-          {createContentOpen && (
-            <CreateContentForm
-              open={createContentOpen}
-              onClose={() => setCreateContentOpen(false)}
-              subjectId={parseInt(subject)}
-              parent={null}
-            />
-          )}
+            {createContentOpen && (
+              <CreateContentForm
+                open={createContentOpen}
+                onClose={() => setCreateContentOpen(false)}
+                subjectId={parseInt(subject)}
+                isTopical={resourceType === ResourceType.TOPIC_QUESTIONS}
+                parent={null}
+              />
+            )}
 
-          {resourceType === ResourceType.REVISION_NOTES && (
-            <RevisionNotesSelectionForm
-              data={data.chapters as ContentWithChildren[]}
-              setSelectedSubtopic={setSelectedSubtopic}
-              selectedSubtopic={selectedSubtopic}
-            />
-          )}
+            {resourceType === ResourceType.REVISION_NOTES && (
+              <RevisionNotesSelectionForm
+                data={data.chapters as ContentWithChildren[]}
+                setSelectedSubtopic={setSelectedSubtopic}
+                selectedSubtopic={selectedSubtopic}
+              />
+            )}
 
-          {resourceType === ResourceType.TOPIC_QUESTIONS && (
-            <TopicalQuestionsSelectionForm
-              data={data.topics as ContentWithChildren[]}
-              setSelectedSubtopic={setSelectedSubtopic}
-              selectedSubtopic={selectedSubtopic}
-            />
-          )}
+            {resourceType === ResourceType.TOPIC_QUESTIONS && (
+              <TopicalQuestionsSelectionForm
+                data={data.topics as ContentWithChildren[]}
+                setSelectedSubtopic={setSelectedSubtopic}
+                selectedSubtopic={selectedSubtopic}
+              />
+            )}
 
-          {resourceType === ResourceType.PAST_PAPER && <PastPaperViewForm data={data.pastPapers as PastPaperWithResource[]} />}
-        </>
-      )}
+            {resourceType === ResourceType.PAST_PAPER && <PastPaperViewForm data={data.pastPapers as PastPaperWithResource[]} />}
+          </>
+        )}
+      </Box>
     </Box>
   );
 };

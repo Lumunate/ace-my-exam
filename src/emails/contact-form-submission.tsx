@@ -35,7 +35,7 @@ const NewContactNotificationTemplate = ({
               src={`https://res.cloudinary.com/diiafjy31/image/upload/v1732335659/logo_olrpci.svg`}
               width="200"
               height="90"
-              alt="Ace My Exams"
+              alt="Acemyexam"
               style={img}
             />
           </Section>
@@ -80,7 +80,7 @@ const NewContactNotificationTemplate = ({
             <Text style={reminderText}>Remember to respond within 24 hours to maintain our service standards.</Text>
           </Section>
 
-          <Text style={footer}>This is an automated notification from Ace My Exams contact form system. Submission ID: {id}</Text>
+          <Text style={footer}>This is an automated notification from Acemyexam contact form system. Submission ID: {id}</Text>
         </Container>
       </Body>
     </Html>
