@@ -1,5 +1,6 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, Button, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, styled, Typography } from '@mui/material';
+import { Content } from '@prisma/client';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { useSnackbar } from '../../../../contexts/SnackbarContext';
@@ -14,10 +15,10 @@ const FormContainer = styled(Box)({
 });
 
 interface UploadRevisionNotesProps {
-  subtopicId: number;
+  selectedSubtopic: Content;
 }
 
-const UploadRevisionNotes = ({ subtopicId }: UploadRevisionNotesProps) => {
+const UploadRevisionNotes = ({ selectedSubtopic }: UploadRevisionNotesProps) => {
   const { showSnackbar } = useSnackbar();
 
   const {
@@ -30,8 +31,8 @@ const UploadRevisionNotes = ({ subtopicId }: UploadRevisionNotesProps) => {
   } = useForm<IRevisionNoteData>({
     resolver: zodResolver(revisionNoteSchema),
     defaultValues: {
-      title: '',
-      subtopicId: subtopicId,
+      title: selectedSubtopic.name,
+      subtopicId: selectedSubtopic.id,
       noteUrl: '',
     },
   });
@@ -54,26 +55,11 @@ const UploadRevisionNotes = ({ subtopicId }: UploadRevisionNotesProps) => {
       <form onSubmit={handleSubmit(onSubmitForm)}>
         <FormContainer>
           <Controller
-            name="title"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Title"
-                variant="outlined"
-                fullWidth
-                error={!!errors.title}
-                helperText={errors.title?.message}
-              />
-            )}
-          />
-
-          <Controller
             name="noteUrl"
             control={control}
             render={() => (
               <Box>
-                <DropZoneLabel htmlFor="noteUrl">Upload file:</DropZoneLabel>  
+                <DropZoneLabel htmlFor="noteUrl">Upload file:</DropZoneLabel>
                 <FileUpload
                   hoist={(file: string) => {
                     setValue('noteUrl', file);
