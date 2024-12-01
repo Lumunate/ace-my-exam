@@ -1,6 +1,8 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, Button, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, styled, Typography } from '@mui/material';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+
+import { PastPaperWithResource } from 'app/api/resources/route';
 
 import { useSnackbar } from '../../../../contexts/SnackbarContext';
 import { useUploadPastPapers } from '../../../../hooks/resources/useUploadResources';
@@ -15,9 +17,11 @@ const FormContainer = styled(Box)({
 
 interface UploadPastPapersProps {
   subjectId: number;
+  selectedPastPaper: PastPaperWithResource;
+  setSelectedPastPaper: React.Dispatch<React.SetStateAction<PastPaperWithResource | undefined>>;
 }
 
-const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
+const UploadPastPapers = ({ subjectId, selectedPastPaper }: UploadPastPapersProps) => {
   const { showSnackbar } = useSnackbar();
 
   const {
@@ -30,9 +34,9 @@ const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
   } = useForm<IPastPaperData>({
     resolver: zodResolver(pastPaperSchema),
     defaultValues: {
-      subjectId: subjectId,
-      title: '',
-      year: new Date().getFullYear(),
+      subjectId: selectedPastPaper?.subject_id ?? subjectId,
+      title: selectedPastPaper.title,
+      year: selectedPastPaper.year,
       resources: {
         questionPaper: '',
         markingScheme: '',
@@ -58,37 +62,7 @@ const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
     <Box>
       <form onSubmit={handleSubmit(onSubmitForm)}>
         <FormContainer>
-          <Controller
-            name="title"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Title"
-                variant="outlined"
-                fullWidth
-                error={!!errors.title}
-                helperText={errors.title?.message}
-              />
-            )}
-          />
-
-          <Controller
-            name="year"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Year"
-                variant="outlined"
-                fullWidth
-                type="number"
-                error={!!errors.year}
-                helperText={errors.year?.message}
-              />
-            )}
-          />
-
+         
           <Controller
             name="resources.questionPaper"
             control={control}

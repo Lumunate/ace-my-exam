@@ -3,6 +3,8 @@ import { Box } from '@mui/material';
 import { Content } from '@prisma/client';
 import React, { useState } from 'react';
 
+import { PastPaperWithResource } from 'app/api/resources/route';
+
 import ResourceSelectionForm from './ResourceSelectionForm';
 import { ResourceType } from '../../../types/resources';
 import { AdminSectionInnerSpacer } from '../Admin.style';
@@ -13,6 +15,7 @@ const SelectionForm = () => {
   const [selectedSubjectSubtype, setSelectedSubjectSubtype] = useState('');
   const [selectedResourceType, setSelectedResourceType] = useState('');
   const [selectedSubtopic, setSelectedSubtopic] = useState<Content | undefined>();
+  const [selectedPastPaper, setSelectedPastPaper] = useState<PastPaperWithResource | undefined>(); 
 
   return (
     <Box>
@@ -31,14 +34,18 @@ const SelectionForm = () => {
           <ContentSelectionForm
             selectedSubtopic={selectedSubtopic}
             setSelectedSubtopic={setSelectedSubtopic}
+            selectedPastPaper={selectedPastPaper}
+            setSelectedPastPaper={setSelectedPastPaper}
             subject={selectedSubjectSubtype}
             resourceType={selectedResourceType as ResourceType}
           />
-          {selectedSubtopic && (
+          {selectedSubtopic || selectedPastPaper && (
             <>
               <AdminSectionInnerSpacer />
 
               <AddResourceForm
+                selectedPastPaper={selectedPastPaper}
+                setSelectedPastPaper={setSelectedPastPaper}
                 selectedSubtopic={selectedSubtopic}
                 selectedSubjectSubtype={selectedSubjectSubtype}
                 selectedResourceType={selectedResourceType as ResourceType}
