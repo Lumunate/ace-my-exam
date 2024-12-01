@@ -32,6 +32,7 @@ interface FileUploadProps {
   maxFileSize?: number; // in bytes
   maxFiles?: number;
   hoist: (file: string) => void;
+  reset?: boolean;
 }
 
 interface SignatureResponse {
@@ -73,12 +74,22 @@ const FileUpload: React.FC<FileUploadProps> = ({
   maxFileSize = 10 * 1024 * 1024, // 10MB default
   maxFiles = 5,
   hoist = () => { },
+  reset
 }) => {
   const [files, setFiles] = useState<File[]>([]);
   const [uploading, setUploading] = useState<boolean>(false);
   const [uploadStatus, setUploadStatus] = useState<UploadStatus | null>(null);
   const [, setUploadProgress] = useState<{ [key: string]: number }>({});
   const { showSnackbar } = useSnackbar();
+
+  useEffect(() => {
+    if (reset) {
+      setFiles([]);
+      setUploadStatus(null);
+      setUploadProgress({});
+      hoist(''); // Clear the hoisted value
+    }
+  }, [reset, hoist]);
 
   const validateFiles = (fileList: File[]): { isValid: boolean; error?: string } => {
     const hasInvalidType = fileList.some((file) => file.type !== 'application/pdf');

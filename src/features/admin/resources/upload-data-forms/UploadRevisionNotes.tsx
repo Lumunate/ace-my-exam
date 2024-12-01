@@ -1,6 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Box, Button, styled, Typography } from '@mui/material';
 import { Content } from '@prisma/client';
+import { useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { useSnackbar } from '../../../../contexts/SnackbarContext';
@@ -37,12 +38,20 @@ const UploadRevisionNotes = ({ selectedSubtopic }: UploadRevisionNotesProps) => 
     },
   });
 
+  const [isReset, setIsReset] = useState(false);
+  const handleReset = () => {
+    reset();
+    setIsReset(true);
+    // Reset the flag after a short delay to allow future uploads
+    setTimeout(() => setIsReset(false), 100);
+  };
+
   const { mutate: submitForm, isLoading } = useUploadRevisionNotes();
   const onSubmitForm: SubmitHandler<IRevisionNoteData> = async (data: IRevisionNoteData) => {
     submitForm(data, {
       onSuccess: () => {
         showSnackbar('Form submitted successfully!');
-        reset();
+        handleReset();
       },
       onError: () => {
         showSnackbar('Failed to submit Contact Form. Please try again later!');
@@ -67,6 +76,7 @@ const UploadRevisionNotes = ({ selectedSubtopic }: UploadRevisionNotesProps) => 
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
+                  reset={isReset}
                 />
                 {errors.noteUrl && (
                   <Typography color="error" variant="caption" sx={{ mt: 1 }}>
