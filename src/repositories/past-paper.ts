@@ -83,13 +83,12 @@ export async function createWithResources(data: IPastPaperData) {
   });
 }
 
-export async function findWithResources(id: number) {
-  return prisma.pastPaper.findUnique({
-    where: { id },
-    include: {
-      resources: {
-        include: {
-          resource: true,
+export async function getResourceCount() {
+  return prisma.pastPaper.findFirst({
+    select: {
+      _count: {
+        select: {
+          resources: true,
         },
       },
     },
