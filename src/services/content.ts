@@ -4,6 +4,8 @@ import { ContentType } from '@prisma/client';
 import { IResourceData } from '../app/api/resources/route';
 import * as ContentRepository from '../repositories/content';
 import * as PastPaperRepository from '../repositories/past-paper';
+import * as RevisionNotesRepository from '../repositories/revision-note';
+import * as TopicalQuestionsRepository from '../repositories/topical-question';
 import { ICreateContent } from '../types/content';
 
 // ================== DEPRECATED =========================
@@ -71,5 +73,17 @@ export async function getSubjectContentAndPastPapers(subjectId: number): Promise
     chapters: content.filter((chapter) => chapter.level === ContentType.CHAPTER),
     topics: content
       .filter((topic) => topic.type === ContentType.TOPICAL_TOPIC),
+  };
+}
+
+export async function getResourceCounts() {
+  const pastPapers = await PastPaperRepository.getResourceCount();
+  const revisionNotes = await RevisionNotesRepository.getResourceCount();
+  const topicalQuestion = await TopicalQuestionsRepository.getResourceCount();
+
+  return {
+    pastPapers: pastPapers?._count.resources ?? 0,
+    revisionNotes: revisionNotes?._count.resources ?? 0,
+    topicalQuestions: topicalQuestion?._count.resources ?? 0,
   };
 }
