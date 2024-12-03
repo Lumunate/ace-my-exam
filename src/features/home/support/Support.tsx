@@ -41,7 +41,7 @@ const Support: React.FC = () => {
             </SupportHeading>
             <SupportPara>
               From GCSEs and A-Levels to independent school entrance exams and
-              scholarships, AceMyExam’s expert tutors provide the personalized,
+              scholarships, Acemyexam’s expert tutors provide the personalized,
               one-on-one support you need.
             </SupportPara>
           </SupportContentHead>

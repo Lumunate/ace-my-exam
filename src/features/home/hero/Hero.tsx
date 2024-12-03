@@ -57,7 +57,7 @@ const Hero: React.FC = () => {
             <SectionHeading text="Success Starts Here" align="start" showLeftLine={false} color="#fff" gradientType="first" />
             <FadeIn direction="left" distance={200} duration={1.5}>
               <Box>
-                <HeroHeading>Unlock Your Full Potential with AceMyExam</HeroHeading>
+                <HeroHeading>Unlock Your Full Potential with Acemyexam</HeroHeading>
                 <HeroContent>
                   Based in Cambridge, UK, Acemyexam provides best-in-class personalised learning to students in order to achieve academic excellence, confidence, and academic growth.
                 </HeroContent>

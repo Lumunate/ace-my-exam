@@ -95,7 +95,7 @@ const About: React.FC = () => {
             <FadeIn direction="up" distance={50} duration={1.5} delay={0.3}>
               <AboutHeading>A Legacy of Excellence</AboutHeading>
               <AboutPara>
-                ACEMYEXAM is a leading tuition service based in Cambridge, UK,
+                Acemyexam is a leading tuition service based in Cambridge, UK,
                 specializing in personalized, one-to-one and small group learning.
                 Our mission is to empower students to achieve academic excellence,
                 confidence, and growth through bespoke learning solutions.

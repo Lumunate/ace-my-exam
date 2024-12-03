@@ -41,7 +41,7 @@ export const CommonHeadingTypography = styled(Typography)<{ textColor: string; t
   width: textSize,
   whiteSpace: 'nowrap',
   [theme.breakpoints.down('md')]: {
-    fontSize: '14px',
+    fontSize: '1.6rem',
     maxWidth: '140px',
   },
   [theme.breakpoints.down('sm')]: {
