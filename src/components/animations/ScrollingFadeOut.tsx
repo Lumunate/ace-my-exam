@@ -9,15 +9,23 @@ if (typeof window !== 'undefined') {
   gsap.registerPlugin(ScrollTrigger);
 }
 
-const ScrollingFadeOut = ({ children }: { children: React.ReactNode }) => {
+const ScrollingFadeOut = ({
+  children,
+  triggerStart = 'top  center',
+  triggerEnd = '+=70%',
+}: {
+  children: React.ReactNode;
+  triggerStart?: string;
+  triggerEnd?: string;
+}) => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: 'top  center',
-        end: '+=70%',
+        start: triggerStart,
+        end: triggerEnd,
         scrub: true,
         pin: true,
         pinSpacing: false,

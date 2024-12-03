@@ -15,7 +15,7 @@ export default function About() {
     <>
       <AboutHero />
       <AppContentWrapper width="1450px">
-        <ScrollingFadeOut>
+        <ScrollingFadeOut triggerStart='bottom bottom' triggerEnd='+=100%'>
           <AboutFounder />
         </ScrollingFadeOut>
 
