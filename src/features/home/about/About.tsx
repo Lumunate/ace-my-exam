@@ -22,6 +22,7 @@ interface AboutCardProps {
   bgColor: string;
   textColor: string;
   alignment: string;
+  iconUrl?: string;
 }
 
 const AboutCard: React.FC<AboutCardProps> = ({
@@ -29,9 +30,10 @@ const AboutCard: React.FC<AboutCardProps> = ({
   bgColor,
   textColor,
   alignment,
+  iconUrl = '/icons/brain-black.svg',
 }) => (
   <AboutCardContainer bgColor={bgColor} alignment={alignment}>
-    <Image src={'/icons/brain-black.svg'} width={26} height={32} alt='icon' />
+    <Image src={iconUrl} width={26} height={32} alt='icon' />
     <AboutCardHeading textColor={textColor}>{title}</AboutCardHeading>
   </AboutCardContainer>
 );
@@ -70,6 +72,7 @@ const About: React.FC = () => {
                 bgColor='#DA9694'
                 textColor='#fff'
                 alignment='center'
+                iconUrl='/icons/education-school-study-stickerL.svg'
               />
               <AboutCardTwoHead>
                 <AboutCard
@@ -77,6 +80,7 @@ const About: React.FC = () => {
                   bgColor='#FFF'
                   textColor='#000'
                   alignment='center'
+                  iconUrl='/icons/education-school-study-stickerL.svg'
                 />
               </AboutCardTwoHead>
             </FadeIn>
@@ -95,7 +99,7 @@ const About: React.FC = () => {
             <FadeIn direction="up" distance={50} duration={1.5} delay={0.3}>
               <AboutHeading>A Legacy of Excellence</AboutHeading>
               <AboutPara>
-                ACEMYEXAM is a leading tuition service based in Cambridge, UK,
+                Acemyexam is a leading tuition service based in Cambridge, UK,
                 specializing in personalized, one-to-one and small group learning.
                 Our mission is to empower students to achieve academic excellence,
                 confidence, and growth through bespoke learning solutions.

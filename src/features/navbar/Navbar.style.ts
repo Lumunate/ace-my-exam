@@ -20,7 +20,7 @@ export const CommonMenu = styled(Menu)({
   '& .MuiMenuItem-root': {
     color: '#000',
     fontWeight: 400,
-    fontSize: '14px',
+    fontSize: '1.6rem',
     textTransform: 'capitalize',
     lineHeight: '27.75px',
     fontFamily: 'Lato, sans-serif',

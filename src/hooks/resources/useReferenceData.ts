@@ -7,7 +7,7 @@ import { ICreateContent, IEditContent } from '../../types/content';
 import {EducationLevel, ExamBoards, Subjects} from '../../types/resources';
 
 export const educationLevelOptions: IStepOption[] = [
-  { name: 'A levels', icon: '/resources/ALevels.svg', value: EducationLevel.A_LEVEL },
+  { name: 'A level', icon: '/resources/ALevels.svg', value: EducationLevel.A_LEVEL },
   { name: 'GCSE', icon: '/resources/GCSE.svg', value: EducationLevel.GCSE },
   { name: 'IGCSE', icon: '/resources/IGCSE.svg', value: EducationLevel.IGCSE },
   { name: 'KS3', icon: '/resources/KS3.svg', value: EducationLevel.KS3 },
