@@ -1,10 +1,13 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, Button, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, styled, Typography } from '@mui/material';
+import { useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
+import { PastPaperWithResource } from 'app/api/resources/route';
+import { useUploadPastPaperResources } from 'hooks/resources/usePastPaper';
+
 import { useSnackbar } from '../../../../contexts/SnackbarContext';
-import { useUploadPastPapers } from '../../../../hooks/resources/useUploadResources';
-import { IPastPaperData, pastPaperSchema } from '../../../../types/past-paper';
+import { IPastPaperResourcesData, pastPaperResourcesSchema } from '../../../../types/past-paper';
 import FileUpload, { DropZoneLabel } from '../FileUpload';
 
 const FormContainer = styled(Box)({
@@ -14,12 +17,13 @@ const FormContainer = styled(Box)({
 });
 
 interface UploadPastPapersProps {
-  subjectId: number;
+  selectedPastPaper: PastPaperWithResource;
+  setSelectedPastPaper: React.Dispatch<React.SetStateAction<PastPaperWithResource | undefined>>;
 }
 
-const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
+const UploadPastPapers = ({ selectedPastPaper }: UploadPastPapersProps) => {
   const { showSnackbar } = useSnackbar();
-
+  
   const {
     control,
     handleSubmit,
@@ -27,12 +31,10 @@ const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
     setValue,
     trigger,
     reset,
-  } = useForm<IPastPaperData>({
-    resolver: zodResolver(pastPaperSchema),
+  } = useForm<IPastPaperResourcesData>({
+    resolver: zodResolver(pastPaperResourcesSchema),
     defaultValues: {
-      subjectId: subjectId,
-      title: '',
-      year: new Date().getFullYear(),
+      pastPaperId: selectedPastPaper.id,
       resources: {
         questionPaper: '',
         markingScheme: '',
@@ -40,13 +42,21 @@ const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
       },
     },
   });
+  
+  const [isReset, setIsReset] = useState(false);
+  const handleReset = () => {
+    reset();
+    setIsReset(true);
+    // Reset the flag after a short delay to allow future uploads
+    setTimeout(() => setIsReset(false), 100);
+  };
 
-  const { mutate: submitForm, isLoading } = useUploadPastPapers();
-  const onSubmitForm: SubmitHandler<IPastPaperData> = async (data: IPastPaperData) => {
+  const { mutate: submitForm, isLoading } = useUploadPastPaperResources();
+  const onSubmitForm: SubmitHandler<IPastPaperResourcesData> = async (data: IPastPaperResourcesData) => {
     submitForm(data, {
       onSuccess: () => {
         showSnackbar('Form submitted successfully!');
-        reset();
+        handleReset();
       },
       onError: () => {
         showSnackbar('Failed to submit Contact Form. Please try again later!');
@@ -58,37 +68,7 @@ const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
     <Box>
       <form onSubmit={handleSubmit(onSubmitForm)}>
         <FormContainer>
-          <Controller
-            name="title"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Title"
-                variant="outlined"
-                fullWidth
-                error={!!errors.title}
-                helperText={errors.title?.message}
-              />
-            )}
-          />
-
-          <Controller
-            name="year"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Year"
-                variant="outlined"
-                fullWidth
-                type="number"
-                error={!!errors.year}
-                helperText={errors.year?.message}
-              />
-            )}
-          />
-
+         
           <Controller
             name="resources.questionPaper"
             control={control}
@@ -102,6 +82,7 @@ const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
+                  reset={isReset}
                 />
                 {errors.resources && errors.resources.questionPaper && (
                   <Typography color="error" variant="caption" sx={{ mt: 1 }}>
@@ -124,6 +105,7 @@ const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
+                  reset={isReset}
                 />
                 {errors.resources && errors.resources.markingScheme && (
                   <Typography color="error" variant="caption" sx={{ mt: 1 }}>
@@ -147,6 +129,7 @@ const UploadPastPapers = ({ subjectId }: UploadPastPapersProps) => {
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
+                  reset={isReset}
                 />
                 {errors.resources && errors.resources.solutionBooklet && (
                   <Typography color="error" variant="caption" sx={{ mt: 1 }}>

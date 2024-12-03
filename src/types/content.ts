@@ -6,6 +6,7 @@ export const createContentSchema = z.object({
   subjectId: z.number().optional(),
   parentId: z.number().optional(),
   description: z.string().optional(),
+  isTopical: z.boolean().default(false), 
 });
 
 export const editContentSchema = z.object({

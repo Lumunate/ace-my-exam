@@ -4,10 +4,11 @@ import AddIcon from '@mui/icons-material/Add';
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import EditIcon from '@mui/icons-material/Edit';
 import ReplayIcon from '@mui/icons-material/Replay';
-import { AccordionSummary, Box, Button, IconButton, styled, Typography } from '@mui/material';
+import { AccordionSummary, Box, Button, IconButton, Skeleton, styled, Typography } from '@mui/material';
 import {
   Content,
   ContentLevel,
+  ContentType,
   PastPaperResourceType,
   RevisionNoteResourceType,
   TopicalQuestionResourceType,
@@ -27,11 +28,11 @@ import {
 import { useGetResources } from '../../../hooks/resources/useResources';
 import { ContentWithChildren } from '../../../types/content';
 import { ResourceType } from '../../../types/resources';
-import { AdminModalSubHeading, AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
+import { AdminCenteredSectionHeading, AdminModalSubHeading, AdminSectionHeading, AdminSectionSubHeading } from '../Admin.style';
+import { CreatePastPaperForm, EditPastPaperFormModal } from './PastPaperModals';
 
 export const AdminTableHeading = styled(AdminSectionHeading)(() => ({
-  fontSize: '1.4rem',
-  color:'#666'
+  color: '#666',
 }));
 
 const handleDownload = (fileName: string) => {
@@ -47,7 +48,7 @@ const handleDownload = (fileName: string) => {
 
 export const ResourceHeading = styled(AccordionSummary)(() => ({
   color: '#000',
-  fontSize: '1.4rem',
+  fontSize: '2rem',
   fontWeight: 600,
   border: 'none',
   display: 'flex',
@@ -58,7 +59,7 @@ export const ResourceHeading = styled(AccordionSummary)(() => ({
 
 export const ResourceItem = styled(AccordionSummary)(({ theme }) => ({
   color: '#333',
-  fontSize: '1.2rem',
+  fontSize: '1.8rem',
   fontWeight: 400,
   border: 'none',
   ':hover': {
@@ -113,6 +114,7 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
         <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
           <ResourceItem
             sx={{
+              flex: '0 0 calc(50%)',
               color: selectedSubtopic?.id === data.id ? 'secondary.main' : '',
               fontWeight: selectedSubtopic?.id === data.id ? 'bold' : '',
             }}
@@ -147,7 +149,15 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
     <>
       <CollapseContainer>
         <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
-          <Typography variant="h6">{data.name}</Typography>
+          <Typography
+            variant="h6"
+            sx={{
+              fontWeight: data.type === ContentType.CHAPTER || data.type === ContentType.TOPICAL_TOPIC ? 'bold' : 'normal',
+              fontSize: 'inherit',
+            }}
+          >
+            {data.name}
+          </Typography>
 
           <Box sx={{ display: 'flex', alignItems: 'center', transform: 'translateY(-5px)', marginLeft: '2rem' }}>
             <IconButton onClick={() => setEditContentOpen(true)}>
@@ -182,7 +192,13 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
         />
       )}
       {createContentOpen && (
-        <CreateContentForm open={createContentOpen} onClose={() => setCreateContentOpen(false)} subjectId={null} parent={data} />
+        <CreateContentForm
+          open={createContentOpen}
+          onClose={() => setCreateContentOpen(false)}
+          subjectId={null}
+          parent={data}
+          isTopical={false}
+        />
       )}
     </>
   );
@@ -199,7 +215,7 @@ const RevisionNotesSelectionForm: React.FC<DataFormProps> = ({ data, setSelected
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
         <AdminTableHeading>Name</AdminTableHeading>
-        <AdminTableHeading>Download</AdminTableHeading>
+        <AdminModalSubHeading>Note</AdminModalSubHeading>
       </Box>
 
       {data?.map((child: ContentWithChildren) => (
@@ -220,9 +236,9 @@ const TopicalQuestionsSelectionForm: React.FC<DataFormProps> = ({ data, setSelec
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <AdminTableHeading sx={{ flex: '0 0 calc(50%)' }}>Name</AdminTableHeading>
-        <AdminTableHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Download</AdminTableHeading>
-        <AdminTableHeading sx={{ flex: '0 0 1' }}>Marking Scheme</AdminTableHeading>
-        <AdminTableHeading sx={{ flex: '0 0 1' }}>Answer</AdminTableHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Question Paper</AdminModalSubHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1' }}>Marking Scheme</AdminModalSubHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1' }}>Answer</AdminModalSubHeading>
       </Box>
 
       {data?.map((child: ContentWithChildren) => (
@@ -238,47 +254,97 @@ const TopicalQuestionsSelectionForm: React.FC<DataFormProps> = ({ data, setSelec
   );
 };
 
-const PastPaperViewForm: React.FC<{ data: PastPaperWithResource[] }> = ({ data }) => {
+const PastPaperSelectionForm: React.FC<{
+  data: PastPaperWithResource[];
+  selectedPastPaper: PastPaperWithResource | undefined;
+  setSelectedPastPaper: React.Dispatch<React.SetStateAction<PastPaperWithResource | undefined>>;
+}> = ({ data, selectedPastPaper, setSelectedPastPaper }) => {
   const getDownloadUrl = (data: PastPaperWithResource, resourceType: PastPaperResourceType) => {
     return data.resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
   };
+
+  const [editContentOpen, setEditContentOpen] = useState<boolean>(false);
+
+  const papersByYear = data.reduce((acc: Record<string, PastPaperWithResource[]>, paper) => {
+    const year = paper.year.toString();
+
+    if (year in acc) {
+      acc[year].push(paper);
+    } else {
+      acc[year] = [paper];
+    }
+
+    return acc;
+  }, {});
 
   return (
     <>
       <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
         <AdminTableHeading sx={{ flex: '0 0 calc(50%)' }}>Exam</AdminTableHeading>
-        <AdminModalSubHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Download</AdminModalSubHeading>
+        <AdminModalSubHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Question Paper</AdminModalSubHeading>
         <AdminModalSubHeading sx={{ flex: '0 0 1' }}>Marking Scheme</AdminModalSubHeading>
         <AdminModalSubHeading sx={{ flex: '0 0 1' }}>Answer</AdminModalSubHeading>
       </Box>
 
-      {data?.map((child: PastPaperWithResource) => (
-        <>
-          <Box
-            key={child.id}
-            sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px', py: '2px' }}
-          >
-            <ResourceItem sx={{ flex: '0 0 calc(50%)' }}>{child.title}</ResourceItem>
-            <DownloadIconButton
-              sx={{ flex: '0 0 1' }}
-              onClick={() => handleDownload(getDownloadUrl(child, PastPaperResourceType.QUESTION_PAPER))}
-            >
-              <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-            </DownloadIconButton>
-            <DownloadIconButton
-              sx={{ flex: '0 0 1' }}
-              onClick={() => handleDownload(getDownloadUrl(child, PastPaperResourceType.MARKING_SCHEME))}
-            >
-              <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-            </DownloadIconButton>
-            <DownloadIconButton
-              sx={{ flex: '0 0 1' }}
-              onClick={() => handleDownload(getDownloadUrl(child, PastPaperResourceType.SOLUTION_BOOKLET))}
-            >
-              <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-            </DownloadIconButton>
-          </Box>
-        </>
+      {Object.keys(papersByYear).map((year) => (
+        <CollapseContainer key={year}>
+          <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
+            <Typography sx={{ fontWeight: 'bold', fontSize: 'inherit' }}>{year}</Typography>
+          </ResourceHeading>
+
+          <InnerCollapse>
+            {papersByYear[year].map((paper) => (
+              <>
+                <Box key={paper.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', p: 0 }}>
+                  <ResourceItem
+                    sx={{
+                      flex: '0 0 calc(50%)',
+                      color: selectedPastPaper?.id === paper.id ? 'secondary.main' : '',
+                      fontWeight: selectedPastPaper?.id === paper.id ? 'bold' : '',
+                    }}
+                    onClick={() => setSelectedPastPaper(paper)}
+                  >
+                    {paper.title}
+
+                    <Box sx={{ display: 'flex', alignItems: 'center', transform: 'translateY(-5px)', marginLeft: '2rem' }}>
+                      <IconButton onClick={() => setEditContentOpen(true)}>
+                        <EditIcon />
+                      </IconButton>
+                    </Box>
+                  </ResourceItem>
+                  <DownloadIconButton
+                    sx={{ flex: '0 0 1' }}
+                    onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER))}
+                  >
+                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+                  </DownloadIconButton>
+                  <DownloadIconButton
+                    sx={{ flex: '0 0 1' }}
+                    onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME))}
+                  >
+                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+                  </DownloadIconButton>
+                  <DownloadIconButton
+                    sx={{ flex: '0 0 1' }}
+                    onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET))}
+                  >
+                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+                  </DownloadIconButton>
+                </Box>
+                {editContentOpen && selectedPastPaper && (
+                  <EditPastPaperFormModal
+                    open={editContentOpen}
+                    onClose={() => setEditContentOpen(false)}
+                    id={paper.id}
+                    title={paper.title}
+                    year={paper.year}
+                    subjectId={paper.subject_id ?? 0}
+                  />
+                )}
+              </>
+            ))}
+          </InnerCollapse>
+        </CollapseContainer>
       ))}
     </>
   );
@@ -289,78 +355,140 @@ interface ContentSelectionFormProps {
   resourceType: ResourceType;
   selectedSubtopic: ContentWithChildren | undefined;
   setSelectedSubtopic: React.Dispatch<React.SetStateAction<ContentWithChildren | undefined>>;
+  selectedPastPaper: PastPaperWithResource | undefined;
+  setSelectedPastPaper: React.Dispatch<React.SetStateAction<PastPaperWithResource | undefined>>;
 }
 
 const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
   subject,
   resourceType,
   setSelectedSubtopic,
+  setSelectedPastPaper,
   selectedSubtopic,
+  selectedPastPaper,
 }) => {
   const { data, isLoading, refetch } = useGetResources(parseInt(subject));
 
   const [createContentOpen, setCreateContentOpen] = useState<boolean>(false);
+  const [createPastPaperOpen, setCreatePastPaperOpen] = useState<boolean>(false);
 
   useEffect(() => {
     refetch();
   }, [subject, resourceType]);
 
-  if (!resourceType) return null;
-
   return (
-    <Box sx={{ position: 'relative' }}>
-      <AdminSectionHeading>Select Content</AdminSectionHeading>
-      <AdminSectionSubHeading>Select, Add and Edit the Chapter, Topic and Subtopic for your resources.</AdminSectionSubHeading>
+    <Box>
+      <AdminCenteredSectionHeading>
+        {resourceType === ResourceType.REVISION_NOTES
+          ? 'Revision Notes'
+          : resourceType === ResourceType.TOPIC_QUESTIONS
+            ? 'Topical Questions'
+            : 'Past Papers'}
+      </AdminCenteredSectionHeading>
+      <Box sx={{ position: 'relative' }}>
+        <AdminSectionHeading>Select Content</AdminSectionHeading>
+        <AdminSectionSubHeading>Select, Add and Edit the Chapter, Topic and Subtopic for your resources.</AdminSectionSubHeading>
 
-      {!data || isLoading ? (
-        <Box>Please make a selection to continue</Box>
-      ) : (
-        <>
-
-          {resourceType === ResourceType.REVISION_NOTES && (
+        {!data || isLoading ? (
+          <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            {[...Array(3)].map((_, index) => (
+              <Skeleton variant="text" key={index} width="100%" height={20} />
+            ))}
+          </Box>
+        ) : (
+          <>
             <Box sx={{ position: 'absolute', top: '-10px', right: '10px', zIndex: 10, display: 'flex', alignItems: 'center' }}>
-              <Button onClick={() => setCreateContentOpen(true)} sx={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-              }}>
-                <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Chapter</Typography>
-                <AddIcon />
-              </Button>
+              {resourceType === ResourceType.REVISION_NOTES && (
+                <Button
+                  onClick={() => setCreateContentOpen(true)}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Chapter</Typography>
+                  <AddIcon />
+                </Button>
+              )}
+
+              {resourceType === ResourceType.TOPIC_QUESTIONS && (
+                <Button
+                  onClick={() => setCreateContentOpen(true)}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Topic</Typography>
+                  <AddIcon />
+                </Button>
+              )}
+
+              {resourceType === ResourceType.PAST_PAPER && (
+                <Button
+                  onClick={() => setCreatePastPaperOpen(true)}
+                  sx={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                  }}
+                >
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Past Paper</Typography>
+                  <AddIcon />
+                </Button>
+              )}
+
               <IconButton onClick={() => refetch()}>
                 <ReplayIcon />
               </IconButton>
             </Box>
-          )}
 
-          {createContentOpen && (
-            <CreateContentForm
-              open={createContentOpen}
-              onClose={() => setCreateContentOpen(false)}
-              subjectId={parseInt(subject)}
-              parent={null}
-            />
-          )}
+            {createContentOpen && (
+              <CreateContentForm
+                open={createContentOpen}
+                onClose={() => setCreateContentOpen(false)}
+                subjectId={parseInt(subject)}
+                isTopical={resourceType === ResourceType.TOPIC_QUESTIONS}
+                parent={null}
+              />
+            )}
 
-          {resourceType === ResourceType.REVISION_NOTES && (
-            <RevisionNotesSelectionForm
-              data={data.chapters as ContentWithChildren[]}
-              setSelectedSubtopic={setSelectedSubtopic}
-              selectedSubtopic={selectedSubtopic}
-            />
-          )}
+            {createPastPaperOpen && (
+              <CreatePastPaperForm
+                open={createPastPaperOpen}
+                onClose={() => setCreatePastPaperOpen(false)}
+                subjectId={parseInt(subject)}
+              />
+            )}
 
-          {resourceType === ResourceType.TOPIC_QUESTIONS && (
-            <TopicalQuestionsSelectionForm
-              data={data.topics as ContentWithChildren[]}
-              setSelectedSubtopic={setSelectedSubtopic}
-              selectedSubtopic={selectedSubtopic}
-            />
-          )}
+            {resourceType === ResourceType.REVISION_NOTES && (
+              <RevisionNotesSelectionForm
+                data={data.chapters as ContentWithChildren[]}
+                setSelectedSubtopic={setSelectedSubtopic}
+                selectedSubtopic={selectedSubtopic}
+              />
+            )}
 
-          {resourceType === ResourceType.PAST_PAPER && <PastPaperViewForm data={data.pastPapers as PastPaperWithResource[]} />}
-        </>
-      )}
+            {resourceType === ResourceType.TOPIC_QUESTIONS && (
+              <TopicalQuestionsSelectionForm
+                data={data.topics as ContentWithChildren[]}
+                setSelectedSubtopic={setSelectedSubtopic}
+                selectedSubtopic={selectedSubtopic}
+              />
+            )}
+
+            {resourceType === ResourceType.PAST_PAPER && (
+              <PastPaperSelectionForm
+                selectedPastPaper={selectedPastPaper}
+                setSelectedPastPaper={setSelectedPastPaper}
+                data={data.pastPapers as PastPaperWithResource[]}
+              />
+            )}
+          </>
+        )}
+      </Box>
     </Box>
   );
 };

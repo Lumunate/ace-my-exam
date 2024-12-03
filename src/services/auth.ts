@@ -65,7 +65,7 @@ async function sendVerificationEmail(
       to: email,
       subject: 'Verify your Account',
       from: 'fizoneechan@gmail.com',
-      fromName: 'Ace My Exams',
+      fromName: 'Acemyexam',
       replyTo: 'asma@acemyexam.co.uk',
     });
   } catch (error) {

@@ -56,3 +56,15 @@ export async function findBySubtopic(subtopicId: number) {
     },
   });
 }
+
+export async function getResourceCount() {
+  return prisma.revisionNote.findFirst({
+    select: {
+      _count: {
+        select: {
+          resources: true
+        }
+      }
+    }
+  });
+}

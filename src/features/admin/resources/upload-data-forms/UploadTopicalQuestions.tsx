@@ -1,5 +1,7 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Box, Button, styled, TextField, Typography } from '@mui/material';
+import { Box, Button, styled, Typography } from '@mui/material';
+import { Content } from '@prisma/client';
+import { useState } from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 
 import { useSnackbar } from '../../../../contexts/SnackbarContext';
@@ -14,10 +16,10 @@ const FormContainer = styled(Box)({
 });
 
 interface UplaodTopicalQuestionsProps {
-  subtopicId: number;
+  selectedSubtopic: Content;
 }
 
-const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => {
+const UplaodTopicalQuestions = ({ selectedSubtopic }: UplaodTopicalQuestionsProps) => {
   const { showSnackbar } = useSnackbar();
 
   const {
@@ -30,19 +32,27 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
   } = useForm<ITopicalQuestionData>({
     resolver: zodResolver(topicalQuestionSchema),
     defaultValues: {
-      title: '',
-      subtopicId: subtopicId,
+      title: selectedSubtopic.name,
+      subtopicId: selectedSubtopic.id,
       questionPaper: '',
       markingScheme: '',
     },
   });
+
+  const [isReset, setIsReset] = useState(false);
+  const handleReset = () => {
+    reset();
+    setIsReset(true);
+    // Reset the flag after a short delay to allow future uploads
+    setTimeout(() => setIsReset(false), 100);
+  };
 
   const { mutate: submitForm, isLoading } = useUploadTopicalQuestions();
   const onSubmitForm: SubmitHandler<ITopicalQuestionData> = async (data: ITopicalQuestionData) => {
     submitForm(data, {
       onSuccess: () => {
         showSnackbar('Form submitted successfully!');
-        reset();
+        handleReset();
       },
       onError: () => {
         showSnackbar('Failed to submit Contact Form. Please try again later!');
@@ -54,21 +64,6 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
     <Box>
       <form onSubmit={handleSubmit(onSubmitForm)}>
         <FormContainer>
-          <Controller
-            name="title"
-            control={control}
-            render={({ field }) => (
-              <TextField
-                {...field}
-                label="Title"
-                variant="outlined"
-                fullWidth
-                error={!!errors.title}
-                helperText={errors.title?.message}
-              />
-            )}
-          />
-
           <Controller
             name="questionPaper"
             control={control}
@@ -82,6 +77,7 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
+                  reset={isReset}
                 />
                 {errors.questionPaper && (
                   <Typography color="error" variant="caption" sx={{ mt: 1 }}>
@@ -105,6 +101,7 @@ const UplaodTopicalQuestions = ({ subtopicId }: UplaodTopicalQuestionsProps) => 
                   }}
                   maxFileSize={5 * 1024 * 1024}
                   maxFiles={3}
+                  reset={isReset}
                 />
                 {errors.markingScheme && (
                   <Typography color="error" variant="caption" sx={{ mt: 1 }}>

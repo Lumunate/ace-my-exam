@@ -23,7 +23,7 @@ const ContactAcknowledgmentTemplate = ({
   return (
     <Html>
       <Head />
-      <Preview>Thank you for contacting Ace My Exams</Preview>
+      <Preview>Thank you for contacting Acemyexam</Preview>
       <Body style={main}>
         <Container style={container}>
           <Section style={imgSection}>
@@ -31,14 +31,14 @@ const ContactAcknowledgmentTemplate = ({
               src={`https://res.cloudinary.com/diiafjy31/image/upload/v1732335659/logo_olrpci.svg`}
               width="200"
               height="90"
-              alt="Ace My Exams"
+              alt="Acemyexam"
               style={img}
             />
           </Section>
           <Heading style={{ ...heading, color: accentColor }}>Thank You for Contacting Us</Heading>
           <Text style={paragraph}>Dear {fullName},</Text>
           <Text style={paragraph}>
-            Thank you for reaching out to Ace My Exams. We have received your message and will get back to you as soon as possible.
+            Thank you for reaching out to Acemyexam. We have received your message and will get back to you as soon as possible.
           </Text>
 
           <Section style={detailsSection}>
@@ -77,7 +77,7 @@ const ContactAcknowledgmentTemplate = ({
           </Section>
 
           <Text style={footer}>
-            This is an automated acknowledgment from Ace My Exams. Please do not reply to this email.
+            This is an automated acknowledgment from Acemyexam. Please do not reply to this email.
             If you need immediate assistance, please contact our support team directly.
           </Text>
         </Container>
