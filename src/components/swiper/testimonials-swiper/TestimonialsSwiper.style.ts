@@ -88,7 +88,7 @@ const BaseTextStyle = styled(Typography)({
 
 export const TestimonialsCardHeading = styled(BaseTextStyle)(({ theme }) => ({
   color: '#474747',
-  fontSize: '14px',
+  fontSize: '1.6rem',
   fontWeight: 700,
   [theme.breakpoints.down('sm')]: {
     fontSize: '10px',
@@ -97,13 +97,13 @@ export const TestimonialsCardHeading = styled(BaseTextStyle)(({ theme }) => ({
 
 export const TestimonialsOccupationPara = styled(BaseTextStyle)({
   color: '#000',
-  fontSize: '9px',
+  fontSize: '1.2rem',
   fontWeight: 400,
 });
 
 export const TestimonialsCardPara = styled(BaseTextStyle)(({ theme }) => ({
   fontWeight: 400,
-  fontSize: '14px',
+  fontSize: '1.6rem',
   color: '#787878',
   marginTop: '29px',
   [theme.breakpoints.down('sm')]: {

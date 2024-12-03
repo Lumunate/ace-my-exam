@@ -170,6 +170,7 @@ const Navbar: React.FC = () => {
                       {educationLevelOptions.map((resource, idx) => (
                         <MenuItem
                           key={idx}
+                          sx={{ fontSize: '1.6rem' }}
                           onClick={() => handleResourcesClick(resource)}
                         >
                           {resource.name}
