@@ -82,7 +82,7 @@ const Hero: React.FC = () => {
             <FadeIn direction="right" distance={200} duration={1.5}>
               <HeroCardComponent width={282}>
                 <Image
-                  src={'/icons/brain.svg'}
+                  src={'/icons/education-school-study-stickerL.svg'}
                   width={26}
                   height={32}
                   alt='icon'
@@ -94,7 +94,7 @@ const Hero: React.FC = () => {
               <FadeIn direction="right" distance={200} duration={1.5}>
                 <HeroCardComponent width={364}>
                   <Image
-                    src={'/icons/brain.svg'}
+                    src={'/icons/education-school-study-stickerL.svg'}
                     width={26}
                     height={32}
                     alt='icon'
