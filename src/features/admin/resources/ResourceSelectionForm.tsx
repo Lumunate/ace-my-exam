@@ -1,5 +1,5 @@
 'use client';
-import { Box, FormControl, InputLabel, Select, MenuItem, Button } from '@mui/material';
+import { Box, FormControl, InputLabel, Select, MenuItem, Button, styled } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 import { getDisplayOptions } from '../../../features/resources/resources-steps/ResourceType';
@@ -10,6 +10,11 @@ import {
   useGetUniqueSubjects,
 } from '../../../hooks/resources/useReferenceData';
 import { ResourceType } from '../../../types/resources';
+
+const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
+  fontSize: '1.6rem',
+  color: theme.palette.text.primary,
+}));
 
 interface IResourceSelectionFormProps {
   H_selectedSubjectSubtype: string;
@@ -90,9 +95,9 @@ export default function ResourceSelectionForm({
             >
               {educationLevels &&
                 educationLevels.map((level) => (
-                  <MenuItem key={level.value} value={level.value}>
+                  <StyledMenuItem key={level.value} value={level.value}>
                     {level.name}
-                  </MenuItem>
+                  </StyledMenuItem>
                 ))}
             </Select>
           </FormControl>
@@ -113,9 +118,9 @@ export default function ResourceSelectionForm({
             >
               {examBoards &&
                 examBoards.map((board) => (
-                  <MenuItem key={board?.value} value={board?.value}>
+                  <StyledMenuItem key={board?.value} value={board?.value}>
                     {board?.name}
-                  </MenuItem>
+                  </StyledMenuItem>
                 ))}
             </Select>
           </FormControl>
@@ -135,9 +140,9 @@ export default function ResourceSelectionForm({
             >
               {subjects &&
                 subjects.map((subject) => (
-                  <MenuItem key={subject.value} value={subject.value}>
+                  <StyledMenuItem key={subject.value} value={subject.value}>
                     {subject.name}
-                  </MenuItem>
+                  </StyledMenuItem>
                 ))}
             </Select>
           </FormControl>
@@ -174,7 +179,7 @@ export default function ResourceSelectionForm({
             >
               {subjectSubtypes &&
                 subjectSubtypes.map((subtype) => (
-                  <MenuItem key={subtype.id} value={subtype.id}>
+                  <StyledMenuItem key={subtype.id} value={subtype.id}>
                     {subtype.tags
                       ?.map((tag) => {
                         if (tag === 'YEAR_1') {
@@ -186,7 +191,7 @@ export default function ResourceSelectionForm({
                         }
                       })
                       .join(' - ')}
-                  </MenuItem>
+                  </StyledMenuItem>
                 ))}
             </Select>
           </FormControl>
@@ -200,14 +205,14 @@ export default function ResourceSelectionForm({
               label="Resource Type"
               onChange={(e) => setSelectedResourceType(e.target.value)}
             >
-              {past_paper_show && <MenuItem value={ResourceType.PAST_PAPER}>Past Paper</MenuItem>}
-              {topic_question_show && <MenuItem value={ResourceType.TOPIC_QUESTIONS}>Topical Questions</MenuItem>}
-              {revision_notes_show && <MenuItem value={ResourceType.REVISION_NOTES}>Revision Notes</MenuItem>}
+              {past_paper_show && <StyledMenuItem value={ResourceType.PAST_PAPER}>Past Paper</StyledMenuItem>}
+              {topic_question_show && <StyledMenuItem value={ResourceType.TOPIC_QUESTIONS}>Topical Questions</StyledMenuItem>}
+              {revision_notes_show && <StyledMenuItem value={ResourceType.REVISION_NOTES}>Revision Notes</StyledMenuItem>}
             </Select>
           </FormControl>
 
           {/* Submit Button */}
-          <Button type="submit" onClick={handleSubmit} variant="contained" disabled={!selectedResourceType}>
+          <Button type="submit" sx={{ fontSize: '1.4rem' }} onClick={handleSubmit} variant="contained" disabled={!selectedResourceType}>
             Get Resources
           </Button>
         </Box>

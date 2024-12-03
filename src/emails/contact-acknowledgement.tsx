@@ -67,7 +67,7 @@ const ContactAcknowledgmentTemplate = ({
           </Section>
 
           <Text style={paragraph}>
-            Our team typically responds within 24-48 business hours. If you have any urgent concerns, please don&apos;t hesitate to call us directly.
+            Our team typically responds within 24-48 business hours.
           </Text>
 
           <Section style={actionSection}>
