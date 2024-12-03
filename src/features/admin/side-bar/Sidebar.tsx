@@ -86,7 +86,7 @@ export default function SideBar() {
           <ListItemText
             primaryTypographyProps={{
               fontWeight: '600',
-              fontSize: '1.8rem',
+              fontSize: '2.2rem',
               color: 'text.main',
               marginTop: '0.5rem'
             }}
@@ -214,7 +214,7 @@ export const StyledListItem: React.FC<StyledListItemProps> = ({ text, icon, sele
           primary={text}
           primaryTypographyProps={{
             fontWeight: '600 !important',
-            fontSize: '1.2rem',
+            fontSize: '1.6rem',
             color: !selected ? 'text.secondary' : 'text.main',
           }}
           sx={[
