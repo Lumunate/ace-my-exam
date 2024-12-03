@@ -28,7 +28,7 @@ const Navbar = () => {
           sx={{
             color: 'text.primary',
             fontWeight: 'bold',
-            fontSize: '1.4rem',
+            fontSize: '1.6rem',
           }}
         >
           {pathname[pathname.length - 1].charAt(0).toUpperCase() +
@@ -110,7 +110,7 @@ const BreadCrumbs = ({ pathname }: { pathname: string[] }) => {
             sx={{
               color: index === pathname.length - 1 ? 'text.primary' : 'text.secondary',
               fontWeight: 'normal',
-              fontSize: '1.2rem',
+              fontSize: '1.4rem',
               lineHeight: '150%',
             }}
             key={index}

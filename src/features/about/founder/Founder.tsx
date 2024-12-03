@@ -37,6 +37,7 @@ const AboutFounder: React.FC = () => {
       subject: 'Physics (First Class Honours)',
       institution: 'Imperial College London',
     },
+   
   ];
 
   const stats = [
@@ -86,9 +87,15 @@ const AboutFounder: React.FC = () => {
               <FounderList>
                 {educationList.map((edu, index) => (
                   <FounderListItem key={index}>
-                    <Image src={'/icons/check.svg'} width={23} height={23} alt="icon" style={{ marginRight: '8px' }} />
+                    <Image
+                      src={'/icons/check.svg'}
+                      width={23}
+                      height={23}
+                      alt="icon"
+                      style={{ marginRight: '8px'}}
+                    />
                     <FounderSubHeading>
-                      <strong>{edu.degree}</strong> {edu.subject && `in ${edu.subject}`}
+                      <strong>{edu.degree}</strong> {edu.subject && `in ${edu.subject}`} 
                       {edu.institution && (
                         <strong>
                           {' – '}
