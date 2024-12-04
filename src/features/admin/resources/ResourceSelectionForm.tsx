@@ -1,5 +1,5 @@
 'use client';
-import { Box, FormControl, InputLabel, Select, MenuItem, Button, styled } from '@mui/material';
+import { Box, FormControl, MenuItem, styled } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 
 import { getDisplayOptions } from '../../../features/resources/resources-steps/ResourceType';
@@ -10,27 +10,12 @@ import {
   useGetUniqueSubjects,
 } from '../../../hooks/resources/useReferenceData';
 import { ResourceType } from '../../../types/resources';
+import { StyledButton, StyledLabel, StyledSelect } from '../Admin.style';
 
 const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
   fontSize: '1.6rem',
   color: theme.palette.text.primary,
 }));
-
-const StyledSelect = styled(Select)({
-  '& .MuiInputBase-input': {  // This targets the actual input/selected value
-    fontSize: '1.6rem !important',
-  },
-  fontSize: '1.2rem !important',
-});
-
-const StyledLabel = styled(InputLabel)({
-  '&.MuiInputLabel-root': {  // Label in initial state
-    fontSize: '1.6rem',
-  },
-  '&.MuiInputLabel-shrink': {  // Label in floating state
-    fontSize: '1.2rem !important',
-  }
-});
 
 interface IResourceSelectionFormProps {
   H_selectedSubjectSubtype: string;
@@ -228,10 +213,10 @@ export default function ResourceSelectionForm({
           </FormControl>
 
           {/* Submit Button */}
-          <Button type="submit" sx={{ fontSize: '1.4rem' }} onClick={handleSubmit} variant="contained" disabled={!selectedResourceType}>
-            Get Resources
-          </Button>
         </Box>
+        <StyledButton type="submit" sx={{ mt: 4 }} fullWidth onClick={handleSubmit} variant="contained" disabled={!selectedResourceType}>
+            Get Resources
+        </StyledButton>
       </Box>
     </Box>
   );
