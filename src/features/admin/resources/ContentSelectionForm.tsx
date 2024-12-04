@@ -105,7 +105,7 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
             {data.name}
           </ResourceItem>
           <DownloadIconButton onClick={() => handleDownload(getRevisionNoteDownloadUrl(data, RevisionNoteResourceType.NOTE))}>
-            <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+            <Image src="/icons/search.svg" alt="download" width={18} height={18} />
           </DownloadIconButton>
         </Box>
       );
@@ -126,19 +126,19 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
             sx={{ flex: '0 0 1' }}
             onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.QUESTION_PAPER))}
           >
-            <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+            <Image src="/icons/search.svg" alt="download" width={18} height={18} />
           </DownloadIconButton>
           <DownloadIconButton
             sx={{ flex: '0 0 1' }}
             onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.MARKING_SCHEME))}
           >
-            <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+            <Image src="/icons/search.svg" alt="download" width={18} height={18} />
           </DownloadIconButton>
           <DownloadIconButton
             sx={{ flex: '0 0 1' }}
             // onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.SOLUTION_BOOKLET))}
           >
-            <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+            <Image src="/icons/search.svg" alt="download" width={18} height={18} />
           </DownloadIconButton>
         </Box>
       );
@@ -316,19 +316,19 @@ const PastPaperSelectionForm: React.FC<{
                     sx={{ flex: '0 0 1' }}
                     onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER))}
                   >
-                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+                    <Image src="/icons/search.svg" alt="download" width={18} height={18} />
                   </DownloadIconButton>
                   <DownloadIconButton
                     sx={{ flex: '0 0 1' }}
                     onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME))}
                   >
-                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+                    <Image src="/icons/search.svg" alt="download" width={18} height={18} />
                   </DownloadIconButton>
                   <DownloadIconButton
                     sx={{ flex: '0 0 1' }}
                     onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET))}
                   >
-                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
+                    <Image src="/icons/search.svg" alt="download" width={18} height={18} />
                   </DownloadIconButton>
                 </Box>
                 {editContentOpen && selectedPastPaper && (
