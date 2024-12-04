@@ -211,8 +211,6 @@ export default function ResourceSelectionForm({
               {revision_notes_show && <StyledMenuItem value={ResourceType.REVISION_NOTES}>Revision Notes</StyledMenuItem>}
             </StyledSelect>
           </FormControl>
-
-          {/* Submit Button */}
         </Box>
         <StyledButton type="submit" sx={{ mt: 4 }} fullWidth onClick={handleSubmit} variant="contained" disabled={!selectedResourceType}>
             Get Resources
