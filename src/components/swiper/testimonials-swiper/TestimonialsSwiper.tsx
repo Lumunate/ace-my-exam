@@ -140,14 +140,26 @@ const TestimonialsSwiper: FC = () => {
                     {testimonial.feedbackDate}
                   </TestimonialsParaTwo>
                 </Box>
-                <TrustpilotImage href={'https://www.trustpilot.com/'} target='_blank'>
-                  <Image
-                    src='/home/trustpilot.svg'
-                    alt='trustpilot-icon'
-                    layout='fill' 
-                    loading='lazy'
-                  />
-                </TrustpilotImage>
+                <Box sx={{display: 'flex', flexDirection: 'column', gap: '50px'}}>
+                  <TrustpilotImage href={'https://www.trustpilot.com/'} target='_blank'>
+                    <Image
+                      src='/home/trustpilot.svg'
+                      alt='trustpilot-icon'
+                      width={100}
+                      height={100}
+                      loading='lazy'
+                    />
+                  </TrustpilotImage>
+                  <TrustpilotImage href={'https://www.trustpilot.com/'} target='_blank'>
+                    <Image
+                      src='/home/first-tutors.png'
+                      alt='trustpilot-icon'
+                      width={100}
+                      height={-1}
+                      loading='lazy'
+                    />
+                  </TrustpilotImage>
+                </Box>
               </TestimonialsDateHead>
             </TestimonialsCard>
           </SwiperSlide>
