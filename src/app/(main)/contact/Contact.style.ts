@@ -24,11 +24,18 @@ export const ContactContainer = styled(Box)(({ theme }) => ({
   },
 }));
 
-export const ContactIconHead = styled(Box)({
+export const ContactIconHead = styled(Box)( ({ theme }) => ({
   position: 'absolute',
   left: '-50px',
   top: '-60px',
-});
+  
+  [theme.breakpoints.down('lg')]: {
+    left: '-20px',
+  },
+  [theme.breakpoints.down('md')]: {
+    top: '-30px',
+  },
+}));
 
 export const ContactLinksHead = styled(Box)(({ theme }) => ({
   padding: '33px 0 33px 39px',
