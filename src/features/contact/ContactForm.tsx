@@ -98,7 +98,7 @@ export default function ContactForm() {
                 labelfontsize="14px"
               />
             </Grid>
-            <Grid size={{ xs: 24, md: 12 }}>
+            <Grid size={{ xs: 24, md: 24 }}>
               <StyledTextField
                 label="Message"
                 variant="standard"
