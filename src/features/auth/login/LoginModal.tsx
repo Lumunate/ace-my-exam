@@ -73,6 +73,8 @@ const LoginModal: React.FC<LoginModalProps> = ({ open, handleClose, onSwitchToSi
     } catch (error: unknown) {
       if (error instanceof Error) {
         showSnackbar(error.message);
+        
+        return;
       }
 
       showSnackbar('Login Failed');
