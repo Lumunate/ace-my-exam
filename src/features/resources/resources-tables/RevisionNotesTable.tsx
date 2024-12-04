@@ -20,18 +20,9 @@ import {
 import { PaginationHead, ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
 import { StyledPagination } from '../../../components/pagination/Pagination.style';
 import { ContentWithChildren } from '../../../types/content';
+import { handleDownload } from 'utils/handleDownload';
 
 const RevisionNotesTable: React.FC<{ data: ContentWithChildren[]; isLoading: boolean }> = ({ data }) => {
-  const handleDownload = (fileUrl: string) => {
-    const link = document.createElement('a');
-
-    link.href = fileUrl;
-    link.download = fileUrl.split('/').pop() || 'download.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
   const getDownloadUrl = (data: ContentWithChildren, resourceType: RevisionNoteResourceType) => {
     if (data.revisionNotes && data.revisionNotes[0].resources)
       return data.revisionNotes[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
@@ -95,7 +86,7 @@ const RevisionNotesTable: React.FC<{ data: ContentWithChildren[]; isLoading: boo
                           <Box key={subtopic.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px',py: '2px' }}>
                             <SubtopicHeading sx={{color: '#808080'}}>{index + 1}.{index2 + 1}.{index3 + 1}. {subtopic.name}</SubtopicHeading>
                             <IconButton
-                              onClick={() => handleDownload(getDownloadUrl(subtopic, RevisionNoteResourceType.NOTE))}
+                              onClick={() => handleDownload(getDownloadUrl(subtopic, RevisionNoteResourceType.NOTE), `${subtopic.subject_id}_${subtopic.name}_${subtopic.type}`)}
                               sx={{
                                 color: '#CCC',
                                 fontSize: '20px',
