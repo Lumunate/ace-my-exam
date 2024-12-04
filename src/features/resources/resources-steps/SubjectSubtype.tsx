@@ -80,7 +80,7 @@ const Year1Year2Subjects = ({
             key={subject.id}
           >
             <ResourcesCardSmall
-              onClick={() => selectOption('subjectSubtype', { name: subject.subject, value: subject.id?.toString(), icon: '' })}
+              onClick={() => selectOption('subjectSubtype', { name: `AS ${subject.tags.join(' - ')}`, value: subject.id?.toString(), icon: '' })}
               sx={{
                 outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '1px solid #DA9694' : 'unset',
               }}
@@ -104,7 +104,7 @@ const Year1Year2Subjects = ({
             key={subject.id}
           >
             <ResourcesCardSmall
-              onClick={() => selectOption('subjectSubtype', { name: subject.subject, value: subject.id?.toString(), icon: '' })}
+              onClick={() => selectOption('subjectSubtype', { name: `A Level ${subject.tags.join(' - ')}`, value: subject.id?.toString(), icon: '' })}
               sx={{
                 outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '1px solid #DA9694' : 'unset',
               }}
@@ -149,7 +149,7 @@ const SimpleSubjects = ({
           key={subject.id}
         >
           <ResourcesCardSmall
-            onClick={() => selectOption('subjectSubtype', { name: subject.subject, value: subject.id?.toString(), icon: '' })}
+            onClick={() => selectOption('subjectSubtype', { name: subject.tags?.join(' - '), value: subject.id?.toString(), icon: '' })}
             sx={{
               outline: selectedSubjectSubtype?.value === subject.id?.toString() ? '1px solid #DA9694' : 'unset',
             }}
