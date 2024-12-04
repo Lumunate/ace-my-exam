@@ -92,7 +92,7 @@ const Pricing: React.FC = () => {
           gradientType='second'
         />
         <PricingHeading>Find the plan that’s right for you</PricingHeading>
-        <PricingPara>Individual Rates</PricingPara>
+        <PricingPara>Individual Sessions</PricingPara>
         <FadeInOpacity duration={2}>
           <Grid container justifyContent={'center'} rowSpacing={'30px'}>
             {individualRates.map((card, index) => (
@@ -112,7 +112,7 @@ const Pricing: React.FC = () => {
             ))}
           </Grid>
         </FadeInOpacity>
-        <PricingPara sx={{ mt: '100px' }}>Group Rates</PricingPara>
+        <PricingPara sx={{ mt: '100px' }}>Group Sessions</PricingPara>
         <FadeInOpacity duration={2}>
           <Grid container justifyContent={'center'} rowSpacing={'30px'}>
             {groupRates.map((card, index) => (

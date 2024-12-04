@@ -17,27 +17,35 @@ export default function ContactPage() {
   return (
     <ContactContainer>
       <AppContentWrapper>
-        <Grid container columns={24} columnSpacing={2} sx={{ px:{xs: '0', lg: '40px'} }}>
-          <Grid size={{ xs: 24, md: 12 }} sx={{ mt:{xs: '0',lg: '80px'} }}>
-            <Box sx={{ mb: {xs: '30px', lg: '100px'}, position: 'relative' }}>
-              <ContactHeadingTypography variant='h1'>CONTACT US</ContactHeadingTypography>
-              <ContactParaTypography variant='body1'>
+        <Grid container columns={24} columnSpacing={2} sx={{ px: { xs: '0', lg: '40px' } }}>
+          <Grid size={{ xs: 24, md: 12 }} sx={{ mt: { xs: '0', lg: '80px' } }}>
+            <Box sx={{ mb: { xs: '30px', lg: '100px' }, position: 'relative' }}>
+              <ContactHeadingTypography variant="h1">CONTACT US</ContactHeadingTypography>
+              <ContactParaTypography variant="body1">
                 We&apos;d love to hear from you. Contact us directly or use the form below. We&apos;ll be in touch.
               </ContactParaTypography>
               <ContactIconHead>
-                <Image src={'/home/play.svg'} width={26} height={21} alt='icon' loading="lazy" />
+                <Image src={'/home/play.svg'} width={26} height={21} alt="icon" loading="lazy" />
               </ContactIconHead>
             </Box>
             <ContactLinksHead>
               <Box sx={{ mb: '20px' }}>
-                <ContactStyledLinkOne href={'#'}>+1 234-567-890</ContactStyledLinkOne>
-                <ContactStyledLinkOne href={'#'}>asma@acemyexam.co.uk</ContactStyledLinkOne>
+                <ContactStyledLinkOne href={'mailto:asma@acemyexam.co.uk'}>asma@acemyexam.co.uk</ContactStyledLinkOne>
               </Box>
-              <ContactStyledLinkOne href={'#'}>Cambridge, UK</ContactStyledLinkOne>
+              <ContactStyledLinkOne
+                sx={{
+                  '&:hover': {
+                    textDecoration: 'none',
+                  },
+                }}
+                href={'#'}
+              >
+                Cambridge, UK
+              </ContactStyledLinkOne>
             </ContactLinksHead>
           </Grid>
           <Grid size={{ xs: 24, md: 12 }}>
-            <ContactForm /> 
+            <ContactForm />
           </Grid>
         </Grid>
       </AppContentWrapper>
