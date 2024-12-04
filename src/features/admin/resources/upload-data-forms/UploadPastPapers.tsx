@@ -140,7 +140,7 @@ const UploadPastPapers = ({ selectedPastPaper }: UploadPastPapersProps) => {
             )}
           />
 
-          <Button type="submit" disabled={isLoading} variant="contained" color="primary" fullWidth>
+          <Button sx={{ fontSize: '1.6rem' }} type="submit" disabled={isLoading} variant="contained" color="primary" fullWidth>
             {isLoading ? 'Submitting...' : 'Submit'}
           </Button>
         </FormContainer>
