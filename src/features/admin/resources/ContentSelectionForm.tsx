@@ -23,6 +23,7 @@ import EditContentFormModal from './EditContentFormModal';
 import {
   CollapseContainer,
   DownloadIconButton,
+  ExpandIconHead,
   InnerCollapse,
 } from '../../../features/resources/resources-tables/ResourceTables.style';
 import { useGetResources } from '../../../hooks/resources/useResources';
@@ -54,7 +55,7 @@ export const ResourceHeading = styled(AccordionSummary)(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  width: '100%',
+  width: 'max-content',
 }));
 
 export const ResourceItem = styled(AccordionSummary)(({ theme }) => ({
@@ -172,7 +173,13 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
   return (
     <>
       <CollapseContainer>
-        <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
+        <ResourceHeading
+          expandIcon={
+            <ExpandIconHead>
+              <Image src="/icons/down.svg" alt="Collapse" width={10} height={10} />
+            </ExpandIconHead>
+          }
+        >
           <Typography
             variant="h6"
             sx={{
@@ -312,7 +319,13 @@ const PastPaperSelectionForm: React.FC<{
 
       {Object.keys(papersByYear).map((year) => (
         <CollapseContainer key={year}>
-          <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
+          <ResourceHeading
+            expandIcon={
+              <ExpandIconHead>
+                <Image src="/icons/down.svg" alt="Collapse" width={10} height={10} />
+              </ExpandIconHead>
+            }
+          >
             <Typography sx={{ fontWeight: 'bold', fontSize: 'inherit' }}>{year}</Typography>
           </ResourceHeading>
 

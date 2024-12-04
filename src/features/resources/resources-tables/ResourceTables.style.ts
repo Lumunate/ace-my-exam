@@ -69,6 +69,7 @@ export const ExpandIconHead = styled(IconButton)({
   borderRadius: '50%',
   width: '15px',
   height: '15px',
+  margin: '0 2rem',
   background: 'rgba(255, 221, 220, 0.48)',
   position: 'relative',
   'img':{
