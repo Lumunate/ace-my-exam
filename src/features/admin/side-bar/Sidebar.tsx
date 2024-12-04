@@ -69,6 +69,7 @@ const MENU_ITEMS: MenuItems[] = [
 
 export default function SideBar() {
   const pathname = usePathname();
+  const router = useRouter();
   const [open, setOpen] = useState(true);
 
   const handleDrawerOpen = () => {
@@ -88,11 +89,12 @@ export default function SideBar() {
               fontWeight: '600',
               fontSize: '2.2rem',
               color: 'text.main',
-              marginTop: '0.5rem'
+              marginTop: '0.5rem',
             }}
             sx={[
               open
                 ? {
+                  cursor: 'pointer',
                   opacity: 1,
                 }
                 : {
@@ -100,6 +102,7 @@ export default function SideBar() {
                 },
             ]}
             primary="Acemyexam"
+            onClick={() => { router.push('/'); }}
           />
           <IconButton onClick={open ? handleDrawerClose : handleDrawerOpen}>
             {!open ? <ChevronRightIcon /> : <ChevronLeftIcon />}
