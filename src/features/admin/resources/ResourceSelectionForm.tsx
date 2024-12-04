@@ -16,6 +16,22 @@ const StyledMenuItem = styled(MenuItem)(({ theme }) => ({
   color: theme.palette.text.primary,
 }));
 
+const StyledSelect = styled(Select)({
+  '& .MuiInputBase-input': {  // This targets the actual input/selected value
+    fontSize: '1.6rem !important',
+  },
+  fontSize: '1.2rem !important',
+});
+
+const StyledLabel = styled(InputLabel)({
+  '&.MuiInputLabel-root': {  // Label in initial state
+    fontSize: '1.6rem',
+  },
+  '&.MuiInputLabel-shrink': {  // Label in floating state
+    fontSize: '1.2rem !important',
+  }
+});
+
 interface IResourceSelectionFormProps {
   H_selectedSubjectSubtype: string;
   H_setSelectedSubjectSubtype: React.Dispatch<React.SetStateAction<string>>;
@@ -86,12 +102,12 @@ export default function ResourceSelectionForm({
         <Box sx={{ display: 'flex', gap: '20px' }}>
           {/* Education Level Dropdown */}
           <FormControl fullWidth>
-            <InputLabel>Education Level</InputLabel>
-            <Select
+            <StyledLabel>Education Level</StyledLabel>
+            <StyledSelect
               disabled={!educationLevels}
               value={selectedEducationLevel}
               label="Education Level"
-              onChange={(e) => handleEducationLevelChange(e.target.value)}
+              onChange={(e) => handleEducationLevelChange(e.target.value as string)}
             >
               {educationLevels &&
                 educationLevels.map((level) => (
@@ -99,18 +115,18 @@ export default function ResourceSelectionForm({
                     {level.name}
                   </StyledMenuItem>
                 ))}
-            </Select>
+            </StyledSelect>
           </FormControl>
 
           {/* Exam Board Dropdown */}
           <FormControl fullWidth disabled={!selectedEducationLevel}>
-            <InputLabel>Exam Board</InputLabel>
-            <Select
+            <StyledLabel>Exam Board</StyledLabel>
+            <StyledSelect
               value={selectedExamBoard}
               label="Exam Board"
               disabled={!selectedEducationLevel || !examBoards}
               onChange={(e) => {
-                setSelectedExamBoard(e.target.value);
+                setSelectedExamBoard(e.target.value as string);
                 setSelectedSubject('');
                 setSelectedSubjectSubtype({ id: '', tags: [], name: '' });
                 setSelectedResourceType('');
@@ -122,18 +138,18 @@ export default function ResourceSelectionForm({
                     {board?.name}
                   </StyledMenuItem>
                 ))}
-            </Select>
+            </StyledSelect>
           </FormControl>
 
           {/* Subject Dropdown */}
           <FormControl fullWidth disabled={!selectedExamBoard}>
-            <InputLabel>Subject</InputLabel>
-            <Select
+            <StyledLabel>Subject</StyledLabel>
+            <StyledSelect
               value={selectedSubject}
               label="Subject"
               disabled={!selectedEducationLevel || !selectedExamBoard || !subjects}
               onChange={(e) => {
-                setSelectedSubject(e.target.value);
+                setSelectedSubject(e.target.value as string);
                 setSelectedSubjectSubtype({ id: '', tags: [], name: '' });
                 setSelectedResourceType('');
               }}
@@ -144,18 +160,18 @@ export default function ResourceSelectionForm({
                     {subject.name}
                   </StyledMenuItem>
                 ))}
-            </Select>
+            </StyledSelect>
           </FormControl>
 
           {/* Subject Subtype Dropdown */}
           <FormControl fullWidth disabled={!selectedSubject}>
-            <InputLabel>Subject Subtype</InputLabel>
-            <Select
+            <StyledLabel>Subject Subtype</StyledLabel>
+            <StyledSelect
               value={selectedSubjectSubtype.id}
               label="Subject Subtype"
               disabled={!selectedEducationLevel || !selectedExamBoard || !selectedSubject || !subjectSubtypes}
               onChange={(e) => {
-                const selectedSubtype = subjectSubtypes?.find((subtype) => subtype?.id === parseInt(e.target.value));
+                const selectedSubtype = subjectSubtypes?.find((subtype) => subtype?.id === parseInt(e.target.value as string));
 
                 setSelectedSubjectSubtype({
                   id: e.target.value as string,
@@ -193,22 +209,22 @@ export default function ResourceSelectionForm({
                       .join(' - ')}
                   </StyledMenuItem>
                 ))}
-            </Select>
+            </StyledSelect>
           </FormControl>
 
           {/* Resource Type Dropdown */}
           <FormControl fullWidth disabled={!selectedSubjectSubtype}>
-            <InputLabel>Resource Type</InputLabel>
-            <Select
+            <StyledLabel>Resource Type</StyledLabel>
+            <StyledSelect
               value={selectedResourceType}
               disabled={!selectedEducationLevel || !selectedExamBoard || !selectedSubject || !selectedSubjectSubtype}
               label="Resource Type"
-              onChange={(e) => setSelectedResourceType(e.target.value)}
+              onChange={(e) => setSelectedResourceType(e.target.value as string)}
             >
               {past_paper_show && <StyledMenuItem value={ResourceType.PAST_PAPER}>Past Paper</StyledMenuItem>}
               {topic_question_show && <StyledMenuItem value={ResourceType.TOPIC_QUESTIONS}>Topical Questions</StyledMenuItem>}
               {revision_notes_show && <StyledMenuItem value={ResourceType.REVISION_NOTES}>Revision Notes</StyledMenuItem>}
-            </Select>
+            </StyledSelect>
           </FormControl>
 
           {/* Submit Button */}
