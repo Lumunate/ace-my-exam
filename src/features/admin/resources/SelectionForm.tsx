@@ -24,7 +24,10 @@ const SelectionForm = () => {
         H_setSelectedSubjectSubtype={setSelectedSubjectSubtype}
         H_selectedResourceType={selectedResourceType}
         H_setSelectedResourceType={setSelectedResourceType}
-        onSubmit={() => {}}
+        onSubmit={() => {
+          setSelectedPastPaper(undefined);
+          setSelectedSubtopic(undefined);
+        }}
       />
 
       {selectedResourceType && (

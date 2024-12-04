@@ -22,12 +22,13 @@ interface IResourceSelectionFormProps {
   H_setSelectedSubjectSubtype: React.Dispatch<React.SetStateAction<string>>;
   H_selectedResourceType: string;
   H_setSelectedResourceType: React.Dispatch<React.SetStateAction<string>>;
-  onSubmit: (educationLevel: string, examBoard: string, subject: string, subjectSubtype: string, resourceType: string) => void;
+  onSubmit: () => void;
 }
 
 export default function ResourceSelectionForm({
   H_setSelectedSubjectSubtype,
   H_setSelectedResourceType,
+  onSubmit,
 }: IResourceSelectionFormProps) {
   // State for tracking selected values
   const [selectedEducationLevel, setSelectedEducationLevel] = useState('');
@@ -51,6 +52,8 @@ export default function ResourceSelectionForm({
 
     H_setSelectedSubjectSubtype(selectedSubjectSubtype.id);
     H_setSelectedResourceType(selectedResourceType);
+
+    onSubmit();
   };
 
   const { past_paper_show, topic_question_show, revision_notes_show } = getDisplayOptions(
