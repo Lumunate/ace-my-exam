@@ -1,6 +1,5 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { TextField, Button } from '@mui/material';
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import React from 'react';
 import {  useForm } from 'react-hook-form';
@@ -8,7 +7,7 @@ import {  useForm } from 'react-hook-form';
 import { useUpdatePastPapers, useUploadPastPapers } from 'hooks/resources/usePastPaper';
 import { IPastPaperData, IPastPaperUpdateData, pastPaperSchema, pastPaperUpdateSchema } from 'types/past-paper';
 
-import { AdminModalHeading, AdminModalSubHeading } from '../Admin.style';
+import { AdminModalHeading, AdminModalSubHeading, StyledButton, StyledTextField } from '../Admin.style';
 
 interface EditPastPaperFormModalProps {
   open: boolean;
@@ -55,10 +54,10 @@ export const EditPastPaperFormModal: React.FC<EditPastPaperFormModalProps> = ({
       </DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <TextField label="ID" value={id} fullWidth margin="normal" disabled />
-          <TextField label="Subject ID" value={subjectId} fullWidth margin="normal" disabled />
+          <StyledTextField label="ID" value={id} fullWidth margin="normal" disabled />
+          <StyledTextField label="Subject ID" value={subjectId} fullWidth margin="normal" disabled />
 
-          <TextField
+          <StyledTextField
             label="Name"
             {...register('title')}
             error={!!errors.title}
@@ -67,7 +66,7 @@ export const EditPastPaperFormModal: React.FC<EditPastPaperFormModalProps> = ({
             margin="normal"
           />
 
-          <TextField
+          <StyledTextField
             label="Year"
             {...register('year', { valueAsNumber: true })}
             type="number"
@@ -78,12 +77,12 @@ export const EditPastPaperFormModal: React.FC<EditPastPaperFormModalProps> = ({
           />
 
           <DialogActions>
-            <Button onClick={onClose} sx={{ mr: 1 }}>
+            <StyledButton onClick={onClose} sx={{ mr: 1 }}>
               Cancel
-            </Button>
-            <Button disabled={isLoading} type="submit" variant="contained" color="primary">
+            </StyledButton>
+            <StyledButton disabled={isLoading} type="submit" variant="contained" color="primary">
               {isLoading ? 'Saving' : 'Save'}
-            </Button>
+            </StyledButton>
           </DialogActions>
         </form>
       </DialogContent>
@@ -130,9 +129,9 @@ export const CreatePastPaperForm: React.FC<CreatePastPaperFormProps> = ({
 
       <DialogContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <TextField label="Subject ID" value={subjectId} fullWidth margin="normal" disabled />
+          <StyledTextField label="Subject ID" value={subjectId} fullWidth margin="normal" disabled />
 
-          <TextField
+          <StyledTextField
             label="Name"
             {...register('title')}
             error={!!errors.title}
@@ -141,7 +140,7 @@ export const CreatePastPaperForm: React.FC<CreatePastPaperFormProps> = ({
             margin="normal"
           />
 
-          <TextField
+          <StyledTextField
             label="Year"
             {...register('year', { valueAsNumber: true })}
             type="number"
@@ -152,10 +151,10 @@ export const CreatePastPaperForm: React.FC<CreatePastPaperFormProps> = ({
           />
 
           <DialogActions>
-            <Button onClick={onClose}>Cancel</Button>
-            <Button type="submit" variant="contained" color="primary" disabled={isLoading}>
+            <StyledButton onClick={onClose}>Cancel</StyledButton>
+            <StyledButton type="submit" variant="contained" color="primary" disabled={isLoading}>
               {isLoading ? 'Wait...' : 'Submit'}
-            </Button>
+            </StyledButton>
           </DialogActions>
         </form>
       </DialogContent>

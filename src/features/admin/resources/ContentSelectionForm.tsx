@@ -407,7 +407,7 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
                     justifyContent: 'center',
                   }}
                 >
-                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Chapter</Typography>
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1, fontSize: '1.4rem' }}>Add Chapter</Typography>
                   <AddIcon />
                 </Button>
               )}
@@ -421,7 +421,7 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
                     justifyContent: 'center',
                   }}
                 >
-                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Topic</Typography>
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1, fontSize: '1.4rem' }}>Add Topic</Typography>
                   <AddIcon />
                 </Button>
               )}
@@ -435,7 +435,7 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
                     justifyContent: 'center',
                   }}
                 >
-                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Past Paper</Typography>
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1, fontSize: '1.4rem' }}>Add Past Paper</Typography>
                   <AddIcon />
                 </Button>
               )}

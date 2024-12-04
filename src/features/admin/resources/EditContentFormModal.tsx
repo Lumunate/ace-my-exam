@@ -1,13 +1,12 @@
 
 import { zodResolver } from '@hookform/resolvers/zod';
-import { TextField, Button } from '@mui/material';
 import { Dialog, DialogTitle, DialogContent, DialogActions } from '@mui/material';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 
 import { useEditContent } from '../../../hooks/resources/useReferenceData';
-import { AdminModalHeading, AdminModalSubHeading } from '../Admin.style';
+import { AdminModalHeading, AdminModalSubHeading, StyledButton, StyledTextField } from '../Admin.style';
 
 interface EditContentFormModalProps {
   open: boolean;
@@ -57,8 +56,8 @@ const EditContentFormModal: React.FC<EditContentFormModalProps> = ({
       </DialogTitle>
       <DialogContent>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <TextField label="ID" value={id} fullWidth margin="normal" disabled />
-          <TextField
+          <StyledTextField label="ID" value={id} fullWidth margin="normal" disabled />
+          <StyledTextField
             label="Name"
             {...register('name')}
             error={!!errors.name}
@@ -68,12 +67,12 @@ const EditContentFormModal: React.FC<EditContentFormModalProps> = ({
           />
 
           <DialogActions>
-            <Button onClick={onClose} sx={{ mr: 1 }}>
+            <StyledButton onClick={onClose} sx={{ mr: 1 }}>
               Cancel
-            </Button>
-            <Button disabled={isLoading} type="submit" variant="contained" color="primary">
+            </StyledButton>
+            <StyledButton disabled={isLoading} type="submit" variant="contained" color="primary">
               {isLoading ? 'Saving' : 'Save'}
-            </Button>
+            </StyledButton>
           </DialogActions>
         </form>
       </DialogContent>

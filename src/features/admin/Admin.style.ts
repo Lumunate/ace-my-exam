@@ -1,5 +1,5 @@
 'use client';
-import { Box, styled, Typography } from '@mui/material';
+import { Box, Button, InputLabel, Select, styled, TextField, Typography } from '@mui/material';
 
 export const AdminSectionWrapper = styled(Box)(({ theme }) => ({
   padding: '2.8rem 2.1rem',
@@ -48,14 +48,53 @@ export const AdminSectionsLayout = styled(Box)(() => ({
 
 export const AdminModalHeading = styled(Typography)(() => ({
   color: 'text.primary',
-  fontSize: '2rem',
+  fontSize: '2.4rem',
   fontWeight: '600',
   marginBottom: '0.4rem',
 }));
 
 export const AdminModalSubHeading = styled(Typography)(() => ({
   color: 'rgba(120, 120, 120, 1)',
-  fontSize: '1.6rem',
+  fontSize: '1.8rem',
   fontWeight: '300',
   marginBottom: '0.8rem',
 }));
+
+export const StyledButton = styled(Button)({
+  fontSize: '1.4rem !important',
+});
+
+export const StyledTextField = styled(TextField)({
+  '& .MuiInputBase-root': {  
+    fontSize: '1.6rem !important',
+  },
+  '& .MuiInputBase-input': {  
+    fontSize: '1.6rem !important',
+  },
+  '& .MuiInputLabel-root': { 
+    fontSize: '1.6rem',
+  },
+  '& .MuiInputLabel-shrink': { 
+    fontSize: '1.6rem !important',
+  },
+  '& .Form': { 
+    fontSize: '1.6rem !important',
+  },
+  fontSize: '1.6rem !important',
+});
+
+export const StyledSelect = styled(Select)({
+  '& .MuiInputBase-input': {  
+    fontSize: '1.6rem !important',
+  },
+  fontSize: '1.6rem !important',
+});
+
+export const StyledLabel = styled(InputLabel)({
+  '&.MuiInputLabel-root': { 
+    fontSize: '1.6rem',
+  },
+  '&.MuiInputLabel-shrink': { 
+    fontSize: '1.6rem !important',
+  }
+});
