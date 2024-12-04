@@ -6,8 +6,6 @@ import { signIn } from 'next-auth/react';
 import { useState } from 'react';
 import { useForm, FieldError, Merge, FieldErrorsImpl, SubmitHandler } from 'react-hook-form';
 
-import AuthError from 'types/auth-error';
-
 import { StyledTextField } from '../../../components/form/Form.style';
 import { useSnackbar } from '../../../contexts/SnackbarContext';
 import { loginSchema } from '../../../features/auth/login/LoginSchema';
