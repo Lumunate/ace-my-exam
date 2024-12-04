@@ -5,7 +5,6 @@ import Link from 'next/link';
 const CommonNavbarBox = styled(Box)({
   display: 'flex',
   alignItems: 'center',
-
 });
 
 export const CommonMenu = styled(Menu)({
@@ -15,7 +14,7 @@ export const CommonMenu = styled(Menu)({
     background: '#FCFDFF',
     padding: '10px',
     paddingTop: '20px',
-    minWidth: '195px'
+    minWidth: '195px',
   },
   '& .MuiMenuItem-root': {
     color: '#000',
@@ -28,9 +27,9 @@ export const CommonMenu = styled(Menu)({
     padding: '4px',
     justifyContent: 'center',
     background: 'transparent',
-    '&:hover':{
+    '&:hover': {
       backgroundColor: '#c0c0c042',
-    }
+    },
   },
 });
 
@@ -42,6 +41,7 @@ export const NavbarContainer = styled(AppBar)({
 });
 
 export const NavbarContentWrapper = styled(Toolbar)(({ theme }) => ({
+  position: 'relative',
   backgroundColor: '#FCFDFF',
   margin: '0 auto',
   width: '100%',
@@ -57,7 +57,11 @@ export const NavbarContentWrapper = styled(Toolbar)(({ theme }) => ({
   },
 }));
 
-export const NavbarLinksContainer = styled(CommonNavbarBox)({});
+export const NavbarLinksContainer = styled(CommonNavbarBox)({
+  position: 'absolute',
+  left: '50%',
+  transform: 'translateX(-50%)',
+});
 
 export const NavbarButtonsContainer = styled(CommonNavbarBox)({
   justifyContent: 'space-between',
@@ -79,29 +83,26 @@ export const NavbarDrawer = styled(Drawer)({
     borderRadius: '20px 0 0 20px',
     boxShadow: '0px 4px 39.5px 0px rgba(0, 0, 0, 0.10)',
   },
-  '& .MuiBackdrop-root':{
+  '& .MuiBackdrop-root': {
     backgroundColor: 'rgba(255, 255, 255, 0.01)',
     backdropFilter: 'blur(14px)',
-  }
+  },
 });
 
-export const NavbarLinkWrapper = styled(ListItem)<{ smallSR?: boolean }>(
-  ({ theme, smallSR }) => ({
-    margin: smallSR ? '12px 0' : '0 36px',
-    textAlign: smallSR ? 'start' : 'center',
-    padding: '0',
-    [theme.breakpoints.down(1400)]: {
-      margin: smallSR ? '12px 0' : '0 24px', 
-    },
-    [theme.breakpoints.down('xl')]: {
-      margin: smallSR ? '12px 0' : '0 18px', 
-    },
-    [theme.breakpoints.down('lg')]: {
-      margin: smallSR ? '12px 0' : '0 10px', 
-    },
-
-  })
-);
+export const NavbarLinkWrapper = styled(ListItem)<{ smallSR?: boolean }>(({ theme, smallSR }) => ({
+  margin: smallSR ? '12px 0' : '0 36px',
+  textAlign: smallSR ? 'start' : 'center',
+  padding: '0',
+  [theme.breakpoints.down(1400)]: {
+    margin: smallSR ? '12px 0' : '0 24px',
+  },
+  [theme.breakpoints.down('xl')]: {
+    margin: smallSR ? '12px 0' : '0 18px',
+  },
+  [theme.breakpoints.down('lg')]: {
+    margin: smallSR ? '12px 0' : '0 10px',
+  },
+}));
 
 export const NavbarLink = styled(Link)({
   color: '#000',
@@ -109,7 +110,7 @@ export const NavbarLink = styled(Link)({
   fontSize: '16px',
   textTransform: 'capitalize',
   fontFamily: 'Lato, sans-serif',
-  '&:hover':{
+  '&:hover': {
     color: '#DA5077',
     transition: 'all 0.3s ease',
   },
