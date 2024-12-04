@@ -33,12 +33,12 @@ const stats: StatItem[] = [
   {
     name: 'Expertise in',
     value: '49',
-    subTitle: 'Subject/Examination',
+    subTitle: 'Subjects/ Examinations',
     showPlus: true,
   },
   {
     name: 'With Over',
-    value: '600',
+    value: '450',
     subTitle: 'Students Tutored',
     showPlus: true,
   },
