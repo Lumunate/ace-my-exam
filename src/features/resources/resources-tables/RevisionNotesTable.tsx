@@ -91,9 +91,9 @@ const RevisionNotesTable: React.FC<{ data: ContentWithChildren[]; isLoading: boo
                       </TopicHeading>
 
                       <InnerCollapse sx={{py: 0, px: '30px'}}>
-                        {topic.children?.map((subtopic) => (
+                        {topic.children?.map((subtopic, index3) => (
                           <Box key={subtopic.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px',py: '2px' }}>
-                            <SubtopicHeading sx={{color: '#808080'}}>{subtopic.name}</SubtopicHeading>
+                            <SubtopicHeading sx={{color: '#808080'}}>{index + 1}.{index2 + 1}.{index3 + 1}. {subtopic.name}</SubtopicHeading>
                             <IconButton
                               onClick={() => handleDownload(getDownloadUrl(subtopic, RevisionNoteResourceType.NOTE))}
                               sx={{
