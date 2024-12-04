@@ -69,12 +69,12 @@ const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: bo
                 </ChapterHeading>
 
                 <InnerCollapse sx={{ py: 0, px: '15px', mt: '11px' }}>
-                  {topic.children?.map((subtopic) => (
+                  {topic.children?.map((subtopic, index2) => (
                     <Box
                       key={subtopic.id}
                       sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px', py: '2px' }}
                     >
-                      <SubtopicHeading sx={{ flex: '0 0 50%' }}>{subtopic.name}</SubtopicHeading>
+                      <SubtopicHeading sx={{ flex: '0 0 50%' }}>{index + 1}.{index2 + 1}. {subtopic.name}</SubtopicHeading>
                       <DownloadIconButton
                         sx={{ flex: '0 0 16.67%' }}
                         onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.QUESTION_PAPER))}
@@ -89,7 +89,7 @@ const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: bo
                       </DownloadIconButton>
                       <DownloadIconButton
                         sx={{ flex: '0 0 16.67%' }}
-                        // onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.SOLUTION_BOOKLET))}
+                        onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.SOLUTION_BOOKLET))}
                       >
                         <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                       </DownloadIconButton>
