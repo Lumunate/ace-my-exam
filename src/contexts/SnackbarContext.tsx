@@ -1,7 +1,7 @@
 import { Snackbar } from '@mui/material';
 import React, { createContext, useState, useContext, ReactNode } from 'react';
 
-type SnackbarContextType = {
+export type SnackbarContextType = {
   showSnackbar: (message: string, duration?: number) => void;
   hideSnackbar: () => void;
 };

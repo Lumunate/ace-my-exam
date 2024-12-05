@@ -6,6 +6,7 @@ import Image from 'next/image';
 import React from 'react';
 
 import { PastPaperWithResource } from 'app/api/resources/route';
+import { handleDownload } from 'utils/handleDownload';
 
 import {
   ChapterHeading,
@@ -18,7 +19,6 @@ import {
 } from './ResourceTables.style';
 import { PaginationHead, ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
 import { StyledPagination } from '../../../components/pagination/Pagination.style';
-import { handleDownload } from 'utils/handleDownload';
 
 const PastPapersTable: React.FC<{ data: PastPaperWithResource[]; isLoading: boolean }> = ({ data }) => {
   const papersByYear = data.reduce((acc, paper) => {

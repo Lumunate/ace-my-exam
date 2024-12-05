@@ -1,7 +1,6 @@
 'use client';
 
 import AddIcon from '@mui/icons-material/Add';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import EditIcon from '@mui/icons-material/Edit';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { AccordionSummary, Box, Button, IconButton, Skeleton, styled, Typography } from '@mui/material';
