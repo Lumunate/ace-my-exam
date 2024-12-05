@@ -128,7 +128,7 @@ const TestimonialsSwiper: FC = () => {
                   {renderStars(testimonial.stars)}
                 </TestimonialsStarsHead>
                 <TestimonialsCardPara variant='body1' sx={{ mb: '16px' }}>
-                    {testimonial.feedback.length > 300 ? `${testimonial.feedback.substring(0, 300)}...` : testimonial.feedback}
+                  {testimonial.feedback.length > 300 ? `${testimonial.feedback.substring(0, 300)}...` : testimonial.feedback}
                 </TestimonialsCardPara>
               </Box>
               <TestimonialsDateHead>

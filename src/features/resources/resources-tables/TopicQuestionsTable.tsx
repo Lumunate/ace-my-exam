@@ -5,6 +5,8 @@ import { TopicalQuestionResourceType } from '@prisma/client';
 import Image from 'next/image';
 import React from 'react';
 
+import { handleDownload } from 'utils/handleDownload';
+
 import {
   ChapterHeading,
   CollapseContainer,
@@ -17,7 +19,6 @@ import {
 import { PaginationHead, ResourcesPara, ResourcesSubHeading } from '../../../app/(main)/resources/Resources.style';
 import { StyledPagination } from '../../../components/pagination/Pagination.style';
 import { ContentWithChildren } from '../../../types/content';
-import { handleDownload } from 'utils/handleDownload';
 
 const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: boolean }> = ({ data }) => {
   const getDownloadUrl = (data: ContentWithChildren, resourceType: TopicalQuestionResourceType) => {
