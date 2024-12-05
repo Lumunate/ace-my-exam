@@ -12,7 +12,7 @@ const instituteImages = [
   '/home/UCL.svg',
   '/home/Caterham.svg',
   '/home/UWM.svg',
-  '/home/ladiesLogo.svg',
+  '/home/LadiesLogo.svg',
   '/home/SPC.svg',
   '/home/institution2.svg',
   '/home/oxfordLogo.svg',

@@ -1,11 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Dialog, DialogActions, DialogContent, TextField, Button, Box, DialogTitle } from '@mui/material';
+import { Dialog, DialogActions, DialogContent, Box, DialogTitle } from '@mui/material';
 import { useForm, Controller } from 'react-hook-form';
 import { z } from 'zod';
 
 import { useAddContent } from '../../../hooks/resources/useReferenceData';
 import { ContentWithChildren, createContentSchema } from '../../../types/content';
-import { AdminModalHeading, AdminModalSubHeading } from '../Admin.style';
+import { AdminModalHeading, AdminModalSubHeading, StyledButton, StyledTextField } from '../Admin.style';
 
 type CreateContentFormProps = {
   open: boolean;
@@ -62,7 +62,7 @@ const CreateContentForm: React.FC<CreateContentFormProps & { subjectId: number |
             name="name"
             control={control}
             render={({ field }) => (
-              <TextField
+              <StyledTextField
                 {...field}
                 label="Name"
                 fullWidth
@@ -77,7 +77,7 @@ const CreateContentForm: React.FC<CreateContentFormProps & { subjectId: number |
               name="subjectId"
               control={control}
               render={({ field }) => (
-                <TextField
+                <StyledTextField
                   {...field}
                   label="Subject ID"
                   type="number"
@@ -93,7 +93,7 @@ const CreateContentForm: React.FC<CreateContentFormProps & { subjectId: number |
               name="parentId"
               control={control}
               render={({ field }) => (
-                <TextField
+                <StyledTextField
                   {...field}
                   label="Parent ID"
                   type="number"
@@ -110,7 +110,7 @@ const CreateContentForm: React.FC<CreateContentFormProps & { subjectId: number |
             name="description"
             control={control}
             render={({ field }) => (
-              <TextField
+              <StyledTextField
                 {...field}
                 label="Description"
                 fullWidth
@@ -121,10 +121,10 @@ const CreateContentForm: React.FC<CreateContentFormProps & { subjectId: number |
             )}
           />
           <DialogActions>
-            <Button onClick={onClose}>Cancel</Button>
-            <Button type="submit" variant="contained" color="primary" disabled={isLoading}>
+            <StyledButton onClick={onClose}>Cancel</StyledButton>
+            <StyledButton type="submit" variant="contained" color="primary" disabled={isLoading}>
               {isLoading ? 'Wait...' : 'Submit'}
-            </Button>
+            </StyledButton>
           </DialogActions>
         </form>
       </DialogContent>

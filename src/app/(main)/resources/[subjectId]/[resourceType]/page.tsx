@@ -1,5 +1,5 @@
 'use client';
-import { Box } from '@mui/material';
+import { Box, Skeleton } from '@mui/material';
 import { useSearchParams } from 'next/navigation';
 import React from 'react';
 
@@ -35,7 +35,23 @@ const DownloadMaterial = ({ params }: DynamicPageProps) => {
             permanentBreadcrumbs={breadcrumbs.map((b, i) => ({ key: i, title: b }))}
           >
             {isLoading ? (
-              <Box>Loading Data...</Box>
+              <Box>
+                <Skeleton variant="text" width="30%" height={60} />
+                <Skeleton
+                  variant="text"
+                  width="30%"
+                  height={40}
+                  sx={{
+                    mb: 2,
+                  }}
+                />
+
+                <Box sx={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                  {[...Array(5)].map((_, index) => (
+                    <Skeleton variant="text" key={index} width="100%" height={40} />
+                  ))}
+                </Box>
+              </Box>
             ) : (
               <>
                 {resourceType === ResourceType.REVISION_NOTES && (

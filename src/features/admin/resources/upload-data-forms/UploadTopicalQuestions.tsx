@@ -112,7 +112,7 @@ const UplaodTopicalQuestions = ({ selectedSubtopic }: UplaodTopicalQuestionsProp
             )}
           />
 
-          <Button disabled={isLoading} type="submit" variant="contained" color="primary" fullWidth>
+          <Button sx={{ fontSize: '1.6rem' }} disabled={isLoading} type="submit" variant="contained" color="primary" fullWidth>
             {isLoading ? 'Submitting...' : 'Submit'}
           </Button>
         </FormContainer>

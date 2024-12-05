@@ -1,7 +1,6 @@
 'use client';
 
 import AddIcon from '@mui/icons-material/Add';
-import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import EditIcon from '@mui/icons-material/Edit';
 import ReplayIcon from '@mui/icons-material/Replay';
 import { AccordionSummary, Box, Button, IconButton, Skeleton, styled, Typography } from '@mui/material';
@@ -23,6 +22,7 @@ import EditContentFormModal from './EditContentFormModal';
 import {
   CollapseContainer,
   DownloadIconButton,
+  ExpandIconHead,
   InnerCollapse,
 } from '../../../features/resources/resources-tables/ResourceTables.style';
 import { useGetResources } from '../../../hooks/resources/useResources';
@@ -54,7 +54,7 @@ export const ResourceHeading = styled(AccordionSummary)(() => ({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'space-between',
-  width: '100%',
+  width: 'max-content',
 }));
 
 export const ResourceItem = styled(AccordionSummary)(({ theme }) => ({
@@ -104,9 +104,15 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
           >
             {data.name}
           </ResourceItem>
-          <DownloadIconButton onClick={() => handleDownload(getRevisionNoteDownloadUrl(data, RevisionNoteResourceType.NOTE))}>
-            <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-          </DownloadIconButton>
+          {getRevisionNoteDownloadUrl(data, RevisionNoteResourceType.NOTE) === '' ? (
+            <DownloadIconButton disabled>
+              <Image src="/icons/cross.svg" alt="download" width={18} height={18} />
+            </DownloadIconButton>
+          ) : (
+            <DownloadIconButton onClick={() => handleDownload(getRevisionNoteDownloadUrl(data, RevisionNoteResourceType.NOTE))}>
+              <Image src="/icons/search.svg" alt="download" width={18} height={18} />
+            </DownloadIconButton>
+          )}
         </Box>
       );
     } else if (type === ResourceType.TOPIC_QUESTIONS) {
@@ -122,24 +128,42 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
           >
             {data.name}
           </ResourceItem>
-          <DownloadIconButton
-            sx={{ flex: '0 0 1' }}
-            onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.QUESTION_PAPER))}
-          >
-            <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-          </DownloadIconButton>
-          <DownloadIconButton
-            sx={{ flex: '0 0 1' }}
-            onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.MARKING_SCHEME))}
-          >
-            <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-          </DownloadIconButton>
-          <DownloadIconButton
-            sx={{ flex: '0 0 1' }}
-            // onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.SOLUTION_BOOKLET))}
-          >
-            <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-          </DownloadIconButton>
+          {getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.QUESTION_PAPER) === '' ? (
+            <DownloadIconButton disabled>
+              <Image src="/icons/cross.svg" alt="download" width={18} height={18} />
+            </DownloadIconButton>
+          ) : (
+            <DownloadIconButton
+              sx={{ flex: '0 0 1' }}
+              onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.QUESTION_PAPER))}
+            >
+              <Image src="/icons/search.svg" alt="download" width={18} height={18} />
+            </DownloadIconButton>
+          )}
+          {getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.MARKING_SCHEME) === '' ? (
+            <DownloadIconButton disabled>
+              <Image src="/icons/cross.svg" alt="download" width={18} height={18} />
+            </DownloadIconButton>
+          ) : (
+            <DownloadIconButton
+              sx={{ flex: '0 0 1' }}
+              onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.MARKING_SCHEME))}
+            >
+              <Image src="/icons/search.svg" alt="download" width={18} height={18} />
+            </DownloadIconButton>
+          )}
+          {getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.SOLUTION_BOOKLET) === '' ? (
+            <DownloadIconButton disabled>
+              <Image src="/icons/cross.svg" alt="download" width={18} height={18} />
+            </DownloadIconButton>
+          ) : (
+            <DownloadIconButton
+              sx={{ flex: '0 0 1' }}
+              onClick={() => handleDownload(getTopicalQuestionDownloadUrl(data, TopicalQuestionResourceType.SOLUTION_BOOKLET))}
+            >
+              <Image src="/icons/search.svg" alt="download" width={18} height={18} />
+            </DownloadIconButton>
+          )}
         </Box>
       );
     }
@@ -148,7 +172,13 @@ const RecursiveContentRender = ({ data, selectedSubtopic, setSelectedSubtopic, t
   return (
     <>
       <CollapseContainer>
-        <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
+        <ResourceHeading
+          expandIcon={
+            <ExpandIconHead>
+              <Image src="/icons/down.svg" alt="Collapse" width={10} height={10} />
+            </ExpandIconHead>
+          }
+        >
           <Typography
             variant="h6"
             sx={{
@@ -288,7 +318,13 @@ const PastPaperSelectionForm: React.FC<{
 
       {Object.keys(papersByYear).map((year) => (
         <CollapseContainer key={year}>
-          <ResourceHeading expandIcon={<ArrowDropDownIcon />}>
+          <ResourceHeading
+            expandIcon={
+              <ExpandIconHead>
+                <Image src="/icons/down.svg" alt="Collapse" width={10} height={10} />
+              </ExpandIconHead>
+            }
+          >
             <Typography sx={{ fontWeight: 'bold', fontSize: 'inherit' }}>{year}</Typography>
           </ResourceHeading>
 
@@ -312,24 +348,42 @@ const PastPaperSelectionForm: React.FC<{
                       </IconButton>
                     </Box>
                   </ResourceItem>
-                  <DownloadIconButton
-                    sx={{ flex: '0 0 1' }}
-                    onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER))}
-                  >
-                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-                  </DownloadIconButton>
-                  <DownloadIconButton
-                    sx={{ flex: '0 0 1' }}
-                    onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME))}
-                  >
-                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-                  </DownloadIconButton>
-                  <DownloadIconButton
-                    sx={{ flex: '0 0 1' }}
-                    onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET))}
-                  >
-                    <Image src="/icons/downloadIcon.svg" alt="download" width={12} height={12} />
-                  </DownloadIconButton>
+                  {getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER) === '' ? (
+                    <DownloadIconButton disabled>
+                      <Image src="/icons/cross.svg" alt="download" width={18} height={18} />
+                    </DownloadIconButton>
+                  ) : (
+                    <DownloadIconButton
+                      sx={{ flex: '0 0 1' }}
+                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER))}
+                    >
+                      <Image src="/icons/search.svg" alt="download" width={18} height={18} />
+                    </DownloadIconButton>
+                  )}
+                  {getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME) === '' ? (
+                    <DownloadIconButton disabled>
+                      <Image src="/icons/cross.svg" alt="download" width={18} height={18} />
+                    </DownloadIconButton>
+                  ) : (
+                    <DownloadIconButton
+                      sx={{ flex: '0 0 1' }}
+                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME))}
+                    >
+                      <Image src="/icons/search.svg" alt="download" width={18} height={18} />
+                    </DownloadIconButton>
+                  )}
+                  {getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET) === '' ? (
+                    <DownloadIconButton disabled>
+                      <Image src="/icons/cross.svg" alt="download" width={18} height={18} />
+                    </DownloadIconButton>
+                  ) : (
+                    <DownloadIconButton
+                      sx={{ flex: '0 0 1' }}
+                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET))}
+                    >
+                      <Image src="/icons/search.svg" alt="download" width={18} height={18} />
+                    </DownloadIconButton>
+                  )}
                 </Box>
                 {editContentOpen && selectedPastPaper && (
                   <EditPastPaperFormModal
@@ -407,7 +461,7 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
                     justifyContent: 'center',
                   }}
                 >
-                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Chapter</Typography>
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1, fontSize: '1.4rem' }}>Add Chapter</Typography>
                   <AddIcon />
                 </Button>
               )}
@@ -421,7 +475,7 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
                     justifyContent: 'center',
                   }}
                 >
-                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Topic</Typography>
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1, fontSize: '1.4rem' }}>Add Topic</Typography>
                   <AddIcon />
                 </Button>
               )}
@@ -435,7 +489,7 @@ const ContentSelectionForm: React.FC<ContentSelectionFormProps> = ({
                     justifyContent: 'center',
                   }}
                 >
-                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1 }}>Add Past Paper</Typography>
+                  <Typography sx={{ color: '#333', fontWeight: 600, mr: 1, fontSize: '1.4rem' }}>Add Past Paper</Typography>
                   <AddIcon />
                 </Button>
               )}

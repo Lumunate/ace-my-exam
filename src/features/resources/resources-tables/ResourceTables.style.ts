@@ -9,6 +9,7 @@ export const ChapterHeading = styled(AccordionSummary)(() => ({
   fontFamily: 'Jost, sans-serif',
   padding: 0,
   margin: 0,
+  width: 'max-content',
 }));
 
 export const RessourcesTableHeading = styled(Typography)(() => ({
@@ -24,6 +25,7 @@ export const TopicHeading = styled(AccordionSummary)(() => ({
   fontSize: '1.6rem',
   fontWeight: 500,
   fontFamily: 'Jost, sans-serif',
+  width: 'max-content',
 }));
 
 export const CollapseContainer = styled(Accordion)(() => ({
@@ -45,7 +47,7 @@ export const CollapseContainer = styled(Accordion)(() => ({
 }));
 
 export const InnerCollapse = styled(AccordionDetails)(() => ({
-  // marginLeft: '4rem',
+  marginLeft: '1.5rem',
 }));
 
 export const SubtopicHeading = styled(Typography)(() => ({
@@ -69,6 +71,7 @@ export const ExpandIconHead = styled(IconButton)({
   borderRadius: '50%',
   width: '15px',
   height: '15px',
+  margin: '0 2rem',
   background: 'rgba(255, 221, 220, 0.48)',
   position: 'relative',
   'img':{

@@ -1,3 +1,4 @@
+'use client';
 import Grid from '@mui/material/Grid2';
 
 import {
@@ -28,6 +29,9 @@ const AboutTestimonials: React.FC = () => {
             borderRadius='50px'
             width='212px'
             height='60px'
+            onClick={() => {
+              window.open('https://www.firsttutors.com/uk/tutor/asma.maths.physics.1/#:~:text=Educated%20to%20PhD%20level%20%2D%20a,across%20all%20boards%20and%20levels', '_blank');
+            }}
           >
             Learn More
           </Button>

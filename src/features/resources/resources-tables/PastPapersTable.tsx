@@ -6,6 +6,8 @@ import Image from 'next/image';
 import React from 'react';
 
 import { PastPaperWithResource } from 'app/api/resources/route';
+import { useSnackbar } from 'contexts/SnackbarContext';
+import { handleDownload } from 'utils/handleDownload';
 
 import {
   ChapterHeading,
@@ -20,6 +22,8 @@ import { PaginationHead, ResourcesPara, ResourcesSubHeading } from '../../../app
 import { StyledPagination } from '../../../components/pagination/Pagination.style';
 
 const PastPapersTable: React.FC<{ data: PastPaperWithResource[]; isLoading: boolean }> = ({ data }) => {
+  const { showSnackbar } = useSnackbar();  
+  
   const papersByYear = data.reduce((acc, paper) => {
     if (!acc[paper.year]) {
       acc[paper.year] = [];
@@ -28,17 +32,6 @@ const PastPapersTable: React.FC<{ data: PastPaperWithResource[]; isLoading: bool
 
     return acc;
   }, {} as Record<string, PastPaperWithResource[]>);
-
-  const handleDownload = (fileName: string) => {
-    const fileUrl = fileName;
-    const link = document.createElement('a');
-
-    link.href = fileUrl;
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
 
   const getDownloadUrl = (data: PastPaperWithResource, resourceType: PastPaperResourceType) => {
     return data.resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
@@ -57,9 +50,9 @@ const PastPapersTable: React.FC<{ data: PastPaperWithResource[]; isLoading: bool
           <Box>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <RessourcesTableHeading sx={{ flex: '0 0 calc(50%)' }}>Exam</RessourcesTableHeading>
-              <RessourcesTableHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Download</RessourcesTableHeading>
-              <RessourcesTableHeading sx={{ flex: '0 0 1' }}>Marking Scheme</RessourcesTableHeading>
-              <RessourcesTableHeading sx={{ flex: '0 0 1' }}>Answer</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 19%', textAlign: 'center' }}>Download</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 19%' }}>Marking Scheme</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 19%' }}>Answer</RessourcesTableHeading>
             </Box>
           </Box>
           <Box></Box>
@@ -85,19 +78,19 @@ const PastPapersTable: React.FC<{ data: PastPaperWithResource[]; isLoading: bool
                     <SubtopicHeading sx={{ flex: '0 0 50%' }}>{paper.title}</SubtopicHeading>
                     <DownloadIconButton
                       sx={{ flex: '0 0 16.67%' }}
-                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER))}
+                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER), `${paper.title}_${paper.year}_${PastPaperResourceType.QUESTION_PAPER}`, showSnackbar)}
                     >
                       <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                     </DownloadIconButton>
                     <DownloadIconButton
                       sx={{ flex: '0 0 16.67%' }}
-                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME))}
+                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME), `${paper.title}_${paper.year}_${PastPaperResourceType.MARKING_SCHEME}`, showSnackbar)}
                     >
                       <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                     </DownloadIconButton>
                     <DownloadIconButton
                       sx={{ flex: '0 0 16.67%' }}
-                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET))}
+                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET), `${paper.title}_${paper.year}_${PastPaperResourceType.SOLUTION_BOOKLET}`, showSnackbar)}
                     >
                       <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                     </DownloadIconButton>

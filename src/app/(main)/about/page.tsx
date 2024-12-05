@@ -21,7 +21,7 @@ export default function About() {
 
         <Box
           sx={{
-            backgroundColor: '#fffbfb',
+            background: 'linear-gradient(to bottom, #fffbfb00 0%, #fffbfb 10%)',
             zIndex: 20,
             position: 'relative',
           }}

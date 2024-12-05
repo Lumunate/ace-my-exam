@@ -5,6 +5,9 @@ import { TopicalQuestionResourceType } from '@prisma/client';
 import Image from 'next/image';
 import React from 'react';
 
+import { useSnackbar } from 'contexts/SnackbarContext';
+import { handleDownload } from 'utils/handleDownload';
+
 import {
   ChapterHeading,
   CollapseContainer,
@@ -19,16 +22,8 @@ import { StyledPagination } from '../../../components/pagination/Pagination.styl
 import { ContentWithChildren } from '../../../types/content';
 
 const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: boolean }> = ({ data }) => {
-  const handleDownload = (url: string) => {
-    const link = document.createElement('a');
-
-    link.href = url;
-    link.target = '_blank';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
-
+  const { showSnackbar } = useSnackbar();
+  
   const getDownloadUrl = (data: ContentWithChildren, resourceType: TopicalQuestionResourceType) => {
     if (data.topicalQuestions && data.topicalQuestions[0].resources)
       return data.topicalQuestions[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
@@ -49,9 +44,9 @@ const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: bo
           <Box>
             <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
               <RessourcesTableHeading sx={{ flex: '0 0 calc(50%)' }}>Name</RessourcesTableHeading>
-              <RessourcesTableHeading sx={{ flex: '0 0 1', textAlign: 'center' }}>Download</RessourcesTableHeading>
-              <RessourcesTableHeading sx={{ flex: '0 0 1' }}>Marking Scheme</RessourcesTableHeading>
-              <RessourcesTableHeading sx={{ flex: '0 0 1' }}>Answer</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 19%', textAlign: 'center' }}>Download</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 19%' }}>Marking Scheme</RessourcesTableHeading>
+              <RessourcesTableHeading sx={{ flex: '0 0 19%' }}>Answer</RessourcesTableHeading>
             </Box>
           </Box>
           <Box>
@@ -68,28 +63,28 @@ const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: bo
                   {index + 1}. {topic.name}
                 </ChapterHeading>
 
-                <InnerCollapse sx={{ py: 0, px: '15px', mt: '11px' }}>
-                  {topic.children?.map((subtopic) => (
+                <InnerCollapse sx={{ py: 0, px: '0', mt: '11px' }}>
+                  {topic.children?.map((subtopic, index2) => (
                     <Box
                       key={subtopic.id}
                       sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px', py: '2px' }}
                     >
-                      <SubtopicHeading sx={{ flex: '0 0 50%' }}>{subtopic.name}</SubtopicHeading>
+                      <SubtopicHeading sx={{ flex: '0 0 50%' }}>{index + 1}.{index2 + 1}. {subtopic.name}</SubtopicHeading>
                       <DownloadIconButton
                         sx={{ flex: '0 0 16.67%' }}
-                        onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.QUESTION_PAPER))}
+                        onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.QUESTION_PAPER), `${subtopic.subject_id}_${subtopic.name}_${subtopic.type}`, showSnackbar)}
                       >
                         <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                       </DownloadIconButton>
                       <DownloadIconButton
                         sx={{ flex: '0 0 16.67%' }}
-                        onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.MARKING_SCHEME))}
+                        onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.MARKING_SCHEME), `${subtopic.subject_id}_${subtopic.name}_${subtopic.type}`, showSnackbar)}
                       >
                         <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                       </DownloadIconButton>
                       <DownloadIconButton
                         sx={{ flex: '0 0 16.67%' }}
-                        // onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.SOLUTION_BOOKLET))}
+                        onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.SOLUTION_BOOKLET), `${subtopic.subject_id}_${subtopic.name}_${subtopic.type}`, showSnackbar)}
                       >
                         <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                       </DownloadIconButton>
