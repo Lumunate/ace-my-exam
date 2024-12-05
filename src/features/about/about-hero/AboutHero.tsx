@@ -30,14 +30,14 @@ const AboutHero: React.FC = () => {
     if (element) {
       ScrollTrigger.create({
         trigger: element,
-        start: 'bottom 100%', 
+        start: 'bottom 90%', 
         end: 'bottom 60%',   
         scrub: true,
         markers: false, 
         onUpdate: (self) => {
           const progress = self.progress;
           const clampedProgress = Math.min(progress, 1);
-          const calculatedRadius = clampedProgress * 100;
+          const calculatedRadius = (clampedProgress - 0.5) * 100;
 
           element.style.setProperty('--dynamic-border-radius', `${calculatedRadius}px ${calculatedRadius}px 0 0`);
         },
