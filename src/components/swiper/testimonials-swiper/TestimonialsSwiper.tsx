@@ -128,7 +128,7 @@ const TestimonialsSwiper: FC = () => {
                   {renderStars(testimonial.stars)}
                 </TestimonialsStarsHead>
                 <TestimonialsCardPara variant='body1' sx={{ mb: '16px' }}>
-                  {testimonial.feedback}
+                    {testimonial.feedback.length > 300 ? `${testimonial.feedback.substring(0, 300)}...` : testimonial.feedback}
                 </TestimonialsCardPara>
               </Box>
               <TestimonialsDateHead>
@@ -150,7 +150,7 @@ const TestimonialsSwiper: FC = () => {
                       loading='lazy'
                     />
                   </TrustpilotImage>
-                  <TrustpilotImage href={'https://www.trustpilot.com/'} target='_blank'>
+                  <TrustpilotImage href={'https://www.firsttutors.com/uk/tutor/asma.maths.physics.1/#:~:text=Educated%20to%20PhD%20level%20%2D%20a,across%20all%20boards%20and%20levels'} target='_blank'>
                     <Image
                       src='/home/first-tutors.png'
                       alt='trustpilot-icon'

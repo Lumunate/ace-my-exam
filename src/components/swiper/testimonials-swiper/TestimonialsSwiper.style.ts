@@ -55,8 +55,7 @@ export const TestimonialsCard = styled(Box)<{isSpace?: boolean,}>(({ theme, isSp
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
   height: '100%',
   textAlign: 'left',
-  minHeight: '426px',
-  maxHeight: '100%',
+  minHeight: '500px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
@@ -64,7 +63,6 @@ export const TestimonialsCard = styled(Box)<{isSpace?: boolean,}>(({ theme, isSp
   [theme.breakpoints.down('sm')]: {
     padding: '30px 10px',
     height: '100% !important',
-    maxHeight: '100% !important',
     minHeight: '360px',
   },
 }));
