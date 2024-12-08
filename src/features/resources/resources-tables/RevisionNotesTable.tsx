@@ -89,19 +89,21 @@ const RevisionNotesTable: React.FC<{ data: ContentWithChildren[]; isLoading: boo
                         {topic.children?.map((subtopic, index3) => (
                           <Box key={subtopic.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px',py: '2px' }}>
                             <SubtopicHeading sx={{color: '#808080'}}>{index + 1}.{index2 + 1}.{index3 + 1}. {subtopic.name}</SubtopicHeading>
-                            <IconButton
-                              onClick={() => handleDownload(getDownloadUrl(subtopic, RevisionNoteResourceType.NOTE), `${subtopic.subject_id}_${subtopic.name}_${subtopic.type}`, showSnackbar)}
-                              sx={{
-                                color: '#CCC',
-                                fontSize: '20px',
-                                fontWeight: 400,
-                                fontFamily: 'Jost, sans-serif',
-                                border: 'none',
-                                padding: 0,
-                              }}
-                            >
-                              <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
-                            </IconButton>
+                            {getDownloadUrl(subtopic, RevisionNoteResourceType.NOTE) !== '' && (
+                              <IconButton
+                                onClick={() => handleDownload(getDownloadUrl(subtopic, RevisionNoteResourceType.NOTE), `${subtopic.subject_id}_${subtopic.name}_${subtopic.type}`, showSnackbar)}
+                                sx={{
+                                  color: '#CCC',
+                                  fontSize: '20px',
+                                  fontWeight: 400,
+                                  fontFamily: 'Jost, sans-serif',
+                                  border: 'none',
+                                  padding: 0,
+                                }}
+                              >
+                                <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
+                              </IconButton>
+                            )}
                           </Box>
                         ))}
                       </InnerCollapse>
