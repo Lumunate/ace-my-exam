@@ -88,7 +88,7 @@ const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: bo
                           <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                         </DownloadIconButton>
                       ) : (
-                        <Box></ Box>
+                        <Box></Box>
                       )}
                       {getDownloadUrl(subtopic, TopicalQuestionResourceType.SOLUTION_BOOKLET) !== '' ? (
                         <DownloadIconButton
