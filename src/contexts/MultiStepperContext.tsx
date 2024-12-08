@@ -52,7 +52,9 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
     if (currentStep === 3) {
       const queryParams = breadcrumbs.map((step) => step.title).join(';');
 
-      router.push(`/resources/${selectedOptions.subjectSubtype?.value}/${selectedOptions.resourceType?.value}?breadcrumbs=${queryParams}`);
+      router.push(
+        `/resources/${selectedOptions.subjectSubtype?.value}/${selectedOptions.resourceType?.value}?breadcrumbs=${queryParams}`
+      );
     } else if (currentStep === 1) {
       nextStep = selectedOptions.educationalResources?.value === EducationLevel.ENTRANCE_EXAMS ? 1.5 : 2;
     } else if (currentStep === 1.5) {
@@ -86,8 +88,32 @@ export const MultiStepFormProvider: React.FC<{ children: React.ReactNode }> = ({
   };
 
   const selectOption = (stepName: string, option: IStepOption) => {
+    if (stepName === 'educationalResources' || stepName === 'subject' || stepName === 'resourceType') {
+      setIsNextDisabled(false);
+    } else {
+      setIsNextDisabled(true);
+    }
+
+    if (stepName === 'educationalResources') {
+      setSelectedOptions({ educationalResources: option });
+    } else if (stepName === 'examBoard') {
+      setSelectedOptions({ educationalResources: selectedOptions.educationalResources, examBoard: option });
+    } else if (stepName === 'subject') {
+      setSelectedOptions({
+        educationalResources: selectedOptions.educationalResources,
+        examBoard: selectedOptions.examBoard,
+        subject: option,
+      });
+    } else if (stepName === 'subjectSubtype') {
+      setSelectedOptions({
+        educationalResources: selectedOptions.educationalResources,
+        examBoard: selectedOptions.examBoard,
+        subject: selectedOptions.subject,
+        subjectSubtype: option,
+      });
+    }
+
     setSelectedOptions((prev) => ({ ...prev, [stepName]: option }));
-    setIsNextDisabled(false);
   };
 
   const selectOptionNavbar = (stepName: string, option: IStepOption) => {
