@@ -28,7 +28,7 @@ const RevisionNotesTable: React.FC<{ data: ContentWithChildren[]; isLoading: boo
   const { showSnackbar } = useSnackbar();
   
   const getDownloadUrl = (data: ContentWithChildren, resourceType: RevisionNoteResourceType) => {
-    if (data.revisionNotes && data.revisionNotes[0].resources)
+    if (data.revisionNotes && data.revisionNotes[0]?.resources)
       return data.revisionNotes[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
 
     return '';

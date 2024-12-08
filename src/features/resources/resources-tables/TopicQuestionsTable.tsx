@@ -25,7 +25,7 @@ const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: bo
   const { showSnackbar } = useSnackbar();
   
   const getDownloadUrl = (data: ContentWithChildren, resourceType: TopicalQuestionResourceType) => {
-    if (data.topicalQuestions && data.topicalQuestions[0].resources)
+    if (data.topicalQuestions && data.topicalQuestions[0]?.resources)
       return data.topicalQuestions[0].resources.find((resource) => resource.resource_type === resourceType)?.resource.url || '';
 
     return '';
