@@ -70,29 +70,35 @@ const TopicQuestionsTable: React.FC<{ data: ContentWithChildren[]; isLoading: bo
                       sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px', py: '2px' }}
                     >
                       <SubtopicHeading sx={{ flex: '0 0 50%' }}>{index + 1}.{index2 + 1}. {subtopic.name}</SubtopicHeading>
-                      {getDownloadUrl(subtopic, TopicalQuestionResourceType.QUESTION_PAPER) !== '' && (
+                      {getDownloadUrl(subtopic, TopicalQuestionResourceType.QUESTION_PAPER) !== '' ? (
                         <DownloadIconButton
                           sx={{ flex: '0 0 16.67%' }}
                           onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.QUESTION_PAPER), `${subtopic.subject_id}_${subtopic.name}_${subtopic.type}`, showSnackbar)}
                         >
                           <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                         </DownloadIconButton>
+                      ) : (
+                        <Box></Box>
                       )}
-                      {getDownloadUrl(subtopic, TopicalQuestionResourceType.MARKING_SCHEME) !== '' && (
+                      {getDownloadUrl(subtopic, TopicalQuestionResourceType.MARKING_SCHEME) !== '' ? (
                         <DownloadIconButton
                           sx={{ flex: '0 0 16.67%' }}
                           onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.MARKING_SCHEME), `${subtopic.subject_id}_${subtopic.name}_${subtopic.type}`, showSnackbar)}
                         >
                           <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                         </DownloadIconButton>
+                      ) : (
+                        <Box></ Box>
                       )}
-                      {getDownloadUrl(subtopic, TopicalQuestionResourceType.SOLUTION_BOOKLET) !== '' && (
+                      {getDownloadUrl(subtopic, TopicalQuestionResourceType.SOLUTION_BOOKLET) !== '' ? (
                         <DownloadIconButton
                           sx={{ flex: '0 0 16.67%' }}
                           onClick={() => handleDownload(getDownloadUrl(subtopic, TopicalQuestionResourceType.SOLUTION_BOOKLET), `${subtopic.subject_id}_${subtopic.name}_${subtopic.type}`, showSnackbar)}
                         >
                           <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                         </DownloadIconButton>
+                      ) : (
+                        <Box></Box>
                       )}
                     </Box>
                   ))}
