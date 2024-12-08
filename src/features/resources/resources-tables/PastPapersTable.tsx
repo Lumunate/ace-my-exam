@@ -76,24 +76,30 @@ const PastPapersTable: React.FC<{ data: PastPaperWithResource[]; isLoading: bool
                     sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px', py: '2px' }}
                   >
                     <SubtopicHeading sx={{ flex: '0 0 50%' }}>{paper.title}</SubtopicHeading>
-                    <DownloadIconButton
-                      sx={{ flex: '0 0 16.67%' }}
-                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER), `${paper.title}_${paper.year}_${PastPaperResourceType.QUESTION_PAPER}`, showSnackbar)}
-                    >
-                      <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
-                    </DownloadIconButton>
-                    <DownloadIconButton
-                      sx={{ flex: '0 0 16.67%' }}
-                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME), `${paper.title}_${paper.year}_${PastPaperResourceType.MARKING_SCHEME}`, showSnackbar)}
-                    >
-                      <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
-                    </DownloadIconButton>
-                    <DownloadIconButton
-                      sx={{ flex: '0 0 16.67%' }}
-                      onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET), `${paper.title}_${paper.year}_${PastPaperResourceType.SOLUTION_BOOKLET}`, showSnackbar)}
-                    >
-                      <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
-                    </DownloadIconButton>
+                    {getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER) !== '' && (
+                      <DownloadIconButton
+                        sx={{ flex: '0 0 16.67%' }}
+                        onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.QUESTION_PAPER), `${paper.title}_${paper.year}_${PastPaperResourceType.QUESTION_PAPER}`, showSnackbar)}
+                      >
+                        <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
+                      </DownloadIconButton>
+                    )}
+                    {getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME) !== '' && (
+                      <DownloadIconButton
+                        sx={{ flex: '0 0 16.67%' }}
+                        onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.MARKING_SCHEME), `${paper.title}_${paper.year}_${PastPaperResourceType.MARKING_SCHEME}`, showSnackbar)}
+                      >
+                        <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
+                      </DownloadIconButton>
+                    )}
+                    {getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET) !== '' && (
+                      <DownloadIconButton
+                        sx={{ flex: '0 0 16.67%' }}
+                        onClick={() => handleDownload(getDownloadUrl(paper, PastPaperResourceType.SOLUTION_BOOKLET), `${paper.title}_${paper.year}_${PastPaperResourceType.SOLUTION_BOOKLET}`, showSnackbar)}
+                      >
+                        <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
+                      </DownloadIconButton>
+                    )}
                   </Box>
                 ))}
               </InnerCollapse>
