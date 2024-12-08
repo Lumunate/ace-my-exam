@@ -38,7 +38,7 @@ const stats: StatItem[] = [
   },
   {
     name: 'With Over',
-    value: '450',
+    value: '650',
     subTitle: 'Students Tutored',
     showPlus: true,
   },
