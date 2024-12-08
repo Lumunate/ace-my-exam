@@ -89,7 +89,7 @@ const RevisionNotesTable: React.FC<{ data: ContentWithChildren[]; isLoading: boo
                         {topic.children?.map((subtopic, index3) => (
                           <Box key={subtopic.id} sx={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', mt: '4px',py: '2px' }}>
                             <SubtopicHeading sx={{color: '#808080'}}>{index + 1}.{index2 + 1}.{index3 + 1}. {subtopic.name}</SubtopicHeading>
-                            {getDownloadUrl(subtopic, RevisionNoteResourceType.NOTE) !== '' && (
+                            {getDownloadUrl(subtopic, RevisionNoteResourceType.NOTE) !== '' ? (
                               <IconButton
                                 onClick={() => handleDownload(getDownloadUrl(subtopic, RevisionNoteResourceType.NOTE), `${subtopic.subject_id}_${subtopic.name}_${subtopic.type}`, showSnackbar)}
                                 sx={{
@@ -103,6 +103,8 @@ const RevisionNotesTable: React.FC<{ data: ContentWithChildren[]; isLoading: boo
                               >
                                 <Image src="/icons/downloadIcon.svg" alt="download" width={20} height={20} />
                               </IconButton>
+                            ) : (
+                              <Box></Box>
                             )}
                           </Box>
                         ))}
