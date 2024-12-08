@@ -55,7 +55,7 @@ const StepNavigation: React.FC = () => {
             onClick={() => handleNext()}
             disabled={isNextDisabled}
           >
-            {currentStep === 3 ? 'Finish' : 'Next'}
+            Next
           </Button>
         )}
       </Box>
