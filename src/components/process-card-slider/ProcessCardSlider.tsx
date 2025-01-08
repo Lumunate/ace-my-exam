@@ -20,14 +20,13 @@ interface StepCard {
 
 const cardSteps: StepCard[] = [
   { number: 1, title: 'Student’s Initial Assessment', description: 'Initial assessment to identify knowledge gaps and evaluate exam technique' },
-  { number: 2, title: 'Personalized Success Session', description: 'Student success session with me to establish a personalized road map.' },
-  { number: 3, title: 'Live Weekly Lessons', description: 'Weekly group live lessons to cover all the content and practice exam questions.' },
-  { number: 4, title: 'Drop-In Support Sessions', description: 'Weekly drop-in sessions for when your child is struggling with the content.' },
-  { number: 5, title: 'Progress Tracking Tool', description: 'Tracker to measure progress.' },
-  { number: 6, title: 'Weekly Homework Practice', description: 'Weekly homework to consolidate learning' },
-  { number: 7, title: 'Comprehensive Resource Library', description: 'Library of resources covering the whole syllabus of A-Level maths.' },
-  { number: 8, title: 'One-on-One Support Calls', description: 'One-to-one calls for when students need support or encouragement.' },
-  { number: 9, title: 'Monthly Parent Reports', description: 'Parent monthly reports to keep parents informed and students accountable.' },
+  { number: 2, title: 'Personalised Success Session', description: 'Student success session to establish a personalized tutoring plan.' },
+  { number: 3, title: 'Live Lessons', description: 'Live lessons to cover all the content and practice exam questions. We kickstart the lessons either 1-to-1 or group-based on your preferred choice to cover the content and practice exam questions.' },
+  { number: 4, title: 'Weekly Homework Practice', description: 'Homework is set weekly to consolidate learning and boost retention.' },
+  { number: 5, title: 'Progress Tracking', description: 'We closely monitor each student’s progress to ensure their continuous improvement and success.' },
+  { number: 6, title: 'Comprehensive Resource Library', description: 'Full access to an extensive library of educational resources for all students.' },
+  { number: 7, title: 'One-on-One Support Calls', description: 'One-to-one calls for when students need support or encouragement.' },
+  { number: 8, title: 'Monthly Parent Reports', description: 'Monthly reports for parents to ensure transparency and student accountability.' },
 ];
 
 const ProcessCardSlider: React.FC = () => {
