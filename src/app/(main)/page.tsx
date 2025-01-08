@@ -18,6 +18,9 @@ export default function Home() {
       <Hero />
       <Stats />
       <AppContentWrapper>
+        <Testimonials />
+      </AppContentWrapper>
+      <AppContentWrapper>
         <About />
       </AppContentWrapper>
 
@@ -46,9 +49,6 @@ export default function Home() {
           }}
         >
           <Support />
-          <AppContentWrapper>
-            <Testimonials />
-          </AppContentWrapper>
         </Box>
       </Box>
     </>
