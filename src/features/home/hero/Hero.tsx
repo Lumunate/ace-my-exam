@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import {
+  ConsultantLink,
   HeroCard,
   HeroCardHeading,
   HeroContent,
@@ -59,7 +60,7 @@ const Hero: React.FC = () => {
               <Box>
                 <HeroHeading>Unlock Your Full Potential with Acemyexam</HeroHeading>
                 <HeroContent>
-                  Based in Cambridge, UK, Acemyexam provides best-in-class personalised learning to students in order to achieve academic excellence, confidence, and academic growth.
+                Based in Cambridge, UK, Acemyexam offers premium bespoke in-person and online tuition with a 99% success rate, helping students achieve top grades, secure school & university placements, and access exceptional educational resources.
                 </HeroContent>
                 <HeroContent sx={{ mt: '30px' }}>Excel Academically Today!</HeroContent>
                 <Link href={'/pricing'}>
@@ -71,26 +72,35 @@ const Hero: React.FC = () => {
                     height='60px'
                   
                   >
-                  Get Started
+                  Our Prices
                   </Button>
                 </Link>
+                <ConsultantLink href="/contact">Book a Free Consultation Now<Image
+                  src={'/icons/arrow-right-w.svg'}
+                  width={25}
+                  height={7}
+                  alt='icon'
+                  style={{ marginLeft: '16px' }}
+                /></ConsultantLink>
                 
               </Box>
             </FadeIn>
           </HeroLeftContentCont>
           <HeroRightContentCont>
-            <FadeIn direction="right" distance={200} duration={1.5}>
-              <HeroCardComponent width={282}>
-                <Image
-                  src={'/icons/education-school-study-stickerL.svg'}
-                  width={26}
-                  height={32}
-                  alt='icon'
-                />
-                <HeroCardHeading>Serving students from UK and worldwide</HeroCardHeading>
-              </HeroCardComponent>
-            </FadeIn>
-            <Box sx={{ transform: { xs: 'translateX(10px)', sm: 'translateX(-33px)' } }}>
+            <Box sx={{ transform: { xs: 'translateX(10px)', sm: 'translateX(-130px)' } }}>
+              <FadeIn direction="right" distance={200} duration={1.5}>
+                <HeroCardComponent width={282}>
+                  <Image
+                    src={'/icons/education-school-study-stickerL.svg'}
+                    width={26}
+                    height={32}
+                    alt='icon'
+                  />
+                  <HeroCardHeading>Serving Students Across UK And Worldwide.</HeroCardHeading>
+                </HeroCardComponent>
+              </FadeIn>
+            </Box>
+            <Box sx={{ transform: { xs: 'translateX(10px)', sm: 'translateX(40px)' } }}>
               <FadeIn direction="right" distance={200} duration={1.5}>
                 <HeroCardComponent width={364}>
                   <Image
@@ -102,9 +112,38 @@ const Hero: React.FC = () => {
                   <HeroCardHeading>Offering bespoke tuition in Science and Maths.</HeroCardHeading>
                 </HeroCardComponent>
               </FadeIn>
+              
             </Box>
-
-            <HeroMediaHead>
+            <Box sx={{ transform: { xs: 'translateX(10px)', sm: 'translateX(-130px)' } }}>
+              <FadeIn direction="right" distance={200} duration={1.5}>
+                <HeroCardComponent width={430}>
+                  <Image
+                    src={'/icons/education-school-study-stickerL.svg'}
+                    width={26}
+                    height={32}
+                    alt='icon'
+                  />
+                  <HeroCardHeading>Entrance Exams to Independent Schools: 11+, 13+, 16+, and 13+ Scholarship.</HeroCardHeading>
+                </HeroCardComponent>
+              </FadeIn>
+              
+            </Box>
+            <Box sx={{ transform: { xs: 'translateX(10px)', sm: 'translateX(40px)' } }}>
+              <FadeIn direction="right" distance={200} duration={1.5}>
+                <HeroCardComponent width={410}>
+                  <Image
+                    src={'/icons/education-school-study-stickerL.svg'}
+                    width={26}
+                    height={32}
+                    alt='icon'
+                  />
+                  <HeroCardHeading>We offer KS3, (I)GCSE, A-level, and IB</HeroCardHeading>
+                </HeroCardComponent>
+              </FadeIn>
+              
+            </Box>
+            {/* removed temporarily   */}
+            {/* <HeroMediaHead>
               <SectionHeading text="Follow Us" align="start" showLeftLine={false} color="#fff" gradientType="first" />
               <SocialIconsWrapper>
                 <HeroLink href={'#'}>
@@ -132,7 +171,7 @@ const Hero: React.FC = () => {
                   />
                 </HeroLink>
               </SocialIconsWrapper>
-            </HeroMediaHead>
+            </HeroMediaHead> */}
           </HeroRightContentCont>
         </HeroContentContainer>
       </AppContentWrapper>
