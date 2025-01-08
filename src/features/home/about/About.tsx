@@ -30,10 +30,8 @@ const AboutCard: React.FC<AboutCardProps> = ({
   bgColor,
   textColor,
   alignment,
-  iconUrl = '/icons/brain-black.svg',
 }) => (
   <AboutCardContainer bgColor={bgColor} alignment={alignment}>
-    <Image src={iconUrl} width={26} height={32} alt='icon' />
     <AboutCardHeading textColor={textColor}>{title}</AboutCardHeading>
   </AboutCardContainer>
 );
@@ -106,7 +104,7 @@ const About: React.FC = () => {
               </AboutPara>
               <AboutPara>
                 We offer expert tuition in Maths and Science for students
-                preparing for GCSE, IGCSE, A-Levels, and a variety of other exams,
+                preparing for GCSE, IGCSE, A-Level, and a variety of other exams,
                 including entrance exams to independent schools and scholarship
                 opportunities. Whether you’re aiming for top exam results or
                 building a strong academic foundation, we provide the support and
@@ -124,7 +122,7 @@ const About: React.FC = () => {
               >
                 <Grid size={{ xs: 24, sm: 12, md: 8, lg:12, xl: 8 }}>
                   <AboutCard
-                    title='GCSE to Alevel Exam Preparation'
+                    title='(I)GCSE to A-level Exam Preparation.'
                     bgColor='#FFF'
                     textColor='#000'
                     alignment='start'
@@ -140,7 +138,7 @@ const About: React.FC = () => {
                 </Grid>
                 <Grid size={{ xs: 24, sm: 12, md: 8, lg:12, xl: 8 }}>
                   <AboutCard
-                    title='Entrance Exams'
+                    title='Entrance Exams 11+, 13+ and 16+.'
                     bgColor='#FFF'
                     textColor='#000'
                     alignment='start'
@@ -148,7 +146,7 @@ const About: React.FC = () => {
                 </Grid>
               </Grid>
               <AboutLink href={'/about'}>
-                Learn More
+              More About Us…
                 <Image
                   src={'/icons/arrow-right.svg'}
                   width={25}
