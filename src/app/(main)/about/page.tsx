@@ -36,13 +36,6 @@ export default function About() {
               <AboutApproach />
             </FadeIn>
           </FadeInOpacity>
-          <Box sx={{ overflow: 'hidden' }}>
-            <FadeInOpacity duration={1.5}>
-              <FadeIn direction="up" distance={100} duration={1.5}>
-                <AboutTestimonials />
-              </FadeIn>
-            </FadeInOpacity>
-          </Box>
         </Box>
       </AppContentWrapper>
     </>

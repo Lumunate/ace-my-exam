@@ -117,7 +117,7 @@ export const FounderList = styled(List)({
 export const FounderListItem  = styled(ListItem )({
   padding: '4px 0',
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'baseline',
 });
 
 export const FounderCard = styled(Box)(({ theme }) => ({
@@ -183,6 +183,7 @@ export const FounderCardListText = styled(CommonHeroTypography)(({ theme }) => (
   fontFamily: 'Lato, sans-serif',
   color: '#787878',
   fontWeight: 400,
+  alignItems:'baseline',
   [theme.breakpoints.down('xl')]: {
     fontSize: '14px',
   },
