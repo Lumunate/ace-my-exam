@@ -5,7 +5,6 @@ import FadeInOpacity from '../../../components/animations/FadeInOpacity';
 import ScrollingFadeOut from '../../../components/animations/ScrollingFadeOut';
 import { AppContentWrapper } from '../../../components/common/Global.style';
 import AboutHero from '../../../features/about/about-hero/AboutHero';
-import AboutTestimonials from '../../../features/about/about-testimonials/AboutTestimonials';
 import AboutApproach from '../../../features/about/approach/Approach';
 import AboutChoose from '../../../features/about/choose/Choose';
 import AboutFounder from '../../../features/about/founder/Founder';
