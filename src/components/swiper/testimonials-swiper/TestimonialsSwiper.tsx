@@ -34,7 +34,6 @@ interface Testimonial {
   subject: string;
   feedback: string;
   date: string; 
-  feedbackDate: string;
   stars: number;
 }
 
@@ -128,18 +127,10 @@ const TestimonialsSwiper: FC = () => {
                   {renderStars(testimonial.stars)}
                 </TestimonialsStarsHead>
                 <TestimonialsCardPara variant='body1' sx={{ mb: '16px' }}>
-                  {testimonial.feedback.length > 300 ? `${testimonial.feedback.substring(0, 300)}...` : testimonial.feedback}
+                  {testimonial.feedback}
                 </TestimonialsCardPara>
               </Box>
               <TestimonialsDateHead>
-                <Box>
-                  <TestimonialsParaTwo variant='subtitle2'>
-                    Feedback given:
-                  </TestimonialsParaTwo>
-                  <TestimonialsParaTwo variant='subtitle2'>
-                    {testimonial.feedbackDate}
-                  </TestimonialsParaTwo>
-                </Box>
                 <Box sx={{display: 'flex', flexDirection: 'column', gap: '50px'}}>
                   <TrustpilotImage href={'https://www.trustpilot.com/'} target='_blank'>
                     <Image
@@ -147,15 +138,6 @@ const TestimonialsSwiper: FC = () => {
                       alt='trustpilot-icon'
                       width={100}
                       height={100}
-                      loading='lazy'
-                    />
-                  </TrustpilotImage>
-                  <TrustpilotImage href={'https://www.firsttutors.com/uk/tutor/asma.maths.physics.1/#:~:text=Educated%20to%20PhD%20level%20%2D%20a,across%20all%20boards%20and%20levels'} target='_blank'>
-                    <Image
-                      src='/home/first-tutors.png'
-                      alt='trustpilot-icon'
-                      width={100}
-                      height={-1}
                       loading='lazy'
                     />
                   </TrustpilotImage>
