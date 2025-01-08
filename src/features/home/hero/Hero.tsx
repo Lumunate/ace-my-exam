@@ -13,11 +13,11 @@ import {
   HeroImageContainer,
   HeroImageOverlay,
   HeroLeftContentCont,
-  HeroLink,
-  HeroMediaHead,
+  // HeroLink,
+  // HeroMediaHead,
   HeroRightContentCont,
   HeroWrapper,
-  SocialIconsWrapper,
+  // SocialIconsWrapper,
 } from './Hero.style';
 import FadeIn from '../../../components/animations/FadeIn'; 
 import { Button } from '../../../components/buttons/Button.style';
