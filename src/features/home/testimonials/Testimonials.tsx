@@ -14,7 +14,7 @@ const Testimonials = () => {
         color='#DA9694'
         textWidth='160px'
         gradientType="second" />
-      <TestimonialsHeading variant="h2" sx={{ mt: '20px' }}>Here&apos;s What Our Students Say</TestimonialsHeading>
+      <TestimonialsHeading variant="h2" sx={{ mt: '20px' }}>Here&apos;s What Our Clients Say</TestimonialsHeading>
       <Link href={'/feedback'}>
         <Button special
           fontSize='16px'

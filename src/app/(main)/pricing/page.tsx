@@ -11,12 +11,12 @@ const pricingData = {
   individualRates: [
     {
       imageSrc: '/home/math.webp',
-      title: 'Math',
+      title: 'Maths',
       prices: [
         { level: 'Primary', price: '£70' },
-        { level: 'Secondary', price: '£75' },
-        { level: 'GCSE', price: '£75' },
-        { level: 'A-Level', price: '£80' },
+        { level: 'KS3/13+', price: '£90' },
+        { level: 'GCSE', price: '£90' },
+        { level: 'A-Level', price: '£120' },
       ],
     },
     {
@@ -24,8 +24,8 @@ const pricingData = {
       title: 'Physics',
       prices: [
         { level: 'Primary', price: '£70' },
-        { level: 'Secondary', price: '£75' },
-        { level: 'GCSE', price: '£75' },
+        { level: 'KS3/13+', price: '£90' },
+        { level: 'GCSE', price: '£90' },
       ],
     },
     {
@@ -33,8 +33,8 @@ const pricingData = {
       title: 'Chemistry',
       prices: [
         { level: 'Primary', price: '£70' },
-        { level: 'Secondary', price: '£75' },
-        { level: 'GCSE', price: '£75' },
+        { level: 'KS3/13+', price: '£90' },
+        { level: 'GCSE', price: '£90' },
       ],
     },
     {
@@ -42,19 +42,19 @@ const pricingData = {
       title: 'Biology',
       prices: [
         { level: 'Primary', price: '£70' },
-        { level: 'Secondary', price: '£75' },
-        { level: 'GCSE', price: '£75' },
+        { level: 'KS3/13+', price: '£90' },
+        { level: 'GCSE', price: '£90' },
       ],
     },
   ],
   groupRates: [
     {
       imageSrc: '/home/13plus.webp',
-      title: '13 +',
+      title: 'KS3/13+',
       prices: [
-        { level: '2 Students', price: '£55' },
-        { level: '3 Students', price: '£50' },
-        { level: '4 Students', price: '£45' },
+        { level: '2 Students', price: '£60' },
+        { level: '3 Students', price: '£55' },
+        { level: '4 Students', price: '£50' },
       ],
     },
     {
@@ -68,10 +68,10 @@ const pricingData = {
     },
     {
       imageSrc: '/home/alevels.webp',
-      title: 'A-Levels',
+      title: 'A-Level',
       prices: [
-        { level: '2-3 Students', price: '£40' },
-        { level: '4-6 Students', price: '£35' },
+        { level: '2-3 Students', price: '£75' },
+        { level: '4-6 Students', price: '£60' },
       ],
     },
   ],
@@ -112,7 +112,7 @@ const Pricing: React.FC = () => {
             ))}
           </Grid>
         </FadeInOpacity>
-        <PricingPara sx={{ mt: '100px' }}>Group Sessions</PricingPara>
+        <PricingPara sx={{ mt: '100px' }}>Join Us Now</PricingPara>
         <FadeInOpacity duration={2}>
           <Grid container justifyContent={'center'} rowSpacing={'30px'}>
             {groupRates.map((card, index) => (

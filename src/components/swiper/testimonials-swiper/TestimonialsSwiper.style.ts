@@ -81,7 +81,6 @@ export const TestimonialsNavigationWrapper = styled(Box)<{ positionLeft: string;
 
 const BaseTextStyle = styled(Typography)({
   fontFamily: 'Lato, sans-serif',
-  textTransform: 'capitalize',
 });
 
 export const TestimonialsCardHeading = styled(BaseTextStyle)(({ theme }) => ({
@@ -128,7 +127,7 @@ export const TestimonialAvatar = styled(Avatar)(({ theme }) => ({
 
 export const TestimonialsDateHead = styled(Box)({
   display: 'flex',
-  justifyContent: 'space-between',
+  justifyContent: 'end',
   alignItems: 'center',
 });
 

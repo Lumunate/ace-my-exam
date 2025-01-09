@@ -15,7 +15,7 @@ const Process: React.FC = () => {
           textWidth='160px'
           gradientType='second'
         />
-        <ProcessHeading variant='h2'>How We Operate</ProcessHeading>
+        <ProcessHeading variant='h2'>Our Tutoring Methodology.</ProcessHeading>
       </AppContentWrapper>
       <ProcessMain>
         <ProcessCardSlider />
