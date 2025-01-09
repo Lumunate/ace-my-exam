@@ -26,20 +26,20 @@ interface StatItem {
 const stats: StatItem[] = [
   {
     name: 'Backed by',
-    value: '15',
+    value: '16',
     subTitle: 'Years of Experience',
     showPlus: true,
   },
   {
     name: 'Expertise in',
     value: '49',
-    subTitle: 'Subjects/ Examinations',
+    subTitle: 'Examinations',
     showPlus: true,
   },
   {
     name: 'With Over',
     value: '650',
-    subTitle: 'Students Tutored',
+    subTitle: 'Students Tutored Worldwide',
     showPlus: true,
   },
 ];
