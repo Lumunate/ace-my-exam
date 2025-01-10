@@ -199,6 +199,17 @@ export const HeroLink = styled(Link) ({
     transform: 'scale(1.2) rotate(-90deg)',
   },
 });
+export const ConsultantLink = styled(Link) ({
+  display:'block',
+  '&:hover':{
+    color:'#DA9694',
+  },
+  color:'white',
+  backgroundColor:'transparent',
+  transition: 'transform 0.3s ease, filter 0.3s ease', 
+  marginTop:'20px',
+  fontSize:'16px'
+});
 
 export const HeroImageContainer = styled(Box)({
   position: 'absolute',
