@@ -112,7 +112,7 @@ const Pricing: React.FC = () => {
             ))}
           </Grid>
         </FadeInOpacity>
-        <PricingPara sx={{ mt: '100px' }}>Join Us Now</PricingPara>
+        <PricingPara sx={{ mt: '100px' }}>Group Rates</PricingPara>
         <FadeInOpacity duration={2}>
           <Grid container justifyContent={'center'} rowSpacing={'30px'}>
             {groupRates.map((card, index) => (
