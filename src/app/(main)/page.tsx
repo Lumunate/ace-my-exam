@@ -18,10 +18,10 @@ export default function Home() {
       <Hero />
       <Stats />
       <AppContentWrapper>
-        <Testimonials />
+        <About />
       </AppContentWrapper>
       <AppContentWrapper>
-        <About />
+        <Testimonials />
       </AppContentWrapper>
 
       {/* <ScrollingFadeOut> */}
