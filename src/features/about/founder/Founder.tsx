@@ -5,7 +5,6 @@ import {
   FounderContent,
   FounderContentContainer,
   FounderHeading,
-  FounderSubHeading,
   FounderWrapper,
   FounderList,
   FounderListItem,
@@ -21,24 +20,24 @@ import FadeIn from '../../../components/animations/FadeIn';
 import SectionHeading from '../../../components/section-heading/SectionHeading';
 
 const AboutFounder: React.FC = () => {
-  const educationList = [
-    {
-      degree: 'PhD',
-      subject: 'Image Processing/Computer Vision',
-      institution: 'University College London',
-    },
-    {
-      degree: 'MSc',
-      subject: 'Computing Science',
-      institution: 'Imperial College London',
-    },
-    {
-      degree: 'BSc',
-      subject: 'Physics (First Class Honours)',
-      institution: 'Imperial College London',
-    },
+  // const educationList = [
+  //   {
+  //     degree: 'PhD',
+  //     subject: 'Image Processing/Computer Vision',
+  //     institution: 'University College London',
+  //   },
+  //   {
+  //     degree: 'MSc',
+  //     subject: 'Computing Science',
+  //     institution: 'Imperial College London',
+  //   },
+  //   {
+  //     degree: 'BSc',
+  //     subject: 'Physics (First Class Honours)',
+  //     institution: 'Imperial College London',
+  //   },
    
-  ];
+  // ];
 
   const stats = [
     '99% of students improved by 2 to 5 grades.',
