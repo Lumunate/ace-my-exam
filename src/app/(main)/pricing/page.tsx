@@ -16,7 +16,7 @@ const pricingData = {
         { level: 'Primary', price: '£70' },
         { level: 'KS3/13+', price: '£90' },
         { level: 'GCSE', price: '£90' },
-        { level: 'A-Level', price: '£120' },
+        { level: 'A-level', price: '£120' },
       ],
     },
     {
@@ -68,7 +68,7 @@ const pricingData = {
     },
     {
       imageSrc: '/home/alevels.webp',
-      title: 'A-Level',
+      title: 'A-level',
       prices: [
         { level: '2-3 Students', price: '£75' },
         { level: '4-6 Students', price: '£60' },
