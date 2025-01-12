@@ -27,29 +27,22 @@ export default function Home() {
       {/* <ScrollingFadeOut> */}
       <Process />
       {/* </ScrollingFadeOut> */}
+      <Institutes />
+      {/* <ScrollingFadeOut> */}
+      <AppContentWrapper>
+        <Resources />
+      </AppContentWrapper>
+      {/* </ScrollingFadeOut> */}
+
       <Box
         sx={{
           backgroundColor: '#fffbfb',
           zIndex: 20,
+          paddingBottom: '60px',
           position: 'relative',
         }}
       >
-        <Institutes />
-        <ScrollingFadeOut>
-          <AppContentWrapper>
-            <Resources />
-          </AppContentWrapper>
-        </ScrollingFadeOut>
-
-        <Box
-          sx={{
-            backgroundColor: '#fffbfb',
-            zIndex: 20,
-            position: 'relative',
-          }}
-        >
-          <Support />
-        </Box>
+        <Support />
       </Box>
     </>
   );
