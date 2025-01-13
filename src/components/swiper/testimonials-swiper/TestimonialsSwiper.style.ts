@@ -147,7 +147,8 @@ export const TrustpilotImage = styled(Link)(({ theme }) => ({
   position: 'relative',
   [theme.breakpoints.down('sm')]: {
     width: 80,
-    height: 22,
+    height: 48,
+    marginRight:'25px',
   }
 }));
 
