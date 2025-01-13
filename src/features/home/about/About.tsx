@@ -30,10 +30,17 @@ const AboutCard: React.FC<AboutCardProps> = ({
   bgColor,
   textColor,
   alignment,
-  iconUrl = '/icons/brain-black.svg',
+  iconUrl = '',
 }) => (
   <AboutCardContainer bgColor={bgColor} alignment={alignment}>
-    <Image src={iconUrl} width={26} height={32} alt='icon' />
+    {iconUrl && (
+      <Image 
+        src={iconUrl} 
+        width={26} 
+        height={32} 
+        alt="icon" // Only renders if iconUrl exists
+      />
+    )}
     <AboutCardHeading textColor={textColor}>{title}</AboutCardHeading>
   </AboutCardContainer>
 );
