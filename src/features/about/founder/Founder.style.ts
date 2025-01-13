@@ -30,6 +30,10 @@ export const FounderImgHead = styled(Box)(({ theme }) => ({
   position: 'relative',
   borderRadius: '20px 20px 0 0',
   overflow: 'hidden',
+  margin: '0 auto', 
+  display: 'flex', 
+  alignItems: 'center', 
+  justifyContent: 'center',
   // marginLeft: 'auto',
   [theme.breakpoints.down('xl')]: {
     maxWidth: '400px',
