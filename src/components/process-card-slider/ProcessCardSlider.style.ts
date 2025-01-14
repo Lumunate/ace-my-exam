@@ -63,7 +63,7 @@ export const ProcessCardNumber = styled(BaseTypography)({
 
 export const ProcessCardTitle = styled(BaseTypography)(({ theme }) => ({
   color: '#DA9694',
-  fontSize: '16px',
+  fontSize: '18px',
   fontWeight: 700,
   lineHeight: '22px',
   marginBottom: '3px',
@@ -74,7 +74,7 @@ export const ProcessCardTitle = styled(BaseTypography)(({ theme }) => ({
 
 export const ProcessCardDescription = styled(BaseTypography)(({ theme }) => ({
   color: '#929292',
-  fontSize: '14px',
+  fontSize: '16px',
   fontWeight: 400,
   [theme.breakpoints.down(576)]: {
     fontSize: '12px',

@@ -5,7 +5,6 @@ import {
   FounderContent,
   FounderContentContainer,
   FounderHeading,
-  FounderSubHeading,
   FounderWrapper,
   FounderList,
   FounderListItem,
@@ -21,24 +20,24 @@ import FadeIn from '../../../components/animations/FadeIn';
 import SectionHeading from '../../../components/section-heading/SectionHeading';
 
 const AboutFounder: React.FC = () => {
-  const educationList = [
-    {
-      degree: 'PhD',
-      subject: 'Image Processing/Computer Vision',
-      institution: 'University College London',
-    },
-    {
-      degree: 'MSc',
-      subject: 'Computing Science',
-      institution: 'Imperial College London',
-    },
-    {
-      degree: 'BSc',
-      subject: 'Physics (First Class Honours)',
-      institution: 'Imperial College London',
-    },
+  // const educationList = [
+  //   {
+  //     degree: 'PhD',
+  //     subject: 'Image Processing/Computer Vision',
+  //     institution: 'University College London',
+  //   },
+  //   {
+  //     degree: 'MSc',
+  //     subject: 'Computing Science',
+  //     institution: 'Imperial College London',
+  //   },
+  //   {
+  //     degree: 'BSc',
+  //     subject: 'Physics (First Class Honours)',
+  //     institution: 'Imperial College London',
+  //   },
    
-  ];
+  // ];
 
   const stats = [
     '99% of students improved by 2 to 5 grades.',
@@ -57,8 +56,8 @@ const AboutFounder: React.FC = () => {
   const subjectsOffered = [
     'Maths: KS2 to A-level',
     'Science (Physics, Chemistry, Biology): KS2 to GCSE',
-    'Independent School Exams: Scholarship, Common',
-    'Entrance, 16+ exams',
+    'Independent School Exams: Common Entrance/13+ and 16+, 13+ Scholarship',
+    
   ];
 
   return (
@@ -71,20 +70,25 @@ const AboutFounder: React.FC = () => {
               <FounderHeading>Dr. Asma Chaudhri</FounderHeading>
               <FounderHeadingTwo sx={{ mb: { xs: '20px', md: '30px' } }}>An Educator Driven by Passion</FounderHeadingTwo>
               <FounderContent>
-                Founded in 2016 by Asma Chaudhri, Acemyexam has established itself as a leading tuition provider with an
-                outstanding reputation for helping students achieve their academic ambitions.
+              I, Asma Chaudhri, am the founder and CEO of Acemyexam Education. I am educated to PhD level in Image Processing from University College London (UCL) and earned an MSc in Computing Science and a BSc in Physics with First-Class Honours from Imperial College London, complemented by the prestigious DIC and ARCS awards. My rigorous academic training underpins my methodical approach to tutoring, blending deep subject knowledge with innovative teaching techniques.
               </FounderContent>
               <FounderContent>
-                Asma is educated to PhD level in Image Processing from University College London (UCL), alongside a First-Class
-                Honours in BSc Physics and an MSc in Computing Science, both from Imperial College London.
+              As an examiner for A-level Mathematics and (I)GCSE Science, I offer unique insights into exam standards and requirements, equipping my students with the skills and confidence needed to excel under pressure.
               </FounderContent>
               <FounderContent>
-                Asma leads a team of exceptional tutors, many of whom are graduates from some of the world&lsquo;s top
-                universities. Together, they deliver bespoke tuition that extends far beyond academic success— equipping students
-                with the confidence, critical thinking skills, and independence they need to thrive well beyond their exams.
+              I have dedicated over 16 years to transforming students&lsquo; academic journeys, with a proven track record of guiding 99% of my students to achieve remarkable progress. Many have improved by 2 to 5 grades and successfully gained admission to top schools and universities worldwide. This success is supported by verified testimonials from students and parents, reflecting my unwavering commitment to academic excellence and personalised learning strategies.
+              </FounderContent>
+              <FounderContent>
+              Beyond academia, I bring 13+ years of experience as a Senior Quantitative Analyst in top-tier hedge funds and investment banks, including AllianceBernstein Ltd and Investcorp Bank. This professional expertise in financial modelling and quantitative analysis enriches my teaching, enabling me to offer real-world applications that inspire and engage my students.
+              </FounderContent>
+              <FounderContent>
+              At Acemyexam Education, I am passionate about empowering students to achieve their fullest potential, fostering a love for learning, and preparing them not just for exams, but for lifelong success.
+              </FounderContent>
+              <FounderContent>
+              I am supported by a team of exceptional tutors, many of whom are graduates from some of the world‘s top universities. Together, we deliver bespoke tuition that extends far beyond academic success— equipping students with the confidence, critical thinking skills, and independence they need to thrive well beyond their exams.
               </FounderContent>
 
-              <FounderList>
+              {/* <FounderList>
                 {educationList.map((edu, index) => (
                   <FounderListItem key={index}>
                     <Image
@@ -105,20 +109,20 @@ const AboutFounder: React.FC = () => {
                     </FounderSubHeading>
                   </FounderListItem>
                 ))}
-              </FounderList>
+              </FounderList> */}
             </FadeIn>
           </Grid>
 
           <Grid
             size={{ xs: 24, lg: 10 }}
             sx={{
-              px: { xs: '0', md: '15px' },
+              // px: { xs: '0', md: '15px' },
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-end',
             }}
           >
-            <FadeIn direction="up" distance={300} duration={1.5} delay={0.2}>
+            <FadeIn direction="up" distance={300} duration={1} delay={0.2}>
               <FounderImgHead>
                 <Image src="/about/founder.png" alt="founder" layout="fill" objectFit="cover" />
               </FounderImgHead>

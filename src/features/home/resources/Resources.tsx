@@ -24,33 +24,33 @@ type StepKey = 1 | 1.5 | 2 | 3 | 4 | 5;
 const cardsData = [
   {
     subTitle: 'Maths, Further Maths Physics, Chemistry, Biology',
-    title: 'Alevel',
+    title: 'A-level',
     image: '/home/Resources1.webp',
-    buttonText: 'Get Started'
+    buttonText: 'Join Us Now'
   },
   {
     subTitle: 'Maths, Further Maths Physics, Chemistry, Biology',
     title: 'GCSE',
     image: '/home/Resources2.webp',
-    buttonText: 'Get Started'
+    buttonText: 'Join Us Now'
   },
   {
     subTitle: 'Maths, Further Maths Physics, Chemistry, Biology',
     title: 'IGCSE',
     image: '/home/Resources2.webp',
-    buttonText: 'Get Started'
+    buttonText: 'Join Us Now'
   },
   {
     subTitle: 'Maths, Physics, Chemistry, Biology',
     title: 'KS3',
     image: '/home/Resources3.webp',
-    buttonText: 'Get Started'
+    buttonText: 'Join Us Now'
   },
   {
     subTitle: '11+, 13+, 16+, 13+ ',
     title: 'Entrance Exams',
     image: '/home/Resources3.webp',
-    buttonText: 'Get Started'
+    buttonText: 'Join Us Now'
   }
 ];
 

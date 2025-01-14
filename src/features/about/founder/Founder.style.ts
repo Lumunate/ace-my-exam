@@ -25,12 +25,16 @@ export const FounderContentContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const FounderImgHead = styled(Box)(({ theme }) => ({
-  height: '535px',
-  maxWidth: '424px',
+  height: '700px',
+  // maxWidth: '424px',
   position: 'relative',
   borderRadius: '20px 20px 0 0',
   overflow: 'hidden',
-  marginLeft: 'auto',
+  margin: '0 auto', 
+  display: 'flex', 
+  alignItems: 'center', 
+  justifyContent: 'center',
+  // marginLeft: 'auto',
   [theme.breakpoints.down('xl')]: {
     maxWidth: '400px',
     height: '520px',
@@ -117,7 +121,7 @@ export const FounderList = styled(List)({
 export const FounderListItem  = styled(ListItem )({
   padding: '4px 0',
   display: 'flex',
-  alignItems: 'center',
+  alignItems: 'baseline',
 });
 
 export const FounderCard = styled(Box)(({ theme }) => ({
@@ -183,6 +187,7 @@ export const FounderCardListText = styled(CommonHeroTypography)(({ theme }) => (
   fontFamily: 'Lato, sans-serif',
   color: '#787878',
   fontWeight: 400,
+  alignItems:'baseline',
   [theme.breakpoints.down('xl')]: {
     fontSize: '14px',
   },

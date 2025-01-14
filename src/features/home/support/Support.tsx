@@ -40,9 +40,7 @@ const Support: React.FC = () => {
               Achieve Academic Excellence Today with Tailored Support!
             </SupportHeading>
             <SupportPara>
-              From GCSEs and A-Levels to independent school entrance exams and
-              scholarships, Acemyexam’s expert tutors provide the personalized,
-              one-on-one support you need.
+            From GCSEs and A-Level to independent school entrance and scholarship exams, our expert tutors deliver tailored solutions designed to meet your unique needs.
             </SupportPara>
           </SupportContentHead>
         </FadeIn>
@@ -67,7 +65,7 @@ const Support: React.FC = () => {
           </SupportCardInnerHead>
           <SupportCardBtnHead>
             <SupportButton href="/pricing" passHref>
-              Get Started Now
+            Join Us Today
               <Image
                 src='/icons/arrow-right-w.svg'
                 width={56}

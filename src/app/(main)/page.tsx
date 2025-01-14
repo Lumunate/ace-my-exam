@@ -1,7 +1,6 @@
 'use client';
 import { Box } from '@mui/material';
 
-import ScrollingFadeOut from '../../components/animations/ScrollingFadeOut';
 import { AppContentWrapper } from '../../components/common/Global.style';
 import About from '../../features/home/about/About';
 import Hero from '../../features/home/hero/Hero';
@@ -20,36 +19,29 @@ export default function Home() {
       <AppContentWrapper>
         <About />
       </AppContentWrapper>
+      <AppContentWrapper>
+        <Testimonials />
+      </AppContentWrapper>
 
       {/* <ScrollingFadeOut> */}
       <Process />
       {/* </ScrollingFadeOut> */}
+      <Institutes />
+      {/* <ScrollingFadeOut> */}
+      <AppContentWrapper>
+        <Resources />
+      </AppContentWrapper>
+      {/* </ScrollingFadeOut> */}
+
       <Box
         sx={{
           backgroundColor: '#fffbfb',
           zIndex: 20,
+          paddingBottom: '60px',
           position: 'relative',
         }}
       >
-        <Institutes />
-        <ScrollingFadeOut>
-          <AppContentWrapper>
-            <Resources />
-          </AppContentWrapper>
-        </ScrollingFadeOut>
-
-        <Box
-          sx={{
-            backgroundColor: '#fffbfb',
-            zIndex: 20,
-            position: 'relative',
-          }}
-        >
-          <Support />
-          <AppContentWrapper>
-            <Testimonials />
-          </AppContentWrapper>
-        </Box>
+        <Support />
       </Box>
     </>
   );
