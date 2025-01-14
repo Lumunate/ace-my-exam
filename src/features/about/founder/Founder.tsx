@@ -5,7 +5,6 @@ import {
   FounderContent,
   FounderContentContainer,
   FounderHeading,
-  FounderSubHeading,
   FounderWrapper,
   FounderList,
   FounderListItem,
@@ -21,24 +20,24 @@ import FadeIn from '../../../components/animations/FadeIn';
 import SectionHeading from '../../../components/section-heading/SectionHeading';
 
 const AboutFounder: React.FC = () => {
-  const educationList = [
-    {
-      degree: 'PhD',
-      subject: 'Image Processing/Computer Vision',
-      institution: 'University College London',
-    },
-    {
-      degree: 'MSc',
-      subject: 'Computing Science',
-      institution: 'Imperial College London',
-    },
-    {
-      degree: 'BSc',
-      subject: 'Physics (First Class Honours)',
-      institution: 'Imperial College London',
-    },
+  // const educationList = [
+  //   {
+  //     degree: 'PhD',
+  //     subject: 'Image Processing/Computer Vision',
+  //     institution: 'University College London',
+  //   },
+  //   {
+  //     degree: 'MSc',
+  //     subject: 'Computing Science',
+  //     institution: 'Imperial College London',
+  //   },
+  //   {
+  //     degree: 'BSc',
+  //     subject: 'Physics (First Class Honours)',
+  //     institution: 'Imperial College London',
+  //   },
    
-  ];
+  // ];
 
   const stats = [
     '99% of students improved by 2 to 5 grades.',
@@ -89,7 +88,7 @@ const AboutFounder: React.FC = () => {
               I am supported by a team of exceptional tutors, many of whom are graduates from some of the world‘s top universities. Together, we deliver bespoke tuition that extends far beyond academic success— equipping students with the confidence, critical thinking skills, and independence they need to thrive well beyond their exams.
               </FounderContent>
 
-              <FounderList>
+              {/* <FounderList>
                 {educationList.map((edu, index) => (
                   <FounderListItem key={index}>
                     <Image
@@ -110,20 +109,20 @@ const AboutFounder: React.FC = () => {
                     </FounderSubHeading>
                   </FounderListItem>
                 ))}
-              </FounderList>
+              </FounderList> */}
             </FadeIn>
           </Grid>
 
           <Grid
             size={{ xs: 24, lg: 10 }}
             sx={{
-              px: { xs: '0', md: '15px' },
+              // px: { xs: '0', md: '15px' },
               display: 'flex',
               flexDirection: 'column',
               justifyContent: 'flex-end',
             }}
           >
-            <FadeIn direction="up" distance={300} duration={1.5} delay={0.2}>
+            <FadeIn direction="up" distance={300} duration={1} delay={0.2}>
               <FounderImgHead>
                 <Image src="/about/founder.png" alt="founder" layout="fill" objectFit="cover" />
               </FounderImgHead>

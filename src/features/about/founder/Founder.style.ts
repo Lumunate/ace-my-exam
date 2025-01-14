@@ -25,12 +25,16 @@ export const FounderContentContainer = styled(Box)(({ theme }) => ({
 }));
 
 export const FounderImgHead = styled(Box)(({ theme }) => ({
-  height: '535px',
-  maxWidth: '424px',
+  height: '700px',
+  // maxWidth: '424px',
   position: 'relative',
   borderRadius: '20px 20px 0 0',
   overflow: 'hidden',
-  marginLeft: 'auto',
+  margin: '0 auto', 
+  display: 'flex', 
+  alignItems: 'center', 
+  justifyContent: 'center',
+  // marginLeft: 'auto',
   [theme.breakpoints.down('xl')]: {
     maxWidth: '400px',
     height: '520px',

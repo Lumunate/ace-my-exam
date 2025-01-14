@@ -50,7 +50,7 @@ export const PricingCardTitle = styled(Typography)(({ theme }) => ({
   width: '200px',
   height: '57px',
   borderRadius: '12px',
-  textTransform:'capitalize',
+  // textTransform:'capitalize',
   position: 'absolute',
   right: '15px',
   top: '208px',
@@ -101,7 +101,7 @@ export const PricingCardListItemText = styled(Typography)(({ theme }) => ({
   fontWeight: 400,
   color: '#000000',
   fontFamily: 'Lato, sans-serif',
-  textTransform:'capitalize',
+  // textTransform:'capitalize',
   [theme.breakpoints.down('xl')]: {
     fontSize: '16px',
   },

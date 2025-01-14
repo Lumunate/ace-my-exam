@@ -52,7 +52,7 @@ const PricingCard: React.FC<CardProps> = ({ imageSrc, title, prices }) => {
           height='46px'
           onClick={() => router.push('/contact')}
         >
-          Get Started
+          Join Us Now.
         </Button>
       </PricingCardContentWrapper>
     </PricingCardWrapper>

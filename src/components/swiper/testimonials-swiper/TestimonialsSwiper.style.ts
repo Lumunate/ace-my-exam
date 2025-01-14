@@ -50,20 +50,20 @@ export const TestimonialsSwiperWrapper = styled(Box)<{aboutSwiperOpen?: boolean 
 
 export const TestimonialsCard = styled(Box)<{isSpace?: boolean,}>(({ theme, isSpace }) => ({
   backgroundColor: '#FCFDFF',
-  padding: '58px 30px',
+  padding: '53.5px 27px',
   borderRadius: '20px',
   boxShadow: '0 4px 20px rgba(0, 0, 0, 0.1)',
   height: '100%',
   textAlign: 'left',
-  minHeight: '500px',
+  minHeight: '450px',
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'space-between',
   margin: isSpace ? '15px' : '0',
   [theme.breakpoints.down('sm')]: {
-    padding: '30px 10px',
+    padding: '27px 9px',
     height: '100% !important',
-    minHeight: '360px',
+    minHeight: '324px',
   },
 }));
 
@@ -147,7 +147,8 @@ export const TrustpilotImage = styled(Link)(({ theme }) => ({
   position: 'relative',
   [theme.breakpoints.down('sm')]: {
     width: 80,
-    height: 22,
+    height: 48,
+    marginRight:'25px',
   }
 }));
 
