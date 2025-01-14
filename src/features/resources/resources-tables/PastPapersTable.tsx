@@ -133,6 +133,7 @@ const PastPapersTable: React.FC<{ data: PastPaperWithResource[]; isLoading: bool
                 </InnerCollapse>
               </CollapseContainer>
             ))}
+
         </Box>
       </Box>
       <PaginationHead
