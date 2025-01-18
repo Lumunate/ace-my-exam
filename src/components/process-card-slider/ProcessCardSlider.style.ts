@@ -10,7 +10,7 @@ export const ProcessSliderWrapper = styled(Box)(({ theme }) => ({
   alignItems: 'center',
   justifyContent: 'start',
   position: 'relative',
-  overflow: 'hidden',
+  overflow: 'visible',
   padding: '80px 30px',
   width: 'fit-content',
   margin: '0 auto',
@@ -33,7 +33,7 @@ export const BaseTypography = styled(Typography)({
 
 export const ProcessCard = styled(Card)<ProcessCardProps>(({ theme, active, index }) => ({
   position: 'relative',
-  marginLeft: active ? '0px' : index === 0 ? '0px': '-180px',
+  marginLeft: index === 0 ? '0px': '-180px',
   width: '278px',
   height: '344px',
   cursor: 'pointer',
@@ -42,12 +42,14 @@ export const ProcessCard = styled(Card)<ProcessCardProps>(({ theme, active, inde
   backgroundColor: '#fff',
   borderRadius: '20px',
   overflow: 'hidden',
-  transition: 'margin-left 0.4s ease, z-index 0.4s ease, padding 0.4s ease',
+  transform: active ? 'translateX(180px)' : '',
+  transition: 'transform 0.4s ease, z-index 0.4s ease, padding 0.4s ease',
   zIndex: 10 - index,
   [theme.breakpoints.down(576)]: {
     width: '220px',
     padding: '50px 24px 17px 24px',
-    marginLeft: active ? '0px' : index === 0 ? '0px': '-130px',
+    transform: active ? 'translateX(130px)' : '',
+    marginLeft: index === 0 ? '0px': '-130px',
   },
 }));
 
