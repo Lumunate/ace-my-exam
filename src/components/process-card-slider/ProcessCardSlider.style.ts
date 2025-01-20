@@ -16,7 +16,10 @@ export const ProcessSliderWrapper = styled(Box)(({ theme }) => ({
   width: 'fit-content',
   margin: '0 auto',
   [theme.breakpoints.down('lg')]: {
-    padding: '60px 30px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '30px',
+    justifyContent: 'center', 
   },
   [theme.breakpoints.down('md')]: {
     padding: '40px 30px 60px',
@@ -49,9 +52,13 @@ export const ProcessCard = styled(Card)<ProcessCardProps>(({ theme, active, inde
   transform: active ? 'translateX(180px)' : '',
   transition: 'transform 0.4s ease, z-index 0.4s ease, padding 0.4s ease',
   zIndex: 10 - index,
-  [theme.breakpoints.down(769)]: {
-    width: '337px',
-    height: '173px',
+  [theme.breakpoints.down('lg')]: {
+    marginLeft: '0px',
+    transform: index > 1 && active ? 'translateY(80px)' : 'translateY(0)',
+    marginTop: index <= 1 ? '' : '-180px',
+  },
+  [theme.breakpoints.down(576)]: {
+    width: '220px',
     padding: '50px 24px 17px 24px',
     transform: active ? 'translateY(50px)' : '',
     marginTop: index === 0 ? '0px': '-50px',
