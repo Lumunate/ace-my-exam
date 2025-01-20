@@ -7,6 +7,7 @@ interface ProcessCardProps {
 
 export const ProcessSliderWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
+  flexDirection:'row',
   alignItems: 'center',
   justifyContent: 'start',
   position: 'relative',
@@ -15,10 +16,18 @@ export const ProcessSliderWrapper = styled(Box)(({ theme }) => ({
   width: 'fit-content',
   margin: '0 auto',
   [theme.breakpoints.down('lg')]: {
-    padding: '60px 30px',
+    display: 'grid',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gap: '30px',
+    justifyContent: 'center', 
   },
   [theme.breakpoints.down('md')]: {
     padding: '40px 30px 60px',
+  },
+  '@media (max-width: 768px)': {
+    display:'flex',
+    flexDirection: 'column', 
+    gap: '0px',
   },
 }));
 
@@ -45,11 +54,26 @@ export const ProcessCard = styled(Card)<ProcessCardProps>(({ theme, active, inde
   transform: active ? 'translateX(180px)' : '',
   transition: 'transform 0.4s ease, z-index 0.4s ease, padding 0.4s ease',
   zIndex: 10 - index,
-  [theme.breakpoints.down(576)]: {
-    width: '220px',
-    padding: '50px 24px 17px 24px',
-    transform: active ? 'translateX(130px)' : '',
-    marginLeft: index === 0 ? '0px': '-130px',
+  [theme.breakpoints.down('lg')]: {
+    display:'flex',
+    padding: '26px 18px 14px 18px',
+    height: active ? '188px':'auto',
+    width: '337px',
+    // marginTop: index === 1 ? '5px': '-80px',
+    flexDirection:'row-reverse',
+    marginLeft: '0px',
+    transform: index > 1 && active ? 'translateY(37px)' : 'translateY(0)',
+    marginTop: index <= 1 ? '' : '-66px',
+  },
+  [theme.breakpoints.down(768)]: {
+    width: '337px',
+    height: active ? '188px':'auto',
+    padding: '26px 18px 14px 18px',
+    transform: index > 1 && active ? 'translateY(37px)' : 'translateY(0)',
+    marginTop: index <= 1 ? '' : '-35px',
+    marginLeft:'0px',
+    display:'flex',
+    flexDirection:'row-reverse',
   },
 }));
 
@@ -61,6 +85,11 @@ export const ProcessCardNumber = styled(BaseTypography)({
   background: 'linear-gradient(180deg, #DA9694 28.5%, rgba(218, 150, 148, 0.28) 100%)',
   WebkitBackgroundClip: 'text',
   WebkitTextFillColor: 'transparent',
+  '@media (max-width: 1024px)': {
+    display:'flex',
+    alignItems: 'center',
+    fontSize: '76px',
+  }
 });
 
 export const ProcessCardTitle = styled(BaseTypography)(({ theme }) => ({
@@ -69,7 +98,7 @@ export const ProcessCardTitle = styled(BaseTypography)(({ theme }) => ({
   fontWeight: 700,
   lineHeight: '22px',
   marginBottom: '3px',
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down(1024)]: {
     fontSize: '14px',
   },
 }));
@@ -78,7 +107,7 @@ export const ProcessCardDescription = styled(BaseTypography)(({ theme }) => ({
   color: '#929292',
   fontSize: '16px',
   fontWeight: 400,
-  [theme.breakpoints.down(576)]: {
+  [theme.breakpoints.down(1024)]: {
     fontSize: '12px',
   },
 }));
