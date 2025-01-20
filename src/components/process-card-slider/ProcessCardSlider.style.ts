@@ -7,6 +7,7 @@ interface ProcessCardProps {
 
 export const ProcessSliderWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
+  flexDirection:'row',
   alignItems: 'center',
   justifyContent: 'start',
   position: 'relative',
@@ -19,6 +20,9 @@ export const ProcessSliderWrapper = styled(Box)(({ theme }) => ({
   },
   [theme.breakpoints.down('md')]: {
     padding: '40px 30px 60px',
+  },
+  '@media (max-width: 768px)': {
+    flexDirection: 'column', 
   },
 }));
 
@@ -45,11 +49,15 @@ export const ProcessCard = styled(Card)<ProcessCardProps>(({ theme, active, inde
   transform: active ? 'translateX(180px)' : '',
   transition: 'transform 0.4s ease, z-index 0.4s ease, padding 0.4s ease',
   zIndex: 10 - index,
-  [theme.breakpoints.down(576)]: {
-    width: '220px',
+  [theme.breakpoints.down(769)]: {
+    width: '337px',
+    height: '173px',
     padding: '50px 24px 17px 24px',
-    transform: active ? 'translateX(130px)' : '',
-    marginLeft: index === 0 ? '0px': '-130px',
+    transform: active ? 'translateY(50px)' : '',
+    marginTop: index === 0 ? '0px': '-50px',
+    marginLeft:'0px',
+    display:'flex',
+    flexDirection:'row-reverse',
   },
 }));
 
