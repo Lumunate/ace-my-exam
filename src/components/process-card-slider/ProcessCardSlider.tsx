@@ -1,5 +1,6 @@
 'use client';
 
+import { useMediaQuery } from '@mui/material';
 import Image from 'next/image';
 import React, { useState } from 'react';
 
@@ -30,7 +31,8 @@ const cardSteps: StepCard[] = [
 ];
 
 const ProcessCardSlider: React.FC = () => {
-  const [activeCard, setActiveCard] = useState<number | null>(null); 
+  const [activeCard, setActiveCard] = useState<number | null>(null);
+  const isSmallScreen = useMediaQuery('lg');
 
   const handleCardHover = (index: number) => {
     // Skip hover effect for the first card (index === 0)
@@ -56,7 +58,7 @@ const ProcessCardSlider: React.FC = () => {
           <ProcessCardNumber variant="h4">{step.number}</ProcessCardNumber>
           <ProcessContent>
 
-            {(index === 0 || index === activeCard) && (
+            {(!isSmallScreen && (index < 2) || index === activeCard) && ( 
               <>
                 <Image
                   src="/icons/Vivid-Icons.svg"
