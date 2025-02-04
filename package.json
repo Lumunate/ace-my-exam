@@ -6,6 +6,7 @@
     "dev": "next dev",
     "email": "email dev --dir ./src/",
     "build": "prisma generate && next build",
+    "preview": "next build && next start",
     "start": "next start",
     "postinstall": "prisma generate",
     "lint": "next lint",
