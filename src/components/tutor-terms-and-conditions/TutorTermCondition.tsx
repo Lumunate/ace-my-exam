@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   Heading,
@@ -5,8 +6,10 @@ import {
   TutorTermConditionContainer,
 } from "./TutorTermCondition.style";
 import { Link, Typography } from "@mui/material";
+import { useTheme, Theme } from "@emotion/react";
 
 const TutorTermCondition = () => {
+  const theme = useTheme() as Theme & { palette: { accent: { main: string } } };
   return (
     <TutorTermConditionContainer>
       <Heading variant="h1">Acemyexam – Tutor Terms and Conditions</Heading>
@@ -89,7 +92,7 @@ const TutorTermCondition = () => {
         <Link
           href="#clause22"
           sx={{
-            color: "#e7a662",
+            color: theme.palette.accent.main,
             textDecoration: "none",
             "&:hover": { color: "black" },
           }}
@@ -257,9 +260,9 @@ const TutorTermCondition = () => {
         apply to tuition services you provide. In particular, you agree to
         adhere to the professional{" "}
         <Link
-          href="#clause22"
+          href="https://thetutorsassociation.org.uk/membership/code-of-practice/"
           sx={{
-            color: "#e7a662",
+            color: theme.palette.accent.main,
             textDecoration: "none",
             "&:hover": { color: "black" },
           }}
@@ -299,9 +302,9 @@ const TutorTermCondition = () => {
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
         (c) You agree to adhere to our{" "}
         <Link
-          href="#clause22"
+          href="/rescheduling-and-attendance-policy"
           sx={{
-            color: "#e7a662",
+            color: theme.palette.accent.main,
             textDecoration: "none",
             "&:hover": { color: "black" },
           }}
@@ -312,9 +315,9 @@ const TutorTermCondition = () => {
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
         (d) To adhere to the Tutor Responsibilities in Section 3 of the{" "}
         <Link
-          href="#clause22"
+          href="/tuition-terms-conditions"
           sx={{
-            color: "#e7a662",
+            color: theme.palette.accent.main,
             textDecoration: "none",
             "&:hover": { color: "black" },
           }}
@@ -366,7 +369,11 @@ const TutorTermCondition = () => {
         (b) Where any incident occurs which, you reasonably anticipate is likely
         to be the subject of a complaint or any Client raises any complaint
         directly with you, then you agree to email us at with full details
-        within <span style={{fontWeight:'bold', fontStyle:'italic'}}>1 working day</span> of you becoming aware of the issue/complaint.
+        within{" "}
+        <span style={{ fontWeight: "bold", fontStyle: "italic" }}>
+          1 working day
+        </span>{" "}
+        of you becoming aware of the issue/complaint.
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
         (c) We will deal with all and any complaints in a reasonable and fair
@@ -375,10 +382,13 @@ const TutorTermCondition = () => {
         aware of that complaint.
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
-        (10) <span style={{fontWeight:'bold'}}>Confidentiality and Data Protection</span> – (a) Unless required to by law
-        you agree to keep all information relating to any Client and/or Tutor
-        Assignment confidential and only use it to provide tuition services to
-        that relevant Client.
+        (10){" "}
+        <span style={{ fontWeight: "bold" }}>
+          Confidentiality and Data Protection
+        </span>{" "}
+        – (a) Unless required to by law you agree to keep all information
+        relating to any Client and/or Tutor Assignment confidential and only use
+        it to provide tuition services to that relevant Client.
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
         (b) You will at all times comply with the Data Protection law which is
@@ -407,18 +417,21 @@ const TutorTermCondition = () => {
         5. Rescheduling and Attendance
       </SubHeading>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
-        As a Tutor you agree to our <Link
-          href="#clause22"
+        As a Tutor you agree to our{" "}
+        <Link
+          href="/rescheduling-and-attendance-policy"
           sx={{
-            color: "#e7a662",
+            color: theme.palette.accent.main,
             textDecoration: "none",
-            fontStyle:'italic',
-            fontWeight:'bold',
+            fontStyle: "italic",
+            fontWeight: "bold",
             "&:hover": { color: "black" },
           }}
-        >Rescheduling and Attendance Policy</Link> on the
-        basis that it makes it easier for you, the Client and for us to all be
-        clear about rescheduling and attendance.
+        >
+          Rescheduling and Attendance Policy
+        </Link>{" "}
+        on the basis that it makes it easier for you, the Client and for us to
+        all be clear about rescheduling and attendance.
       </Typography>
 
       {/* Section 6 */}
@@ -448,15 +461,20 @@ const TutorTermCondition = () => {
         shared or transferred in any way.
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
-        (2) <span style={{fontWeight:'bold'}}>No partnership</span> – You agree that nothing in our Agreement will be
-        deemed to create any partnership, joint venture or other agency
-        relationship between us. Neither of us will
+        (2) <span style={{ fontWeight: "bold" }}>No partnership</span> – You
+        agree that nothing in our Agreement will be deemed to create any
+        partnership, joint venture or other agency relationship between us.
+        Neither of us will
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
-        (3) <span style={{fontWeight:'bold'}}>Notices</span>: Notices must be sent to the email and/or postal addresses
-        provided in the <span style={{fontWeight:'bold', fontStyle:'italic'}}>Tuition Assignment</span> unless we write to with a change, or
-        you email us to contact@acemyexam.co.uk. Notices are deemed to be
-        received when sent by :-
+        (3) <span style={{ fontWeight: "bold" }}>Notices</span>: Notices must be
+        sent to the email and/or postal addresses provided in the{" "}
+        <span style={{ fontWeight: "bold", fontStyle: "italic" }}>
+          Tuition Assignment
+        </span>{" "}
+        unless we write to with a change, or you email us to
+        contact@acemyexam.co.uk. Notices are deemed to be received when sent by
+        :-
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
         (a) Email – on the Working Day any Monday To Friday from 9am to 5pm GMT
@@ -469,38 +487,40 @@ const TutorTermCondition = () => {
         addressee.
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
-        (4) <span style={{fontWeight:'bold'}}>Force Majeure</span> – Neither of us will be liable for any delay or
-        failure to perform any of our obligations if the delay or failure
-        results from events or circumstances outside our reasonable control
-        including, but not limited to, acts of God, pandemic, accidents, war,
-        fire, strikes, communications failure (including telecommunications or
-        computer), breakdown of plant or machinery or shortage or unavailability
-        of raw materials from a natural source of supply, and are entitled to a
-        reasonable extension of our obligations.
+        (4) <span style={{ fontWeight: "bold" }}>Force Majeure</span> – Neither
+        of us will be liable for any delay or failure to perform any of our
+        obligations if the delay or failure results from events or circumstances
+        outside our reasonable control including, but not limited to, acts of
+        God, pandemic, accidents, war, fire, strikes, communications failure
+        (including telecommunications or computer), breakdown of plant or
+        machinery or shortage or unavailability of raw materials from a natural
+        source of supply, and are entitled to a reasonable extension of our
+        obligations.
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
-        (5) <span style={{fontWeight:'bold'}}>Waiver</span>: Nothing in our Agreement will stop us from enforcing any of
-        our rights in the future.
+        (5) <span style={{ fontWeight: "bold" }}>Waiver</span>: Nothing in our
+        Agreement will stop us from enforcing any of our rights in the future.
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
-        (6) <span style={{fontWeight:'bold'}}>Invalidity</span>: Each section (clause) or any part at all of our
-        Agreement is to be regarded as independent of the others. This means
-        that if any clause or any part at all of our Agreement is found to be
-        unenforceable or invalid, it will be treated as being cut out (severed)
-        and will not affect the enforceability or validity of the rest of our
-        Agreement.
+        (6) <span style={{ fontWeight: "bold" }}>Invalidity</span>: Each section
+        (clause) or any part at all of our Agreement is to be regarded as
+        independent of the others. This means that if any clause or any part at
+        all of our Agreement is found to be unenforceable or invalid, it will be
+        treated as being cut out (severed) and will not affect the
+        enforceability or validity of the rest of our Agreement.
       </Typography>
       <Typography variant="body1" sx={{ marginBottom: "1rem" }}>
-        (7) <span style={{fontWeight:'bold'}}>Governing Law</span>: Our Agreement will be interpreted, construed and
-        enforced in accordance with English law and will be subject to the
-        exclusive power (jurisdiction) of the English Courts.
+        (7) <span style={{ fontWeight: "bold" }}>Governing Law</span>: Our
+        Agreement will be interpreted, construed and enforced in accordance with
+        English law and will be subject to the exclusive power (jurisdiction) of
+        the English Courts.
       </Typography>
 
       {/* Contact Information */}
-      <Typography variant="body1" sx={{  fontWeight:'bold' }}>
+      <Typography variant="body1" sx={{ fontWeight: "bold" }}>
         Contact us
       </Typography>
-      <Typography variant="body1" sx={{ fontWeight:'bold' }}>
+      <Typography variant="body1" sx={{ fontWeight: "bold" }}>
         contact@acemyexam.co.uk
       </Typography>
     </TutorTermConditionContainer>

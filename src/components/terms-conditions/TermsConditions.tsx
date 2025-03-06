@@ -1,16 +1,19 @@
+"use client"
 import React from "react";
 import {
   Heading,
   SubHeading,
   TermsConditionsContainer,
 } from "./TermsConditions.style";
-import { Link, Typography } from "@mui/material";
+import { Link, Typography } from "@mui/material"
+import { useTheme, Theme } from "@emotion/react";
 
 const TermsConditions = () => {
+  const theme = useTheme() as Theme & { palette: { accent: { main: string } } }
   return (
     <TermsConditionsContainer>
       <Heading variant="h1" gutterBottom>
-        <span style={{ color: "#e7a662" }}>Acemyexam</span>
+        <span style={{ color: theme.palette.accent.main }}>Acemyexam</span>
         <br />
         Terms & Conditions
       </Heading>
@@ -62,10 +65,7 @@ const TermsConditions = () => {
         asma@acemyexam.co.uk.
       </Typography>
       <Typography variant="body1" gutterBottom>
-        (2) Accessing Tutoring:
-      </Typography>
-      <Typography variant="body1" gutterBottom>
-        (a) One-to-one online Sessions – Most of our training is online using
+        <span style={{fontWeight:'bold'}}>(2) Accessing Tutoring:</span>(a) One-to-one online Sessions – Most of our training is online using
         Zoom. You will need a Zoom account which allows the student to have a
         continuous meeting with the Tutor which lasts at least 1 hour. You can
         access online training by accessing a link in the email your Tutor will
@@ -91,7 +91,7 @@ const TermsConditions = () => {
         information, such as progress reports. If you want to reschedule a
         session, you can contact the Tutor directly or we will also assist with
         Rescheduling – please{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="#resch" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           see section 5.
         </Link>
       </Typography>
@@ -112,7 +112,7 @@ const TermsConditions = () => {
       <Typography variant="body1" gutterBottom>
         (a) For details about the information (data) that we collect from both
         Tutors, you and the student, please see our{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="/working-together-policy" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           Working Together Policy
         </Link>
         . We rely on all the information and documents that you give us so
@@ -120,13 +120,13 @@ const TermsConditions = () => {
       </Typography>
       <Typography variant="body1" gutterBottom>
         (b) We use (process) your data in accordance with our{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="/privacy-policy" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           Privacy Notice
         </Link>
         . Please email us at contact@acemyexam.co.uk. However, please remember
         that anything which you share in a Group Session is not confidential but
         please see{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="#Group" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           section 4(3)
         </Link>{" "}
         following.
@@ -143,7 +143,7 @@ const TermsConditions = () => {
         (1) Your Tutor will agree and confirm the time, location, frequency and
         duration of the tuition sessions with you. Your Tutor has also agreed to
         our{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="/rescheduling-and-attendance-policy" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           Rescheduling and Attendance Policy.
         </Link>
       </Typography>
@@ -155,7 +155,7 @@ const TermsConditions = () => {
       </Typography>
       <Typography variant="body1" gutterBottom>
         (4) Your Tutor will adhere to a strict professional{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="https://thetutorsassociation.org.uk/membership/code-of-practice" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           Code of Ethics as outlined by The Tutors’ Association.
         </Link>
       </Typography>
@@ -173,7 +173,7 @@ const TermsConditions = () => {
       <Typography variant="body1" gutterBottom>
         (1) You understand your obligations to keep students safe and will
         comply with our{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="/safeguarding-policy" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           {" "}
           Safeguarding Policy.
         </Link>
@@ -192,7 +192,7 @@ const TermsConditions = () => {
         5. RESCHEDULING AND ATTENDANCE POLICY
       </SubHeading>
       <Typography variant="body1" gutterBottom>
-        If you need to reschedule a session, please refer to our <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>Rescheduling and Attendance Policy.
+        If you need to reschedule a session, please refer to our <Link href="/rescheduling-and-attendance-policy" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>Rescheduling and Attendance Policy.
         </Link>
       </Typography>
 
@@ -200,13 +200,13 @@ const TermsConditions = () => {
         6. CANCELLATIONS
       </SubHeading>
       <Typography variant="body1" gutterBottom>
-        (1) Cancellations – Subject to any tuition packages, such as block
+        <span style={{fontWeight:'bold'}}>(1) Cancellations</span> – Subject to any tuition packages, such as block
         booking package where the Client has a discount for 10 sessions, which
         are for fixed or minimum terms, you can cancel tuition by giving us one
         week’s written notice.
       </Typography>
       <Typography variant="body1" gutterBottom>
-        (2) Consumer Cancellations: The law gives consumers who buy by email or
+      <span style={{fontWeight:'bold'}}>(2) Consumer Cancellations</span>: The law gives consumers who buy by email or
         phone or from a website (this is called at a distance) a legal right to
         change their mind and cancel some orders when the consumer is buying
         from a business. This would, for example, include orders for training.
@@ -230,31 +230,31 @@ const TermsConditions = () => {
         Requirement Email, and you must make payment to us within 5 days.
       </Typography>
       <Typography variant="body1" gutterBottom>
-        (2) Paying: Payment must be made within 5 days of the date of the
+        (2) <span style={{fontWeight:'bold'}}>Paying</span>: Payment must be made within 5 days of the date of the
         invoice, in GBP, using Stripe, or any other methods detailed on the
         invoice and inclusive of any applicable VAT.
       </Typography>
       <Typography variant="body1" gutterBottom>
-        (3) Minimum term – Sometimes sessions are scheduled for a minimum or
+        (3) <span style={{fontWeight:'bold'}}>Minimum term</span> – Sometimes sessions are scheduled for a minimum or
         fixed term (such as workshops), which is the minimum time we will
         provide services to you. This will be detailed on the Website or in your
         Tuition Requirement Email.
       </Typography>
       <Typography variant="body1" gutterBottom>
-        (4) Offers: Any offers which we may make available (such as Early bird,
+        (4)<span style={{fontWeight:'bold'}}> Offers</span>: Any offers which we may make available (such as Early bird,
         coupon codes, exclusive discounts, promotions or free to access
         resources) are not retrospective, not transferable, can’t be exchanged
         for cash, and are subject to availability and the terms and conditions
         of that offer. You can only use one offer per order.
       </Typography>
       <Typography variant="body1" gutterBottom>
-        (5) Extras: You will have to pay extra if you ask for any Additional
+        (5)<span style={{fontWeight:'bold'}}> Extras</span>: You will have to pay extra if you ask for any Additional
         Services (such as additional tuition) which are not included on the
         Tuition Requirement Email. We will agree a price and payment terms with
         you before giving any additional support.
       </Typography>
       <Typography variant="body1" gutterBottom>
-        (6) Payment Problems: If there’s a problem with payment, such as paying
+        (6)<span style={{fontWeight:'bold'}}> Payment Problems</span>: If there’s a problem with payment, such as paying
         late, we reserve the right to:
       </Typography>
       <Typography variant="body1" gutterBottom>

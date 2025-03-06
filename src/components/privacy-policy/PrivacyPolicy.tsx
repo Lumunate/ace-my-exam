@@ -1,14 +1,17 @@
+'use client'
 import React from "react";
 import {
   Heading,
   PrivacyPolicyContainer,
 } from "./PrivacyPolicy.style";
 import { Box, Typography } from "@mui/material";
+import { Theme, useTheme } from "@emotion/react";
 
 const PrivacyPolicy = () => {
+  const theme = useTheme() as Theme & { palette: { accent: { main: string } } }
   return (
     <PrivacyPolicyContainer>
-          <Heading sx={{ color: "#e7a662" }} variant="h1">
+          <Heading sx={{ color: theme.palette.accent.main }} variant="h1">
             Acemyexam
           </Heading>
           <Heading variant="h1">Privacy Policy</Heading>

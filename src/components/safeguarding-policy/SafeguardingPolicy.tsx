@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import {
   Heading,
@@ -5,12 +6,14 @@ import {
   SubHeading,
 } from "./SafeguardingPolicy.style";
 import { Link, Typography } from "@mui/material";
+import { Theme, useTheme } from "@emotion/react";
 
 const SafeguardingPolicy = () => {
+  const theme = useTheme() as Theme & { palette: { accent: { main: string } } }
   return (
     <SafeguardingPolicyContainer>
       <Heading variant="h1" gutterBottom>
-        <span style={{ color: "#e7a662" }}>Acemyexam</span>
+        <span style={{ color: theme.palette.accent.main }}>Acemyexam</span>
         <br />
         Safeguarding Policy
       </Heading>
@@ -47,8 +50,8 @@ const SafeguardingPolicy = () => {
       <Typography variant="body1" gutterBottom>
         “Adult at risk” is defined by the{" "}
         <Link
-          href="#"
-          sx={{ color: "#e7a662", textDecoration: "none", fontWeight: "boldF" }}
+          href="https://www.legislation.gov.uk/ukpga/2014/23/contents"
+          sx={{ color: theme.palette.accent.main, textDecoration: "none", fontWeight: "boldF" }}
         >
           Care Act 2014
         </Link>{" "}
@@ -116,7 +119,7 @@ const SafeguardingPolicy = () => {
       </Typography>
       <Typography variant="body1" gutterBottom>
         A summary of the key UK legislation and guidance is available from the{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="https://learning.nspcc.org.uk/safeguarding-child-protection" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           NSPCC Website
         </Link>
         .
@@ -132,7 +135,7 @@ const SafeguardingPolicy = () => {
       </Typography>
       <Typography variant="body1" gutterBottom>
         •{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="https://www.gov.uk/government/publications/keeping-children-safe-in-out-of-school-settings-code-of-practice" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           After-school clubs, community activities, and tuition: safeguarding
           guidance for providers – GOV.UK{" "}
         </Link>{" "}
@@ -140,28 +143,28 @@ const SafeguardingPolicy = () => {
       </Typography>
       <Typography variant="body1" gutterBottom>
         •{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="https://www.gov.uk/government/publications/what-to-do-if-youre-worried-a-child-is-being-abused--2" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           What to do if you’re worried a child is being abused?: advice for
           practitioners (HM Gov)
         </Link>
       </Typography>
       <Typography variant="body1" gutterBottom>
         •{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           Keeping Children Safe in Education
         </Link>{" "}
         (England only)
       </Typography>
       <Typography variant="body1" gutterBottom>
         •{" "}
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="https://www.gov.uk/government/publications/working-together-to-safeguard-children--2" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           Working Together to Safeguard Children
         </Link>{" "}
         (England only)
       </Typography>
       <Typography variant="body1" gutterBottom>
         •
-        <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>
+        <Link href="https://www.legislation.gov.uk/ukpga/2014/23/contents/enacted/data.htm" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>
           {" "}
           Care Act 2014
         </Link>{" "}
@@ -267,7 +270,7 @@ const SafeguardingPolicy = () => {
         • Phone: 0737 9065363
       </Typography>
       <Typography variant="body1" gutterBottom>
-        • Email: asma@acemyexam.co.uk
+        • Email:<Link href="mailto:help@nspcc.org.uk" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}> asma@acemyexam.co.uk</Link>
       </Typography>
       <Typography variant="body1" gutterBottom>
         NSPCC Helpline
@@ -276,7 +279,7 @@ const SafeguardingPolicy = () => {
         0808 800 5000 – Open 10am-4pm Monday to Friday
       </Typography>
       <Typography variant="body1" gutterBottom>
-      <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}> help@nspcc.org.uk</Link> – email 24 hours a day
+      <Link href="mailto:help@nspcc.org.uk" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}> help@nspcc.org.uk</Link> – email 24 hours a day
       </Typography>
       <Typography variant="body1" gutterBottom>
         If a child, young person, or any person is in immediate danger, call 999
@@ -505,7 +508,7 @@ const SafeguardingPolicy = () => {
         (including in a family-based residential setting) – are encouraged to
         report directly to the Local Children’s Safeguarding Partnership (LCSP)
         or Adult Safeguarding Board as appropriate where the child or adult at
-        risk lives, and/or report to the <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>NSPCC helpline</Link> on 0808 800 5000
+        risk lives, and/or report to the <Link href="https://www.nspcc.org.uk/about-us/contact-us/" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>NSPCC helpline</Link> on 0808 800 5000
         (Mon-Fri, 10am-4pm). If the person they are concerned about lives
         abroad, they should try to contact the local authorities where that
         person lives as this is where the concern will need to be dealt with.
@@ -530,7 +533,7 @@ const SafeguardingPolicy = () => {
       </SubHeading>
       <Typography variant="body1" gutterBottom>
         GDPR does not change the way child protection records should be stored.
-        Acemyexam team will follow the guidance for storing data – <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>outlined by the NSPCC</Link>.
+        Acemyexam team will follow the guidance for storing data – <Link href="https://learning.nspcc.org.uk/research-resources/briefings/child-protection-records-retention-storage-guidance" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>outlined by the NSPCC</Link>.
       </Typography>
       <Typography variant="body1" gutterBottom>
         When Acemyexam works with others (including children and adults at risk,
@@ -660,7 +663,7 @@ const SafeguardingPolicy = () => {
         be viewed in person wherever possible as this helps to check the
         authenticity of the documents. Copies and prints outs will not be
         accepted – e.g. a printed online bank statement. If an in-person check
-        is not possible, under the <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>guidance in place since July 2021</Link> this can be
+        is not possible, under the <Link href="https://www.gov.uk/government/publications/dbs-identity-checking-guidelines/id-checking-guidelines-for-standardenhanced-dbs-check-applications-from-1-july-2021" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>guidance in place since July 2021</Link> this can be
         done via a video call. In both cases, the person checking the ID should
         be in physical possession of the original documents.
       </Typography>
@@ -680,7 +683,7 @@ const SafeguardingPolicy = () => {
         abroad in the past 5 years.
       </Typography>
       <Typography variant="body1" gutterBottom>
-        Please note that a DBS check is not used to <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>check the right to work in the UK </Link> – this is done separately.
+        Please note that a DBS check is not used to <Link href="https://www.gov.uk/legal-right-work-uk" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>check the right to work in the UK </Link> – this is done separately.
       </Typography>
 
       <SubHeading variant="h3" gutterBottom>
@@ -901,7 +904,7 @@ const SafeguardingPolicy = () => {
       <Typography variant="body1" gutterBottom>
         It is important that any and all allegations are taken seriously and
         investigated fully by the appropriate authorities. This ensures that we
-        uphold our duty to safeguard children. This guidance follows <Link href="#" sx={{ color: "#e7a662", textDecoration: "none" }}>Keeping children safe in education</Link> – GOV.UK.
+        uphold our duty to safeguard children. This guidance follows <Link href="https://www.gov.uk/government/publications/keeping-children-safe-in-education--2" sx={{ color: theme.palette.accent.main, textDecoration: "none" }}>Keeping children safe in education</Link> – GOV.UK.
       </Typography>
 
       <Typography sx={{fontWeight:'bold'}} variant="body1" gutterBottom>

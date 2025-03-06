@@ -1,8 +1,12 @@
+'use client'
 import React from 'react'
 import { Heading, SubHeading, WorkingPolicyContainer } from './WorkingPolicy.style'
-import { Typography } from '@mui/material'
+import { Link, Typography } from '@mui/material'
+import { Theme, useTheme } from '@emotion/react';
 
 const WorkingPolicy = () => {
+    const theme = useTheme() as Theme & { palette: { accent: { main: string } } };
+  
   return (
     <WorkingPolicyContainer>
       <Heading variant="h1" gutterBottom>
@@ -133,7 +137,21 @@ const WorkingPolicy = () => {
         (b) We, tutors, and parents/clients all have obligations and responsibilities when it comes to safeguarding, in particular risks with online tutoring as well as a child’s mental health.
       </Typography>
       <Typography variant="body1" gutterBottom>
-        (c) We have a Safeguarding Policy which is available from contact@acemyexam.co.uk. We are also members of the Tutors Association and adhere to their Codes of Practice of Ethics, which are contained in our Safeguarding Policy. As professionals, we ask all tutors to abide by the relevant safeguarding legislation, guidance, and policies.
+        (c) We have a <Link
+          href="/safeguarding-policy"
+          sx={{
+            color: theme.palette.accent.main,
+            textDecoration: "none",
+            fontWeight: "boldF",
+          }}
+        >Safeguarding Policy </Link> which is available from <Link
+        href="mailto:contact@acemyexam.co.uk"
+        sx={{
+          color: theme.palette.accent.main,
+          textDecoration: "none",
+          fontWeight: "boldF",
+        }}
+      >contact@acemyexam.co.uk.</Link>We are also members of the Tutors Association and adhere to their Codes of Practice of Ethics, which are contained in our Safeguarding Policy. As professionals, we ask all tutors to abide by the relevant safeguarding legislation, guidance, and policies.
       </Typography>
       <Typography variant="body1" gutterBottom>
         (d) We always advise tutors and parents/clients to take advantage of the resources available online from the NSPCC.
