@@ -42,7 +42,7 @@ const typography = {
   fontFamily:
     '--font-segoe, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif',
   h1: {
-    fontSize: '48px',
+    fontSize: '50px',
     lineHeight: '72px',
     letterSpacing: '0px',
     fontWeight: 900,
@@ -54,7 +54,7 @@ const typography = {
     fontWeight: 900,
   },
   h3: {
-    fontSize: '32px',
+    fontSize: '36px',
     lineHeight: '51px',
     letterSpacing: '0px',
     fontWeight: 900,
@@ -78,7 +78,7 @@ const typography = {
     fontWeight: 600,
   },
   body1: {
-    fontSize: '15px',
+    fontSize: '16px',
     letterSpacing: '0px',
     fontWeight: 400,
     lineHeight: '26px',

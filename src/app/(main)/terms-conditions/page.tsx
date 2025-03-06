@@ -1,12 +1,13 @@
-import TermsConditions from 'components/terms-conditions/TermsConditions'
-import React from 'react'
+import React from 'react';
+
+import TermsConditions from 'components/terms-conditions/TermsConditions';
 
 const page = () => {
   return (
     <div>
-      <TermsConditions/>
+      <TermsConditions />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

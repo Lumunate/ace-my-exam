@@ -1,12 +1,13 @@
-import WorkingPolicy from 'components/working-together-policy/WorkingPolicy'
-import React from 'react'
+import React from 'react';
+
+import WorkingPolicy from 'components/working-together-policy/WorkingPolicy';
 
 const page = () => {
   return (
     <div>
-      <WorkingPolicy/>
+      <WorkingPolicy />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;

@@ -1,12 +1,13 @@
-import SafeguardingPolicy from 'components/safeguarding-policy/SafeguardingPolicy'
-import React from 'react'
+import React from 'react';
+
+import SafeguardingPolicy from 'components/safeguarding-policy/SafeguardingPolicy';
 
 const page = () => {
   return (
     <div>
-      <SafeguardingPolicy/>
+      <SafeguardingPolicy />
     </div>
-  )
-}
+  );
+};
 
-export default page
+export default page;
