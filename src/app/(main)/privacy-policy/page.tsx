@@ -13,7 +13,7 @@ const PrivacyPolicyPage = () => {
       margin: '0 auto',
       '@media (max-width: 600px)': {
         maxWidth: '100%',
-        padding: '0 20px',
+        padding: '140px 20px 0',
       },
     }}>
       <Typography variant='h1' gutterBottom>

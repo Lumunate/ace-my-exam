@@ -17,7 +17,7 @@ const FooterContainer = styled(Box)({
   padding: '22px 20px',
 });
 
-const FooterWrapper = styled(Box)(({ theme }) =>({
+const FooterWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   [theme.breakpoints.up('sm')]: {
@@ -29,7 +29,7 @@ const FooterWrapper = styled(Box)(({ theme }) =>({
   },
 }));
 
-const FooterLinksContainer = styled(List)(({ theme }) =>({
+const FooterLinksContainer = styled(List)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   [theme.breakpoints.down('sm')]: {
@@ -39,22 +39,24 @@ const FooterLinksContainer = styled(List)(({ theme }) =>({
   },
 }));
 
-const FooterLogoHead = styled(Link)(({ theme }) =>({
+const FooterLogoHead = styled(Link)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
-  filter: 'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7491%) hue-rotate(327deg) brightness(104%) contrast(100%)',
+  filter:
+    'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7491%) hue-rotate(327deg) brightness(104%) contrast(100%)',
   [theme.breakpoints.down('sm')]: {
-    width: '50%'
+    width: '50%',
   },
 }));
 
-const FooterMediaIcons = styled(List)(({ theme }) =>({
+const FooterMediaIcons = styled(List)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
   [theme.breakpoints.down('sm')]: {
     width: '150px',
     justifyContent: 'center',
-    transform: 'translateY(-46px)'
+    transform: 'translateY(-46px)',
+    marginTop: '20px',
   },
 }));
 
@@ -70,7 +72,8 @@ const FooterMediaItem = styled(ListItem)(({ theme }) => ({
     paddingLeft: '6px',
   },
   '& img:hover': {
-    filter: 'brightness(0) saturate(100%) invert(61%) sepia(68%) saturate(5764%) hue-rotate(316deg) brightness(93%) contrast(82%)',
+    filter:
+      'brightness(0) saturate(100%) invert(61%) sepia(68%) saturate(5764%) hue-rotate(316deg) brightness(93%) contrast(82%)',
     transform: 'scale(1.2)',
     transition: 'transform 0.3s ease',
   },
@@ -95,10 +98,21 @@ const FooterLink = styled(Link)(({ theme }) => ({
     width: '100%',
     fontSize: '15px',
   },
-  '&:hover':{
+  '&:hover': {
     color: '#DA5077',
     transition: 'all 0.3s ease',
   },
+}));
+
+const LegalPagesLinks = styled(Link)(({theme}) => ({
+  fontSize: '12px',
+  color: '#fff',
+  '&:hover': {
+    color: '#DA5077',
+    transition: 'all 0.3s ease',
+  },
+  [theme.breakpoints.down('sm')]: {
+    fontSize: '8px',}
 }));
 
 const Footer: FC = () => {
@@ -114,29 +128,72 @@ const Footer: FC = () => {
       <FooterMain>
         <FooterContainer>
           <FooterWrapper>
-            <FooterLogoHead href={'/'}>
-              <Image src={'/logo.svg'} width={120} height={65} alt="Logo" />
-            </FooterLogoHead>
+            <Box>
+              <FooterLogoHead href={'/'}>
+                <Image src={'/logo.svg'} width={120} height={65} alt='Logo' />
+              </FooterLogoHead>
+              <Box>
+                <Box sx={{ display: 'flex', gap: '10px' }}>
+                  <LegalPagesLinks href='/terms-conditions' passHref>
+                    Terms & Conditions
+                  </LegalPagesLinks>
+
+                  <LegalPagesLinks href='/privacy-policy' passHref>
+                    privacy policy
+                  </LegalPagesLinks>
+                </Box>
+                <Box sx={{ display: 'flex',  gap: '10px', my: 1 }}>
+                  <LegalPagesLinks href='/safeguarding-policy' passHref>
+                    Safeguarding Policy
+                  </LegalPagesLinks>
+                  <LegalPagesLinks href='/working-together-policy' passHref>
+                    Working Together Policy
+                  </LegalPagesLinks>
+                </Box>
+                <Box sx={{ display: 'flex', flexDirection:'column', gap: '10px' }}>
+                  <LegalPagesLinks href='/tutor-terms-and-conditions' passHref>
+                    Tutor Terms And Conditions
+                  </LegalPagesLinks>
+
+                  <LegalPagesLinks href='/rescheduling-and-attendance-policy' passHref>
+                    Rescheduling and attendance policy
+                  </LegalPagesLinks>
+                </Box>
+              </Box>
+            </Box>
 
             <FooterLinksContainer>
               {pages.map((page, index) => (
                 <ListItem key={index} sx={{ p: 0 }}>
-                  <FooterLink href={page.link}>
-                    {page.name}
-                  </FooterLink>
+                  <FooterLink href={page.link}>{page.name}</FooterLink>
                 </ListItem>
               ))}
             </FooterLinksContainer>
 
             <FooterMediaIcons>
               <FooterMediaItem>
-                <Image src={'/footer/Youtube.svg'} width={26} height={26} alt='youtube' />
+                <Image
+                  src={'/footer/Youtube.svg'}
+                  width={26}
+                  height={26}
+                  alt='youtube'
+                />
               </FooterMediaItem>
               <FooterMediaItem>
-                <Image src={'/footer/Facebook.svg'} width={22} height={22} alt='facebook' />
+                <Image
+                  src={'/footer/Facebook.svg'}
+                  width={22}
+                  height={22}
+                  alt='facebook'
+                />
               </FooterMediaItem>
               <FooterMediaItem>
-                <Image src={'/footer/Instagram.svg'} width={22} height={22} alt='instagram' />
+                <Image
+                  src={'/footer/Instagram.svg'}
+                  width={22}
+                  height={22}
+                  alt='instagram'
+                />
               </FooterMediaItem>
             </FooterMediaIcons>
           </FooterWrapper>
