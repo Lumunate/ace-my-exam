@@ -80,10 +80,13 @@ export const AuthHeadingTypography = styled(AuthBaseTypography)({
   fontFamily: 'Jost, sans-serif',
 });
 
-export const AuthParaTypography = styled(AuthBaseTypography)({
+export const AuthParaTypography = styled(AuthBaseTypography)(({theme})=>({
   fontWeight: 400,
-  fontSize: '10px',
-});
+  fontSize: '16px',
+  [theme.breakpoints.down('sm')]:{
+    fontSize: '12px',
+  }
+}));
 
 export const AuthStyledLinkOne = styled(Link)({
   color: '#000000',
@@ -97,8 +100,12 @@ export const AuthStyledLinkOne = styled(Link)({
   },
 });
 
-export const AuthStyledLinkTwo = styled(AuthStyledLinkOne)({
+export const AuthStyledLinkTwo = styled(AuthStyledLinkOne)(({theme})=>({
   color: '#DA9694',
   textAlign: 'center',
   display: 'inline-block',
-});
+  fontSize: '16px',
+  [theme.breakpoints.down('sm')]:{
+    fontSize: '12px',
+  }
+}));

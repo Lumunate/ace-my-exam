@@ -42,6 +42,9 @@ export const TestimonialsSwiperWrapper = styled(Box)<{aboutSwiperOpen?: boolean 
   },
   '& .swiper-pagination-bullet': {
     background: '#DA9694 !important',
+    [theme.breakpoints.down('sm')]: {
+      margin: '0 2px !important', 
+    },
   },
   '& .swiper-button-next:after, .swiper-button-prev:after': {
     display: 'none !important',
@@ -67,16 +70,19 @@ export const TestimonialsCard = styled(Box)<{isSpace?: boolean,}>(({ theme, isSp
   },
 }));
 
-export const TestimonialsNavigationWrapper = styled(Box)<{ positionLeft: string; width: string }>(({ positionLeft, width }) => ({
+export const TestimonialsNavigationWrapper = styled(Box)<{ positionLeft: string; }>(({ theme,positionLeft}) => ({
   position: 'absolute',
   left: positionLeft,
   right: '0',
-  transform: 'translateX(-150px)',
-  bottom: '15px',
+  transform: 'translateX(-50%)',
+  bottom: '19px',
   display: 'flex',
   justifyContent: 'space-between',
-  width: width,
+  width:'450px',
   zIndex: 2,
+  [theme.breakpoints.down('sm')]: {
+    width: '100%',
+  }
 }));
 
 const BaseTextStyle = styled(Typography)({
