@@ -92,7 +92,7 @@ const EmailLink = styled(Link)(({ theme }) => ({
     color: '#DA5077 !important',
     transition: 'all 0.3s ease',
   },
-  [theme.breakpoints.down('sm')]: {
+  [theme.breakpoints.down('md')]: {
     fontSize: '12px',
     display: 'none',
   },
@@ -142,7 +142,7 @@ const Footer: FC = () => {
                   color: '#fff',
                   fontSize: '16px',
                   marginTop: '20px',
-                  display: { xs: 'none', sm: 'flex' },
+                  display: { xs: 'none', md: 'flex' },
                 }}
               >
                 Copyright © 2021 Acemyexam
@@ -150,8 +150,8 @@ const Footer: FC = () => {
             </Box>
             <Box
               sx={{
-                display: { xs: 'none', sm: 'flex' },
-                gap: { xs: '20px', md: '50px' },
+                display: { xs: 'none', md: 'flex' },
+                gap: { xs: '20px', lg: '50px' },
                 justifyContent: 'space-between',
               }}
             >
@@ -225,7 +225,7 @@ const Footer: FC = () => {
           </FooterWrapper>
           <Box
             sx={{
-              display: { xs: 'flex', sm: 'none' },
+              display: { xs: 'flex', md: 'none' },
               justifyContent: 'space-between',
               marginTop: '10px',
             }}
