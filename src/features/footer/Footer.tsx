@@ -1,6 +1,6 @@
 'use client';
 
-import { Box, List, ListItem, styled } from '@mui/material';
+import { Box, List, ListItem, styled, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { FC } from 'react';
@@ -10,7 +10,7 @@ const FooterMain = styled(Box)({
 });
 
 const FooterContainer = styled(Box)({
-  maxWidth: '1740px',
+  maxWidth: '1405px',
   width: '100%',
   margin: '0 auto',
   borderRadius: '20px 20px 0 0',
@@ -21,31 +21,22 @@ const FooterWrapper = styled(Box)(({ theme }) => ({
   display: 'flex',
   justifyContent: 'space-between',
   [theme.breakpoints.up('sm')]: {
-    alignItems: 'center',
-  },
-  [theme.breakpoints.down('sm')]: {
     alignItems: 'start',
-    flexWrap: 'wrap',
   },
-}));
-
-const FooterLinksContainer = styled(List)(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
   [theme.breakpoints.down('sm')]: {
-    width: '50%',
-    flexDirection: 'column',
-    alignItems: 'end',
+    alignItems: 'center',
+    flexWrap: 'wrap',
   },
 }));
 
 const FooterLogoHead = styled(Link)(({ theme }) => ({
   display: 'flex',
   alignItems: 'center',
+  width: '250px',
   filter:
     'brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(7491%) hue-rotate(327deg) brightness(104%) contrast(100%)',
   [theme.breakpoints.down('sm')]: {
-    width: '50%',
+    width: '140px',
   },
 }));
 
@@ -55,8 +46,7 @@ const FooterMediaIcons = styled(List)(({ theme }) => ({
   [theme.breakpoints.down('sm')]: {
     width: '150px',
     justifyContent: 'center',
-    transform: 'translateY(-46px)',
-    marginTop: '20px',
+    marginTop: '10px',
   },
 }));
 
@@ -79,40 +69,33 @@ const FooterMediaItem = styled(ListItem)(({ theme }) => ({
   },
 }));
 
-const FooterLink = styled(Link)(({ theme }) => ({
-  color: '#fff',
-  fontWeight: 400,
+const LegalPagesLinks = styled(Link)(({ theme }) => ({
   fontSize: '16px',
+  color: '#fff',
   textTransform: 'capitalize',
-  fontStyle: 'normal',
-  fontFamily: 'Lato, sans-serif',
-  margin: '0 36px',
-  whiteSpace: 'nowrap',
-  [theme.breakpoints.down('md')]: {
-    margin: '0 10px',
-    fontSize: '13px',
+  marginBottom: '10px',
+  '&:hover': {
+    color: '#DA5077 !important',
+    transition: 'all 0.3s ease',
   },
   [theme.breakpoints.down('sm')]: {
-    margin: '10px 0',
-    textAlign: 'end',
-    width: '100%',
-    fontSize: '15px',
-  },
-  '&:hover': {
-    color: '#DA5077',
-    transition: 'all 0.3s ease',
+    fontSize: '12px',
   },
 }));
 
-const LegalPagesLinks = styled(Link)(({theme}) => ({
-  fontSize: '12px',
+const EmailLink = styled(Link)(({ theme }) => ({
   color: '#fff',
+  fontSize: '16px',
+  marginTop: '10px',
+  display: 'block',
   '&:hover': {
-    color: '#DA5077',
+    color: '#DA5077 !important',
     transition: 'all 0.3s ease',
   },
   [theme.breakpoints.down('sm')]: {
-    fontSize: '8px',}
+    fontSize: '12px',
+    display: 'none',
+  },
 }));
 
 const Footer: FC = () => {
@@ -123,52 +106,95 @@ const Footer: FC = () => {
     { name: 'Contact', link: '/contact' },
   ];
 
+  const legalPages = [
+    { name: 'Terms & Conditions', link: '/terms-conditions' },
+    { name: 'Safeguarding Policy', link: '/safeguarding-policy' },
+    {
+      name: 'Rescheduling & attendance policy',
+      link: '/rescheduling-and-attendance-policy',
+    },
+    { name: 'Privacy Policy', link: '/privacy-policy' },
+    { name: 'Working Together Policy', link: '/working-together-policy' },
+    { name: 'Tutor Terms & Conditions', link: '/tutor-terms-and-conditions' },
+  ];
+
   return (
     <>
       <FooterMain>
         <FooterContainer>
           <FooterWrapper>
-            <Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
               <FooterLogoHead href={'/'}>
-                <Image src={'/logo.svg'} width={120} height={65} alt='Logo' />
+                <Image
+                  src={'/logo.svg'}
+                  width={250}
+                  height={65}
+                  alt='Logo'
+                  layout='responsive'
+                />
               </FooterLogoHead>
+
+              <EmailLink href='mailto:Asma@acemyexam.co.uk'>
+                Asma@acemyexam.co.uk
+              </EmailLink>
+              <Typography
+                sx={{
+                  color: '#fff',
+                  fontSize: '16px',
+                  marginTop: '20px',
+                  display: { xs: 'none', sm: 'flex' },
+                }}
+              >
+                Copyright © 2021 Acemyexam
+              </Typography>
+            </Box>
+            <Box
+              sx={{
+                display: { xs: 'none', sm: 'flex' },
+                gap: { xs: '20px', md: '50px' },
+                justifyContent: 'space-between',
+              }}
+            >
               <Box>
-                <Box sx={{ display: 'flex', gap: '10px' }}>
-                  <LegalPagesLinks href='/terms-conditions' passHref>
-                    Terms & Conditions
-                  </LegalPagesLinks>
-
-                  <LegalPagesLinks href='/privacy-policy' passHref>
-                    privacy policy
-                  </LegalPagesLinks>
-                </Box>
-                <Box sx={{ display: 'flex',  gap: '10px', my: 1 }}>
-                  <LegalPagesLinks href='/safeguarding-policy' passHref>
-                    Safeguarding Policy
-                  </LegalPagesLinks>
-                  <LegalPagesLinks href='/working-together-policy' passHref>
-                    Working Together Policy
-                  </LegalPagesLinks>
-                </Box>
-                <Box sx={{ display: 'flex', flexDirection:'column', gap: '10px' }}>
-                  <LegalPagesLinks href='/tutor-terms-and-conditions' passHref>
-                    Tutor Terms And Conditions
-                  </LegalPagesLinks>
-
-                  <LegalPagesLinks href='/rescheduling-and-attendance-policy' passHref>
-                    Rescheduling and attendance policy
-                  </LegalPagesLinks>
-                </Box>
+                <Typography
+                  variant='body1'
+                  sx={{
+                    color: '#fff',
+                    fontWeight: 600,
+                    fontSize: '18px',
+                    marginBottom: '20px',
+                  }}
+                >
+                  Sitemap
+                </Typography>
+                {pages.map((page, index) => (
+                  <ListItem key={index} sx={{ p: 0 }}>
+                    <LegalPagesLinks href={page.link}>
+                      {page.name}
+                    </LegalPagesLinks>
+                  </ListItem>
+                ))}
+              </Box>
+              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+                <Typography
+                  sx={{
+                    color: '#fff',
+                    fontWeight: 600,
+                    fontSize: '18px',
+                    marginBottom: '20px',
+                  }}
+                >
+                  Legal
+                </Typography>
+                {legalPages.map((page, index) => (
+                  <ListItem key={index} sx={{ p: 0 }}>
+                    <LegalPagesLinks href={page.link}>
+                      {page.name}
+                    </LegalPagesLinks>
+                  </ListItem>
+                ))}
               </Box>
             </Box>
-
-            <FooterLinksContainer>
-              {pages.map((page, index) => (
-                <ListItem key={index} sx={{ p: 0 }}>
-                  <FooterLink href={page.link}>{page.name}</FooterLink>
-                </ListItem>
-              ))}
-            </FooterLinksContainer>
 
             <FooterMediaIcons>
               <FooterMediaItem>
@@ -197,6 +223,53 @@ const Footer: FC = () => {
               </FooterMediaItem>
             </FooterMediaIcons>
           </FooterWrapper>
+          <Box
+            sx={{
+              display: { xs: 'flex', sm: 'none' },
+              justifyContent: 'space-between',
+              marginTop: '10px',
+            }}
+          >
+            <Box>
+              <Typography
+                variant='body1'
+                sx={{
+                  color: '#fff',
+                  fontWeight: 600,
+                  fontSize: '18px',
+                  marginBottom: '10px',
+                }}
+              >
+                Sitemap
+              </Typography>
+              {pages.map((page, index) => (
+                <ListItem key={index} sx={{ p: 0 }}>
+                  <LegalPagesLinks href={page.link}>
+                    {page.name}
+                  </LegalPagesLinks>
+                </ListItem>
+              ))}
+            </Box>
+            <Box sx={{ display: 'flex', flexDirection: 'column' }}>
+              <Typography
+                sx={{
+                  color: '#fff',
+                  fontWeight: 600,
+                  fontSize: '18px',
+                  marginBottom: '10px',
+                }}
+              >
+                Legal
+              </Typography>
+              {legalPages.map((page, index) => (
+                <ListItem key={index} sx={{ p: 0 }}>
+                  <LegalPagesLinks href={page.link}>
+                    {page.name}
+                  </LegalPagesLinks>
+                </ListItem>
+              ))}
+            </Box>
+          </Box>
         </FooterContainer>
       </FooterMain>
     </>
