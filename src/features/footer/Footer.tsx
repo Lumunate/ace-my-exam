@@ -103,6 +103,7 @@ const Footer: FC = () => {
     { name: 'Home', link: '/' },
     { name: 'About', link: '/about' },
     { name: 'Resources', link: '/resources' },
+    { name: 'Pricing', link: '/pricing' },
     { name: 'Contact', link: '/contact' },
   ];
 
@@ -145,55 +146,53 @@ const Footer: FC = () => {
                   display: { xs: 'none', md: 'flex' },
                 }}
               >
-                Copyright © 2021 Acemyexam
+                Copyright © 2025 Acemyexam
               </Typography>
+            </Box>
+            <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+              <Typography
+                variant='body1'
+                sx={{
+                  color: '#fff',
+                  fontWeight: 600,
+                  fontSize: '18px',
+                  marginBottom: '20px',
+                }}
+              >
+                Sitemap
+              </Typography>
+              {pages.map((page, index) => (
+                <ListItem key={index} sx={{ p: 0 }}>
+                  <LegalPagesLinks href={page.link}>
+                    {page.name}
+                  </LegalPagesLinks>
+                </ListItem>
+              ))}
             </Box>
             <Box
               sx={{
                 display: { xs: 'none', md: 'flex' },
-                gap: { xs: '20px', lg: '50px' },
-                justifyContent: 'space-between',
+                flexDirection: 'column',
+                marginLeft: { md: '-1rem', lg: '-3rem' },
               }}
             >
-              <Box>
-                <Typography
-                  variant='body1'
-                  sx={{
-                    color: '#fff',
-                    fontWeight: 600,
-                    fontSize: '18px',
-                    marginBottom: '20px',
-                  }}
-                >
-                  Sitemap
-                </Typography>
-                {pages.map((page, index) => (
-                  <ListItem key={index} sx={{ p: 0 }}>
-                    <LegalPagesLinks href={page.link}>
-                      {page.name}
-                    </LegalPagesLinks>
-                  </ListItem>
-                ))}
-              </Box>
-              <Box sx={{ display: 'flex', flexDirection: 'column' }}>
-                <Typography
-                  sx={{
-                    color: '#fff',
-                    fontWeight: 600,
-                    fontSize: '18px',
-                    marginBottom: '20px',
-                  }}
-                >
-                  Legal
-                </Typography>
-                {legalPages.map((page, index) => (
-                  <ListItem key={index} sx={{ p: 0 }}>
-                    <LegalPagesLinks href={page.link}>
-                      {page.name}
-                    </LegalPagesLinks>
-                  </ListItem>
-                ))}
-              </Box>
+              <Typography
+                sx={{
+                  color: '#fff',
+                  fontWeight: 600,
+                  fontSize: '18px',
+                  marginBottom: '20px',
+                }}
+              >
+                Legal
+              </Typography>
+              {legalPages.map((page, index) => (
+                <ListItem key={index} sx={{ p: 0 }}>
+                  <LegalPagesLinks target='/' href={page.link}>
+                    {page.name}
+                  </LegalPagesLinks>
+                </ListItem>
+              ))}
             </Box>
 
             <FooterMediaIcons>
