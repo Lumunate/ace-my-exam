@@ -37,7 +37,7 @@ const page = () => {
         person organising tuition for the student) before introducing them to
         tutors:
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText
             sx={{ padding: '0', marginBottom: '4px' }}
@@ -104,7 +104,7 @@ const page = () => {
         we will get the following information from each Tutor before introducing
         them to a parent/client:
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
             sx={{ padding: '0', marginBottom: '4px' }}
@@ -146,7 +146,7 @@ const page = () => {
       <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         3. Tutor’s extra information
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
             sx={{ padding: '0', marginBottom: '4px' }}
@@ -173,7 +173,7 @@ const page = () => {
             }
           />
         </ListItem>
-        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl: 2 }}>
+        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl:4 }}>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
               sx={{ padding: '0', marginBottom: '4px' }}
@@ -216,7 +216,7 @@ const page = () => {
       <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         4. Information about unsuitability of a tutor
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
             sx={{ padding: '0', marginBottom: '4px' }}
@@ -240,7 +240,7 @@ const page = () => {
             }
           />
         </ListItem>
-        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl: 2 }}>
+        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl:4 }}>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
               sx={{ padding: '0', marginBottom: '4px' }}
@@ -272,7 +272,7 @@ const page = () => {
       <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         5. Choosing the right tutor
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
             sx={{ padding: '0', marginBottom: '4px' }}
@@ -308,7 +308,7 @@ const page = () => {
             }
           />
         </ListItem>
-        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl: 2 }}>
+        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl:4 }}>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
               sx={{ padding: '0', marginBottom: '4px' }}
@@ -377,7 +377,7 @@ const page = () => {
       <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         6. How we work
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
             sx={{ padding: '0', marginBottom: '4px' }}
@@ -424,7 +424,7 @@ const page = () => {
             }
           />
         </ListItem>
-        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl: 2 }}>
+        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl:4 }}>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
               sx={{ padding: '0', marginBottom: '4px' }}
@@ -494,7 +494,7 @@ const page = () => {
       <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         7. No restrictive terms
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
             sx={{ padding: '0', marginBottom: '4px' }}
@@ -506,7 +506,7 @@ const page = () => {
             }
           />
         </ListItem>
-        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl: 2 }}>
+        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl:4 }}>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
               sx={{ padding: '0', marginBottom: '4px' }}
@@ -570,7 +570,7 @@ const page = () => {
       <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
         We aim to:
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
             sx={{ padding: '0', marginBottom: '4px' }}

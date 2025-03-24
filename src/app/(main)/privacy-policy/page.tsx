@@ -34,7 +34,7 @@ const PrivacyPolicyPage = () => {
       <Typography variant='h3' sx={{ my: '16px', color: 'black', fontWeight: 'bold' }}>
         1. Data Controller
       </Typography>
-      <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+      <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
             Acemyexam is the data controller responsible for the processing of
@@ -49,13 +49,13 @@ const PrivacyPolicyPage = () => {
       <Typography variant='h3' sx={{ my: '16px', color: 'black', fontWeight: 'bold' }}>
         2. Legal Basis for Processing
       </Typography>
-      <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+      <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
             We process personal data based on one or more of the following legal
             bases:
           </ListItemText>
-          <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+          <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
             <ListItem sx={{ padding: '0', display: 'list-item' }}>
               <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
                 Performance of a Contract: Processing is necessary for the
@@ -90,13 +90,13 @@ const PrivacyPolicyPage = () => {
       <Typography variant='h3' sx={{ my: '16px', color: 'black', fontWeight: 'bold' }}>
         3. Information We Collect
       </Typography>
-      <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+      <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
             We collect and process various types of information, including
             personal data, for the following purposes:
           </ListItemText>
-          <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+          <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
             <ListItem sx={{ padding: '0', display: 'list-item' }}>
               <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
                 Contact information (such as name, address, email address, and
@@ -126,12 +126,12 @@ const PrivacyPolicyPage = () => {
       <Typography variant='h3' sx={{ my: '16px', color: 'black', fontWeight: 'bold' }}>
         4. Use of Information
       </Typography>
-      <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+      <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
             We use the information we collect for the following purposes:
           </ListItemText>
-          <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+          <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
             <ListItem sx={{ padding: '0', display: 'list-item' }}>
               <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
                 To provide tuition services and fulfil our contractual
@@ -175,13 +175,13 @@ const PrivacyPolicyPage = () => {
       <Typography variant='h3' sx={{ my: '16px', color: 'black', fontWeight: 'bold' }}>
         5. Sharing of Information
       </Typography>
-      <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+      <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
             We may share personal information with the following categories of
             recipients:
           </ListItemText>
-          <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+          <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
             <ListItem sx={{ padding: '0', display: 'list-item' }}>
               <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
                 Tutors: We may share student information with tutors engaged,
@@ -244,7 +244,7 @@ const PrivacyPolicyPage = () => {
       <Typography variant='h3' sx={{ my: '16px', color: 'black', fontWeight: 'bold' }}>
         6. Data Retention
       </Typography>
-      <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+      <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
             We retain personal information for as long as necessary to fulfil
@@ -259,13 +259,13 @@ const PrivacyPolicyPage = () => {
       <Typography variant='h3' sx={{ my: '16px', color: 'black', fontWeight: 'bold' }}>
         7. Data Subject Rights
       </Typography>
-      <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+      <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
             Under applicable data protection laws, you have certain rights
             regarding your personal data, including:
           </ListItemText>
-          <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+          <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
             <ListItem sx={{ padding: '0', display: 'list-item' }}>
               <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
                 Right of Access: You have the right to request access to your
@@ -327,7 +327,7 @@ const PrivacyPolicyPage = () => {
       <Typography variant='h3' sx={{ my: '16px', color: 'black', fontWeight: 'bold' }}>
         8. Data Security
       </Typography>
-      <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+      <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
             We implement appropriate technical measures and adopt relevant
@@ -350,7 +350,7 @@ const PrivacyPolicyPage = () => {
             appropriate. In particular, Sensitive Data shall be subject to the
             following additional safeguards:
           </ListItemText>
-          <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+          <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
             <ListItem sx={{ padding: '0', display: 'list-item' }}>
               <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
                 We shall review where Sensitive Data is stored periodically and
@@ -363,7 +363,7 @@ const PrivacyPolicyPage = () => {
                 We shall maintain robust processes that govern the access to and
                 retrieval of Sensitive Data, which shall include:
               </ListItemText>
-              <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+              <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
                 <ListItem sx={{ padding: '0', display: 'list-item' }}>
                   <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
                     Who can access Sensitive Data, and how much access they will
@@ -396,7 +396,7 @@ const PrivacyPolicyPage = () => {
             In the event that there was to be any data breach of any kind
             (either suspected or known), we will undertake to:
           </ListItemText>
-          <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+          <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
             <ListItem sx={{ padding: '0', display: 'list-item' }}>
               <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
                 Immediately take action to assess and mitigate the extent of any
@@ -437,7 +437,7 @@ const PrivacyPolicyPage = () => {
       <Typography variant='h3' sx={{ my: '16px', color: 'black', fontWeight: 'bold' }}>
         9. Changes to this Privacy Policy
       </Typography>
-      <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+      <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
             We reserve the right to update or modify this Privacy Policy at any
@@ -451,7 +451,7 @@ const PrivacyPolicyPage = () => {
       <Typography variant='h3' sx={{ my: '16px', color: 'black', fontWeight: 'bold' }}>
         10. Contact Us
       </Typography>
-      <List sx={{ padding: '0', listStyleType: 'decimal', pl: 4 }}>
+      <List sx={{ padding: '0', listStyleType: 'decimal',pl:4}}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText sx={{ padding: '0', marginBottom: '4px', color: 'grey' }}>
             If you have any questions or concerns about this Privacy Policy or
