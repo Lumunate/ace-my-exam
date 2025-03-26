@@ -14,35 +14,35 @@ const page = () => {
         margin: '0 auto',
         '@media (max-width: 600px)': {
           maxWidth: '100%',
-          padding: '0 20px',
+          padding: '140px 20px 0',
         },
       }}
     >
-      <Typography variant='h1'>
+      <Typography variant='h1' sx={{ marginBottom: '32px' }}>
         Acemyexam – Our Working Together Policy
       </Typography>
 
-      <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
         We are an Employment Business, as defined by law. The law sets out some
         rules and guidelines which we must follow.
       </Typography>
 
       {/* Section 1: Information from a parent/client */}
-      <Typography variant='h3' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         1. Information from a parent/client
       </Typography>
-      <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
         To provide you with our best service and to comply with our obligations,
         we will get the following information from each parent/client (the
         person organising tuition for the student) before introducing them to
         tutors:
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item' }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ color: 'grey' }}>
                 Information about the parent/client and, if applicable (such as
                 when we are working with a school), information about their
                 organisation or business.
@@ -52,9 +52,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{  color: 'grey' }}>
                 The date that the parent/client would like the tutoring (we may
                 also refer to this as the engagement or assignment) to start,
                 and how long it will last (the duration or likely duration).
@@ -64,9 +64,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ color: 'grey' }}>
                 Information about the tutoring and what the parent/client
                 requires, including experience, training or qualifications,
                 where it will take place, the hours required, payment and any
@@ -80,9 +80,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{  color: 'grey' }}>
                 Information about what experience, training, qualifications, and
                 any authorisation that the parent/client considers necessary, or
                 which are required by law or any professional body, to carry out
@@ -96,20 +96,20 @@ const page = () => {
       </List>
 
       {/* Section 2: Information from a tutor */}
-      <Typography variant='h3' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         2. Information from a tutor
       </Typography>
-      <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
         To provide you with our best service and to comply with our obligations,
         we will get the following information from each Tutor before introducing
         them to a parent/client:
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ color: 'grey' }}>
                 Confirmation of the tutor’s identity and right to work.
               </Typography>
             }
@@ -117,9 +117,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ color: 'grey' }}>
                 Confirmation that the tutor considers they have the experience,
                 training, qualifications, and any authorisation the
                 parent/client considers necessary, or which is required by any
@@ -131,9 +131,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ color: 'grey' }}>
                 Confirmation that the tutor is willing to accept the tutoring,
                 if offered.
               </Typography>
@@ -143,15 +143,15 @@ const page = () => {
       </List>
 
       {/* Section 3: Tutor’s extra information */}
-      <Typography variant='h3' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         3. Tutor’s extra information
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ color: 'grey' }}>
                 Where applicable, we will make sure that both a tutor and
                 parents/clients are aware of any legal requirements relating to
                 the tutoring.
@@ -161,9 +161,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ color: 'grey' }}>
                 In particular, since most of the tutoring we offer requires
                 references and/or professional qualifications and involves
                 working with children (vulnerable people), we will take
@@ -173,12 +173,12 @@ const page = () => {
             }
           />
         </ListItem>
-        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl: 2 }}>
+        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl:4 }}>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{ color: 'grey' }}>
                   Copies of any relevant qualifications and DBS and/or other
                   relevant authorisations (including DBS and/or other relevant
                   certificates) required, and/or
@@ -188,9 +188,9 @@ const page = () => {
           </ListItem>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{ color: 'grey' }}>
                   Two references from people unrelated to the tutor who have
                   agreed that their references can be disclosed both to the
                   tutor and relevant parents/clients.
@@ -201,9 +201,9 @@ const page = () => {
         </List>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ color: 'grey' }}>
                 If we are unable to provide the extra information, then we let
                 parents/clients know.
               </Typography>
@@ -213,15 +213,15 @@ const page = () => {
       </List>
 
       {/* Section 4: Information about unsuitability of a tutor */}
-      <Typography variant='h3' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         4. Information about unsuitability of a tutor
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{  color: 'grey' }}>
                 Safeguarding is important to us.
               </Typography>
             }
@@ -229,9 +229,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ color: 'grey' }}>
                 If we receive any information that, in our opinion, gives
                 reasonable grounds (a realistic degree of certainty) to believe
                 that any tutor working with a parent/client is or may be
@@ -240,12 +240,12 @@ const page = () => {
             }
           />
         </ListItem>
-        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl: 2 }}>
+        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl:4 }}>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   Let the parent/client know as soon as is possible (usually on
                   the same day or on the next business day where that is not
                   reasonably practicable), and
@@ -255,9 +255,9 @@ const page = () => {
           </ListItem>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   Carry out reasonable enquiries and let the parent/client know
                   the results of those enquiries in so far as the law will
                   allow.
@@ -269,15 +269,15 @@ const page = () => {
       </List>
 
       {/* Section 5: Choosing the right tutor */}
-      <Typography variant='h3' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         5. Choosing the right tutor
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 We provide each tutor’s information on a confidential basis.
               </Typography>
             }
@@ -285,9 +285,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 Choosing the right tutor for a child is important, and we
                 carefully consider the parent/client’s requirements and a
                 tutor’s skills, experience, training, qualifications, and any
@@ -298,9 +298,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 Based on information that is available to us at the relevant
                 time, we will not introduce a tutor to a parent/client unless
                 we:
@@ -308,12 +308,12 @@ const page = () => {
             }
           />
         </ListItem>
-        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl: 2 }}>
+        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl:4 }}>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   Feel that either the parent/client’s or tutor’s requirements
                   for the tutoring are met, and
                 </Typography>
@@ -322,9 +322,9 @@ const page = () => {
           </ListItem>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   Consider that it would not be detrimental to the interests of
                   either the parent/client or the tutor if the tutoring took
                   place, and
@@ -334,9 +334,9 @@ const page = () => {
           </ListItem>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   Have not received any information that, in our opinion, gives
                   reasonable grounds (a realistic degree of certainty) to
                   believe a tutor is unsuitable for the tutoring, and
@@ -346,9 +346,9 @@ const page = () => {
           </ListItem>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   Have taken reasonable steps to consider any professional body
                   requirements required for the tutoring and informed both the
                   parent/client and tutor to be introduced about these.
@@ -359,9 +359,9 @@ const page = () => {
         </List>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 We use the information that we have obtained from the
                 parent/client (see section 1) to make sure that the tutor has
                 the information they require so that they can freely agree
@@ -374,15 +374,15 @@ const page = () => {
       </List>
 
       {/* Section 6: How we work */}
-      <Typography variant='h3' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         6. How we work
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 We believe in open and transparent working relationships and are
                 committed to complying with our obligations. This means that we
                 abide by any rules and guidance relating to fees.
@@ -392,9 +392,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 We will always provide full details about the charges involved
                 in tutoring. In particular, we will never pressurise tutors to
                 agree to pay for our additional services.
@@ -404,9 +404,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 We take our obligations regarding taxation issues very
                 seriously. We will always use our best endeavours to comply with
                 HMRC requirements.
@@ -416,20 +416,20 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 Safeguarding:
               </Typography>
             }
           />
         </ListItem>
-        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl: 2 }}>
+        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl:4 }}>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   We are committed to providing a safe environment for students
                   to engage with tutoring.
                 </Typography>
@@ -438,9 +438,9 @@ const page = () => {
           </ListItem>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   We, tutors, and parents/clients all have obligations and
                   responsibilities when it comes to safeguarding, in particular
                   risks with online tutoring as well as a child’s mental health.
@@ -450,20 +450,20 @@ const page = () => {
           </ListItem>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   We have a{' '}
                   <StyledLink
                     href='/safeguarding-policy'
-                    sx={{ fontWeight: 'bold' }}
+                    sx={{ fontWeight: 'bold', color: 'black' }}
                   >
                     Safeguarding Policy
                   </StyledLink>{' '}
                   which is available from{' '}
                   <StyledLink
                     href='mailto:contact@acemyexam.co.uk'
-                    sx={{ fontWeight: 'bold' }}
+                    sx={{ fontWeight: 'bold', color: 'black' }}
                   >
                     contact@acemyexam.co.uk.
                   </StyledLink>{' '}
@@ -478,9 +478,9 @@ const page = () => {
           </ListItem>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   We always advise tutors and parents/clients to take advantage
                   of the resources available online from the NSPCC.
                 </Typography>
@@ -491,27 +491,27 @@ const page = () => {
       </List>
 
       {/* Section 7: No restrictive terms */}
-      <Typography variant='h3' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         7. No restrictive terms
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 We will not include anything detrimental in our agreements with
                 our parents/clients or tutors which would:
               </Typography>
             }
           />
         </ListItem>
-        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl: 2 }}>
+        <List sx={{ padding: '0 auto', listStyleType: 'lower-alpha', pl:4 }}>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   Prevent them from ending their agreement with us, OR
                 </Typography>
               }
@@ -519,9 +519,9 @@ const page = () => {
           </ListItem>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   Prevent them from working for anyone else, including the
                   parent/client directly or through a competing employment
                   business, OR
@@ -531,9 +531,9 @@ const page = () => {
           </ListItem>
           <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
             <ListItemText
-              sx={{ padding: '0' }}
+              sx={{ padding: '0', marginBottom: '4px' }}
               primary={
-                <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+                <Typography variant='body1' sx={{  color: 'grey' }}>
                   Mean that a tutor must let us (or anyone connected with us)
                   know the identity of any future employer.
                 </Typography>
@@ -543,9 +543,9 @@ const page = () => {
         </List>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 We do not charge tutors when we help them to find tutoring.
               </Typography>
             }
@@ -554,28 +554,28 @@ const page = () => {
       </List>
 
       {/* Section 8: Advertisements */}
-      <Typography variant='h3' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         8. Advertisements
       </Typography>
-      <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
         Due to our experience, we will use what we consider to be the best and
         relevant advertising. We aim to always advertise in compliance with the
         law which applies to our business.
       </Typography>
 
       {/* Section 9: Records */}
-      <Typography variant='h3' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='h3' sx={{ marginBottom: '16px', }}>
         9. Records
       </Typography>
-      <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
         We aim to:
       </Typography>
-      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl: 2 }}>
+      <List sx={{ padding: '0 auto', listStyleType: 'decimal', pl:4 }}>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 Maintain the relevant records required by the law which applies
                 to our business.
               </Typography>
@@ -584,9 +584,9 @@ const page = () => {
         </ListItem>
         <ListItem sx={{ padding: '0', display: 'list-item', pb: 0 }}>
           <ListItemText
-            sx={{ padding: '0' }}
+            sx={{ padding: '0', marginBottom: '4px' }}
             primary={
-              <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+              <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
                 Process Personal Data in accordance with the relevant data
                 protection laws. Please refer to our Privacy Policy.
               </Typography>
@@ -596,7 +596,7 @@ const page = () => {
       </List>
 
       {/* Updated Date */}
-      <Typography variant='body1' sx={{ marginBottom: '1rem' }}>
+      <Typography variant='body1' sx={{ marginBottom: '16px', color: 'grey' }}>
         Updated 20th February 2025
       </Typography>
     </Box>
