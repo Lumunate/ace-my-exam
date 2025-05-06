@@ -32,7 +32,7 @@ const cardSteps: StepCard[] = [
 
 const ProcessCardSlider: React.FC = () => {
   const [activeCard, setActiveCard] = useState<number | null>(null);
-  const isSmallScreen = useMediaQuery('lg');
+  const isMediumScreen = useMediaQuery('(min-width:768px) and (max-width:1024px)');
 
   const handleCardHover = (index: number) => {
     // Skip hover effect for the first card (index === 0)
@@ -58,7 +58,7 @@ const ProcessCardSlider: React.FC = () => {
           <ProcessCardNumber variant="h4">{step.number}</ProcessCardNumber>
           <ProcessContent>
 
-            {(!isSmallScreen && (index < 2) || index === activeCard) && ( 
+            {((isMediumScreen && index < 2) || (!isMediumScreen && index < 1) || index === activeCard) && (
               <>
                 <Image
                   src="/icons/Vivid-Icons.svg"

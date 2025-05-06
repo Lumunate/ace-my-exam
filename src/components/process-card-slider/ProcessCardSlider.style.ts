@@ -65,8 +65,8 @@ export const ProcessCard = styled(Card)<ProcessCardProps>(({ theme, active, inde
   [theme.breakpoints.down('md')]: {
     width: '337px',
     height: active ? '188px':'auto',
-    transform: index > 1 && active ? 'translateY(37px)' : 'translateY(0)',
-    marginTop: index <= 1 ? '' : '-35px',
+    transform: index > 0 && active ? 'translateY(37px)' : 'translateY(0)',
+    marginTop: index <= 0 ? '' : '-35px',
     display:'flex',
     flexDirection:'row-reverse',
   },
