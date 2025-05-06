@@ -64,7 +64,7 @@ const Support: React.FC = () => {
             </SupportCardPara>
           </SupportCardInnerHead>
           <SupportCardBtnHead>
-            <SupportButton href="/pricing" passHref>
+            <SupportButton href="/contact" passHref>
             Join Us Today
               <Image
                 src='/icons/arrow-right-w.svg'
