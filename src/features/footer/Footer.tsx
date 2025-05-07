@@ -103,7 +103,7 @@ const Footer: FC = () => {
     { name: 'Home', link: '/' },
     { name: 'About', link: '/about' },
     { name: 'Resources', link: '/resources' },
-    { name: 'Pricing', link: '/pricing' },
+    // { name: 'Pricing', link: '/pricing' },
     { name: 'Contact', link: '/contact' },
   ];
 

@@ -63,7 +63,7 @@ const Hero: React.FC = () => {
                 Based in Cambridge, UK, Acemyexam offers premium bespoke in-person and online tuition with a 99% success rate, helping students achieve top grades, secure school & university placements, and access exceptional educational resources.
                 </HeroContent>
                 <HeroContent sx={{ mt: '30px' }}>Excel Academically Today!</HeroContent>
-                <Link href={'/pricing'}>
+                <Link href={'/contact'}>
                   <Button
                     special
                     fontSize='16px'
@@ -72,7 +72,7 @@ const Hero: React.FC = () => {
                     height='60px'
                   
                   >
-                  Our Prices
+                  Reach out now
                   </Button>
                 </Link>
                 <ConsultantLink href="/contact">Book a Free Consultation Now<Image
